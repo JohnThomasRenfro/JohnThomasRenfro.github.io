@@ -63,8 +63,8 @@ function translateB()
 const replsB = [
 
 {p1:/(．)(?!X)/g,r1:'$1Xdot,decimal point~Punctuation'},
-{p1:/(\()(?!X)/g,r1:'$1Xopen parenthesis~Punctuation'},
-{p1:/(\))(?!X)/g,r1:'$1Xclose parenthesis~Punctuation'},
+{p1:/（[\(\(])(?!X)/g,r1:'$1Xopen parenthesis~Punctuation'},
+{p1:/([\)\）])(?!X)/g,r1:'$1Xclose parenthesis~Punctuation'},
 {p1:/(【)(?!X)/g,r1:'$1Xopen bracket~Punctuation'},
 {p1:/(】)(?!X)/g,r1:'$1Xclose bracket~Punctuation'},
 {p1:/(\・)(?!X)/g,r1:'$1Xword separator~Punctuation'},
