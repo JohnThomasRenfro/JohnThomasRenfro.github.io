@@ -8295,7 +8295,7 @@ const replsB = [
 {p1:/(Adverb)/g,r1:'$1 '},
 {p1:/(Postposition)/g,r1:'$1 '},
 {p1:/(\.)/g,r1:'$1ten-decimal '},
-{p1:/([\（\】【」』「『。、\(\）\・])(?!X)/g,r1:'<br>$1~Punctuation'},
+{p1:/([\（\】【」』「『。、\(\）\)\・])(?!X)/g,r1:'<br>$1~Punctuation'},
 
 {p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-up to~Postposition~Noun'},
 {p1:/(こ)(?!X)(と)(?!X)/g,r1:'$1Xko$2Xto-matter,thing~Noun'},
