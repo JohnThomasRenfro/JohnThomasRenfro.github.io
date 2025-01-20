@@ -70,8 +70,8 @@ const replsB = [
 {p1:/(\・)(?!X)/g,r1:'$1Xword separator~Punctuation'},
 {p1:/([「『])(?!X)/g,r1:'$1Xopen quote~Punctuation'},
 {p1:/([」』])(?!X)/g,r1:'$1Xclose quote~Punctuation'},
- 
- {p1:/([\（【」』「『。、])(?!X)/g,r1:'<br>$1~Punctuation'}, 
+{p1:/(。)(?!X)/g,r1:'$1Xperiod~Punctuation'}, 
+{p1:/(、)(?!X)/g,r1:'<br>$1Xcomma~Punctuation'}, 
 
 {p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu-sen,nine-thousand~Noun$2$3$4'},
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhas-sen,eight-thousand~Noun$2$3$4'},
