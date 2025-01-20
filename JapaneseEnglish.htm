@@ -62,6 +62,10 @@ function translateB()
 
 const replsB = [
 
+{p1:/(．)(?!X)/g,r1:'$1Xdot,decimal point~Punctuation'},
+{p1:/(\))(?!X)/g,r1:'$1Xclose quote~Punctuation'},
+{p1:/([\（\】【」』「『。、\(\）\)\・])(?!X)/g,r1:'<br>$1~Punctuation'}, 
+
 {p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu-sen,nine-thousand~Noun$2$3$4'},
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhas-sen,eight-thousand~Noun$2$3$4'},
 {p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xnana-sen,seven-thousand~Noun$2$3$4'},
@@ -7291,8 +7295,7 @@ const replsB = [
 {p1:/(６|6|六)(?!X)/g,r1:'$1Xroku-six~Noun'},
 {p1:/(４|4|四)(?!X)/g,r1:'$1Xyon,shi-four~Noun'},
 {p1:/(３|3|三)(?!X)/g,r1:'$1Xsan,zou-three~Noun'},
-{p1:/(．)(?!X)/g,r1:'$1Xdot,decimal point~Punctuation'},
-{p1:/(\))(?!X)/g,r1:'$1Xclose quote~Punctuation'},	
+
 {p1:/(鼻)(?!X)/g,r1:'$1Xhana-nose~Noun'},
 {p1:/(黒)(?!X)/g,r1:'$1Xkuro,guro-black~Noun'},
 {p1:/(麦)(?!X)/g,r1:'$1Xmugi-wheat~Noun'},
@@ -8287,7 +8290,6 @@ const replsB = [
 {p1:/(Adverb)/g,r1:'$1 '},
 {p1:/(Postposition)/g,r1:'$1 '},
 {p1:/(\.)/g,r1:'$1ten-decimal '},
-{p1:/([\（\】【」』「『。、\(\）\)\・])(?!X)/g,r1:'<br>$1~Punctuation'},
 
 {p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-up to~Postposition~Noun'},
 {p1:/(こ)(?!X)(と)(?!X)/g,r1:'$1Xko$2Xto-matter,thing~Noun'},
