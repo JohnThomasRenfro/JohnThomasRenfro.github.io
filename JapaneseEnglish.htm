@@ -131,9 +131,6 @@ const replsB = [
 {p1:/(2|２)(?!X)(3|３)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xsan$3Xnichi-twenty-third day of the month~Noun'},
 {p1:/(2|２)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xni$3Xnichi-twenty-second day of the month~Noun'},
 
-{p1:/([0-9]+)(?!X)/g,r1:'<br>$1~Number'},
-{p1:/([０-９]+)(?!X)/g,r1:'<br>$1~Number'},
-
 {p1:/(せ)(?!X)(ざ)(?!X)(る)(?!X)(を)(?!X)(え)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xse$2Xza$3Xru$4Xo$5Xe$6Xna$7Xi-can\'t help but do~Noun'},
 
 {p1:/(プ)(?!X)(ロ)(?!X)(デ)(?!X)(ュ)(?!X)(ー)(?!X)(サ)(?!X)(ー)(?!X)/g,r1:'$1Xpu$2Xro$3Xde$4Xyu$5Xu$6Xsa$7Xa-producer~Noun'},
@@ -397,7 +394,7 @@ const replsB = [
 {p1:/(払)(?!X)(い)(?!X)(戻)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xharai$2Xmo$3Xdo-pay back,rei-mburse$4X~SuVerb'},
 {p1:/(払)(?!X)(い)(?!X)(込)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xharai$2Xko$3X-pay in,pay up$4X~MuVerb'},
 {p1:/(投)(?!X)(げ)(?!X)(込)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xna$2Xge$3Xko-throw into$4X~MuVerb'},
-{p1:/(折)(?!X)(り)(?!X)(合)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xori$2X$3Xa-meet halfway$4X~UVerb'},
+{p1:/(折)(?!X)(り)(?!X)(合)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xo$2Xri$3Xa-meet halfway$4X~UVerb'},
 {p1:/(折)(?!X)(り)(?!X)(返)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xo$2Xri$3Xkae-double back$4X~SuVerb'},
 {p1:/(押)(?!X)(さ)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xosa$2X$3Xe-hold down$4X~RuVerb'},
 {p1:/(持)(?!X)(ち)(?!X)(出)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xmo$2Xchi$3Xda-carry out$4X~SuVerb'},
@@ -4835,6 +4832,8 @@ const replsB = [
 {p1:/(正)(?!X)(午)(?!X)/g,r1:'$1Xsyou$2Xgo-noon~Noun'},
 {p1:/(正)(?!X)(常)(?!X)/g,r1:'$1Xsei$2Xjyou-normality~Noun'},
 {p1:/(正)(?!X)(座)(?!X)/g,r1:'$1Xsei$2Xza-sitting upright with legs folded under one~Noun'},
+{p1:/(国)(?!X)(益)(?!X)/g,r1:'$1Xkoku$2Xeki-national interest~Noun'},
+{p1:/(盤)(?!X)(石)(?!X)/g,r1:'$1Xban$2Xjaku-solid~Noun'},
 {p1:/(正)(?!X)(式)(?!X)/g,r1:'$1Xsei$2Xshiki-formal~Noun'},
 {p1:/(正)(?!X)(当)(?!X)/g,r1:'$1Xsei$2Xtou-legal~Noun'},
 {p1:/(正)(?!X)(教)(?!X)/g,r1:'$1Xsei$2Xkyou-orthodox~Noun'},
@@ -5721,7 +5720,7 @@ const replsB = [
 {p1:/(翻)(?!X)(訳)(?!X)/g,r1:'$1Xhon$2Xyaku-translation~Noun'},
 {p1:/(老)(?!X)(人)(?!X)/g,r1:'$1Xrou$2Xjin-elderly~Noun'},
 {p1:/(老)(?!X)(舗)(?!X)/g,r1:'$1Xrou$2Xho-long established shop~Noun'},
-{p1:/(考)(?!X)(え)(?!X)/g,r1:'$1Xkanga$2Xe;think~IchidanVerb'},
+{p1:/(考)(?!X)(え)(?!X)/g,r1:'$1Xkanga$2Xe-think~IchidanVerb'},
 {p1:/(考)(?!X)(察)(?!X)/g,r1:'$1Xkou$2Xsatsu-investigative research~Noun'},
 {p1:/(考)(?!X)(慮)(?!X)/g,r1:'$1Xkou$2Xryo-consideration~Noun'},
 {p1:/(聞)(?!X)(え)(?!X)/g,r1:'$1Xkiko$2X,hear~IchidanVerb'},
@@ -7820,7 +7819,7 @@ const replsB = [
 {p1:/(旗)(?!X)/g,r1:'$1Xhata-flag,banner~Noun'},
 {p1:/(旅)(?!X)/g,r1:'$1Xtabi-journey,travel~Noun'},
 {p1:/(方)(?!X)/g,r1:'$1Xhou,kata-on the side of,other person~Noun'},
-{p1:/(新)(?!X)/g,r1:'$1Xshin,Nii-new,world record~Noun'},
+{p1:/(新)(?!X)/g,r1:'$1Xshin,Nii-new~Noun'},
 {p1:/(料)(?!X)/g,r1:'$1Xryou-charge~Noun'},
 {p1:/(斗)(?!X)/g,r1:'$1Xto,square measure~Noun'},
 {p1:/(斉)(?!X)/g,r1:'$1Xsai-adjusted~Noun'},
@@ -8161,6 +8160,8 @@ const replsB = [
 {p1:/(2|２|二)(?!X)/g,r1:'$1Xni-two~Noun'},
 {p1:/(%|％)(?!X)/g,r1:'$1Xpa-cento,percent~Noun'},
 
+{p1:/([0-9]+)(?!X)/g,r1:'<br>$1~Number'},
+{p1:/([０-９]+)(?!X)/g,r1:'<br>$1~Number'},
 
 {p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for the~Postposition~Noun'},
 
@@ -8346,15 +8347,14 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-殺人の疑いで逮捕されたのは塩釜市北浜2丁目の派遣社員・佐藤つなみ容疑者（24）です。
+こうしたなか、自民党・政治改革本部の小泉事務局長は、企業・団体献金の透明性を高めるため献金総額を政党ごとに総務大臣が公表することなどを盛り込んだ政治資金規正法の改正案を通常国会に提出する方針であることを明らかにしました。
 
-警察によりますと、佐藤容疑者は今月11日午前6時40分頃から午前7時半頃までの間、塩釜市内で自分が出産した生後間もない0歳の女の赤ちゃんを雪に埋めて殺害した疑いが持たれています。
+自民・政治改革本部　小泉進次郎 事務局長
+「『禁止よりも公開』、これをずっと言い続けてきましたので、その公開をより高める透明化法案を出していきたい」
 
-「不審な女性がいる」と通報を受けた警察が赤ちゃんを発見しましたが、搬送先の病院で死亡が確認されました。
+また、党費などの支払いをともなう政治団体への加入については、本人の意思が十分尊重されるよう明記した改正案も提出する予定です。
 
-警察の調べに対して佐藤容疑者は「雪の中に子どもを隠した」「当時はそこまで考えられなかった」と話し、殺意は否認しています。
-
-警察で、動機や当時の状況などを詳しく調べています。
+小泉氏は近く党内手続きをおこない、早期の提出を目指すとしています。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
