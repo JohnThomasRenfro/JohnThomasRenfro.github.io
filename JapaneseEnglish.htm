@@ -10,7 +10,7 @@
 @font-face
 {
 font-family:"Ineptic";
-src:url("Ineptic.ttf");
+src:url("Ineptic.otf");
 }
 
 a:link,
@@ -61,6 +61,8 @@ function translateB()
 {
 
 const replsB = [
+
+{p1:/([ァ-ヴーa-zA-ZＡ-Ｔ0-9]+)/g,r1:'<br>$1'},	
 
 {p1:/([\(\（])(?!X)/g,r1:'<br>$1Xopen parenthesis~Punctuation'},
 {p1:/([\)\）])(?!X)/g,r1:'<br>$1Xclose parenthesis~Punctuation'},
@@ -669,21 +671,6 @@ const replsB = [
 {p1:/(わ)(?!X)(が)(?!X)(ま)(?!X)(ま)(?!X)/g,r1:'$1X$2Xse$3Xl$4Xfishness-willfulness~Noun'},
 {p1:/(わ)(?!X)(ざ)(?!X)(わ)(?!X)(ざ)(?!X)/g,r1:'$1X$2X$3X$4Xgo to a lot of trouble~Noun'},
 {p1:/(わ)(?!X)(れ)(?!X)(わ)(?!X)(れ)(?!X)/g,r1:'$1Xwa$2Xre$3Xwa$4Xre-we~FormalNoun'},
-{p1:/(ア)(?!X)(メ)(?!X)(リ)(?!X)(カ)(?!X)/g,r1:'$1Xa$2Xme$3Xri$4Xka-America~Noun'},
-{p1:/(イ)(?!X)(ベ)(?!X)(ン)(?!X)(ト)(?!X)/g,r1:'$1Xi$2Xbe$3Xn$4Xto-event~Noun'},
-{p1:/(イ)(?!X)(ン)(?!X)(フ)(?!X)(ラ)(?!X)/g,r1:'$1X$2Xin$3Xf$4Xura-infrastructure~Noun'},
-{p1:/(イ)(?!X)(ン)(?!X)(フ)(?!X)(レ)(?!X)/g,r1:'$1Xi$2nX$3fuX$4reX;inflation~Noun'},
-{p1:/(オ)(?!X)(ー)(?!X)(プ)(?!X)(ン)(?!X)/g,r1:'$1X$2X$3X$4Xo-pun,open~Noun'},
-{p1:/(ザ)(?!X)(ー)(?!X)(ザ)(?!X)(ー)(?!X)/g,r1:'$1X$2X$3X$4Xza-za-sound of rushing water~Noun'},
-{p1:/(シ)(?!X)(ス)(?!X)(テ)(?!X)(ム)(?!X)/g,r1:'$1Xshi$2Xsu$3Xte$4Xmu-system~Noun'},
-{p1:/(シ)(?!X)(リ)(?!X)(ー)(?!X)(ズ)(?!X)/g,r1:'$1Xshi$2Xri$3Xi$4Xzu-series~Noun'},
-{p1:/(ス)(?!X)(タ)(?!X)(ジ)(?!X)(オ)(?!X)/g,r1:'$1Xsu$2Xta$3Xji$4Xo-studio~Noun'},
-{p1:/(ス)(?!X)(マ)(?!X)(ー)(?!X)(ト)(?!X)/g,r1:'$1Xsu$2Xma$3Xa$4Xto-smart~Noun'},
-{p1:/(セ)(?!X)(ン)(?!X)(タ)(?!X)(ー)(?!X)/g,r1:'$1Xse$2Xn$3Xta$4Xa-center~Noun'},
-{p1:/(タ)(?!X)(イ)(?!X)(ト)(?!X)(ル)(?!X)/g,r1:'$1Xta$2Xi$3Xto$4Xru-title~Noun'},
-{p1:/(ト)(?!X)(ラ)(?!X)(ッ)(?!X)(ク)(?!X)/g,r1:'$1Xto$2Xra$3Xk$4Xku-truck~Noun'},
-{p1:/(ド)(?!X)(ロ)(?!X)(ー)(?!X)(ン)(?!X)/g,r1:'$1Xdo$2Xro$3X-$4Xn-drone~Noun'},
-{p1:/(モ)(?!X)(ス)(?!X)(ク)(?!X)(ワ)(?!X)/g,r1:'$1Xmo$2Xsu$3Xku$4Xwa-Moscow~Noun'},
 {p1:/(一)(?!X)(人)(?!X)(一)(?!X)(人)(?!X)/g,r1:'$1X$2Xhi$3Xt$4Xori-hitori,each and every person~Noun'},
 {p1:/(一)(?!X)(生)(?!X)(懸)(?!X)(命)(?!X)/g,r1:'$1X$2Xis$3Xs$4Xhyoukenmei-for life,with all one\'s might~Noun'},
 {p1:/(下|く)(?!X)(だ)(?!X)(さ)(?!X)(い)(?!X)/g,r1:'$1Xku$2Xda$3Xsa$4Xi-please~Noun'},
@@ -2321,7 +2308,7 @@ const replsB = [
 {p1:/(さ)(?!X)(ん)(?!X)/g,r1:'$1Xsan$2X-Mister,Miss,or Mrs~Noun'},
 {p1:/(し)(?!X)(わ)(?!X)/g,r1:'$1Xshi$2Xwa-wrinkle~Noun'},
 {p1:/(す)(?!X)(り)(?!X)/g,r1:'$1Xsu$2Xri-pickpocket~Noun'},
-{p1:/(す)(?!X)(る)(?!X)/g,r1:'$1Xsu$2Xru-to do,will do~InformalSuruVerb'},
+{p1:/(す)(?!X)(る)(?!X)/g,r1:'$1Xsu$2Xru-to do;will do~InformalSuruVerb'},
 {p1:/(せ)(?!X)(ず)(?!X)/g,r1:'$1Xsez$2Xu-without doing~Verb'},
 {p1:/(そ)(?!X)(こ)(?!X)/g,r1:'$1Xso$2Xko-there~Noun'},
 {p1:/(そ)(?!X)(の)(?!X)/g,r1:'$1Xso$2Xno-that~Noun'},
@@ -7323,9 +7310,8 @@ const replsB = [
 
 {p1:/(８|8|八)(?!X)/g,r1:'$1Xhachi,Yaku-eight~Noun'},
 {p1:/(６|6|六)(?!X)/g,r1:'$1Xroku-six~Noun'},
-{p1:/(４|4|四)(?!X)/g,r1:'$1Xyon,shi-four~Noun'},
-{p1:/(３|3|三)(?!X)/g,r1:'$1Xsan,zou-three~Noun'},
-
+{p1:/(４|4|四)(?!X)/g,r1:'$1Xyon;shi-four~Noun'},
+{p1:/(３|3|三)(?!X)/g,r1:'$1Xsan-three~Noun'},
 {p1:/(鼻)(?!X)/g,r1:'$1Xhana-nose~Noun'},
 {p1:/(黒)(?!X)/g,r1:'$1Xkuro,guro-black~Noun'},
 {p1:/(麦)(?!X)/g,r1:'$1Xmugi-wheat~Noun'},
@@ -8156,7 +8142,7 @@ const replsB = [
 {p1:/(万)(?!X)/g,r1:'$1Xman-ten thousand~Noun'},
 {p1:/(一|１|1)(?!X)/g,r1:'$1Xichi-one~Noun'},
 {p1:/(へ)(?!X)/g,r1:'$1Xe-towards~Postposition'},
-{p1:/(の)(?!X)/g,r1:'$1Xno-of,verb to noun~Postposition'},
+{p1:/(の)(?!X)/g,r1:'$1Xno-of;verb to noun~Postposition'},
 {p1:/(き)(?!X)/g,r1:'$1Xki-come,start to do~Verb'},
 {p1:/(?![ァ-ヾ]+)(カ)(?!X|[ァ-ヾ]+)/g,r1:'$2Xka-counter for things~Noun'},
 {p1:/(9|９|九)(?!X)/g,r1:'$1Xkyuu-nine~Noun'},
@@ -8168,7 +8154,7 @@ const replsB = [
 
 {p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for the~Postposition~Noun'},
 
-{p1:/(Nounし)(?!X)/g,r1:'$1Xshi-to do,will do~SuruVerb'},
+{p1:/(Nounし)(?!X)/g,r1:'$1Xshi-to do;will do~SuruVerb'},
 
 {p1:/(Verbれ)(?!X)/g,r1:'$1Xre-is done~ConjunctiveVerb'},
 
@@ -8219,7 +8205,7 @@ const replsB = [
 
 {p1:/(Nounま)(?!X)(し)(?!X)(た)(?!X)/g,r1:'$1Xmashita,did~FormalVerb'},
 
-{p1:/(し)(?!X)/g,r1:'$1Xshi-to do,will do~SuruVerb'},
+{p1:/(し)(?!X)/g,r1:'$1Xshi-to do;will do~SuruVerb'},
 
 {p1:/(Punctuationか|Verbか|Nounか)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xra-from~Postposition~Noun'},
 
@@ -8255,7 +8241,7 @@ const replsB = [
 {p1:/(いX)(~IAdjective~Noun)/g,r1:' $1i$2'},
 {p1:/(いX)(~KuVerb)/g,r1:' いXi$2'},
 {p1:/(いX)(~UVerb)/g,r1:' いXi$2'},
-{p1:/(うX)~UVerb/g,r1:' うXu,to do,will do~UVerb'},
+{p1:/(うX)~UVerb/g,r1:' うXu,to do;will do~UVerb'},
 {p1:/(えX)(~UVerb)/g,r1:' えXe,can do$2'},
 {p1:/(かX)(~IAdjective~Noun)/g,r1:' $1Xka$2'},
 {p1:/(かX)(~KuVerb)/g,r1:' かXka$2'},
@@ -8264,15 +8250,15 @@ const replsB = [
 {p1:/(ぎX)(~GuVerb)/g,r1:' ぎXgi$2'},
 {p1:/(くX)(~IAdjective~Noun)/g,r1:' $1Xku-and$2'},
 {p1:/(さX)(~IAdjective~Noun)/g,r1:' $1Xsa-turns the adjective into a noun$2'},
-{p1:/(くX)(~KuVerb)/g,r1:' くXku,to do,will do$2'},
-{p1:/(ぐX)(~GuVerb)/g,r1:' ぐXgu,to do,will do$2'},
+{p1:/(くX)(~KuVerb)/g,r1:' くXku,to do;will do$2'},
+{p1:/(ぐX)(~GuVerb)/g,r1:' ぐXgu,to do;will do$2'},
 {p1:/(けX)(~KuVerb)/g,r1:' けXke,can do$2'},
 {p1:/(げX)(~GuVerb)/g,r1:' げXge,can do$2'},
 {p1:/(こX)(~KuVerb)/g,r1:' きXko,let us do$2'},
 {p1:/(ごX)(~GuVerb)/g,r1:' ごXgo,let us do$2'},
 {p1:/(さX)(~SuVerb)/g,r1:' さXsa$2'},
 {p1:/(しX)(~SuVerb)/g,r1:' しXshi$2'},
-{p1:/(すX)(~SuVerb)/g,r1:' すXsu,to do,will do$2'},
+{p1:/(すX)(~SuVerb)/g,r1:' すXsu,to do;will do$2'},
 {p1:/(せX)(~SuVerb)/g,r1:' せXse,can do$2'},
 {p1:/(すX)(~BeVerb)/g,r1:' すXsu(polite)$2'},
 {p1:/(そX)(~SuVerb)/g,r1:' そXso,let us do$2'},
@@ -8281,20 +8267,20 @@ const replsB = [
 {p1:/(っX)(~RuVerb)/g,r1:' っXt$2'},
 {p1:/(っX)(~TsuVerb)/g,r1:' っXt $2'},
 {p1:/(っX)(~UVerb)/g,r1:' っXt$2'},
-{p1:/(つX)(~TsuVerb)/g,r1:' つXtsu,to do,will do$2'},
+{p1:/(つX)(~TsuVerb)/g,r1:' つXtsu,to do;will do$2'},
 {p1:/(てX)(~TsuVerb)/g,r1:' てXte,can do$2'},
 {p1:/(ちX)(~TsuVerb)/g,r1:' ちXchi$2'},
 {p1:/(とX)(~TsuVerb)/g,r1:' とXto,let us do$2'},
 {p1:/(ぬX)(~NuVerb)/g,r1:' ぬXnu$2'},
 {p1:/(ばX)(~BuVerb)/g,r1:' ばXba$2'},
 {p1:/(びX)(~BuVerb)/g,r1:' びXbi$2'},
-{p1:/(ぶX)(~BuVerb)/g,r1:' ぶXbu,to do,will do$2'},
+{p1:/(ぶX)(~BuVerb)/g,r1:' ぶXbu,to do;will do$2'},
 {p1:/(べX)(~BuVerb)/g,r1:' べXbe,can do$2'},
 {p1:/(ぼX)(~BuVerb)/g,r1:' ぼXbo,let us do$2'},
 {p1:/(まX)(~MuVerb)/g,r1:' まXma$2'},
 {p1:/(んX)(~MuVerb)/g,r1:' んXn$2'},
 {p1:/(みX)(~MuVerb)/g,r1:' みXmi$2'},
-{p1:/(むX)(~MuVerb)/g,r1:' むXmu,to do,will do$2'},
+{p1:/(むX)(~MuVerb)/g,r1:' むXmu,to do;will do$2'},
 {p1:/(めX)(~MuVerb)/g,r1:' めXme,can do$2'},
 {p1:/(もX)(~MuVerb)/g,r1:' もXmo,let us do$2'},
 {p1:/(らX)(~RuVerb)/g,r1:' らXra$2'},
@@ -8305,9 +8291,9 @@ const replsB = [
 {p1:/(わX)(~UVerb)/g,r1:' わXwa$2'},
 {p1:/(んX)(~BuVerb)/g,r1:' んXn$2'},
 {p1:/(んX)(~MuVerb)/g,r1:' んXn$2'},
-{p1:/(~IchidanVerbる)/g,r1:' るXru,to do,will do~IchidanVerb'},
+{p1:/(~IchidanVerbる)/g,r1:' るXru,to do;will do~IchidanVerb'},
 
-{p1:/(Verb)(ま)(?!X)(す)(?!X)/g,r1:' $1$2Xma$3Xsu-to do,will do~FormalVerb'},
+{p1:/(Verb)(ま)(?!X)(す)(?!X)/g,r1:' $1$2Xma$3Xsu-to do;will do~FormalVerb'},
 {p1:/(Verb)(た)(?!X)/g,r1:' $1X$2Xta-did~InformalVerb'},
 {p1:/(Verb)(だ)(?!X)/g,r1:' $1X$2Xda-did~InformalVerb '},
 {p1:/(Verb)(る)(?!X)/g,r1:' $1X$2Xru-do,will do~InformalVerb '},
@@ -8319,10 +8305,8 @@ const replsB = [
 {p1:/(ご)(?!X)/g,r1:' $1Xgo-honorable,makes words polite '},
 
 {p1:/(IAdjective)/g,r1:'$1 '},
-{p1:/(~Noun)/g,r1:'  '},
-{p1:/(Verb)/g,r1:'$1 '},
-{p1:/(Adverb)/g,r1:'$1 '},
-{p1:/(Postposition)/g,r1:'$1 '},
+{p1:/(~Noun|~Postposition|~Punctuation)/g,r1:'  '},
+{p1:/(Noun|Verb|Adverb)/g,r1:'$1 '},
 {p1:/(\.)/g,r1:'$1ten-decimal '},
 
 {p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-up to~Postposition~Noun'},
@@ -8331,7 +8315,7 @@ const replsB = [
 
 {p1:/X/g,r1:''},
 
-{p1:/([一-龠ぁ-ゔァ-ヴー々〆〤0-9０−９]+)/g,r1:'<br><font color=#4e2b00>$1</font>'},
+{p1:/([一-龠ぁ-ゔ々〆〤0-9０−９０-８]+)/g,r1:'<br><font color=#4e2b00>$1</font>'},
 
 ];
 
@@ -8351,9 +8335,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-2025年の米野球殿堂入りが日本時間22日に発表され、資格1年目のイチロー氏（51、マリナーズ会長付特別補佐兼インストラクター）が、栄えある日本人初の殿堂入りを果たした。
-
-大リーグ・専門局『MLBネットワーク』の番組内で発表され、米国野球殿堂博物館のジョシュ・ラウィッチ館長が殿堂入り選出者をアナウンス。MLB史上2人目、さらには野手史上初の“満票”での殿堂入りが期待されたが、2020年のデレク・ジーター氏（ヤンキース）と同じく満票に“わずか1票”及ばず、得票率は99.7％だった。
+米国のトランプ大統領は２１日、ソフトバンクグループ（ＳＢＧ）や対話型ＡＩ（人工知能）サービス「チャットＧＰＴ」を開発した米オープンＡＩなど３社が、今後４年間でデータセンターなど米国内のＡＩ関連のインフラ整備に５０００億ドル（約７８兆円）を投資すると発表した。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
