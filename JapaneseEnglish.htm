@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<script type="text/javascript" charset="utf-8"></script>
+<html>
+<head>
+<meta
+  http-equiv="content-type"
+  content="text/html;
+  charset=UTF-8"
+>
+<script
+  type="text/javascript"
+  charset="utf-8"
+>
+</script>
 
 <title>John T.'s Journal</title>
 <link rel="icon" type="image/png" href="https://web.archive.org/web/20231207052643im_/https://johnrenfro2016.github.io/MyFavicon.png">
@@ -20,7 +29,7 @@ a:visited {color:#ffffff}
 
 body
 {
-background-image:linear-gradient(180deg,#99aaa2,#6c777a,#4f5457);
+background-image:linear-gradient(180deg,#101010,#3a3a3a,#5d5d5d);
 border-radius:25px;
 color:#ffffff;
 font-size:25px;
@@ -64,8 +73,7 @@ const replsB = [
 
 {p1:/(ガ)(?!X)(タ)(?!X)(ガ)(?!X)(タ)(?!X)/g,r1:'$1Xka$2Xta$3Xka$4Xta-rattling~Noun'},	
 {p1:/(バ)(?!X)(ク)(?!X)(バ)(?!X)(ク)(?!X)/g,r1:'$1Xba$2Xku$3Xba$4Xku-throbbing~Noun'},	
-
-{p1:/([ァ-ヴーa-zA-ZＡ-Ｔ0-9]+)/g,r1:'<br>$1'},	
+{p1:/([ァ-ヴーa-zA-ZＡ-Ｔ]+)/g,r1:'<br>$1~Noun'},	
 
 {p1:/([\(\（])(?!X)/g,r1:'<br>$1Xopen parenthesis~Punctuation'},
 {p1:/([\)\）])(?!X)/g,r1:'<br>$1Xclose parenthesis~Punctuation'},
@@ -79,6 +87,7 @@ const replsB = [
 {p1:/(【)(?!X)/g,r1:'<br>$1Xopen bracket~Punctuation'},
 {p1:/(】)(?!X)/g,r1:'<br>$1Xclose bracket~Punctuation'},
 {p1:/(．)(?!X)/g,r1:'<br>$1Xdot,decimal point~Punctuation'},
+{p1:/(：)(?!X)/g,r1:'<br>$1Xcolon~Punctuation'},
 
 {p1:/(2|２)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xni$3Xnichi-twenty-second day of the month~Noun'},
 {p1:/(2|２)(?!X)(3|３)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xsan$3Xnichi-twenty-third day of the month~Noun'},
@@ -756,7 +765,7 @@ const replsB = [
 {p1:/(生)(?!X)(年)(?!X)(月)(?!X)(日)(?!X)/g,r1:'$1Xsei$2Xnen$3Xgap$4Xpi-date of birth~Noun'},
 {p1:/(産)(?!X)(婦)(?!X)(人)(?!X)(科)(?!X)/g,r1:'$1X$2Xsa$3Xn$4Xfujinka-obstetrics and gynecology~Noun'},
 {p1:/(申)(?!X)(し)(?!X)(込)(?!X)(み)(?!X)/g,r1:'$1X$2Xmo$3Xu$4Xshi-komi,application~Noun'},
-{p1:/(に)(?!X)(お)(?!X)(い)(?!X)(て)(?!X)/g,r1:'$1Xni$2Xo$3Xi$4Xte-in~Preposition'},
+{p1:/(に)(?!X)(お)(?!X)(い)(?!X)(て)(?!X)/g,r1:'$1Xni$2Xo$3Xi$4Xte-in~Postposition'},
 {p1:/(百)(?!X)(科)(?!X)(事)(?!X)(典)(?!X)/g,r1:'$1X$2Xya$3Xk$4X-ka-ji-ten,encyclopedia~Noun'},
 {p1:/(目)(?!X)(白)(?!X)(押)(?!X)(し)(?!X)/g,r1:'$1X$2Xme$3Xj$4Xiro o-shi,packed up to eyeballs~Noun'},
 {p1:/(目)(?!X)(茶)(?!X)(苦)(?!X)(茶)(?!X)/g,r1:'$1X$2Xme$3Xc$4Xhyakuchya-in a mess,terrible~Noun'},
@@ -917,7 +926,7 @@ const replsB = [
 {p1:/(も)(?!X)(っ)(?!X)(と)(?!X)/g,r1:'$1Xmot$2Xto$3X-more~Noun'},
 {p1:/(も)(?!X)(の)(?!X)(で)(?!X)/g,r1:'$1Xmo$2Xno$3Xde-reason for~Noun'},
 {p1:/(も)(?!X)(の)(?!X)(の)(?!X)/g,r1:'$1Xmo$2Xno$3Xno-despite the fact that~Noun'},
-{p1:/(も)(?!X)(と)(?!X)(で)(?!X)/g,r1:'$1Xmo$2Xto$3Xde-under~Preposition'},
+{p1:/(も)(?!X)(と)(?!X)(で)(?!X)/g,r1:'$1Xmo$2Xto$3Xde-under~Postposition'},
 {p1:/(も)(?!X)(は)(?!X)(や)(?!X)/g,r1:'$1Xmo$2Xha$3Xya-already,no longer~Noun'},
 {p1:/(や)(?!X)(か)(?!X)(ん)(?!X)/g,r1:'$1Xya$2Xka$3Xn-kettle~Noun'},
 {p1:/(や)(?!X)(が)(?!X)(て)(?!X)/g,r1:'$1Xya$2Xgat$3Xe-soon,before long~Noun'},
@@ -933,22 +942,6 @@ const replsB = [
 {p1:/(わ)(?!X)(さ)(?!X)(び)(?!X)/g,r1:'$1Xwas$2Xab$3Xi-wasabi,Japanese horseradish~Noun'},
 {p1:/(わ)(?!X)(ざ)(?!X)(と)(?!X)/g,r1:'$1Xwaz$2Xat$3Xo-on purpose~Noun'},
 {p1:/(わ)(?!X)(ず)(?!X)(か)(?!X)/g,r1:'$1Xwa$2Xzu$3Xka-few,little~Noun'},
-{p1:/(セ)(?!X)(ン)(?!X)(チ)(?!X)/g,r1:'$1Xse$2Xn$3Xchi-centimeters~Noun'},
-{p1:/(タ)(?!X)(ッ)(?!X)(グ)(?!X)/g,r1:'$1Xta$2Xg$3Xgu-tag team~Noun'},
-{p1:/(チ)(?!X)(タ)(?!X)(ン)(?!X)/g,r1:'$1Xchi$2Xta$3Xn-titanium~Noun'},
-{p1:/(テ)(?!X)(レ)(?!X)(ビ)(?!X)/g,r1:'$1Xte$2Xre$3Xbi-television~Noun'},
-{p1:/(ト)(?!X)(ヨ)(?!X)(タ)(?!X)/g,r1:'$1Xto$2Xyou$3Xta-Toyota~Noun'},
-{p1:/(ド)(?!X)(ラ)(?!X)(マ)(?!X)/g,r1:'$1Xdo$2Xra$3Xma-drama~Noun'},
-{p1:/(ハ)(?!X)(イ)(?!X)(チ)(?!X)/g,r1:'$1Xha$2Xi$3Xchi-deployment~Noun'},
-{p1:/(フ)(?!X)(ォ)(?!X)(ン)(?!X)/g,r1:'$1Xfu$2Xo$3Xn-phone~Noun'},
-{p1:/(ホ)(?!X)(テ)(?!X)(ル)(?!X)/g,r1:'$1Xho$2Xte$3Xru-hotel~Noun'},
-{p1:/(ポ)(?!X)(ス)(?!X)(ト)(?!X)/g,r1:'$1Xpos$2Xut$3Xo-post~Noun'},
-{p1:/(ポ)(?!X)(ー)(?!X)(ト)(?!X)/g,r1:'$1Xpo$2Xo$3Xto-port~Noun'},
-{p1:/(モ)(?!X)(デ)(?!X)(ル)(?!X)/g,r1:'$1Xmo$2Xde$3Xru-model~Noun'},
-{p1:/(ラ)(?!X)(イ)(?!X)(ン)(?!X)/g,r1:'$1Xra$2Xi$3Xn-line~Noun'},
-{p1:/(リ)(?!X)(ス)(?!X)(ク)(?!X)/g,r1:'$1Xri$2suX$3ku;risk~Noun'},
-{p1:/(リ)(?!X)(ス)(?!X)(ト)(?!X)/g,r1:'$1Xri$2Xsu$3Xto-list;wrist~Noun'},
-{p1:/(ロ)(?!X)(シ)(?!X)(ア)(?!X)/g,r1:'$1Xro$2Xshi$3Xa-Russia~Noun'},
 {p1:/(一)(?!X)(ま)(?!X)(ず)(?!X)/g,r1:'$1X$2Xhi$3Xtomazu-first of all~Noun'},
 {p1:/(一)(?!X)(人)(?!X)(で)(?!X)/g,r1:'$1X$2Xhi$3Xtoride-by oneself~Noun'},
 {p1:/(一)(?!X)(休)(?!X)(み)(?!X)/g,r1:'$1X$2Xhi$3Xtoyasumi-rest~Noun'},
@@ -1368,6 +1361,7 @@ const replsB = [
 {p1:/(次)(?!X)(々)(?!X)(に)(?!X)/g,r1:'$1Xtsu$2Xgi$3Xtsugini-one after another,in succession~Noun'},
 {p1:/(次)(?!X)(第)(?!X)(に)(?!X)/g,r1:'$1Xshi$2Xdai$3X ni-by degrees~Noun'},
 {p1:/(欲)(?!X)(張)(?!X)(り)(?!X)/g,r1:'$1Xyok$2Xub$3Xari-greed,greedy~Noun'},
+{p1:/(だ)(?!X)(れ)(?!X)(か)(?!X)/g,r1:'$1Xda$2Xre$3Xka-someone~Noun'},
 {p1:/(歌)(?!X)(舞)(?!X)(伎)(?!X)/g,r1:'$1Xka$2Xbu$3Xki-kabuki theater~Noun'},
 {p1:/(正)(?!X)(当)(?!X)(化)(?!X)/g,r1:'$1Xsei$2Xtou$3Xka-justification~Noun'},
 {p1:/(正)(?!X)(念)(?!X)(場)(?!X)/g,r1:'$1Xsyou$2Xnen$3Xba-critical moment~Noun'},
@@ -2278,7 +2272,7 @@ const replsB = [
 
 {p1:/(あ)(?!X)(あ)(?!X)/g,r1:'$1X$2Xaa-that kind of~Noun'},
 {p1:/(あ)(?!X)(す)(?!X)/g,r1:'$1Xasu$2X-morning~Noun'},
-{p1:/(あ)(?!X)(れ)(?!X)/g,r1:'$1Xare$2X-that over there~Noun'},
+{p1:/(あ)(?!X)(れ)(?!X)/g,r1:'$1Xa$2Xre-that over there~Noun'},
 {p1:/(う)(?!X)(ち)(?!X)/g,r1:'$1Xu$2Xchi-house~Noun'},
 {p1:/(う)(?!X)(つ)(?!X)/g,r1:'$1Xu$2Xtsu-depression~Noun'},
 {p1:/(え)(?!X)(び)(?!X)/g,r1:'$1X$2Xbi-lobster,shrimp~Noun'},
@@ -4104,7 +4098,6 @@ const replsB = [
 {p1:/(念)(?!X)(頭)(?!X)/g,r1:'$1Xnen$2Xtou-one one\'s mind~Noun'},
 {p1:/(怒)(?!X)(り)(?!X)/g,r1:'$1Xika$2Xri-anger,rage~Noun'},
 {p1:/(思)(?!X)(想)(?!X)/g,r1:'$1Xshi$2Xsou-thought,conception~Noun'},
-{p1:/(急)(?!X)(に)(?!X)/g,r1:'$1Xkyuu$2Xni-suddenly,unexpectedly~Noun'},
 {p1:/(急)(?!X)(増)(?!X)/g,r1:'$1Xkyuu$2Xzou-sudden increase~Noun'},
 {p1:/(急)(?!X)(変)(?!X)/g,r1:'$1Xkyuu$2Xhen-sudden change~Noun'},
 {p1:/(急)(?!X)(激)(?!X)/g,r1:'$1Xkyuu$2Xgeki-suddenly~Noun'},
@@ -6727,6 +6720,7 @@ const replsB = [
 {p1:/(骨)(?!X)(折)(?!X)/g,r1:'$1Xkos$2Xsetsu-fracture~Noun'},
 {p1:/(高)(?!X)(さ)(?!X)/g,r1:'$1Xtaka$2Xsa-height~Noun'},
 {p1:/(高)(?!X)(め)(?!X)/g,r1:'$1Xtaka$2Xme-enhance~IchidanVerb'},
+{p1:/(替)(?!X)(え)(?!X)/g,r1:'$1Xka$2Xe-change;exchange~IchidanVerb'},
 {p1:/(高)(?!X)(価)(?!X)/g,r1:'$1Xkou$2Xka-high-priced~Noun'},
 {p1:/(高)(?!X)(値)(?!X)/g,r1:'$1Xtaka$2Xne-high prices~Noun'},
 {p1:/(高)(?!X)(原)(?!X)/g,r1:'$1Xkou$2Xgen-plateau,highland~Noun'},
@@ -7473,6 +7467,7 @@ const replsB = [
 {p1:/(計)(?!X)/g,r1:'$1Xkei-total~Noun'},
 {p1:/(角)(?!X)/g,r1:'$1Xka+do,corner,edge,angle~Noun'},
 {p1:/(観)(?!X)/g,r1:'$1Xkan-perspective~Noun'},
+{p1:/(急)(?!X)/g,r1:'$1Xkyuu-promptness~Noun'},
 {p1:/(親)(?!X)/g,r1:'$1Xoya,shin-parent~Noun'},
 {p1:/(視)(?!X)/g,r1:'$1Xshi-regard as~SuruVerb'},
 {p1:/(見|み)(?!X)/g,r1:'$1Xmi-see,try to do~IchidanVerb'},
@@ -7905,7 +7900,7 @@ const replsB = [
 {p1:/(屑)(?!X)/g,r1:'$1Xkuzu-waste,scraps~Noun'},
 {p1:/(屏)(?!X)/g,r1:'$1Xhei-wall~Noun'},
 {p1:/(屋)(?!X)/g,r1:'$1Xya-store~Noun'},
-{p1:/(居|い)(?!X)/g,r1:'$1Xi-+ing continuous verb;there is an animate being~IchidanVerb'},
+{p1:/(居|い)(?!X)/g,r1:'$1Xi-+ing continuousVerb;there is an animate being~IchidanVerb'},
 {p1:/(局)(?!X)/g,r1:'$1Xkyoku-bureau~Noun'},
 {p1:/(尾)(?!X)/g,r1:'$1Xo-tail~Noun'},
 {p1:/(尚)(?!X)/g,r1:'$1XNao-more~Noun'},
@@ -8072,6 +8067,7 @@ const replsB = [
 {p1:/(兼)(?!X)/g,r1:'$1Xken-in addition to;at the same time~Noun'},
 {p1:/(兵)(?!X)/g,r1:'$1Xhei-soldier,hyou-pawn~Noun'},
 {p1:/(共)(?!X)/g,r1:'$1Xtomo-together~Noun'},
+{p1:/(義)(?!X)/g,r1:'$1Xgi-doctrine~Noun'},
 {p1:/(全)(?!X)/g,r1:'$1Xzen-all~Noun'},
 {p1:/(入)(?!X)/g,r1:'$1Xnyuu-entering~Noun'},
 {p1:/(党)(?!X)/g,r1:'$1Xtou-political party~Noun'},
@@ -8159,7 +8155,7 @@ const replsB = [
 {p1:/(0)(?!X)/g,r1:'$1Xoften unspoken rei-zero~Noun'},
 {p1:/(%|％)(?!X)/g,r1:'<br>$1Xpa-cento,percent~Noun'},
 
-{p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for the~Postposition~Noun'},
+{p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for the~Postposition'},
 
 {p1:/(Nounし)(?!X)/g,r1:'$1Xshi-to do;will do~SuruVerb'},
 
@@ -8229,13 +8225,13 @@ const replsB = [
 {p1:/(Verbず)(?!X)/g,r1:'$1Xzu-without doing~Verb'},
 {p1:/(Verbに|Nounに)(?!X)/g,r1:'$1Xni-at,in,on~Postposition~Noun'},
 {p1:/(Verbね)(?!X)/g,r1:'$1Xne-isn\'t it\?~InformalVerb'},
-{p1:/(Verbば)(?!X)/g,r1:'$1Xba-if~Postposition~Noun'},
+{p1:/(Nounば|Verbば)(?!X)/g,r1:'$1Xba-if~Postposition~Noun'},
 {p1:/(Verbも|Nounも)(?!X)/g,r1:'$1Xmo-too~Postposition~Noun'},
 {p1:/(Verbや|Nounや)(?!X)/g,r1:'$1Xya-and,comma~Postposition~Noun'},
 {p1:/(Verbよ)(?!X)/g,r1:'$1Xyo-exclamation~Punctuation'},
 {p1:/(Punctuationと)(?!X)/g,r1:'$1Xto-the person said~Postposition'},
 
-{p1:/(Prepositionの|Verbの|Nounの)(?!X)/g,r1:'$1Xno-of~Postposition~Noun'},
+{p1:/(Postpositionの|Verbの|Nounの)(?!X)/g,r1:'$1Xno-of~Postposition~Noun'},
 
 {p1:/(を)(?!X)/g,r1:'$1Xoo-direct object~Postposition~Noun'},
 
@@ -8248,7 +8244,7 @@ const replsB = [
 {p1:/(いX)(~IAdjective~Noun)/g,r1:' $1i$2'},
 {p1:/(いX)(~KuVerb)/g,r1:' いXi$2'},
 {p1:/(いX)(~UVerb)/g,r1:' いXi$2'},
-{p1:/(うX)~UVerb/g,r1:' うXu,to do;will do~UVerb'},
+{p1:/(うX)~UVerb/g,r1:' うXu-to do;will do~UVerb'},
 {p1:/(えX)(~UVerb)/g,r1:' えXe,can do$2'},
 {p1:/(かX)(~IAdjective~Noun)/g,r1:' $1Xka$2'},
 {p1:/(かX)(~KuVerb)/g,r1:' かXka$2'},
@@ -8257,15 +8253,15 @@ const replsB = [
 {p1:/(ぎX)(~GuVerb)/g,r1:' ぎXgi$2'},
 {p1:/(くX)(~IAdjective~Noun)/g,r1:' $1Xku-and$2'},
 {p1:/(さX)(~IAdjective~Noun)/g,r1:' $1Xsa-turns the adjective into a noun$2'},
-{p1:/(くX)(~KuVerb)/g,r1:' くXku,to do;will do$2'},
-{p1:/(ぐX)(~GuVerb)/g,r1:' ぐXgu,to do;will do$2'},
+{p1:/(くX)(~KuVerb)/g,r1:' くXku-to do;will do$2'},
+{p1:/(ぐX)(~GuVerb)/g,r1:' ぐXgu-to do;will do$2'},
 {p1:/(けX)(~KuVerb)/g,r1:' けXke,can do$2'},
 {p1:/(げX)(~GuVerb)/g,r1:' げXge,can do$2'},
 {p1:/(こX)(~KuVerb)/g,r1:' きXko,let us do$2'},
 {p1:/(ごX)(~GuVerb)/g,r1:' ごXgo,let us do$2'},
 {p1:/(さX)(~SuVerb)/g,r1:' さXsa$2'},
 {p1:/(しX)(~SuVerb)/g,r1:' しXshi$2'},
-{p1:/(すX)(~SuVerb)/g,r1:' すXsu,to do;will do$2'},
+{p1:/(すX)(~SuVerb)/g,r1:' すXsu-to do;will do$2'},
 {p1:/(せX)(~SuVerb)/g,r1:' せXse,can do$2'},
 {p1:/(すX)(~BeVerb)/g,r1:' すXsu(polite)$2'},
 {p1:/(そX)(~SuVerb)/g,r1:' そXso,let us do$2'},
@@ -8274,20 +8270,20 @@ const replsB = [
 {p1:/(っX)(~RuVerb)/g,r1:' っXt$2'},
 {p1:/(っX)(~TsuVerb)/g,r1:' っXt $2'},
 {p1:/(っX)(~UVerb)/g,r1:' っXt$2'},
-{p1:/(つX)(~TsuVerb)/g,r1:' つXtsu,to do;will do$2'},
+{p1:/(つX)(~TsuVerb)/g,r1:' つXtsu-to do;will do$2'},
 {p1:/(てX)(~TsuVerb)/g,r1:' てXte,can do$2'},
 {p1:/(ちX)(~TsuVerb)/g,r1:' ちXchi$2'},
 {p1:/(とX)(~TsuVerb)/g,r1:' とXto,let us do$2'},
 {p1:/(ぬX)(~NuVerb)/g,r1:' ぬXnu$2'},
 {p1:/(ばX)(~BuVerb)/g,r1:' ばXba$2'},
 {p1:/(びX)(~BuVerb)/g,r1:' びXbi$2'},
-{p1:/(ぶX)(~BuVerb)/g,r1:' ぶXbu,to do;will do$2'},
+{p1:/(ぶX)(~BuVerb)/g,r1:' ぶXbu-to do;will do$2'},
 {p1:/(べX)(~BuVerb)/g,r1:' べXbe,can do$2'},
 {p1:/(ぼX)(~BuVerb)/g,r1:' ぼXbo,let us do$2'},
 {p1:/(まX)(~MuVerb)/g,r1:' まXma$2'},
 {p1:/(んX)(~MuVerb)/g,r1:' んXn$2'},
 {p1:/(みX)(~MuVerb)/g,r1:' みXmi$2'},
-{p1:/(むX)(~MuVerb)/g,r1:' むXmu,to do;will do$2'},
+{p1:/(むX)(~MuVerb)/g,r1:' むXmu-to do;will do$2'},
 {p1:/(めX)(~MuVerb)/g,r1:' めXme,can do$2'},
 {p1:/(もX)(~MuVerb)/g,r1:' もXmo,let us do$2'},
 {p1:/(らX)(~RuVerb)/g,r1:' らXra$2'},
@@ -8298,7 +8294,7 @@ const replsB = [
 {p1:/(わX)(~UVerb)/g,r1:' わXwa$2'},
 {p1:/(んX)(~BuVerb)/g,r1:' んXn$2'},
 {p1:/(んX)(~MuVerb)/g,r1:' んXn$2'},
-{p1:/(~IchidanVerbる)/g,r1:' るXru,to do;will do~IchidanVerb'},
+{p1:/(~IchidanVerbる)/g,r1:' るXru-to do;will do~IchidanVerb'},
 
 {p1:/(Verb)(ま)(?!X)(す)(?!X)/g,r1:' $1$2Xma$3Xsu-to do;will do~FormalVerb'},
 {p1:/(Verb)(た)(?!X)/g,r1:' $1X$2Xta-did~InformalVerb'},
@@ -8322,7 +8318,9 @@ const replsB = [
 
 {p1:/X/g,r1:''},
 
-{p1:/([一-龠ぁ-ゔ々〆〤0-9０−９０-８]+)/g,r1:'<br><font color=#4e2b00>$1</font>'},
+{p1:/([一-龠ぁ-ゔ々〆〤0-9０−９０-８]+)/g,r1:'<br><font color=#bba58f>$1</font>'},
+
+{p1:/-([a-zA-Z]+)/g,r1:'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=#e8d9cd>$1</font>'},
 
 ];
 
@@ -8342,30 +8340,13 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-元兵庫県議の死亡をめぐり、インターネットやSNSに投稿する内容や誹謗中傷が議論になっています。ネットの掲示板で、殺害予告などの誹謗中傷を受けた広島県内在住の女性が、取材に応じました。
+　塩野義製薬の単独提供で放送しているフジテレビ系音楽番組『SHIONOGI MUSIC FAIR』（毎週土曜　後6：00）について、同社がフジテレビに対し番組内での社名削除を要請していることが分かった。同社が22日、ORICON NEWSの取材に応じ、認めた。
 
-“殺害予告”が書かれた実際の掲示板　インターネット上の掲示板で始まった誹謗中傷　
+【写真】新MCも登場した『だれかtoなかい』2024年ラスト回
 
-■「びっくりしたっていうのが一番素直な気持ちと、どうして私が…?」
+　同社は「塩野義製薬はフジテレビ系列においては、スポンサー番組以外でCMを実施しておりませんが、一連の報道内容が事実なのであれば到底容認できるものではないことから、グループ会社の一般用医薬品会社では順次ACへの差し替え対応を行っています」と経緯を説明。
 
-今回話を聞いたのは広島県尾道市に住む50代の女性です。女性は地元の魅力や食を自身のブログで発信していました。インターネット上の掲示板で誹謗中傷が始まったのは2023年1月…。次第に内容がエスカレートし名指しされ殺害予告などの脅迫を受けたといいます。
-
-実際の投稿内容
-”布団で巻いて、アンカーを付けて、備後灘に放り出せ!”
-
-ほかにも女性に性的暴行を加えることを示唆する内容もありました。投稿者に心当たりはなく1人か複数人の書き込みかも分かりませんでした。
-
-被害女性（50代）
-「心臓がバクバクしてしまってちょっと体もガタガタ震えたりして、何でこんなことが自分の身に起こっているんだろうという気持ちですね。本気度もわからないじゃないですか。家を出るのも怖い、チャイムが鳴ってドア開けるまでも怖い」
-
-夜も眠れず、1人で外出することもできなくなくなりました。それでも泣き寝入りはしたくないと弁護士に相談し、多数ある投稿から特に悪質な6件についてプロバイダーに情報開示を請求…。およそ半年後に投稿者の住所や名前などを特定し、刑事告訴しました。
-
-被害女性（50代）
-「悔しいじゃないですか。なんでこんな人（加害者）のために自分がつらく悲しい思いをして…。私が声を上げることで刑事罰が下って前科者になってしまうんだっていうことを、そんなに深く考えずに（誹謗中傷を）書き込んでる人たちに伝えたい」
-
-■「時間とお金がこれほどかかるとは…」掲示板に残ったままの悪質な投稿
-
-刑事告訴したあと、加害者側から示談の申し入れがありました。投稿の理由を求めるも、納得のいく回答が得られなかったことや反省を感じることができず、刑事告訴を続けたといいます。
+　続けて「フジテレビから早急に事実内容と今後の対応についての説明がなされるべきと考えており、弊社では番組内での社名の削除に加えて、今後についても対応を検討中です」とコメントした。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
