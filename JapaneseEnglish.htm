@@ -66,6 +66,8 @@ const replsB = [
 {p1:/([\)\）])(?!X)/g,r1:'<br>$1Xclose parenthesis~Punctuation'},
 {p1:/([「『])(?!X)/g,r1:'<br>$1Xopen quote~Punctuation'},
 {p1:/([」』])(?!X)/g,r1:'<br>$1Xclose quote~Punctuation'},
+{p1:/(\“)(?!X)/g,r1:'<br>$1Xopen quote~Punctuation'},
+{p1:/(\”)(?!X)/g,r1:'<br>$1Xclose quote~Punctuation'},
 {p1:/(\・)(?!X)/g,r1:'<br>$1Xword separator~Punctuation'},
 {p1:/(、)(?!X)/g,r1:'<br>$1Xcomma~Punctuation'}, 
 {p1:/(。)(?!X)/g,r1:'<br>$1Xperiod~Punctuation'}, 
@@ -73,9 +75,38 @@ const replsB = [
 {p1:/(】)(?!X)/g,r1:'<br>$1Xclose bracket~Punctuation'},
 {p1:/(．)(?!X)/g,r1:'<br>$1Xdot,decimal point~Punctuation'},
 
+{p1:/(2|２)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xni$3Xnichi-twenty-second day of the month~Noun'},
+{p1:/(2|２)(?!X)(3|３)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xsan$3Xnichi-twenty-third day of the month~Noun'},
+{p1:/(2|２)(?!X)(4|４)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xyok$3Xka-twenty-fourth day of the month~Noun'},
+{p1:/(2|２)(?!X)(5|５)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xgo$3Xnichi,twenty-fifth day of the month~Noun'},
+{p1:/(2|２)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xhachi$3Xnichi-twenty-eighth day of the month~Noun'},
+{p1:/(2|２)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xhatsu$2Xka$3X-twentieth day of the month~Noun'},
+{p1:/(2|２)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xichi$3Xnichi,twenty-first day of the month~Noun'},
+{p1:/(2|２)(?!X)(６|6)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xroku$3Xnichi-twenty-sixth day of the month~Noun'},
+{p1:/(2|２)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xshichi$3Xnichi,twenty-seventh day of the month~Noun'},
+{p1:/(2|２)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xku$3Xnichi-twenty-nineth day of the month~Noun'},
+{p1:/(１)(?!X)(６)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xroku$3Xnichi-sixteenth day of the month~Noun'},
+{p1:/(１|1)(?!X)(1|１)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xichi$3Xnichi-eleventh	day of the month~Noun'},
+{p1:/(１|1)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xni$3Xnichi-twelfth day of the month~Noun'},
+{p1:/(１|1)(?!X)(4|４|4)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xyok$3Xka-fourteenth day of the month~Noun'},
+{p1:/(１|1)(?!X)(6)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xroku$3Xnichi-sixteenth	day of the month~Noun'},
+{p1:/(１|1)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xhachi$3Xnichi-eighteenth	day of the month~Noun'},
+{p1:/(１|1)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xtoo$2Xka$3X-tenth day of the month~Noun'},
+{p1:/(１|1)(?!X)(０|0)(?!X)(月)(?!X)/g,r1:'$1Xjyuu$2X$3Xgatsu-October~Noun'},
+{p1:/(１|1)(?!X)(１|1)(?!X)(月)(?!X)/g,r1:'$1Xjyuu$2Xichi$3Xgatsu November~Noun'},
+{p1:/(１|1)(?!X)(２|2)(?!X)(月)(?!X)/g,r1:'$1Xjyuu$2Xni$3Xgatsu December~Noun'},
+{p1:/(１|1)(?!X)(３|3)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xsan$3Xnichi-thirteenth day of the month~Noun'},
+{p1:/(１|1)(?!X)(５|5)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xgo$3Xnichi-fifteenth day of the month~Noun'},
+{p1:/(１|1)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xshichi$3Xnichi-seventeenth	day of the month~Noun'},
+{p1:/(１|1)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xku$3Xnichi-nineteenth day of the month~Noun'},
+{p1:/(３|3)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xsan jyuu$2X$3Xnichi-thirtieth day of the month~Noun'},
+{p1:/(３|3)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xsan jyuu$2Xichi$3Xnichi-thirty-first day of the month~Noun'},
+
+{p1:/(２|二)(?!X)(日)(?!X)/g,r1:'$1Xfut$2Xsuka-two days,second day of the month~Noun'},
+
 {p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsen-one-thousand~Noun$2$3$4'},
 {p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhyaku-one-hundred~Noun$2$3'},
-{p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni-sen,two-thousand~Noun$2$3$4'},
+{p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni-sen-two-thousand~Noun$2$3$4'},
 {p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni-hyaku,two-hundred~Noun$2$3'},
 {p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsan-sen,three-thousand~Noun$2$3$4'},
 {p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsan-byaku,three-hundred~Noun$2$3'},
@@ -94,42 +125,13 @@ const replsB = [
 
 {p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni jyuu-twenty~Noun$2'},
 {p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsan jyuu-thirty~Noun$2'},
-{p1:/(4|４)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xyon jyuu,fourty~Noun$2'},
-{p1:/(5|５)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xgo jyuu,fifty~Noun$2'},
-{p1:/(6|6)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xroku jyuu,sixty~Noun$2'},
-{p1:/(6|６)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xroku jyuu,sixty~Noun$2'},
-{p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xshichi jyuu,seventy~Noun$2'},
-{p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhachi jyuu,eighty~Noun$2'},
-{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu jyuu,ninety~Noun$2'},
-
-{p1:/(１)(?!X)(６)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xroku$3Xnichi-sixteenth day of the month~Noun'},
-{p1:/(１|1)(?!X)(1|１)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xichi$3Xnichi-eleventh	day of the month~Noun'},
-{p1:/(１|1)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xni$3Xnichi-twelfth day of the month~Noun'},
-{p1:/(１|1)(?!X)(4|４|4)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xyok$3Xka-fourteenth day of the month~Noun'},
-{p1:/(１|1)(?!X)(6)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xroku$3Xnichi-sixteenth	day of the month~Noun'},
-{p1:/(１|1)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xhachi$3Xnichi-eighteenth	day of the month~Noun'},
-{p1:/(１|1)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xtoo$2Xka$3X-tenth day of the month~Noun'},
-{p1:/(１|1)(?!X)(０|0)(?!X)(月)(?!X)/g,r1:'$1Xjyuu$2X$3Xgatsu-October~Noun'},
-{p1:/(１|1)(?!X)(１|1)(?!X)(月)(?!X)/g,r1:'$1Xjyuu$2Xichi$3Xgatsu November~Noun'},
-{p1:/(１|1)(?!X)(２|2)(?!X)(月)(?!X)/g,r1:'$1Xjyuu$2Xni$3Xgatsu December~Noun'},
-{p1:/(１|1)(?!X)(３|3)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xsan$3Xnichi-thirteenth day of the month~Noun'},
-{p1:/(１|1)(?!X)(５|5)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xgo$3Xnichi-fifteenth day of the month~Noun'},
-{p1:/(１|1)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xshichi$3Xnichi-seventeenth	day of the month~Noun'},
-{p1:/(１|1)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xku$3Xnichi-nineteenth day of the month~Noun'},
-{p1:/(３|3)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xsan jyuu$2X$3Xnichi-thirtieth day of the month~Noun'},
-{p1:/(３|3)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xsan jyuu$2Xichi$3Xnichi-thirty-first day of the month~Noun'},
-
-{p1:/(2|２)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xku$3Xnichi-twenty-nineth day of the month~Noun'},
-{p1:/(2|２)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xshichi$3Xnichi,twenty-seventh day of the month~Noun'},
-{p1:/(2|２)(?!X)(６|6)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xroku$3Xnichi-twenty-sixth day of the month~Noun'},
-{p1:/(2|２)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xichi$3Xnichi,twenty-first day of the month~Noun'},
-{p1:/(2|２)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xhatsu$2Xka$3X-twentieth day of the month~Noun'},
-
-{p1:/(2|２)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xhachi$3Xnichi-twenty-eighth day of the month~Noun'},
-{p1:/(2|２)(?!X)(5|５)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xgo$3Xnichi,twenty-fifth day of the month~Noun'},
-{p1:/(2|２)(?!X)(4|４)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xyok$3Xka-twenty-fourth day of the month~Noun'},
-{p1:/(2|２)(?!X)(3|３)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xsan$3Xnichi-twenty-third day of the month~Noun'},
-{p1:/(2|２)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xni$3Xnichi-twenty-second day of the month~Noun'},
+{p1:/(4|４)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xyon jyuu-fourty~Noun$2'},
+{p1:/(5|５)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xgo jyuu-fifty~Noun$2'},
+{p1:/(6|6)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xroku jyuu-sixty~Noun$2'},
+{p1:/(6|６)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xroku jyuu-sixty~Noun$2'},
+{p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xshichi jyuu-seventy~Noun$2'},
+{p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhachi jyuu-eighty~Noun$2'},
+{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu jyuu-ninety~Noun$2'},
 
 {p1:/(せ)(?!X)(ざ)(?!X)(る)(?!X)(を)(?!X)(え)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xse$2Xza$3Xru$4Xo$5Xe$6Xna$7Xi-can\'t help but do~Noun'},
 
@@ -939,7 +941,7 @@ const replsB = [
 {p1:/(ろ)(?!X)(く)(?!X)(に)(?!X)/g,r1:'$1Xrok$2X$3Xu ni,hardly,barely~Noun'},
 {p1:/(わ)(?!X)(さ)(?!X)(び)(?!X)/g,r1:'$1Xwas$2Xab$3Xi-wasabi,Japanese horseradish~Noun'},
 {p1:/(わ)(?!X)(ざ)(?!X)(と)(?!X)/g,r1:'$1Xwaz$2Xat$3Xo-on purpose~Noun'},
-{p1:/(わ)(?!X)(ず)(?!X)(か)(?!X)/g,r1:'$1Xwaz$2Xuk$3Xa-few,little~Noun'},
+{p1:/(わ)(?!X)(ず)(?!X)(か)(?!X)/g,r1:'$1Xwa$2Xzu$3Xka-few,little~Noun'},
 {p1:/(セ)(?!X)(ン)(?!X)(チ)(?!X)/g,r1:'$1Xse$2Xn$3Xchi-centimeters~Noun'},
 {p1:/(タ)(?!X)(ッ)(?!X)(グ)(?!X)/g,r1:'$1Xta$2Xg$3Xgu-tag team~Noun'},
 {p1:/(チ)(?!X)(タ)(?!X)(ン)(?!X)/g,r1:'$1Xchi$2Xta$3Xn-titanium~Noun'},
@@ -3358,7 +3360,7 @@ const replsB = [
 {p1:/(合)(?!X)(計)(?!X)/g,r1:'$1Xgou$2Xkei-sum total~Noun'},
 {p1:/(合)(?!X)(金)(?!X)/g,r1:'$1Xgou$2Xkin-alloy~Noun'},
 {p1:/(吉)(?!X)(備)(?!X)/g,r1:'$1Xki$2Xbi-luck+provision~Noun'},
-{p1:/(同)(?!X)(じ)(?!X)/g,r1:'$1Xona$2Xji-same~Noun'},
+{p1:/(同)(?!X)(じ)(?!X)/g,r1:'$1Xona$2Xji-same~Adverb'},
 {p1:/(同)(?!X)(一)(?!X)/g,r1:'$1Xdou$2Xitsu-sameness,identity~Noun'},
 {p1:/(同)(?!X)(僚)(?!X)/g,r1:'$1Xdou$2Xryou,other members~Noun'},
 {p1:/(同)(?!X)(国)(?!X)/g,r1:'$1Xdou$2Xkoku-same country~Noun'},
@@ -5241,6 +5243,7 @@ const replsB = [
 {p1:/(理)(?!X)(屈)(?!X)/g,r1:'$1Xrik$2Xutsu-reason,logic~Noun'},
 {p1:/(理)(?!X)(性)(?!X)/g,r1:'$1Xri$2Xsei-reason,reasoning power~Noun'},
 {p1:/(理)(?!X)(想)(?!X)/g,r1:'$1Xri$2Xsou-ideal~Noun'},
+{p1:/(殿)(?!X)(堂)(?!X)/g,r1:'$1Xden$2Xdou-hall of fame~Noun'},
 {p1:/(理)(?!X)(由)(?!X)/g,r1:'$1Xri$2Xyuu-reason~Noun'},
 {p1:/(理)(?!X)(科)(?!X)/g,r1:'$1Xri$2Xka-science~Noun'},
 {p1:/(理)(?!X)(系)(?!X)/g,r1:'$1Xri$2Xkei-science~Noun'},
@@ -5698,6 +5701,7 @@ const replsB = [
 {p1:/(練)(?!X)(習)(?!X)/g,r1:'$1Xren$2Xsyuu-practice~Noun'},
 {p1:/(縮)(?!X)(み)(?!X)/g,r1:'$1Xchiji$2Xmi-shrinkage~Noun'},
 {p1:/(縮)(?!X)(小)(?!X)/g,r1:'$1Xsyuku$2Xsyou-curtailment~Noun'},
+{p1:/(補)(?!X)(佐)(?!X)/g,r1:'$1Xho$2Xsa-assistant~Noun'},
 {p1:/(繁)(?!X)(栄)(?!X)/g,r1:'$1Xha$2Xnei-prosperity,thriving~Noun'},
 {p1:/(織)(?!X)(物)(?!X)/g,r1:'$1Xori$2Xmono-cloth,textile~Noun'},
 {p1:/(缶)(?!X)(詰)(?!X)/g,r1:'$1Xkan$2Xdume-canned goods,cooping-up~Noun'},
@@ -6084,8 +6088,10 @@ const replsB = [
 {p1:/(論)(?!X)(戦)(?!X)/g,r1:'$1Xron$2Xsen-battle of words~Noun'},
 {p1:/(論)(?!X)(文)(?!X)/g,r1:'$1Xron$2Xbun-thesis,paper~Noun'},
 {p1:/(論)(?!X)(理)(?!X)/g,r1:'$1Xron$2Xri-logic~Noun'},
+{p1:/(野)(?!X)(手)(?!X)/g,r1:'$1Xya$2Xsyu-fielder~Noun'},
 {p1:/(論)(?!X)(評)(?!X)/g,r1:'$1Xron$2Xpyou-criticism~Noun'},
 {p1:/(論)(?!X)(議)(?!X)/g,r1:'$1Xron$2Xgi-debate~Noun'},
+{p1:/(満)(?!X)(票)(?!X)/g,r1:'$1Xman$2Xpyou-unanimously~Noun'},
 {p1:/(諮)(?!X)(問)(?!X)/g,r1:'$1Xshi$2Xmon-advisory~Noun'},
 {p1:/(諸)(?!X)(国)(?!X)/g,r1:'$1Xsyo$2Xkoku-various countries~Noun'},
 {p1:/(諸)(?!X)(島)(?!X)/g,r1:'$1Xsyo$2Xtou-group of islands,archipelago~Noun'},
@@ -6572,6 +6578,7 @@ const replsB = [
 {p1:/(隣)(?!X)(接)(?!X)/g,r1:'$1Xrin$2Xsetsu-being adjoined~Noun'},
 {p1:/(雄)(?!X)(大)(?!X)/g,r1:'$1Xyuu$2Xdai-grand,magnificent~Noun'},
 {p1:/(集)(?!X)(め)(?!X)/g,r1:'$1Xatsu$2Xme-collect~IchidanVerb'},
+{p1:/(栄)(?!X)(え)(?!X)/g,r1:'$1Xsaka$2Xe-prosper~IchidanVerb'},
 {p1:/(集)(?!X)(中)(?!X)/g,r1:'$1Xsyuu$2Xcyuu-concentration~Noun'},
 {p1:/(集)(?!X)(会)(?!X)/g,r1:'$1Xsyuu$2Xkai-gathering~Noun'},
 {p1:/(集)(?!X)(合)(?!X)/g,r1:'$1Xsyuu$2Xgou-gathering,assembly~Noun'},
@@ -6583,6 +6590,9 @@ const replsB = [
 {p1:/(雑)(?!X)(誌)(?!X)/g,r1:'$1Xzas$2Xshi-magazine,journal~Noun'},
 {p1:/(雑)(?!X)(談)(?!X)/g,r1:'$1Xzatsu$2Xdan-chat,idle talk~Noun'},
 {p1:/(雑)(?!X)(踏)(?!X)/g,r1:'$1Xzat$2Xtou-stampede~Noun'},
+{p1:/(選)(?!X)(出)(?!X)/g,r1:'$1Xsen$2Xsyutsu-election~Noun'},
+{p1:/(館)(?!X)(長)(?!X)/g,r1:'$1Xkan$2Xcyou-director~Noun'},
+{p1:/(で)(?!X)(の)(?!X)/g,r1:'$1Xde$2Xno-that is at;that is done with~Noun'},
 {p1:/(雑)(?!X)(音)(?!X)/g,r1:'$1Xzat$2Xsuon-noise,interference~Noun'},
 {p1:/(離)(?!X)(れ)(?!X)/g,r1:'$1Xhana$2Xre-to be apart~IchidanVerb'},
 {p1:/(離)(?!X)(党)(?!X)/g,r1:'$1Xri$2Xtou-secession from a political party~Noun'},
@@ -6659,7 +6669,6 @@ const replsB = [
 {p1:/(４|4)(?!X)(日)(?!X)/g,r1:'$1Xyok$2Xka-fourth day of the month~Noun'},
 {p1:/(３|3)(?!X)(月)(?!X)/g,r1:'$1Xsan$2Xgatsu-March~Noun'},
 {p1:/(３|3)(?!X)(日)(?!X)/g,r1:'$1Xmik$2Xka-third day of the month~Noun'},
-{p1:/(２|二)(?!X)(日)(?!X)/g,r1:'$1Xfut$2Xsuka-two days,second day of the month~Noun'},
 {p1:/(２|2)(?!X)(月)(?!X)/g,r1:'$1Xni$2Xgatsu-February~Noun'},
 {p1:/(１|1)(?!X)(月)(?!X)/g,r1:'$1Xichi$2Xgatsu-January~Noun'},
 {p1:/(１)(?!X)(つ)(?!X)/g,r1:'$1Xhito$2Xtsu-one thing~Noun'},
@@ -7295,13 +7304,9 @@ const replsB = [
 {p1:/(\d{1})(?!X)(時)(?!X)/g,r1:'$1$2Xji-hour~Noun'},
 {p1:/(\d{1})(?!X)(分)(?!X)/g,r1:'$1$2Xpun-minutes~Noun'},
 
-
 {p1:/(9)(?!X)(日)(?!X)/g,r1:'$1Xkokono$2Xka-nineth day of the month~Noun'},
 {p1:/(8|８)(?!X)(日)(?!X)/g,r1:'$1Xyou$2Xka-eighth day of the month~Noun'},
-
 {p1:/(2|２)(?!X)(人)(?!X)/g,r1:'$1Xfu$2Xtari-two people~Noun'},
-
-{p1:/(2)(?!X)(日)(?!X)/g,r1:'$1Xfutsu$2Xka-second day of the month~Noun'},
 {p1:/(1|１)(?!X)(9|９)(?!X)/g,r1:'$1Xjyuu$2Xkyuu-nineteen~Noun'},
 {p1:/(1|１)(?!X)(8|８)(?!X)/g,r1:'$1Xjyuu$2Xhachi-eighteen~Noun'},
 {p1:/(1|１)(?!X)(7|７)(?!X)/g,r1:'$1Xjyuu$2Xnana-seventeen~Noun'},
@@ -7726,7 +7731,7 @@ const replsB = [
 {p1:/(氷)(?!X)/g,r1:'$1Xkoori-ice~Noun'},
 {p1:/(水)(?!X)/g,r1:'$1Xmizu-water,mi,sui-Wednesday~Noun'},
 {p1:/(気)(?!X)/g,r1:'$1Xki-spirit,energy,mood~Noun'},
-{p1:/(氏)(?!X)/g,r1:'$1Xshi-Mister,Ms,Mrs~Noun'},
+{p1:/(氏)(?!X)/g,r1:'$1Xshi-Mr,Ms,Mrs~Noun'},
 {p1:/(毛)(?!X)/g,r1:'$1Xke-hair,wool~Noun'},
 {p1:/(比)(?!X)/g,r1:'$1XHi-compare~Noun'},
 {p1:/(毒)(?!X)/g,r1:'$1Xdoku-poison,harm~Noun'},
@@ -8071,7 +8076,7 @@ const replsB = [
 {p1:/(円)(?!X)/g,r1:'$1Xen-yen~Noun'},
 {p1:/(現)(?!X)/g,r1:'$1Xgen-present~Noun'},
 {p1:/(内)(?!X)/g,r1:'$1Xnai-inside~Noun'},
-{p1:/(兼)(?!X)/g,r1:'$1Xken-at the same time~Noun'},
+{p1:/(兼)(?!X)/g,r1:'$1Xken-in addition to;at the same time~Noun'},
 {p1:/(兵)(?!X)/g,r1:'$1Xhei-soldier,hyou-pawn~Noun'},
 {p1:/(共)(?!X)/g,r1:'$1Xtomo-together~Noun'},
 {p1:/(全)(?!X)/g,r1:'$1Xzen-all~Noun'},
@@ -8158,10 +8163,8 @@ const replsB = [
 {p1:/(7|７|七)(?!X)/g,r1:'$1Xnana,shichi,seven~Noun'},
 {p1:/(5|５|五)(?!X)/g,r1:'$1Xgo-five~Noun'},
 {p1:/(2|２|二)(?!X)/g,r1:'$1Xni-two~Noun'},
-{p1:/(%|％)(?!X)/g,r1:'$1Xpa-cento,percent~Noun'},
-
-{p1:/([0-9]+)(?!X)/g,r1:'<br>$1~Number'},
-{p1:/([０-９]+)(?!X)/g,r1:'<br>$1~Number'},
+{p1:/(0)(?!X)/g,r1:'$1Xoften unspoken rei-zero~Noun'},
+{p1:/(%|％)(?!X)/g,r1:'<br>$1Xpa-cento,percent~Noun'},
 
 {p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for the~Postposition~Noun'},
 
@@ -8296,7 +8299,7 @@ const replsB = [
 {p1:/(もX)(~MuVerb)/g,r1:' もXmo,let us do$2'},
 {p1:/(らX)(~RuVerb)/g,r1:' らXra$2'},
 {p1:/(りX)(~RuVerb)/g,r1:' りXri$2'},
-{p1:/(るX)(~RuVerb)/g,r1:' るXru,to do,will do$2'},
+{p1:/(るX)(~RuVerb)/g,r1:' るXru-to do;will do$2'},
 {p1:/(れX)(~RuVerb)/g,r1:' れXre,can do$2'},
 {p1:/(ろX)(~RuVerb)/g,r1:' ろXro,let us do$2'},
 {p1:/(わX)(~UVerb)/g,r1:' わXwa$2'},
@@ -8311,6 +8314,7 @@ const replsB = [
 
 {p1:/(Verb)(と)(?!X)/g,r1:'$1 $2Xto-by way of~Postposition~Noun'},
 {p1:/(Verb)(で)(?!X)/g,r1:'$1 $2Xde-at,with~Postposition'},
+{p1:/(Adverb)(く)(?!X)/g,r1:'$1 $2Xku-and~Postposition'},
 
 {p1:/(ご)(?!X)/g,r1:' $1Xgo-honorable,makes words polite '},
 
@@ -8347,14 +8351,9 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-こうしたなか、自民党・政治改革本部の小泉事務局長は、企業・団体献金の透明性を高めるため献金総額を政党ごとに総務大臣が公表することなどを盛り込んだ政治資金規正法の改正案を通常国会に提出する方針であることを明らかにしました。
+2025年の米野球殿堂入りが日本時間22日に発表され、資格1年目のイチロー氏（51、マリナーズ会長付特別補佐兼インストラクター）が、栄えある日本人初の殿堂入りを果たした。
 
-自民・政治改革本部　小泉進次郎 事務局長
-「『禁止よりも公開』、これをずっと言い続けてきましたので、その公開をより高める透明化法案を出していきたい」
-
-また、党費などの支払いをともなう政治団体への加入については、本人の意思が十分尊重されるよう明記した改正案も提出する予定です。
-
-小泉氏は近く党内手続きをおこない、早期の提出を目指すとしています。
+大リーグ・専門局『MLBネットワーク』の番組内で発表され、米国野球殿堂博物館のジョシュ・ラウィッチ館長が殿堂入り選出者をアナウンス。MLB史上2人目、さらには野手史上初の“満票”での殿堂入りが期待されたが、2020年のデレク・ジーター氏（ヤンキース）と同じく満票に“わずか1票”及ばず、得票率は99.7％だった。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
