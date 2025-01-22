@@ -75,30 +75,30 @@ const replsB = [
 {p1:/(バ)(?!X)(ク)(?!X)(バ)(?!X)(ク)(?!X)/g,r1:'$1Xba$2Xku$3Xba$4Xku-throbbing~Noun'},	
 {p1:/([ァ-ヴーa-zA-ZＡ-Ｔ]+)/g,r1:'<br>$1~Noun'},	
 
-{p1:/([\(\（])(?!X)/g,r1:'<br>$1Xopen parenthesis~Punctuation'},
-{p1:/([\)\）])(?!X)/g,r1:'<br>$1Xclose parenthesis~Punctuation'},
-{p1:/([「『])(?!X)/g,r1:'<br>$1Xopen quote~Punctuation'},
-{p1:/([」』])(?!X)/g,r1:'<br>$1Xclose quote~Punctuation'},
-{p1:/(\“)(?!X)/g,r1:'<br>$1Xopen quote~Punctuation'},
-{p1:/(\”)(?!X)/g,r1:'<br>$1Xclose quote~Punctuation'},
-{p1:/(\・)(?!X)/g,r1:'<br>$1Xword separator~Punctuation'},
-{p1:/(、)(?!X)/g,r1:'<br>$1Xcomma~Punctuation'}, 
-{p1:/(。)(?!X)/g,r1:'<br>$1Xperiod~Punctuation'}, 
-{p1:/(【)(?!X)/g,r1:'<br>$1Xopen bracket~Punctuation'},
-{p1:/(】)(?!X)/g,r1:'<br>$1Xclose bracket~Punctuation'},
-{p1:/(．)(?!X)/g,r1:'<br>$1Xdot,decimal point~Punctuation'},
-{p1:/(：)(?!X)/g,r1:'<br>$1Xcolon~Punctuation'},
+{p1:/([\(\（])(?!X)/g,r1:'<br>$1Xopen parenthesis~Noun'},
+{p1:/([\)\）])(?!X)/g,r1:'<br>$1Xclose parenthesis~Noun'},
+{p1:/([「『])(?!X)/g,r1:'<br>$1Xopen quote~Noun'},
+{p1:/([」』])(?!X)/g,r1:'<br>$1Xclose quote~Noun'},
+{p1:/(\“)(?!X)/g,r1:'<br>$1Xopen quote~Noun'},
+{p1:/(\”)(?!X)/g,r1:'<br>$1Xclose quote~Noun'},
+{p1:/(\・)(?!X)/g,r1:'<br>$1Xword separator~Noun'},
+{p1:/(、)(?!X)/g,r1:'<br>$1Xcomma~Noun'}, 
+{p1:/(。)(?!X)/g,r1:'<br>$1Xperiod~Noun'}, 
+{p1:/(【)(?!X)/g,r1:'<br>$1Xopen bracket~Noun'},
+{p1:/(】)(?!X)/g,r1:'<br>$1Xclose bracket~Noun'},
+{p1:/(．)(?!X)/g,r1:'<br>$1Xdot,decimal point~Noun'},
+{p1:/(：)(?!X)/g,r1:'<br>$1Xcolon~Noun'},
 
-{p1:/(2|２)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xni$3Xnichi-twenty-second day of the month~Noun'},
-{p1:/(2|２)(?!X)(3|３)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xsan$3Xnichi-twenty-third day of the month~Noun'},
-{p1:/(2|２)(?!X)(4|４)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xyok$3Xka-twenty-fourth day of the month~Noun'},
-{p1:/(2|２)(?!X)(5|５)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xgo$3Xnichi,twenty-fifth day of the month~Noun'},
-{p1:/(2|２)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xhachi$3Xnichi-twenty-eighth day of the month~Noun'},
+{p1:/(2|２)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xni$3Xnichi-twenty second day of the month~Noun'},
+{p1:/(2|２)(?!X)(3|３)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xsan$3Xnichi-twenty third day of the month~Noun'},
+{p1:/(2|２)(?!X)(4|４)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xyok$3Xka-twenty fourth day of the month~Noun'},
+{p1:/(2|２)(?!X)(5|５)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xgo$3Xnichi,twenty fifth day of the month~Noun'},
+{p1:/(2|２)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xhachi$3Xnichi-twenty eighth day of the month~Noun'},
 {p1:/(2|２)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xhatsu$2Xka$3X-twentieth day of the month~Noun'},
-{p1:/(2|２)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xichi$3Xnichi,twenty-first day of the month~Noun'},
-{p1:/(2|２)(?!X)(６|6)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xroku$3Xnichi-twenty-sixth day of the month~Noun'},
-{p1:/(2|２)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xshichi$3Xnichi,twenty-seventh day of the month~Noun'},
-{p1:/(2|２)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xku$3Xnichi-twenty-nineth day of the month~Noun'},
+{p1:/(2|２)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xichi$3Xnichi,twenty first day of the month~Noun'},
+{p1:/(2|２)(?!X)(６|6)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xroku$3Xnichi-twenty sixth day of the month~Noun'},
+{p1:/(2|２)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xshichi$3Xnichi,twenty seventh day of the month~Noun'},
+{p1:/(2|２)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xku$3Xnichi-twenty nineth day of the month~Noun'},
 {p1:/(１)(?!X)(６)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xroku$3Xnichi-sixteenth day of the month~Noun'},
 {p1:/(１|1)(?!X)(1|１)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xichi$3Xnichi-eleventh	day of the month~Noun'},
 {p1:/(１|1)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xni$3Xnichi-twelfth day of the month~Noun'},
@@ -331,7 +331,7 @@ const replsB = [
 {p1:/(ほ)(?!X)(ほ)(?!X)(え)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xho$2Xhoe$3X-smile$4X~MuVerb'},
 {p1:/(ま)(?!X)(す)(?!X)(ま)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xmas$2Xum$3Xa-increasingly$4X~SuVerb'},
 {p1:/(ま)(?!X)(と)(?!X)(ま)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xma$2Xto$3Xma-be collected$4X~RuVerb'},
-{p1:/(ま)(?!X)(と)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xma$3Xtome-put in order$4X~RuVerb'},
+{p1:/(ま)(?!X)(と)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xma$2Xto$3Xme-put in order$4X~RuVerb'},
 {p1:/(も)(?!X)(う)(?!X)(か)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmou$2Xka$3X-make a profit,be profitable$4X~RuVerb'},
 {p1:/(も)(?!X)(う)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmou$2Xke$3X-make a profit$4X~RuVerb'},
 {p1:/(も)(?!X)(た)(?!X)(ら)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xmo$2Xta$3Xra-bring about,lead to$4X~SuVerb'},
@@ -911,7 +911,7 @@ const replsB = [
 {p1:/(ま)(?!X)(ぐ)(?!X)(ろ)(?!X)/g,r1:'$1Xmag$2Xur$3Xo-tuna~Noun'},
 {p1:/(ま)(?!X)(さ)(?!X)(か)(?!X)/g,r1:'$1Xmas$2Xak$3Xa-never in a million years~Noun'},
 {p1:/(ま)(?!X)(し)(?!X)(て)(?!X)/g,r1:'$1Xma$2Xshi$3Xte-much more~Noun'},
-{p1:/(ま)(?!X)(と)(?!X)(め)(?!X)/g,r1:'$1X$2Xma$3Xto$3Xme-collect~IchidanVerb'},
+{p1:/(ま)(?!X)(と)(?!X)(め)(?!X)/g,r1:'$1Xma$2Xto$3Xme-collect~IchidanVerb'},
 {p1:/(ま)(?!X)(と)(?!X)(め)(?!X)/g,r1:'$1Xma$2Xto$3Xme-summary~Noun'},
 {p1:/(ま)(?!X)(な)(?!X)(板)(?!X)/g,r1:'$1Xman$2Xai$3Xta-chopping board~Noun'},
 {p1:/(ま)(?!X)(ぶ)(?!X)(た)(?!X)/g,r1:'$1Xmab$2Xut$3Xa-eyelid~Noun'},
@@ -1147,6 +1147,7 @@ const replsB = [
 {p1:/(地)(?!X)(下)(?!X)(鉄)(?!X)/g,r1:'$1Xchi$2Xka$3Xtetsu-subway~Noun'},
 {p1:/(地)(?!X)(中)(?!X)(海)(?!X)/g,r1:'$1Xchi$2Xcyuu$3Xkai-Mediterranean Sea~Noun'},
 {p1:/(地)(?!X)(平)(?!X)(線)(?!X)/g,r1:'$1Xchi$2Xhei$3Xsen-horizon~Noun'},
+{p1:/(で)(?!X)(き)(?!X)(れ)(?!X)/g,r1:'$1Xde$2Xki$3Xre-will be able to do~Noun'},
 {p1:/(坊)(?!X)(さ)(?!X)(ん)(?!X)/g,r1:'$1Xbou$2Xsa$3Xn-Buddhist priest~Noun'},
 {p1:/(報)(?!X)(道)(?!X)(官)(?!X)/g,r1:'$1Xhou$2Xdou$3Xkan-press secretary~Noun'},
 {p1:/(墓)(?!X)(参)(?!X)(り)(?!X)/g,r1:'$1Xha$2Xkam$3Xairi-visit to a grave~Noun'},
@@ -7331,6 +7332,7 @@ const replsB = [
 {p1:/(館)(?!X)/g,r1:'$1Xkan-arena~Noun'},
 {p1:/(餌)(?!X)/g,r1:'$1Xesa-feed~Noun'},
 {p1:/(餅)(?!X)/g,r1:'$1Xmochi-rice cake~Noun'},
+{p1:/(破)(?!X)/g,r1:'$1Xha,ba-middle part of a song~Noun'},
 {p1:/(飴)(?!X)/g,r1:'$1Xame-candy~Noun'},
 {p1:/(飯)(?!X)/g,r1:'$1Xmeshi-cooked rice,meal~Noun'},
 {p1:/(食)(?!X)/g,r1:'$1Xsyoku-food~Noun'},
@@ -7495,7 +7497,7 @@ const replsB = [
 {p1:/(虹)(?!X)/g,r1:'$1Xniji-rainbow~Noun'},
 {p1:/(虫)(?!X)/g,r1:'$1Xmushi-insect~Noun'},
 {p1:/(蘭)(?!X)/g,r1:'$1Xran-orchid~Noun'},
-{p1:/(藤)(?!X)/g,r1:'$1Xto,do,fuji,native plants~Noun'},
+{p1:/(藤)(?!X)/g,r1:'$1Xto,do,fuji-native plants~Noun'},
 {p1:/(薬)(?!X)/g,r1:'$1Xkusuri,+yaku-drug~Noun'},
 {p1:/(蓮)(?!X)/g,r1:'$1Xren-lotus~Noun'},
 {p1:/(蒔)(?!X)/g,r1:'$1XMaki-sow seeds~Noun'},
@@ -7900,7 +7902,7 @@ const replsB = [
 {p1:/(屑)(?!X)/g,r1:'$1Xkuzu-waste,scraps~Noun'},
 {p1:/(屏)(?!X)/g,r1:'$1Xhei-wall~Noun'},
 {p1:/(屋)(?!X)/g,r1:'$1Xya-store~Noun'},
-{p1:/(居|い)(?!X)/g,r1:'$1Xi-doing;there is an animate being~IchidanVerb'},
+{p1:/(居|い)(?!X)/g,r1:'$1Xi-doing;there is~animate~IchidanVerb'},
 {p1:/(局)(?!X)/g,r1:'$1Xkyoku-bureau~Noun'},
 {p1:/(尾)(?!X)/g,r1:'$1Xo-tail~Noun'},
 {p1:/(尚)(?!X)/g,r1:'$1XNao-more~Noun'},
@@ -8210,7 +8212,7 @@ const replsB = [
 
 {p1:/(し)(?!X)/g,r1:'$1Xshi-to do;will do~SuruVerb'},
 
-{p1:/(Punctuationか|Verbか|Nounか)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xra-from~Postposition~Noun'},
+{p1:/(Nounか|Verbか|Nounか)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xra-from~Postposition~Noun'},
 
 {p1:/(Verbい)(?!X)/g,r1:'$1Xi-is doing~ConjunctiveVerb'},
 {p1:/(Nounお)(?!X)/g,r1:'$1Xo-respected~formal~Noun'},
@@ -8228,8 +8230,8 @@ const replsB = [
 {p1:/(Nounば|Verbば)(?!X)/g,r1:'$1Xba-if~Postposition~Noun'},
 {p1:/(Verbも|Nounも)(?!X)/g,r1:'$1Xmo-too~Postposition~Noun'},
 {p1:/(Verbや|Nounや)(?!X)/g,r1:'$1Xya-and,comma~Postposition~Noun'},
-{p1:/(Verbよ)(?!X)/g,r1:'$1Xyo-exclamation~Punctuation'},
-{p1:/(Punctuationと)(?!X)/g,r1:'$1Xto-the person said~Postposition'},
+{p1:/(Verbよ)(?!X)/g,r1:'$1Xyo-exclamation~Noun'},
+{p1:/(Nounと)(?!X)/g,r1:'$1Xto-the person said~Postposition'},
 
 {p1:/(Postpositionの|Verbの|Nounの)(?!X)/g,r1:'$1Xno-of~Postposition~Noun'},
 
@@ -8237,7 +8239,7 @@ const replsB = [
 
 {p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for~Postposition~Noun'},
 
-{p1:/(Verbが|Nounが|Punctuationが)(?!X)/g,r1:'$1Xga-the above acts~Postposition~Noun'},
+{p1:/(Verbが|Nounが|Nounが)(?!X)/g,r1:'$1Xga-the above acts~Postposition~Noun'},
 
 {p1:/(Postpositionか)(?!X)/g,r1:'$1Xka-indicates a question~Postposition~Noun'},
 
@@ -8308,7 +8310,7 @@ const replsB = [
 {p1:/(ご)(?!X)/g,r1:' $1Xgo-honorable,makes words polite '},
 
 {p1:/(IAdjective)/g,r1:'$1 '},
-{p1:/(~Noun|~Postposition|~Punctuation)/g,r1:'  '},
+{p1:/(~Noun|~Postposition|~Noun)/g,r1:'  '},
 {p1:/(Noun|Verb|Adverb)/g,r1:'$1 '},
 {p1:/(\.)/g,r1:'$1ten-decimal '},
 
@@ -8340,13 +8342,13 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-　塩野義製薬の単独提供で放送しているフジテレビ系音楽番組『SHIONOGI MUSIC FAIR』（毎週土曜　後6：00）について、同社がフジテレビに対し番組内での社名削除を要請していることが分かった。同社が22日、ORICON NEWSの取材に応じ、認めた。
+　石破茂首相（自民党総裁）は22日、公明党の斉藤鉄夫代表と昼食を共にしながら首相官邸で会談し、24日召集の通常国会で焦点となる選択的夫婦別姓制度導入に関し、与党協議の場を設けることで一致した。
 
-【写真】新MCも登場した『だれかtoなかい』2024年ラスト回
+【ひと目でわかる】内閣支持率の推移
 
-　同社は「塩野義製薬はフジテレビ系列においては、スポンサー番組以外でCMを実施しておりませんが、一連の報道内容が事実なのであれば到底容認できるものではないことから、グループ会社の一般用医薬品会社では順次ACへの差し替え対応を行っています」と経緯を説明。
+　ただ、首相は「その前に自民として意見をまとめる必要がある。もう少し待ってほしい」と述べ、開始時期は決まらなかった。
 
-　続けて「フジテレビから早急に事実内容と今後の対応についての説明がなされるべきと考えており、弊社では番組内での社名の削除に加えて、今後についても対応を検討中です」とコメントした。
+　会談後、斉藤氏が記者団に明らかにした。首相は会談で「できるだけ早い時期に自民案をまとめ、与党案の協議に入りたい」と語ったという。斉藤氏は記者団に「できれば1月にも協議をスタートさせなければならない」と強調した。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
