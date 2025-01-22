@@ -135,7 +135,7 @@ const replsB = [
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhas sen,eight-thousand~Noun$2$3$4'},
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhap pyaku,eight-hundred~Noun$2$3'},
 {p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu sen,nine-thousand~Noun$2$3$4'},
-{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu-hyaku,nine-hundred~Noun$2$3'},
+{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu hyaku-nine-hundred~Noun$2$3'},
 
 {p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni jyuu-twenty~Noun$2'},
 {p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsan jyuu-thirty~Noun$2'},
@@ -887,7 +887,7 @@ const replsB = [
 {p1:/(な)(?!X)(だ)(?!X)(れ)(?!X)/g,r1:'$1Xna$2Xda$3Xre-avalanche~Noun'},
 {p1:/(な)(?!X)(ど)(?!X)(の)(?!X)/g,r1:'$1Xna$2Xdo$3Xno ,ecetera and~Noun'},
 {p1:/(に)(?!X)(よ)(?!X)(る)(?!X)/g,r1:'$1Xni $2Xyo$3Xru-according to~Noun'},
-{p1:/(ね)(?!X)(ず)(?!X)(み)(?!X)/g,r1:'$1Xnez$2Xum$3Xi-rat,mouse~Noun'},
+{p1:/(ね)(?!X)(ず)(?!X)(み)(?!X)/g,r1:'$1Xne$2Xzu$3Xmi-rat,mouse~Noun'},
 {p1:/(の)(?!X)(ど)(?!X)(か)(?!X)/g,r1:'$1Xno$2Xdok$3Xa-tranquil,peaceful~Noun'},
 {p1:/(の)(?!X)(ど)(?!X)(か)(?!X)/g,r1:'$1Xno$2Xdok$3Xa-tranquil,peaceful~Noun'},
 {p1:/(の)(?!X)(ん)(?!X)(き)(?!X)/g,r1:'$1Xnon$2Xki$3X-carefree,easy-going~Noun'},
@@ -1500,6 +1500,7 @@ const replsB = [
 {p1:/(緩)(?!X)(や)(?!X)(か)(?!X)/g,r1:'$1Xyur$2Xuy$3Xaka-slack,loose~Noun'},
 {p1:/(縦)(?!X)(書)(?!X)(き)(?!X)/g,r1:'$1Xtate$2Xga$3Xki-vertical writing~Noun'},
 {p1:/(繁)(?!X)(華)(?!X)(街)(?!X)/g,r1:'$1Xhan$2Xka$3Xgai-shopping district~Noun'},
+{p1:/(功)(?!X)(労)(?!X)(者)(?!X)/g,r1:'$1Xkou$2Xrou$3Xsya-a person honored for distinguished service~Noun'},
 {p1:/(美)(?!X)(容)(?!X)(院)(?!X)/g,r1:'$1Xbi$2Xyou$3Xin-beauty shop~Noun'},
 {p1:/(美)(?!X)(術)(?!X)(館)(?!X)/g,r1:'$1Xbi$2Xjyutsu$3Xkan-art museum~Noun'},
 {p1:/(耐)(?!X)(久)(?!X)(性)(?!X)/g,r1:'$1Xtai$2Xkyuu$3Xsei-durability~Noun'},
@@ -3328,8 +3329,10 @@ const replsB = [
 {p1:/(右)(?!X)(側)(?!X)/g,r1:'$1Xmigi$2Xgawa-right side~Noun'},
 {p1:/(右)(?!X)(手)(?!X)/g,r1:'$1Xmigi$2Xte-right hand~Noun'},
 {p1:/(右)(?!X)(派)(?!X)/g,r1:'$1Xu$2Xha-right-wing~Noun'},
+{p1:/(表)(?!X)(彰)(?!X)/g,r1:'$1Xhyou$2Xsyou-official commendation~Noun'},
 {p1:/(右)(?!X)(翼)(?!X)/g,r1:'$1Xu$2Xyoku-right wing~Noun'},
 {p1:/(司)(?!X)(会)(?!X)/g,r1:'$1Xshi$2Xkai-host~Noun'},
+{p1:/(開)(?!X)(館)(?!X)/g,r1:'$1Xkan$2Xkan-opening day;opening office hours~Noun'},
 {p1:/(司)(?!X)(法)(?!X)/g,r1:'$1Xshi$2Xhou-law enforcement~Noun'},
 {p1:/(各)(?!X)(国)(?!X)/g,r1:'$1Xkak$2Xkoku-every countries~Noun'},
 {p1:/(各)(?!X)(地)(?!X)/g,r1:'$1Xkaku$2Xchi-every place~Noun'},
@@ -3617,7 +3620,6 @@ const replsB = [
 {p1:/(大)(?!X)(声)(?!X)/g,r1:'$1Xoo$2Xgoe-loud voice~Noun'},
 {p1:/(大)(?!X)(変)(?!X)/g,r1:'$1Xtai$2Xhen-awful~Noun'},
 {p1:/(大)(?!X)(学)(?!X)/g,r1:'$1Xdai$2Xgaku-university~Noun'},
-{p1:/(大)(?!X)(家)(?!X)/g,r1:'$1Xooya$2X,landlord~Noun'},
 {p1:/(大)(?!X)(小)(?!X)/g,r1:'$1Xdai$2Xsyou-size~Noun'},
 {p1:/(大)(?!X)(層)(?!X)/g,r1:'$1Xtai$2Xsou-very,highly~Noun'},
 {p1:/(大)(?!X)(工)(?!X)/g,r1:'$1Xdai$2Xku-carpenter~Noun'},
@@ -3914,7 +3916,9 @@ const replsB = [
 {p1:/(帰)(?!X)(国)(?!X)/g,r1:'$1Xki$2Xkoku-return to one\'s countries~Noun'},
 {p1:/(帰)(?!X)(宅)(?!X)/g,r1:'$1Xki$2Xtaku-return home~Noun'},
 {p1:/(帰)(?!X)(省)(?!X)/g,r1:'$1Xki$2Xsei-homecoming~Noun'},
+{p1:/(勲)(?!X)(章)(?!X)/g,r1:'$1Xkun$2Xsyou-medal~Noun'},
 {p1:/(帰)(?!X)(路)(?!X)/g,r1:'$1Xki$2Xro-on road home~Noun'},
+{p1:/(次)(?!X)(々)(?!X)/g,r1:'$1Xtsugi$2Xtsugi-one by one~Noun'},
 {p1:/(帰)(?!X)(還)(?!X)/g,r1:'$1Xki$2Xkan-repatriation~Noun'},
 {p1:/(常)(?!X)(習)(?!X)/g,r1:'$1Xjyou$2Xsyuu-habit~Noun'},
 {p1:/(常)(?!X)(識)(?!X)/g,r1:'$1Xjyou$2Xshiki-common sense~Noun'},
@@ -5014,6 +5018,7 @@ const replsB = [
 {p1:/(海)(?!X)(上)(?!X)/g,r1:'$1Xkai$2Xjyou-maritime~Noun'},
 {p1:/(海)(?!X)(側)(?!X)/g,r1:'$1Xumi$2Xgawa-seaside~Noun'},
 {p1:/(海)(?!X)(兵)(?!X)/g,r1:'$1Xkai$2Xhei-sailor~Noun'},
+{p1:/(老)(?!X)(衰)(?!X)/g,r1:'$1Xrou$2Xsui-senility~Noun'},
 {p1:/(海)(?!X)(域)(?!X)/g,r1:'$1Xkai$2Xiki-ocean area~Noun'},
 {p1:/(海)(?!X)(外)(?!X)/g,r1:'$1Xkai$2Xgai-overseas~Noun'},
 {p1:/(海)(?!X)(岸)(?!X)/g,r1:'$1Xkai$2Xgan-seashore,coast~Noun'},
@@ -5905,6 +5910,7 @@ const replsB = [
 {p1:/(複)(?!X)(数)(?!X)/g,r1:'$1Xfuku$2Xsuu-plural~Noun'},
 {p1:/(複)(?!X)(雑)(?!X)/g,r1:'$1Xfuku$2Xzatsu-intricate~Noun'},
 {p1:/(襲)(?!X)(撃)(?!X)/g,r1:'$1Xsyuu$2Xgeki-charge~Noun'},
+{p1:/(訃)(?!X)(報)(?!X)/g,r1:'$1Xfu$2Xhou-obituary~Noun'},
 {p1:/(襲)(?!X)(来)(?!X)/g,r1:'$1Xsyuu$2Xrai-calamity~Noun'},
 {p1:/(西)(?!X)(岸)(?!X)/g,r1:'$1Xsei$2Xgan,west coast~Noun'},
 {p1:/(西)(?!X)(方)(?!X)/g,r1:'$1Xsei$2Xhou-western direction~Noun'},
@@ -7641,7 +7647,7 @@ const replsB = [
 {p1:/(略)(?!X)/g,r1:'$1Xryaku-abbreviation~Noun'},
 {p1:/(畑)(?!X)/g,r1:'$1Xhatake-field,vegetable garden~Noun'},
 {p1:/(界)(?!X)/g,r1:'$1Xkai-world~Noun'},
-{p1:/(町)(?!X)/g,r1:'$1Xmachi,Chou-city quarter~Noun'},
+{p1:/(町)(?!X)/g,r1:'$1Xmachi,chou-city quarter~Noun'},
 {p1:/(男)(?!X)/g,r1:'$1Xotoko,an,O-male~Noun'},
 {p1:/(甲)(?!X)/g,r1:'$1XKou,shell~Noun'},
 {p1:/(田)(?!X)/g,r1:'$1XTa,Da-rice field~Noun'},
@@ -7949,7 +7955,7 @@ const replsB = [
 {p1:/(夫)(?!X)/g,r1:'$1Xotto,o-husband~Noun'},
 {p1:/(太)(?!X)/g,r1:'$1XTa-fat,grand~Noun'},
 {p1:/(天)(?!X)/g,r1:'$1Xten-sky,heaven~Noun'},
-{p1:/(大)(?!X)/g,r1:'$1Xdai,tai,ouu,large;university~Noun'},
+{p1:/(大)(?!X)/g,r1:'$1Xdai,tai,ouu-large;university~Noun'},
 {p1:/(夢)(?!X)/g,r1:'$1Xyume-dream~Noun'},
 {p1:/(夜)(?!X)/g,r1:'$1Xyoru,ya,evening~Noun'},
 {p1:/(多)(?!X)/g,r1:'$1Xta-multi~Noun'},
@@ -8154,7 +8160,7 @@ const replsB = [
 {p1:/(7|７|七)(?!X)/g,r1:'$1Xnana,shichi,seven~Noun'},
 {p1:/(5|５|五)(?!X)/g,r1:'$1Xgo-five~Noun'},
 {p1:/(2|２|二)(?!X)/g,r1:'$1Xni-two~Noun'},
-{p1:/(0)(?!X)/g,r1:'$1Xoften unspoken rei-zero~Noun'},
+{p1:/(０|0)(?!X)/g,r1:'$1Xrei-zero;often an unspoken number~Noun'},
 {p1:/(%|％)(?!X)/g,r1:'<br>$1Xpa-cento,percent~Noun'},
 
 {p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for the~Postposition'},
@@ -8316,7 +8322,6 @@ const replsB = [
 
 {p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-up to~Postposition~Noun'},
 {p1:/(こ)(?!X)(と)(?!X)/g,r1:'$1Xko$2Xto-matter,thing~Noun'},
-{p1:/(々)(?!X)/g,r1:'$1Xka-repeats the first kanji~Noun'},
 
 {p1:/X/g,r1:''},
 
@@ -8342,13 +8347,11 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-　石破茂首相（自民党総裁）は22日、公明党の斉藤鉄夫代表と昼食を共にしながら首相官邸で会談し、24日召集の通常国会で焦点となる選択的夫婦別姓制度導入に関し、与党協議の場を設けることで一致した。
+訃報です。益子町に移り住み絵本の制作を行ってきた絵本作家のいわむらかずおさんが去年１２月１９日に老衰のため亡くなっていたことが２２日までに分かりました８５歳でした。
 
-【ひと目でわかる】内閣支持率の推移
+いわむらかずおさんは東京芸術大学を卒業後、絵本作家としてデビューし、１９７５年、益子町に移り住みました。そこで、１４匹のねずみの大家族の団らんを描いた「１４ひきのシリーズ」などを次々と発表しました。
 
-　ただ、首相は「その前に自民として意見をまとめる必要がある。もう少し待ってほしい」と述べ、開始時期は決まらなかった。
-
-　会談後、斉藤氏が記者団に明らかにした。首相は会談で「できるだけ早い時期に自民案をまとめ、与党案の協議に入りたい」と語ったという。斉藤氏は記者団に「できれば1月にも協議をスタートさせなければならない」と強調した。
+１９９８年には、那珂川町に「いわむらかずお絵本の丘美術館」を開館しました。２００８年に県の文化功労者表彰を受けたほか、２０１４年にはフランス芸術文化勲章「シュヴァリエ」に輝きました。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
