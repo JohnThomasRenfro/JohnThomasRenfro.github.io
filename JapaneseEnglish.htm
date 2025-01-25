@@ -92,25 +92,6 @@ const replsB = [
 
 {p1:/(せ)(?!X)(ざ)(?!X)(る)(?!X)(を)(?!X)(え)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xse$2Xza$3Xru$4Xo$5Xe$6Xna$7Xi-can\'t help but do~Noun'},
 
-{p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsen-one-thousand~Noun$2$3$4'},
-{p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhyaku-one-hundred~Noun$2$3'},
-{p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni sen-two-thousand~Noun$2$3$4'},
-{p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni hyaku,two-hundred~Noun$2$3'},
-{p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsan sen,three-thousand~Noun$2$3$4'},
-{p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsan byaku,three-hundred~Noun$2$3'},
-{p1:/(4|４)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xyon sen,four-thousand~Noun$2$3$4'},
-{p1:/(4|４)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xyon hyaku,four-hundred~Noun$2$3'},
-{p1:/(5|５)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xgo sen,five-thousand~Noun$2$3$4'},
-{p1:/(5|５)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xgo hyaku,five-hundred~Noun$2$3'},
-{p1:/(6|６)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xroku sen,six-thousand~Noun$2$3$4'},
-{p1:/(6|６)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xrop pyaku,six-hundred~Noun$2$3'},
-{p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xnana sen,seven-thousand~Noun$2$3$4'},
-{p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xnana hyaku,seven-hundred~Noun$2$3'},
-{p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhas sen,eight-thousand~Noun$2$3$4'},
-{p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhap pyaku,eight-hundred~Noun$2$3'},
-{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu sen,nine-thousand~Noun$2$3$4'},
-{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu hyaku-nine-hundred~Noun$2$3'},
-
 {p1:/(い)(?!X)(ら)(?!X)(っ)(?!X)(し)(?!X)(ゃ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2X$3X$4X$5Xirassya-come,go$6X~RuVerb'},
 {p1:/(お)(?!X)(目)(?!X)(に)(?!X)(掛)(?!X)(か)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2X$3X$4X$5Xomenikaka-meet,have honor of seeing$6X~RuVerb'},
 {p1:/(く)(?!X)(す)(?!X)(ぐ)(?!X)(っ)(?!X)(た)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2X$3X$4X$5Xkusugutta-ticklish$6X~IAdjective~Noun'},
@@ -215,7 +196,25 @@ const replsB = [
 {p1:/(連)(?!X)(れ)(?!X)(て)(?!X)(行)(?!X)([かきくけこい])(?!X)/g,r1:'$1X$2Xts$3Xu$4Xretei-take (a person) along$5X~KuVerb'},
 {p1:/(飛)(?!X)(び)(?!X)(上)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xto$3Xb$4Xiaga-fly up,jump up$5X~RuVerb'},
 {p1:/(飛)(?!X)(び)(?!X)(下)(?!X)(り)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xto$3Xb$4Xiori-jump off,jump down$5X~RuVerb'},
-
+{p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsen-one-thousand~Noun$2$3$4'},
+{p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhyaku-one-hundred~Noun$2$3'},
+{p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni sen-two-thousand~Noun$2$3$4'},
+{p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni hyaku,two-hundred~Noun$2$3'},
+{p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsan sen,three-thousand~Noun$2$3$4'},
+{p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsan byaku,three-hundred~Noun$2$3'},
+{p1:/(4|４)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xyon sen,four-thousand~Noun$2$3$4'},
+{p1:/(4|４)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xyon hyaku,four-hundred~Noun$2$3'},
+{p1:/(5|５)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xgo sen,five-thousand~Noun$2$3$4'},
+{p1:/(5|５)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xgo hyaku,five-hundred~Noun$2$3'},
+{p1:/(6|６)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xroku sen,six-thousand~Noun$2$3$4'},
+{p1:/(6|６)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xrop pyaku,six-hundred~Noun$2$3'},
+{p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xnana sen,seven-thousand~Noun$2$3$4'},
+{p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xnana hyaku,seven-hundred~Noun$2$3'},
+{p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhas sen,eight-thousand~Noun$2$3$4'},
+{p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhap pyaku,eight-hundred~Noun$2$3'},
+{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu sen,nine-thousand~Noun$2$3$4'},
+  
+{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu hyaku-nine-hundred~Noun$2$3'},  
 {p1:/(あ)(?!X)(ふ)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xafu$2Xre$3X-over flow,flood$4X~RuVerb'},
 {p1:/(い)(?!X)(け)(?!X)(な)(?!X)([いくかさ])(?!X)/g,r1:'$1Xike$2Xna$3X-wrong,must not$4X~IAdjective~Noun'},
 {p1:/(い)(?!X)(た)(?!X)(だ)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xita$2Xda$3X-would like to$4X~KuVerb'},
@@ -8345,7 +8344,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-　茨城県利根町が国の補助金を使い約35年前に整備したキノコ工場が、4年しか使用されずそのまま放置され廃虚となっていることが町や周辺住民への取材で判明した。町のずさんな管理に近隣住民の不信感が高まっている。
+町によると、この施設は国の補助金などで整備された「農林業近代化施設」。建設費は約1億4400万円で約9500万円の補助金が使われた。1989年8月から地元のキノコ生産組合が栽培を始めたが、4年で稼働を停止。再建が困難となったため、95年に競売にかけられ個人に売却された。しかし、翌96年、農業振興に用いようと町が再び施設を約4116万円で購入した。　
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
