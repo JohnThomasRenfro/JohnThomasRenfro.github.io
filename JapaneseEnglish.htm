@@ -649,6 +649,7 @@ const replsB = [
 {p1:/(割)(?!X)(り)(?!X)(引)(?!X)(き)(?!X)/g,r1:'$1X$2Xwa$3Xr$4Xibigi-discount,reduction~Noun'},
 {p1:/(割)(?!X)(り)(?!X)(当)(?!X)(て)(?!X)/g,r1:'$1X$2Xwa$3Xr$4Xiate-assignment,allotment~Noun'},
 {p1:/(原)(?!X)(稿)(?!X)(用)(?!X)(紙)(?!X)/g,r1:'$1X$2Xge$3Xn$4Xkouyou-shi,man-uscript paper,writing pad~Noun'},
+{p1:/(後)(?!X)(部)(?!X)(座)(?!X)(席)(?!X)/g,r1:'$1Xkou$2Xbu$3Xza$4Xseki-back seat of a car~Noun'},
 {p1:/(取)(?!X)(り)(?!X)(や)(?!X)(め)(?!X)/g,r1:'$1Xto$2Xri$3Xya$4Xme-cancel~IchidanVerb'},
 {p1:/(取)(?!X)(り)(?!X)(入)(?!X)(れ)(?!X)/g,r1:'$1Xto$2Xri$3Xi$4Xre-to gather in~IchidanVerb'},
 {p1:/(取)(?!X)(り)(?!X)(止)(?!X)(め)(?!X)/g,r1:'$1Xto$2Xri$3Xya$4Xme-cancel~IchidanVerb'},
@@ -749,7 +750,7 @@ const replsB = [
 {p1:/(2|２)(?!X)(4|４)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xyok$3Xka-twenty fourth day of the month~Noun'},
 {p1:/(2|２)(?!X)(5|５)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xgo$3Xnichi-twenty fifth day of the month~Noun'},
 {p1:/(2|２)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xhachi$3Xnichi-twenty eighth day of the month~Noun'},
-{p1:/(2|２)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xhatsu$2Xka$3X-twentieth day of the month~Noun'},
+{p1:/(廿|2|２)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xhatsu$2Xka$3X-twentieth day of the month~Noun'},
 {p1:/(2|２)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xichi$3Xnichi-twenty first day of the month~Noun'},
 {p1:/(2|２)(?!X)(６|6)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xroku$3Xnichi-twenty sixth day of the month~Noun'},
 {p1:/(2|２)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xshichi$3Xnichi-twenty seventh day of the month~Noun'},
@@ -1336,6 +1337,7 @@ const replsB = [
 {p1:/(案)(?!X)(の)(?!X)(定)(?!X)/g,r1:'$1Xanno$2Xjy$3Xou-as feared,sure enough~Noun'},
 {p1:/(植)(?!X)(民)(?!X)(地)(?!X)/g,r1:'$1Xsyoku$2Xmin$3Xchi-colony,settlement~Noun'},
 {p1:/(植)(?!X)(物)(?!X)(園)(?!X)/g,r1:'$1Xsyoku$2Xbutsu$3Xen-botanical garden~Noun'},
+{p1:/(助)(?!X)(手)(?!X)(席)(?!X)/g,r1:'$1Xjyo$2Xsyu$3Xseki-passenger seat of a car~Noun'},
 {p1:/(検)(?!X)(問)(?!X)(所)(?!X)/g,r1:'$1Xken$2Xmon$3Xsyo-checkpoint~Noun'},
 {p1:/(極)(?!X)(め)(?!X)(て)(?!X)/g,r1:'$1Xkiwa$2Xme$3Xte-extremely~Noun'},
 {p1:/(楽)(?!X)(し)(?!X)(み)(?!X)/g,r1:'$1Xtano$2Xshi$3Xmi-looking forward to~Noun'},
@@ -2064,7 +2066,7 @@ const replsB = [
 {p1:/(現)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xarawa$2Xre-appear,emerge$3X~RuVerb'},
 {p1:/(甘)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xama$2Xe-depend on,take advantage of$3X~RuVerb'},
 {p1:/(生)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xhae$2X-grow,spring up$3X~RuVerb'},
-{p1:/(生)(?!X)(か)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xika$2X-take advantage of,make use of$3X~SuVerb'},
+{p1:/(生)(?!X)(か)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xi$2Xka-take advantage of,make use of$3X~SuVerb'},
 {p1:/(生)(?!X)(き)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xi$2Xki-live$3X~RuVerb'},
 {p1:/(生)(?!X)(じ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xsyou$2Xji-happen,cause$3X~RuVerb'},
 {p1:/(生)(?!X)(ず)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xsyou$2Xzu-arise,occur$3X~RuVerb'},
@@ -4798,7 +4800,8 @@ const replsB = [
 {p1:/(様)(?!X)(子)(?!X)/g,r1:'$1Xyou$2Xsu-appearance~Noun'},
 {p1:/(標)(?!X)(準)(?!X)/g,r1:'$1Xhyou$2Xjyun-standard,norm~Noun'},
 {p1:/(標)(?!X)(的)(?!X)/g,r1:'$1Xhyou$2Xteki,target~Noun'},
-{p1:/(模)(?!X)(様)(?!X)/g,r1:'$1Xmo$2Xyou-pattern~Noun'},
+{p1:/(標)(?!X)(的)(?!X)/g,r1:'$1Xhyou$2Xteki,target~Noun'},
+{p1:/(釈)(?!X)(放)(?!X)/g,r1:'$1Xsyaku$2Xhou-liberation~Noun'},
 {p1:/(模)(?!X)(範)(?!X)/g,r1:'$1Xmoh$2Xan-model,role model~Noun'},
 {p1:/(模)(?!X)(索)(?!X)/g,r1:'$1Xmo$2Xsaku-fumbling around for~Noun'},
 {p1:/(権)(?!X)(利)(?!X)/g,r1:'$1Xken$2Xri-right,privilege~Noun'},
@@ -7440,8 +7443,7 @@ const replsB = [
 {p1:/(軽)(?!X)/g,r1:'$1Xkei-lite~Noun'},
 {p1:/(軸)(?!X)/g,r1:'$1Xjiku-axis~Noun'},
 {p1:/(軍)(?!X)/g,r1:'$1Xgun-army~Noun'},
-{p1:/(車)(?!X)/g,r1:'$1Xsya,kuruma,vehicle~Noun'},
-{p1:/(車)(?!X)/g,r1:'$1Xkuruma,+sya,car~Noun'},
+{p1:/(車)(?!X)/g,r1:'$1X+sya,kuruma-vehicle~Noun'},
 {p1:/(身)(?!X)/g,r1:'$1Xmi-self~Noun'},
 {p1:/(路)(?!X)/g,r1:'$1Xmichi,ji-street~Noun'},
 {p1:/(跡)(?!X)/g,r1:'$1Xato-trace~Noun'},
@@ -8351,7 +8353,9 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-　パレスチナ自治区ガザ地区のイスラム組織ハマスは25日、2023年10月の越境攻撃で拉致したイスラエル軍の女性兵士4人を新たに解放した。中東の衛星テレビ「アルジャジーラ」が中継で報じた。　
+２５日午後１時頃、廿日市市阿品３丁目の国道２号で、乗用車が反対車線の大型トラックと正面衝突しました。
+この事故で車に乗っていた家族３人が病院に搬送されましたが、助手席に乗っていた廿日市市宮島町の北山サヨ子さん（９７）が病院に搬送されましたが、約１時間後に死亡が確認されました。
+乗用車を運転していた会社員の男性（５９）が重傷、後部座席に乗っていた女性（５０代）も重傷です。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
