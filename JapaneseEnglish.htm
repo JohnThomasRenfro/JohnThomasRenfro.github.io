@@ -196,6 +196,7 @@ const replsB = [
 {p1:/(連)(?!X)(れ)(?!X)(て)(?!X)(行)(?!X)([かきくけこい])(?!X)/g,r1:'$1X$2Xts$3Xu$4Xretei-take (a person) along$5X~KuVerb'},
 {p1:/(飛)(?!X)(び)(?!X)(上)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xto$3Xb$4Xiaga-fly up,jump up$5X~RuVerb'},
 {p1:/(飛)(?!X)(び)(?!X)(下)(?!X)(り)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xto$3Xb$4Xiori-jump off,jump down$5X~RuVerb'},
+{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu sen-nine thousand~Noun$2$3$4'},
 {p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsen-one-thousand~Noun$2$3$4'},
 {p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhyaku-one hundred~Noun$2$3'},
 {p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni sen-two thousand~Noun$2$3$4'},
@@ -211,10 +212,7 @@ const replsB = [
 {p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xnana sen,seven thousand~Noun$2$3$4'},
 {p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xnana hyaku-seven-hundred~Noun$2$3'},
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhas sen,eight thousand~Noun$2$3$4'},
-{p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhap pyaku,eight-hundred~Noun$2$3'},
-{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu sen-nine thousand~Noun$2$3$4'},
-  
-{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu hyaku-nine-hundred~Noun$2$3'},  
+
 {p1:/(あ)(?!X)(ふ)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xafu$2Xre$3X-over flow,flood$4X~RuVerb'},
 {p1:/(い)(?!X)(け)(?!X)(な)(?!X)([いくかさ])(?!X)/g,r1:'$1Xike$2Xna$3X-wrong,must not$4X~IAdjective~Noun'},
 {p1:/(い)(?!X)(た)(?!X)(だ)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xita$2Xda$3X-would like to$4X~KuVerb'},
@@ -749,13 +747,15 @@ const replsB = [
 {p1:/(2|２)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xni$3Xnichi-twenty second day of the month~Noun'},
 {p1:/(2|２)(?!X)(3|３)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xsan$3Xnichi-twenty third day of the month~Noun'},
 {p1:/(2|２)(?!X)(4|４)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xyok$3Xka-twenty fourth day of the month~Noun'},
-{p1:/(2|２)(?!X)(5|５)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xgo$3Xnichi,twenty fifth day of the month~Noun'},
+{p1:/(2|２)(?!X)(5|５)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xgo$3Xnichi-twenty fifth day of the month~Noun'},
 {p1:/(2|２)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xhachi$3Xnichi-twenty eighth day of the month~Noun'},
 {p1:/(2|２)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xhatsu$2Xka$3X-twentieth day of the month~Noun'},
-{p1:/(2|２)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xichi$3Xnichi,twenty first day of the month~Noun'},
+{p1:/(2|２)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xichi$3Xnichi-twenty first day of the month~Noun'},
 {p1:/(2|２)(?!X)(６|6)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xroku$3Xnichi-twenty sixth day of the month~Noun'},
-{p1:/(2|２)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xshichi$3Xnichi,twenty seventh day of the month~Noun'},
+{p1:/(2|２)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xshichi$3Xnichi-twenty seventh day of the month~Noun'},
 {p1:/(2|２)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xku$3Xnichi-twenty nineth day of the month~Noun'},
+{p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhap pyaku-eight hundred~Noun$2$3'},
+{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu hyaku-nine-hundred~Noun$2$3'},  
 {p1:/(あ)(?!X)(え)(?!X)(て)(?!X)/g,r1:'$1Xaet$2X$3Xe-boldly~Noun'},
 {p1:/(あ)(?!X)(く)(?!X)(び)(?!X)/g,r1:'$1Xa$2Xku$3Xbi-yawn~Noun'},
 {p1:/(あ)(?!X)(ぐ)(?!X)(ら)(?!X)/g,r1:'$1Xagu$2Xra$3X-sit cross legged~Noun'},
@@ -3591,6 +3591,7 @@ const replsB = [
 {p1:/(外)(?!X)(側)(?!X)/g,r1:'$1Xsoto$2Xgawa-exterior~Noun'},
 {p1:/(外)(?!X)(傷)(?!X)/g,r1:'$1Xgai$2Xsyou-external wound~Noun'},
 {p1:/(外)(?!X)(出)(?!X)/g,r1:'$1Xgai$2Xsyutsu-outing~Noun'},
+{p1:/(越)(?!X)(境)(?!X)/g,r1:'$1Xek$2Xkyou-illegal border crossing~Noun'},
 {p1:/(外)(?!X)(務)(?!X)/g,r1:'$1Xgai$2Xmu-foreign affairs~Noun'},
 {p1:/(外)(?!X)(国)(?!X)/g,r1:'$1Xgai$2Xkoku-foreign countries~Noun'},
 {p1:/(外)(?!X)(壁)(?!X)/g,r1:'$1Xgai$2Xheki-outer wall~Noun'},
@@ -8350,7 +8351,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-街中のごみ拾いに青春をかける高校生がいる。埼玉県立川口工業高校3年の吉田広葉（こうよう）さん。全国でも珍しい「掃除部」の部長を務め、学校内外の清掃に日々精を出している。24人の部員たちはごみ収集のコツや分別の知識に精通し、業務用清掃機具の「ポリッシャー」も使いこなす。そんな吉田さんの高校生活最後の目標は、2024年12月に東京で開かれた「スポGOMI甲子園」での優勝。ごみ拾いをスポーツとして競う「スポGOMI」の高校生による全国大会だ。川口工業は６年連続出場の強豪だが、前年は他校の野球部員のチームに敗れて無念の3位に終わっている。ごみ拾いをはじめ掃除を専門にする掃除部員として、今度こそ雪辱を――。そんな思いに燃える掃除部員たちの姿を追った。　
+　パレスチナ自治区ガザ地区のイスラム組織ハマスは25日、2023年10月の越境攻撃で拉致したイスラエル軍の女性兵士4人を新たに解放した。中東の衛星テレビ「アルジャジーラ」が中継で報じた。　
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
