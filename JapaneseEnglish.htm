@@ -69,11 +69,9 @@ word-wrap:break-word;
 function translateB()
 {
 
-const e1='(?!X)/g';
-  
 const replsB = [
 
-{p1:/(ガ)(?!X)(タ)(?!X)(ガ)(?!X)(タ)${e1},r1:'$1Xka$2Xta$3Xka$4Xta-rattling~Noun'},	
+{p1:/(ガ)(?!X)(タ)(?!X)(ガ)(?!X)(タ(?!X)/g,r1:'$1Xka$2Xta$3Xka$4Xta-rattling~Noun'},	
 {p1:/(バ)(?!X)(ク)(?!X)(バ)(?!X)(ク)(?!X)/g,r1:'$1Xba$2Xku$3Xba$4Xku-throbbing~Noun'},	
 
 {p1:/([ァ-ヴーa-zA-ZＡ-Ｔ]+)/g,r1:'<br>$1~Noun'},	
@@ -8365,7 +8363,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-韓国の検察は26日、昨年12月に尹錫悦（ユンソンニョル）大統領が出した「非常戒厳」をめぐり、尹大統領を内乱罪で起訴した。罷免（ひめん）の可否を判断する弾劾（だんがい）審判が憲法裁判所ですでに始まっているが、尹大統領は同時並行で刑事裁判のプロセスにも臨むことになる。
+空気が乾燥すると、気になるのがのどの違和感。のど飴でケアをする人も多いだろう。しかし、のど飴をなめすぎると逆に違和感の原因になるなど、デメリットもあるようだ。 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
