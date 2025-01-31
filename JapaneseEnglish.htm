@@ -4846,11 +4846,13 @@ const replsB = [
 {p1:/(次)(?!X)(第)(?!X)/g,r1:'$1Xshi$2Xdai-as soon as~Noun'},
 {p1:/(次)(?!X)(長)(?!X)/g,r1:'$1Xji$2Xcyou-assistant director~Noun'},
 {p1:/(欧)(?!X)(州)(?!X)/g,r1:'$1Xou$2Xsyuu-Europe~Noun'},
-{p1:/(欧)(?!X)(州)(?!X)/g,r1:'$1Xou$2Xsyuu-Europe~Noun'},
+{p1:/(農)(?!X)(林)(?!X)/g,r1:'$1Xnou$2Xrin-agriculture and forestry~Noun'},
+{p1:/(水)(?!X)(産)(?!X)/g,r1:'$1Xsui$2Xsan-fisheries~Noun'},
 {p1:/(欲)(?!X)(望)(?!X)/g,r1:'$1Xyoku$2Xbou-desire,craving~Noun'},
 {p1:/(欲)(?!X)(求)(?!X)/g,r1:'$1Xyok$2Xkyuu-want,desire~Noun'},
 {p1:/(歌)(?!X)(声)(?!X)/g,r1:'$1Xuta$2Xgoe-singing voice~Noun'},
 {p1:/(歌)(?!X)(手)(?!X)/g,r1:'$1Xka$2Xsyu-singer~Noun'},
+{p1:/(凶)(?!X)(作)(?!X)/g,r1:'$1Xkyou$2Xsaku-bad harvest~Noun'},
 {p1:/(歓)(?!X)(迎)(?!X)/g,r1:'$1Xkan$2Xgei-welcome~Noun'},
 {p1:/(止)(?!X)(め)(?!X)/g,r1:'$1Xya$2Xme-stop doing~IchidanVerb'},
 {p1:/(正)(?!X)(に)(?!X)/g,r1:'$1Xmas$2Xani-just,surely~Noun'},
@@ -7659,6 +7661,7 @@ const replsB = [
 {p1:/(砂)(?!X)/g,r1:'$1Xsuna,sago-sand,grit~Noun'},
 {p1:/(石)(?!X)/g,r1:'$1Xishi-stone~Noun'},
 {p1:/(知)(?!X)/g,r1:'$1Xchi-wisdom~Noun'},
+{p1:/(卸)(?!X)/g,r1:'$1Xoroshi-wholesale~Noun'},
 {p1:/(着)(?!X)/g,r1:'$1Xki-wear~IchidanVerb'},
 {p1:/(真)(?!X)/g,r1:'$1Xshin-true~Noun'},
 {p1:/(県)(?!X)/g,r1:'$1Xken-prefecture~Noun'},
@@ -7817,6 +7820,7 @@ const replsB = [
 {p1:/(枝)(?!X)/g,r1:'$1Xeda-branch,twig~Noun'},
 {p1:/(枚)(?!X)/g,r1:'$1Xmai-counter for flat objects~Noun'},
 {p1:/(林)(?!X)/g,r1:'$1Xhayashi-grove~Noun'},
+{p1:/(農)(?!X)/g,r1:'$1Xnou-agriculture~Noun'},
 {p1:/(枕)(?!X)/g,r1:'$1Xmakura-pillow~Noun'},
 {p1:/(板)(?!X)/g,r1:'$1Xita-board,plank~Noun'},
 {p1:/(松)(?!X)/g,r1:'$1XMatsu-highest,pine~Noun'},
@@ -8387,7 +8391,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-きょう（木）は、上空の強い寒気の影響で日本海側を中心に雪が続き、北陸や東北南部を中心に雪の降り方が強まりそうだ。山沿いを中心に大雪となっている所もあり、今後もさらに積雪が増える所があるため、交通機関への影響などに警戒が必要となる。晴れ間の出る太平洋側も冷たい風が強く吹くため、暖かい服装がよさそうだ。
+農林水産省は31日、政府備蓄米の放出に向けた新制度の概要を発表した。価格高騰が続く中、大凶作などに限っていた方針から転換する。1年以内に同量を買い戻すことを条件とし、全国農業協同組合連合会（JA全農）などの集荷業者へ売り渡す運用を想定。民間在庫を正確に把握するため、調査対象を農家や小規模な卸売業者などにも広げる考えだ
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
