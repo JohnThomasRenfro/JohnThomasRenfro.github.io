@@ -65,7 +65,7 @@ function translateB()
 
 const replsB = [
 
-{p:/(\,|\,|\.|\«|\»|\:|\")/ig,r:' $1 '},
+{p:/(\-|\,|\,|\.|\«|\»|\:|\")/ig,r:' $1 '},
 
 {p:/ /ig,r:' <p> '},
 
@@ -801,7 +801,7 @@ const replsB = [
 {p:/ (поздравлен)/ig,r:'$1|congratulation~suff~'},
 {p:/ (поликлиник)/ig,r:'$1|clinic~suff~'},
 {p:/ (полированн)/ig,r:'$1|polished~suff~'},
-{p:/ (политическ)/ig,r:'$1|political~suff~'},
+{p:/ (полити)(ческ)/ig,r:'$1|political~$2|~suff~'},
 {p:/ (полководец)/ig,r:'$1|military leader~suff~'},
 {p:/ (полуостров)/ig,r:'$1|peninsula~suff~'},
 {p:/ (послевоенн)/ig,r:'$1|postwar~suff~'},
@@ -1144,6 +1144,7 @@ const replsB = [
 {p:/ (капитальн)/ig,r:'$1|main~suff~'},
 {p:/ (карьерист)/ig,r:'$1|careerist~suff~'},
 {p:/ (катастроф)/ig,r:'$1|disaster~suff~'},
+{p:/ (инаугурац)/ig,r:'$1|inauguration~suff~'},
 {p:/ (керосинов)/ig,r:'$1|kerosene~suff~'},
 {p:/ (килограмм)/ig,r:'$1|kilogram~suff~'},
 {p:/ (кинотеатр)/ig,r:'$1|cinema~suff~'},
@@ -2037,7 +2038,7 @@ const replsB = [
 {p:/ (нехорошо)/ig,r:'$1|not good~suff~'},
 {p:/ (новогодн)/ig,r:'$1|new year~suff~'},
 {p:/ (нормальн)/ig,r:'$1|normal~suff~'},
-{p:/ (обеспоко)/ig,r:'$1|worry worried(about)~suff~'},
+{p:/ (обеспоко)/ig,r:'$1|worried about~suff~'},
 {p:/ (обитател)/ig,r:'$1|inhabitant~suff~'},
 {p:/ (обкладыв)/ig,r:'$1|put round~suff~'},
 {p:/ (авианосн)/ig,r:'$1|aircraft carrier~suff~'},
@@ -2129,7 +2130,7 @@ const replsB = [
 {p:/ (переправ)/ig,r:'$1|crossing ford~suff~'},
 {p:/ (пересадк)/ig,r:'$1|change(of transport),transplant(ation)~suff~'},
 {p:/ (перестав)/ig,r:'$1|shift~suff~'},
-{p:/ (переступ)/ig,r:'$1|(+a or +a)to step over~suff~'},
+{p:/ (переступ)/ig,r:'$1|to step over~suff~'},
 {p:/ (переулок)/ig,r:'$1|lane~suff~'},
 {p:/ (перехват)/ig,r:'$1|intercept~suff~'},
 {p:/ (перечисл)/ig,r:'$1|enumerate,(money)~suff~'},
@@ -2948,6 +2949,7 @@ const replsB = [
 {p:/ (косвенн)/ig,r:'$1|oblique~suff~'},
 {p:/ (косточк)/ig,r:'$1|stone(of fruit),small bone~suff~'},
 {p:/ (котелок)/ig,r:'$1|pot~suff~'},
+{p:/ (спровоц)/ig,r:'$1|provoke~suff~'},
 {p:/ (котёнок)/ig,r:'$1|kitten~suff~'},
 {p:/ (кошелёк)/ig,r:'$1|purse(for money)~suff~'},
 {p:/ (красиво)/ig,r:'$1|beautifully~suff~'},
@@ -3271,7 +3273,7 @@ const replsB = [
 {p:/ (переезж)/ig,r:'$1|drive across(house)~suff~'},
 {p:/ (пережив)/ig,r:'$1|live through~suff~'},
 {p:/ (переигр)/ig,r:'$1|play again~suff~'},
-{p:/ (перейти)/ig,r:'$1|(+a or +a)to cross over~suff~'},
+{p:/ (перейти)/ig,r:'$1|to cross over~suff~'},
 {p:/ (перекин)/ig,r:'$1|to throw over~suff~'},
 {p:/ (перелив)/ig,r:'$1|tint colours~suff~'},
 {p:/ (перелом)/ig,r:'$1|break~suff~'},
@@ -3288,7 +3290,7 @@ const replsB = [
 {p:/ (пересек)/ig,r:'$1|intersect across~suff~'},
 {p:/ (пересел)/ig,r:'$1|move~suff~'},
 {p:/ (пересеч)/ig,r:'$1|intersect across~suff~'},
-{p:/ (переход)/ig,r:'$1|(+a or +a)to cross over~suff~'},
+{p:/ (переход)/ig,r:'$1|to cross over~suff~'},
 {p:/ (перечен)/ig,r:'$1|list~suff~'},
 {p:/ (перечит)/ig,r:'$1|reread~suff~'},
 {p:/ (перчатк)/ig,r:'$1|glove(with fingers)~suff~'},
@@ -4037,6 +4039,7 @@ const replsB = [
 {p:/ (восхищ)/ig,r:'$1|admire~suff~'},
 {p:/ (восход)/ig,r:'$1|rise~suff~'},
 {p:/ (впадин)/ig,r:'$1|hollow~suff~'},
+{p:/ (усугуб)/ig,r:'$1|aggravate~suff~'},
 {p:/ (впервы)/ig,r:'$1|for the first time~suff~'},
 {p:/ (вперёд)/ig,r:'$1|forward~suff~'},
 {p:/ (вращен)/ig,r:'$1|rotation~suff~'},
@@ -5471,7 +5474,7 @@ const replsB = [
 {p:/ (удосто)/ig,r:'$1|award ,favour with~suff~'},
 {p:/ (узелок)/ig,r:'$1|small knot bundle~suff~'},
 {p:/ (указан)/ig,r:'$1|indication~suff~'},
-{p:/ (указыв)/ig,r:'$1|(+a or +a)to point out~suff~'},
+{p:/ (указыв)/ig,r:'$1|to point out~suff~'},
 {p:/ (укорен)/ig,r:'$1|take root~suff~'},
 {p:/ (украдк)/ig,r:'$1|stealthily~suff~'},
 {p:/ (саммит)/ig,r:'$1|summit~suff~'},
@@ -5942,7 +5945,7 @@ const replsB = [
 {p:/ (дальн)/ig,r:'$1|distant~suff~'},
 {p:/ (дальш)/ig,r:'$1|further~suff~'},
 {p:/ (далёк)/ig,r:'$1|distant~suff~'},
-{p:/ (данн)/ig,r:'$1|data~suff~'},
+{p:/ (данн)/ig,r:'$1|given;data~suff~'},
 {p:/ (даром)/ig,r:'$1|free~suff~'},
 {p:/ (двадц)/ig,r:'$1|twenty~suff~'},
 {p:/ (дверц)/ig,r:'$1|small door door~suff~'},
@@ -5969,6 +5972,7 @@ const replsB = [
 {p:/ (дивиз)/ig,r:'$1|division(army)~suff~'},
 {p:/ (длинн)/ig,r:'$1|long~suff~'},
 {p:/ (дневн)/ig,r:'$1|day~suff~'},
+{p:/ (анонс)/ig,r:'$1|announce~suff~'},
 {p:/ (добав)/ig,r:'$1|add~suff~'},
 {p:/ (добив)/ig,r:'$1|obtain strive for get~suff~'},
 {p:/ (добир)/ig,r:'$1|reach~suff~'},
@@ -6430,7 +6434,7 @@ const replsB = [
 {p:/ (надев)/ig,r:'$1|put on(clothing etc.)~suff~'},
 {p:/ (надел)/ig,r:'$1|make do~suff~'},
 {p:/ (нажив)/ig,r:'$1|gain,(money)~suff~'},
-{p:/ (нажим)/ig,r:'$1|(+a or +a)to press~suff~'},
+{p:/ (нажим)/ig,r:'$1|to press~suff~'},
 {p:/ (назад)/ig,r:'$1|back~suff~'},
 {p:/ (назло)/ig,r:'$1|out of spite spite~suff~'},
 {p:/ (назыв)/ig,r:'$1|call~suff~'},
@@ -7486,7 +7490,7 @@ const replsB = [
 {p:/ (вахт)/ig,r:'$1|watch(on ship),special work shift~suff~'},
 {p:/ (вбег)/ig,r:'$1|run in~suff~'},
 {p:/ (вбеж)/ig,r:'$1|run in~suff~'},
-{p:/ (введ)/ig,r:'$1|introduce~suff~'},
+{p:/ (введен|введ)/ig,r:'$1|introduce~suff~'},
 {p:/ (ввод)/ig,r:'$1|bring in~suff~'},
 {p:/ (ввыс)/ig,r:'$1|upwards~suff~'},
 {p:/ (вдво)/ig,r:'$1|double~suff~'},
@@ -7715,6 +7719,7 @@ const replsB = [
 {p:/ (звон)/ig,r:'$1|ring~suff~'},
 {p:/ (звук)/ig,r:'$1|sound~suff~'},
 {p:/ (звуч)/ig,r:'$1|sound~suff~'},
+{p:/ (день)/ig,r:'$1|day,daytime,sun'},
 {p:/ (здан)/ig,r:'$1|building~suff~'},
 {p:/ (здес)/ig,r:'$1|here~suff~'},
 {p:/ (зевн)/ig,r:'$1|yawn~suff~'},
@@ -8422,7 +8427,7 @@ const replsB = [
 {p:/ (узел)/ig,r:'$1|knot~suff~'},
 {p:/ (узор)/ig,r:'$1|pattern~suff~'},
 {p:/ (уйти)/ig,r:'$1|leave(on foot)~suff~'},
-{p:/ (указ)/ig,r:'$1|(+a or +a)to point out~suff~'},
+{p:/ (указ)/ig,r:'$1|to point out~suff~'},
 {p:/ (укол)/ig,r:'$1|jab~suff~'},
 {p:/ (укор)/ig,r:'$1|reproach~suff~'},
 {p:/ (укут)/ig,r:'$1|wrap up~suff~'},
@@ -8874,7 +8879,7 @@ const replsB = [
 {p:/ (мёд)/ig,r:'$1|honey~suff~'},
 {p:/ (наб)/ig,r:'$1|stuff~suff~'},
 {p:/ (над)/ig,r:'$1|over~prep'},
-{p:/ (наж)/ig,r:'$1|(+a or +a)to press~suff~'},
+{p:/ (наж)/ig,r:'$1|to press~suff~'},
 {p:/ (нал)/ig,r:'$1|pour out~suff~'},
 {p:/ (нан)/ig,r:'$1|hire~suff~'},
 {p:/ (нап)/ig,r:'$1|sing~suff~'},
@@ -9268,9 +9273,19 @@ const replsB = [
 {p:/ (с) /ig,r:'$1|from,with~prep'},
 {p:/ (у) /ig,r:'$1|by ~suff~'},
 
-{p:/~suff~(ирован)/ig,r:'$1~continuous~suff~'},
+{p:/(енность)/ig,r:'$1~+ness'},
 
-{p:/~suff~(ческ)/ig,r:'$1~related to~suff~'},
+{p:/(овать)/ig,r:'~$1~noun to verb'},
+
+{p:/(ческ)/ig,r:'~$1~related to,+al,+ic'},
+{p:/(иров)/ig,r:'~$1~continuous~suff~'},
+{p:/(альн)/ig,r:'~$1~+al~suff~'},
+
+{p:/(ивн)/ig,r:'~$1~+ic~suff~'},
+{p:/(тив)/ig,r:'~$1~+tive~suff~'},
+
+{p:/ (не)/ig,r:'~$1~negative prefix, not, de+ un+~suff~'},
+
 {p:/~suff~(яния)/ig,r:'$1~plural nominative noun'},
 {p:/~suff~(еств)/ig,r:'$1~verb to noun,+ings~suff~'},
 {p:/~suff~(ост)/ig,r:'$1~state of being in~suff~'},
@@ -9375,17 +9390,8 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Russian Language</div>
 Cut and paste this Russian text into text area below.
 <p>
-    "Кроме того, Китай, не являющийся арктической державой, стремится укрепить своё присутствие в регионе и усилить своё влияние", — считает Николсон.
-
-По его словам, "США и их союзники в Арктике формируют мощное коллективное сдерживание" потенциального противника в регионе, сообщает ТАСС.
-
-    Стоит напомнить, что ранее западная — да и не только западная — пресса отмечала, что Соединённые Штаты и их союзники сильно отстают от России в развитии ледокольного флота.
-
-Несмотря на санкции, Россия постоянно вводит в эксплуатацию новые ледоколы. А у тех же США их всего пара штук, и возможности американских ледоколов ограничены.
-
-В перспективе нескольких лет ожидается спуск на воду трёх американских ледоколов. Но не исключено, что эти планы будут скорректированы в сторону увеличения сроков.
-
-Читайте больше на https://www.pravda.ru/news/economics/2169298-arktika/
+Хотя на данный момент военная помощь Украине остается неизменной, Европейский союз должен подготовиться к потенциальному сокращению или изменению приоритетов американской помощи, что может угрожать глобальному развитию и геополитической стабильности. Несмотря на бюджетные ограничения, ЕС должен использовать свое финансирование в целях развития, чтобы компенсировать уход США и конкурировать с Китаем. Такой подход необходим для смягчения далеко идущих последствий сокращения помощи. Невыполнение этого требования чревато обострением гуманитарных кризисов, насилием, конфликтами и политической нестабильностью — последствиями, пагубными не только для получателей помощи, но и для собственных интересов ЕС.
+Читайте больше на https://www.pravda.ru/world/2169524-bruxelles/
 </p><p>
 <textarea cols="25" rows="6" onchange='a=" "+this.value+" ",translateC()'></textarea><br>
 <span id="translatedTextDisplay"></span>
