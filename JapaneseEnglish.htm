@@ -297,7 +297,7 @@ const replsB = [
 {p1:/(ご)(?!X)(く)(?!X)(ん)(?!X)(と)(?!X)/g,r1:'$1X$2X$3X$4Xin one gulp~Noun'},
 {p1:/(ご)(?!X)(ろ)(?!X)(ご)(?!X)(ろ)(?!X)/g,r1:'$1X$2Xru$3Xm$4Xble~Noun'},
 {p1:/(さ)(?!X)(っ)(?!X)(ぱ)(?!X)(り)(?!X)/g,r1:'$1X$2Xco$3Xm$4Xpletely-not at all~Noun'},
-{p1:/(さ)(?!X)(ま)(?!X)(ざ)(?!X)(ま)(?!X)/g,r1:'$1X$2Xsa$3Xm$4Xa-zama,all sorts of~Noun'},
+{p1:/(さ)(?!X)(ま)(?!X)(ざ)(?!X)(ま)(?!X)/g,r1:'$1Xsa$2Xma$3Xza$4Xma-all sorts of~Noun'},
 {p1:/(ざ)(?!X)(あ)(?!X)(ざ)(?!X)(あ)(?!X)/g,r1:'$1X$2Xhe$3Xa$4Xvily-pouring~Noun'},
 {p1:/(ざ)(?!X)(ら)(?!X)(ざ)(?!X)(ら)(?!X)/g,r1:'$1X$2Xro$3Xu$4X-gh,gritty~Noun'},
 {p1:/(し)(?!X)(か)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1X$2Xsh$3Xi$4Xkanai-no choice but to~Noun'},
@@ -353,7 +353,7 @@ const replsB = [
 {p1:/(ど)(?!X)(ん)(?!X)(な)(?!X)(に)(?!X)/g,r1:'$1X$2Xho$3Xw$4X much~Noun'},
 {p1:/(な)(?!X)(か)(?!X)(っ)(?!X)(た)(?!X)/g,r1:'$1Xna$2Xka$3Xt$4Xta-was not~Verb'},
 {p1:/(な)(?!X)(か)(?!X)(で)(?!X)(も)(?!X)/g,r1:'$1X$2Xna$3Xk$4Xademo-especially~Noun'},
-{p1:/(な)(?!X)(か)(?!X)(な)(?!X)(か)(?!X)/g,r1:'$1X$2Xna$3Xk$4Xa naka,not at all,hardly,rather,pretty~Noun'},
+{p1:/(な)(?!X)(か)(?!X)(な)(?!X)(か)(?!X)/g,r1:'$1Xna$2Xka$3Xna$4Xka-not at all,hardly,rather,pretty~Noun'},
 {p1:/(な)(?!X)(く)(?!X)(て)(?!X)(は)(?!X)/g,r1:'$1X$2Xwi$3Xt$4Xhout-unless,must do~Noun'},
 {p1:/(な)(?!X)(る)(?!X)(ほ)(?!X)(ど)(?!X)/g,r1:'$1X$2X$3X$4XI see,really~Noun'},
 {p1:/(に)(?!X)(お)(?!X)(い)(?!X)(て)(?!X)/g,r1:'$1Xni$2Xo$3Xi$4Xte-in~Postposition'},
@@ -1312,6 +1312,7 @@ const replsB = [
 {p1:/(日)(?!X)(本)(?!X)(人)(?!X)/g,r1:'$1Xni$2Xhon$3Xjin-Japanese person~Noun'},
 {p1:/(日)(?!X)(本)(?!X)(語)(?!X)/g,r1:'$1Xni$2Xhon$3Xgo-Japanese language~Noun'},
 {p1:/(日)(?!X)(本)(?!X)(酒)(?!X)/g,r1:'$1Xnihon$2Xsy$3Xu-sake,rice wine~Noun'},
+{p1:/(老)(?!X)(朽)(?!X)(化)(?!X)/g,r1:'$1Xrou$2Xkyuu$3Xka-deterioration~Noun'},
 {p1:/(日)(?!X)(焼)(?!X)(け)(?!X)/g,r1:'$1Xhiy$2Xak$3Xe-suntan~Noun'},
 {p1:/(日)(?!X)(用)(?!X)(品)(?!X)/g,r1:'$1Xnichi$2Xyou$3Xhin-groceries,daily necessities~Noun'},
 {p1:/(早)(?!X)(起)(?!X)(き)(?!X)/g,r1:'$1Xhay$2Xao$3Xki-early rising~Noun'},
@@ -5362,6 +5363,7 @@ const replsB = [
 {p1:/(発)(?!X)(揮)(?!X)/g,r1:'$1Xhak$2Xki-show of power~Noun'},
 {p1:/(発)(?!X)(明)(?!X)/g,r1:'$1Xhatsu$2Xmei-invention~Noun'},
 {p1:/(発)(?!X)(注)(?!X)/g,r1:'$1Xhac$2Xcyuu-place an order~Noun'},
+{p1:/(急)(?!X)(務)(?!X)/g,r1:'$1Xkyuu$2Xmu-imperative~Noun'},
 {p1:/(発)(?!X)(熱)(?!X)/g,r1:'$1Xhatsu$2Xnetsu-generation of heat,get a fever~Noun'},
 {p1:/(発)(?!X)(生)(?!X)/g,r1:'$1Xhas$2Xsei-occurrence~Noun'},
 {p1:/(発)(?!X)(症)(?!X)/g,r1:'$1Xhas$2Xsyou-outbreak~Noun'},
@@ -5684,6 +5686,8 @@ const replsB = [
 {p1:/(絞)(?!X)(め)(?!X)/g,r1:'$1Xshi$2Xme-strangle~IchidanVerb'},
 {p1:/(絡)(?!X)(め)(?!X)/g,r1:'$1Xkara$2Xme-entwine~IchidanVerb'},
 {p1:/(給)(?!X)(与)(?!X)/g,r1:'$1Xkyuu$2Xyo-wages~Noun'},
+{p1:/(腐)(?!X)(食)(?!X)/g,r1:'$1Xfu$2Xsyoku-rot~Noun'},
+{p1:/(改)(?!X)(修)(?!X)/g,r1:'$1Xkai$2Xsyuu-repair~Noun'},
 {p1:/(給)(?!X)(付)(?!X)/g,r1:'$1Xkyuu$2Xfu-payment benefits~Noun'},
 {p1:/(給)(?!X)(料)(?!X)/g,r1:'$1Xkyuu$2Xryou-salary,pay~Noun'},
 {p1:/(給)(?!X)(油)(?!X)/g,r1:'$1Xkyuu$2Xyu-refueling~Noun'},
@@ -7356,12 +7360,13 @@ const replsB = [
 {p1:/(Verbら)(?!X)(れ)(?!X)/g,r1:'$1Xra$2Xre-is done~ConjunctiveVerb'},
 {p1:/(し)(?!X)(て)(?!X)/g,r1:'$1Xshi$2Xte-do and~SuruVerb'},
 
-{p1:/(８|8|八)(?!X)/g,r1:'$1Xhachi,Yaku-eight~Noun'},
+{p1:/(８|8|八)(?!X)/g,r1:'$1Xhachi,yaku,ya-eight~Noun'},
 {p1:/(６|6|六)(?!X)/g,r1:'$1Xroku-six~Noun'},
 {p1:/(４|4|四)(?!X)/g,r1:'$1Xyon;shi-four~Noun'},
 {p1:/(３|3|三)(?!X)/g,r1:'$1Xsan-three;mitsu-name~Noun'},
 {p1:/(鼻)(?!X)/g,r1:'$1Xhana-nose~Noun'},
 {p1:/(黒)(?!X)/g,r1:'$1Xkuro,guro-black~Noun'},
+{p1:/(潮)(?!X)/g,r1:'$1Xshio-tide~Noun'},
 {p1:/(麦)(?!X)/g,r1:'$1Xmugi-wheat~Noun'},
 {p1:/(和)(?!X)/g,r1:'$1Xwa-peace~Noun'},
 {p1:/(鹿)(?!X)/g,r1:'$1Xka-deer~Noun'},
@@ -8391,7 +8396,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-農林水産省は31日、政府備蓄米の放出に向けた新制度の概要を発表した。価格高騰が続く中、大凶作などに限っていた方針から転換する。1年以内に同量を買い戻すことを条件とし、全国農業協同組合連合会（JA全農）などの集荷業者へ売り渡す運用を想定。民間在庫を正確に把握するため、調査対象を農家や小規模な卸売業者などにも広げる考えだ
+埼玉県八潮市で県道が陥没しトラックが転落した事故は、老朽化した下水道管の腐食が原因だった可能性がある。全国各地で下水道管の老朽化が目立つ中、設備更新や改修への投資はなかなか進んでいない状況だ。関西でも対策は急務だが、自治体側の財政難や人員不足、人口減による収入の落ち込みなど、さまざまな壁が立ちはだかる。将来をにらんだ「値上げ」の動きも出始めている。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
