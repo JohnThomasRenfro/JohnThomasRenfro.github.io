@@ -43,16 +43,13 @@
       'ㅏ': 'ah', 'ㅐ': 'ae', 'ㅑ': 'yah', 'ㅒ': 'yae', 'ㅓ': 'eo', 'ㅔ': 'eh', 'ㅕ': 'yeo', 'ㅖ': 'ye',
       'ㅗ': 'o', 'ㅘ': 'wa', 'ㅙ': 'wae', 'ㅚ': 'oe', 'ㅛ': 'yo', 'ㅜ': 'u', 'ㅝ': 'wo', 'ㅞ': 'we',
       'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅢ': 'ui', 'ㅣ': 'ee',
-
-      // Double vowels (more accurate romanization)
-      'ㅏㅣ': 'ai', 'ㅓㅣ': 'ei', 'ㅗㅣ': 'oi', 'ㅜㅣ': 'ui', 'ㅡㅣ': 'ui', 'ㅗㅏ': 'oa', 'ㅜㅏ': 'ua'
     };
 
     // Special translations for specific words/phrases (this should be in your own database)
     const specialTranslations = {
       '이시바': 'Ishiba',
       '수상과': 'Prime Minister',
-      '트럼프': 'Trump', // Example for Trump
+      '트럼프': 'Trump',
       // Add more words and their translations here
     };
 
@@ -87,7 +84,7 @@
         if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
           const components = breakHangul(syllable);
           const phonetic = components.map(comp => `${comp} (${hangulToEnglish[comp] || comp})`).join(' ');
-          result += `${syllable} = ${phonetic}\n`;  // No extra parentheses at the end
+          result += `${syllable} = ${phonetic}\n`;  // Breakdown per syllable on a new line
         } else {
           result += syllable; // Non-Hangul characters stay as they are
         }
@@ -138,3 +135,4 @@
   </script>
 </body>
 </html>
+
