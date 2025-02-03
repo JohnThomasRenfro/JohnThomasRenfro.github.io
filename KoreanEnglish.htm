@@ -29,7 +29,7 @@
 
   <button onclick="processHangul()">Process</button>
 
-  <h2>Cut and Paste:삼성물산-제일모직 부당 합병과 삼성바이오로직스 분식회계에 관여한</h2>
+  <h2>Cut and Paste: 삼성물산-제일모직 부당 합병과 삼성바이오로직스 분식회계에 관여한</h2>
   <div id="result"></div>
 
   <script>
@@ -110,23 +110,22 @@
     function processHangul() {
       const hangulText = document.getElementById('hangulInput').value.trim();
       
-      // Split the input into words (separated by spaces) for individual translation
-      const words = hangulText.split(' ');
-
       let phoneticText = '';
       let translatedText = '';
 
-      // Process each word individually
-      words.forEach(word => {
+      // Process the entire Hangul text (no splitting)
+      for (let i = 0; i < hangulText.length; i++) {
+        const syllable = hangulText.charAt(i);
+        
         // Step 1: Convert Hangul to Phonetic Representation
-        phoneticText += hangulToPhonetic(word) + '\n';
+        phoneticText += hangulToPhonetic(syllable) + '\n';
 
         // Step 2: Translate the word using custom translation rules
-        const translation = translateKoreanToEnglish(word);
+        const translation = translateKoreanToEnglish(syllable);
 
         // Step 3: Append the translation to the result (each translation on a new line)
-        translatedText += `${word} = ${translation}\n`;
-      });
+        translatedText += `${syllable} = ${translation}\n`;
+      }
 
       // Step 4: Combine phonetic breakdown and translations
       const finalOutput = phoneticText.trim() + '\n' + translatedText.trim();
