@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hangul to English Pronunciation Converter</title>
+  <title>Hangul to English Pronunciation & Translation</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -23,12 +23,11 @@
   </style>
 </head>
 <body>
-  <h1>Hangul to English Pronunciation Converter</h1>
+  <h1>Hangul to English Pronunciation & Translation</h1>
 
   <textarea id="hangulInput" placeholder="Paste Hangul text here..."></textarea><br><br>
 
-  <button onclick="convertHangul()">Convert</button>
-  <button onclick="translateKoreanToEnglish()">Translate</button>
+  <button onclick="processHangul()">Process</button>
 
   <h2>Phonetic Output:</h2>
   <div id="result"></div>
@@ -83,36 +82,45 @@
       return result.trim();
     }
 
-    // Convert the Hangul text when the button is clicked
-    function convertHangul() {
-      const hangulText = document.getElementById('hangulInput').value;
-      const phoneticText = hangulToPhonetic(hangulText);
-      document.getElementById('result').textContent = phoneticText;
-    }
-
     // Function to translate Korean text into English using Yandex Translate API
-    function translateKoreanToEnglish() {
-      const hangulText = document.getElementById('hangulInput').value;
+    function translateKoreanToEnglish(hangulText) {
       const apiKey = 'YOUR_YANDEX_API_KEY'; // Replace with your Yandex API Key
       const url = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${apiKey}&text=${encodeURIComponent(hangulText)}&lang=ko-en`;
 
       // Fetch the translation from the Yandex API
-      fetch(url)
+      return fetch(url)
         .then(response => response.json())
         .then(data => {
           if (data.text && data.text.length > 0) {
-            const translation = data.text[0];
-            document.getElementById('result').textContent = `Translation: ${translation}`;
+            return data.text[0];  // Returning the first translation result
           } else {
-            document.getElementById('result').textContent = 'Translation failed. Please try again.';
+            return 'Translation failed. Please try again.';
           }
         })
         .catch(error => {
           console.error('Error:', error);
-          document.getElementById('result').textContent = 'An error occurred. Please try again later.';
+          return 'An error occurred. Please try again later.';
         });
+    }
+
+    // Function to process Hangul (convert + translate) with a single button
+    async function processHangul() {
+      const hangulText = document.getElementById('hangulInput').value;
+
+      // Step 1: Convert Hangul to Phonetic Representation
+      const phoneticText = hangulToPhonetic(hangulText);
+
+      // Step 2: Translate the whole word to English
+      const translation = await translateKoreanToEnglish(hangulText);
+
+      // Step 3: Combine the results
+      const finalOutput = `${phoneticText}\n\n${hangulText} = ${translation}`;
+
+      // Display the result in the output div
+      document.getElementById('result').textContent = finalOutput;
     }
   </script>
 </body>
 </html>
+
 
