@@ -87,7 +87,7 @@
         if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
           const components = breakHangul(syllable);
           const phonetic = components.map(comp => `${comp} (${hangulToEnglish[comp] || comp})`).join(' ');
-          result += `${syllable} = ${phonetic}  ()\n`;  // Added parentheses at the end of each syllable
+          result += `${syllable} = ${phonetic}\n`;  // No extra parentheses at the end
         } else {
           result += syllable; // Non-Hangul characters stay as they are
         }
@@ -137,6 +137,4 @@
     }
   </script>
 </body>
-</html>
-
 </html>
