@@ -42,10 +42,11 @@
       'ㅜ': 'ue', 'ㅝ': 'wo', 'ㅞ': 'we', 'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅢ': 'ui', 'ㅣ': 'ee'
     };
 
-    // Special translations for specific words/phrases
+    // Special translations for specific words/phrases (this should be in your own database)
     const specialTranslations = {
       '이시바': 'Ishiba',
       '수상과': 'Prime Minister',
+      // Add more words and their translations here
     };
 
     // Function to break Hangul syllables into their components
@@ -90,41 +91,43 @@
 
     // Function to translate Korean text into English using custom rules
     function translateKoreanToEnglish(hangulText) {
-      const words = hangulText.split(' '); // Split the input text into words
-      let translatedText = '';
-
-      // For each word, use a special translation if available, else return the word as is
-      words.forEach(word => {
-        if (specialTranslations[word]) {
-          translatedText += specialTranslations[word] + ' ';
-        } else {
-          translatedText += word + ' '; // If no special translation, keep the word as is
-        }
-      });
-
-      return translatedText.trim();
+      // Look for exact matches in the database (specialTranslations object)
+      if (specialTranslations[hangulText]) {
+        return specialTranslations[hangulText];
+      } else {
+        // If no exact match, return the Hangul text (or implement a default translation strategy here)
+        return hangulText;
+      }
     }
 
     // Function to process Hangul (convert + translate) with a single button
-    async function processHangul() {
-      const hangulText = document.getElementById('hangulInput').value;
+    function processHangul() {
+      const hangulText = document.getElementById('hangulInput').value.trim();
+      
+      // Split the input into words (separated by spaces) for individual translation
+      const words = hangulText.split(' ');
 
-      // Step 1: Convert Hangul to Phonetic Representation
-      const phoneticText = hangulToPhonetic(hangulText);
+      let phoneticText = '';
+      let translatedText = '';
 
-      // Step 2: Translate the whole word to English using the custom translation function
-      const translation = translateKoreanToEnglish(hangulText);
+      // Process each word individually
+      words.forEach(word => {
+        // Step 1: Convert Hangul to Phonetic Representation
+        phoneticText += hangulToPhonetic(word) + '\n';
 
-      // Step 3: Combine the results into the desired format
-      const finalOutput = phoneticText + '\n' + hangulText + ' = ' + translation;
+        // Step 2: Translate the word using custom translation rules
+        const translation = translateKoreanToEnglish(word);
+
+        // Step 3: Append the translation to the result (each translation on a new line)
+        translatedText += `${word} = ${translation}\n`;
+      });
+
+      // Step 4: Combine phonetic breakdown and translations
+      const finalOutput = phoneticText + '\n' + translatedText;
 
       // Display the result in the output div
-      document.getElementById('result').textContent = finalOutput;
+      document.getElementById('result').textContent = finalOutput.trim();
     }
   </script>
 </body>
 </html>
-
-
-
-
