@@ -37,8 +37,8 @@
     const hangulToEnglish = {
       'ㄱ': 'g', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd', 'ㄸ': 'tt', 'ㄹ': 'r', 'ㅁ': 'm', 'ㅂ': 'b',
       'ㅃ': 'pp', 'ㅅ': 's', 'ㅆ': 'ss', 'ㅇ': 'ng', 'ㅈ': 'j', 'ㅉ': 'jj', 'ㅊ': 'ch', 'ㅋ': 'k',
-      'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h', 'ㅏ': 'ah', 'ㅐ': 'ae', 'ㅑ': 'ya', 'ㅒ': 'yae', 'ㅓ': 'eo',
-      'ㅔ': 'eh', 'ㅕ': 'yeo', 'ㅖ': 'ye', 'ㅗ': 'oe', 'ㅘ': 'wa', 'ㅙ': 'wae', 'ㅚ': 'oe', 'ㅛ': 'yo',
+      'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h', 'ㅏ': 'ah', 'ㅐ': 'ae', 'ㅑ': 'yah', 'ㅒ': 'yae', 'ㅓ': 'eo',
+      'ㅔ': 'eh', 'ㅕ': 'yeo', 'ㅖ': 'ye', 'ㅗ': 'oe', 'ㅘ': 'wah', 'ㅙ': 'wae', 'ㅚ': 'oe', 'ㅛ': 'yoe',
       'ㅜ': 'ue', 'ㅝ': 'wo', 'ㅞ': 'we', 'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅢ': 'ui', 'ㅣ': 'ee'
     };
 
@@ -54,6 +54,12 @@
       const vowels = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'];
       const finalConsonants = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
 
+    // Special translations for specific words/phrases
+    const specialTranslations = {
+      '이시바': 'Ishiba',
+      '수상과': 'Prime Minister',
+    };
+      
       const initial = initialConsonants[initialIndex];
       const vowel = vowels[vowelIndex];
       const final = finalConsonants[finalIndex];
