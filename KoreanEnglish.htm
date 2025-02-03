@@ -41,7 +41,7 @@
     <script>
         // Mappings for Hangul components (Revised Romanization system)
         const initialConsonants = [
-            'g', 'n', 'd', 'r', 'm', 'b', 's', 'ng', 'j', 'ch', 'k', 't', 'p', 'h'
+            'g', 'k', 'n', 'd', 't', 'r', 'm', 'b', 'p', 's', 'ng', 'j', 'ch', 'k', 't', 'p', 'h'
         ];
         const vowels = [
             'a', 'ae', 'ya', 'yae', 'eo', 'e', 'yeo', 'ye', 'o', 'wa', 'wae', 'oe', 'yo', 'u', 'wo', 'we', 'wi', 'yu', 'eu', 'ui', 'i'
@@ -71,6 +71,10 @@
         function hangulToEnglish(syllable) {
             const components = decomposeHangul(syllable);
             if (components) {
+                // Adjust "r" to "d" when it's an initial sound in the syllable "도"
+                if (components.initial === 'r' && components.vowel === 'o' && components.final === '') {
+                    return 'do'; // Special case for "도"
+                }
                 return components.initial + components.vowel + components.final;
             }
             return syllable; // Non-Hangul characters remain unchanged
