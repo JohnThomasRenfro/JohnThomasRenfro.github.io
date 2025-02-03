@@ -72,7 +72,8 @@
         // Ensure it's a valid Hangul syllable
         if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
           const components = breakHangul(syllable);
-          result += components.map(comp => `${comp} (${hangulToEnglish[comp] || comp})`).join(' ') + ' ';
+          const phonetic = components.map(comp => `${comp} (${hangulToEnglish[comp] || comp})`).join(' ');
+          result += `${syllable} = ${phonetic}\n`;  // Formatting like 도=ㄷ (d) ㅗ (o)
         } else {
           result += syllable; // Non-Hangul characters stay as they are
         }
@@ -90,4 +91,3 @@
   </script>
 </body>
 </html>
-
