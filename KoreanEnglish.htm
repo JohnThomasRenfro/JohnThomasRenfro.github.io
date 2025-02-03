@@ -48,21 +48,28 @@
         function decomposeHangul(syllable) {
             const syllableCode = syllable.charCodeAt(0) - 0xAC00;
             
+            // Check if the syllable is a valid Hangul syllable
+            if (syllableCode < 0 || syllableCode > (11172)) return null; // Not a valid Hangul syllable
+            
             const initialIndex = Math.floor(syllableCode / (21 * 28));
             const vowelIndex = Math.floor((syllableCode % (21 * 28)) / 28);
             const finalIndex = syllableCode % 28;
 
+            // Return the decomposition
             return {
-                initial: initialConsonants[initialIndex],
-                vowel: vowels[vowelIndex],
-                final: finalConsonants[finalIndex],
+                initial: initialConsonants[initialIndex] || '',
+                vowel: vowels[vowelIndex] || '',
+                final: finalConsonants[finalIndex] || ''
             };
         }
 
         // Function to translate Hangul syllable to English syllable
         function hangulToEnglish(syllable) {
             const components = decomposeHangul(syllable);
-            return components.initial + components.vowel + components.final;
+            if (components) {
+                return components.initial + components.vowel + components.final;
+            }
+            return ''; // Return an empty string if the decomposition fails
         }
 
         // Function to process the input and display the result
