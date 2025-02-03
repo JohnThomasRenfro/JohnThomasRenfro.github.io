@@ -51,6 +51,7 @@
       '수상과': 'Prime Minister',
       '트럼프': 'Trump',
       '미국': 'U.S.',
+      '대통령과의': '대통령과의',
       // Add more words and their translations here
     };
 
@@ -85,7 +86,7 @@
         if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
           const components = breakHangul(syllable);
           const phonetic = components.map(comp => `${comp} (${hangulToEnglish[comp] || comp})`).join(' ');
-          result += `${syllable} = ${phonetic} ()\n`;  // Breakdown per syllable on a new line
+          result += `${syllable} = ${phonetic}\n`;  // Breakdown per syllable on a new line
         } else {
           result += syllable; // Non-Hangul characters stay as they are
         }
@@ -128,10 +129,10 @@
       });
 
       // Step 4: Combine phonetic breakdown and translations
-      const finalOutput = phoneticText + '\n' + translatedText;
+      const finalOutput = phoneticText.trim() + '\n' + translatedText.trim();
 
       // Display the result in the output div
-      document.getElementById('result').textContent = finalOutput.trim();
+      document.getElementById('result').textContent = finalOutput;
     }
   </script>
 </body>
