@@ -122,14 +122,16 @@
       // Step 2: Translate the whole word to English using LibreTranslate API
       const translation = await translateKoreanToEnglish(hangulText);
 
-      // Step 3: Combine the results
-      const finalOutput = `${phoneticText}\n\n${hangulText} = ${translation}`;
+      // Step 3: Combine the results into the desired format
+      const finalOutput = phoneticText + '\n\n' + hangulText + ' = ' + translation;
 
       // Display the result in the output div
       document.getElementById('result').textContent = finalOutput;
     }
   </script>
 </body>
+</html>
+
 </html>
 
 
