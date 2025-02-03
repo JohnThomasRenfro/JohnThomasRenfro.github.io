@@ -39,41 +39,21 @@
     </div>
 
     <script>
-        // Mappings for Hangul consonants and vowels (Revised Romanization system)
-        const initialConsonants = [
-            'g', 'n', 'd', 'r', 'm', 'b', 's', 'ng', 'j', 'ch', 'k', 't', 'p', 'h'
-        ];
-        const vowels = [
-            'a', 'ae', 'ya', 'yae', 'eo', 'e', 'yeo', 'ye', 'o', 'wa', 'wae', 'oe', 'yo', 'u', 'wo', 'we', 'wi', 'yu', 'eu', 'ui', 'i'
-        ];
-        const finalConsonants = [
-            '', 'g', 'gg', 'n', 'nj', 'nh', 'd', 'r', 'm', 'b', 'bs', 's', 'ss', 'ng', 'j', 'ch', 'k', 't', 'p', 'h'
-        ];
+        // Revised Romanization mapping for Hangul syllables
+        const hangulToRoman = {
+            '가': 'ga', '나': 'na', '다': 'da', '라': 'ra', '마': 'ma', '바': 'ba', '사': 'sa', '아': 'a', '자': 'ja', '차': 'cha', '카': 'ka', '타': 'ta', '파': 'pa', '하': 'ha',
+            '거': 'geo', '너': 'neo', '더': 'deo', '러': 'reo', '머': 'meo', '버': 'beo', '서': 'seo', '어': 'eo', '저': 'jeo', '처': 'cheo', '커': 'keo', '터': 'teo', '퍼': 'peo', '허': 'heo',
+            '고': 'go', '노': 'no', '도': 'do', '로': 'ro', '모': 'mo', '보': 'bo', '소': 'so', '오': 'o', '조': 'jo', '초': 'cho', '코': 'ko', '토': 'to', '포': 'po', '호': 'ho',
+            '구': 'gu', '누': 'nu', '두': 'du', '루': 'ru', '무': 'mu', '부': 'bu', '수': 'su', '우': 'u', '주': 'ju', '추': 'chu', '쿠': 'ku', '투': 'tu', '푸': 'pu', '후': 'hu',
+            '그': 'geu', '느': 'neu', '드': 'deu', '르': 'reu', '므': 'meu', '브': 'beu', '스': 'seu', '으': 'eu', '즈': 'jeu', '츠': 'cheu', '쿠': 'keu', '트': 'teu', '프': 'peu', '흐': 'heu',
+            '기': 'gi', '니': 'ni', '디': 'di', '리': 'ri', '미': 'mi', '비': 'bi', '시': 'si', '이': 'i', '지': 'ji', '치': 'chi', '키': 'ki', '티': 'ti', '피': 'pi', '히': 'hi',
+            '널': 'neol', '럼': 'reom', '국': 'guk',
+            // Add more characters as necessary for full support
+        };
 
-        // Function to decompose a Hangul syllable into its components
-        function decomposeHangul(syllable) {
-            const syllableCode = syllable.charCodeAt(0) - 0xAC00;
-            
-            if (syllableCode < 0 || syllableCode > 11171) return null; // Not a valid Hangul syllable
-            
-            const initialIndex = Math.floor(syllableCode / (21 * 28));
-            const vowelIndex = Math.floor((syllableCode % (21 * 28)) / 28);
-            const finalIndex = syllableCode % 28;
-
-            return {
-                initial: initialConsonants[initialIndex],
-                vowel: vowels[vowelIndex],
-                final: finalConsonants[finalIndex]
-            };
-        }
-
-        // Function to convert Hangul syllable to Romanized form
+        // Function to translate Hangul syllable to English syllable using the updated mappings
         function hangulToEnglish(syllable) {
-            const components = decomposeHangul(syllable);
-            if (components) {
-                return components.initial + components.vowel + components.final;
-            }
-            return syllable; // Non-Hangul characters remain unchanged
+            return hangulToRoman[syllable] || syllable;
         }
 
         // Function to process the input and display the result
@@ -85,7 +65,7 @@
             // Loop through each character in the input
             for (let i = 0; i < hangulText.length; i++) {
                 const char = hangulText[i];
-
+                
                 // If it's a Hangul syllable, translate it
                 if (char.charCodeAt(0) >= 0xAC00 && char.charCodeAt(0) <= 0xD7A3) {
                     hangulOutput += char;
@@ -104,9 +84,3 @@
 
 </body>
 </html>
-
-
-</body>
-</html>
-
-
