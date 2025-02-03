@@ -45,6 +45,16 @@
       'ㅟ': 'wih', 'ㅠ': 'yue', 'ㅡ': 'eu', 'ㅢ': 'wee', 'ㅣ': 'ee',
     };
 
+    const specialTranslations = {
+      '이시바': 'Ishiba',
+      '수상과': 'Prime Minister',
+      '트럼프': 'Trump',
+      '미국': 'U.S.',
+      '대통령': 'president',
+      '과의': 'with',
+      '삼성': 'Samsung',
+    };    
+
     // Function to break Hangul syllables into their components
     function breakHangul(syllable) {
       const syllableCode = syllable.charCodeAt(0) - 0xAC00; // Start from 0xAC00
@@ -84,18 +94,6 @@
       
       return result.trim();
     }
-
-        // Special translations for specific words/phrases (this should be in your own database)
-    const specialTranslations = {
-      '이시바': 'Ishiba',
-      '수상과': 'Prime Minister',
-      '트럼프': 'Trump',
-      '미국': 'U.S.',
-      '대통령': 'president',
-      '과의': 'with',
-      '삼성': 'Samsung',
-      // Add more words and their translations here
-    };
 
     // Function to translate Korean text into English using custom rules
     function translateKoreanToEnglish(hangulText) {
