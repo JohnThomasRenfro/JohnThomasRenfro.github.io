@@ -28,6 +28,7 @@
   <textarea id="hangulInput" placeholder="Paste Hangul text here..."></textarea><br><br>
 
   <button onclick="convertHangul()">Convert</button>
+  <button onclick="translateKoreanToEnglish()">Translate</button>
 
   <h2>Phonetic Output:</h2>
   <div id="result"></div>
@@ -88,6 +89,30 @@
       const phoneticText = hangulToPhonetic(hangulText);
       document.getElementById('result').textContent = phoneticText;
     }
+
+    // Function to translate Korean text into English using Yandex Translate API
+    function translateKoreanToEnglish() {
+      const hangulText = document.getElementById('hangulInput').value;
+      const apiKey = 'YOUR_YANDEX_API_KEY'; // Replace with your Yandex API Key
+      const url = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${apiKey}&text=${encodeURIComponent(hangulText)}&lang=ko-en`;
+
+      // Fetch the translation from the Yandex API
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.text && data.text.length > 0) {
+            const translation = data.text[0];
+            document.getElementById('result').textContent = `Translation: ${translation}`;
+          } else {
+            document.getElementById('result').textContent = 'Translation failed. Please try again.';
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('result').textContent = 'An error occurred. Please try again later.';
+        });
+    }
   </script>
 </body>
 </html>
+
