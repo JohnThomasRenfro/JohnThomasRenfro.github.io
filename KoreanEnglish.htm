@@ -33,13 +33,19 @@
   <div id="result"></div>
 
   <script>
-    // Hangul to English mapping for consonants and vowels
+    // Hangul to English mapping for consonants and vowels (improved pronunciation)
     const hangulToEnglish = {
       'ㄱ': 'g', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd', 'ㄸ': 'tt', 'ㄹ': 'r', 'ㅁ': 'm', 'ㅂ': 'b',
       'ㅃ': 'pp', 'ㅅ': 's', 'ㅆ': 'ss', 'ㅇ': 'ng', 'ㅈ': 'j', 'ㅉ': 'jj', 'ㅊ': 'ch', 'ㅋ': 'k',
-      'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h', 'ㅏ': 'ah', 'ㅐ': 'ae', 'ㅑ': 'yah', 'ㅒ': 'yae', 'ㅓ': 'eo',
-      'ㅔ': 'eh', 'ㅕ': 'yeo', 'ㅖ': 'ye', 'ㅗ': 'oe', 'ㅘ': 'wah', 'ㅙ': 'wae', 'ㅚ': 'oe', 'ㅛ': 'yoe',
-      'ㅜ': 'ue', 'ㅝ': 'wo', 'ㅞ': 'we', 'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅢ': 'ui', 'ㅣ': 'ee'
+      'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h',
+      
+      // Vowels with more accurate romanization
+      'ㅏ': 'ah', 'ㅐ': 'ae', 'ㅑ': 'yah', 'ㅒ': 'yae', 'ㅓ': 'eo', 'ㅔ': 'eh', 'ㅕ': 'yeo', 'ㅖ': 'ye',
+      'ㅗ': 'o', 'ㅘ': 'wa', 'ㅙ': 'wae', 'ㅚ': 'oe', 'ㅛ': 'yo', 'ㅜ': 'u', 'ㅝ': 'wo', 'ㅞ': 'we',
+      'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅢ': 'ui', 'ㅣ': 'ee',
+
+      // Double vowels (more accurate romanization)
+      'ㅏㅣ': 'ai', 'ㅓㅣ': 'ei', 'ㅗㅣ': 'oi', 'ㅜㅣ': 'ui', 'ㅡㅣ': 'ui', 'ㅗㅏ': 'oa', 'ㅜㅏ': 'ua'
     };
 
     // Special translations for specific words/phrases (this should be in your own database)
