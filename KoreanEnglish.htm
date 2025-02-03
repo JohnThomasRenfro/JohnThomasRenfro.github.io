@@ -39,7 +39,7 @@
     </div>
 
     <script>
-        // Mappings for individual Hangul components (Revised Romanization system)
+        // Mappings for Hangul components (Revised Romanization system)
         const initialConsonants = [
             'g', 'n', 'd', 'r', 'm', 'b', 's', 'ng', 'j', 'ch', 'k', 't', 'p', 'h'
         ];
@@ -50,10 +50,10 @@
             '', 'g', 'gg', 'n', 'nj', 'nh', 'd', 'r', 'm', 'b', 'bs', 's', 'ss', 'ng', 'j', 'ch', 'k', 't', 'p', 'h'
         ];
 
-        // Function to decompose a Hangul syllable into its components
+        // Decompose Hangul syllable into its parts: initial, vowel, and final consonant
         function decomposeHangul(syllable) {
             const syllableCode = syllable.charCodeAt(0) - 0xAC00;
-            
+
             if (syllableCode < 0 || syllableCode > 11171) return null; // Not a valid Hangul syllable
             
             const initialIndex = Math.floor(syllableCode / (21 * 28));
@@ -67,7 +67,7 @@
             };
         }
 
-        // Function to convert Hangul syllable to Romanized form
+        // Convert Hangul syllable to Romanized English
         function hangulToEnglish(syllable) {
             const components = decomposeHangul(syllable);
             if (components) {
@@ -76,7 +76,7 @@
             return syllable; // Non-Hangul characters remain unchanged
         }
 
-        // Function to process the input and display the result
+        // Process the input and display the result
         function processInput() {
             const hangulText = document.getElementById('hangulInput').value;
             let englishOutput = '';
