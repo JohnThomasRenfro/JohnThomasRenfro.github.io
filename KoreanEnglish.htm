@@ -42,6 +42,12 @@
       'ㅜ': 'ue', 'ㅝ': 'wo', 'ㅞ': 'we', 'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅢ': 'ui', 'ㅣ': 'ee'
     };
 
+    // Special translations for specific words/phrases
+    const specialTranslations = {
+      '이시바': 'Ishiba',
+      '수상과': 'Prime Minister',
+    };
+
     // Function to break Hangul syllables into their components
     function breakHangul(syllable) {
       const syllableCode = syllable.charCodeAt(0) - 0xAC00; // Start from 0xAC00
@@ -54,12 +60,6 @@
       const vowels = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'];
       const finalConsonants = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
 
-    // Special translations for specific words/phrases
-    const specialTranslations = {
-      '이시바': 'Ishiba',
-      '수상과': 'Prime Minister',
-    };
-      
       const initial = initialConsonants[initialIndex];
       const vowel = vowels[vowelIndex];
       const final = finalConsonants[finalIndex];
@@ -88,34 +88,21 @@
       return result.trim();
     }
 
-    // Function to translate Korean text into English using LibreTranslate API
+    // Function to translate Korean text into English using custom rules
     function translateKoreanToEnglish(hangulText) {
-      const url = `https://libretranslate.de/translate`;
+      const words = hangulText.split(' '); // Split the input text into words
+      let translatedText = '';
 
-      // Make a POST request to the LibreTranslate API
-      return fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          q: hangulText,
-          source: 'ko',
-          target: 'en',
-        }),
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.translatedText) {
-            return data.translatedText; // Return the translation result
-          } else {
-            return 'Translation failed. Please try again.';
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          return 'An error occurred. Please try again later.';
-        });
+      // For each word, use a special translation if available, else return the word as is
+      words.forEach(word => {
+        if (specialTranslations[word]) {
+          translatedText += specialTranslations[word] + ' ';
+        } else {
+          translatedText += word + ' '; // If no special translation, keep the word as is
+        }
+      });
+
+      return translatedText.trim();
     }
 
     // Function to process Hangul (convert + translate) with a single button
@@ -125,8 +112,8 @@
       // Step 1: Convert Hangul to Phonetic Representation
       const phoneticText = hangulToPhonetic(hangulText);
 
-      // Step 2: Translate the whole word to English using LibreTranslate API
-      const translation = await translateKoreanToEnglish(hangulText);
+      // Step 2: Translate the whole word to English using the custom translation function
+      const translation = translateKoreanToEnglish(hangulText);
 
       // Step 3: Combine the results into the desired format
       const finalOutput = phoneticText + '\n\n' + hangulText + ' = ' + translation;
