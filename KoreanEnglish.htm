@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hangul to English Pronunciation</title>
+    <title>Hangul Sound Converter</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,32 +26,35 @@
 </head>
 <body>
 
-    <h1>Hangul to English Pronunciation</h1>
+    <h1>Hangul Sound Converter</h1>
 
     <label for="hangulInput">Paste Hangul text here:</label>
     <textarea id="hangulInput" placeholder="Enter Hangul text..."></textarea>
 
-    <button onclick="processInput()">Translate to English Pronunciation</button>
+    <button onclick="processInput()">Convert to English Sounds</button>
 
     <div id="result">
         <p><strong>Hangul:</strong> <span id="hangulOutput"></span></p>
-        <p><strong>English Pronunciation:</strong> <span id="englishOutput"></span></p>
+        <p><strong>English Sounds:</strong> <span id="englishOutput"></span></p>
     </div>
 
     <script>
-        const hangulToRomanization = {
-            '가': 'ga', '까': 'gga', '나': 'na', '다': 'da', '따': 'tta', '라': 'ra', '마': 'ma', 
-            '바': 'ba', '빠': 'ppa', '사': 'sa', '사': 'sa', '아': 'a', '자': 'ja', '차': 'cha', 
-            '카': 'ka', '타': 'ta', '파': 'pa', '하': 'ha', '거': 'geo', '겨': 'gyeo', '너': 'neo',
-            '더': 'deo', '러': 'reo', '머': 'meo', '버': 'beo', '퍼': 'peo', '서': 'seo', '어': 'eo', 
-            '여': 'yeo', '오': 'o', '요': 'yo', '우': 'u', '수': 'su', '으': 'eu', '이': 'i', 
-            '게': 'ge', '께': 'kke', '네': 'ne', '데': 'de', '레': 're', '메': 'me', '베': 'be', 
-            '세': 'se', '에': 'e', '예': 'ye', '외': 'oe', '와': 'wa', '왜': 'wae', '유': 'yu', 
-            '쯔': 'jjeu', '주': 'ju', '존': 'jon', '잘': 'jal', '제': 'je', '조': 'jo',
-            '샤': 'sya', '샌': 'saen', '쟈': 'jya', '쏘': 'sso', '찌': 'jji', '차': 'cha',
-            '조': 'jo', '잘': 'jal', '참': 'cham', '처': 'cheo', '철': 'cheol', '터': 'teo', 
-            '플': 'peul', '포': 'po', '헬': 'hel', '더': 'de', '배': 'bae', '햐': 'hya',
-            // Include many more syllables as needed here
+        const consonantToSound = {
+            'ㄱ': 'g/k', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd/t', 'ㄸ': 'tt', 'ㄹ': 'r', 'ㅁ': 'm',
+            'ㅂ': 'b/p', 'ㅃ': 'pp', 'ㅅ': 's', 'ㅆ': 'ss', 'ㅇ': '', 'ㅈ': 'j', 'ㅉ': 'jj', 'ㅊ': 'ch'
+        };
+
+        const vowelToSound = {
+            'ㅏ': 'a', 'ㅐ': 'ae', 'ㅑ': 'ya', 'ㅒ': 'yae', 'ㅓ': 'eo', 'ㅔ': 'e', 'ㅕ': 'yeo',
+            'ㅖ': 'ye', 'ㅗ': 'o', 'ㅙ': 'wae', 'ㅛ': 'yo', 'ㅜ': 'u', 'ㅝ': 'wo', 'ㅞ': 'we',
+            'ㅟ': 'wi', 'ㅢ': 'ui', 'ㅡ': 'eu', 'ㅣ': 'i'
+        };
+
+        const hangulToSound = {
+            // This divides syllables into their components
+            '가': 'ga', '각': 'gak', '갂': 'gak', '가': 'ga', '나': 'na', 
+            '다': 'da', '마': 'ma', '바': 'ba', '사': 'sa', '아': 'a',
+            // Include syllables as needed here
         };
 
         function processInput() {
@@ -60,9 +63,12 @@
             let hangulOutput = '';
 
             for (let char of hangulText) {
-                if (hangulToRomanization[char]) {
+                if (isHangul(char)) {
+                    const [initial, vowel, final] = getComponents(char);
                     hangulOutput += char;
-                    englishOutput += hangulToRomanization[char];
+                    englishOutput += (initial ? consonantToSound[initial] : '') + 
+                                    (vowel ? vowelToSound[vowel] : '') + 
+                                    (final ? consonantToSound[final] : '');
                 } else {
                     hangulOutput += char; // Non-Hangul characters remain unchanged
                     englishOutput += char; // Non-Hangul characters also remain unchanged
@@ -71,6 +77,36 @@
 
             document.getElementById('hangulOutput').innerText = hangulOutput;
             document.getElementById('englishOutput').innerText = englishOutput;
+        }
+
+        function isHangul(char) {
+            return char.charCodeAt(0) >= 0xAC00 && char.charCodeAt(0) <= 0xD7A3;
+        }
+
+        function getComponents(syllable) {
+            const syllableCode = syllable.charCodeAt(0) - 0xAC00;
+            const initialIndex = Math.floor(syllableCode / (21 * 28));
+            const vowelIndex = Math.floor((syllableCode % (21 * 28)) / 28);
+            const finalIndex = syllableCode % 28;
+
+            const initials = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ',
+                             'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 
+                             'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 
+                             'ㅌ', 'ㅍ', 'ㅎ'];
+                             
+            const vowels = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 
+                            'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 
+                            'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 
+                            'ㅞ', 'ㅟ', 'ㅡ', 'ㅣ'];
+
+            const finals = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 
+                            'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 
+                            'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 
+                            'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 
+                            'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 
+                            'ㅍ', 'ㅎ'];
+
+            return [initials[initialIndex], vowels[vowelIndex], finals[finalIndex]];
         }
     </script>
 
