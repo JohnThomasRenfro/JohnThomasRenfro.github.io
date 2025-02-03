@@ -82,17 +82,26 @@
       return result.trim();
     }
 
-    // Function to translate Korean text into English using Yandex Translate API
+    // Function to translate Korean text into English using LibreTranslate API
     function translateKoreanToEnglish(hangulText) {
-      const apiKey = 'YOUR_YANDEX_API_KEY'; // Replace with your Yandex API Key
-      const url = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${apiKey}&text=${encodeURIComponent(hangulText)}&lang=ko-en`;
+      const url = `https://libretranslate.de/translate`;
 
-      // Fetch the translation from the Yandex API
-      return fetch(url)
+      // Make a POST request to the LibreTranslate API
+      return fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          q: hangulText,
+          source: 'ko',
+          target: 'en',
+        }),
+      })
         .then(response => response.json())
         .then(data => {
-          if (data.text && data.text.length > 0) {
-            return data.text[0];  // Returning the first translation result
+          if (data.translatedText) {
+            return data.translatedText; // Return the translation result
           } else {
             return 'Translation failed. Please try again.';
           }
@@ -110,7 +119,7 @@
       // Step 1: Convert Hangul to Phonetic Representation
       const phoneticText = hangulToPhonetic(hangulText);
 
-      // Step 2: Translate the whole word to English
+      // Step 2: Translate the whole word to English using LibreTranslate API
       const translation = await translateKoreanToEnglish(hangulText);
 
       // Step 3: Combine the results
@@ -122,5 +131,6 @@
   </script>
 </body>
 </html>
+
 
 
