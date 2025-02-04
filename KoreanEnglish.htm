@@ -4,46 +4,163 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hangul to English Pronunciation & Translation</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    textarea {
-      width: 100%;
-      height: 100px;
-    }
-    #result {
-      white-space: pre-wrap; /* Keep line breaks in text */
-      margin-top: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-    }
-  </style>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #003478; /* Blue background */
+  }
+
+  .container {
+    background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #003478;
+  }
+
+  textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #003478;
+    border-radius: 5px;
+    resize: none;
+    outline: none;
+  }
+
+  textarea:focus {
+    border-color: #c60c30; /* Red border on focus */
+  }
+
+  button {
+    background-color: #003478;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  button:hover {
+    background-color: #c60c30; /* Red button hover */
+  }
+
+  #result {
+    white-space: pre-wrap;
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid #c60c30;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #003478;
+    font-size: 2rem;
+  }
+
+  .flag {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .circle {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 8px solid #003478;
+    margin: 0 10px;
+    position: relative;
+  }
+
+  .circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    background-color: #c60c30; /* Red circle */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+
 </head>
 <body>
-  <h1>Hangul to English Pronunciation & Translation</h1>
+  <div class="container">
+    <!-- Flag Section -->
+    <div class="flag">
+      <div class="circle"></div>
+    </div>
 
-  <textarea id="hangulInput" placeholder="Paste Hangul text here..."></textarea><br><br>
+    <!-- Main Heading -->
+    <h1>Hangul Phonetic Breakdown</h1>
+    
+    <!-- Example Text (optional) -->
+    <h2>Cut and Paste this into the text area below.</h2>
+    <p>쥐스탱 트뤼도 캐나다 총리는 3일(현지 시간) 자신의 소셜네트워크서비스(SNS)를 통해 “방금 트럼프 대통령과 좋은 통화를 했다”며 “(미국이 캐나다에 4일부터 부과하려던) 관세는 양국이 협력하는 동안 최소 30일간 유예될 것”이라고 밝혔다.</p>
 
-  <button onclick="processHangul()">Process</button>
+    <!-- Input Section -->
+    <textarea id="hangulInput" placeholder="Enter Hangul text..."></textarea><br><br>
+    <button onclick="processHangul()">Process</button>
+    
+    <!-- Output Section -->
+    <div id="result"></div>
 
-  <h2>Cut and Paste: 투입은 윤 대통령이 직접 제시한 것으로 나타났다. 검찰은 “윤 </h2>
-  <div id="result"></div>
+
+  </div>
+</body>
 
   <script>
-    // Hangul to English mapping for consonants and vowels (improved pronunciation)
-    const hangulToEnglish = {
-      'ㄱ': 'gk', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd', 'ㄸ': 'tt', 'ㄹ': 'lr', 'ㅁ': 'm', 'ㅂ': 'mb',
-      'ㅃ': 'pp', 'ㅅ': 's', 'ㅆ': 'ss', 'ㅇ': 'ng', 'ㅈ': 'j', 'ㅉ': 'jj', 'ㅊ': 'ch', 'ㅋ': 'k',
-      'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h',
-      
-      // Vowels with more accurate romanization
-      'ㅏ': 'ah', 'ㅐ': 'eh', 'ㅑ': 'yah', 'ㅒ': 'yih', 'ㅓ': 'uh', 'ㅔ': 'eh', 'ㅕ': 'yuh', 'ㅖ': 'yeh',
-      'ㅗ': 'oe', 'ㅘ': 'wah', 'ㅙ': 'wae', 'ㅚ': 'wet', 'ㅛ': 'yoe', 'ㅜ': 'ue', 'ㅝ': 'woe', 'ㅞ': 'wee',
-      'ㅟ': 'wih', 'ㅠ': 'yue', 'ㅡ': 'eu', 'ㅢ': 'wee', 'ㅣ': 'ee',
-    };
+
+const hangulToEnglish = {
+  // Initial Consonants
+  'ㄱ': 'g', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd', 'ㄸ': 'tt', 'ㄹ': 'r', 'ㅁ': 'm', 'ㅂ': 'b', 'ㅃ': 'bb',
+  'ㅅ': 's', 'ㅆ': 'ss', 'ㅇ': 'ng', 'ㅈ': 'j', 'ㅉ': 'jj', 'ㅊ': 'ch', 'ㅋ': 'k', 'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h',
+  
+  // Vowels
+  'ㅏ': 'ah', 'ㅐ': 'eh ah', 'ㅑ': 'ya', 'ㅒ': 'yae', 'ㅓ': 'eo', 'ㅔ': 'e', 'ㅕ': 'yeo', 'ㅖ': 'ye', 'ㅗ': 'oe', 'ㅘ': 'wa',
+  'ㅙ': 'wae', 'ㅚ': 'oe', 'ㅛ': 'yo', 'ㅜ': 'u', 'ㅝ': 'wo', 'ㅞ': 'we', 'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅢ': 'ui',
+  'ㅣ': 'i',
+
+  // Special vowel combinations (diphthongs, etc.)
+  'ㅏㅣ': 'ai', 'ㅓㅣ': 'oi', 'ㅗㅣ': 'oi', 'ㅜㅣ': 'ui', 'ㅢㅣ': 'uui',
+
+  // Final Consonants (받침)
+  '': '', 'ㄱ': 'k', 'ㄲ': 'kk', 'ㄳ': 'ks', 'ㄴ': 'n', 'ㄵ': 'nj', 'ㄶ': 'nh', 'ㄷ': 'd', 'ㄹ': 'l', 'ㄺ': 'lk',
+  'ㄻ': 'lm', 'ㄼ': 'lb', 'ㄽ': 'ls', 'ㄾ': 'lt', 'ㄿ': 'lp', 'ㅁ': 'm', 'ㅂ': 'p', 'ㅃ': 'pp', 'ㅄ': 'ps', 'ㅅ': 's',
+  'ㅆ': 'ss', 'ㅇ': 'ng', 'ㅈ': 't', 'ㅉ': 'jj', 'ㅊ': 'ch', 'ㅋ': 'k', 'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h',
+
+  // Special cases (commonly used words, expressions, and specific characters)
+  '합': 'hap', '의': 'ui', '이': 'i', '가': 'ga', '나': 'na', '다': 'da', '마': 'ma', '바': 'ba', '사': 'sa', '아': 'a',
+  '자': 'ja', '차': 'cha', '카': 'ka', '타': 'ta', '파': 'pa', '하': 'ha', '각': 'gak', '낙': 'nak', '닥': 'dak',
+  '막': 'mak', '박': 'bak', '삭': 'sak', '악': 'ak', '작': 'jak', '착': 'chak', '캡': 'kaep', '탑': 'tap', '팝': 'pap',
+  '합의': 'hap-ui', '서울': 'seoul', '자기': 'jagi', '가족': 'gajok', '고기': 'gogi', '학교': 'hakgyo',
+
+  // Common diphthongs and their combinations
+  'ㅏㅣ': 'ai', 'ㅓㅣ': 'oi', 'ㅗㅣ': 'oi', 'ㅜㅣ': 'wi', 'ㅡㅣ': 'ui',
+  
+  // Add more specific cases as needed
+  '전': 'jeon', '희': 'hui', '진': 'jin', '청': 'cheong', '빵': 'ppang', '여': 'yeo', '려': 'ryeo', '려서': 'ryeo-seo'
+};
+
 
     const specialTranslations = {
 
@@ -59,7 +176,7 @@
 '개성':'nuance of uniqueness) personality, individuality, characteristics',
 '경영':'business) management, adminstration',
 '경영':'business) management, adminstration',
-'계급':'social) class; rank (stronger association with job/wealth)',
+'소셜':'social',
 '계급':'social) class; rank (stronger association with job/wealth)',
 '골탕 먹다':'to suffer a big loss, be cheated (?idiom? eat trouble)',
 '공업':'manufacturing) industry',
@@ -543,7 +660,7 @@
 '부유하다':'to be rich, wealthy',
 '부족하다':'to lack, be lacking, not good enough, deficient, insufficient, inadequate (formal)',
 '부족하다':'to lack, be lacking, not good enough, deficient, insufficient, inadequate (formal)',
-'부탁하다':'to request, ask a favor, ask (someone to do something or entrust someone with something)',
+'것이라고':'it would be',
 '분류하다':'to classify, categorize, sort things into groups (might be more formal situations)',
 '분리하다':'to separate, divide (broader sense of separating things regardless of characterisitcs)',
 '불결하다':'to be unsanitary, filthy, unclean, untouchable, dirty',
@@ -984,7 +1101,7 @@
 '허용되다':'to be allowed, permitted, be approved',
 '협박하다':'to threaten (with a purpose), intimidate, blackmail',
 '호주머니':'pocket (less common)',
-'호주머니':'pocket (less common)',
+'크서비스':'service',
 '호흡하다':'to breathe, (respirate); be in tune with (formal/less common)',
 '호흡하다':'to breathe, (respirate); be in tune with (formal/less common)',
 '혼동하다':'to confuse (a with b), mix up',
@@ -1241,7 +1358,7 @@
 '동물원':'zoo',
 '동시에':'at the same time, simultaneously, at once, concurrently',
 '동아리':'club, society, group',
-'동아리':'club, society, group',
+'통화해':'call',
 '동영상':'video (watched on a computer)',
 '동창회':'alumni meeting, class reunion',
 '되뇌다':'to repeat, say (many times over), always say, keep telling yourself that',
@@ -1433,7 +1550,7 @@
 '설거지':'dishwashing',
 '설레다':'to flutter, vibrate, fidget; be excited',
 '세계적':'being global, worldwide, world-class; (determiner) global, worldwide',
-'세계적':'being global, worldwide, world-class; (determiner) global, worldwide',
+'유예될':'deffered',
 '세우다':'to make something stand, erect; to stop, park, set (up)',
 '세우다':'to make something stand, erect; to stop, park, set (up)',
 '세탁기':'washing machine',
@@ -1468,7 +1585,7 @@
 '스웨터':'sweater',
 '스치다':'to graze, brush (touch lightly); flash across (one\'s mind), flicker',
 '스카프':'scarf (more common)',
-'스카프':'scarf (more common)',
+'밝혔다':'revealed',
 '스케줄':'schedule (general, eng)',
 '스키장':'ski resort',
 '스타일':'style',
@@ -1512,6 +1629,7 @@
 '아무나':'anybody, anyone',
 '아무도':'no one, nobody',
 '아무리':'however (much), no matter how, whatever',
+'트럼프':'Trump',
 '아무튼':'anyway, in any case, anyhow (same as 어쨌든/하여튼)',
 '아쉽다':'to be sorry, sad; lacking (feeling when an opportunity is missed)',
 '아저씨':'mister, middle-aged man, uncle',
@@ -1549,7 +1667,7 @@
 '엉터리':'bullshit, rubbish, nonsense, fake, cheat',
 '엉터리':'bullshit, rubbish, nonsense, fake, cheat',
 '에너지':'energy, power',
-'에너지':'energy, power',
+'네트워':'network',
 '에어컨':'air conditioner',
 '여기다':'to regard (something about a person), consider, think; more come as "to be here"',
 '여러분':'everyone, everybody, ladies and gentlemen',
@@ -1592,7 +1710,7 @@
 '온돌방':'room with the Korean floor heating system',
 '온라인':'online',
 '온종일':'all day long, the whole day (less common)',
-'온종일':'all day long, the whole day (less common)',
+'대응책':'countermeasure',
 '올리다':'to raise, lift up; increase; drive up; offer; achieve, obtain',
 '올림픽':'Olympics',
 '올바로':'honestly, uprightly, properly, be on the right track',
@@ -1737,10 +1855,10 @@
 '죄짓다':'to commit a sin, do sinful things; be guilty',
 '죄책감':'feeling of guilt, guilty conscience',
 '주머니':'pocket; bag, pouch; being full of (person full of)',
-'주머니':'pocket; bag, pouch; being full of (person full of)',
+'캐나다':'Canada',
 '주유소':'gas station',
 '주인공':'main character',
-'주차장':'parking lot, parking garage',
+'총리는':'prime minister',
 '주차장':'parking lot, parking garage',
 '주황색':'orange (color)',
 '줄이다':'to reduce, decrease, cut back',
@@ -2644,7 +2762,7 @@
 '바탕':'foundation (of), basis (of/for); background; nature, innate quality',
 '바탕':'foundation (of), basis (of/for); background; nature, innate quality',
 '박사':'doctor (phd); expert; doctorate degree',
-'박사':'doctor (phd); expert; doctorate degree',
+'양국':'bilateral',
 '박수':'handclapping, applause',
 '반대':'reverse, opposite, contrary; opposition; opposed to, disapprove (of)',
 '반말':'plain speech; (lit. talk down to)',
@@ -2822,7 +2940,8 @@
 '사례':'case, instance, precedent, example (instance of previous occurrence); reward, compensation',
 '사방':'all directions everywhere, 4 sides, all sides',
 '사실':'fact, truth; actually, in fact, to be honest',
-'사실':'fact, truth; actually, in fact, to be honest',
+'마약':'drug',
+'이민':'immigrant',
 '사양':'specification; rejection, declining',
 '사업':'enterprise, business (act of managing a companies activities); work, service, project, activity',
 '사업':'enterprise, business (act of managing a companies activities); work, service, project, activity',
@@ -3291,7 +3410,7 @@
 '요리':'cooking, dish',
 '요일':'day of the week',
 '욕실':'bathroom',
-'욕실':'bathroom',
+'합의':'agreement',
 '욕심':'greed, desire',
 '욕조':'bathtub',
 '용기':'courage (the spirit of bravery), nerve, guts, spunk; container',
@@ -3685,7 +3804,7 @@
 '지금':'now (at this moment)',
 '지도':'map, chart; plan, guidance (on)',
 '지문':'fingerprint; text; stage direction',
-'지방':'local area, region, district, province; fat; countryside',
+'현지':'local',
 '지방':'local area, region, district, province; fat; countryside',
 '지붕':'roof',
 '지붕':'roof',
@@ -4362,11 +4481,14 @@ function translateKoreanToEnglish(hangulText) {
 
 function processHangul() {
   const hangulText = document.getElementById('hangulInput').value.trim();
-  
+
+  // Remove all punctuation characters
+  const cleanedText = hangulText.replace(/[^\w\sㄱ-ㅎㅏ-ㅣ가-힣]/g, "");
+
   let phoneticText = '';
   let translatedText = '';
 
-  const words = hangulText.split(/\s+/);
+  const words = cleanedText.split(/\s+/);
 
   for (let word of words) {
     const translation = translateKoreanToEnglish(word);
@@ -4383,7 +4505,6 @@ function processHangul() {
 
   document.getElementById('result').textContent = finalOutput;
 }
-
 
   </script>
 </body>
