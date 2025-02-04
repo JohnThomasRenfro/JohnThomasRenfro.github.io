@@ -2094,7 +2094,7 @@ const replsB = [
 {p1:/(砕)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xku$2Xdake-be crushed,break down$3X~RuVerb'},
 {p1:/(破)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xyab$2Xure-tear,rip open$3X~RuVerb'},
 {p1:/(禁)(?!X)(じ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkin$2Xji-prohibit,forbid$3X~RuVerb'},
-{p1:/(積)(?!X)(も)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtsu$2Xmo-accumulate,get accumulated$3X~RuVerb'},
+{p1:/(積)(?!X)(も)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtsu$2Xmo-accumulate$3X~RuVerb'},
 {p1:/(空)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xake$2X-empty,clear out$3X~RuVerb'},
 {p1:/(立)(?!X)(て)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtat$2Xe-stand,set up,establish$3X~RuVerb'},
 {p1:/(等)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xhito$2Xshi-equal,same$3X~IAdjective~Noun'},
@@ -3304,6 +3304,7 @@ const replsB = [
 {p1:/(反)(?!X)(撃)(?!X)/g,r1:'$1Xhan$2Xgeki-counterattack~Noun'},
 {p1:/(反)(?!X)(映)(?!X)/g,r1:'$1Xha$2Xnei-reflection~Noun'},
 {p1:/(反)(?!X)(発)(?!X)/g,r1:'$1Xhan$2Xpatsu-backlash~Noun'},
+{p1:/(で)(?!X)(は)(?!X)/g,r1:'$1Xde$2Xwa-well then~Noun'},
 {p1:/(反)(?!X)(省)(?!X)/g,r1:'$1Xhan$2Xsei-reflection,repentance~Noun'},
 {p1:/(反)(?!X)(論)(?!X)/g,r1:'$1Xhan$2Xron-counterargument~Noun'},
 {p1:/(反)(?!X)(転)(?!X)/g,r1:'$1Xhan$2Xten-reversal~Noun'},
@@ -7487,6 +7488,7 @@ const replsB = [
 {p1:/(車)(?!X)/g,r1:'$1X+sya,kuruma-vehicle~Noun'},
 {p1:/(身)(?!X)/g,r1:'$1Xmi-self~Noun'},
 {p1:/(路)(?!X)/g,r1:'$1Xmichi,ji-street~Noun'},
+{p1:/(釧)(?!X)/g,r1:'$1Xkushiro-bracelet~Noun'},
 {p1:/(跡)(?!X)/g,r1:'$1Xato-trace~Noun'},
 {p1:/(足)(?!X)/g,r1:'$1Xashi-leg,foot~Noun'},
 {p1:/(越)(?!X)/g,r1:'$1Xkoshi,etsu-yew~Noun'},
@@ -7732,7 +7734,7 @@ const replsB = [
 {p1:/(点)(?!X)/g,r1:'$1Xten-point,issue~Noun'},
 {p1:/(炎)(?!X)/g,r1:'$1Xhonoo-blaze~Noun'},
 {p1:/(灰)(?!X)/g,r1:'$1Xhai-ashes~Noun'},
-{p1:/(火)(?!X)/g,r1:'$1Xhi-fire,ka,Tuesday~Noun'},
+{p1:/(火)(?!X)/g,r1:'$1Xhi-fire;ka-Tuesday~Noun'},
 {p1:/(灘)(?!X)/g,r1:'$1Xnada-open sea~Noun'},
 {p1:/(瀬)(?!X)/g,r1:'$1Xse,maki-shallows,rapids~Noun'},
 {p1:/(激)(?!X)/g,r1:'$1Xgeki-fierce~Noun'},
@@ -7777,7 +7779,7 @@ const replsB = [
 {p1:/(汁)(?!X)/g,r1:'$1Xshiru-soup~Noun'},
 {p1:/(永)(?!X)/g,r1:'$1Xei-eternal~Noun'},
 {p1:/(氷)(?!X)/g,r1:'$1Xkoori-ice~Noun'},
-{p1:/(水)(?!X)/g,r1:'$1Xmizu-water,mi,sui-Wednesday~Noun'},
+{p1:/(水)(?!X)/g,r1:'$1Xmizu-water;mi,sui-Wednesday~Noun'},
 {p1:/(気)(?!X)/g,r1:'$1Xki-spirit,energy,mood~Noun'},
 {p1:/(氏)(?!X)/g,r1:'$1Xshi-Mr,Ms,Mrs~Noun'},
 {p1:/(毛)(?!X)/g,r1:'$1Xke-hair,wool~Noun'},
@@ -7934,7 +7936,7 @@ const replsB = [
 {p1:/(幕)(?!X)/g,r1:'$1Xmaku-curtain~Noun'},
 {p1:/(幌)(?!X)/g,r1:'$1Xhoro,poro-hood~Noun'},
 {p1:/(幅)(?!X)/g,r1:'$1Xhaba-width,breadth~Noun'},
-{p1:/(帯)(?!X)/g,r1:'$1Xobi-belt,sash/tai-strip~Noun'},
+{p1:/(帯)(?!X)/g,r1:'$1Xobi-belt,sash;tai-strip~Noun'},
 {p1:/(席)(?!X)/g,r1:'$1Xseki-seat,one\'s place~Noun'},
 {p1:/(希)(?!X)/g,r1:'$1XKi-phenomenon~Noun'},
 {p1:/(布)(?!X)/g,r1:'$1Xnuno-cloth~Noun'},
@@ -8093,7 +8095,7 @@ const replsB = [
 {p1:/(南)(?!X)/g,r1:'$1Xminami,mina,nan-south~Noun'},
 {p1:/(半)(?!X)/g,r1:'$1Xhan-half~Noun'},
 {p1:/(千)(?!X)/g,r1:'$1Xsen,chi-thousand~Noun'},
-{p1:/(十)(?!X)/g,r1:'$1Xjyuu,ten~Noun'},
+{p1:/(十)(?!X)/g,r1:'$1Xjyuu,to-ten~Noun'},
 {p1:/(敏)(?!X)/g,r1:'$1Xtoshi-keen~Noun'},
 {p1:/(医)(?!X)/g,r1:'$1Xi-medical~Noun'},	
 {p1:/(区)(?!X)/g,r1:'$1Xku-ward~Noun'},
@@ -8101,7 +8103,7 @@ const replsB = [
 {p1:/(匠)(?!X)/g,r1:'$1Xjyou-craftsperson~Noun'},
 {p1:/(北)(?!X)/g,r1:'$1Xkita,hoku-north~Noun'},
 {p1:/(化)(?!X)/g,r1:'$1Xka-change to~Noun'},
-{p1:/(勝)(?!X)/g,r1:'$1Xsyou,Katsu-wins~Noun'},
+{p1:/(勝)(?!X)/g,r1:'$1Xsyou,katsu,kachi-wins~Noun'},
 {p1:/(務)(?!X)/g,r1:'$1Xmu-duties~Noun'},
 {p1:/(勘)(?!X)/g,r1:'$1Xkan-sense,intuition~Noun'},
 {p1:/(勇)(?!X)/g,r1:'$1Xisa-brave~Noun'},
@@ -8399,7 +8401,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-石破首相は3日の衆院予算委員会で、いわゆる「核のごみ」の最終処分場を北方領土に建設する提案について、原子力発電環境整備機構=NUMOの幹部が「一石三鳥四鳥だ」と発言した問題で陳謝した。
+北海道の十勝地方や釧路地方では記録的な大雪となりました。帯広では53年ぶりに120センチを超える雪が積もりました。また、寒波の襲来で北陸や西日本でもきょう(火)にかけて今シーズン最大の積雪となっています。寒波の影響は週末まで続き、様々な災害が想定されます。あす(水)にかけて冬の嵐は厳しさを増し、西日本でも雪の影響が出てきそうです。
   <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
