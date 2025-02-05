@@ -13,7 +13,7 @@
 </script>
 
 <title>John T.'s Journal</title>
-<link rel="icon" type="image/png" href="https://web.archive.org/web/20231207052643im_/https://johnrenfro2016.github.io/MyFavicon.png">
+<link rel="icon" type="image/png" href="MyFavicon.png">
 <style>
 
 @font-face
@@ -201,7 +201,9 @@ const replsB = [
 {p1:/(連)(?!X)(れ)(?!X)(て)(?!X)(行)(?!X)([かきくけこい])(?!X)/g,r1:'$1X$2Xts$3Xu$4Xretei-take (a person) along$5X~KuVerb'},
 {p1:/(飛)(?!X)(び)(?!X)(上)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xto$3Xb$4Xiaga-fly up,jump up$5X~RuVerb'},
 {p1:/(飛)(?!X)(び)(?!X)(下)(?!X)(り)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xto$3Xb$4Xiori-jump off,jump down$5X~RuVerb'},
-{p1:/(あ)(?!X)(き)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xaki$2Xre$3X-be stunned in disappointment,disbelief$4X~RuVerb'},
+{p1:/(つ)(?!X)(ま)(?!X)(ら)(?!X)(な)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2Xts$3Xu$4Xmarana-boring,dull$5X~IAdjective~Noun'},
+{p1:/(ば)(?!X)(か)(?!X)(ら)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2Xba$3Xk$4Xara-shi,stupid,useless$5X~IAdjective~Noun'},
+{p1:/(や)(?!X)(か)(?!X)(ま)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2Xya$3Xk$4Xama-shi,noisy,clamorous$5X~IAdjective~Noun'},
 
 {p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsen-one-thousand~Noun$2$3$4'},
 {p1:/(1|１)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhyaku-one hundred~Noun$2$3'},
@@ -449,6 +451,7 @@ const replsB = [
 {p1:/(引)(?!X)(き)(?!X)(換)(?!X)(え)(?!X)/g,r1:'$1X$2Xhi$3Xk$4Xikae-exchange~IchidanVerb'},
 {p1:/(引)(?!X)(き)(?!X)(締)(?!X)(め)(?!X)/g,r1:'$1Xhi$2Xki$3Xshi$4Xme-tightening~IchidanVerb'},
 {p1:/(引)(?!X)(っ)(?!X)(越)(?!X)(し)(?!X)/g,r1:'$1X$2Xhi$3Xk$4X-ko-shi,moving~Noun'},
+{p1:/(修)(?!X)(学)(?!X)(旅)(?!X)(行)(?!X)/g,r1:'$1Xsyuu$2Xgaku$3Xryo$4Xkou-school field trip~Noun'},
 {p1:/(当)(?!X)(た)(?!X)(り)(?!X)(前)(?!X)/g,r1:'$1X$2Xat$3Xa$4Xrimae-of course,obvious~Noun'},
 {p1:/(後)(?!X)(ろ)(?!X)(向)(?!X)(き)(?!X)/g,r1:'$1X$2Xus$3Xh$4Xiro-mugi,facing backward~Noun'},
 {p1:/(後)(?!X)(片)(?!X)(付)(?!X)(け)(?!X)/g,r1:'$1X$2Xat$3Xo$4Xkatazuke-cleaning up~Noun'},
@@ -484,7 +487,7 @@ const replsB = [
 {p1:/(焼)(?!X)(き)(?!X)(そ)(?!X)(ば)(?!X)/g,r1:'$1X$2Xya$3Xk$4Xisoba-pan-fried noodles~Noun'},
 {p1:/(生)(?!X)(年)(?!X)(月)(?!X)(日)(?!X)/g,r1:'$1Xsei$2Xnen$3Xgap$4Xpi-date of birth~Noun'},
 {p1:/(産)(?!X)(婦)(?!X)(人)(?!X)(科)(?!X)/g,r1:'$1X$2Xsa$3Xn$4Xfujinka-obstetrics and gynecology~Noun'},
-{p1:/(申)(?!X)(し)(?!X)(込)(?!X)(み)(?!X)/g,r1:'$1X$2Xmo$3Xu$4Xshi-komi,application~Noun'},
+{p1:/(申)(?!X)(し)(?!X)(込)(?!X)(み)(?!X)/g,r1:'$1Xmo$2Xshi$3Xko$4Xmi-application;to fill out~Noun'},
 {p1:/(百)(?!X)(科)(?!X)(事)(?!X)(典)(?!X)/g,r1:'$1X$2Xya$3Xk$4X-ka-ji-ten,encyclopedia~Noun'},
 {p1:/(目)(?!X)(白)(?!X)(押)(?!X)(し)(?!X)/g,r1:'$1X$2Xme$3Xj$4Xiro o-shi,packed up to eyeballs~Noun'},
 {p1:/(目)(?!X)(茶)(?!X)(苦)(?!X)(茶)(?!X)/g,r1:'$1X$2Xme$3Xc$4Xhyakuchya-in a mess,terrible~Noun'},
@@ -521,10 +524,11 @@ const replsB = [
 {p1:/(高)(?!X)(等)(?!X)(学)(?!X)(校)(?!X)/g,r1:'$1X$2Xko$3Xu$4Xtou-gak-kou,high school~Noun'},
 {p1:/(高)(?!X)(速)(?!X)(道)(?!X)(路)(?!X)/g,r1:'$1Xkou$2Xsoku$3Xdou$4Xrou-highway~Noun'},
 
+{p1:/(あ)(?!X)(き)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xaki$2Xre$3X-be stunned in disappointment,disbelief$4X~RuVerb'},
 {p1:/(あ)(?!X)(い)(?!X)(に)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xain$2X$3Xi-unfortunately$4X~KuVerb'},
 {p1:/(あ)(?!X)(ふ)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xafu$2Xre$3X-over flow,flood$4X~RuVerb'},
 {p1:/(い)(?!X)(け)(?!X)(な)(?!X)([いくかさ])(?!X)/g,r1:'$1Xike$2Xna$3X-wrong,must not$4X~IAdjective~Noun'},
-{p1:/(い)(?!X)(た)(?!X)(だ)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xita$2Xda$3X-would like to$4X~KuVerb'},
+{p1:/(い)(?!X)(た)(?!X)(だ)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xi$2Xta$3Xda-would like to$4X~KuVerb'},
 {p1:/(う)(?!X)(つ)(?!X)(む)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xuts$2Xum$3Xu-face downward$4X~KuVerb'},
 {p1:/(う)(?!X)(な)(?!X)(ず)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xuna$2Xzu$3X-nod$4X~KuVerb'},
 {p1:/(う)(?!X)(る)(?!X)(さ)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuru$2Xsa$3X-noisy,annoying,pesky$4X~IAdjective~Noun'},
@@ -533,7 +537,6 @@ const replsB = [
 {p1:/(お)(?!X)(か)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xoka$2Xsh$3Xi-funny,amusing,comical$4X~IAdjective~Noun'},
 {p1:/(お)(?!X)(か)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xoka$2Xsh$3Xi-strange,peculiar,suspicious$4X~IAdjective~Noun'},
 {p1:/(お)(?!X)(だ)(?!X)(て)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xoda$2Xte$3X-flatter$4X~RuVerb'},
-{p1:/(お)(?!X)(や)(?!X)([たちつてとっ])(?!X)/g,r1:'$1Xoya$2X,snack,refreshment$3X~TsuVerb'},
 {p1:/(か)(?!X)(ら)(?!X)(か)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xkar$2Xak$3Xa-make fun of,tease$4X~UVerb'},
 {p1:/(が)(?!X)(ぶ)(?!X)(が)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1Xgab$2Xug$3Xa-(sound of) guzzling$4X~BuVerb'},
 {p1:/(く)(?!X)(す)(?!X)(ぐ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkus$2Xug$3Xu-tickle$4X~RuVerb'},
@@ -542,7 +545,6 @@ const replsB = [
 {p1:/(く)(?!X)(る)(?!X)(く)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkur$2Xuk$3Xu-rou-nd and round,spin$4X~RuVerb'},
 {p1:/(ぐ)(?!X)(る)(?!X)(ぐ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xgur$2Xug$3Xu-rou-nd and round$4X~RuVerb'},
 {p1:/(こ)(?!X)(し)(?!X)(ょ)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xkos$2Xyo$3X-pepper$4X~UVerb'},
-{p1:/(こ)(?!X)(た)(?!X)([たちつてとっ])(?!X)/g,r1:'$1Xko$2Xta-ko-tatsu,heated table with a coverlet$3X~TsuVerb'},
 {p1:/(こ)(?!X)(ぼ)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xko$2Xbor$3Xe-spill,overflow$4X~RuVerb'},
 {p1:/(ご)(?!X)(ち)(?!X)(そ)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xgoc$2Xhi$3Xso-feast,treat$4X~UVerb'},
 {p1:/(ご)(?!X)(ま)(?!X)(か)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xgo$2Xmak$3Xa-deceive,evade$4X~SuVerb'},
@@ -562,7 +564,6 @@ const replsB = [
 {p1:/(つ)(?!X)(な)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtsu$2Xna$3Xga-connect$4X~RuVerb'},
 {p1:/(つ)(?!X)(ぶ)(?!X)(や)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xtsu$2Xbu$3Xya-mutter,murmur$4X~KuVerb'},
 {p1:/(つ)(?!X)(ま)(?!X)(ず)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xtsu$2Xma$3Xzu-stumble,trip$4X~KuVerb'},
-{p1:/(つ)(?!X)(ま)(?!X)(ら)(?!X)(な)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2Xts$3Xu$4Xmarana-boring,dull$5X~IAdjective~Noun'},
 {p1:/(つ)(?!X)(る)(?!X)(つ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtsu$2Xru$3Xtsu-smooth,slippery$4X~RuVerb'},
 {p1:/(と)(?!X)(う)(?!X)(と)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xtou$2Xto$3X-at last,after all$4X~UVerb'},
 {p1:/(と)(?!X)(に)(?!X)(か)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xton$2Xik$3Xa-in any case,anyway$4X~KuVerb'},
@@ -571,7 +572,6 @@ const replsB = [
 {p1:/(な)(?!X)(る)(?!X)(べ)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xnar$2Xu$3Xbe-if possible$4X~KuVerb'},
 {p1:/(ぬ)(?!X)(る)(?!X)(ぬ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xnur$2Xun$3Xu-slimy$4X~RuVerb'},
 {p1:/(の|飲)(?!X)(み)(?!X)(込)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xno$2Xmi$3Xko-gulp down$4X~MuVerb'},
-{p1:/(ば)(?!X)(か)(?!X)(ら)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2Xba$3Xk$4Xara-shi,stupid,useless$5X~IAdjective~Noun'},
 {p1:/(ふ)(?!X)(ざ)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xfuz$2Xak$3Xe-mess around,fool around$4X~RuVerb'},
 {p1:/(ぶ)(?!X)(つ)(?!X)(か)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xbut$2Xsu$3Xka-hit,bump into$4X~RuVerb'},
 {p1:/(ぶ)(?!X)(つ)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xbut$2Xsu$3Xke-bump$4X~RuVerb'},
@@ -584,7 +584,6 @@ const replsB = [
 {p1:/(も)(?!X)(う)(?!X)(か)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmou$2Xka$3X-make a profit,be profitable$4X~RuVerb'},
 {p1:/(も)(?!X)(う)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmou$2Xke$3X-make a profit$4X~RuVerb'},
 {p1:/(も)(?!X)(た)(?!X)(ら)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xmo$2Xta$3Xra-bring about,lead to$4X~SuVerb'},
-{p1:/(や)(?!X)(か)(?!X)(ま)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2Xya$3Xk$4Xama-shi,noisy,clamorous$5X~IAdjective~Noun'},
 {p1:/(や)(?!X)(り)(?!X)(直)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xyar$2Xin$3Xao-do over again$4X~SuVerb'},
 {p1:/(よ)(?!X)(う)(?!X)(や)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xyou$2Xya$3X-at last$4X~KuVerb'},
 {p1:/(よ)(?!X)(ろ)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xyo$2Xro$3Xshi-all right$4X~IAdjective~Noun'},
@@ -674,7 +673,6 @@ const replsB = [
 {p1:/(捕)(?!X)(ま)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtsu$2Xka$3Xmae-arrest,capture$4X~RuVerb'},
 {p1:/(据)(?!X)(え)(?!X)(置)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xsu$2Xe$3Xo-deferment,leave as is$4X~KuVerb'},
 {p1:/(掻)(?!X)(き)(?!X)(回)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xkak$2Xim$3Xawa-stir up,agitate$4X~SuVerb'},
-{p1:/(揺)(?!X)(ら)(?!X)([がぎぐげごい])(?!X)/g,r1:'$1Xyu$2Xra-shake$3X~GuVerb'},
 {p1:/(散)(?!X)(ら)(?!X)(か)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xchi$2Xra$3Xka-scatter,disarrange$4X~SuVerb'},
 {p1:/(散)(?!X)(ら)(?!X)(か)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xchi$2Xra$3Xka-lie scattered about,be in disorder$4X~RuVerb'},
 {p1:/(散)(?!X)(ら)(?!X)(ば)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xchi$2Xra$3Xba-be scattered$4X~RuVerb'},
@@ -756,7 +754,11 @@ const replsB = [
 {p1:/(飛)(?!X)(び)(?!X)(込)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xtob$2Xik$3Xo-dive into$4X~MuVerb'},
 {p1:/(食)(?!X)(い)(?!X)(込)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xku$2Xi$3Xko-cut into$4X~MuVerb'},
 {p1:/(騒)(?!X)(々)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xsouzou$2Xsh$3Xi-noisy,rowdy$4X~IAdjective~Noun'},
-{p1:/(騒)(?!X)(が)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xsawaga$2Xsh$3Xi-noisy$4X~IAdjective~Noun'},  
+{p1:/(騒)(?!X)(が)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xsawaga$2Xsh$3Xi-noisy$4X~IAdjective~Noun'},
+{p1:/(言)(?!X)(葉)(?!X)(遣)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2Xko$3Xtobazuka-wording,language$4X~IAdjective~Noun'},
+{p1:/(話)(?!X)(し)(?!X)(合)(?!X)([いくかさ])(?!X)/g,r1:'$1Xhan$2Xas$3Xhia-talk,discussion$4X~IAdjective~Noun'},
+{p1:/(羨)(?!X)(ま)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xurayama$2Xsh$3Xi-envious,envy$4X~IAdjective~Noun'},
+{p1:/(若)(?!X)(々)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xwakawaka$2Xsh$3Xi-youthful,young-looking$4X~IAdjective~Noun'},  
 
 {p1:/(2|２)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xni$3Xnichi-twenty second day of the month~Noun'},
 {p1:/(2|２)(?!X)(3|３)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xsan$3Xnichi-twenty third day of the month~Noun'},
@@ -792,7 +794,7 @@ const replsB = [
 {p1:/(お)(?!X)(そ)(?!X)(れ)(?!X)/g,r1:'$1Xo$2Xso$3Xre-concern~Noun'},
 {p1:/(お)(?!X)(な)(?!X)(か)(?!X)/g,r1:'$1Xona$2Xka$3X-stomach~Noun'},
 {p1:/(お)(?!X)(ま)(?!X)(け)(?!X)/g,r1:'$1Xoma$2Xke$3X-free gift~Noun'},
-{p1:/(お)(?!X)(よ)(?!X)(そ)(?!X)/g,r1:'$1Xoyo$2Xso$3X-just about~Noun'},
+{p1:/(お)(?!X)(よ)(?!X)(そ)(?!X)/g,r1:'$1Xo$2Xyo$3Xso-just about~Noun'},
 {p1:/(お)(?!X)(ら)(?!X)(ず)(?!X)/g,r1:'$1Xo$2Xra$3Xzu-have the audacity to do~Noun'},
 {p1:/(お)(?!X)(世)(?!X)(辞)(?!X)/g,r1:'$1Xose$2Xji$3X-compliment,flattery~Noun'},
 {p1:/(お)(?!X)(中)(?!X)(元)(?!X)/g,r1:'$1Xo$2Xcyuu$3Xgen-mid-year gift,summer gift~Noun'},
@@ -1676,6 +1678,7 @@ const replsB = [
 {p1:/(３|3)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xsan jyuu$2X$3Xnichi-thirtieth day of the month~Noun'},
 {p1:/(３|3)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xsan jyuu$2Xichi$3Xnichi-thirty-first day of the month~Noun'},
 
+{p1:/(揺)(?!X)(ら)(?!X)([がぎぐげごい])(?!X)/g,r1:'$1Xyu$2Xra-shake$3X~GuVerb'},
 {p1:/(あ)(?!X)(げ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xage$2X-give$3X~RuVerb'},
 {p1:/(あ)(?!X)(た)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xa$2Xta-to be capable of doing$3X~UVerb'},
 {p1:/(う)(?!X)(が)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuga$2X-gargling$3X~IAdjective~Noun'},
@@ -1683,6 +1686,7 @@ const replsB = [
 {p1:/(う)(?!X)(ま)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuma$2X-delicious,tasty$3X~IAdjective~Noun'},
 {p1:/(う)(?!X)(ま)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuma$2X-good at$3X~IAdjective~Noun'},  
 {p1:/(お)(?!X)(ご)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xogo$2X-treat$3X~RuVerb'},
+{p1:/(お)(?!X)(や)(?!X)([たちつてとっ])(?!X)/g,r1:'$1Xoya$2X,snack,refreshment$3X~TsuVerb'},
 {p1:/(お)(?!X)(互)(?!X)([いくかさ])(?!X)/g,r1:'$1Xota$2Xga-each other$3X~IAdjective~Noun'},
 {p1:/(お)(?!X)(仕)(?!X)(舞)(?!X)([いくかさ])(?!X)/g,r1:'$1Xosh$2Xim$3Xa-finished,over$4X~IAdjective~Noun'},
 {p1:/(お)(?!X)(手)(?!X)(伝)(?!X)([いくかさ])(?!X)/g,r1:'$1Xote$2Xts$3Xuda-help$4X~IAdjective~Noun'},
@@ -1697,6 +1701,7 @@ const replsB = [
 {p1:/(き)(?!X)(つ)(?!X)([いくかさ])(?!X)/g,r1:'$1Xkitsu$2X,severe,hard,strict$3X~IAdjective~Noun'},
 {p1:/(き)(?!X)(つ)(?!X)([いくかさ])(?!X)/g,r1:'$1Xkitsu$2X,tight,difficult$3X~IAdjective~Noun'},
 {p1:/(く)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkur$2Xe-be given$3X~RuVerb'},
+{p1:/(こ)(?!X)(た)(?!X)([たちつてとっ])(?!X)/g,r1:'$1Xko$2Xta-ko-tatsu,heated table with a coverlet$3X~TsuVerb'},
 {p1:/(こ)(?!X)(ぼ)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xko$2Xbo-spill$3X~SuVerb'},
 {p1:/(し)(?!X)(つ)(?!X)(こ)(?!X)([いくかさ])(?!X)/g,r1:'$1Xshi$2Xts$3Xuko-persistent$4X~IAdjective~Noun'},
 {p1:/(し)(?!X)(ま)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xshi$2Xma-to bring to a close$3X~UVerb'},
@@ -2112,7 +2117,6 @@ const replsB = [
 {p1:/(縮)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xchiji$2Xme-contract,shorten$3X~RuVerb'},
 {p1:/(罰)(?!X)(す)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xbas$2Xsu-punish$3X~RuVerb'},
 {p1:/(美)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xutsuku$2Xshi-beautiful$3X~IAdjective~Noun'},
-{p1:/(羨)(?!X)(ま)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xurayama$2Xsh$3Xi-envious,envy$4X~IAdjective~Noun'},
 {p1:/(考)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkan$2Xgae-think,consider$3X~RuVerb'},
 {p1:/(耐)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xta$2Xe-withstand$3X~RuVerb'},
 {p1:/(聞)(?!X)(か)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xki$2Xka-tell,read aloud$3X~SuVerb'},
@@ -2123,7 +2127,6 @@ const replsB = [
 {p1:/(膨)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xfuk$2Xure-expand,fill up$3X~RuVerb'},
 {p1:/(自)(?!X)(撮)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xji$2Xdo-selfie$3X~RuVerb '},
 {p1:/(苛)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xiji$2Xme-ill-treat,abuse$3X~RuVerb'},
-{p1:/(若)(?!X)(々)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xwakawaka$2Xsh$3Xi-youthful,young-looking$4X~IAdjective~Noun'},
 {p1:/(苦)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xkuru$2Xshi-painful,difficult$3X~IAdjective~Noun'},
 {p1:/(苦)(?!X)(し)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xkuru$2Xshi-suffer,be troubled$3X~MuVerb'},
 {p1:/(荒)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xare$2X-be wild,run waste$3X~RuVerb'},
@@ -2158,7 +2161,6 @@ const replsB = [
 {p1:/(親)(?!X)(し)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xshita$2Xshi-get close to,get familiar with$3X~MuVerb'},
 {p1:/(解)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtok$2Xe-solve,resolve$3X~RuVerb'},
 {p1:/(触)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xfur$2Xe-touch$3X~RuVerb'},
-{p1:/(言)(?!X)(葉)(?!X)(遣)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2Xko$3Xtobazuka-wording,language$4X~IAdjective~Noun'},
 {p1:/(訪)(?!X)(ね)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtazu$2Xne-visit,call on$3X~RuVerb'},
 {p1:/(訪)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xotozu$2Xre-visit,call on$3X~RuVerb'},
 {p1:/(設)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmou$2Xke-set up$3X~RuVerb'},
@@ -2167,7 +2169,6 @@ const replsB = [
 {p1:/(詫)(?!X)(び)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xwab$2Xi-apologize$3X~RuVerb'},
 {p1:/(詰)(?!X)(ま)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtsu$2Xma-be stopped up$3X~RuVerb'},
 {p1:/(詰)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtsu$2Xme-stuff,fill$3X~RuVerb'},
-{p1:/(話)(?!X)(し)(?!X)(合)(?!X)([いくかさ])(?!X)/g,r1:'$1Xhan$2Xas$3Xhia-talk,discussion$4X~IAdjective~Noun'},
 {p1:/(詳)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xkuwa$2Xshi-complete details$3X~IAdjective~Noun'},
 {p1:/(認)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmito$2Xme-approve$3X~RuVerb'},
 {p1:/(調)(?!X)(べ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xshira$2Xbe-research$3X~RuVerb'},
@@ -2293,7 +2294,7 @@ const replsB = [
 {p1:/(え)(?!X)(び)(?!X)/g,r1:'$1X$2Xbi-lobster,shrimp~Noun'},
 {p1:/(お)(?!X)(じ)(?!X)/g,r1:'$1Xo$2Xji-uncle~Noun'},
 {p1:/(お)(?!X)(ば)(?!X)/g,r1:'$1Xo$2X-baaunt~Noun'},
-{p1:/(お)(?!X)(り)(?!X)/g,r1:'$1Xo$2Xri-opportunity to do~Verb'},
+{p1:/(お)(?!X)(り)(?!X)/g,r1:'$1Xo$2Xri-guide;opportunity to do~Verb'},
 {p1:/(お)(?!X)(前)(?!X)/g,r1:'$1Xoma$2Xe-you,darling~Noun'},
 {p1:/(お)(?!X)(宅)(?!X)/g,r1:'$1Xo$2Xtaku-your home,you,fan,geek~Noun'},
 {p1:/(お)(?!X)(礼)(?!X)/g,r1:'$1Xo$2Xrei-thanks,reward,return present~Noun'},
@@ -2462,6 +2463,9 @@ const replsB = [
 {p1:/(下)(?!X)(痢)(?!X)/g,r1:'$1Xge$2Xri-diarrhea~Noun'},
 {p1:/(下)(?!X)(着)(?!X)/g,r1:'$1Xshita$2Xgi-underwear~Noun'},
 {p1:/(下)(?!X)(落)(?!X)/g,r1:'$1Xge$2Xraku-plummet~Noun'},
+{p1:/(共)(?!X)(済)(?!X)/g,r1:'$1Xkyou$2Xsai-mutual aid~Noun'},
+{p1:/(ご)(?!X)(覧)(?!X)/g,r1:'$1Xgo$2Xran-have a look~Noun'},
+{p1:/(約)(?!X)(款)(?!X)/g,r1:'$1Xyak$2Xkan-agreement~Noun'},
 {p1:/(下)(?!X)(車)(?!X)/g,r1:'$1Xge$2Xsya-get off,stopover~Noun'},
 {p1:/(下)(?!X)(車)(?!X)/g,r1:'$1Xge$2Xsya-getting out of a vehicle~Noun'},
 {p1:/(下)(?!X)(院)(?!X)/g,r1:'$1Xka$2Xin-lower house of government~Noun'},
@@ -2901,7 +2905,9 @@ const replsB = [
 {p1:/(先)(?!X)(行)(?!X)/g,r1:'$1Xsen$2Xkou-preceding~Noun'},
 {p1:/(先)(?!X)(輩)(?!X)/g,r1:'$1Xsen$2Xpai-senior~Noun'},
 {p1:/(先)(?!X)(週)(?!X)/g,r1:'$1Xsen$2Xsyuu~last week~Noun'},
+{p1:/(区)(?!X)(民)(?!X)/g,r1:'$1Xku$2Xmin-ward residents~Noun'},
 {p1:/(先)(?!X)(進)(?!X)/g,r1:'$1Xsen$2Xshin-developing~Noun'},
+{p1:/(区)(?!X)(立)(?!X)/g,r1:'$1Xku$2Xritsu-ward established~Noun'},
 {p1:/(先)(?!X)(頭)(?!X)/g,r1:'$1Xsen$2Xtou-forefront~Noun'},
 {p1:/(克)(?!X)(服)(?!X)/g,r1:'$1Xkoku$2Xfuku-beat an illness~Noun'},
 {p1:/(免)(?!X)(れ)(?!X)/g,r1:'$1Xmanuga$2Xre-rescued from~IchidanVerb'},
@@ -3682,6 +3688,7 @@ const replsB = [
 {p1:/(太)(?!X)(陽)(?!X)/g,r1:'$1Xtai$2Xyou-sun~Noun'},
 {p1:/(夫)(?!X)(人)(?!X)/g,r1:'$1Xfu$2Xjin-wife~Noun'},
 {p1:/(夫)(?!X)(妻)(?!X)/g,r1:'$1Xfu$2Xsai-husband and wife~Noun'},
+{p1:/(償)(?!X)(化)(?!X)/g,r1:'$1Xsyou$2Xka-expense~Noun'},
 {p1:/(夫)(?!X)(婦)(?!X)/g,r1:'$1Xfuu$2Xfu-married couple~Noun'},
 {p1:/(失)(?!X)(恋)(?!X)/g,r1:'$1Xshitsu$2Xren-broken heart~Noun'},
 {p1:/(失)(?!X)(敗)(?!X)/g,r1:'$1Xship$2Xpai-mistake~Noun'},
@@ -4670,6 +4677,8 @@ const replsB = [
 {p1:/(月)(?!X)(給)(?!X)/g,r1:'$1Xgek$2Xkyuu-monthly salary~Noun'},
 {p1:/(月)(?!X)(見)(?!X)/g,r1:'$1Xtsu$2Xkimi-moon viewing~Noun'},
 {p1:/(月)(?!X)(謝)(?!X)/g,r1:'$1Xges$2Xsya-monthly fee~Noun'},
+{p1:/(月)(?!X)(謝)(?!X)/g,r1:'$1Xges$2Xsya-monthly fee~Noun'},
+{p1:/(事)(?!X)(項)(?!X)/g,r1:'$1Xji$2Xkou-matter~Noun'},
 {p1:/(月)(?!X)(額)(?!X)/g,r1:'$1Xgetsu$2Xgaku-monthly sum~Noun'},
 {p1:/(有)(?!X)(事)(?!X)/g,r1:'$1Xyuu$2Xji-emergency~Noun'},
 {p1:/(有)(?!X)(人)(?!X)/g,r1:'$1Xyuu$2Xjin-piloted~Noun'},
@@ -4697,6 +4706,7 @@ const replsB = [
 {p1:/(朝)(?!X)(鮮)(?!X)/g,r1:'$1Xcyou$2Xsen-Korea~Noun'},
 {p1:/(期)(?!X)(待)(?!X)/g,r1:'$1Xki$2Xtai-expectation~Noun'},
 {p1:/(期)(?!X)(日)(?!X)/g,r1:'$1Xki$2Xjitsu-due date~Noun'},
+{p1:/(修)(?!X)(学)(?!X)/g,r1:'$1Xsyuu$2Xgaku-learning~Noun'},
 {p1:/(期)(?!X)(間)(?!X)/g,r1:'$1Xki$2Xkan-term,period~Noun'},
 {p1:/(期)(?!X)(限)(?!X)/g,r1:'$1Xki$2Xgen-limited time~Noun'},
 {p1:/(木)(?!X)(綿)(?!X)/g,r1:'$1Xmom$2Xen-cotton~Noun'},
@@ -5830,6 +5840,8 @@ const replsB = [
 {p1:/(興)(?!X)(奮)(?!X)/g,r1:'$1Xkou$2Xfun-excitement~Noun'},
 {p1:/(興)(?!X)(行)(?!X)/g,r1:'$1Xkou$2Xgyou-performance~Noun'},
 {p1:/(舞)(?!X)(台)(?!X)/g,r1:'$1Xbu$2Xtai-stage~Noun'},
+{p1:/(媒)(?!X)(体)(?!X)/g,r1:'$1Xbai$2Xtai-medium~Noun'},
+{p1:/(計)(?!X)(上)(?!X)/g,r1:'$1Xkei$2Xjou-including all costs~Noun'},
 {p1:/(航)(?!X)(空)(?!X)/g,r1:'$1Xkou$2Xkuu-aviation~Noun'},
 {p1:/(航)(?!X)(行)(?!X)/g,r1:'$1Xkou$2Xkou-ship course navigation~Noun'},
 {p1:/(船)(?!X)(便)(?!X)/g,r1:'$1Xfuna$2Xbin-surface mail,shipping service~Noun'},
@@ -7401,6 +7413,7 @@ const replsB = [
 {p1:/(題)(?!X)/g,r1:'$1Xdai-title,topic~Noun'},
 {p1:/(頭)(?!X)/g,r1:'$1Xatama-head~Noun'},
 {p1:/(頬)(?!X)/g,r1:'$1Xhoocheek~Noun'},
+{p1:/(泊)(?!X)/g,r1:'$1Xhaku-nights~Noun'},
 {p1:/(領)(?!X)/g,r1:'$1Xeri-collar~Noun'},
 {p1:/(順)(?!X)/g,r1:'$1Xjyun-order,sequence~Noun'},
 {p1:/(頃)(?!X)/g,r1:'$1Xkoro,goro-time~Noun'},
@@ -7463,6 +7476,8 @@ const replsB = [
 {p1:/(量)(?!X)/g,r1:'$1Xryou-quantity~Noun'},
 {p1:/(野)(?!X)/g,r1:'$1Xno-field~Noun'},
 {p1:/(重)(?!X)/g,r1:'$1Xjyuu-serious~Noun'},
+{p1:/(具)(?!X)/g,r1:'$1Xgu-tools~Noun'},
+{p1:/(学)(?!X)/g,r1:'$1Xgaku-school~Noun'},
 {p1:/(酸)(?!X)/g,r1:'$1Xsan-acid~Noun'},
 {p1:/(酷)(?!X)/g,r1:'$1Xkoku-severe~Noun'},
 {p1:/(酢)(?!X)/g,r1:'$1Xsu-vinegar~Noun'},
@@ -8189,6 +8204,7 @@ const replsB = [
 {p1:/(亜)(?!X)/g,r1:'$1XA-Asia~Noun'},
 {p1:/(井)(?!X)/g,r1:'$1XI-well~Noun'},
 {p1:/(事)(?!X)/g,r1:'$1Xkoto-thing~Noun'},
+{p1:/(読)(?!X)/g,r1:'$1Xyomi-reading~Noun'},
 {p1:/(亀)(?!X)/g,r1:'$1Xkame-turtle,tortoise~Noun'},
 {p1:/(也)(?!X)/g,r1:'$1Xya-classic~Noun'},
 {p1:/(格)(?!X)/g,r1:'$1Xkaku-rank~Noun'},	
@@ -8292,6 +8308,7 @@ const replsB = [
 {p1:/(Verbや|Nounや)(?!X)/g,r1:'$1Xya-and,comma~Postposition~Noun'},
 {p1:/(Verbよ)(?!X)/g,r1:'$1Xyo-exclamation~Noun'},
 {p1:/(Nounと)(?!X)/g,r1:'$1Xto-the person said~Postposition'},
+{p1:/(IAdjectiveく)(?!X)/g,r1:'$1Xku-and~Noun'},
 
 {p1:/(Postpositionの|Verbの|Nounの)(?!X)/g,r1:'$1Xno-of~Postposition~Noun'},
 
@@ -8393,7 +8410,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 
 }
 
-</script><script type="text/javascript" src="JapaneseEnglish_files/popup.js" async=""></script><script type="text/javascript" src="JapaneseEnglish_files/tat_popup.js" async=""></script></head>
+</script></head>
 
 <body>
 <div class="TheStripe">John's Journal</div>
@@ -8401,7 +8418,11 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="HeaderStyle">Studying Japanese Language</div>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
 <p>
-北海道の十勝地方や釧路地方では記録的な大雪となりました。帯広では53年ぶりに120センチを超える雪が積もりました。また、寒波の襲来で北陸や西日本でもきょう(火)にかけて今シーズン最大の積雪となっています。寒波の影響は週末まで続き、様々な災害が想定されます。あす(水)にかけて冬の嵐は厳しさを増し、西日本でも雪の影響が出てきそうです。
+ご加入にあたっての重要な事項を説明している「制度のご案内」「ご加入のしおり」「共済事業約款」は以下よりご覧いただけます。
+
+・制度のご案内ご加入にあたっての重要な事項を説明しています。お申し込みの前に必ずご一読、ご確認ください。
+・ご加入のしおり共済制度の内容についてわかりやすく説明しています。ご加入後、共済加入証書とともにお送りしています。
+・共済事業約款ご加入いただく共済の契約内容です。Source: The Tomin Kyosai Life Insurance Website. You have to have this type of insurance in Japan and report it on your taxes.
   <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
