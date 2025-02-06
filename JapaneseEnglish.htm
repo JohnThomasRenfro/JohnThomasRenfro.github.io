@@ -263,6 +263,7 @@ const replsB = [
 {p1:/(か)(?!X)(ち)(?!X)(か)(?!X)(ち)(?!X)/g,r1:'$1X$2Xha$3Xr$4Xd-solid~Noun'},
 {p1:/(か)(?!X)(ど)(?!X)(う)(?!X)(か)(?!X)/g,r1:'$1Xka$2Xdo$3Xu$4Xka-whether or not~Noun'},
 {p1:/(か)(?!X)(ぼ)(?!X)(ち)(?!X)(ゃ)(?!X)/g,r1:'$1X$2Xpu$3Xm$4Xpkin~Noun'},
+{p1:/(耐)(?!X)(用)(?!X)(年)(?!X)(数)(?!X)/g,r1:'$1Xtai$2Xyou$3Xnen$4Xsu-machine service life~Noun'},
 {p1:/(か)(?!X)(み)(?!X)(そ)(?!X)(り)(?!X)/g,r1:'$1X$2Xra$3Xz$4Xor~Noun'},
 {p1:/(か)(?!X)(も)(?!X)(し)(?!X)(れ)(?!X)/g,r1:'$1Xka$2Xmo$3Xshi$4Xre-might~IchidanVerb'},
 {p1:/(か)(?!X)(ら)(?!X)(か)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xra$3Xka$4Xra-thirsty-dry~Noun'},
@@ -824,6 +825,8 @@ const replsB = [
 {p1:/(こ)(?!X)(の)(?!X)(頃)(?!X)/g,r1:'$1Xkon$2Xog$3Xoro-now,these days,recently~Noun'},
 {p1:/(こ)(?!X)(れ)(?!X)(ら)(?!X)/g,r1:'$1Xkor$2Xe$3Xra-these~Noun'},
 {p1:/(こ)(?!X)(ん)(?!X)(な)(?!X)/g,r1:'$1Xko$2Xn$3Xna-this kind of~Noun'},
+{p1:/(引)(?!X)(当)(?!X)(金)(?!X)/g,r1:'$1Xhiki$2Xate$3Xkin-provisions~Noun'},
+{p1:/(専)(?!X)(従)(?!X)(者)(?!X)/g,r1:'$1Xsen$2Xjyuu$3Xsya-full time worker~Noun'},
 {p1:/(ご)(?!X)(主)(?!X)(人)(?!X)/g,r1:'$1Xgosyu$2Xji$3Xn-(your) husband~Noun'},
 {p1:/(ご)(?!X)(存)(?!X)(じ)(?!X)/g,r1:'$1Xgoz$2Xon$3Xji-know~Noun'},
 {p1:/(さ)(?!X)(っ)(?!X)(き)(?!X)/g,r1:'$1Xsak$2Xki$3X-some time ago,only a moment ago~Noun'},
@@ -849,7 +852,7 @@ const replsB = [
 {p1:/(そ)(?!X)(ば)(?!X)(屋)(?!X)/g,r1:'$1Xso$2Xba$3Xya-soba restaurant~Noun'},
 {p1:/(そ)(?!X)(ん)(?!X)(な)(?!X)/g,r1:'$1Xso$2Xn$3Xna-that kind of~Noun'},
 {p1:/(た)(?!X)(っ)(?!X)(た)(?!X)/g,r1:'$1Xtat$2Xta$3X-only,merely~Noun'},
-{p1:/(た)(?!X)(と)(?!X)(え)(?!X)/g,r1:'$1X$2Xta$3Xtoe-even if,granting that~Noun'},
+{p1:/(た)(?!X)(と)(?!X)(え)(?!X)/g,r1:'$1Xta$2Xto$3Xe-even if~Noun'},
 {p1:/(た)(?!X)(ば)(?!X)(こ)(?!X)/g,r1:'$1Xta$2Xba$3Xko-tobacco,cigarette~Noun'},
 {p1:/(た)(?!X)(ま)(?!X)(に)(?!X)/g,r1:'$1Xta$2Xman$3Xi-occasionally,by chance~Noun'},
 {p1:/(だ)(?!X)(か)(?!X)(ら)(?!X)/g,r1:'$1Xda$2Xka$3Xra-so~Noun'},
@@ -1326,7 +1329,7 @@ const replsB = [
 {p1:/(昼)(?!X)(休)(?!X)(み)(?!X)/g,r1:'$1Xhir$2Xuy$3Xasumi-noon recess,lunch break~Noun'},
 {p1:/(昼)(?!X)(過)(?!X)(ぎ)(?!X)/g,r1:'$1Xhiru$2Xsu$3Xgi-early afternoon~Noun'},
 {p1:/(暮)(?!X)(ら)(?!X)(し)(?!X)/g,r1:'$1Xku$2Xra$3Xshi-living~Noun'},
-{p1:/(書)(?!X)(き)(?!X)(方)(?!X)/g,r1:'$1Xkaki$2Xka$3Xta-how to write,way of writing~Noun'},
+{p1:/(書)(?!X)(き)(?!X)(方)(?!X)/g,r1:'$1Xka$2Xki$3Xkata-how to write~Noun'},
 {p1:/(最)(?!X)(先)(?!X)(端)(?!X)/g,r1:'$1Xsai$2Xse$3Xntan-cutting edge,forefront~Noun'},
 {p1:/(月)(?!X)(初)(?!X)(め)(?!X)/g,r1:'$1Xtsu$2Xki$3Xhajime-at beginning of the month~Noun'},
 {p1:/(月)(?!X)(曜)(?!X)(日)(?!X)/g,r1:'$1Xgetsu$2Xyou$3Xbi-Monday~Noun'},
@@ -1449,6 +1452,7 @@ const replsB = [
 {p1:/(留)(?!X)(学)(?!X)(生)(?!X)/g,r1:'$1Xryuu$2Xgaku$3Xsei-student studying abroad~Noun'},
 {p1:/(留)(?!X)(守)(?!X)(番)(?!X)/g,r1:'$1Xrusu$2Xba$3Xn-caretaking,caretaker~Noun'},
 {p1:/(留)(?!X)(置)(?!X)(場)(?!X)/g,r1:'$1Xryuu$2Xchi$3Xjyou-jail cell~Noun'},
+{p1:/(売)(?!X)(掛)(?!X)(金)(?!X)/g,r1:'$1Xuri$2Xkake$3Xkin-accounts receivable~Noun'},
 {p1:/(発)(?!X)(電)(?!X)(所)(?!X)/g,r1:'$1Xhatsu$2Xden$3Xsho-power plant~Noun'},
 {p1:/(百)(?!X)(貨)(?!X)(店)(?!X)/g,r1:'$1Xhyak$2Xka$3Xten-department store~Noun'},
 {p1:/(百)(?!X)(貨)(?!X)(店)(?!X)/g,r1:'$1Xhyak$2Xka$3Xten-department store~Noun'},
@@ -1636,6 +1640,7 @@ const replsB = [
 {p1:/(順)(?!X)(々)(?!X)(に)(?!X)/g,r1:'$1Xjyun$2Xjy$3Xunni-by turns,in order~Noun'},
 {p1:/(領)(?!X)(事)(?!X)(館)(?!X)/g,r1:'$1Xryou$2Xji$3Xkan-consulate~Noun'},
 {p1:/(領)(?!X)(収)(?!X)(書)(?!X)/g,r1:'$1Xryou$2Xsy$3Xuusyo-receipt,voucher~Noun'},
+{p1:/(手)(?!X)(引)(?!X)(き)(?!X)/g,r1:'$1Xte$2Xhi$3Xki-guidance~Noun'},
 {p1:/(頻)(?!X)(り)(?!X)(に)(?!X)/g,r1:'$1Xshi$2Xki$3Xrini-frequently,repeatedly~Noun'},
 {p1:/(顔)(?!X)(つ)(?!X)(き)(?!X)/g,r1:'$1Xkao$2Xtsu$3Xki-facial features~Noun'},
 {p1:/(顔)(?!X)(付)(?!X)(き)(?!X)/g,r1:'$1Xkao$2Xts$3Xuki-face,expression~Noun'},
@@ -2519,9 +2524,11 @@ const replsB = [
 {p1:/(中)(?!X)(古)(?!X)/g,r1:'$1Xcyuu$2Xko-second-hand,used~Noun'},
 {p1:/(中)(?!X)(国)(?!X)/g,r1:'$1Xcyuu$2Xgoku-China~Noun'},
 {p1:/(中)(?!X)(央)(?!X)/g,r1:'$1Xcyuu$2Xou-central~Noun'},
+{p1:/(原)(?!X)(価)(?!X)/g,r1:'$1Xgen$2Xka-price at cost~Noun'},
 {p1:/(中)(?!X)(学)(?!X)/g,r1:'$1Xcyuu$2Xgaku-junior high school~Noun'},
 {p1:/(中)(?!X)(小)(?!X)/g,r1:'$1Xcyuu$2Xsyou-medium and small~Noun'},
 {p1:/(中)(?!X)(年)(?!X)/g,r1:'$1Xcyuu$2Xnen-middle age~Noun'},
+{p1:/(貸)(?!X)(倒)(?!X)/g,r1:'$1Xkashi$2Xdaore-irrecoverable debt~Noun'},
 {p1:/(中)(?!X)(心)(?!X)/g,r1:'$1Xcyuu$2Xshin-center~Noun'},
 {p1:/(中)(?!X)(指)(?!X)/g,r1:'$1Xna$2Xkayubi-middle finger~Noun'},
 {p1:/(中)(?!X)(断)(?!X)/g,r1:'$1Xcyuu$2Xdan-interruption~Noun'},
@@ -3563,6 +3570,7 @@ const replsB = [
 {p1:/(基)(?!X)(準)(?!X)/g,r1:'$1Xki$2Xjyun-standard~Noun'},
 {p1:/(基)(?!X)(盤)(?!X)/g,r1:'$1Xki$2Xban-basis~Noun'},
 {p1:/(基)(?!X)(礎)(?!X)/g,r1:'$1Xki$2Xso-basis~Noun'},
+{p1:/(割)(?!X)(引)(?!X)/g,r1:'$1Xwari$2Xbiki-discount~Noun'},
 {p1:/(堂)(?!X)(々)(?!X)/g,r1:'$1Xdou$2Xdou-impressive~Noun'},
 {p1:/(堅)(?!X)(持)(?!X)/g,r1:'$1Xken$2Xji-sticking to~Noun'},
 {p1:/(堅)(?!X)(調)(?!X)/g,r1:'$1Xken$2Xcyou;bullish,strong~Noun'},
@@ -4230,6 +4238,8 @@ const replsB = [
 {p1:/(戦)(?!X)(力)(?!X)/g,r1:'$1Xsen$2Xryoku-military strength~Noun'},
 {p1:/(戦)(?!X)(勝)(?!X)/g,r1:'$1Xsen$2Xsyou-winning a war~Noun'},
 {p1:/(戦)(?!X)(場)(?!X)/g,r1:'$1Xsen$2Xjyou-battlefield,front~Noun'},
+{p1:/(下)(?!X)(記)(?!X)/g,r1:'$1Xka$2Xki-the following;as follows~Noun'},
+{p1:/(貸)(?!X)(借)(?!X)/g,r1:'$1Xtai$2Xsyaku-debit and credit~Noun'},
 {p1:/(戦)(?!X)(後)(?!X)/g,r1:'$1Xsen$2Xgo-postwar period~Noun'},
 {p1:/(戦)(?!X)(死)(?!X)/g,r1:'$1Xsen$2Xshi-death in war~Noun'},
 {p1:/(戦)(?!X)(況)(?!X)/g,r1:'$1Xsen$2Xkyou-war situation~Noun'},
@@ -4315,8 +4325,10 @@ const replsB = [
 {p1:/(拠)(?!X)(点)(?!X)/g,r1:'$1Xkyo$2Xten-position~Noun'},
 {p1:/(拡)(?!X)(充)(?!X)/g,r1:'$1Xkaku$2Xjyuu-expand~Noun'},
 {p1:/(拡)(?!X)(大)(?!X)/g,r1:'$1Xkaku$2Xdai-spread~Noun'},
+{p1:/(手)(?!X)(順)(?!X)/g,r1:'$1Xte$2Xjyun-proceedure~Noun'},
 {p1:/(拡)(?!X)(張)(?!X)/g,r1:'$1Xkaku$2Xcyou-expansion,extension~Noun'},
 {p1:/(拡)(?!X)(散)(?!X)/g,r1:'$1Xkaku$2Xsan-spread~Noun'},
+{p1:/(令)(?!X)(和)(?!X)/g,r1:'$1Xrei$2Xwa-Reiwa Era,twenty nineteen to now-~Noun'},
 {p1:/(括)(?!X)(弧)(?!X)/g,r1:'$1Xkak$2Xko-parentheses,brackets~Noun'},
 {p1:/(拮)(?!X)(抗)(?!X)/g,r1:'$1Xkik$2Xkou~rivalry~Noun'},
 {p1:/(拳)(?!X)(銃)(?!X)/g,r1:'$1Xken$2Xjyuu-pistol~Noun'},
@@ -5292,7 +5304,8 @@ const replsB = [
 {p1:/(理)(?!X)(解)(?!X)/g,r1:'$1Xri$2Xkai-comprehension~Noun'},
 {p1:/(環)(?!X)(境)(?!X)/g,r1:'$1Xkan$2Xkyou-environment~Noun'},
 {p1:/(甚)(?!X)(大)(?!X)/g,r1:'$1Xjin$2Xdai-enormous~Noun'},
-{p1:/(生)(?!X)(じ)(?!X)/g,r1:'$1Xsyou$2Xji-cause~IchidanVerb'},
+{p1:/(償)(?!X)(却)(?!X)/g,r1:'$1Xsyou$2Xkyaku-depreciation~Noun'},
+{p1:/(減)(?!X)(価)(?!X)/g,r1:'$1Xgen$2Xka-price reduction~Noun'},
 {p1:/(生)(?!X)(じ)(?!X)/g,r1:'$1Xsyou$2Xji-cause~IchidanVerb'},
 {p1:/(生)(?!X)(命)(?!X)/g,r1:'$1Xsei$2Xmei-life~Noun'},
 {p1:/(生)(?!X)(存)(?!X)/g,r1:'$1Xsei$2Xzon-existence,survival~Noun'},
@@ -5307,6 +5320,7 @@ const replsB = [
 {p1:/(生)(?!X)(還)(?!X)/g,r1:'$1Xsei$2Xkan-coming back to life~Noun'},
 {p1:/(産)(?!X)(地)(?!X)/g,r1:'$1Xsan$2Xchi-production center~Noun'},
 {p1:/(産)(?!X)(業)(?!X)/g,r1:'$1Xsan$2Xgyou-industry~Noun'},
+{p1:/(日)(?!X)(付)(?!X)/g,r1:'$1Xhi$2Xzuke-put a date on~Noun'},
 {p1:/(用)(?!X)(い)(?!X)/g,r1:'$1Xmochi$2Xi-utilize~IchidanVerb'},
 {p1:/(用)(?!X)(事)(?!X)/g,r1:'$1Xyou$2Xji-errand~Noun'},
 {p1:/(用)(?!X)(件)(?!X)/g,r1:'$1Xyou$2Xken-matter,things to be done~Noun'},
@@ -5510,7 +5524,7 @@ const replsB = [
 {p1:/(確)(?!X)(か)(?!X)/g,r1:'$1Xta$2Xshika-for sure~Noun'},
 {p1:/(確)(?!X)(保)(?!X)/g,r1:'$1Xkaku$2Xho-guarantee~Noun'},
 {p1:/(確)(?!X)(信)(?!X)/g,r1:'$1Xkaku$2Xshin-firm conviction~Noun'},
-{p1:/(確)(?!X)(定)(?!X)/g,r1:'$1Xkaku$2Xtei-decision~Noun'},
+{p1:/(確)(?!X)(定)(?!X)/g,r1:'$1Xkaku$2Xtei-final decision~Noun'},
 {p1:/(確)(?!X)(実)(?!X)/g,r1:'$1Xkaku$2Xjitsu-certain~Noun'},
 {p1:/(確)(?!X)(率)(?!X)/g,r1:'$1Xkaku$2Xritsu-probability,rate~Noun'},
 {p1:/(確)(?!X)(立)(?!X)/g,r1:'$1Xkaku$2Xritsu-establishment~Noun'},
@@ -5569,9 +5583,10 @@ const replsB = [
 {p1:/(税)(?!X)(金)(?!X)/g,r1:'$1Xzei$2Xkin-tax~Noun'},
 {p1:/(税)(?!X)(関)(?!X)/g,r1:'$1Xzei$2Xkan-custom house,customs~Noun'},
 {p1:/(種)(?!X)(目)(?!X)/g,r1:'$1Xsyu$2Xmoku-item,event~Noun'},
-{p1:/(種)(?!X)(類)(?!X)/g,r1:'$1Xsyu$2Xrui-kin-d,species~Noun'},
+{p1:/(種)(?!X)(類)(?!X)/g,r1:'$1Xsyu$2Xrui-type;species~Noun'},
 {p1:/(稼)(?!X)(働)(?!X)/g,r1:'$1Xka$2Xdou-machine operation~Noun'},
 {p1:/(稽)(?!X)(古)(?!X)/g,r1:'$1Xkei$2Xko-practice,learning~Noun'},
+{p1:/(簿)(?!X)(記)(?!X)/g,r1:'$1Xbo$2Xki-bookkeeping~Noun'},
 {p1:/(積)(?!X)(算)(?!X)/g,r1:'$1Xseki$2Xsan-adding up~Noun'},
 {p1:/(積)(?!X)(雪)(?!X)/g,r1:'$1Xseki$2Xsetsu-snow cover~Noun'},
 {p1:/(究)(?!X)(明)(?!X)/g,r1:'$1Xkyuu$2Xmei-diagnostics~Noun'},
@@ -5701,6 +5716,7 @@ const replsB = [
 {p1:/(絡)(?!X)(め)(?!X)/g,r1:'$1Xkara$2Xme-entwine~IchidanVerb'},
 {p1:/(給)(?!X)(与)(?!X)/g,r1:'$1Xkyuu$2Xyo-wages~Noun'},
 {p1:/(腐)(?!X)(食)(?!X)/g,r1:'$1Xfu$2Xsyoku-rot~Noun'},
+{p1:/(耐)(?!X)(用)(?!X)/g,r1:'$1Xtai$2Xyou-durability~Noun'},
 {p1:/(改)(?!X)(修)(?!X)/g,r1:'$1Xkai$2Xsyuu-repair~Noun'},
 {p1:/(給)(?!X)(付)(?!X)/g,r1:'$1Xkyuu$2Xfu-payment benefits~Noun'},
 {p1:/(給)(?!X)(料)(?!X)/g,r1:'$1Xkyuu$2Xryou-salary,pay~Noun'},
@@ -7720,7 +7736,7 @@ const replsB = [
 {p1:/(男)(?!X)/g,r1:'$1Xotoko,an,o-male~Noun'},
 {p1:/(甲)(?!X)/g,r1:'$1XKou,shell~Noun'},
 {p1:/(田)(?!X)/g,r1:'$1XTa,Da-rice field~Noun'},
-{p1:/(用)(?!X)/g,r1:'$1Xyou-things to do~Noun'},
+{p1:/(用)(?!X)/g,r1:'$1Xyou-for the purpose of~Noun'},
 {p1:/(甥)(?!X)/g,r1:'$1Xoi-nephew~Noun'},
 {p1:/(産)(?!X)/g,r1:'$1Xsan-production~Noun'},
 {p1:/(生)(?!X)/g,r1:'$1Xnama-raw;sei-student;i,iki,iku-lively~Noun'},
@@ -7889,7 +7905,7 @@ const replsB = [
 {p1:/(日)(?!X)/g,r1:'$1Xhi-day;nichi-Sunday;ni-Japan~Noun'},
 {p1:/(旗)(?!X)/g,r1:'$1Xhata-flag,banner~Noun'},
 {p1:/(旅)(?!X)/g,r1:'$1Xtabi-journey,travel~Noun'},
-{p1:/(方)(?!X)/g,r1:'$1Xhou,kata-on the side of,other person~Noun'},
+{p1:/(方)(?!X)/g,r1:'$1Xhou,kata-on the side of;the other person;how to do~Noun'},
 {p1:/(新)(?!X)/g,r1:'$1Xshin,Nii-new~Noun'},
 {p1:/(料)(?!X)/g,r1:'$1Xryou-charge~Noun'},
 {p1:/(斗)(?!X)/g,r1:'$1Xto,square measure~Noun'},
@@ -8220,7 +8236,7 @@ const replsB = [
 {p1:/(世)(?!X)/g,r1:'$1Xyo-world~Noun'},
 {p1:/(不)(?!X)/g,r1:'$1Xfu-not~Noun'},
 {p1:/(下)(?!X)/g,r1:'$1Xshita,ge-down,under,below,inferior~Noun'},
-{p1:/(上)(?!X)/g,r1:'$1Xue,jyou,gami,up,over,above,superior~Noun'},
+{p1:/(上)(?!X)/g,r1:'$1Xue,jyou,gami-up,over,above,superior~Noun'},
 {p1:/(丈)(?!X)/g,r1:'$1jou-stature~Noun'},
 {p1:/(万)(?!X)/g,r1:'$1Xman-ten thousand~Noun'},
 {p1:/(一|１|1)(?!X)/g,r1:'$1Xichi-one~Noun'},
@@ -8254,7 +8270,7 @@ const replsB = [
 
 {p1:/(Verbた)(?!X)(く)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1X$2Xta$3Xk$4Xunai-does not want to~Verb'},
 {p1:/(Nounな)(?!X)(か)(?!X)(っ)(?!X)(た)(?!X)/g,r1:'$1X$2Xna$3Xk$4Xatta-did not~InformalSuruVerb'},
-{p1:/(Verbま|Nounま)(?!X)(し)(?!X)(ょ)(?!X)(う)(?!X)/g,r1:'$1X$2Xma$3Xs$4Xyou-let\'s do~FormalVerb'},
+{p1:/(Verbま|Nounま)(?!X)(し)(?!X)(ょ)(?!X)(う)(?!X)/g,r1:'$1Xma$2Xs$3Xyo$4Xu-let\'s do~FormalVerb'},
 {p1:/(さ)(?!X)(れ)(?!X)(て)(?!X)(い)(?!X)/g,r1:'$1X$2Xsa$3Xr$4Xetei-had been doing~Verb'},
 {p1:/(な)(?!X)(け)(?!X)(れ)(?!X)(ば)(?!X)/g,r1:'$1Xna$2Xke$3Xre$4Xba-must~Noun'},
 {p1:/(し)(?!X)(ま)(?!X)(し)(?!X)(た)(?!X)/g,r1:'$1Xshi$2Xma$3Xishi$4Xta,did~SuruFormalVerb'},
@@ -8416,13 +8432,16 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <div class="TheStripe">John's Journal</div>
  
 <div class="HeaderStyle">Studying Japanese Language</div>
-Cut and paste this Japanese text into text area below. SOURCE: Yahoo!ニュース
+Cut and paste this Japanese text into text area below. SOURCE: Biz-Owner
 <p>
-ご加入にあたっての重要な事項を説明している「制度のご案内」「ご加入のしおり」「共済事業約款」は以下よりご覧いただけます。
+月ごとの売上金額と仕入金額を記入する。
+② 従業員がいる場合には、給料賃金の内訳を記入する。
+③ 専従者とは、簡単にいうと家族従業員のこと。専従者がいて給料を払った場合には、専従者給与の内訳を記入する。
+④ 事務所や店舗の地代家賃の内訳を記入する。
+⑤ 将来、売掛金を回収できない場合に備えて貸倒引当金を記入する。
+⑥ 青色申告特別控除額と前ページに書いた青色控除前の所得金額などを記入する。
 
-・制度のご案内ご加入にあたっての重要な事項を説明しています。お申し込みの前に必ずご一読、ご確認ください。
-・ご加入のしおり共済制度の内容についてわかりやすく説明しています。ご加入後、共済加入証書とともにお送りしています。
-・共済事業約款ご加入いただく共済の契約内容です。Source: The Tomin Kyosai Life Insurance Website. You have to have this type of insurance in Japan and report it on your taxes.
+>> 青色申告決算書2ページ目 - 書き方の詳細はこちら
   <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
