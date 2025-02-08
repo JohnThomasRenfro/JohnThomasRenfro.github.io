@@ -883,7 +883,7 @@ const replsB = [
 {p1:/(な)(?!X)(ぜ)(?!X)(か)(?!X)/g,r1:'$1Xna$2Xze$3Xka-for some reason~Noun'},
 {p1:/(な)(?!X)(だ)(?!X)(れ)(?!X)/g,r1:'$1Xna$2Xda$3Xre-avalanche~Noun'},
 {p1:/(な)(?!X)(ど)(?!X)(の)(?!X)/g,r1:'$1Xna$2Xdo$3Xno-ecetera and~Noun'},
-{p1:/(に)(?!X)(よ)(?!X)(る)(?!X)/g,r1:'$1Xni $2Xyo$3Xru-according to~Noun'},
+{p1:/(に)(?!X)(よ)(?!X)(る)(?!X)/g,r1:'$1Xni $2Xyo$3Xru-according to~Postposition~Noun'},
 {p1:/(ね)(?!X)(ず)(?!X)(み)(?!X)/g,r1:'$1Xne$2Xzu$3Xmi-rat,mouse~Noun'},
 {p1:/(の)(?!X)(ど)(?!X)(か)(?!X)/g,r1:'$1Xno$2Xdok$3Xa-tranquil,peaceful~Noun'},
 {p1:/(の)(?!X)(ど)(?!X)(か)(?!X)/g,r1:'$1Xno$2Xdok$3Xa-tranquil,peaceful~Noun'},
@@ -4900,6 +4900,7 @@ const replsB = [
 {p1:/(正)(?!X)(規)(?!X)/g,r1:'$1Xsei$2Xki-regular~Noun'},
 {p1:/(正)(?!X)(解)(?!X)/g,r1:'$1Xsei$2Xkai-right answer,correct solution~Noun'},
 {p1:/(正)(?!X)(門)(?!X)/g,r1:'$1Xsei$2Xmon-main gate~Noun'},
+{p1:/(暗)(?!X)(号)(?!X)/g,r1:'$1Xan$2Xgou-password~Noun'},
 {p1:/(正)(?!X)(面)(?!X)/g,r1:'$1Xsyou$2Xmen-head on~Noun'},
 {p1:/(武)(?!X)(力)(?!X)/g,r1:'$1Xbu$2Xryoku-armed with weapons~Noun'},
 {p1:/(武)(?!X)(器)(?!X)/g,r1:'$1Xbu$2Xki-weapons~Noun'},
@@ -6546,7 +6547,7 @@ const replsB = [
 {p1:/(重)(?!X)(点)(?!X)/g,r1:'$1Xjyuu$2X-ten,emphasis~Noun'},
 {p1:/(重)(?!X)(症)(?!X)/g,r1:'$1Xjyuu$2Xsyou-serious illness~Noun'},
 {p1:/(重)(?!X)(要)(?!X)/g,r1:'$1Xjyuu$2Xyou-essential~Noun'},
-{p1:/(重)(?!X)(視)(?!X)/g,r1:'$1Xjyuu$2X-shi,regarding as important~Noun'},
+{p1:/(重)(?!X)(視)(?!X)/g,r1:'$1Xjyuu$2Xshi-regarding as important~Noun'},
 {p1:/(重)(?!X)(量)(?!X)/g,r1:'$1Xjyuu$2X-ryou,weight~Noun'},
 {p1:/(野)(?!X)(党)(?!X)/g,r1:'$1Xya$2Xtou-opposition party~Noun'},
 {p1:/(野)(?!X)(原)(?!X)/g,r1:'$1Xnoh$2Xara-field,plain~Noun'},
@@ -7928,6 +7929,7 @@ const replsB = [
 {p1:/(損)(?!X)/g,r1:'$1Xson-loss,damage~Noun'},
 {p1:/(指)(?!X)/g,r1:'$1Xyubi-finger,toe~Noun'},
 {p1:/(拓)(?!X)/g,r1:'$1Xtaku-clear the land~Noun'},
+{p1:/(佳)(?!X)/g,r1:'$1Xyoshi-good~Noun'},
 {p1:/(手)(?!X)/g,r1:'$1Xte-hand~Noun'},
 {p1:/(扉)(?!X)/g,r1:'$1Xtobira-door~Noun'},
 {p1:/(所)(?!X)/g,r1:'$1Xsyo-office,tokoro-place,about to~Noun'},
@@ -7953,7 +7955,7 @@ const replsB = [
 {p1:/(役)(?!X)/g,r1:'$1Xyaku-role~Noun'},
 {p1:/(影)(?!X)/g,r1:'$1Xkage-shadow,shade~Noun'},
 {p1:/(彩)(?!X)/g,r1:'$1Xa-color~Noun'},
-{p1:/(彦)(?!X)/g,r1:'$1XHiko,boy~Noun'},
+{p1:/(彦)(?!X)/g,r1:'$1Xhiko-boy~Noun'},
 {p1:/(形)(?!X)/g,r1:'$1Xkatachi,gata-form~Noun'},
 {p1:/(弾)(?!X)/g,r1:'$1Xtama,dan-shot~Noun'},
 {p1:/(強)(?!X)/g,r1:'$1Xkyou-counter for strength~Noun'},
@@ -8250,7 +8252,7 @@ const replsB = [
 {p1:/(万)(?!X)/g,r1:'$1Xman-ten thousand~Noun'},
 {p1:/(一|１|1)(?!X)/g,r1:'$1Xichi-one~Noun'},
 {p1:/(へ)(?!X)/g,r1:'$1Xe-towards~Postposition'},
-{p1:/(の)(?!X)/g,r1:'$1Xno-of;verb to noun~Postposition'},
+{p1:/(の)(?!X)/g,r1:'$1Xno-of;verb to noun~Postposition~Noun'},
 {p1:/(き)(?!X)/g,r1:'$1Xki-come,start to do~Verb'},
 {p1:/(?![ァ-ヾ]+)(カ)(?!X|[ァ-ヾ]+)/g,r1:'$2Xka-counter for things~Noun'},
 {p1:/(9|９|九)(?!X)/g,r1:'$1Xkyuu-nine~Noun'},
@@ -8260,7 +8262,7 @@ const replsB = [
 {p1:/(０|0)(?!X)/g,r1:'$1Xrei-zero;often an unspoken number~Noun'},
 {p1:/(%|％)(?!X)/g,r1:'<br>$1Xpaacento-percent~Noun'},
 
-{p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for the~Postposition'},
+{p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for the subject above~Postposition'},
 
 {p1:/(Nounし)(?!X)/g,r1:'$1Xshi-to do;will do~SuruVerb'},
 
@@ -8412,7 +8414,7 @@ const replsB = [
 
 {p1:/(Verbか|Nounか)(?!X)/g,r1:'$1Xka-indicates a question~Postposition~Noun'},
 
-{p1:/(Verbが|Nounが)(?!X)/g,r1:'$1Xga-the above acts~Postposition~Noun'},
+{p1:/(Verbが|Nounが)(?!X)/g,r1:'$1Xga-the subject above acts~Postposition~Noun'},
 
 {p1:/(IAdjective)/g,r1:'$1 '},
 {p1:/(~Noun)/g,r1:'  '},
@@ -8445,13 +8447,12 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-週末も冬の嵐　8日は名古屋など市街地でも積雪　北陸や東北を中心に積雪が急増tenki.jp
-週末も冬の嵐が続きます。今日8日(土)の昼頃までは、東海など太平洋側の平地でも積雪のおそれ。9日(日)にかけては、北陸や東北の山沿いを中心に積雪が急増する予想。大規模な立ち往生や交通機関の乱れ、猛吹雪や高波に警戒してください。  
+金融庁の登録を受けずに暗号資産（仮想通貨）を売買する海外の違法業者５社の日本向けアプリについて、同庁が今月、アップルとグーグルにアプリストアからの削除を要請し、アップルが応じていたことがわかった。金融庁がこうした要請を行ったのは初めて。グーグルも対応を急いでいる。
   
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <span id="translatedTextDisplay"></span>
-</p><hr>
+</p>
 <h3>Memorizing Kanji</h3>
 <ul>
 <li>Use <a href="https://web.archive.org/web/20231207052643/https://addons.mozilla.org/en-US/firefox/addon/10ten-ja-reader/" target="Xblank">10ten Japanese Reader</a> browser extension to read kanji on your desktop/laptop computer.
