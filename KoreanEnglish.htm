@@ -19,11 +19,24 @@
     <pre id="output"></pre>
 
     <script>
-        // Hangul initial consonants, vowels, and final consonants mapped to English pronunciation
+        // Corrected Hangul to English phonetic mappings for Initial Consonants, Vowels, and Final Consonants
         const hangulMap = {
-            initial: ['g', 'kk', 'n', 'd', 'tt', 'r', 'm', 'b', 'pp', 's', 'ss', 'ng', 'j', 'jj', 'ch', 'k', 't', 'p', 'h'],
-            vowels: ['a', 'ae', 'ya', 'yae', 'eo', 'e', 'yeo', 'ye', 'o', 'oe', 'yo', 'yu', 'eu', 'i'],
-            final: ['', 'g', 'gg', 'gs', 'n', 'nj', 'nh', 'd', 'l', 'lg', 'lm', 'lb', 'ls', 'lt', 'lp', 'lh', 'm', 'b', 'bs', 's', 'ss', 'ng', 'j', 'ch', 'k', 't', 'p', 'h']
+            initial: {
+                'ㄱ': 'g', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd', 'ㄸ': 'tt', 'ㄹ': 'r/l', 'ㅁ': 'm', 'ㅂ': 'b',
+                'ㅃ': 'pp', 'ㅅ': 's', 'ㅆ': 'ss', 'ㅇ': 'ng', 'ㅈ': 'j', 'ㅉ': 'jj', 'ㅊ': 'ch', 'ㅋ': 'k',
+                'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h'
+            },
+            vowels: {
+                'ㅏ': 'a', 'ㅐ': 'ae', 'ㅑ': 'ya', 'ㅒ': 'yae', 'ㅓ': 'eo', 'ㅔ': 'e', 'ㅕ': 'yeo', 'ㅖ': 'ye',
+                'ㅗ': 'o', 'ㅘ': 'wa', 'ㅙ': 'wae', 'ㅚ': 'oe', 'ㅛ': 'yo', 'ㅜ': 'u', 'ㅝ': 'wo', 'ㅞ': 'we',
+                'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅣ': 'i'
+            },
+            final: {
+                '': '', 'ㄱ': 'g', 'ㄲ': 'kk', 'ㄳ': 'gs', 'ㄴ': 'n', 'ㄵ': 'nj', 'ㄶ': 'nh', 'ㄷ': 'd',
+                'ㄸ': 'tt', 'ㄹ': 'l', 'ㄺ': 'lg', 'ㄻ': 'lm', 'ㄼ': 'lb', 'ㄽ': 'ls', 'ㄾ': 'lt', 'ㄿ': 'lp',
+                'ㅀ': 'lh', 'ㅁ': 'm', 'ㅂ': 'b', 'ㅄ': 'bs', 'ㅅ': 's', 'ㅆ': 'ss', 'ㅇ': 'ng', 'ㅈ': 'j',
+                'ㅊ': 'ch', 'ㅋ': 'k', 'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h'
+            }
         };
 
         // Function to process Hangul input and display its English pronunciation breakdown
@@ -75,6 +88,7 @@
 
         // Function to get the pronunciation from index and component (initial, vowel, or final)
         function getPronunciation(type, index) {
+            const keys = Object.keys(hangulMap);  // ['initial', 'vowel', 'final']
             if (type === 0) {  // Initial consonant
                 return hangulMap.initial[index] || '';  // Return empty string if no pronunciation
             } else if (type === 1) {  // Vowel
@@ -88,3 +102,4 @@
     </script>
 </body>
 </html>
+
