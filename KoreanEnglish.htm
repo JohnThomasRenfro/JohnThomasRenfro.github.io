@@ -19,7 +19,7 @@
     <pre id="output"></pre>
 
     <script>
-        // Corrected Hangul to English phonetic mappings for Initial Consonants, Vowels, and Final Consonants
+        // Hangul to English phonetic mappings for Initial Consonants, Vowels, and Final Consonants
         const hangulMap = {
             initial: {
                 'ㄱ': 'g', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd', 'ㄸ': 'tt', 'ㄹ': 'r/l', 'ㅁ': 'm', 'ㅂ': 'b',
@@ -76,9 +76,13 @@
                     continue;
                 }
 
-                const initial = Math.floor(charCode / (21 * 28));  // Initial consonant
-                const vowel = Math.floor((charCode % (21 * 28)) / 28);  // Vowel
-                const final = charCode % 28;  // Final consonant
+                const initialIndex = Math.floor(charCode / (21 * 28));  // Initial consonant
+                const vowelIndex = Math.floor((charCode % (21 * 28)) / 28);  // Vowel
+                const finalIndex = charCode % 28;  // Final consonant
+
+                const initial = Object.keys(hangulMap.initial)[initialIndex];
+                const vowel = Object.keys(hangulMap.vowels)[vowelIndex];
+                const final = Object.keys(hangulMap.final)[finalIndex];
 
                 syllables.push([initial, vowel, final]);
             }
@@ -88,12 +92,11 @@
 
         // Function to get the pronunciation from index and component (initial, vowel, or final)
         function getPronunciation(type, index) {
-            const keys = Object.keys(hangulMap);  // ['initial', 'vowel', 'final']
-            if (type === 0) {  // Initial consonant
+            if (type === 0) {  // Initial consonant (Chosung)
                 return hangulMap.initial[index] || '';  // Return empty string if no pronunciation
-            } else if (type === 1) {  // Vowel
+            } else if (type === 1) {  // Vowel (Jungsung)
                 return hangulMap.vowels[index] || '';  // Return empty string if no pronunciation
-            } else if (type === 2) {  // Final consonant
+            } else if (type === 2) {  // Final consonant (Jongsung)
                 return hangulMap.final[index] || '';  // Return empty string if no pronunciation
             }
             return '';
@@ -102,4 +105,5 @@
     </script>
 </body>
 </html>
+
 
