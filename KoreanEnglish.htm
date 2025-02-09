@@ -50,40 +50,42 @@
             });
         }
 
-        // Function to decompose Hangul text into its components (initial, vowel, final)
-        function decomposeHangul(text) {
-            const syllables = [];
+// Function to decompose Hangul text into its components (initial, vowel, final)
+function decomposeHangul(text) {
+    const syllables = [];
 
-            // Iterate through each character in the input text
-            for (let i = 0; i < text.length; i++) {
-                const charCode = text.charCodeAt(i) - 0xAC00;
-                
-                // Skip characters that are not Hangul (i.e., outside the Hangul Unicode block)
-                if (charCode < 0 || charCode > (11171)) {
-                    continue;
-                }
-
-                const initial = Math.floor(charCode / (21 * 28));
-                const vowel = Math.floor((charCode % (21 * 28)) / 28);
-                const final = charCode % 28;
-
-                syllables.push([initial, vowel, final]);
-            }
-
-            return syllables;
+    // Iterate through each character in the input text
+    for (let i = 0; i < text.length; i++) {
+        const charCode = text.charCodeAt(i) - 0xAC00;
+        
+        // Skip characters that are not Hangul (i.e., outside the Hangul Unicode block)
+        if (charCode < 0 || charCode > (11171)) {
+            continue;
         }
 
-        // Function to get the pronunciation from index and component (initial, vowel, or final)
-        function getPronunciation(type, index) {
-            if (type === 0) {  // Initial consonant
-                return hangulMap.initial[index] || '';
-            } else if (type === 1) {  // Vowel
-                return hangulMap.vowels[index] || '';
-            } else if (type === 2) {  // Final consonant
-                return hangulMap.final[index] || '';
-            }
-            return '';
-        }
+        // Decompose Hangul character into initial, vowel, final components
+        const initial = Math.floor(charCode / (21 * 28));
+        const vowel = Math.floor((charCode % (21 * 28)) / 28);
+        const final = charCode % 28;
+
+        // Push the decomposed values
+        syllables.push([initial, vowel, final]);
+    }
+
+    return syllables;
+}
+
+// Function to get the pronunciation from index and component (initial, vowel, or final)
+function getPronunciation(type, index) {
+    if (type === 0) {  // Initial consonant
+        return hangulMap.initial[index] || '';  // Return empty string if no pronunciation
+    } else if (type === 1) {  // Vowel
+        return hangulMap.vowels[index] || '';  // Return empty string if no pronunciation
+    } else if (type === 2) {  // Final consonant
+        return hangulMap.final[index] || '';  // Return empty string if no pronunciation
+    }
+    return '';
+}
 
     </script>
 </body>
