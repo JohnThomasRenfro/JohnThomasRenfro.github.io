@@ -8,7 +8,8 @@
         body { font-family: Arial, sans-serif; padding: 20px; }
         textarea { width: 100%; height: 100px; }
         button { padding: 10px 20px; font-size: 16px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; white-space: pre-wrap; word-wrap: break-word; }
+        .error { color: red; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -18,36 +19,49 @@
     <pre id="output"></pre>
 
     <script>
+        // Mapping of Hangul initial consonants, vowels, and final consonants to their English pronunciations
         const hangulMap = {
             initial: ['g', 'kk', 'n', 'd', 'tt', 'r', 'm', 'b', 'pp', 's', 'ss', 'ng', 'j', 'jj', 'ch', 'k', 't', 'p', 'h'],
             vowels: ['a', 'ae', 'ya', 'yae', 'eo', 'e', 'yeo', 'ye', 'o', 'oe', 'yo', 'yu', 'eu', 'i'],
             final: ['', 'g', 'gg', 'gs', 'n', 'nj', 'nh', 'd', 'l', 'lg', 'lm', 'lb', 'ls', 'lt', 'lp', 'lh', 'm', 'b', 'bs', 's', 'ss', 'ng', 'j', 'ch', 'k', 't', 'p', 'h']
         };
 
-        // Function to process Hangul input
+        // Function to process Hangul input and display its English pronunciation breakdown
         function processHangul() {
-            const hangul = document.getElementById("hangulInput").value;
+            const hangul = document.getElementById("hangulInput").value.trim();
             const output = document.getElementById("output");
             output.textContent = "";  // Clear previous output
 
             if (!hangul) {
-                output.textContent = "Please enter Hangul text!";
+                output.innerHTML = "<span class='error'>Please enter Hangul text!</span>";
                 return;
             }
 
             const syllables = decomposeHangul(hangul);
+
+            if (syllables.length === 0) {
+                output.innerHTML = "<span class='error'>No valid Hangul characters detected!</span>";
+                return;
+            }
+
             syllables.forEach(syllable => {
-                const pronunciation = syllable.map((el, idx) => `${el}(${getPronunciation(idx, el)})`).join(' ');
+                const pronunciation = syllable.map((el, idx) => `${el} (${getPronunciation(idx, el)})`).join(' ');
                 output.textContent += `${syllable[0]} => ${pronunciation}\n`;
             });
         }
 
-        // Function to decompose Hangul into its components
+        // Function to decompose Hangul text into its components (initial, vowel, final)
         function decomposeHangul(text) {
             const syllables = [];
+
+            // Iterate through each character in the input text
             for (let i = 0; i < text.length; i++) {
                 const charCode = text.charCodeAt(i) - 0xAC00;
-                if (charCode < 0) continue;  // Skip non-Hangul characters
+                
+                // Skip characters that are not Hangul (i.e., outside the Hangul Unicode block)
+                if (charCode < 0 || charCode > (11171)) {
+                    continue;
+                }
 
                 const initial = Math.floor(charCode / (21 * 28));
                 const vowel = Math.floor((charCode % (21 * 28)) / 28);
@@ -55,10 +69,11 @@
 
                 syllables.push([initial, vowel, final]);
             }
+
             return syllables;
         }
 
-        // Get pronunciation from index and component value
+        // Function to get the pronunciation from index and component (initial, vowel, or final)
         function getPronunciation(type, index) {
             if (type === 0) {  // Initial consonant
                 return hangulMap.initial[index] || '';
@@ -69,6 +84,7 @@
             }
             return '';
         }
+
     </script>
 </body>
 </html>
