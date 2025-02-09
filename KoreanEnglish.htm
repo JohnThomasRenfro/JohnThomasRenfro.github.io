@@ -1,41 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hangul to English Pronunciation</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        textarea { width: 100%; height: 100px; }
-        button { padding: 10px 20px; font-size: 16px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; white-space: pre-wrap; word-wrap: break-word; }
-        .error { color: red; font-weight: bold; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangul to English Pronunciation & Translation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+    #result {
+      white-space: pre-wrap; /* Keep line breaks in text */
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hangul to English Pronunciation</h1>
-    미정갤 등에는 서울 중구 인권위에 난입하겠다는 글도 있었다. 
-    <textarea id="hangulInput" placeholder="Paste Hangul text here"></textarea><br>
-    <button onclick="processHangul()">Process</button>
-    <pre id="output"></pre>
+  <h1>Hangul to English Pronunciation & Translation</h1>
 
-    <script>
-        const hangulMap = {
-            initial: ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'],
-            vowels: ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅣ'],
-            final: ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'],
-        };
+  <textarea id="hangulInput" placeholder="Paste Hangul text here..."></textarea><br><br>
 
-        const pronunciationMap = {
-            'ㄱ': 'g', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd', 'ㄸ': 'tt', 'ㄹ': 'r/l', 'ㅁ': 'm', 'ㅂ': 'b', 'ㅃ': 'pp', 'ㅅ': 's',
-            'ㅆ': 'ss', 'ㅇ': 'ng', 'ㅈ': 'j', 'ㅉ': 'jj', 'ㅊ': 'ch', 'ㅋ': 'k', 'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h',
-            'ㅏ': 'a', 'ㅐ': 'ae', 'ㅑ': 'ya', 'ㅒ': 'yae', 'ㅓ': 'eo', 'ㅔ': 'e', 'ㅕ': 'yeo', 'ㅖ': 'ye', 'ㅗ': 'o', 'ㅘ': 'wa',
-            'ㅙ': 'wae', 'ㅚ': 'oe', 'ㅛ': 'yo', 'ㅜ': 'u', 'ㅝ': 'wo', 'ㅞ': 'we', 'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅣ': 'i',
-            'ㄳ': 'gs', 'ㄵ': 'nj', 'ㄶ': 'nh', 'ㄺ': 'lg', 'ㄻ': 'lm', 'ㄼ': 'lb', 'ㄽ': 'ls', 'ㄾ': 'lt', 'ㄿ': 'lp', 'ㅀ': 'lh',
-            'ㅄ': 'bs', '': ''
-        };
+  <button onclick="processHangul()">Process</button>
 
-        const dictionary = {
+  <h2>Cut and Paste: 삼성물산-제일모직 부당 합병과 삼성바이오로직스 분식회계에 관여한</h2>
+  <div id="result"></div>
+
+  <script>
+    // Hangul to English mapping for consonants and vowels (improved pronunciation)
+    const hangulToEnglish = {
+      'ㄱ': 'g', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd', 'ㄸ': 'tt', 'ㄹ': 'r', 'ㅁ': 'm', 'ㅂ': 'b',
+      'ㅃ': 'pp', 'ㅅ': 's', 'ㅆ': 'ss', 'ㅇ': 'ng', 'ㅈ': 'j', 'ㅉ': 'jj', 'ㅊ': 'ch', 'ㅋ': 'k',
+      'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h',
+      
+      // Vowels with more accurate romanization
+      'ㅏ': 'ah', 'ㅐ': 'ae', 'ㅑ': 'yah', 'ㅒ': 'yae', 'ㅓ': 'uh', 'ㅔ': 'e', 'ㅕ': 'yeo', 'ㅖ': 'ye',
+      'ㅗ': 'o', 'ㅘ': 'wa', 'ㅙ': 'wae', 'ㅚ': 'oe', 'ㅛ': 'yo', 'ㅜ': 'u', 'ㅝ': 'wo', 'ㅞ': 'we',
+      'ㅟ': 'wi', 'ㅠ': 'yu', 'ㅡ': 'eu', 'ㅢ': 'ui', 'ㅣ': 'i'
+    };
+
+    const specialTranslations = {
 "(삼가":" 고인) 명복을 빕니다 I am sorry for your loss",
 "10월":" (시월)    October",
 "11월":" (십일월)   November",
@@ -7063,51 +7073,66 @@
 "흠":"   Hmm...",
 "힐":"   heel",
 "힘":"   power/effort",
-        };
+    };
 
-        function decomposeHangul(text) {
-            return [...text].map(char => {
-                const code = char.charCodeAt(0) - 0xAC00;
-                if (code < 0 || code > 11171) return [char, "", "", ""];
-                return [
-                    char,
-                    hangulMap.initial[Math.floor(code / (21 * 28))] || "",
-                    hangulMap.vowels[Math.floor((code % (21 * 28)) / 28)] || "",
-                    hangulMap.final[code % 28] || ""
-                ];
-            });
+    // Function to break Hangul syllables into their components
+    function breakHangul(syllable) {
+      const syllableCode = syllable.charCodeAt(0) - 0xAC00;
+      if (syllableCode < 0 || syllableCode > 11171) return [syllable]; // Not a Hangul syllable
+
+      const initialIndex = Math.floor(syllableCode / 588);
+      const vowelIndex = Math.floor((syllableCode % 588) / 28);
+      const finalIndex = syllableCode % 28;
+
+      const initialConsonants = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+      const vowels = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'];
+      const finalConsonants = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+
+      const initial = initialConsonants[initialIndex];
+      const vowel = vowels[vowelIndex];
+      const final = finalConsonants[finalIndex];
+
+      return [initial, vowel, final].filter(Boolean);
+    }
+
+    function processHangul() {
+      const hangulText = document.getElementById('hangulInput').value.trim();
+      let resultText = "";
+
+      // Process each word separately
+      const words = hangulText.split(/\s+/);
+      for (let word of words) {
+        let breakdownText = "";
+        let fullSyllableText = "";
+        let translationText = "";
+
+        for (let i = 0; i < word.length; i++) {
+          const syllable = word[i];
+
+          if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
+            const components = breakHangul(syllable);
+            const phonetic = components.map(comp => `${comp} (${hangulToEnglish[comp] || comp})`).join(' ');
+            breakdownText += `${syllable} = ${phonetic}\n`;
+            fullSyllableText += syllable;
+          } else {
+            breakdownText += `${syllable}\n`; // Non-Hangul stays as is
+            fullSyllableText += syllable;
+          }
         }
 
-
-        function processHangul() {
-            const hangul = document.getElementById("hangulInput").value.trim();
-            const output = document.getElementById("output");
-            output.textContent = "";
-
-            if (!hangul) {
-                output.innerHTML = "<span class='error'>Please enter Hangul text!</span>";
-                return;
-            }
-
-            let result = "";
-            let matchedWords = Object.keys(dictionary).filter(word => hangul.includes(word));
-            matchedWords.sort((a, b) => b.length - a.length || hangul.indexOf(a) - hangul.indexOf(b));
-
-            let usedIndices = new Set();
-            for (let word of matchedWords) {
-                let startIndex = hangul.indexOf(word);
-                if ([...Array(word.length).keys()].some(i => usedIndices.has(startIndex + i))) continue;
-                
-                let decomposed = decomposeHangul(word).map(syllable => 
-                    `${syllable[0]} => ${syllable[1]} (${pronunciationMap[syllable[1]] || ''}) ${syllable[2]} (${pronunciationMap[syllable[2]] || ''}) ${syllable[3]} (${pronunciationMap[syllable[3]] || ''})`
-                ).join('\n');
-                
-                result += decomposed + `\n=> ${dictionary[word]}\n\n`;
-                [...Array(word.length).keys()].forEach(i => usedIndices.add(startIndex + i));
-            }
-            
-            output.textContent = result.trim();
+        resultText += breakdownText + "\n";
+        
+        if (specialTranslations[word]) {
+          translationText = `${fullSyllableText} = ${specialTranslations[word]}\n`;
+        } else {
+          translationText = `${fullSyllableText} = ${fullSyllableText}\n`;
         }
-    </script>
+
+        resultText += translationText + "\n";
+      }
+
+      document.getElementById('result').textContent = resultText.trim();
+    }
+  </script>
 </body>
 </html>
