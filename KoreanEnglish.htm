@@ -7210,38 +7210,37 @@ function processHangul() {
   const hangulText = document.getElementById('hangulInput').value.trim();
   let resultText = "";
 
-  // Process each word separately
+  // Split input into individual words
   const words = hangulText.split(/\s+/);
   for (let word of words) {
-    let breakdownText = "";
-    let fullSyllableText = "";
-    let translationText = "";
-
-    for (let i = 0; i < word.length; i++) {
-      const syllable = word[i];
-
-      if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
-        const components = breakHangul(syllable);
-        const phonetic = Object.keys(components).map(comp => `${components[comp].symbol} (${components[comp].sounds.join(', ')})`).join(' ');
-        breakdownText += `${syllable} = ${phonetic}\n`;
-        fullSyllableText += syllable;
-      } else {
-        breakdownText += `${syllable}\n`; // Non-Hangul stays as is
-        fullSyllableText += syllable;
-      }
-    }
-
-    resultText += breakdownText + "\n";
     
+    // Check for special translation in dictionary
     if (specialTranslations[word]) {
-      translationText = `${fullSyllableText} = ${specialTranslations[word]}\n`;
+      const translation = specialTranslations[word];
+      resultText += `${word} = ${translation}\n`;
     } else {
-      translationText = `${fullSyllableText} = ${fullSyllableText}\n`;
-    }
+      let breakdownText = "";
+      
+      // Attempt to break down each character in the word into its syllable components
+      for (let i = 0; i < word.length; i++) {
+        const syllable = word[i];
 
-    resultText += translationText + "\n";
+        // Check if character is a valid Hangul syllable
+        if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
+          const components = breakHangul(syllable);
+          const phonetic = Object.keys(components).map(comp => `${components[comp].symbol} (${components[comp].sounds.join(', ')})`).join(' ');
+          breakdownText += `${syllable} = ${phonetic}\n`;
+        } else {
+          breakdownText += `${syllable}\n`; // Non-Hangul stays as is
+        }
+      }
+
+      // Generate output for syllable breakdown
+      resultText += `${breakdownText}\n`;
+    }
   }
 
+  // Display the result
   document.getElementById('result').textContent = resultText.trim();
 }
   </script>
