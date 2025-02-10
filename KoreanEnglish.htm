@@ -7206,22 +7206,58 @@ function breakHangul(syllable) {
     return components;
 }
     
+// Function to break down Hangul syllables
+function breakHangul(syllable) {
+  // Initialize Hangul code for the given syllable
+  const syllableCode = syllable.charCodeAt(0) - 0xAC00;
+
+  // Validate whether the input is a valid Hangul character
+  if (syllableCode < 0 || syllableCode > 11171) {
+    // Return a single element array containing the original syllable
+    return [syllable];
+  }
+
+  const initialIndex = Math.floor(syllableCode / 588);
+  const vowelIndex = Math.floor((syllableCode % 588) / 28);
+  const finalIndex = syllableCode % 28;
+
+  // Define Hangul component matrices
+  const complexMatrix = {
+    'initialConsonants': [ /* ... same as above ... */ ],
+    'vowels': [ /* ... same as above ... */ ],
+    'finalConsonants': [ /* ... same as above ... */ ]
+  };
+
+  const initial = complexMatrix.initialConsonants[initialIndex].symbol;
+  const vowel = complexMatrix.vowels[vowelIndex].symbol;
+  const final = complexMatrix.finalConsonants[finalIndex].symbol;
+
+  // Gathering all components
+  const components = {
+    initial: { symbol: initial, sounds: complexMatrix.initialConsonants[initialIndex].sounds },
+    vowel: { symbol: vowel, sounds: complexMatrix.vowels[vowelIndex].sounds },
+    final: { symbol: final, sounds: complexMatrix.finalConsonants[finalIndex].sounds }
+  };
+
+  return components;
+}
+
+// Function to process Hangul and provide translations
 function processHangul() {
   const hangulText = document.getElementById('hangulInput').value.trim();
   let resultText = "";
 
-  // Split the input text into words (assuming spaces are not used)
-  const words = hangulText.replace(/[^\uAC00-\uD7A3]/g, '').replace(/([가-힣]+)\1+/g, '$1 ').split(/\s+/).filter(Boolean);
+  // Split the Hangul text into characters (no spaces are used)
+  const characters = hangulText.replace(/[^\uAC00-\uD7A3]/g, '');  // Keep only Hangul characters
 
-  // Iterate through each word in the input text
-  for (const word of words) {
-    // Check for known translations for the word
-    if (word) {
-      if (specialTranslations[word]) {
-        resultText += `${word} = ${specialTranslations[word]}\n`;
-      } else {
-        resultText += `${word}\n`;
-      }
+  // Iterate through each character in the Hangul input
+  for (const char of characters) {
+    const word = char;
+    // Check for known translations for the character
+    if (specialTranslations[word]) {
+      resultText += `${word} = ${specialTranslations[word]}\n`;
+    } else {
+      resultText += `${word}\n`; // Or provide some other indication if there is no translation
     }
   }
 
