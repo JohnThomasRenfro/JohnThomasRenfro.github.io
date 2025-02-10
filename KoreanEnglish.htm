@@ -7242,17 +7242,17 @@ function breakHangul(syllable) {
   return components;
 }
 
-// A mapping of special translations from Hangul to English and pronunciation
+// A mapping of special translations from Hangul to English
 const specialTranslations = {
-    "정": { translation: "right; correct", pronunciation: "jeong" },
-    "으": { translation: "suffix for nouns", pronunciation: "eu" },
-    "으로": { translation: "due to; because of", pronunciation: "euro" },
-    "힘": { translation: "power/effort", pronunciation: "him" },
-    "정으로": { translation: "to be right; directly", pronunciation: "jeong-euro" },
-    // Add more words with their translations and pronunciations here as needed
+    "정": "right; correct",      // Example translation for '정'
+    "으": "suffix for nouns",     // Example translation for '으'
+    "으로": "due to; because of", // Example translation for '으로'
+    "힘": "power/effort",         // Example translation for '힘'
+    "정으로": "to be right; directly", // Example for longer combination
+    // Add more words and their translations here as needed
 };
 
-// Function to process Hangul and provide translations with pronunciation
+// Function to process Hangul and provide translations
 function processHangul() {
     const hangulText = document.getElementById('hangulInput').value.trim();
     let resultText = "";
@@ -7271,15 +7271,14 @@ function processHangul() {
         for (let j = i + 1; j <= length; j++) {
             const substring = characters.slice(i, j);
             if (specialTranslations[substring]) {
-                const { translation, pronunciation } = specialTranslations[substring];
-                foundTranslations.add(`${substring} = ${translation} (pronunciation: ${pronunciation})`);
+                foundTranslations.add(`${substring} = ${specialTranslations[substring]}`);
             }
         }
     }
 
     // Adding individual characters if they have no longer substrings matched
     for (const char of characters) {
-        if (!foundTranslations.has(`${char} = ${specialTranslations[char]?.translation} (pronunciation: ${specialTranslations[char]?.pronunciation})`)) {
+        if (!foundTranslations.has(`${char} = ${specialTranslations[char]}`)) {
             foundTranslations.add(`${char}`);
         }
     }
@@ -7290,6 +7289,11 @@ function processHangul() {
     // Final output
     document.getElementById('result').textContent = resultText.trim();
 }
+
+// HTML Setup for the Input and Result (for completeness)
+// <input type="text" id="hangulInput" />
+// <button onclick="processHangul()">Translate</button>
+// <div id="result"></div>
   </script>
 </body>
 </html>
