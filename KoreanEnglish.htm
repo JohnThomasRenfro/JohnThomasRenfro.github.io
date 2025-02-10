@@ -15,6 +15,12 @@
         .word {
             margin: 5px 0;
         }
+        .hangul-text {
+            font-family: 'Nanum Gothic', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -46,9 +52,9 @@
                     const finalJamo = final ? String.fromCharCode(0x11A7 + final) : '';
 
                     // English pronunciation for initials, medials, and finals
-                    const initialsPronunciations = ['g', 'n', 'd', 'r', 'm', 'b', 's', 'ng', 'j', 'ch', 'k', 't', 'p', 'h']; 
-                    const medialsPronunciations = ['a', 'ae', 'ya', 'eo', 'e', 'ye', 'o', 'yo', 'u', 'we', 'wi', 'eu', 'i', 'ui', 'ae', 'e', 'uo', 'ue', 'o']; 
-                    const finalsPronunciations = ['', 'g', 'kk', 'n', 'nd', 'l', 'm', 'b', 'p', 't', 's', 'ng', 'j', '', 'h', ''];
+                    const initialsPronunciations = ['g', 'kk', 'n', 'd', 'tt', 'r', 'm', 'b', 'pp', 's', 'ss', 'j', 't', 'p', 'h'];
+                    const medialsPronunciations = ['a', 'ae', 'e', 'yeo', 'ye', 'o', 'wa', 'wae', 'yo', 'u', 'wi', 'eu', 'yi', 'i'];
+                    const finalsPronunciations = ['', 'g', 'n', 'd', 'l', 'm', 'b', 's', 'ng', 'j', 'h'];
 
                     hangulParts.push({
                         hangul: hangul[i],
@@ -66,25 +72,9 @@
 
         // Dictionary of Korean to English words
         const dictionary = {
-            "재판소가": "court",
-            "헌법": "constitution",
-            "안녕하세요": "Hello",
-            "세계": "World",
-            "사랑": "Love",
-            "행복": "Happiness",
-            "학교": "School",
-            "사람": "Person",
-            "친구": "Friend",
-            "가족": "Family",
-            "여행": "Travel",
-            "음식": "Food",
-            "책": "Book",
-            "연습": "Practice",
-            "언어": "Language",
-            "기술": "Technology",
-            "컴퓨터": "Computer",
-            "사계절": "Four Seasons",
-            // Add more translations as needed
+            "헌법": "Constitution",
+            "재판소": "Court",
+            // Add more translations here as required
         };
 
         // Function to translate Korean strings to English
@@ -111,7 +101,6 @@
                     i++;
                 }
             }
-
             return translatedWords;
         }
 
@@ -127,11 +116,11 @@
                 const hangulTransliteration = parts.map(part => 
                     `${part.hangul} ${part.initial} ${part.initialPronunciation} ${part.medial} ${part.medialPronunciation} ${part.final} ${part.finalPronunciation}`
                 ).join(' ');
-                outputArray.push(`${hangulTransliteration} = ${dictionary[word]}`);
+                outputArray.push(`<div class="word hangul-text">${hangulTransliteration} = ${dictionary[word]}</div>`);
             });
 
             // Display results
-            document.getElementById('translationOutput').innerHTML = outputArray.map(item => `<div class="word">${item}</div>`).join('');
+            document.getElementById('translationOutput').innerHTML = outputArray.join('');
         });
     </script>
 </body>
