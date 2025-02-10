@@ -7091,13 +7091,21 @@
 "힘":"   power/effort",
     };
 
-// Function to break Hangul syllables into their components with complex pronunciation logic
 function breakHangul(syllable) {
+    // Initialize Hangul code for the given syllable
     const syllableCode = syllable.charCodeAt(0) - 0xAC00;
-    if (syllableCode < 0 || syllableCode > 11171) return [syllable]; // Not a Hangul syllable
 
+    // Validate whether the input is a valid Hangul character
+    if (syllableCode < 0 || syllableCode > 11171) {
+        // Return a single element array containing the original syllable
+        return [syllable];
+    }
+
+    // Calculate the index of the initial consonant
     const initialIndex = Math.floor(syllableCode / 588);
+    // Calculate the index of the vowel
     const vowelIndex = Math.floor((syllableCode % 588) / 28);
+    // Calculate the index of the final consonant
     const finalIndex = syllableCode % 28;
 
     // Complex mapping for Hangul components and their context-sensitive pronunciations
