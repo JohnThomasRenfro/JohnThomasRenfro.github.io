@@ -45,7 +45,12 @@
                     const medialJamo = String.fromCharCode(0x1161 + medial);
                     const finalJamo = final ? String.fromCharCode(0x11A7 + final) : '';
 
-                    hangulParts.push({ hangul: hangul[i], initial: initialJamo, medial: medialJamo, final: finalJamo });
+                    hangulParts.push({
+                        hangul: hangul[i],
+                        initial: initialJamo,
+                        medial: medialJamo,
+                        final: finalJamo
+                    });
                 }
             }
             return hangulParts;
@@ -104,24 +109,18 @@
         // Event listener for the translate button
         document.getElementById('translateButton').addEventListener('click', function() {
             const koreanInput = document.getElementById('input').value;
-            const hangulPartsArray = [];
             const translatedTextArray = translateKoreanToEnglish(koreanInput);
+            const outputArray = [];
 
             // Generate output for each translated word
             translatedTextArray.forEach(word => {
                 const parts = hangulToParts(word);
-                parts.forEach(part => {
-                    hangulPartsArray.push(`
-                        <div class="word">
-                            ${part.hangul} = ${dictionary[word]}<br>
-                            Initial: ${part.initial}, Medial: ${part.medial}, Final: ${part.final}
-                        </div>
-                    `);
-                });
+                const hangulTransliteration = parts.map(part => `${part.hangul} ${part.initial} ${part.medial} ${part.final}`).join(' ');
+                outputArray.push(`${hangulTransliteration} = ${dictionary[word]}`);
             });
 
             // Display results
-            document.getElementById('translationOutput').innerHTML = hangulPartsArray.join('');
+            document.getElementById('translationOutput').innerHTML = outputArray.map(item => `<div class="word">${item}</div>`).join('');
         });
     </script>
 </body>
