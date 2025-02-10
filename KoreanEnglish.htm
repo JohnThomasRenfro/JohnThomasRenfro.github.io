@@ -7205,6 +7205,15 @@ function breakHangul(syllable) {
     return components;
 }
 
+const specialTranslations = {
+  '표': 'expression',
+  '정': 'center',
+  '으로': 'to',
+  '퐁삭': 'Pongsag',
+  '테나는': 'storage center',
+  '감격스러운': 'touching'
+};
+
 function processHangul() {
   const hangulText = document.getElementById('hangulInput').value.trim();
   let resultText = "";
@@ -7213,12 +7222,13 @@ function processHangul() {
   const words = hangulText.split(/\s+/);
   for (let word of words) {
     let fullSyllableText = word;
+    let pronunciation = "";
     let translationText = "";
     
-    // Check for special translation before breakdown
+    // Check for special translation
     if (specialTranslations[word]) {
-      translationText = `${word} = ${specialTranslations[word]}\n\n`;
-      resultText += translationText;
+      translationText = `${word} = ${specialTranslations[word]}`;
+      resultText += `${translationText}\n`;
     } else {
       let breakdownText = "";
       
@@ -7234,7 +7244,10 @@ function processHangul() {
         }
       }
 
-      resultText += breakdownText + "\n";
+      // Calculate pronunciation based on breakdown
+      pronunciation = breakdownText.split('=').map(item => item.split('(')[1].split(', ').join('').replace(')', '').trim()).join(' ');
+
+      resultText += `${breakdownText}\n${word} = ${pronunciation}\n\n`;
     }
   }
 
