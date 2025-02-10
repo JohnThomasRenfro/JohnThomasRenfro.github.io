@@ -7082,6 +7082,7 @@
 "힐":"   heel",
 "힘":"   power/effort",
         };
+        };
 
         // Function to process Korean input text
         function processKoreanInput() {
@@ -7095,16 +7096,15 @@
                     const substring = koreanText.slice(i, j);
                     if (translationMap[substring]) {
                         results.push({ word: substring, translation: translationMap[substring] });
+                        // Move the index to the end of this found substring to avoid rechecking the same characters
+                        i = j - 1; // Move to the end of the matched substring
+                        break; // Exit the inner loop since we have found a match
                     }
                 }
             }
 
-            // Sort results by word length in descending order and remove duplicates
-            results.sort((a, b) => b.word.length - a.word.length);
-            const uniqueResults = Array.from(new Set(results.map(JSON.stringify))).map(JSON.parse);
-
-            // Build the output text without spaces between matched words
-            let outputText = uniqueResults.map(result => `${result.word}: ${result.translation}`).join('\n');
+            // Build the output text for matched words in the order they appear
+            let outputText = results.map(result => `${result.word}: ${result.translation}`).join('\n');
             
             // Display the results in the output div
             document.getElementById('result').textContent = outputText.trim() || 'No matches found.';
