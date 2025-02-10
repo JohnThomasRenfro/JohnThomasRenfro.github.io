@@ -43,25 +43,21 @@
                     // Hangul Jamo Unicode ranges
                     const initialJamo = String.fromCharCode(0x1100 + initial);
                     const medialJamo = String.fromCharCode(0x1161 + medial);
-
-                    // English pronunciation for initials and medials
-                    const initials = { 0: '', 1: 'h', 2: 'j', 3: 'j', 4: '', 5: '', 6: '', 7: '', 8: 'h', 9: '', 10: 'k', 11: 'k', 13: 'g', 14: 'n', 15: 'n', 16: 'n', 17: 't', 18: 't' }; // Initials
-                    const medials = { 0: '', 1: 'o', 2: 'a', 3: 'a', 4: 'o', 5: 'o', 6: '', 7: '', 8: 'u', 9: '', 10: 'u', 11: 'u', 12: 'e', 13: 'e', 14: 'e', 15: 'i', 16: 'i', 17: '', 18: 'i' }; // Medials
-
-                    const initialPronunciation = initials[Math.floor(index / 28)];
-                    const medialPronunciation = medials[Math.floor((index % 28) / 7)];
-
                     const finalJamo = final ? String.fromCharCode(0x11A7 + final) : '';
-                    const finalPronunciation = final ? 'n' : ''; // Simplified final pronunciation for demonstration purposes
+
+                    // English pronunciation for initials, medials, and finals
+                    const initialsPronunciations = ['g', 'n', 'd', 'r', 'm', 'b', 's', 'ng', 'j', 'ch', 'k', 't', 'p', 'h']; 
+                    const medialsPronunciations = ['a', 'ae', 'ya', 'eo', 'e', 'ye', 'o', 'yo', 'u', 'we', 'wi', 'eu', 'i', 'ui', 'ae', 'e', 'uo', 'ue', 'o']; 
+                    const finalsPronunciations = ['', 'g', 'kk', 'n', 'nd', 'l', 'm', 'b', 'p', 't', 's', 'ng', 'j', '', 'h', ''];
 
                     hangulParts.push({
                         hangul: hangul[i],
                         initial: initialJamo,
                         medial: medialJamo,
-                        initialPronunciation,
-                        medialPronunciation,
                         final: finalJamo,
-                        finalPronunciation,
+                        initialPronunciation: initialsPronunciations[initial] || '',
+                        medialPronunciation: medialsPronunciations[medial] || '',
+                        finalPronunciation: finalsPronunciations[final] || '',
                     });
                 }
             }
@@ -127,13 +123,9 @@
             // Generate output for each translated word
             translatedTextArray.forEach(word => {
                 const parts = hangulToParts(word);
-                const hangulTransliteration = parts.map(part => {
-                    const initialTransliteration = (part.initial === 'ᄒ') ? 'h' : (part.initial === 'ᄇ') ? 'b' : part.initial;
-                    const medialTransliteration = (part.medial === 'ᅥ') ? 'eo' : part.medial;
-                    const finalTransliteration = (part.final === 'ᆫ') ? 'n' : (part.final === 'ᆸ') ? 'b' : part.final;
-                    
-                    return (part.initial + ' ' + part.initialPronunciation).replace(' ', '') + ' ' + (part.medial + ' ' + part.medialPronunciation).replace(' ', '') + ' ' + (part.final + ' ' + part.finalPronunciation).replace(' ', '');
-                }).join(' ');
+                const hangulTransliteration = parts.map(part => 
+                    `${part.hangul} ${part.initial} ${part.initialPronunciation} ${part.medial} ${part.medialPronunciation} ${part.final} ${part.finalPronunciation}`
+                ).join(' ');
                 outputArray.push(`${hangulTransliteration} = ${dictionary[word]}`);
             });
 
