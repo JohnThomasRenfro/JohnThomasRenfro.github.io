@@ -7210,45 +7210,36 @@ function processHangul() {
   const hangulText = document.getElementById('hangulInput').value.trim();
   let resultText = "";
 
-  // Split input into individual words
-  const words = hangulText.split(/\s+/);
-  
-  // Iterate through each word
-  for (let word of words) {
-    let translationFound = false; // Flag to check if a translation was found
+  let translatedText = ""; // To keep track of the translations
+  let breakdownText = ""; // To keep track of the breakdowns
+
+  // Iterate through each character in the input text
+  for (let i = 0; i < hangulText.length; i++) {
+    const currentChar = hangulText[i];
     
-    // Processing word length; if it exists in specialTranslations
-    for (let i = 0; i < word.length; i++) {
-      const subWord = word.substring(i, i + 1); // Get each character
-      if (specialTranslations[subWord]) {
-        resultText += `${subWord} = ${specialTranslations[subWord]}\n`;
-        translationFound = true; // Update flag
+    // Check if there's a matching translation for either single character or known phrases
+    if (specialTranslations[currentChar]) {
+      translatedText += `${currentChar} = ${specialTranslations[currentChar]}\n`;
+    } else {
+      // If it's a Hangul syllable, break it down
+      if (currentChar.charCodeAt(0) >= 0xAC00 && currentChar.charCodeAt(0) <= 0xD7A3) {
+        const components = breakHangul(currentChar);
+        breakdownText += `${currentChar} = ${components.initial} (${components.sounds})\n`;
+      } else {
+        breakdownText += `${currentChar} (non-Hangul)\n`; // Handle non-Hangul characters
       }
-    }
-
-    // If no translations were found, breakdown the whole word
-    if (!translationFound) {
-      let breakdownText = "";
-      for (let i = 0; i < word.length; i++) {
-        const syllable = word[i];
-
-        // Check if character is a valid Hangul syllable
-        if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
-          const components = breakHangul(syllable);
-          breakdownText += `${syllable} = ${components.initial} (${components.sounds})\n`;
-        } else {
-          breakdownText += `${syllable}\n`; // Non-Hangul stays as is
-        }
-      }
-      resultText += `${word}: Not found in translations\n${breakdownText}\n`;
     }
   }
+
+  // Remove empty lines before generating final output
+  resultText += translatedText || "No translations found.\n";
+  resultText += breakdownText || "No breakdown available.\n";
 
   // Display the final result
   document.getElementById('result').textContent = resultText.trim();
 }
 
-// Assuming breakHangul function is defined as before
+// The breakHangul function remains the same as defined before
 function breakHangul(syllable) {
   const unicode = syllable.charCodeAt(0) - 0xAC00;  
   const finalConsonant = unicode % 28;  
