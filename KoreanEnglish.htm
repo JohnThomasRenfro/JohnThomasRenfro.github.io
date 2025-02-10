@@ -118,7 +118,9 @@
                 const hangulTransliteration = parts.map(part => 
                     `${part.hangul} ${part.initial} ${part.initialPronunciation} ${part.medial} ${part.medialPronunciation} ${part.final} ${part.finalPronunciation}`
                 ).join(' ');
-                outputArray.push(`<div class="word hangul-text">${hangulTransliteration} = ${dictionary[word]}</div>`);
+
+                const finalPronunciation = parts.map(part => part.finalPronunciation).join('');
+                outputArray.push(`<div class="word hangul-text">${hangulTransliteration} ${finalPronunciation} = ${dictionary[word]}</div>`);
             });
 
             // Display results
