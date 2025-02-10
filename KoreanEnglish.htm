@@ -7212,36 +7212,61 @@ function processHangul() {
 
   // Split input into individual words
   const words = hangulText.split(/\s+/);
+  
+  // Iterate through each word
   for (let word of words) {
+    let translationFound = false; // Flag to check if a translation was found
     
-    // Check for special translation in dictionary
-    if (specialTranslations[word]) {
-      const translation = specialTranslations[word];
-      resultText += `${word} = ${translation}\n`;
-    } else {
+    // Processing word length; if it exists in specialTranslations
+    for (let i = 0; i < word.length; i++) {
+      const subWord = word.substring(i, i + 1); // Get each character
+      if (specialTranslations[subWord]) {
+        resultText += `${subWord} = ${specialTranslations[subWord]}\n`;
+        translationFound = true; // Update flag
+      }
+    }
+
+    // If no translations were found, breakdown the whole word
+    if (!translationFound) {
       let breakdownText = "";
-      
-      // Attempt to break down each character in the word into its syllable components
       for (let i = 0; i < word.length; i++) {
         const syllable = word[i];
 
         // Check if character is a valid Hangul syllable
         if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
           const components = breakHangul(syllable);
-          const phonetic = Object.keys(components).map(comp => `${components[comp].symbol} (${components[comp].sounds.join(', ')})`).join(' ');
-          breakdownText += `${syllable} = ${phonetic}\n`;
+          breakdownText += `${syllable} = ${components.initial} (${components.sounds})\n`;
         } else {
           breakdownText += `${syllable}\n`; // Non-Hangul stays as is
         }
       }
-
-      // Generate output for syllable breakdown
-      resultText += `${breakdownText}\n`;
+      resultText += `${word}: Not found in translations\n${breakdownText}\n`;
     }
   }
 
-  // Display the result
+  // Display the final result
   document.getElementById('result').textContent = resultText.trim();
+}
+
+// Assuming breakHangul function is defined as before
+function breakHangul(syllable) {
+  const unicode = syllable.charCodeAt(0) - 0xAC00;  
+  const finalConsonant = unicode % 28;  
+  const vowelIndex = Math.floor((unicode / 28) % 21);  
+  const initialConsonant = Math.floor(unicode / (21 * 28));  
+  
+  const initialConsonants = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+  const vowels = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'];
+  const finalConsonants = [' ', 'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+
+  const breakdown = {
+    initial: initialConsonants[initialConsonant],
+    vowel: vowels[vowelIndex],
+    final: finalConsonants[finalConsonant],
+    sounds: [initialConsonants[initialConsonant], vowels[vowelIndex], finalConsonants[finalConsonant]].filter(part => part !== ' ').join(', ')
+  };
+
+  return breakdown; 
 }
   </script>
 </body>
