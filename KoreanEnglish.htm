@@ -7242,6 +7242,17 @@ function breakHangul(syllable) {
   return components;
 }
 
+// A mapping of special translations from Hangul to English and pronunciation
+const specialTranslations = {
+    "정": { translation: "right; correct", pronunciation: "jeong" },
+    "으": { translation: "suffix for nouns", pronunciation: "eu" },
+    "으로": { translation: "due to; because of", pronunciation: "euro" },
+    "힘": { translation: "power/effort", pronunciation: "him" },
+    "정으로": { translation: "to be right; directly", pronunciation: "jeong-euro" },
+    // Add more words with their translations and pronunciations here as needed
+};
+
+// Function to process Hangul and provide translations with pronunciation
 function processHangul() {
     const hangulText = document.getElementById('hangulInput').value.trim();
     let resultText = "";
@@ -7260,14 +7271,15 @@ function processHangul() {
         for (let j = i + 1; j <= length; j++) {
             const substring = characters.slice(i, j);
             if (specialTranslations[substring]) {
-                foundTranslations.add(`${substring} = ${specialTranslations[substring]}`);
+                const { translation, pronunciation } = specialTranslations[substring];
+                foundTranslations.add(`${substring} = ${translation} (pronunciation: ${pronunciation})`);
             }
         }
     }
 
     // Adding individual characters if they have no longer substrings matched
     for (const char of characters) {
-        if (!foundTranslations.has(`${char} = ${specialTranslations[char]}`)) {
+        if (!foundTranslations.has(`${char} = ${specialTranslations[char]?.translation} (pronunciation: ${specialTranslations[char]?.pronunciation})`)) {
             foundTranslations.add(`${char}`);
         }
     }
