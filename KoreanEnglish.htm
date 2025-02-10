@@ -7091,66 +7091,106 @@
 "힘":"   power/effort",
     };
 
-// Function to break Hangul syllables into their components with pronunciation logic
+// Function to break Hangul syllables into their components with complex pronunciation logic
 function breakHangul(syllable) {
-  const syllableCode = syllable.charCodeAt(0) - 0xAC00;
-  if (syllableCode < 0 || syllableCode > 11171) return [syllable]; // Not a Hangul syllable
+    const syllableCode = syllable.charCodeAt(0) - 0xAC00;
+    if (syllableCode < 0 || syllableCode > 11171) return [syllable]; // Not a Hangul syllable
 
-  const initialIndex = Math.floor(syllableCode / 588);
-  const vowelIndex = Math.floor((syllableCode % 588) / 28);
-  const finalIndex = syllableCode % 28;
+    const initialIndex = Math.floor(syllableCode / 588);
+    const vowelIndex = Math.floor((syllableCode % 588) / 28);
+    const finalIndex = syllableCode % 28;
 
-  // Advanced mapping for pronunciation based on position in a syllable
-  const initialConsonants = [
-    { sound: 'g', position: 'initial' }, { sound: 'kk', position: 'initial' },
-    { sound: 'n', position: 'initial' }, { sound: 'd', position: 'initial' },
-    { sound: 'tt', position: 'initial' }, { sound: 'l', position: 'initial' },
-    { sound: 'm', position: 'initial' }, { sound: 'b', position: 'initial' },
-    { sound: 'pp', position: 'initial' }, { sound: 's', position: 'initial' },
-    { sound: 'ss', position: 'initial' }, { sound: '', position: 'initial' },
-    { sound: 'j', position: 'initial' }, { sound: 'jj', position: 'initial' },
-    { sound: 'ch', position: 'initial' }, { sound: 'k', position: 'initial' },
-    { sound: 't', position: 'initial' }, { sound: 'p', position: 'initial' },
-    { sound: 'h', position: 'initial' }
-  ];
+    // Complex mapping for Hangul components and their context-sensitive pronunciations
+    const complexMatrix = {
+        'initialConsonants': [
+            { symbol: 'ㄱ', sounds: ['g', 'k'] },
+            { symbol: 'ㄲ', sounds: ['kk'] },
+            { symbol: 'ㄴ', sounds: ['n'] },
+            { symbol: 'ㄷ', sounds: ['d', 't'] },
+            { symbol: 'ㄸ', sounds: ['tt'] },
+            { symbol: 'ㄹ', sounds: ['r', 'l'] },
+            { symbol: 'ㅁ', sounds: ['m'] },
+            { symbol: 'ㅂ', sounds: ['b', 'p'] },
+            { symbol: 'ㅃ', sounds: ['pp'] },
+            { symbol: 'ㅅ', sounds: ['s'] },
+            { symbol: 'ㅆ', sounds: ['ss'] },
+            { symbol: 'ㅇ', sounds: ['ng', 'silent'] },
+            { symbol: 'ㅈ', sounds: ['j', 'ch'] },
+            { symbol: 'ㅉ', sounds: ['jj'] },
+            { symbol: 'ㅊ', sounds: ['ch'] },
+            { symbol: 'ㅋ', sounds: ['k'] },
+            { symbol: 'ㅌ', sounds: ['t'] },
+            { symbol: 'ㅍ', sounds: ['p'] },
+            { symbol: 'ㅎ', sounds: ['h'] }
+        ],
+        'vowels': [
+            { symbol: 'ㅏ', sounds: ['ah'] },
+            { symbol: 'ㅐ', sounds: ['ae'] },
+            { symbol: 'ㅑ', sounds: ['yah'] },
+            { symbol: 'ㅒ', sounds: ['yae'] },
+            { symbol: 'ㅓ', sounds: ['uh'] },
+            { symbol: 'ㅔ', sounds: ['eh'] },
+            { symbol: 'ㅕ', sounds: ['yeo'] },
+            { symbol: 'ㅖ', sounds: ['ye'] },
+            { symbol: 'ㅗ', sounds: ['o'] },
+            { symbol: 'ㅘ', sounds: ['wa'] },
+            { symbol: 'ㅙ', sounds: ['wae'] },
+            { symbol: 'ㅚ', sounds: ['oe'] },
+            { symbol: 'ㅛ', sounds: ['yo'] },
+            { symbol: 'ㅜ', sounds: ['u'] },
+            { symbol: 'ㅝ', sounds: ['wo'] },
+            { symbol: 'ㅞ', sounds: ['we'] },
+            { symbol: 'ㅟ', sounds: ['wi'] },
+            { symbol: 'ㅠ', sounds: ['yu'] },
+            { symbol: 'ㅡ', sounds: ['eu'] },
+            { symbol: 'ㅢ', sounds: ['ui'] },
+            { symbol: 'ㅣ', sounds: ['i'] }
+        ],
+        'finalConsonants': [
+            { symbol: '', sounds: [''] },
+            { symbol: 'ㄱ', sounds: ['g', 'k'] },
+            { symbol: 'ㄲ', sounds: ['kk'] },
+            { symbol: 'ㄳ', sounds: ['ks'] },
+            { symbol: 'ㄴ', sounds: ['n'] },
+            { symbol: 'ㄵ', sounds: ['nj'] },
+            { symbol: 'ㄶ', sounds: ['nh'] },
+            { symbol: 'ㄷ', sounds: ['d', 't'] },
+            { symbol: 'ㄹ', sounds: ['l', 'r'] },
+            { symbol: 'ㄺ', sounds: ['lg'] },
+            { symbol: 'ㄻ', sounds: ['lm'] },
+            { symbol: 'ㄼ', sounds: ['lb'] },
+            { symbol: 'ㄽ', sounds: ['ls'] },
+            { symbol: 'ㄾ', sounds: ['lt'] },
+            { symbol: 'ㄿ', sounds: ['lp'] },
+            { symbol: 'ㅁ', sounds: ['m'] },
+            { symbol: 'ㅂ', sounds: ['b', 'p'] },
+            { symbol: 'ㅃ', sounds: ['pp'] },
+            { symbol: 'ㅄ', sounds: ['bs'] },
+            { symbol: 'ㅅ', sounds: ['s'] },
+            { symbol: 'ㅆ', sounds: ['ss'] },
+            { symbol: 'ㅇ', sounds: ['ng'] },
+            { symbol: 'ㅈ', sounds: ['j'] },
+            { symbol: 'ㅉ', sounds: ['jj'] },
+            { symbol: 'ㅊ', sounds: ['ch'] },
+            { symbol: 'ㅋ', sounds: ['k'] },
+            { symbol: 'ㅌ', sounds: ['t'] },
+            { symbol: 'ㅍ', sounds: ['p'] },
+            { symbol: 'ㅎ', sounds: ['h'] }
+        ]
+    };
 
-  const vowels = [
-    { sound: 'ah', position: 'medial' }, { sound: 'eh', position: 'medial' },
-    { sound: 'yah', position: 'medial' }, { sound: 'yae', position: 'medial' },
-    { sound: 'uh', position: 'medial' }, { sound: 'eh', position: 'medial' },
-    { sound: 'yuh', position: 'medial' }, { sound: 'ye', position: 'medial' },
-    { sound: 'o', position: 'medial' }, { sound: 'wah', position: 'medial' },
-    { sound: 'wae', position: 'medial' }, { sound: 'oe', position: 'medial' },
-    { sound: 'y', position: 'medial' }, { sound: 'u', position: 'medial' },
-    { sound: 'wuh', position: 'medial' }, { sound: 'weh', position: 'medial' },
-    { sound: 'ue', position: 'medial' }, { sound: 'yu', position: 'medial' },
-    { sound: 'u', position: 'medial' }, { sound: 'ui', position: 'medial' },
-    { sound: 'i', position: 'medial' }
-  ];
+    const initial = complexMatrix.initialConsonants[initialIndex].symbol;
+    const vowel = complexMatrix.vowels[vowelIndex].symbol;
+    const final = complexMatrix.finalConsonants[finalIndex].symbol;
 
-  const finalConsonants = [
-    { sound: '', position: 'final' }, { sound: 'g', position: 'final' },
-    { sound: 'kk', position: 'final' }, { sound: 'ks', position: 'final' },
-    { sound: 'n', position: 'final' }, { sound: 'nj', position: 'final' },
-    { sound: 'nh', position: 'final' }, { sound: 'd', position: 'final' },
-    { sound: 'l', position: 'final' }, { sound: 'lg', position: 'final' },
-    { sound: 'lm', position: 'final' }, { sound: 'lb', position: 'final' },
-    { sound: 'ls', position: 'final' }, { sound: 'lt', position: 'final' },
-    { sound: 'lp', position: 'final' }, { sound: 'm', position: 'final' },
-    { sound: 'b', position: 'final' }, { sound: 'pp', position: 'final' },
-    { sound: 'bs', position: 'final' }, { sound: 's', position: 'final' },
-    { sound: 'ss', position: 'final' }, { sound: 'ng', position: 'final' },
-    { sound: 'j', position: 'final' }, { sound: 'jj', position: 'final' },
-    { sound: 'ch', position: 'final' }, { sound: 'k', position: 'final' },
-    { sound: 't', position: 'final' }, { sound: 'p', position: 'final' },
-    { sound: 'h', position: 'final' }
-  ];
+    // Gathering all components and their potential sounds
+    const components = {
+        initial: { symbol: initial, sounds: complexMatrix.initialConsonants[initialIndex].sounds },
+        vowel: { symbol: vowel, sounds: complexMatrix.vowels[vowelIndex].sounds },
+        final: { symbol: final, sounds: complexMatrix.finalConsonants[finalIndex].sounds }
+    };
 
-  const initial = initialConsonants[initialIndex].sound;
-  const vowel = vowels[vowelIndex].sound;
-  const final = finalConsonants[finalIndex].sound;
-
-  return [initial, vowel, final].filter(Boolean);
+    return components;
 }
 
     function processHangul() {
