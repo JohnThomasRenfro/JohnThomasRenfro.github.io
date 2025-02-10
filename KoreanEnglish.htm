@@ -7212,33 +7212,30 @@ function processHangul() {
   // Process each word separately
   const words = hangulText.split(/\s+/);
   for (let word of words) {
-    let breakdownText = "";
-    let fullSyllableText = "";
+    let fullSyllableText = word;
     let translationText = "";
-
-    for (let i = 0; i < word.length; i++) {
-      const syllable = word[i];
-
-      if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
-        const components = breakHangul(syllable);
-        const phonetic = Object.keys(components).map(comp => `${components[comp].symbol} (${components[comp].sounds.join(', ')})`).join(' ');
-        breakdownText += `${syllable} = ${phonetic}\n`;
-        fullSyllableText += syllable;
-      } else {
-        breakdownText += `${syllable}\n`; // Non-Hangul stays as is
-        fullSyllableText += syllable;
-      }
-    }
-
-    resultText += breakdownText + "\n";
     
+    // Check for special translation before breakdown
     if (specialTranslations[word]) {
-      translationText = `${fullSyllableText} = ${specialTranslations[word]}\n`;
+      translationText = `${word} = ${specialTranslations[word]}\n\n`;
+      resultText += translationText;
     } else {
-      translationText = `${fullSyllableText} = ${fullSyllableText}\n`;
-    }
+      let breakdownText = "";
+      
+      for (let i = 0; i < word.length; i++) {
+        const syllable = word[i];
 
-    resultText += translationText + "\n";
+        if (syllable.charCodeAt(0) >= 0xAC00 && syllable.charCodeAt(0) <= 0xD7A3) {
+          const components = breakHangul(syllable);
+          const phonetic = Object.keys(components).map(comp => `${components[comp].symbol} (${components[comp].sounds.join(', ')})`).join(' ');
+          breakdownText += `${syllable} = ${phonetic}\n`;
+        } else {
+          breakdownText += `${syllable}\n`; // Non-Hangul stays as is
+        }
+      }
+
+      resultText += breakdownText + "\n";
+    }
   }
 
   document.getElementById('result').textContent = resultText.trim();
