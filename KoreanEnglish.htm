@@ -1,51 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hangul to English Pronunciation & Translation</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    textarea {
-      width: 100%;
-      height: 100px;
-    }
-    #result {
-      white-space: pre-wrap; /* Keep line breaks in text */
-      margin-top: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Translation Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #result {
+            margin-top: 20px; 
+            border: 1px solid black; 
+            padding: 10px;
+            white-space: pre-wrap; /* Maintains formatting for line breaks */
+        }
+    </style>
 </head>
 <body>
-  <h1>Hangul to English Pronunciation & Translation</h1>
 
-  <textarea id="hangulInput" placeholder="Paste Hangul text here..."></textarea><br><br>
+    <h1>Korean Translation Tool</h1>
+    <textarea id="koreanInput" rows="4" cols="50" placeholder="Paste Korean text here..."></textarea>
+    <br>
+    <button onclick="processKoreanInput()">Translate</button>
 
-  <button onclick="processHangul()">Process</button>
+    <div id="result"></div>
 
-  <h2>Cut and Paste: 퐁삭 테나는 감격스러운 표정으로 "어떤 말로 표현해야 할지 모르겠다"며 "우리의 송환을 위해 도움을 주신 모든 관계자분들께 감사드린다"고 밝혔다.</h2>
-  <div id="result"></div>
-
-  <script>
-    // Hangul to English mapping for consonants and vowels (improved pronunciation)
-    const hangulToEnglish = {
-      'ㄱ': 'g', 'ㄲ': 'kk', 'ㄴ': 'n', 'ㄷ': 'd', 'ㄸ': 'tt', 'ㄹ': 'r', 'ㅁ': 'm', 'ㅂ': 'b',
-      'ㅃ': 'pp', 'ㅅ': 's', 'ㅆ': 'ss', 'ㅇ': 'no sound or/ng', 'ㅈ': 'j', 'ㅉ': 'jj', 'ㅊ': 'ch', 'ㅋ': 'k',
-      'ㅌ': 't', 'ㅍ': 'p', 'ㅎ': 'h',
-      
-      // Vowels with more accurate romanization
-      'ㅏ': 'ah', 'ㅐ': 'eh', 'ㅑ': 'yah', 'ㅒ': 'yae', 'ㅓ': 'uh', 'ㅔ': 'eh', 'ㅕ': 'yuh', 'ㅖ': 'ye',
-      'ㅗ': 'oe', 'ㅘ': 'wah', 'ㅙ': 'wae', 'ㅚ': 'oe ee', 'ㅛ': 'yoe', 'ㅜ': 'ue', 'ㅝ': 'wuh', 'ㅞ': 'weh',
-      'ㅟ': 'ue ee', 'ㅠ': 'yue', 'ㅡ': 'ue', 'ㅢ': 'ue ee', 'ㅣ': 'ee'
-    };
-
-    const specialTranslations = {
+    <script>
+        // Define a map for Korean words and their translations
+        const translationMap = {
 "(삼가":" 고인) 명복을 빕니다 I am sorry for your loss",
 "10월":" (시월)    October",
 "11월":" (십일월)   November",
@@ -7096,204 +7079,32 @@
 "힘":"   power/effort",
     };
 
-function breakHangul(syllable) {
-    // Initialize Hangul code for the given syllable
-    const syllableCode = syllable.charCodeAt(0) - 0xAC00;
+        // Function to process Korean input text
+        function processKoreanInput() {
+            const koreanText = document.getElementById('koreanInput').value.trim();
+            let results = [];
 
-    // Validate whether the input is a valid Hangul character
-    if (syllableCode < 0 || syllableCode > 11171) {
-        // Return a single element array containing the original syllable
-        return [syllable];
-    }
+            // Split the text into words (assuming words are separated by spaces)
+            const words = koreanText.split(/\s+/);
 
-    // Calculate the index of the initial consonant
-    const initialIndex = Math.floor(syllableCode / 588);
-    // Calculate the index of the vowel
-    const vowelIndex = Math.floor((syllableCode % 588) / 28);
-    // Calculate the index of the final consonant
-    const finalIndex = syllableCode % 28;
-
-    // Complex mapping for Hangul components and their context-sensitive pronunciations
-    const complexMatrix = {
-        'initialConsonants': [
-            { symbol: 'ㄱ', sounds: ['g', 'k'] },
-            { symbol: 'ㄲ', sounds: ['kk'] },
-            { symbol: 'ㄴ', sounds: ['n'] },
-            { symbol: 'ㄷ', sounds: ['d', 't'] },
-            { symbol: 'ㄸ', sounds: ['tt'] },
-            { symbol: 'ㄹ', sounds: ['r', 'l'] },
-            { symbol: 'ㅁ', sounds: ['m'] },
-            { symbol: 'ㅂ', sounds: ['b', 'p'] },
-            { symbol: 'ㅃ', sounds: ['pp'] },
-            { symbol: 'ㅅ', sounds: ['s'] },
-            { symbol: 'ㅆ', sounds: ['ss'] },
-            { symbol: 'ㅇ', sounds: ['ng', 'silent'] },
-            { symbol: 'ㅈ', sounds: ['j', 'ch'] },
-            { symbol: 'ㅉ', sounds: ['jj'] },
-            { symbol: 'ㅊ', sounds: ['ch'] },
-            { symbol: 'ㅋ', sounds: ['k'] },
-            { symbol: 'ㅌ', sounds: ['t'] },
-            { symbol: 'ㅍ', sounds: ['p'] },
-            { symbol: 'ㅎ', sounds: ['h'] }
-        ],
-        'vowels': [
-            { symbol: 'ㅏ', sounds: ['ah'] },
-            { symbol: 'ㅐ', sounds: ['ae'] },
-            { symbol: 'ㅑ', sounds: ['yah'] },
-            { symbol: 'ㅒ', sounds: ['yae'] },
-            { symbol: 'ㅓ', sounds: ['uh'] },
-            { symbol: 'ㅔ', sounds: ['eh'] },
-            { symbol: 'ㅕ', sounds: ['yeo'] },
-            { symbol: 'ㅖ', sounds: ['ye'] },
-            { symbol: 'ㅗ', sounds: ['o'] },
-            { symbol: 'ㅘ', sounds: ['wa'] },
-            { symbol: 'ㅙ', sounds: ['wae'] },
-            { symbol: 'ㅚ', sounds: ['oe'] },
-            { symbol: 'ㅛ', sounds: ['yo'] },
-            { symbol: 'ㅜ', sounds: ['u'] },
-            { symbol: 'ㅝ', sounds: ['wo'] },
-            { symbol: 'ㅞ', sounds: ['we'] },
-            { symbol: 'ㅟ', sounds: ['wi'] },
-            { symbol: 'ㅠ', sounds: ['yu'] },
-            { symbol: 'ㅡ', sounds: ['eu'] },
-            { symbol: 'ㅢ', sounds: ['ui'] },
-            { symbol: 'ㅣ', sounds: ['i'] }
-        ],
-        'finalConsonants': [
-            { symbol: '', sounds: [''] },
-            { symbol: 'ㄱ', sounds: ['g', 'k'] },
-            { symbol: 'ㄲ', sounds: ['kk'] },
-            { symbol: 'ㄳ', sounds: ['ks'] },
-            { symbol: 'ㄴ', sounds: ['n'] },
-            { symbol: 'ㄵ', sounds: ['nj'] },
-            { symbol: 'ㄶ', sounds: ['nh'] },
-            { symbol: 'ㄷ', sounds: ['d', 't'] },
-            { symbol: 'ㄹ', sounds: ['l', 'r'] },
-            { symbol: 'ㄺ', sounds: ['lg'] },
-            { symbol: 'ㄻ', sounds: ['lm'] },
-            { symbol: 'ㄼ', sounds: ['lb'] },
-            { symbol: 'ㄽ', sounds: ['ls'] },
-            { symbol: 'ㄾ', sounds: ['lt'] },
-            { symbol: 'ㄿ', sounds: ['lp'] },
-            { symbol: 'ㅁ', sounds: ['m'] },
-            { symbol: 'ㅂ', sounds: ['b', 'p'] },
-            { symbol: 'ㅃ', sounds: ['pp'] },
-            { symbol: 'ㅄ', sounds: ['bs'] },
-            { symbol: 'ㅅ', sounds: ['s'] },
-            { symbol: 'ㅆ', sounds: ['ss'] },
-            { symbol: 'ㅇ', sounds: ['ng'] },
-            { symbol: 'ㅈ', sounds: ['j'] },
-            { symbol: 'ㅉ', sounds: ['jj'] },
-            { symbol: 'ㅊ', sounds: ['ch'] },
-            { symbol: 'ㅋ', sounds: ['k'] },
-            { symbol: 'ㅌ', sounds: ['t'] },
-            { symbol: 'ㅍ', sounds: ['p'] },
-            { symbol: 'ㅎ', sounds: ['h'] }
-        ]
-    };
-
-    const initial = complexMatrix.initialConsonants[initialIndex].symbol;
-    const vowel = complexMatrix.vowels[vowelIndex].symbol;
-    const final = complexMatrix.finalConsonants[finalIndex].symbol;
-
-    // Gathering all components and their potential sounds
-    const components = {
-        initial: { symbol: initial, sounds: complexMatrix.initialConsonants[initialIndex].sounds },
-        vowel: { symbol: vowel, sounds: complexMatrix.vowels[vowelIndex].sounds },
-        final: { symbol: final, sounds: complexMatrix.finalConsonants[finalIndex].sounds }
-    };
-
-    return components;
-}
-    
-// Function to break down Hangul syllables
-function breakHangul(syllable) {
-  // Initialize Hangul code for the given syllable
-  const syllableCode = syllable.charCodeAt(0) - 0xAC00;
-
-  // Validate whether the input is a valid Hangul character
-  if (syllableCode < 0 || syllableCode > 11171) {
-    // Return a single element array containing the original syllable
-    return [syllable];
-  }
-
-  const initialIndex = Math.floor(syllableCode / 588);
-  const vowelIndex = Math.floor((syllableCode % 588) / 28);
-  const finalIndex = syllableCode % 28;
-
-  // Define Hangul component matrices
-  const complexMatrix = {
-    'initialConsonants': [ /* ... same as above ... */ ],
-    'vowels': [ /* ... same as above ... */ ],
-    'finalConsonants': [ /* ... same as above ... */ ]
-  };
-
-  const initial = complexMatrix.initialConsonants[initialIndex].symbol;
-  const vowel = complexMatrix.vowels[vowelIndex].symbol;
-  const final = complexMatrix.finalConsonants[finalIndex].symbol;
-
-  // Gathering all components
-  const components = {
-    initial: { symbol: initial, sounds: complexMatrix.initialConsonants[initialIndex].sounds },
-    vowel: { symbol: vowel, sounds: complexMatrix.vowels[vowelIndex].sounds },
-    final: { symbol: final, sounds: complexMatrix.finalConsonants[finalIndex].sounds }
-  };
-
-  return components;
-}
-
-// A mapping of special translations from Hangul to English
-const specialTranslations = {
-    "정": "right; correct",      // Example translation for '정'
-    "으": "suffix for nouns",     // Example translation for '으'
-    "으로": "due to; because of", // Example translation for '으로'
-    "힘": "power/effort",         // Example translation for '힘'
-    "정으로": "to be right; directly", // Example for longer combination
-    // Add more words and their translations here as needed
-};
-
-// Function to process Hangul and provide translations
-function processHangul() {
-    const hangulText = document.getElementById('hangulInput').value.trim();
-    let resultText = "";
-
-    // Split the Hangul text into a continuous string of characters (no spaces are used)
-    const characters = hangulText.replace(/[^\uAC00-\uD7A3]/g, '');  // Keep only Hangul characters
-
-    // To store found translations
-    const foundTranslations = new Set();
-
-    // Check for all possible substrings
-    const length = characters.length;
-
-    // Generate and check substrings
-    for (let i = 0; i < length; i++) {
-        for (let j = i + 1; j <= length; j++) {
-            const substring = characters.slice(i, j);
-            if (specialTranslations[substring]) {
-                foundTranslations.add(`${substring} = ${specialTranslations[substring]}`);
+            // Check each word against the translation map
+            for (const word of words) {
+                if (translationMap[word]) {
+                    results.push({ word: word, translation: translationMap[word] });
+                }
             }
+
+            // Sort results by word length in descending order and remove duplicates
+            results.sort((a, b) => b.word.length - a.word.length);
+            const uniqueResults = Array.from(new Set(results.map(JSON.stringify))).map(JSON.parse);
+
+            // Build the output text
+            let outputText = uniqueResults.map(result => `${result.word}: ${result.translation}`).join('\n');
+
+            // Display the results in the output div
+            document.getElementById('result').textContent = outputText.trim() || 'No matches found.';
         }
-    }
+    </script>
 
-    // Adding individual characters if they have no longer substrings matched
-    for (const char of characters) {
-        if (!foundTranslations.has(`${char} = ${specialTranslations[char]}`)) {
-            foundTranslations.add(`${char}`);
-        }
-    }
-
-    // Combine the translations to a single string and format the result
-    resultText = Array.from(foundTranslations).join('\n');
-
-    // Final output
-    document.getElementById('result').textContent = resultText.trim();
-}
-
-// HTML Setup for the Input and Result (for completeness)
-// <input type="text" id="hangulInput" />
-// <button onclick="processHangul()">Translate</button>
-// <div id="result"></div>
-  </script>
 </body>
 </html>
