@@ -7242,27 +7242,36 @@ function breakHangul(syllable) {
   return components;
 }
 
-// Function to process Hangul and provide translations
 function processHangul() {
-  const hangulText = document.getElementById('hangulInput').value.trim();
-  let resultText = "";
+    const hangulText = document.getElementById('hangulInput').value.trim();
+    let resultText = "";
 
-  // Split the Hangul text into characters (no spaces are used)
-  const characters = hangulText.replace(/[^\uAC00-\uD7A3]/g, '');  // Keep only Hangul characters
+    // Split the Hangul text into characters (no spaces are used)
+    const characters = hangulText.replace(/[^\uAC00-\uD7A3]/g, '');  // Keep only Hangul characters
+    
+    // Handle translation checks for longer sequences first, then single characters
+    const translatedWords = [];
 
-  // Iterate through each character in the Hangul input
-  for (const char of characters) {
-    const word = char;
-    // Check for known translations for the character
-    if (specialTranslations[word]) {
-      resultText += `${word} = ${specialTranslations[word]}\n`;
-    } else {
-      resultText += `${word}\n`; // Or provide some other indication if there is no translation
+    // Check for combined characters first
+    const twoCharSequence = characters.slice(-2); // Last two characters
+    if (specialTranslations[twoCharSequence]) {
+        translatedWords.push(`${twoCharSequence} = ${specialTranslations[twoCharSequence]}`);
     }
-  }
 
-  // Final output
-  document.getElementById('result').textContent = resultText.trim();
+    // Process each character to check for individual translations
+    for (const char of characters) {
+        if (specialTranslations[char]) {
+            translatedWords.push(`${char} = ${specialTranslations[char]}`);
+        } else {
+            translatedWords.push(`${char}`); // Or an indication that there is no translation
+        }
+    }
+
+    // Combine the translations and remove duplicates
+    resultText = [...new Set(translatedWords)].join('\n');
+
+    // Final output
+    document.getElementById('result').textContent = resultText.trim();
 }
   </script>
 </body>
