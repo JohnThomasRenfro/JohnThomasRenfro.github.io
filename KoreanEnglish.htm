@@ -7225,9 +7225,9 @@ function processHangul() {
     let pronunciation = "";
     let translationText = "";
     
-    // Check for special translation
+    // Check for special translation before breakdown
     if (specialTranslations[word]) {
-      translationText = `${word} = ${specialTranslations[word]}`;
+      translationText = `${word} = ${specialTranslations[word]}\n`;
       resultText += `${translationText}\n`;
     } else {
       let breakdownText = "";
