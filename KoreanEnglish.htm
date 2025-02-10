@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean to English Translator</title>
+</head>
+<body>
+    <h1>Korean to English Translator</h1>
+    <textarea id="input" rows="4" cols="50" placeholder="Type or paste Korean text here..."></textarea><br>
+    <button id="translateButton">Translate</button>
+    <h2>Translation:</h2>
+    <div id="translationOutput"></div>
+
+    <script>
+        // Function to decompose Hangul syllables into parts
+        function hangulToParts(hangul) {
+            const start = 44032; // U+AC00 (가)
+            const end = 55215;   // U+D7A3 (힣)
+
+            const hangulParts = [];
+
+            for (let i = 0; i < hangul.length; i++) {
+                const charCode = hangul.charCodeAt(i);
+                if (charCode >= start && charCode <= end) {
+                    const index = charCode - start;
+                    const initial = Math.floor(index / 588); // 19 initials
+                    const medial = Math.floor((index % 588) / 28); // 21 medials
+                    const final = index % 28; // 28 finals
+
+                    // Hangul Jamo Unicode ranges
+                    const initialJamo = String.fromCharCode(0x1100 + initial);
+                    const medialJamo = String.fromCharCode(0x1161 + medial);
+                    const finalJamo = final ? String.fromCharCode(0x11A7 + final) : '';
+
+                    hangulParts.push({ initial: initialJamo, medial: medialJamo, final: finalJamo });
+                }
+            }
+            return hangulParts;
+        }
+
+        // Dictionary of Korean to English words
+        const dictionary = {
+            "안녕하세요": "Hello",
+            "세계": "World",
+            "사랑": "Love",
+            "행복": "Happiness",
+            "학교": "School",
+            "사람": "Person",
+            "친구": "Friend",
+            "가족": "Family",
+            "여행": "Travel",
+            "음식": "Food",
+            "책": "Book",
+            "연습": "Practice",
+            "언어": "Language",
+            "기술": "Technology",
+            "컴퓨터": "Computer",
+            "사계절": "Four Seasons",
+            // Add more translations as needed
+        };
+
+        // Function to translate Korean strings to English
+        function translateKoreanToEnglish(koreanString) {
+            const translatedWords = [];
+            let i = 0;
+
+            while (i < koreanString.length) {
+                let found = false;
+
+                // Check for the longest matching substring
+                for (let j = koreanString.length; j > i; j--) {
+                    const substring = koreanString.substring(i, j);
+                    if (substring in dictionary) {
+                        translatedWords.push(dictionary[substring]);
+                        i = j; // Move index to the end of matched substring
+                        found = true;
+                        break;
+                    }
+                }
+                
+                // If no match was found, move to the next character
+                if (!found) {
+                    i++;
+                }
+            }
+
+            return translatedWords;
+        }
+
+        // Event listener for the translate button
+        document.getElementById('translateButton').addEventListener('click', function() {
+            const koreanInput = document.getElementById('input').value;
+            const hangulPartsArray = hangulToParts(koreanInput);
+            const translatedTextArray = translateKoreanToEnglish(koreanInput);
+
+            // Output Hangul Parts
+            let partsOutput = "<strong>Hangul Parts Breakdown:</strong><br>";
+            hangulPartsArray.forEach(parts => {
+                partsOutput += `Initial: ${parts.initial}, Medial: ${parts.medial}, Final: ${parts.final}<br>`;
+            });
+
+            // Output Translated Words
+            partsOutput += "<strong>Translated Words:</strong><br>";
+            partsOutput += translatedTextArray.length ? translatedTextArray.join(', ') : "No translation found.";
+
+            document.getElementById('translationOutput').innerHTML = partsOutput;
+        });
+    </script>
+</body>
+</html>
