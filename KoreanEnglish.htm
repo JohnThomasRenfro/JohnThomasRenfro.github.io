@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Korean to English Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .output {
+            margin-top: 20px;
+        }
+        .word {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
     <h1>Korean to English Translator</h1>
     <textarea id="input" rows="4" cols="50" placeholder="Type or paste Korean text here..."></textarea><br>
     <button id="translateButton">Translate</button>
     <h2>Translation:</h2>
-    <div id="translationOutput"></div>
+    <div id="translationOutput" class="output"></div>
 
     <script>
         // Function to decompose Hangul syllables into parts
@@ -33,7 +45,7 @@
                     const medialJamo = String.fromCharCode(0x1161 + medial);
                     const finalJamo = final ? String.fromCharCode(0x11A7 + final) : '';
 
-                    hangulParts.push({ initial: initialJamo, medial: medialJamo, final: finalJamo });
+                    hangulParts.push({ hangul: hangul[i], initial: initialJamo, medial: medialJamo, final: finalJamo });
                 }
             }
             return hangulParts;
@@ -41,6 +53,7 @@
 
         // Dictionary of Korean to English words
         const dictionary = {
+            "헌법": "Constitution",
             "안녕하세요": "Hello",
             "세계": "World",
             "사랑": "Love",
@@ -72,7 +85,7 @@
                 for (let j = koreanString.length; j > i; j--) {
                     const substring = koreanString.substring(i, j);
                     if (substring in dictionary) {
-                        translatedWords.push(dictionary[substring]);
+                        translatedWords.push(substring);
                         i = j; // Move index to the end of matched substring
                         found = true;
                         break;
@@ -91,20 +104,24 @@
         // Event listener for the translate button
         document.getElementById('translateButton').addEventListener('click', function() {
             const koreanInput = document.getElementById('input').value;
-            const hangulPartsArray = hangulToParts(koreanInput);
+            const hangulPartsArray = [];
             const translatedTextArray = translateKoreanToEnglish(koreanInput);
 
-            // Output Hangul Parts
-            let partsOutput = "<strong>Hangul Parts Breakdown:</strong><br>";
-            hangulPartsArray.forEach(parts => {
-                partsOutput += `Initial: ${parts.initial}, Medial: ${parts.medial}, Final: ${parts.final}<br>`;
+            // Generate output for each translated word
+            translatedTextArray.forEach(word => {
+                const parts = hangulToParts(word);
+                parts.forEach(part => {
+                    hangulPartsArray.push(`
+                        <div class="word">
+                            ${part.hangul} = ${dictionary[word]}<br>
+                            Initial: ${part.initial}, Medial: ${part.medial}, Final: ${part.final}
+                        </div>
+                    `);
+                });
             });
 
-            // Output Translated Words
-            partsOutput += "<strong>Translated Words:</strong><br>";
-            partsOutput += translatedTextArray.length ? translatedTextArray.join(', ') : "No translation found.";
-
-            document.getElementById('translationOutput').innerHTML = partsOutput;
+            // Display results
+            document.getElementById('translationOutput').innerHTML = hangulPartsArray.join('');
         });
     </script>
 </body>
