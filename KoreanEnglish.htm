@@ -29,6 +29,7 @@
     <script>
         // Define a map for Korean words and their translations
         const translationMap = {
+
 "(삼가":" 고인) 명복을 빕니다 I am sorry for your loss",
 "10월":" (시월)    October",
 "11월":" (십일월)   November",
@@ -7080,20 +7081,21 @@
 "흠":"   Hmm...",
 "힐":"   heel",
 "힘":"   power/effort",
-    };
+        };
 
         // Function to process Korean input text
         function processKoreanInput() {
             const koreanText = document.getElementById('koreanInput').value.trim();
             let results = [];
 
-            // Split the text into words (assuming words are separated by spaces)
-            const words = koreanText.split(/\s+/);
-
-            // Check each word against the translation map
-            for (const word of words) {
-                if (translationMap[word]) {
-                    results.push({ word: word, translation: translationMap[word] });
+            // Check every possible substring of the Korean text against the translation map
+            const length = koreanText.length;
+            for (let i = 0; i < length; i++) {
+                for (let j = i + 1; j <= length; j++) {
+                    const substring = koreanText.slice(i, j);
+                    if (translationMap[substring]) {
+                        results.push({ word: substring, translation: translationMap[substring] });
+                    }
                 }
             }
 
@@ -7101,9 +7103,9 @@
             results.sort((a, b) => b.word.length - a.word.length);
             const uniqueResults = Array.from(new Set(results.map(JSON.stringify))).map(JSON.parse);
 
-            // Build the output text
+            // Build the output text without spaces between matched words
             let outputText = uniqueResults.map(result => `${result.word}: ${result.translation}`).join('\n');
-
+            
             // Display the results in the output div
             document.getElementById('result').textContent = outputText.trim() || 'No matches found.';
         }
