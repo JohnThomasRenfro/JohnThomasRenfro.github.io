@@ -7246,29 +7246,34 @@ function processHangul() {
     const hangulText = document.getElementById('hangulInput').value.trim();
     let resultText = "";
 
-    // Split the Hangul text into characters (no spaces are used)
+    // Split the Hangul text into a continuous string of characters (no spaces are used)
     const characters = hangulText.replace(/[^\uAC00-\uD7A3]/g, '');  // Keep only Hangul characters
-    
-    // Handle translation checks for longer sequences first, then single characters
-    const translatedWords = [];
 
-    // Check for combined characters first
-    const twoCharSequence = characters.slice(-2); // Last two characters
-    if (specialTranslations[twoCharSequence]) {
-        translatedWords.push(`${twoCharSequence} = ${specialTranslations[twoCharSequence]}`);
-    }
+    // To store found translations
+    const foundTranslations = new Set();
 
-    // Process each character to check for individual translations
-    for (const char of characters) {
-        if (specialTranslations[char]) {
-            translatedWords.push(`${char} = ${specialTranslations[char]}`);
-        } else {
-            translatedWords.push(`${char}`); // Or an indication that there is no translation
+    // Check for all possible substrings
+    const length = characters.length;
+
+    // Generate and check substrings
+    for (let i = 0; i < length; i++) {
+        for (let j = i + 1; j <= length; j++) {
+            const substring = characters.slice(i, j);
+            if (specialTranslations[substring]) {
+                foundTranslations.add(`${substring} = ${specialTranslations[substring]}`);
+            }
         }
     }
 
-    // Combine the translations and remove duplicates
-    resultText = [...new Set(translatedWords)].join('\n');
+    // Adding individual characters if they have no longer substrings matched
+    for (const char of characters) {
+        if (!foundTranslations.has(`${char} = ${specialTranslations[char]}`)) {
+            foundTranslations.add(`${char}`);
+        }
+    }
+
+    // Combine the translations to a single string and format the result
+    resultText = Array.from(foundTranslations).join('\n');
 
     // Final output
     document.getElementById('result').textContent = resultText.trim();
