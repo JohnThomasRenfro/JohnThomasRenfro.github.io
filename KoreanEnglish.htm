@@ -7212,11 +7212,14 @@ function processHangul() {
   // Process each word separately
   const words = hangulText.split(/\s+/);
   for (let word of words) {
+    let fullSyllableText = word;
+    let pronunciation = "";
     let translationText = "";
     
-    // Check for special translation for the entire word
+    // Check for special translation
     if (specialTranslations[word]) {
       translationText = `${word} = ${specialTranslations[word]}`;
+      resultText += `${translationText}\n`;
     } else {
       let breakdownText = "";
       
@@ -7232,10 +7235,11 @@ function processHangul() {
         }
       }
 
-      translationText = `${word} = ${breakdownText.split('=').map(item => item.split('(')[1].split(', ').join('').replace(')', '').trim()).join(' ')}`;
+      // Calculate pronunciation based on breakdown
+      pronunciation = breakdownText.split('=').map(item => item.split('(')[1].split(', ').join('').replace(')', '').trim()).join(' ');
+
+      resultText += `${breakdownText}\n${word} = ${pronunciation}\n\n`;
     }
-    
-    resultText += `${translationText}\n\n`;
   }
 
   document.getElementById('result').textContent = resultText.trim();
