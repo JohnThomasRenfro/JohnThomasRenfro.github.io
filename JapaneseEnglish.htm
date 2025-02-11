@@ -2283,7 +2283,7 @@ const replsB = [
 {p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xshichi jyuu-seventy~Noun$2'},
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhachi jyuu-eighty~Noun$2'},
 {p1:/(8|８)(?!X)(日)(?!X)/g,r1:'$1Xyou$2Xka-eighth day of the month~Noun'},
-{p1:/(9)(?!X)(日)(?!X)/g,r1:'$1Xkokono$2Xka-nineth day of the month~Noun'},
+{p1:/(９|9)(?!X)(日)(?!X)/g,r1:'$1Xkokono$2Xka-nineth day of the month~Noun'},
 {p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu jyuu-ninety~Noun$2'},
 {p1:/(\d{1})(?!X)(分)(?!X)/g,r1:'$1$2Xpun-minutes~Noun'},
 {p1:/(\d{1})(?!X)(時)(?!X)/g,r1:'$1$2Xji-hour~Noun'},
@@ -4733,6 +4733,7 @@ const replsB = [
 {p1:/(期)(?!X)(限)(?!X)/g,r1:'$1Xki$2Xgen-limited time~Noun'},
 {p1:/(木)(?!X)(綿)(?!X)/g,r1:'$1Xmom$2Xen-cotton~Noun'},
 {p1:/(木)(?!X)(造)(?!X)/g,r1:'$1Xmoku$2Xzou-wooden~Noun'},
+{p1:/(公)(?!X)(邸)(?!X)/g,r1:'$1Xkou$2Xtei-official residence~Noun'},
 {p1:/(未)(?!X)(だ)(?!X)/g,r1:'$1Xma$2Xda-yet,more~Noun'},
 {p1:/(未)(?!X)(婚)(?!X)/g,r1:'$1Xmik$2Xon-unmarried~Noun'},
 {p1:/(未)(?!X)(定)(?!X)/g,r1:'$1Xmi$2Xtei-undecided,pending~Noun'},
@@ -5042,6 +5043,7 @@ const replsB = [
 {p1:/(法)(?!X)(改)(?!X)/g,r1:'$1Xhou$2Xkai-law reform~Noun'},
 {p1:/(法)(?!X)(曹)(?!X)/g,r1:'$1Xhou$2Xsou-judicial,officer~Noun'},
 {p1:/(法)(?!X)(案)(?!X)/g,r1:'$1Xhou$2Xan-safety~Noun'},
+{p1:/(と)(?!X)(は)(?!X)/g,r1:'$1Xto$2Xwa-what is~Noun'},
 {p1:/(法)(?!X)(相)(?!X)/g,r1:'$1Xhou$2Xsyou-Minister of Justice~Noun'},
 {p1:/(波)(?!X)(浪)(?!X)/g,r1:'$1Xha$2Xrou-tall waves~Noun'},
 {p1:/(泥)(?!X)(棒)(?!X)/g,r1:'$1Xdoro$2Xbou-thief,crook~Noun'},
@@ -8157,7 +8159,7 @@ const replsB = [
 {p1:/(勇)(?!X)/g,r1:'$1Xisa-brave~Noun'},
 {p1:/(助)(?!X)/g,r1:'$1Xsuke-help~Noun'},
 {p1:/(加)(?!X)/g,r1:'$1Xka-addition~Noun'},
-{p1:/(力)(?!X)/g,r1:'$1X-ryoku,chikara,power~Noun'},
+{p1:/(力)(?!X)/g,r1:'$1X-ryoku,chikara-power~Noun'},
 {p1:/(劇)(?!X)/g,r1:'$1Xgeki-drama,play~Noun'},
 {p1:/(割)(?!X)/g,r1:'$1Xwari-percent~Noun'},
 {p1:/(副)(?!X)/g,r1:'$1Xfuku-vice~Noun'},
@@ -8453,7 +8455,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-林芳正官房長官は10日の記者会見で、日本製鉄による米鉄鋼大手USスチール買収計画に関し「日鉄がこれまでとは全く異なる大胆な提案を検討していると承知している」と語った。
+石破首相は９日、首相公邸で読売新聞のインタビューに応じた。７日のトランプ米大統領との初会談について、トランプ氏が「力による一方的な現状変更を認めないことははっきりしている」と述べ、中国の覇権主義的行動を容認しない考えで一致したことを強調した。米国の関税措置を巡っては、日本が「（米国との間で）問題のある国と同列に扱われるとは限らない」とし、大幅な引き上げは回避可能との期待感を示した。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
