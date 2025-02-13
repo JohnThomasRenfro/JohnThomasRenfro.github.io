@@ -14,56 +14,104 @@
 
 <title>John T.'s Journal</title>
 <link rel="icon" type="image/png" href="MyFavicon.png">
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
 
-@font-face
-{
-font-family:"Ineptic";
-src:url("Ineptic.otf");
+body {
+  background-attachment: fixed;
+  background-color: #2b2b2b;
+  background-image: url('https://tse4.mm.bing.net/th?id=OIP.GZ-c1PiXMuuQMhJFoB3gAgAAAA&pid=Api');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #d3c6aa;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  margin: 5%;
+  position: relative;
+  word-wrap: break-word;
 }
 
-a:link,
-a:hover,
-a:active,
-a:visited {color:#ffffff}
-
-body
-{
-background-image:linear-gradient(180deg,#101010,#3a3a3a,#5d5d5d);
-border-radius:25px;
-color:#ffffff;
-font-size:25px;
-margin-left:5%;
-margin-top:5%;
-width:500px;
-word-wrap:break-word;
+body::before {
+  background: rgba(0, 0, 0, 0.7);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
 }
 
-.HeaderStyle
-{
-color:#f6d356;
-font-family:"Ineptic";
-font-size:30px;
-margin-bottom:20px;
-text-shadow:0px -2px 4px #3179c6,0px -2px 10px #cc9029,0px -10px 20px #F90,0px -20px 40px #cf7b31;
+.HeaderStyle {
+  border-bottom: 2px solid #867b74;
+  color: #b7a57a;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 32px;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  text-shadow: 1px 1px 4px #6b5b4b;
 }
 
-.TheStripe
-{
-background:repeating-linear-gradient(45deg,transparent,transparent 10px,#000000 10px,#000000 20px),linear-gradient(to bottom,#f5c103,#000000)
+.TheStripe {
+  background: repeating-linear-gradient(
+    45deg,
+    #2b2b2b,
+    #2b2b2b 10px,
+    #524e4d 10px,
+    #524e4d 20px
+  );
+  border: 1px solid #6b5b4b;
+  padding: 10px;
 }
 
-input,textarea
-{
-background-color:#000000;
-border-radius:25px;
-color:inherit;
-font-size:25px;
-text-shadow:2px 2px 4px #3d2526;
-word-wrap:break-word;
+a:link, a:visited {
+  color: #a89984;
+  text-decoration: none;
 }
+
+a:hover, a:active {
+  color: #f4bf75;
+}
+
+hr, input, textarea {
+  background-color: #3a3a3a;
+  border: 1px solid #6b5b4b;
+  border-radius: 20px;
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
+  color: inherit;
+  font-size: 20px;
+  max-height: 120px;
+  max-width: none;
+  outline: none;
+  padding: 15px;
+  text-shadow: 1px 1px 3px #4f4b46;
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+}
+
+input:hover, textarea:hover {
+  box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 18px;
+    margin: 3%;
+  }
+  
+  .HeaderStyle {
+    font-size: 28px;
+  }
+  
+  hr, input, textarea {
+    font-size: 18px;
+    padding: 12px;
+  }
 }
 </style>
+
 <script>
 
 function translateB()
@@ -74,22 +122,22 @@ const replsB = [
 {p1:/(ガ)(?!X)(タ)(?!X)(ガ)(?!X)(タ)(?!X)/g,r1:'$1Xka$2Xta$3Xka$4Xta-rattling~Noun'},	
 {p1:/(バ)(?!X)(ク)(?!X)(バ)(?!X)(ク)(?!X)/g,r1:'$1Xba$2Xku$3Xba$4Xku-throbbing~Noun'},	
 
-{p1:/([ァ-ヴーa-zA-ZＡ-Ｔ]+)/g,r1:'<br>$1~Noun'},	
+{p1:/([ァ-ヴーa-zA-ZＡ-Ｔ]+)/g,r1:'<br>$1<br>'},	
 
-{p1:/([\(\（])(?!X)/g,r1:'<br>$1Xopen parenthesis~Punctuation~Noun'},
-{p1:/([\)\）])(?!X)/g,r1:'<br>$1Xclose parenthesis~Punctuation~Noun'},
-{p1:/([「『])(?!X)/g,r1:'<br>$1Xopen quote~Punctuation~Noun'},
-{p1:/([」』])(?!X)/g,r1:'<br>$1Xclose quote~Punctuation~Noun'},
-{p1:/(\“)(?!X)/g,r1:'<br>$1Xopen quote~Punctuation~Noun'},
-{p1:/(\”)(?!X)/g,r1:'<br>$1Xclose quote~Punctuation~Noun'},
-{p1:/(\・)(?!X)/g,r1:'<br>$1Xword separator~Punctuation~Noun'},
-{p1:/(、)(?!X)/g,r1:'<br>$1Xcomma~Punctuation~Noun'}, 
-{p1:/(。)(?!X)/g,r1:'<br>$1Xperiod~Punctuation~Noun'}, 
-{p1:/(【)(?!X)/g,r1:'<br>$1Xopen bracket~Punctuation~Noun'},
-{p1:/(】)(?!X)/g,r1:'<br>$1Xclose bracket~Punctuation~Noun'},
-{p1:/(．)(?!X)/g,r1:'<br>$1Xdot,decimal point~Punctuation~Noun'},
-{p1:/(：)(?!X)/g,r1:'<br>$1Xcolon~Punctuation~Noun'},
-{p1:/(＝)(?!X)/g,r1:'$1Xequals~Punctuation~Noun'},
+{p1:/([\(\（])(?!X)/g,r1:'<br>$1Xopen parenthesis~Punctuation'},
+{p1:/([\)\）])(?!X)/g,r1:'<br>$1Xclose parenthesis~Punctuation'},
+{p1:/([「『])(?!X)/g,r1:'<br>$1Xopen quote~Punctuation'},
+{p1:/([」』])(?!X)/g,r1:'<br>$1Xclose quote~Punctuation'},
+{p1:/(\“)(?!X)/g,r1:'<br>$1Xopen quote~Punctuation'},
+{p1:/(\”)(?!X)/g,r1:'<br>$1Xclose quote~Punctuation'},
+{p1:/(\・)(?!X)/g,r1:'<br>$1Xword separator~Punctuation'},
+{p1:/(、)(?!X)/g,r1:'<br>$1Xcomma~Punctuation'}, 
+{p1:/(。)(?!X)/g,r1:'<br>$1Xperiod~Punctuation'}, 
+{p1:/(【)(?!X)/g,r1:'<br>$1Xopen bracket~Punctuation'},
+{p1:/(】)(?!X)/g,r1:'<br>$1Xclose bracket~Punctuation'},
+{p1:/(．)(?!X)/g,r1:'<br>$1Xdot,decimal point~Punctuation'},
+{p1:/(：)(?!X)/g,r1:'<br>$1Xcolon~Punctuation'},
+{p1:/(＝)(?!X)/g,r1:'$1Xequals~Punctuation'},
 
 {p1:/(せ)(?!X)(ざ)(?!X)(る)(?!X)(を)(?!X)(え)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xse$2Xza$3Xru$4Xo$5Xe$6Xna$7Xi-can\'t help but do~Noun'},
 
@@ -234,6 +282,7 @@ const replsB = [
 {p1:/(い)(?!X)(い)(?!X)(加)(?!X)(減)(?!X)/g,r1:'$1X$2Xii$3Xk$4Xagen-irresponsible,half-baked~Noun'},
 {p1:/(い)(?!X)(か)(?!X)(に)(?!X)(も)(?!X)/g,r1:'$1X$2Xik$3Xa$4Xnimo-indeed,as if~Noun'},
 {p1:/(い)(?!X)(き)(?!X)(な)(?!X)(り)(?!X)/g,r1:'$1X$2Xik$3Xi$4Xnari-all of a sudden~Noun'},
+{p1:/(間)(?!X)(も)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xma$2Xmo$3Xna$4Xi-immediately after~Noun'},
 {p1:/(い)(?!X)(く)(?!X)(つ)(?!X)(か)(?!X)/g,r1:'$1X$2Xik$3Xu$4Xtsuka-a few~Noun'},
 {p1:/(い)(?!X)(た)(?!X)(ず)(?!X)(ら)(?!X)/g,r1:'$1X$2Xit$3Xa$4Xzura-mischief,prank~Noun'},
 {p1:/(い)(?!X)(ち)(?!X)(い)(?!X)(ち)(?!X)/g,r1:'$1X$2Xic$3Xh$4Xi-ichi,one by one,in detail~Noun'},
@@ -1187,7 +1236,7 @@ const replsB = [
 {p1:/(失)(?!X)(語)(?!X)(症)(?!X)/g,r1:'$1Xshitsu$2Xgo$3Xsyou-Aphasia~Noun'},
 {p1:/(奥)(?!X)(さ)(?!X)(ん)(?!X)/g,r1:'$1Xwif$2X$3Xe~formal~Noun'},
 {p1:/(奨)(?!X)(学)(?!X)(金)(?!X)/g,r1:'$1Xsyou$2Xgaku$3Xkin-scholarship,fellowship~Noun'},
-{p1:/(女)(?!X)(の)(?!X)(子)(?!X)/g,r1:'$1Xonn$2X$3Xa no ko,girl~Noun'},
+{p1:/(女)(?!X)(の)(?!X)(子)(?!X)/g,r1:'$1Xonna$2Xno$3Xko-girl~Noun'},
 {p1:/(女)(?!X)(性)(?!X)(的)(?!X)/g,r1:'$1Xjyosei$2Xte$3Xki-feminine,womanly~Noun'},
 {p1:/(好)(?!X)(奇)(?!X)(心)(?!X)/g,r1:'$1Xkou$2Xki$3Xshin-curiosity~Noun'},
 {p1:/(姉)(?!X)(さ)(?!X)(ん)(?!X)/g,r1:'$1Xnee$2Xsa$3Xn-older sister,girl,miss~Noun'},
@@ -3064,7 +3113,7 @@ const replsB = [
 {p1:/(出)(?!X)(演)(?!X)/g,r1:'$1Xsyutsu$2Xen-performance~Noun'},
 {p1:/(出)(?!X)(版)(?!X)/g,r1:'$1Xsyup$2Xpan-publishing,publication~Noun'},
 {p1:/(出)(?!X)(生)(?!X)/g,r1:'$1Xsyus$2Xsyou-birth~Noun'},
-{p1:/(出)(?!X)(産)(?!X)/g,r1:'$1Xsyus$2Xsan-birth,delivery~Noun'},
+{p1:/(出)(?!X)(産)(?!X)/g,r1:'$1Xsyus$2Xsan-birth~Noun'},
 {p1:/(出)(?!X)(発)(?!X)/g,r1:'$1Xsyup$2Xpatsu-departure~Noun'},
 {p1:/(出)(?!X)(航)(?!X)/g,r1:'$1Xsyuk$2Xkou-leaving port~Noun'},
 {p1:/(出)(?!X)(荷)(?!X)/g,r1:'$1Xsyuk$2Xka-shipping~Noun'},
@@ -5325,7 +5374,7 @@ const replsB = [
 {p1:/(生)(?!X)(じ)(?!X)/g,r1:'$1Xsyou$2Xji-cause~IchidanVerb'},
 {p1:/(生)(?!X)(命)(?!X)/g,r1:'$1Xsei$2Xmei-life~Noun'},
 {p1:/(生)(?!X)(存)(?!X)/g,r1:'$1Xsei$2Xzon-existence,survival~Noun'},
-{p1:/(生)(?!X)(後)(?!X)/g,r1:'$1Xsei$2Xgo-post-natal~Noun'},
+{p1:/(生)(?!X)(後)(?!X)/g,r1:'$1Xsei$2Xgo-post natal~Noun'},
 {p1:/(生)(?!X)(徒)(?!X)/g,r1:'$1Xsei$2Xto-student~Noun'},
 {p1:/(生)(?!X)(死)(?!X)/g,r1:'$1Xsei$2Xshi-life and death~Noun'},
 {p1:/(生)(?!X)(活)(?!X)/g,r1:'$1Xsei$2Xkatsu-living~Noun'},
@@ -6857,7 +6906,7 @@ const replsB = [
 {p1:/(３)(?!X)(つ)(?!X)/g,r1:'$1Xmit$2Xtsu-three,third~Noun'},
 {p1:/(３|3)(?!X)(日)(?!X)/g,r1:'$1Xmik$2Xka-third day of the month~Noun'},
 {p1:/(３|3)(?!X)(月)(?!X)/g,r1:'$1Xsan$2Xgatsu-March~Noun'},
-{p1:/(４|4)(?!X)(日)(?!X)/g,r1:'$1Xyok$2Xka-fourth day of the month~Noun'},
+{p1:/(４|4|四)(?!X)(日)(?!X)/g,r1:'$1Xyok$2Xka-fourth day of the month~Noun'},
 {p1:/(４|4)(?!X)(月)(?!X)/g,r1:'$1Xshi$2Xgatsu April~Noun'},
 {p1:/(５|5)(?!X)(日)(?!X)/g,r1:'$1Xitsu$2Xka-fifth day of the month~Noun'},
 {p1:/(５|5)(?!X)(月)(?!X)/g,r1:'$1Xgo$2Xgatsu May~Noun'},
@@ -7887,7 +7936,7 @@ const replsB = [
 {p1:/(枠)(?!X)/g,r1:'$1Xwaku-frame,limits~Noun'},
 {p1:/(枝)(?!X)/g,r1:'$1Xeda-branch,twig~Noun'},
 {p1:/(枚)(?!X)/g,r1:'$1Xmai-counter for flat objects~Noun'},
-{p1:/(林)(?!X)/g,r1:'$1Xhayashi-grove~Noun'},
+{p1:/(林)(?!X)/g,r1:'$1Xhayashi,bayashi-grove~Noun'},
 {p1:/(農)(?!X)/g,r1:'$1Xnou-agriculture~Noun'},
 {p1:/(枕)(?!X)/g,r1:'$1Xmakura-pillow~Noun'},
 {p1:/(板)(?!X)/g,r1:'$1Xita-board,plank~Noun'},
@@ -8064,7 +8113,7 @@ const replsB = [
 {p1:/(姉)(?!X)/g,r1:'$1Xane-older sister~Noun'},
 {p1:/(妻)(?!X)/g,r1:'$1Xtsuma-wife~Noun'},
 {p1:/(妹)(?!X)/g,r1:'$1Ximouto-younger sister~Noun'},
-{p1:/(女)(?!X)/g,r1:'$1Xonna-girl~Noun'},
+{p1:/(女)(?!X)/g,r1:'$1Xonna-female~Noun'},
 {p1:/(奥)(?!X)/g,r1:'$1Xoku-inner~Noun'},
 {p1:/(奈)(?!X)/g,r1:'$1Xna-level area~Noun'},
 {p1:/(奄)(?!X)/g,r1:'$1Xama-cover,obstruction~Noun'},
@@ -8203,7 +8252,7 @@ const replsB = [
 {p1:/(兆)(?!X)/g,r1:'$1X+cyou,trillion~Noun'},
 {p1:/(兄)(?!X)/g,r1:'$1Xani-older brother~Noun'},
 {p1:/(元)(?!X)/g,r1:'$1Xmoto-former,origin,base of~Noun'},
-{p1:/(優)(?!X)/g,r1:'$1XAi,Atsu,Yuu,tenderness,superiority~Noun'},
+{p1:/(優)(?!X)/g,r1:'$1Xai,atsu,yuu-tenderness,superiority~Noun'},
 {p1:/(億)(?!X)/g,r1:'$1Xoku-hundred million~Noun'},
 {p1:/(僕)(?!X)/g,r1:'$1Xboku-I (young male)~Noun'},
 {p1:/(像)(?!X)/g,r1:'$1Xzou-picture~Noun'},
@@ -8436,16 +8485,17 @@ const replsB = [
 {p1:/(Verbが|Nounが)(?!X)/g,r1:'$1Xga-the subject above acts~Postposition~Noun'},
 
 {p1:/(IAdjective)/g,r1:'$1 '},
-{p1:/(~Noun)/g,r1:'  '},
-{p1:/(~Postposition|~Punctuation)/g,r1:'<hr>'},  
+{p1:/(~Noun)/g,r1:''},
+{p1:/(~Punctuation)/g,r1:'<hr>'}, 
+{p1:/(~Postposition)/g,r1:'<hr>'},  
 {p1:/(Noun|Verb|Adverb)/g,r1:'$1 '},
 {p1:/(\.)/g,r1:'$1ten-decimal '},
 
-{p1:/X/g,r1:'<br>'},
+{p1:/X/g,r1:''},
 
-{p1:/([一-龠ぁ-ゔ々〆〤0-9０−９０-８]+)/g,r1:'<p><font color=#bba58f>$1</font>'},
+{p1:/([一-龠ぁ-ゔ々〆〤0-9０−９０-８\(\（\)\）「『」』\“\”\・、。【】．：＝]+)/g,r1:'<font color=#bba58f>$1</font>'},
 
-{p1:/-([a-zA-Z]+)/g,r1:'<br><font color=#e8d9cd>$1</font>'},
+{p1:/-([a-zA-Z \,\~]+)/g,r1:'=<font color=#e8d9cd>$1</font><br>'},
 
 ];
 
@@ -8460,16 +8510,20 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 </script></head>
 
 <body>
-<div class="TheStripe">John's Journal</div>
- 
-<div class="HeaderStyle">Studying Japanese Language</div>
+<div class="TheStripe">Studying Japanese Language</div>
+<br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-【台北＝園田将嗣、北京＝東慶一郎】台湾周辺の空域に進入した中国軍機の数が昨年５月に台湾で民進党の頼清徳（ライチンドォー）政権が発足して以降、１日平均で前政権時代の約２・１倍に増えたことが、読売新聞による台湾国防部（国防省）発表資料の分析から明らかとなった。中国側が「独立工作者」として特に敵視している頼総統に対し、軍事的な威圧を強化している実態がデータで裏付けられた。
+出産した生後間もない女の子をそのまま放置し、死亡させたとして飲食店店員の29歳の女が逮捕されました。
+
+【写真を見る】自宅トイレで出産した女の子を放置し死亡させた疑い 29歳女を逮捕 路上でうずくまり…警察官に申告 三重・四日市市
+
+逮捕されたのは、三重県四日市市の飲食店店員・小林優奈容疑者29歳です。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
+<br>
 <span id="translatedTextDisplay"></span>
 </p>
 <h3>Memorizing Kanji</h3>
