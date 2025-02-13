@@ -1,164 +1,91 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
-<meta
-http-equiv="content-type"
-content="text/html;
-charset=UTF-8"
->
-
-<title>John T.'s Journal</title>
-
-<link rel="icon"
-type="image/png"
-href="MyFavicon.png"
->
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>/// SYS-LOG 2025 ///</title>
+<link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Cyber_Punk.png/800px-Cyber_Punk.png">
 
 <style>
-
-@font-face
-{
-font-family:"Ineptic";
-src:url("Ineptic.otf");
+@font-face {
+    font-family: "CyberFont";
+    src: url("https://assets.codepen.io/9632/Furore.ttf") format("truetype");
 }
 
-a:link,
-a:hover,
-a:active,
-a:visited
-{
-color:#ffffff
+body {
+    background-color: #0d0d0d;
+    color: #00ff00;
+    font-family: "CyberFont", monospace;
+    font-size: 16px;
+    margin: 5%;
+    width: 90%;
+    max-width: 800px;
+    line-height: 1.6;
+    text-shadow: 0px 0px 5px #00ff00;
 }
 
-body
-{
-background-image:linear-gradient(180deg,#99aaa2,#6c777a,#4f5457);
-border-radius:25px;
-color:#ffffff;
-font-size:20px;
-margin-left:5%;
-margin-top:5%;
-width:500px;
-word-wrap:break-word;
+a {
+    color: #ff0000;
+    text-decoration: none;
 }
 
-.ComicTitle
-{
-color:#ffffff;
+a:hover {
+    text-shadow: 0px 0px 10px #ff0000;
 }
 
-.HeaderStyle
-{
-color:#f6d356;
-font-family:"Ineptic";
-font-size:25px;
-margin-bottom:20px;
-text-shadow:0px -2px 4px #3179c6,0px -2px 10px #cc9029,0px -10px 20px #F90,0px -20px 40px #cf7b31;
+.monitor-output {
+    background: rgba(20, 20, 20, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #00ff00;
+    box-shadow: 0px 0px 10px #00ff00;
+    font-family: monospace;
 }
 
-.paper
-{
-background:#fff;
-color:#000000;
-padding:30px;
-position:relative;
+.cyber-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475');
+    background-size: cover;
+    opacity: 0.2;
+    z-index: -1;
 }
 
-.paper,
-.paper::before,
-.paper::after
-{
-box-shadow:1px 1px 1px rgba(0,0,0,0.25);
-border:1px solid #bbb;
+.header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff0000;
+    text-transform: uppercase;
+    border-bottom: 2px dashed #00ff00;
+    margin-top: 20px;
 }
-
-.paper::before,
-.paper::after
-{
-background-color:#eee;
-content:"";
-position:absolute;
-height:95%;
-width:99%;
-}
-
-.paper::before
-{
-right:15px;
-top:0;
-transform:rotate(-1deg);
-z-index:-1;
-}
-
-.paper::after
-{
-top:5px;
-right:-5px;
-transform:rotate(1deg);
-z-index:-2;
-}
-
-.TheStripe
-{
-background:repeating-linear-gradient(45deg,transparent,transparent 10px,#000000 10px,#000000 20px),linear-gradient(to bottom,#f5c103,#000000);
-font-size:30px;
-}
-
-.column
-{
-float: left;
-width: 50%;
-}
-
-.row:after
-{
-content: "";
-display: table;
-clear: both;
-}
-	
 </style>
-
 </head>
-
 <body>
-<span class="ComicTitle"><span class="TheStripe">John T.</span>'s Journal
-</span>©2025
-<font size="-50%">#JokerAintGotNothingOnMe </font>
-<p>
-<span class="HeaderStyle">Studying Japanese Language</span>
-<a href="JapaneseEnglish.htm" target="_blank">The Japanese to English Grammar Parser</a>
-</p>
-<p>
-<span class="HeaderStyle">Experimental</span>
-<a href="KoreanEnglish.htm" target="_blank">Korean Parsing</a>
-</p>
-<p>
-<span class="HeaderStyle">Experimental</span>
-<a href="RussianEnglish.htm" target="_blank">Russian Parsing</a>
-</p>
-<p>
-<span class="HeaderStyle">JavaScript Game</span>
-This is a <a href="dnd/Game.htm" target="_blank">Dungeons & Dragons single encounter game</a>  that I created in JavaScript.
-</p><p>
-</p><div class="paper">
-<h3>Reading</h3> <i>The Housemaid</i> by Frieda McFadden, 2022
-<br>
-<h3>Watching</h3>
-<i>Northern Exposure</i>, Season 3, Episode 1, 1991
-<p>
-<i>Tall Story</i>, 1960 with Jane Fonda and Anthony Perkins
+<div class="cyber-background"></div>
+<div class="monitor-output">
+    <span class="header">// SYS-LOG ENTRY - 2025 //</span>
+    <p>\> USER: JOHN_Q_CLARENCE_THOMAS
+    <br>\> ACCESS LEVEL: UNRESTRICTED</p>
+    
+    <div class="header">// LANGUAGE PROCESSING MODULE //</div>
+    <p>[ACTIVE] <a href="JapaneseEnglish.htm" target="_blank">Japanese-English Parser</a></p>
+    <p>[DEFUNCT - SYSTEM MEMORY LEAK] <a href="KoreanEnglish.htm" target="_blank">Korean Parsing</a> [PROCESS TERMINATED]</p>
+    <p>[DEFUNCT - CORRUPTED DATA BLOCK] <a href="RussianEnglish.htm" target="_blank">Russian Parsing</a> [FATAL ERROR - SERVICE DISCONTINUED]</p>
+    
+    <div class="header">// SIMULATION MODULE //</div>
+    <p>[RUNNING - LEGACY CODE] <a href="dnd/Game.htm" target="_blank">D&D Encounter Simulation</a> [DEPRECATED, NO PATCHES EXPECTED]</p>
+    
+    <div class="header">// DATA ANALYSIS //</div>
+    <p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022)</p>
+    <p>[VIEWING] <i>Northern Exposure</i>, S3E1 (1991)</p>
+    <p>[VIEWING] <i>Tall Story</i> (1960) - Jane Fonda, Anthony Perkins</p>
+    
+    <div class="header">// ARCHIVAL LINKS //</div>
+    <p>[EXTERNAL LINK] <a href="https://www.pinterest.jp/johnrenfro2016/" target="_blank">Data Vault: Pinterest</a></p>
+    <p>[EXTERNAL LINK] <a href="https://archive.org/details/fav-johnrenfro?tab=collection" target="_blank">Digital Archive Repository</a></p>
 </div>
-<p>
-<span class="HeaderStyle">Links</span>
-</p><p>
-<a href="https://www.pinterest.jp/johnrenfro2016/" target="_blank">Pinterest</a> is a digital picture tomb of all the things I loved in life. LEARN MATH FAST
-<p>
-The <a href="https://archive.org/details/fav-johnrenfro?tab=collection" target="_blank">Archive</a> contains scans of books from when we killed trees. "German Through Pictures"
-
 </body>
 </html>
-
