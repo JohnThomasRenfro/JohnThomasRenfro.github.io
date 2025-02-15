@@ -8508,7 +8508,7 @@ const replsB = [
 
 {p1:/(~Noun)/g,r1:''},
 {p1:/(~Postposition|~Punctuation)/g,r1:'$1<hr>'},  
-{p1:/(Noun|Adverb)/g,r1:'$1<br>'},
+{p1:/(Noun)/g,r1:'$1<br>'},
 {p1:/(\.)/g,r1:'$1ten-decimal'},
 
 {p1:/X/g,r1:''},
@@ -8516,8 +8516,6 @@ const replsB = [
 {p1:/([一-龠ぁ-ゔ々〆〤0-9０−９０-８\(\（\)\）「『」』\“\”\・、。【】．：＝]+)/g,r1:'<font color=#bba58f>$1</font>'},
 
 {p1:/-([a-zA-Z \,\~]+)/g,r1:'=<font color=#e8d9cd>$1</font><br>'},
-
-{p1:/^\r\n/g,r1:''},
 
 ];
 
