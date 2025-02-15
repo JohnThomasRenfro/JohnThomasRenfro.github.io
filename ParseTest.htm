@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japanese Text Parser</title>
+    <script src="https://cdn.jsdelivr.net/npm/kuromoji"></script>
+    <script>
+        function processJapaneseText() {
+            const inputText = document.getElementById("inputText").value;
+
+            // Initialize Kuromoji tokenizer
+            kuromoji.builder({ dicPath: "https://cdn.jsdelivr.net/npm/kuromoji/dict" }).build(function (err, tokenizer) {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+
+                // Tokenize the input text
+                const tokens = tokenizer.tokenize(inputText);
+
+                // Arrays to hold different word categories
+                let longestWords = [];
+                let adjectives = [];
+                let adverbs = [];
+                let verbs = [];
+                let maxLength = 0;
+
+                // Iterate over the tokens to categorize and identify the longest words
+                tokens.forEach(token => {
+                    // Update the longest word list
+                    if (token.surface_form.length > maxLength) {
+                        maxLength = token.surface_form.length;
+                        longestWords = [token.surface_form]; // New longest word found
+                    } else if (token.surface_form.length === maxLength) {
+                        longestWords.push(token.surface_form); // Same length, add to longest words
+                    }
+
+                    // Categorize words based on their part of speech
+                    switch (token.pos) {
+                        case '形容詞': // Adjective
+                            adjectives.push(token.surface_form);
+                            break;
+                        case '副詞': // Adverb
+                            adverbs.push(token.surface_form);
+                            break;
+                        case '動詞': // Verb
+                            verbs.push(token.surface_form);
+                            break;
+                    }
+                });
+
+                // Output the results to the webpage
+                document.getElementById("longestWords").textContent = "Longest words: " + longestWords.join(", ");
+                document.getElementById("adjectives").textContent = "Adjectives: " + adjectives.join(", ");
+                document.getElementById("adverbs").textContent = "Adverbs: " + adverbs.join(", ");
+                document.getElementById("verbs").textContent = "Verbs: " + verbs.join(", ");
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Japanese Text Parser</h1>
+    <textarea id="inputText" rows="6" cols="50" placeholder="Enter Japanese text here..."></textarea><br><br>
+    <button onclick="processJapaneseText()">Process Text</button>
+
+    <div id="longestWords"></div>
+    <div id="adjectives"></div>
+    <div id="adverbs"></div>
+    <div id="verbs"></div>
+</body>
+</html>
