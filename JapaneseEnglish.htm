@@ -37,7 +37,6 @@ body::before {
   background: rgba(0, 0, 0, 0.7);
   content: "";
   height: 100%;
-  left: 0;
   position: absolute;
   top: 0;
   width: 100%;
@@ -75,7 +74,7 @@ a:hover, a:active {
   color: #f4bf75;
 }
 
-hr, input, textarea {
+input, textarea {
   background-color: #3a3a3a;
   border: 1px solid #6b5b4b;
   border-radius: 20px;
@@ -83,13 +82,32 @@ hr, input, textarea {
   color: inherit;
   font-size: 20px;
   max-height: 120px;
-  max-width: none;
+  max-width: 90%;
   outline: none;
   padding: 15px;
   text-shadow: 1px 1px 3px #4f4b46;
   transition: all 0.4s ease-in-out;
   width: 100%;
 }
+
+hr {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+
+hr.style-eight:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+}    
 
 input:hover, textarea:hover {
   box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.6);
@@ -6914,6 +6932,7 @@ const replsB = [
 {p1:/(ど)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xhow-what$2X~UVerb'},
 {p1:/(な)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xna-become$2X~RuVerb'},
 {p1:/(ひ)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xhi-run over$2X~KuVerb'},
+{p1:/(忍)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1Xshino-to sneak;to endure$2X~BuVerb'},
 {p1:/(ほころ|綻)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1Xhokoro-begin to open$2X~BuVerb'},
 {p1:/(ま)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xma-scatter,plant$2X~KuVerb'},
 {p1:/(ま)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xma-sow,scatter$2X~KuVerb'},
@@ -8383,15 +8402,10 @@ const replsB = [
 
 {p1:/(Verbい)(?!X)/g,r1:'$1Xi-is doing~ConjunctiveVerb'},
 
-
-
-
-
 {p1:/(Nounな)(?!X)/g,r1:'$1Xna~NaAdjective~Noun'},
 
 {p1:/(Verbえ)(?!X)/g,r1:'$1Xe-can do~Verb'},
 {p1:/(Verbず)(?!X)/g,r1:'$1Xzu-without doing~Verb'},
-
 
 {p1:/(Nounば|Verbば)(?!X)/g,r1:'$1Xba-if~Noun'},
 
@@ -8441,14 +8455,20 @@ const replsB = [
 {p1:/(ま)(?!X)(で)(?!X)(も)(?!X)/g,r1:'$1Xma$2Xde$3Xmo-to an extent,so far as to~Postposition~Noun'},
 {p1:/(も)(?!X)(と)(?!X)(で)(?!X)/g,r1:'$1Xmo$2Xto$3Xde-under~Postposition~Noun'},
 
+{p1:/(Nounか|Verbか|Nounか)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xra-from~Postposition~Noun'},
+{p1:/(Verbべ)(?!X)(き)(?!X)/g,r1:'$1Xsho$2Xuld~Postposition~Noun'},
+{p1:/(Verbま|Nounま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-until,to~Postposition~Noun'},
 {p1:/(で)(?!X)(も)(?!X)/g,r1:'$1Xde$2Xmo-but~Postposition~Noun'},
 {p1:/(と)(?!X)(の)(?!X)/g,r1:'$1Xtou$2Xno-about~Postposition~Noun'},
+{p1:/(に)(?!X)(は)(?!X)/g,r1:'$1Xni$2Xwa-as for;in order to~Postposition~Noun'},
+{p1:/(に)(?!X)(も)(?!X)/g,r1:'$1Xni$2Xmo,also~Postposition~Noun'},
 {p1:/(の)(?!X)(で)(?!X)/g,r1:'$1Xno$2Xde-because~Postposition~Noun'},
 {p1:/(の)(?!X)(は)(?!X)/g,r1:'$1Xno$2Xwa-as for this in noun form~Postposition~Noun'},
 {p1:/(べ)(?!X)(き)(?!X)/g,r1:'$1Xbe$2Xki-should~Postposition~Noun'},
+{p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-up to~Postposition~Noun'},
+{p1:/(等|な)(?!X)(ど)(?!X)/g,r1:'$1Xna$2Xdo-etcetera~Postposition~Noun'},
 
 {p1:/(Adverb)(く)(?!X)/g,r1:'$1 $2Xku-and~Postposition~Noun'},
-{p1:/(Nounか|Verbか|Nounか)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xra-from~Postposition~Noun'},
 {p1:/(Nounで)(?!X)/g,r1:'$1Xde-at,with the above~Postposition~Noun'},
 {p1:/(Nounと)(?!X)/g,r1:'$1Xto-the person said~Postposition~Noun'},
 {p1:/(Nounと)(?!X)/g,r1:'$1Xto-with~Postposition~Noun'},
@@ -8462,16 +8482,10 @@ const replsB = [
 {p1:/(Verbに|Nounに)(?!X)/g,r1:'$1Xni-at,in,on the above~Postposition~Noun'},
 {p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for the subject above~Postposition~Noun'},
 {p1:/(Verbは|Nounは)(?!X)/g,r1:'$1Xwa-as for~Postposition~Noun'},
-{p1:/(Verbべ)(?!X)(き)(?!X)/g,r1:'$1Xsho$2Xuld~Postposition~Noun'},
-{p1:/(Verbま|Nounま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-until,to~Postposition~Noun'},
 {p1:/(Verbも|Nounも)(?!X)/g,r1:'$1Xmo-too~Postposition~Noun'},
 {p1:/(Verbや|Nounや)(?!X)/g,r1:'$1Xya-and,comma~Postposition~Noun'},
-{p1:/(に)(?!X)(は)(?!X)/g,r1:'$1Xni$2Xwa-as for;in order to~Postposition~Noun'},
-{p1:/(に)(?!X)(も)(?!X)/g,r1:'$1Xni$2Xmo,also~Postposition~Noun'},
 {p1:/(へ)(?!X)/g,r1:'$1Xe-towards~Postposition~Noun'},
-{p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-up to~Postposition~Noun'},
 {p1:/(を)(?!X)/g,r1:'$1Xoo-direct object above is acted on~Postposition~Noun'},
-{p1:/(等|な)(?!X)(ど)(?!X)/g,r1:'$1Xna$2Xdo-etcetera~Postposition~Noun'},
 
 {p1:/(~Postposition|~Punctuation)/g,r1:'$1<hr>'},  
 
@@ -8511,7 +8525,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-日本ハム・新庄剛志監督が、紅組の２番手で登板したドラフト６位・山城航太郎投手（法大）について言及。マウンド上で投球後に帽子が取れる場面が目立ち、苦言を呈した
+週明けには、再び「10年に1度の大雪」が予想される日本列島。先日の寒波による影響がいまも続く地域では、忍びよる新たな大雪に不安の声も出ています。（2月15日ОA「サタデーステーション」）
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
