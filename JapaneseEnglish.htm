@@ -4844,6 +4844,7 @@ const replsB = [
 {p1:/(条)(?!X)(件)(?!X)/g,r1:'$1Xjyou$2Xken-condition,item~Noun'},
 {p1:/(条)(?!X)(約)(?!X)/g,r1:'$1Xjyou$2Xyaku-treaty~Noun'},
 {p1:/(条)(?!X)(項)(?!X)/g,r1:'$1Xjyou$2Xkou-rule stipulation~Noun'},
+{p1:/(階)(?!X)(級)(?!X)/g,r1:'$1Xkai$2Xkyuu-class~Noun'},
 {p1:/(来)(?!X)(年)(?!X)/g,r1:'$1Xrai$2Xnen-next year~Noun'},
 {p1:/(来)(?!X)(日)(?!X)/g,r1:'$1Xrai$2Xnichi-coming to Japan~Noun'},
 {p1:/(来)(?!X)(春)(?!X)/g,r1:'$1Xrai$2Xsyun-next spring~Noun'},
@@ -4863,7 +4864,7 @@ const replsB = [
 {p1:/(枠)(?!X)(内)(?!X)/g,r1:'$1Xwaku$2Xnai-within limits~Noun'},
 {p1:/(染)(?!X)(み)(?!X)/g,r1:'$1Xshi$2Xmi-permeate~IchidanVerb'},
 {p1:/(柔)(?!X)(軟)(?!X)/g,r1:'$1Xjyuu$2Xnan-pliable,flexible~Noun'},
-{p1:/(柔)(?!X)(道)(?!X)/g,r1:'$1Xjyuu$2X-ou-judo~Noun'},
+{p1:/(柔)(?!X)(道)(?!X)/g,r1:'$1Xjyuu$2X-dou-judo~Noun'},
 {p1:/(栄)(?!X)(え)(?!X)/g,r1:'$1Xsaka$2Xe-prosper~IchidanVerb'},
 {p1:/(栄)(?!X)(養)(?!X)/g,r1:'$1Xei$2Xyou-nutrition,nourishment~Noun'},
 {p1:/(校)(?!X)(庭)(?!X)/g,r1:'$1Xkou$2Xtei-campus~Noun'},
@@ -8489,8 +8490,8 @@ const replsB = [
 {p1:/(~IchidanVerbる)/g,r1:'るXru-to do,will do~InformalVerb~IchidanVerb'},
 
 {p1:/(Verb)(ま)(?!X)(す)(?!X)/g,r1:'$1$2Xma$3Xsu-to do,will do~FormalVerb'},
-{p1:/(Verb)(た)(?!X)/g,r1:'$1X$2Xta-did~InformalVerb'},
-{p1:/(Verb)(だ)(?!X)/g,r1:'$1X$2Xda-did~InformalVerb'},
+{p1:/(Verb)(た)(?!X)/g,r1:'$1X$2Xta-did~Informal~Noun'},
+{p1:/(Verb)(だ)(?!X)/g,r1:'$1X$2Xda-did~InformalVerb~Noun'},
 {p1:/(Verb)(る)(?!X)/g,r1:'$1X$2Xru-do,will do~InformalVerb'},
 
 {p1:/(Verb)(と)(?!X)/g,r1:'$1 $2Xto-by way of~Postposition~Noun'},
