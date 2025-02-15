@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Japanese Text Parser</title>
-    <script src="https://cdn.jsdelivr.net/npm/kuromoji"></script>
+    <script src="https://cdn.jsdelivr.net/npm/kuromoji@0.1.3/build/kuromoji.js"></script> <!-- Kuromoji CDN -->
     <script>
         function processJapaneseText() {
             const inputText = document.getElementById("inputText").value;
 
+            // Check if the input is empty
+            if (!inputText.trim()) {
+                alert("Please enter some Japanese text.");
+                return;
+            }
+
             // Initialize Kuromoji tokenizer
-            kuromoji.builder({ dicPath: "https://cdn.jsdelivr.net/npm/kuromoji/dict" }).build(function (err, tokenizer) {
+            kuromoji.builder({ dicPath: "https://cdn.jsdelivr.net/npm/kuromoji@0.1.3/dict/" }).build(function (err, tokenizer) {
                 if (err) {
                     console.error(err);
+                    alert("Error loading Kuromoji tokenizer.");
                     return;
                 }
 
