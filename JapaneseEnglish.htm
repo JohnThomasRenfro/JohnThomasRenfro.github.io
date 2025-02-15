@@ -8503,13 +8503,11 @@ const replsB = [
 {p1:/(こ)(?!X)(と)(?!X)/g,r1:'$1Xko$2Xto-matter,thing~Noun'},
 
 {p1:/(Verbか|Nounか)(?!X)/g,r1:'$1Xka-indicates a question~Postposition~Noun'},
-
 {p1:/(Verbが|Nounが)(?!X)/g,r1:'$1Xga-the subject above acts~Postposition~Noun'},
 
 {p1:/(~Noun)/g,r1:''},
 {p1:/(~Postposition|~Punctuation)/g,r1:'$1<hr>'},  
 {p1:/(Noun|Adverb)/g,r1:'$1<br>'},
-{p1:/(Verb)/g,r1:'$1 '},
 {p1:/(\.)/g,r1:'$1ten-decimal'},
 
 {p1:/X/g,r1:''},
