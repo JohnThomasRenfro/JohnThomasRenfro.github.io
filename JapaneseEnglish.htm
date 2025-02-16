@@ -1163,7 +1163,6 @@ const replsB = [
 {p1:/(勤)(?!X)(め)(?!X)(先)(?!X)/g,r1:'$1Xtsu$2Xto$3Xmesaki-employment-Noun'},
 {p1:/(包)(?!X)(み)(?!X)(紙)(?!X)/g,r1:'$1Xtsutsumi$2Xga$3Xmi-wrapping paper-Noun'},
 {p1:/(北)(?!X)(朝)(?!X)(鮮)(?!X)/g,r1:'$1Xkita$2Xcyou$3Xsen-North Korea-Noun'},
-{p1:/(北)(?!X)(海)(?!X)(道)(?!X)/g,r1:'$1Xhok$2Xkai$3Xdou-Japan-Noun'},
 {p1:/(区)(?!X)(役)(?!X)(所)(?!X)/g,r1:'$1Xkuy$2Xak$3Xusyo-ward office-Noun'},
 {p1:/(十)(?!X)(字)(?!X)(路)(?!X)/g,r1:'$1Xjyuu$2Xji$3Xiro-crossroads-Noun'},
 {p1:/(半)(?!X)(導)(?!X)(体)(?!X)/g,r1:'$1Xhan$2Xdou$3Xtai-semiconductor-Noun'},
@@ -1592,7 +1591,7 @@ const replsB = [
 {p1:/(舞)(?!X)(鶴)(?!X)(市)(?!X)/g,r1:'$1Xmai$2Xzuru$3Xshi-Japan-Noun'},
 {p1:/(航)(?!X)(空)(?!X)(便)(?!X)/g,r1:'$1Xkou$2Xkuu$3Xbin-airmail-Noun'},
 {p1:/(航)(?!X)(空)(?!X)(券)(?!X)/g,r1:'$1Xkou$2Xkuu$3Xken-airline ticket-Noun'},
-{p1:/(航)(?!X)(空)(?!X)(機)(?!X)/g,r1:'$1Xkou$2Xkuu$3Xki-aircraft,airplane-Noun'},
+{p1:/(航)(?!X)(空)(?!X)(機)(?!X)/g,r1:'$1Xkou$2Xkuu$3Xki-aircraft-Noun'},
 {p1:/(芦)(?!X)(ノ)(?!X)(湖)(?!X)/g,r1:'$1X$2X$3X.Ashi-no-ko,Japan-Noun'},
 {p1:/(苦)(?!X)(し)(?!X)(み)(?!X)/g,r1:'$1Xkur$2Xus$3Xhimi-distress,suffering-Noun'},
 {p1:/(茶)(?!X)(わ)(?!X)(ん)(?!X)/g,r1:'$1Xcya$2Xwa$3Xn-tea cup,rice bowl-Noun'},
@@ -2332,7 +2331,7 @@ const replsB = [
 {p1:/(1|１)(?!X)(8|８)(?!X)/g,r1:'$1Xjyuu$2Xhachi-eighteen-Noun'},
 {p1:/(1|１)(?!X)(9|９)(?!X)/g,r1:'$1Xjyuu$2Xkyuu-nineteen-Noun'},
 {p1:/(2|２)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xni jyuu-twenty-Noun$2'},
-{p1:/(2|２)(?!X)(人)(?!X)/g,r1:'$1Xfu$2Xtari-two people-Noun'},
+{p1:/(2|２)(?!X)(人)(?!X)/g,r1:'$1X$2Xfutari-two people-Noun'},
 {p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xsan jyuu-thirty-Noun$2'},
 {p1:/(4|４)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xyon jyuu-fourty-Noun$2'},
 {p1:/(5|５)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xgo jyuu-fifty-Noun$2'},
@@ -4353,6 +4352,7 @@ const replsB = [
 {p1:/(打)(?!X)(撲)(?!X)/g,r1:'$1Xda$2Xboku-blows to the body-Noun'},
 {p1:/(打)(?!X)(破)(?!X)/g,r1:'$1Xda$2Xha-break down-Noun'},
 {p1:/(打)(?!X)(者)(?!X)/g,r1:'$1Xda$2Xsya-batter-Noun'},
+{p1:/(巡)(?!X)(視)(?!X)/g,r1:'$1Xjyun$2Xshi-inspection tour-Noun'},
 {p1:/(打)(?!X)(診)(?!X)/g,r1:'$1Xda$2Xshin-sounding out-Noun'},
 {p1:/(打)(?!X)(開)(?!X)/g,r1:'$1Xda$2Xkai-break deadlock-Noun'},
 {p1:/(扶)(?!X)(養)(?!X)/g,r1:'$1Xfu$2Xyou-dependants-Noun'},
@@ -6246,11 +6246,14 @@ const replsB = [
 {p1:/(警)(?!X)(告)(?!X)/g,r1:'$1Xkei$2Xkoku-warning-Noun'},
 {p1:/(警)(?!X)(報)(?!X)/g,r1:'$1Xkei$2Xhou-alarm-Noun'},
 {p1:/(警)(?!X)(官)(?!X)/g,r1:'$1Xkei$2Xkan-police-Noun'},
+{p1:/(養)(?!X)(殖)(?!X)/g,r1:'$1Xyou$2Xsyoku-cultivating seafood-Noun'},
 {p1:/(警)(?!X)(察)(?!X)/g,r1:'$1Xkei$2Xsatsu-police-Noun'},
 {p1:/(警)(?!X)(戒)(?!X)/g,r1:'$1Xkei$2Xkai-vigilance-Noun'},
 {p1:/(警)(?!X)(視)(?!X)/g,r1:'$1Xkei$2Xshi-police-Noun'},
 {p1:/(議)(?!X)(会)(?!X)/g,r1:'$1Xgi$2Xkai-assembly-Noun'},
 {p1:/(議)(?!X)(員)(?!X)/g,r1:'$1Xgi$2Xin-legislator-Noun'},
+{p1:/(転)(?!X)(覆)(?!X)/g,r1:'$1Xten$2Xpuku-capsizing-Noun'},
+{p1:/(漁)(?!X)(船)(?!X)/g,r1:'$1Xgyo$2Xsen-fishing boat-Noun'},
 {p1:/(議)(?!X)(席)(?!X)/g,r1:'$1Xgi$2Xseki-parliament seat-Noun'},
 {p1:/(議)(?!X)(決)(?!X)/g,r1:'$1Xgi$2Xketsu-resolution-Noun'},
 {p1:/(議)(?!X)(論)(?!X)/g,r1:'$1Xgi$2Xron-argument-Noun'},
@@ -7623,10 +7626,11 @@ const replsB = [
 {p1:/(務)(?!X)/g,r1:'$1Xmu-duties-Noun'},
 {p1:/(勝)(?!X)/g,r1:'$1Xsyou,katsu,kachi-wins-Noun'},
 {p1:/(化)(?!X)/g,r1:'$1Xka-change to-Noun'},
-{p1:/(北)(?!X)/g,r1:'$1Xkita,hoku-north-Noun'},
+{p1:/(北)(?!X)/g,r1:'$1Xkita,hoku,hok-north-Noun'},
 {p1:/(匠)(?!X)/g,r1:'$1Xjyou-craftsperson-Noun'},
 {p1:/(匹)(?!X)/g,r1:'$1Xpiki-counter for small animals-Noun'},
 {p1:/(区)(?!X)/g,r1:'$1Xku-ward-Noun'},
+{p1:/(苫)(?!X)/g,r1:'$1Xtoma-woven mat-Noun'},
 {p1:/(医)(?!X)/g,r1:'$1Xi-medical-Noun'},  
 {p1:/(十)(?!X)/g,r1:'$1Xjyuu,to-ten-Noun'},
 {p1:/(千)(?!X)/g,r1:'$1Xsen,chi-thousand-Noun'},
@@ -8012,7 +8016,7 @@ const replsB = [
 {p1:/(父)(?!X)/g,r1:'$1Xchi+chi,father-Noun'},
 {p1:/(版)(?!X)/g,r1:'$1Xban,han,version-Noun'},
 {p1:/(牛)(?!X)/g,r1:'$1Xushi-cattle,cow-Noun'},
-{p1:/(物)(?!X)/g,r1:'$1Xbutsu-material,or mono,person,koto,thing-Noun'},
+{p1:/(物)(?!X)/g,r1:'$1Xbutsu-material,or mono-person;koto-thing-Noun'},
 {p1:/(犬)(?!X)/g,r1:'$1Xinu,+ken-dog-Noun'},
 {p1:/(犯)(?!X)/g,r1:'$1Xhan-crime-Noun'},
 {p1:/(猛)(?!X)/g,r1:'$1Xmou-extreme-Noun'},
@@ -8135,7 +8139,7 @@ const replsB = [
 {p1:/(羽)(?!X)/g,r1:'$1Xhane,ha-feather-Noun'},
 {p1:/(習)(?!X)/g,r1:'$1Xsyuu-learn-Noun'},
 {p1:/(翔)(?!X)/g,r1:'$1Xsyou,ka-soar-Noun'},
-{p1:/(者)(?!X)/g,r1:'$1Xsya,mono,person-Noun'},
+{p1:/(者)(?!X)/g,r1:'$1Xsya,mono-person-Noun'},
 {p1:/(耳)(?!X)/g,r1:'$1Xmimi-ear,hearing-Noun'},
 {p1:/(聖)(?!X)/g,r1:'$1Xsei-sacred-Noun'},
 {p1:/(職)(?!X)/g,r1:'$1Xsyoku-work-Noun'},
@@ -8159,7 +8163,7 @@ const replsB = [
 {p1:/(自)(?!X)/g,r1:'$1Xji-your own-Noun'},
 {p1:/(舌)(?!X)/g,r1:'$1Xshita-tongue-Noun'},
 {p1:/(舗)(?!X)/g,r1:'$1Xho-shop-Noun'},
-{p1:/(船)(?!X)/g,r1:'$1Xfune,sen,boat-Noun'},
+{p1:/(船)(?!X)/g,r1:'$1Xfune,sen-boat-Noun'},
 {p1:/(艇)(?!X)/g,r1:'$1Xtei-small boat-Noun'},
 {p1:/(良)(?!X)/g,r1:'$1Xra-good-Noun'},
 {p1:/(色)(?!X)/g,r1:'$1Xiro-color-Noun'},
@@ -8525,7 +8529,15 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-【ミュンヘン共同】トランプ米政権のウクライナ・ロシア担当特使ケロッグ氏は15日、トランプ大統領がロシアのプーチン大統領と合意したロシアとウクライナの和平交渉開始を巡り、欧州は参加しないとの認識を示した。交渉のテーブルに欧州の席はあるかと問われ「ない」と明言した。ロシアに有利な形で交渉が進むことへの欧州の懸念に拍車がかかりそうだ。
+2025年2月16日午後4時ごろ、北海道苫前沖のホタテ養殖施設付近で漁船が転覆しました。
+
+北るもい消防から留萌保安部あてに「苫前沖で漁船が転覆したとの連絡が漁協からあった」と連絡がありました。
+
+留萌海上保安部によりますと転覆した漁船には5人が乗船していて、うち3人が漁船に引き上げられましたが、ほか2人が行方不明です。
+
+救助された3人のうち2人が病院に搬送され、残り1人にけがはありませんでした。
+
+留萌海上保安部は、現在航空機や巡視船で2人の行方不明者を捜索しているということです。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
