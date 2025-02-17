@@ -13,7 +13,7 @@
 </script>
 
 <title>John T.'s Journal</title>
-<link rel="icon" type="image/png" href="https://i.imgur.com/0j2Tp24.png">
+<link rel="icon" type="image/png" href="reading.png">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
@@ -848,7 +848,7 @@ const replsB = [
 {p1:/(い)(?!X)(つ)(?!X)(も)(?!X)/g,r1:'$1Xi$2Xtsu$3Xmo-always-Noun'},
 {p1:/(い)(?!X)(び)(?!X)(き)(?!X)/g,r1:'$1Xib$2Xik$3Xi-snoring-Noun'},
 {p1:/(う)(?!X)(ち)(?!X)(わ)(?!X)/g,r1:'$1Xuch$2Xiw$3Xa-rou-nd paper fan-Noun'},
-{p1:/(う)(?!X)(ど)(?!X)(ん)(?!X)/g,r1:'$1Xudo$2X$3Xn-noodles,Japanese wheat noodles-Noun'},
+{p1:/(う)(?!X)(ど)(?!X)(ん)(?!X)/g,r1:'$1Xu$2X$do3Xn-noodles-Noun'},
 {p1:/(お)(?!X)(か)(?!X)(ず)(?!X)/g,r1:'$1Xoka$2Xzu$3X-side dish-Noun'},
 {p1:/(お)(?!X)(そ)(?!X)(れ)(?!X)/g,r1:'$1Xo$2Xso$3Xre-concern-Noun'},
 {p1:/(お)(?!X)(な)(?!X)(か)(?!X)/g,r1:'$1Xona$2Xka$3X-stomach-Noun'},
@@ -5964,6 +5964,7 @@ const replsB = [
 {p1:/(英)(?!X)(文)(?!X)/g,r1:'$1Xei$2Xbun-English,English writing-Noun'},
 {p1:/(英)(?!X)(語)(?!X)/g,r1:'$1Xei$2Xgo-English-Noun'},
 {p1:/(英)(?!X)(雄)(?!X)/g,r1:'$1Xei$2Xyuu-hero-Noun'},
+{p1:/(過)(?!X)(剰)(?!X)/g,r1:'$1Xka$2Xjyou-excess-Noun'},
 {p1:/(茄)(?!X)(子)(?!X)/g,r1:'$1Xna$2Xsu-eggplant-Noun'},
 {p1:/(茨)(?!X)(城)(?!X)/g,r1:'$1Xibara$2Xki-Japan-Noun'},
 {p1:/(茶)(?!X)(色)(?!X)/g,r1:'$1Xcya$2Xiro-light brown-Noun'},
@@ -8253,6 +8254,7 @@ const replsB = [
 {p1:/(費)(?!X)/g,r1:'$1Xhi-expense-Noun'},
 {p1:/(賀)(?!X)/g,r1:'$1Xka,ga-celebration-Noun'},
 {p1:/(賃)(?!X)/g,r1:'$1Xchin-wages-Noun'},
+{p1:/(染)(?!X)/g,r1:'$1Xsome-dying-Noun'},
 {p1:/(賞)(?!X)/g,r1:'$1Xsyou-award-Noun'},
 {p1:/(賢)(?!X)/g,r1:'$1Xken-genius-Noun'},
 {p1:/(質)(?!X)/g,r1:'$1Xshitsu-quality,nature-Noun'},
@@ -8348,7 +8350,7 @@ const replsB = [
 {p1:/(頃)(?!X)/g,r1:'$1Xkoro,goro-time-Noun'},
 {p1:/(順)(?!X)/g,r1:'$1Xjyun-order,sequence-Noun'},
 {p1:/(領)(?!X)/g,r1:'$1Xeri-collar-Noun'},
-{p1:/(頬)(?!X)/g,r1:'$1Xhoocheek-Noun'},
+{p1:/(頬)(?!X)/g,r1:'$1Xhou-cheek-Noun'},
 {p1:/(頭)(?!X)/g,r1:'$1Xatama-head;tou-counter for large animals-Noun'},
 {p1:/(頼)(?!X)/g,r1:'$1Xyori,rai,tanomu,tayoru,ta-request,trust-Noun'},
 {p1:/(題)(?!X)/g,r1:'$1Xdai-title,topic-Noun'},
@@ -8357,6 +8359,7 @@ const replsB = [
 {p1:/(顎)(?!X)/g,r1:'$1Xago-jaw,chi+n+-Noun'},
 {p1:/(顔)(?!X)/g,r1:'$1Xkao-face-Noun'},
 {p1:/(類)(?!X)/g,r1:'$1Xrui-type-Noun'},
+{p1:/(麺)(?!X)/g,r1:'$1Xmen-noodles-Noun'},
 {p1:/(風)(?!X)/g,r1:'$1Xkaze-wind-Noun'},
 {p1:/(食)(?!X)/g,r1:'$1Xsyoku-food-Noun'},
 {p1:/(飯)(?!X)/g,r1:'$1Xmeshi-cooked rice,meal-Noun'},
@@ -8416,8 +8419,6 @@ const replsB = [
 {p1:/(Nounし)(?!X)/g,r1:'$1Xshi-to do,will do-SuruVerb'},
 
 {p1:/(Verbい)(?!X)/g,r1:'$1Xi-is doing-ConjunctiveVerb'},
-
-{p1:/(Nounな)(?!X)/g,r1:'$1Xna-NaAdjective-Noun'},
 
 {p1:/(Verbえ)(?!X)/g,r1:'$1Xe-can do-Verb'},
 {p1:/(Verbず)(?!X)/g,r1:'$1Xzu-without doing-Verb'},
@@ -8501,6 +8502,7 @@ const replsB = [
 {p1:/(Verbや|Nounや)(?!X)/g,r1:'$1Xya-and,comma-Postposition-Noun'},
 {p1:/(へ)(?!X)/g,r1:'$1Xe-towards-Postposition-Noun'},
 {p1:/(を)(?!X)/g,r1:'$1Xoo-direct object above is acted on-Postposition-Noun'},
+{p1:/(Nounな)(?!X)/g,r1:'$1Xna-NaAdjective-Noun'},
 
 {p1:/(-Postposition|-Punctuation)/g,r1:'$1<hr>'},  
 
@@ -8538,7 +8540,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-米国のルビオ国務長官や中東問題担当のウィトコフ特使、ウォルツ大統領補佐官（国家安全保障担当）は協議に向けてサウジアラビアを訪問する。
+テレビ朝日が17日、番組公式サイトを通じ、令和ロマンの高比良くるま（30）、とろサーモンの久保田かずのぶ（45）の出演見合わせを発表した。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
