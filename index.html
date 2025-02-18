@@ -1953,7 +1953,7 @@ const replsB = [
 {p1:/(寂)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xsabi$2Xshi-lonely,desolate,sad$3X-IAdjective-Noun'},
 {p1:/(寄)(?!X)(せ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xyo$2Xse-draw near$3X-RuVerb'},
 {p1:/(寝)(?!X)(か)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xne$2Xka-put to sleep$3X-SuVerb'},
-{p1:/(対)(?!X)(す)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtai$2X,face$3X-RuVerb'},
+{p1:/(対)(?!X)(す)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtai$2Xsu-face$3X-RuVerb'},
 {p1:/(尋)(?!X)(ね)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xtazu$2Xne-inquire$3X-RuVerb'},
 {p1:/(小)(?!X)(さ)(?!X)([いくかさ])(?!X)/g,r1:'$1Xchi$2Xisa-small$3X-IAdjective-Noun'},
 {p1:/(小)(?!X)(遣)(?!X)([いくかさ])(?!X)/g,r1:'$1Xkoz$2Xuka-pocket money,spending money$3X-IAdjective-Noun'},
@@ -3169,6 +3169,8 @@ const replsB = [
 {p1:/(判)(?!X)(定)(?!X)/g,r1:'$1Xhan$2Xtei-judgement-Noun'},
 {p1:/(判)(?!X)(断)(?!X)/g,r1:'$1Xhan$2Xdan-judgment-Noun'},
 {p1:/(判)(?!X)(明)(?!X)/g,r1:'$1Xhan$2Xmei-acertain-Noun'},
+{p1:/(菓)(?!X)(子)(?!X)/g,r1:'$1Xka$2Xshi-sweets-Noun'},
+{p1:/(配)(?!X)(布)(?!X)/g,r1:'$1Xhai$2Xfu-distribution-Noun'},
 {p1:/(判)(?!X)(決)(?!X)/g,r1:'$1Xhan$2Xketsu-judgment-Noun'},
 {p1:/(別)(?!X)(々)(?!X)/g,r1:'$1Xbetsu$2Xbetsu-separately-Noun'},
 {p1:/(別)(?!X)(に)(?!X)/g,r1:'$1Xbetsu$2X ni,particularly,I don t care-Noun'},
@@ -5646,10 +5648,12 @@ const replsB = [
 {p1:/(移)(?!X)(転)(?!X)/g,r1:'$1Xi$2Xten-transfer,change of address-Noun'},
 {p1:/(移)(?!X)(送)(?!X)/g,r1:'$1Xi$2Xsou-transfer-Noun'},
 {p1:/(程)(?!X)(度)(?!X)/g,r1:'$1Xtei$2Xdo-degree-Noun'},
+{p1:/(慰)(?!X)(労)(?!X)/g,r1:'$1Xi$2Xrou-recognition of service-Noun'},
 {p1:/(税)(?!X)(収)(?!X)/g,r1:'$1Xzei$2Xsyuu-tax revenue-Noun'},
 {p1:/(税)(?!X)(金)(?!X)/g,r1:'$1Xzei$2Xkin-tax-Noun'},
 {p1:/(税)(?!X)(関)(?!X)/g,r1:'$1Xzei$2Xkan-custom house,customs-Noun'},
 {p1:/(種)(?!X)(目)(?!X)/g,r1:'$1Xsyu$2Xmoku-item,event-Noun'},
+{p1:/(釈)(?!X)(明)(?!X)/g,r1:'$1Xsyaku$2Xmei-vindication-Noun'},
 {p1:/(種)(?!X)(類)(?!X)/g,r1:'$1Xsyu$2Xrui-type,species-Noun'},
 {p1:/(稼)(?!X)(働)(?!X)/g,r1:'$1Xka$2Xdou-machine operation-Noun'},
 {p1:/(稽)(?!X)(古)(?!X)/g,r1:'$1Xkei$2Xko-practice,learning-Noun'},
@@ -6849,6 +6853,7 @@ const replsB = [
 {p1:/(飛)(?!X)(行)(?!X)/g,r1:'$1Xhi$2Xkou-flight-Noun'},
 {p1:/(食)(?!X)(事)(?!X)/g,r1:'$1Xsyoku$2Xji-meal-Noun'},
 {p1:/(食)(?!X)(卓)(?!X)/g,r1:'$1Xsyoku$2Xtaku-dining table-Noun'},
+{p1:/(月)(?!X)(餅)(?!X)/g,r1:'$1Xgep$2Xpei-moon cake,a Chinese sweet-Noun'},
 {p1:/(食)(?!X)(品)(?!X)/g,r1:'$1Xsyoku$2Xhin-food-Noun'},
 {p1:/(食)(?!X)(器)(?!X)/g,r1:'$1Xsyok$2Xki-tableware,dinner set-Noun'},
 {p1:/(食)(?!X)(堂)(?!X)/g,r1:'$1Xsyoku$2Xdou-dining hall,restaurant-Noun'},
@@ -8376,6 +8381,8 @@ const replsB = [
 {p1:/(髪)(?!X)/g,r1:'$1Xkami-hair,hairstyle-Noun'},
 {p1:/(魚)(?!X)/g,r1:'$1Xsakana-fish-Noun'},
 {p1:/(鳥)(?!X)/g,r1:'$1Xtori,tot-bird-Noun'},
+{p1:/(祐)(?!X)/g,r1:'$1Xsuke-help-Noun'},
+{p1:/(馨)(?!X)/g,r1:'$1Xkei-favorable-Noun'},
 {p1:/(鳩)(?!X)/g,r1:'$1Xhato-pigeon,dove-Noun'},
 {p1:/(鶏)(?!X)/g,r1:'$1Xniwatori-chicken-Noun'},
 {p1:/(鹿)(?!X)/g,r1:'$1Xka-deer-Noun'},
@@ -8416,7 +8423,7 @@ const replsB = [
 {p1:/(Verbれ)(?!X)(ば)(?!X)/g,r1:'$1X$2Xre ba,if done-ConjunctiveVerb'},
 
 
-{p1:/(Nounし)(?!X)/g,r1:'$1Xshi-to do,will do-SuruVerb'},
+{p1:/(し)(?!X)/g,r1:'$1Xshi-to do,will do-SuruVerb'},
 
 {p1:/(Verbい)(?!X)/g,r1:'$1Xi-is doing-ConjunctiveVerb'},
 
@@ -8540,7 +8547,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-テレビ朝日が17日、番組公式サイトを通じ、令和ロマンの高比良くるま（30）、とろサーモンの久保田かずのぶ（45）の出演見合わせを発表した。
+鈴木馨祐法相（衆院比例南関東）は18日の閣議後記者会見で、法務省職員全体に菓子を1月下旬に配布したと明らかにした。関係者によると、中国菓子の月餅の菓子折りだった。公選法は選挙区内の有権者に対する物品の寄付を禁じており、職員には有権者もいた可能性がある。鈴木氏は「国会が始まるタイミングで、職員への慰労や激励の趣旨で差し入れた」と釈明した。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
@@ -8555,7 +8562,6 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 </li><li>Practice writing the same sound Kanjis until you can do it from memory using <a href="https://web.archive.org/web/20231207052643/https://play.google.com/store/apps/details?id=com.craxic.akebifree&amp;hl=en&amp;gl=US" target="Xblank">Android Akebi</a>.
 </li></ul>
  
-Syu or Syuu 主義・趣味・種類・修理・取材・[周囲・週末]・
 <hr>
     
     <div class="header">// MY OTHER PROJECTS //</div>
