@@ -5822,8 +5822,10 @@ const replsB = [
 {p1:/(総)(?!X)(局)(?!X)/g,r1:'$1Xsou$2Xkyoku-head office-Noun'},
 {p1:/(総)(?!X)(数)(?!X)/g,r1:'$1Xsou$2Xsuu-total-Noun'},
 {p1:/(総)(?!X)(理)(?!X)/g,r1:'$1Xsou$2Xri-prime minister-Noun'},
+{p1:/(雪)(?!X)(雲)(?!X)/g,r1:'$1Xyuki$2Xgumo-snow laden clouds-Noun'},
 {p1:/(総)(?!X)(統)(?!X)/g,r1:'$1Xsou$2Xtou-President-Noun'},
 {p1:/(総)(?!X)(裁)(?!X)/g,r1:'$1Xsou$2Xsai-president-Noun'},
+{p1:/(洋)(?!X)(側)(?!X)/g,r1:'$1Xyou$2Xgawa-seaboard-Noun'},
 {p1:/(総)(?!X)(量)(?!X)/g,r1:'$1Xsou$2Xryou-aggregate amount-Noun'},
 {p1:/(総)(?!X)(長)(?!X)/g,r1:'$1Xsou$2Xcyou-secretary general-Noun'},
 {p1:/(総)(?!X)(額)(?!X)/g,r1:'$1Xsou$2Xgaku-grand total of-Noun'},
@@ -7593,7 +7595,7 @@ const replsB = [
 {p1:/(倍)(?!X)/g,r1:'$1Xbai,bei,double-Noun'},
 {p1:/(値)(?!X)/g,r1:'$1Xne,atai-value-Noun'},
 {p1:/(健)(?!X)/g,r1:'$1Xken-health,strength-Noun'},
-{p1:/(側)(?!X)/g,r1:'$1Xkawa,gawa,side-Noun'},
+{p1:/(側)(?!X)/g,r1:'$1Xkawa,gawa-side-Noun'},
 {p1:/(偽)(?!X)/g,r1:'$1Xitsuwa-fake-IchidanVerb'},
 {p1:/(傘)(?!X)/g,r1:'$1Xkasa-umbrella-Noun'},
 {p1:/(傷)(?!X)/g,r1:'$1Xkizu,syou-wound-Noun'},
@@ -8517,8 +8519,6 @@ const replsB = [
 
 {p1:/(-KuVerb|-UVerb|-MuVerb|-RuVerb|-TsuVerb|-SuVerb|-BuVerb)/g,r1:'$1 '},
 
-{p1:/(Noun|Adjective|Adverb)/g,r1:'$1<br>'},
-
 {p1:/(\.)/g,r1:'$1ten-decimal'},
 
 {p1:/X/g,r1:''},
@@ -8547,7 +8547,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-日本付近は19日（水）にかけて強い冬型の気圧配置が続き、北日本から西日本は日本海側を中心に大雪となる所がある見込み。大雪に注意・警戒が必要だ。その後も、数日は日本付近は冬型の気圧配置となり、大雪が続いて積雪がさらに増えるおそれがある。
+今日19日は、日本付近は強い冬型の気圧配置が続くでしょう。北海道から山陰にかけての日本海側を中心に雪が降り、大雪となる所がありそうです。太平洋側も雪雲が流れ込む所があるでしょう。積雪や路面の凍結、交通機関への影響にご注意ください。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
