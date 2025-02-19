@@ -4146,6 +4146,7 @@ const replsB = [
 {p1:/(当)(?!X)(初)(?!X)/g,r1:'$1Xtou$2Xsyo-initial-Noun'},
 {p1:/(当)(?!X)(地)(?!X)/g,r1:'$1Xtou$2Xchi-this place-Noun'},
 {p1:/(当)(?!X)(局)(?!X)/g,r1:'$1Xtou$2Xkyoku-those concerned-Noun'},
+{p1:/(懲)(?!X)(役)(?!X)/g,r1:'$1Xcyou$2Xeki-hard labor prison-Noun'},
 {p1:/(当)(?!X)(日)(?!X)/g,r1:'$1Xtou$2Xjitsu-that day-Noun'},
 {p1:/(当)(?!X)(時)(?!X)/g,r1:'$1Xtou$2Xji-at that time-Noun'},
 {p1:/(当)(?!X)(然)(?!X)/g,r1:'$1Xtou$2Xzen-natural-Noun'},
@@ -8148,7 +8149,7 @@ const replsB = [
 {p1:/(縄)(?!X)/g,r1:'$1Xnawa-rope,cord-Noun'},
 {p1:/(縦)(?!X)/g,r1:'$1Xtate-lengthways,vertical-Noun'},
 {p1:/(缶)(?!X)/g,r1:'$1Xkan-can,tin-Noun'},
-{p1:/(罪)(?!X)/g,r1:'$1Xtsumi,zai,crime,sin-Noun'},
+{p1:/(罪)(?!X)/g,r1:'$1Xtsumi,zai-crime,sin-Noun'},
 {p1:/(罰)(?!X)/g,r1:'$1Xbatsu-punishment-Noun'},
 {p1:/(署)(?!X)/g,r1:'$1Xsyo-station-Noun'},
 {p1:/(美)(?!X)/g,r1:'$1Xmi,bi-beautiful-Noun'},
@@ -8424,7 +8425,6 @@ const replsB = [
 {p1:/(Verbれ)(?!X)(て)(?!X)/g,r1:'$1Xret$2Xe-has been doing-ConjunctiveVerb'},
 {p1:/(Verbれ)(?!X)(ば)(?!X)/g,r1:'$1X$2Xre ba,if done-ConjunctiveVerb'},
 
-
 {p1:/(し)(?!X)/g,r1:'$1Xshi-to do,will do-SuruVerb'},
 
 {p1:/(Verbい)(?!X)/g,r1:'$1Xi-is doing-ConjunctiveVerb'},
@@ -8547,7 +8547,8 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-今日19日は、日本付近は強い冬型の気圧配置が続くでしょう。北海道から山陰にかけての日本海側を中心に雪が降り、大雪となる所がありそうです。太平洋側も雪雲が流れ込む所があるでしょう。積雪や路面の凍結、交通機関への影響にご注意ください。
+【速報】岸田前総理襲撃事件　木村隆二被告に懲役10年の有罪判決　殺意を認定『爆発物に殺傷能力あった』和歌山地裁MBSニュース
+岸田前総理襲撃事件の裁判。19日の判決で和歌山地裁は、被告の男に対し、懲役10年の有罪判決を言い渡しました。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
