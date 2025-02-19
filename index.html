@@ -155,6 +155,7 @@ const replsB = [
 {p1:/(．)(?!X)/g,r1:'$1Xten-dot,decimal point-Punctuation-Noun'},
 {p1:/(：)(?!X)/g,r1:'$1Xcolon-Punctuation-Noun'},
 {p1:/(＝)(?!X)/g,r1:'$1Xequals-Punctuation-Noun'},
+{p1:/(～)(?!X)/g,r1:'$1Xhyphen,from to-Punctuation-Noun'},
 {p1:/(せ)(?!X)(ざ)(?!X)(る)(?!X)(を)(?!X)(え)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xse$2Xza$3Xru$4Xo$5Xe$6Xna$7Xi-can t help but do-Noun'},
 {p1:/(あ)(?!X)(ち)(?!X)(ら)(?!X)(こ)(?!X)(ち)(?!X)(ら)(?!X)/g,r1:'$1Xa$2Xchi$3Xra$4Xko$5Xchi$6Xra-all over-Noun'},
 {p1:/(い)(?!X)(つ)(?!X)(の)(?!X)(ま)(?!X)(に)(?!X)(か)(?!X)/g,r1:'$1Xi$2Xtsu$3Xno$4Xma$5Xni$6Xka-before it is noticed-Noun'},
@@ -592,6 +593,7 @@ const replsB = [
 {p1:/(い)(?!X)(け)(?!X)(な)(?!X)([いくかさ])(?!X)/g,r1:'$1Xike$2Xna$3X-wrong,must not$4X-IAdjective-Noun'},
 {p1:/(い)(?!X)(た)(?!X)(だ)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xi$2Xta$3Xda-would like to$4X-KuVerb'},
 {p1:/(う)(?!X)(つ)(?!X)(む)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xuts$2Xum$3Xu-face downward$4X-KuVerb'},
+{p1:/(見)(?!X)(合)(?!X)(わ)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xmi$2Xa$3Xwa-exchange glances,postpone,contrast$4X-SuVerb'},
 {p1:/(う)(?!X)(な)(?!X)(ず)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xuna$2Xzu$3X-nod$4X-KuVerb'},
 {p1:/(う)(?!X)(る)(?!X)(さ)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuru$2Xsa$3X-noisy,annoying,pesky$4X-IAdjective-Noun'},
 {p1:/(う)(?!X)(る)(?!X)(さ)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuru$2Xsa$3X-noisy,bothersome$4X-IAdjective-Noun'},
@@ -5562,7 +5564,9 @@ const replsB = [
 {p1:/(着)(?!X)(用)(?!X)/g,r1:'$1Xcyaku$2Xyou-wear-Noun'},
 {p1:/(着)(?!X)(陸)(?!X)/g,r1:'$1Xcyaku$2Xriku-landing-Noun'},
 {p1:/(睡)(?!X)(眠)(?!X)/g,r1:'$1Xsui$2Xmin-sleep-Noun'},
+{p1:/(乗)(?!X)(務)(?!X)/g,r1:'$1Xjyou$2Xmu-transporting work-Noun'},
 {p1:/(瞬)(?!X)(間)(?!X)/g,r1:'$1Xsyun$2Xkan-instant-Noun'},
+{p1:/(点)(?!X)(検)(?!X)/g,r1:'$1Xten$2Xken-detailed inspection-Noun'},
 {p1:/(矛)(?!X)(盾)(?!X)/g,r1:'$1Xmu$2Xjyun-contradiction-Noun'},
 {p1:/(矢)(?!X)(印)(?!X)/g,r1:'$1Xyajiru$2Xshi-arrow-Noun'},
 {p1:/(知)(?!X)(事)(?!X)/g,r1:'$1Xchi$2Xji-governor-Noun'},
@@ -7966,6 +7970,7 @@ const replsB = [
 {p1:/(歯)(?!X)/g,r1:'$1Xha-tooth,cog-Noun'},
 {p1:/(歳)(?!X)/g,r1:'$1Xsai-years old-Noun'},
 {p1:/(歴)(?!X)/g,r1:'$1Xreki-history,record-Noun'},
+{p1:/(落)(?!X)/g,r1:'$1Xochi-slip,omission-Noun'},
 {p1:/(死)(?!X)/g,r1:'$1Xshi-death-Noun'},
 {p1:/(段)(?!X)/g,r1:'$1Xdan-step,grade-Noun'},
 {p1:/(母)(?!X)/g,r1:'$1Xhaha-mother-Noun'},
@@ -8425,15 +8430,12 @@ const replsB = [
 {p1:/(Verbれ)(?!X)(て)(?!X)/g,r1:'$1Xret$2Xe-has been doing-ConjunctiveVerb'},
 {p1:/(Verbれ)(?!X)(ば)(?!X)/g,r1:'$1X$2Xre ba,if done-ConjunctiveVerb'},
 
-{p1:/(し)(?!X)/g,r1:'$1Xshi-to do,will do-SuruVerb'},
-
 {p1:/(Verbい)(?!X)/g,r1:'$1Xi-is doing-ConjunctiveVerb'},
 
 {p1:/(Verbえ)(?!X)/g,r1:'$1Xe-can do-Verb'},
 {p1:/(Verbず)(?!X)/g,r1:'$1Xzu-without doing-Verb'},
 
 {p1:/(Nounば|Verbば)(?!X)/g,r1:'$1Xba-if-Noun'},
-
 
 {p1:/(Verbよ)(?!X)/g,r1:'$1Xyo-exclamation-Noun'},
 
@@ -8447,7 +8449,7 @@ const replsB = [
 {p1:/(Nounま|Verbま)(?!X)(し)(?!X)(た)(?!X)/g,r1:'$1Xma$2Xshi$3Xta-did-FormalVerb'},
 {p1:/(Nounま|Verbま)(?!X)(せ)(?!X)(ん)(?!X)/g,r1:'$1Xma$2Xse$3Xn-didn t-FormalVerb'},
 {p1:/(Nounま|Verbま)(?!X)(す)(?!X)/g,r1:'$1Xma$2Xsu-FormalVerb'},
-{p1:/(Nounま)(?!X)(し)(?!X)(た)(?!X)/g,r1:'$1Xmashita,did-FormalVerb'},
+{p1:/(し)(?!X)/g,r1:'$1Xshi-to do,will do-SuruVerb'},
 {p1:/(Nounお)(?!X)/g,r1:'$1Xo-respected-formal-Noun'},
 {p1:/(Nounご)(?!X)/g,r1:'$1Xgo-respected-formal-Noun'},
 {p1:/(Verb)(ま)(?!X)(す)(?!X)/g,r1:'$1$2Xma$3Xsu-to do,will do-FormalVerb'},
@@ -8547,8 +8549,8 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-【速報】岸田前総理襲撃事件　木村隆二被告に懲役10年の有罪判決　殺意を認定『爆発物に殺傷能力あった』和歌山地裁MBSニュース
-岸田前総理襲撃事件の裁判。19日の判決で和歌山地裁は、被告の男に対し、懲役10年の有罪判決を言い渡しました。
+ＪＲは午後3時10分、東北新幹線の東京駅～仙台駅間の上下線で運転を見合わせていると発表しました。
+再開は午後3時40分ごろを見込んでいるとしましたが、乗務員による車両点検を実施し、次の郡山駅まで速度を落として運転するため、再開見込みを午後4時50分に変更するとしています。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
