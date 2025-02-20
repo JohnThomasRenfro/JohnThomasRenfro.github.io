@@ -51,8 +51,8 @@
 <body>
     <div class="container">
         <h1>Korean Hangul Analyzer</h1>
-        Cut and paste this Korean into the textarea below<br>
-        윤석열 대통령이 20일 탄핵심판 10차 변론에 출석했다가 5분 만에 퇴정했다. 한덕수 국무총리와 한 심판정에 있는 
+        Cut and paste this Korean into the textarea below.<p>
+한덕수 국무총리가 20일 윤석열 대통령 탄핵심판에 나와 12·3 비상계엄 선포 직전 열린 국무회의에 참석한 국무위원 모두가 대통령의 계엄 선포를 반대했다고 증언했다. 이는 앞서 김용현 전 국방부 장관이 국무위원 중 일부는 찬성했다고 말한 것과 배치
         <textarea id="input" placeholder="Paste Korean text here..."></textarea>
         <div id="output"></div>
     </div>
@@ -75,17 +75,20 @@
 
         // Common particles and their meanings
         const PARTICLES = {
+            '의에': { pron: 'ui e', meaning: 'of the' },                
             '은': { pron: 'eun', meaning: 'topic marker (after consonant)' },
             '는': { pron: 'neun', meaning: 'topic marker (after vowel)' },
             '이': { pron: 'i', meaning: 'subject marker (after consonant)' },
             '가': { pron: 'ga', meaning: 'subject marker (after vowel)' },
             '을': { pron: 'eul', meaning: 'object marker (after consonant)' },
             '를': { pron: 'reul', meaning: 'object marker (after vowel)' },
-            '에': { pron: 'e', meaning: 'location/time marker' },
+            '에': { pron: 'e', meaning: 'at,in,on;location/time marker' },
             '에서': { pron: 'eseo', meaning: 'from/at (location)' },
             '와': { pron: 'wa', meaning: 'and/with (after vowel)' },
             '과': { pron: 'gwa', meaning: 'and/with (after consonant)' },
-            '다': { pron: 'da', meaning: 'statement ending' }
+            '다': { pron: 'da', meaning: 'statement ending' },
+            '한': { pron: 'han', meaning: 'did do;makes this an adjective' },
+            '의': { pron: 'u i', meaning: '+ial an adjective ending' },            
         };
 
         // Expanded vocabulary
@@ -176,7 +179,6 @@
 "오그라들다":"to shrink, shrivel, curl up, contract; aggravate, worsen",
 "외할아버지":"maternal grandfather",
 "우회전하다":"to turn right",
-"국무총리와":"Prime Minister",
 "웨딩드레스":"wedding dress",
 "이데올로기":"ideology",
 "이루어지다":"to come true, be achieved, reached; be formed, consist (of), made up (of)",
@@ -1205,6 +1207,7 @@
 "전달하다":"to deliver (or have something delivered), convey, send, forward",
 "전매특허":"patent",
 "전송하다":"to send, transmit",
+"국무총리":"Prime Minister",
 "전시하다":"to exhibit, display",
 "전학하다":"to change schools, transfer schools",
 "전해주다":"to (please) tell",
@@ -1319,7 +1322,6 @@
 "착용하다":"to wear, put on (something onto your body)",
 "찬란하다":"to be radiant, shining, brilliant, glorious; bright, cheerful",
 "참가하다":"to participate, join, take part (in)",
-"참석하다":"to attend, be present",
 "참여하다":"to participate (in), get involved (joining other people)",
 "참조하다":"to refer (to), consult (closer to comparing and contrasting)",
 "창업하다":"to establish, start, found (country/dynasty/business)",
@@ -1347,6 +1349,7 @@
 "초대하다":"to invite",
 "초등학교":"elementary school ",
 "초등학생":"elementary school student ",
+"국무위원":"commissioner",
 "초라하다":"to be shabby, poor, pitiful (formal? not common)",
 "초조하다":"to be anxious, restless, impatient, nervous",
 "초청하다":"to invite",
@@ -1388,6 +1391,7 @@
 "켜져있다":"to be lightened, be on",
 "켜져있다":"켜져있어요 켜져있었어요 켜져있을 거예요 to be lightened, be on",
 "콤플렉스":"inferiority complex, complex",
+"비상계엄":"martial law",
 "쾌적하다":"to be pleasant, nice, comfortable",
 "크레파스":"crayon",
 "큰아버지":"(uncle) father's elder brother",
@@ -1629,6 +1633,7 @@
 "경제적":"financial, economic",
 "경찰관":"police officer",
 "경찰서":"police station",
+"국무회":"parliament",
 "경호원":"bodyguard, escort",
 "계산기":"calculator ",
 "계산대":"counter, checkout",
@@ -1794,7 +1799,7 @@
 "나쁘다":"나빠요 나빴어요 나쁠 거예요 to be bad, poor",
 "나쁘다":"나빠요",
 "나서다":"나서요 나섰어요 나설 거예요 to come forward, come out; interfere (in); set out, take action, get started",
-"나오다":"나와요 나왔어요 나올 거예요 to come out",
+"나오다|나와|나왔어|나올|거예":"to come out",
 "나중에":"later",
 "날달걀":"raw egg",
 "날마다":"every day, each day, day in and day out (long term daily routine/not that common)",
@@ -4029,6 +4034,7 @@
 "무슨":"what, what kind of, what sort of",
 "무엇":"what, which, something",
 "무역":"trade, commerce",
+"참석":"to attend, be present",
 "무용":"dance (formal); uselessness; military arts",
 "무지":"ignorance, stupidity; very extremely",
 "무척":"very much, incomparable to the norm (formal/less common)",
@@ -4420,6 +4426,7 @@
 "새끼":"young animal; baby, child, kid; (offensive) bastard, creep, son of a bitch; straw, rope",
 "새다":"to leak, escape, be heard outside, get off subject, shine through; dawn",
 "새로":"newly",
+"선포":"proclamation",
 "새벽":"dawn, daybreak, morning",
 "새우":"shrimp, prawn",
 "새장":"bird cage",
@@ -5088,6 +5095,7 @@
 "음원":"sound source, online music",
 "음절":"syllable",
 "응급":"emergency ",
+"열린":"open,clear",
 "응답":"answer, response (formal [radio operator, military, formal questions] not common)",
 "의견":"opinion, view, idea",
 "의도":"intention, aim, purpose (focus on the speaker)",
@@ -6246,10 +6254,10 @@
 "화":"anger; disaster, misfortune",
 "후":"after, later time; future",
 "흙":"earth, soil, dirt; ground",
+"리":"village, reason, logic, clerk, official",
 "흥":"fun, joy, excited; huh",
 "힘":"force, strength, energy; authority, power, influence, effort",
 "([가-힣]+)":" $1 goof",
-
         };
 
         function decomposeHangul(char) {
@@ -6277,7 +6285,6 @@
             };
         }
 
-        // Romanization adjustment function considering phonetic rules
         function adjustPronunciation(chars, wordPosition) {
             let result = [];
             for (let i = 0; i < chars.length; i++) {
@@ -6290,27 +6297,21 @@
                 let pron = current.pronunciation;
                 let next = i + 1 < chars.length ? chars[i + 1] : null;
 
-                // Assimilation rules
                 if (current.components.final && next && next.isHangul) {
-                    // Final 'k' before initial 'g' becomes 'g'
                     if (current.components.final === 'k' && next.components.initial === 'g') {
                         pron = pron.replace(/k$/, 'g');
                     }
-                    // Final 't' before initial 'd' becomes 'd'
                     if (current.components.final === 't' && next.components.initial === 'd') {
                         pron = pron.replace(/t$/, 'd');
                     }
-                    // Final 'ng' before vowel becomes 'ng' sound
                     if (current.components.final === 'ng' && next.components.initial === '') {
-                        pron = pron; // Keep as is, already correct
+                        pron = pron;
                     }
-                    // Final 'l' before consonant
                     if (current.components.final === 'l' && next.components.initial !== '') {
                         pron = pron.replace(/l$/, 'r');
                     }
                 }
 
-                // Initial sound rules (lenition)
                 if (wordPosition === 0 && i === 0 && !current.components.final) {
                     if (pron.startsWith('g')) pron = pron.replace(/^g/, 'k');
                     if (pron.startsWith('d')) pron = pron.replace(/^d/, 't');
@@ -6323,66 +6324,62 @@
             return result;
         }
 
-        function translateWord(word) {
-            let baseWord = word;
-            let particleInfo = null;
-            
-            for (let particle in PARTICLES) {
-                if (word.endsWith(particle)) {
-                    baseWord = word.slice(0, -particle.length);
-                    particleInfo = PARTICLES[particle];
-                    break;
-                }
-            }
+function translateWord(word) {
+    let baseWord = word;
+    let particleInfo = null;
+    
+    for (let particle in PARTICLES) {
+        if (word.endsWith(particle)) {
+            baseWord = word.slice(0, -particle.length);
+            particleInfo = PARTICLES[particle];
+            break;
+        }
+    }
 
-            const translation = VOCABULARY[baseWord] || VOCABULARY[word] || '[translation not found]';
-            return { baseWord, translation, particleInfo };
+    const translation = VOCABULARY[baseWord] || VOCABULARY[word] || '[translation not found]';
+    return { baseWord, translation, particleInfo };
+}
+
+function analyzeText(text) {
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = '';
+
+    const words = text.trim().split(/\s+/);
+    
+    words.forEach((word, wordIndex) => {
+        const wordDiv = document.createElement('div');
+        wordDiv.style.marginBottom = '15px';
+
+        let chars = [];
+        for (let char of word) {
+            chars.push(decomposeHangul(char));
         }
 
-        function analyzeText(text) {
-            const outputDiv = document.getElementById('output');
-            outputDiv.innerHTML = '';
+        const pronunciations = adjustPronunciation(chars, wordIndex);
 
-            const words = text.trim().split(/\s+/);
-            
-            words.forEach((word, wordIndex) => {
-                const wordDiv = document.createElement('div');
-                wordDiv.style.marginBottom = '15px';
-
-                // Decompose characters
-                let chars = [];
-                for (let char of word) {
-                    chars.push(decomposeHangul(char));
-                }
-
-                // Adjust pronunciation
-                const pronunciations = adjustPronunciation(chars, wordIndex);
-
-                // Build character analysis output
-                let charAnalysis = '';
-                for (let i = 0; i < chars.length; i++) {
-                    charAnalysis += `<span class="hangul">${chars[i].original}</span> ` +
-                                  `<span class="pronunciation">(${pronunciations[i]})</span> `;
-                }
-
-                // Get translation and particle info
-                const { baseWord, translation, particleInfo } = translateWord(word);
-                
-                wordDiv.innerHTML = charAnalysis + '<br>' +
-                                  `<span class="translation">Translation: ${translation}</span>`;
-                
-                if (particleInfo) {
-                    wordDiv.innerHTML += `<br><span class="particle">Particle: ${particleInfo.pron} - ${particleInfo.meaning}</span>`;
-                }
-
-                outputDiv.appendChild(wordDiv);
-            });
+        // Modified to add <br> before each Hangul except the first
+        let charAnalysis = '';
+        for (let i = 0; i < chars.length; i++) {
+            const charTranslation = VOCABULARY[chars[i].original] || '';
+            charAnalysis += (i > 0 ? '<br>' : '') + // Add line break before all but the first character
+                          `<span class="hangul">${chars[i].original}</span> ` +
+                          `<span class="pronunciation">(${pronunciations[i]})</span>` +
+                          (charTranslation ? ` <span class="char-translation">[${charTranslation}]</span>` : ' ');
         }
 
-        // Event listener for input
-        document.getElementById('input').addEventListener('input', function(e) {
-            analyzeText(e.target.value);
-        });
+        const { baseWord, translation, particleInfo } = translateWord(word);
+        
+        wordDiv.innerHTML = charAnalysis + '<br>' +
+                          `<span class="translation">Translation: ${translation}</span>` +
+                          (particleInfo ? `<br><span class="particle">Particle: ${particleInfo.pron} - ${particleInfo.meaning}</span>` : '');
+        
+        outputDiv.appendChild(wordDiv);
+    });
+}
+
+document.getElementById('input').addEventListener('input', function(e) {
+    analyzeText(e.target.value);
+});
     </script>
 </body>
 </html>
