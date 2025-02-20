@@ -136,11 +136,12 @@ function translateB()
 
 const replsB = [
 
-{p:/(\,|\,|\.|\«|\»|\:|\"|\.)/ig,r:' $1 '},
+{p:/(\,|\,|\.|\«|\»|\:|\"|\.|\?)/ig,r:' $1 '},
 
 {p:/ /ig,r:' <p> '},
 
 {p:/ (контр)/ig,r:'$1|counter| '},
+{p:/ (само)/ig,r:'$1|oneself~prefix| '},
 {p:/ (гос)/ig,r:'$1|state| '},
 
 {p:/ (packageн)/ig,r:'$1|ability~suff~'},
@@ -160,7 +161,7 @@ const replsB = [
 {p:/ (ей-богу)/ig,r:'$1|truly~suff~'},
 {p:/ (из-з)/ig,r:'$1|from behind of~suff~'},
 {p:/ (из-под)/ig,r:'$1|from under~suff~'},
-{p:/ (из\-за)/ig,r:'$1|due to~suff~'},
+{p:/ (из-за)/ig,r:'$1|due to~suff~'},
 {p:/ (как-нибуд)/ig,r:'$1|somehow(in the future)~suff~'},
 {p:/ (как-никак)/ig,r:'$1|nevertheless same~suff~'},
 {p:/ (как-то)/ig,r:'$1|somehow one time~suff~'},
@@ -1630,7 +1631,7 @@ const replsB = [
 {p:/ (подейств)/ig,r:'$1|act~suff~'},
 {p:/ (полирова)/ig,r:'$1|polished~suff~'},
 {p:/ (послевое)/ig,r:'$1|postwar~suff~'},
-{p:/ (почувств)/ig,r:'$1|feel~suff~'},
+{p:/ (почувств)/ig,r:'$1|feel;well-being~suff~'},
 {p:/ (преобраз)/ig,r:'$1|reform~suff~'},
 {p:/ (произвед)/ig,r:'$1|a work~suff~'},
 {p:/ (промышле)/ig,r:'$1|industry~suff~'},
@@ -2567,6 +2568,7 @@ const replsB = [
 {p:/ (свинств)/ig,r:'$1|swinish trick~suff~'},
 {p:/ (свойств)/ig,r:'$1|characteristic~suff~'},
 {p:/ (средств)/ig,r:'$1|means~suff~'},
+{p:/ (существ)/ig,r:'$1|essence~suff~'},
 {p:/ (существ)/ig,r:'$1|essence~suff~'},
 {p:/ (сходств)/ig,r:'$1|similarity~suff~'},
 {p:/ (убийств)/ig,r:'$1|murder~suff~'},
@@ -3849,6 +3851,7 @@ const replsB = [
 {p:/ (январск)/ig,r:'$1|January~suff~'},
 {p:/ (безымя)/ig,r:'$1|nameless~suff~'},
 {p:/ (влюблё)/ig,r:'$1|in love(with)~suff~'},
+{p:/ (пикант)/ig,r:'$1|spicy,zesty~suff~'},
 {p:/ (внутре)/ig,r:'$1|inner~suff~'},
 {p:/ (действ)/ig,r:'$1|act~suff~'},
 {p:/ (деревя)/ig,r:'$1|wooden~suff~'},
@@ -3908,7 +3911,7 @@ const replsB = [
 {p:/ (упрощё)/ig,r:'$1|simplified~suff~'},
 {p:/ (участв)/ig,r:'$1|take part in~suff~'},
 {p:/ (учрежд)/ig,r:'$1|establishment~suff~'},
-{p:/ (чувств)/ig,r:'$1|feel~suff~'},
+{p:/ (чувств)/ig,r:'$1|feel;well-being~suff~'},
 {p:/ (явстве)/ig,r:'$1|clearly~suff~'},
 {p:/ (бегств)/ig,r:'$1|flight~suff~'},
 {p:/ (детств)/ig,r:'$1|childhood~suff~'},
@@ -8850,6 +8853,7 @@ const replsB = [
 {p:/ (коз)/ig,r:'$1|goat~suff~'},
 {p:/ (кол)/ig,r:'$1|stake(wood)~suff~'},
 {p:/ (ком)/ig,r:'$1|lump~suff~'},
+{p:/ (чув)/ig,r:'$1|to feel;well-being~suff~'},
 {p:/ (кон)/ig,r:'$1|horse~suff~'},
 {p:/ (коп)/ig,r:'$1|dig~suff~'},
 {p:/ (кор)/ig,r:'$1|bark~suff~'},
@@ -9338,25 +9342,27 @@ const replsB = [
 {p:/ (с) /ig,r:'$1|from,with~prep'},
 {p:/ (у) /ig,r:'$1|by ~suff~'},
 
+{p:/~suff~(ный) /ig,r:'~$1~adjective-forming suffix that turns the root into an adjective'},
 {p:/~suff~(еств)/ig,r:'$1~suffix that turns a verb into a noun, similar to "-ing" in English~suff~'},
 {p:/~suff~(ост)/ig,r:'~$1~indicating a state of being~suff~'},
 
-{p:/~suff~(ирова)/ig,r:'~$1~suffix used to form verbs borrowed from foreign languages~suff~'},
-{p:/~suff~(ир)/ig,r:'~$1~suffix used to form verbs borrowed from foreign languages~suff~'},
-{p:/~suff~(ён)/ig,r:'~$1~suffix that converts a verb into its past participle form~suff~'},
+{p:/~suff~(ирова)/ig,r:'~$1~ used to form verbs borrowed from foreign languages~suff~'},
+{p:/~suff~(ств)/ig,r:'~$1~transforms the verb into a noun, indicating a state or condition~suff~'},
+{p:/~suff~(ир)/ig,r:'~$1~ used to form verbs borrowed from foreign languages~suff~'},
+{p:/~suff~(ён)/ig,r:'~$1~ that converts a verb into its past participle form~suff~'},
 
-{p:/~suff~(ове)/ig,r:'~$1~suffix used for forming adjectives~suff~'},
+{p:/~suff~(ове)/ig,r:'~$1~ used for forming adjectives~suff~'},
 
-{p:/~suff~(ор)/ig,r:'~$1~suffix used to form nouns~suff~'},
+{p:/~suff~(ор)/ig,r:'~$1~ used to form nouns~suff~'},
 {p:/~suff~(чн)/ig,r:'~$1~component of a word that helps form adjectives~suff~'},
 {p:/~suff~(нн)/ig,r:'~$1~indicating a full-form adjective or participle~suff~'},
 {p:/~suff~(н)/ig,r:'~$1~indicating a short-form adjective or participle~suff~'},
-{p:/~suff~(у)/ig,r:'~$1~suffix marking a present tense verb~suff~'},
+{p:/~suff~(у)/ig,r:'~$1~marking a present tense verb~suff~'},
 {p:/~suff~(т)/ig,r:'~$1~indicating a past participle~suff~'},
 
-{p:/~suff~(ить )/ig,r:'~$1~aninfinitive verb (second conjugation) or a marker of perfective aspect or causation; also appears in borrowed verbs'},
-{p:/~suff~(ать )/ig,r:'~$1~aninfinitive verb (first conjugation) or a marker of habitual action or process'},
-{p:/~suff~(еть )/ig,r:'~$1~aninfinitive verb (mostly second conjugation) or an indicator of state or quality'},
+{p:/~suff~(ить )/ig,r:'~$1~an infinitive verb (second conjugation) or a marker of perfective aspect or causation; also appears in borrowed verbs'},
+{p:/~suff~(ать )/ig,r:'~$1~an infinitive verb (first conjugation) or a marker of habitual action or process'},
+{p:/~suff~(еть )/ig,r:'~$1~an infinitive verb (mostly second conjugation) or an indicator of state or quality'},
 {p:/~suff~(или )/ig,r:'~$1~verb ending indicating past tense, plural form ("they did")'},
 {p:/~suff~(а)(ют )/ig,r:'~$1~thematic vowel for conjugation.~$2~verb ending indicating present tense, third-person plural ("they do")'},
 {p:/~suff~(али )/ig,r:'~$1~verb ending indicating past tense, plural form ("they did")'},
@@ -9401,7 +9407,7 @@ const replsB = [
 
 {p:/~suff~(ы )/ig,r:'~$1~-adjective-plural-short form or noun-feminine-singular-genitive'},
 {p:/~suff~(и )/ig,r:'~$1~(noun-masculine-plural-nominative)'},
-{p:/~suff~(ь )/ig,r:'~$1~(noun-feminine-singular-accu)'},
+{p:/~suff~(ь )/ig,r:'~$1~(noun-feminine-singular-accusative)'},
 {p:/~suff~(а )/ig,r:'~$1~noun-feminine-singular-genitive'},
 {p:/~suff~(о )/ig,r:'~$1~-adjective-neut-shor'},
 {p:/~suff~(у )/ig,r:'~$1~noun-singular-dati'},
@@ -9441,8 +9447,8 @@ function translateC() {
 <div class="HeaderStyle">Studying Russian Language</div>
 Cut and paste this Russian text into text area below.
 <p>
-Современные автомобили требуют мощных и долговечных аккумуляторов. Обычные свинцово-кислотные батареи постепенно уступают место более продвинутым технологиям. Продакт-менеджер компании Energon Дмитрий Николаевич рассказал, чем отличаются современные аккумуляторы и какой вариант лучше выбрать.
-Читайте больше на https://www.pravda.ru/news/auto/2177571-car-battery-selection/
+Может ли обычный корень изменить ваше самочувствие? Трудно поверить, но тёплый и пикантный вкус имбиря делает не только блюда ароматными, но и приносит пользу организму. Этот восточный ингредиент, известный своими целебными свойствами, веками использовался не только в кулинарии, но и в народной медицине.
+Читайте больше на https://www.pravda.ru/news/health/2179993-ginger-benefits/
 </p><p>
 <textarea cols="25" rows="6" onchange='a=" "+this.value+" ",translateC()'></textarea><br>
 <span id="translatedTextDisplay"></span>
