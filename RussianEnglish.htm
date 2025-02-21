@@ -140,42 +140,30 @@ const replsB = [
 
 {p:/ /ig,r:' <p> '},
 
-  // Adjective, Plural, Nominative/Inanimate Accusative
-  { p: /([А-Яа-яЁё]+)(ые|ие|ые|и|ы)\s/ig, r: '$1$2 - Adjective, Plural, Nominative/Inanimate Accusative ' },
+  // Adjective endings (ensure correct detection)
+  { p: /([А-Яа-яЁё]+)(ый|ой|ий|ая|яя|ое|ее|ые|ие|ых|их|ым|им|ую|юю|ом|ем) /ig, 
+    r: '$1$2 - Adjective' },
 
-  // Adjective, Masculine, Nominative/Inanimate Accusative
-  { p: /([А-Яа-яЁё]+)(ый|ий|ой)\s/ig, r: '$1$2 - Adjective, Masculine, Nominative/Inanimate Accusative ' },
-
-  // Adjective, Feminine, Nominative
-  { p: /([А-Яа-яЁё]+)(ая|яя)\s/ig, r: '$1$2 - Adjective, Feminine, Nominative ' },
-
-  // Adjective, Neuter, Nominative/Inanimate Accusative
-  { p: /([А-Яа-яЁё]+)(ое|ее)\s/ig, r: '$1$2 - Adjective, Neuter, Nominative/Inanimate Accusative ' },
-
-  // Noun, Masculine, Plural, Nominative
-  { p: /([А-Яа-яЁё]+)(ы|и)\s/ig, r: '$1$2 - Noun, Masculine, Plural, Nominative ' },
-
-  // Noun, Feminine, Singular, Nominative
-  { p: /([А-Яа-яЁё]+)(а|я)\s/ig, r: '$1$2 - Noun, Feminine, Singular, Nominative ' },
-
-  // Noun, Feminine, Singular, Dative/Accusative
-  { p: /([А-Яа-яЁё]+)(у|ю)\s/ig, r: '$1$2 - Noun, Feminine, Singular, Dative/Accusative ' },
-
-  // Adjective, Masculine/Neuter, Genitive
-  { p: /([А-Яа-яЁё]+)(ого|его)\s/ig, r: '$1$2 - Adjective, Masculine/Neuter, Genitive ' },
-
-  // Verb, Past Tense, Masculine
-  { p: /([А-Яа-яЁё]+)(л)\s/ig, r: '$1$2 - Verb, Past Tense, Masculine ' },
-
-  // Verb, Past Tense, Feminine/Neuter/Plural
-  { p: /([А-Яа-яЁё]+)(ла|ло|ли)\s/ig, r: '$1$2 - Verb, Past Tense, Feminine/Neuter/Plural ' },
-
-  // Verb, Future, 3rd Person Plural
-  { p: /([А-Яа-яЁё]+)(ут|ют)\s/ig, r: '$1$2 - Verb, Future, 3rd Person Plural ' },
-
-  // Verb, Present, 3rd Person Singular
-  { p: /([А-Яа-яЁё]+)(ет|ёт|ит)\s/ig, r: '$1$2 - Verb, Present, 3rd Person Singular ' },
+  // Noun endings (expanded cases)
+  { p: /([А-Яа-яЁё]+)(а|я) /ig, r: '$1$2 - Noun, Feminine, Singular, Nominative' },
+  { p: /([А-Яа-яЁё]+)(о|е) /ig, r: '$1$2 - Noun, Neuter, Singular, Nominative' },
+  { p: /([А-Яа-яЁё]+)(ы|и) (?!\s+[а-я])/ig, r: '$1$2 - Noun, Plural, Nominative' },
+  { p: /([А-Яа-яЁё]+)(ость|есть) /ig, r: '$1$2 - Noun, Abstract/Quality' }, // Fixes "зависимость"
   
+  // Verb endings (fixes "дать" issue)
+  { p: /([А-Яа-яЁё]+)(ать|ять|еть|ить) /ig, r: '$1$2 - Verb, Infinitive' },
+  { p: /([А-Яа-яЁё]+)(л|ла|ло|ли) /ig, r: '$1$2 - Verb, Past Tense' }, // Fixes "пил"
+  { p: /([А-Яа-яЁё]+)(ешь|ёшь|ет|ёт|ем|ём|ете|ёте|ут|ют) /ig, r: '$1$2 - Verb, Present/Future' },
+
+  // Reflexive verbs
+  { p: /([А-Яа-яЁё]+)(ся|сь) /ig, r: '$1$2 - Reflexive Verb' },
+
+  // Prepositions (fixes "из", "от" issues)
+  { p: / (на|от|из|в|с|без|к|по|о|до|при|через|за|под|над|между|об|про|для|через|у|возле|рядом|спереди|сзади|после|внутри|вне) /ig, r: '$1 - Preposition' },
+
+  // Pronouns (fixes "эти", "какие")
+  { p: / (этот|эта|это|эти|тот|та|то|те|какой|какая|какое|какие) /ig, r: '$1 - Pronoun' },
+
 {p:/ (контр)/ig,r:'$1|counter| '},
 {p:/ (само)/ig,r:'$1|oneself~prefix| '},
 {p:/ (гос)/ig,r:'$1|state| '},
@@ -9384,84 +9372,6 @@ const replsB = [
 {p:/ (о) /ig,r:'$1|about~suff~'},
 {p:/ (с) /ig,r:'$1|from,with~prep'},
 {p:/ (у) /ig,r:'$1|by ~suff~'},
-
-{p:/~suff~(яется) /ig,r:'~$1~Reflexive verb ending (third-person singular, present tense, passive/reflexive form)'},
-{p:/~suff~(ный) /ig,r:'~$1~adjective-forming suffix that turns the root into an adjective'},
-{p:/~suff~(еств)/ig,r:'$1~suffix that turns a verb into a noun, similar to "-ing" in English~suff~'},
-{p:/~suff~(ост)/ig,r:'~$1~indicating a state of being~suff~'},
-
-{p:/~suff~(ирова)/ig,r:'~$1~ used to form verbs borrowed from foreign languages~suff~'},
-{p:/~suff~(ств)/ig,r:'~$1~transforms the verb into a noun, indicating a state or condition~suff~'},
-{p:/~suff~(ир)/ig,r:'~$1~ used to form verbs borrowed from foreign languages~suff~'},
-{p:/~suff~(ён)/ig,r:'~$1~ that converts a verb into its past participle form~suff~'},
-
-{p:/~suff~(ове)/ig,r:'~$1~ used for forming adjectives~suff~'},
-
-{p:/~suff~(ор)/ig,r:'~$1~ used to form nouns~suff~'},
-{p:/~suff~(чн)/ig,r:'~$1~component of a word that helps form adjectives~suff~'},
-{p:/~suff~(нн)/ig,r:'~$1~indicating a full-form adjective or participle~suff~'},
-{p:/~suff~(н)/ig,r:'~$1~indicating a short-form adjective or participle~suff~'},
-{p:/~suff~(у)/ig,r:'~$1~marking a present tense verb~suff~'},
-{p:/~suff~(т)/ig,r:'~$1~indicating a past participle~suff~'},
-
-{p:/~suff~(ить )/ig,r:'~$1~an infinitive verb (second conjugation) or a marker of perfective aspect or causation; also appears in borrowed verbs'},
-{p:/~suff~(ать )/ig,r:'~$1~an infinitive verb (first conjugation) or a marker of habitual action or process'},
-{p:/~suff~(еть )/ig,r:'~$1~an infinitive verb (mostly second conjugation) or an indicator of state or quality'},
-{p:/~suff~(или )/ig,r:'~$1~verb ending indicating past tense, plural form ("they did")'},
-{p:/~suff~(а)(ют )/ig,r:'~$1~thematic vowel for conjugation.~$2~verb ending indicating present tense, third-person plural ("they do")'},
-{p:/~suff~(али )/ig,r:'~$1~verb ending indicating past tense, plural form ("they did")'},
-{p:/~suff~(ами )/ig,r:'~$1~noun ending indicating plural instrumental case'},
-{p:/~suff~(ает )/ig,r:'~$1~verb ending indicating present tense, third-person singular ("he/she/it does regularly")'},
-{p:/~suff~(ала )/ig,r:'~$1~verb ending indicating past tense, singular feminine form ("she did")'},
-{p:/~suff~(уть )/ig,r:'~$1~verb ending indicating infinitive form'},
-{p:/~suff~(ете )/ig,r:'~$1~verb ending indicating present tense, second-person plural ("you all do")'},
-{p:/~suff~(йте )/ig,r:'~$1~The imperative plural ending for the second-person plural or formal singular. In Russian, this ending is used to address a group of people or to show respect/formality when speaking to one person.'},
-{p:/~suff~(иям )/ig,r:'~$1~noun ending indicating singular dative case for neuter nouns'},
-{p:/~suff~(ежь )/ig,r:'~$1~noun ending indicating singular nominative case for feminine nouns'},
-{p:/~suff~(ила )/ig,r:'~$1~verb ending indicating past tense, singular feminine form ("she did")'},
-{p:/~suff~(ило )/ig,r:'~$1~verb ending indicating past tense, singular neuter form ("it did")'},
-{p:/~suff~(ого )/ig,r:'~$1~adjective ending indicating masculine singular genitive, masculine singular animate accusative, or neuter singular genitive'},
-{p:/~suff~(ому )/ig,r:'~$1~adjective ending indicating masculine singular dative or neuter singular dative'},
-{p:/~suff~(ует )/ig,r:'~$1~verb ending indicating present tense, third-person singular ("he/she/it does")'},
-{p:/~suff~(ыми )/ig,r:'~$1~adjective ending indicating plural instrumental case'},
-{p:/~suff~(ями )/ig,r:'~$1~noun ending indicating plural instrumental case'},
-{p:/~suff~(ало )/ig,r:'~$1~verb ending indicating past tense, singular neuter form ("it did")'},
-
-{p:/~suff~(ет )/ig,r:'~$1~verb ending indicating present tense, third-person singular ("he/she/it does")'},
-{p:/~suff~(ие )/ig,r:'~$1~adjective ending indicating plural nominative case'},
-{p:/~suff~(ии )/ig,r:'~$1~noun ending indicating singular prepositional case'},
-{p:/~suff~(ий )/ig,r:'~$1~noun ending indicating plural genitive case'},
-{p:/~suff~(ил )/ig,r:'~$1~he did; verb, past, singular, masculine'},
-{p:/~suff~(им )/ig,r:'~$1~adjective ending indicating plural dative, singular masculine instrumental, or singular neuter instrumental'},
-{p:/~suff~(ит )/ig,r:'~$1~verb ending indicating present tense, third-person singular ("he/she/it does")'},
-{p:/~suff~(их )/ig,r:'~$1~adjective ending indicating plural genitive or plural animate accusative'},
-{p:/~suff~(ию )/ig,r:'~$1~noun ending indicating singular dative case'},
-{p:/~suff~(ия )/ig,r:'~$1~noun ending indicating singular nominative case for feminine nouns'},
-
-{p:/~suff~(ут )/ig,r:'~$1~verb ending indicating future tense, third-person plural ("they will")'},
-{p:/~suff~(ую )/ig,r:'~$1~adjective ending indicating singular feminine inanimate accusative'},
-{p:/~suff~(ые )/ig,r:'~$1~adjective ending indicating plural nominative or inanimate accusative'},
-{p:/~suff~(ый )/ig,r:'~$1~adjective ending indicating masculine nominative or inanimate accusative'},
-{p:/~suff~(ым )/ig,r:'~$1~adjective ending indicating plural dative, instrumental singular masculine, or instrumental plural'},
-{p:/~suff~(ых )/ig,r:'~$1~adjective ending indicating plural genitive, plural animate accusative, or plural prepositional'},
-{p:/~suff~(ют )/ig,r:'~$1~verb ending indicating present tense, third-person plural ("they are")'},
-{p:/~suff~(ям )/ig,r:'~$1~noun ending indicating plural dative case'},
-{p:/~suff~(ят )/ig,r:'~$1~verb ending indicating present tense, third-person plural ("they do")'},
-{p:/~suff~(ое )/ig,r:'~$1~Adjective neuter singular ending'},
-{p:/~suff~(ях )/ig,r:'~$1~noun ending indicating plural prepositional case'},
-{p:/~suff~(ка )/ig,r:'~$1~Genitive singular'},
-
-{p:/~suff~(я )/ig,r:'~$1~genitive singular'},
-{p:/~suff~(ы )/ig,r:'~$1~adjective-plural-short form or noun-feminine-singular-genitive'},
-{p:/~suff~(и )/ig,r:'~$1~(noun-masculine-plural-nominative)'},
-{p:/~suff~(ь )/ig,r:'~$1~(noun-feminine-singular-accusative)'},
-{p:/~suff~(а )/ig,r:'~$1~noun, singular, feminine, genitive'},
-{p:/~suff~(о )/ig,r:'~$1~-adjective-neut-shor'},
-{p:/~suff~(у )/ig,r:'~$1~noun-singular-dati'},
-{p:/~suff~(е )/ig,r:'~$1~noun-masculine-singular-prepositional or noun-feminine-singular-dative'},
-
-{p:/(а)(ют)(ся )/ig,r:'$1~Thematic vowel for verb conjugation.~$2~he, she, it does, 3rd person plural present~$3~was done verb-reflexive or passive verb marker'},
-{p:/(ит)(ся )/ig,r:'$1~he, she, it does, 3rd person singular present~$2~was done verb-reflexive or passive verb marker'},
 
 {p:/([а-яА-ЯёЁ]+)/ig,r:'<font color=gray>$1</font>'},
 
