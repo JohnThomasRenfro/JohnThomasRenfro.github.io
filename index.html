@@ -586,6 +586,7 @@ const replsB = [
 {p1:/(金)(?!X)(も)(?!X)(う)(?!X)(け)(?!X)/g,r1:'$1X$2Xka$3Xn$4Xemouke-making money-Noun'},
 {p1:/(間)(?!X)(も)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xma$2Xmo$3Xna$4Xi-immediately after-Noun'},
 {p1:/(食)(?!X)(い)(?!X)(止)(?!X)(め)(?!X)/g,r1:'$1Xku$2Xi$3Xto$4Xme-stem-IchidanVerb'},
+{p1:/(差)(?!X)(し)(?!X)(止)(?!X)(め)(?!X)/g,r1:'$1Xsa$2Xshi$3Xto$4Xme-ban-IchidanVerb'},
 {p1:/(高)(?!X)(等)(?!X)(学)(?!X)(校)(?!X)/g,r1:'$1X$2Xko$3Xu$4Xtou-gak-kou=high school-Noun'},
 {p1:/(高)(?!X)(速)(?!X)(道)(?!X)(路)(?!X)/g,r1:'$1Xkou$2Xsoku$3Xdou$4Xrou-highway-Noun'},
 {p1:/(あ)(?!X)(い)(?!X)(に)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xain$2X$3Xi-unfortunately$4X-KuVerb'},
@@ -2364,6 +2365,7 @@ const replsB = [
 {p1:/(お)(?!X)(茶)(?!X)/g,r1:'$1Xocy$2Xa-tea (polite)-Noun'},
 {p1:/(お)(?!X)(陰)(?!X)/g,r1:'$1Xoka$2Xge-help=thanks to-Noun'},
 {p1:/(か)(?!X)(け)(?!X)/g,r1:'$1Xka$2Xke-start=hang-IchidanVerb'},
+{p1:/(退)(?!X)(け)(?!X)/g,r1:'$1Xno$2Xke-move someone aside-IchidanVerb'},
 {p1:/(冷)(?!X)(め)(?!X)/g,r1:'$1Xsa$2Xme-cool down-IchidanVerb'},
 {p1:/(か)(?!X)(も)(?!X)/g,r1:'$1Xkam$2Xo-might do-Noun'},
 {p1:/(カ)(?!X)(月)(?!X)/g,r1:'$1Xka$2Xgetsu-month s time-Noun'},
@@ -4827,6 +4829,7 @@ const replsB = [
 {p1:/(本)(?!X)(店)(?!X)/g,r1:'$1Xhon$2Xten-head office-Noun'},
 {p1:/(本)(?!X)(当)(?!X)/g,r1:'$1Xhon$2Xtou-really-Noun'},
 {p1:/(本)(?!X)(文)(?!X)/g,r1:'$1Xhon$2Xbun-text=this text-Noun'},
+{p1:/(豪)(?!X)(雪)(?!X)/g,r1:'$1Xgou$2Xsetsu-tremendous snowfall-Noun'},
 {p1:/(本)(?!X)(日)(?!X)/g,r1:'$1Xhon$2Xjitsu-today-Noun'},
 {p1:/(本)(?!X)(来)(?!X)/g,r1:'$1Xhon$2Xrai-originally=essentially-Noun'},
 {p1:/(本)(?!X)(格)(?!X)/g,r1:'$1Xhon$2Xkaku-method-Noun'},
@@ -7502,7 +7505,7 @@ const replsB = [
 {p1:/(さX)(-IAdjective-Noun)/g,r1:'$1Xsa-turns the adjective into a noun$2'},
 {p1:/(さX)(-SuVerb)/g,r1:'さXsa$2'},
 {p1:/(しX)(-SuVerb)/g,r1:'しXshi$2'},
-{p1:/(すX)(-BeVerb)/g,r1:'すXsu(polite)$2'},
+{p1:/(すX)(-BeVerb)/g,r1:'すXsuto do=will do$2'},
 {p1:/(すX)(-SuVerb)/g,r1:'すXsu-to do=will do$2'},
 {p1:/(せX)(-SuVerb)/g,r1:'せXse-can do$2'},
 {p1:/(そX)(-SuVerb)/g,r1:'そXso=let us do$2'},
@@ -8550,17 +8553,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-強烈な寒波の影響で、石川県では記録的な大雪になっています。
-
-石川県の宝達志水町子浦では、午前8時までの6時間に28㎝の降雪を観測しました。
-
-そのため、気象庁はさきほど、顕著な大雪に関する気象情報を発表しました。
-
-短い時間で急激に積雪が増えていて、大規模かつ深刻な交通障害が発生する恐れが高まっている状況です。不要不急の外出は控えるようにしてください。
-
-また停電や集落の孤立などにも注意が必要です。
-
-この強い雪はきょう昼過ぎにかけて続くほか、寒波が3連休にかけて居座るため、その後も断続的に雪が強まる恐れがあります。
+２０１１年に起きた福島第一原発の事故後、鹿児島や熊本の住民らが九州電力の川内原子力発電所１、２号機の運転差し止めなどを求めた裁判で、鹿児島地裁は２１日の判決で原告の訴えを退けました。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
