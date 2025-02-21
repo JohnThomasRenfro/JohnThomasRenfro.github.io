@@ -136,7 +136,7 @@ function translateB()
 
 const replsB = [
 
-{p:/(\,|\,|\.|\«|\»|\:|\"|\.|\?)/ig,r:' $1 '},
+{p:/(\,|\,|\«|\»|\:|\"|\.|\?|\-)/ig,r:' $1 '},
 
 {p:/ /ig,r:' <p> '},
 
@@ -253,6 +253,7 @@ const replsB = [
 {p:/ (систематически)/ig,r:'$1|systematically~suff~'},
 {p:/ (социалистическ)/ig,r:'$1|socialist~suff~'},
 {p:/ (транспортировк)/ig,r:'$1|transportation~suff~'},
+{p:/ (аэрокосмическ)/ig,r:'$1|aerospace~suff~'},
 {p:/ (беспрепятстве)/ig,r:'$1|unimpeded~suff~'},
 {p:/ (квалифицирова)/ig,r:'$1|qualified~suff~'},
 {p:/ (правительстве)/ig,r:'$1|government~suff~'},
@@ -903,6 +904,7 @@ const replsB = [
 {p:/ (самодержав)/ig,r:'$1|autocracy~suff~'},
 {p:/ (самокритик)/ig,r:'$1|selfcriticism~suff~'},
 {p:/ (самосознан)/ig,r:'$1|selfawareness~suff~'},
+{p:/ (алкотестер)/ig,r:'$1|breathalyzer~suff~'},
 {p:/ (своеобразн)/ig,r:'$1|distinctive~suff~'},
 {p:/ (сентябрьск)/ig,r:'$1|September~suff~'},
 {p:/ (следовател)/ig,r:'$1|investigator~suff~'},
@@ -1046,6 +1048,7 @@ const replsB = [
 {p:/ (безусловн)/ig,r:'$1|unconditional~suff~'},
 {p:/ (безуспешн)/ig,r:'$1|unsuccessfully~suff~'},
 {p:/ (Вашингтон)/ig,r:'$1|Washington~suff~'},
+{p:/ (переговор)/ig,r:'$1|negotiation~suff~'},
 {p:/ (белоснежн)/ig,r:'$1|snowwhite~suff~'},
 {p:/ (бесконечн)/ig,r:'$1|infinity~suff~'},
 {p:/ (побеспоко)/ig,r:'$1|worry~suff~'},
@@ -2359,6 +2362,7 @@ const replsB = [
 {p:/ (серебрян)/ig,r:'$1|silver~suff~'},
 {p:/ (сестрёнк)/ig,r:'$1|little sister~suff~'},
 {p:/ (сквозняк)/ig,r:'$1|draught~suff~'},
+{p:/ (Федераль)/ig,r:'$1|federal~suff~'},
 {p:/ (скоростн)/ig,r:'$1|highspeed~suff~'},
 {p:/ (славянск)/ig,r:'$1|Slavonic~suff~'},
 {p:/ (словечко)/ig,r:'$1|word~suff~'},
@@ -3503,6 +3507,7 @@ const replsB = [
 {p:/ (проектн)/ig,r:'$1|planning~suff~'},
 {p:/ (прозвищ)/ig,r:'$1|nickname~suff~'},
 {p:/ (прозвуч)/ig,r:'$1|sound~suff~'},
+{p:/ (перегар)/ig,r:'$1|to get'},
 {p:/ (Дональд)/ig,r:'$1|Donald~suff~'},
 {p:/ (проклин)/ig,r:'$1|curse~suff~'},
 {p:/ (проклят)/ig,r:'$1|curse~suff~'},
@@ -5956,6 +5961,7 @@ const replsB = [
 {p:/ (грамм)/ig,r:'$1|gram(me)~suff~'},
 {p:/ (грешн)/ig,r:'$1|sinful~suff~'},
 {p:/ (грипп)/ig,r:'$1|influenza~suff~'},
+{p:/ (Отчет)/ig,r:'$1|according to the statement'},
 {p:/ (грозн)/ig,r:'$1|threatening~suff~'},
 {p:/ (громк)/ig,r:'$1|loud~suff~'},
 {p:/ (грубо)/ig,r:'$1|coarsely~suff~'},
@@ -7833,6 +7839,7 @@ const replsB = [
 {p:/ (конв)/ig,r:'$1|escort~suff~'},
 {p:/ (конч)/ig,r:'$1|finish~suff~'},
 {p:/ (копн)/ig,r:'$1|dig~suff~'},
+{p:/ (тест)/ig,r:'$1|test'},
 {p:/ (корк)/ig,r:'$1|crust~suff~'},
 {p:/ (корм)/ig,r:'$1|feed~suff~'},
 {p:/ (косн)/ig,r:'$1|touch~suff~'},
@@ -8999,7 +9006,7 @@ const replsB = [
 {p:/ (пер)/ig,r:'$1|shove~suff~'},
 {p:/ (печ)/ig,r:'$1|bake~suff~'},
 {p:/ (пеш)/ig,r:'$1|pedestrian~suff~'},
-{p:/ (пил)/ig,r:'$1|saw~suff~'},
+{p:/ (пил)/ig,r:'$1|drink'},
 {p:/ (пир)/ig,r:'$1|feast~suff~'},
 {p:/ (пис)/ig,r:'$1|write~suff~'},
 {p:/ (пит)/ig,r:'$1|feed~suff~'},
@@ -9342,6 +9349,7 @@ const replsB = [
 {p:/ (с) /ig,r:'$1|from,with~prep'},
 {p:/ (у) /ig,r:'$1|by ~suff~'},
 
+{p:/~suff~(яется) /ig,r:'~$1~Reflexive verb ending (third-person singular, present tense, passive/reflexive form)'},
 {p:/~suff~(ный) /ig,r:'~$1~adjective-forming suffix that turns the root into an adjective'},
 {p:/~suff~(еств)/ig,r:'$1~suffix that turns a verb into a noun, similar to "-ing" in English~suff~'},
 {p:/~suff~(ост)/ig,r:'~$1~indicating a state of being~suff~'},
@@ -9387,7 +9395,7 @@ const replsB = [
 {p:/~suff~(ие )/ig,r:'~$1~adjective ending indicating plural nominative case'},
 {p:/~suff~(ии )/ig,r:'~$1~noun ending indicating singular prepositional case'},
 {p:/~suff~(ий )/ig,r:'~$1~noun ending indicating plural genitive case'},
-{p:/~suff~(ил )/ig,r:'~$1~verb ending indicating past tense, singular masculine form ("he did")'},
+{p:/~suff~(ил )/ig,r:'~$1~he did; verb, past, singular, masculine'},
 {p:/~suff~(им )/ig,r:'~$1~adjective ending indicating plural dative, singular masculine instrumental, or singular neuter instrumental'},
 {p:/~suff~(ит )/ig,r:'~$1~verb ending indicating present tense, third-person singular ("he/she/it does")'},
 {p:/~suff~(их )/ig,r:'~$1~adjective ending indicating plural genitive or plural animate accusative'},
@@ -9403,12 +9411,15 @@ const replsB = [
 {p:/~suff~(ют )/ig,r:'~$1~verb ending indicating present tense, third-person plural ("they are")'},
 {p:/~suff~(ям )/ig,r:'~$1~noun ending indicating plural dative case'},
 {p:/~suff~(ят )/ig,r:'~$1~verb ending indicating present tense, third-person plural ("they do")'},
+{p:/~suff~(ое )/ig,r:'~$1~Adjective neuter singular ending'},
 {p:/~suff~(ях )/ig,r:'~$1~noun ending indicating plural prepositional case'},
+{p:/~suff~(ка )/ig,r:'~$1~Genitive singular'},
 
-{p:/~suff~(ы )/ig,r:'~$1~-adjective-plural-short form or noun-feminine-singular-genitive'},
+{p:/~suff~(я )/ig,r:'~$1~genitive singular'},
+{p:/~suff~(ы )/ig,r:'~$1~adjective-plural-short form or noun-feminine-singular-genitive'},
 {p:/~suff~(и )/ig,r:'~$1~(noun-masculine-plural-nominative)'},
 {p:/~suff~(ь )/ig,r:'~$1~(noun-feminine-singular-accusative)'},
-{p:/~suff~(а )/ig,r:'~$1~noun-feminine-singular-genitive'},
+{p:/~suff~(а )/ig,r:'~$1~noun, singular, feminine, genitive'},
 {p:/~suff~(о )/ig,r:'~$1~-adjective-neut-shor'},
 {p:/~suff~(у )/ig,r:'~$1~noun-singular-dati'},
 {p:/~suff~(е )/ig,r:'~$1~noun-masculine-singular-prepositional or noun-feminine-singular-dative'},
@@ -9447,8 +9458,11 @@ function translateC() {
 <div class="HeaderStyle">Studying Russian Language</div>
 Cut and paste this Russian text into text area below.
 <p>
-Может ли обычный корень изменить ваше самочувствие? Трудно поверить, но тёплый и пикантный вкус имбиря делает не только блюда ароматными, но и приносит пользу организму. Этот восточный ингредиент, известный своими целебными свойствами, веками использовался не только в кулинарии, но и в народной медицине.
-Читайте больше на https://www.pravda.ru/news/health/2179993-ginger-benefits/
+Откуда перегар, если не пил? Эти продукты дадут положительный тест на алкоголь
+
+Запах алкоголя сохраняется разное время в зависимости от напитка, а некоторые продукты могут дать ложный тест на алкотестере. Какие из них самые опасные?
+
+Читайте больше на https://www.pravda.ru/
 </p><p>
 <textarea cols="25" rows="6" onchange='a=" "+this.value+" ",translateC()'></textarea><br>
 <span id="translatedTextDisplay"></span>
