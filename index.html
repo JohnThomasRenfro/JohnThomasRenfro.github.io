@@ -2347,7 +2347,6 @@ const replsB = [
 {p1:/(8|８)(?!X)(日)(?!X)/g,r1:'$1Xyou$2Xka-eighth day of the month-Noun'},
 {p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu jyuu-ninety-Noun$2'},
 {p1:/(\d{1})(?!X)(分)(?!X)/g,r1:'$1$2Xpun-minutes-Noun'},
-{p1:/(\d{1})(?!X)(時)(?!X)/g,r1:'$1$2Xji-hour-Noun'},
 {p1:/(\d{1})(?!X)(発)(?!X)/g,r1:'$1$2Xpatsu-counter for shots-Noun'},
 {p1:/(\d{1}話)(?!X)/g,r1:'$1Xwa-counter for stories-Noun'},
 {p1:/(あ)(?!X)(あ)(?!X)/g,r1:'$1X$2Xaa-that kind of-Noun'},
@@ -2405,7 +2404,6 @@ const replsB = [
 {p1:/(ち)(?!X)(り)(?!X)/g,r1:'$1Xchi$2Xri-dust-Noun'},
 {p1:/(つ)(?!X)(け)(?!X)/g,r1:'$1Xtsu$2Xke-soak=attach-IchidanVerb'},
 {p1:/(て)(?!X)(も)(?!X)/g,r1:'$1Xte$2Xmo-even if-Noun'},
-{p1:/(で)(?!X)(の)(?!X)/g,r1:'$1Xde$2Xno-that is at=that is done with-Noun'},
 {p1:/(で)(?!X)(は)(?!X)/g,r1:'$1Xde$2Xwa-well then-Noun'},
 
 {p1:/(と)(?!X)(に)(?!X)/g,r1:'$1X$2Xto ni=suddenly-Noun'},
@@ -2444,7 +2442,7 @@ const replsB = [
 {p1:/(ま)(?!X)(あ)(?!X)/g,r1:'$1Xmaa$2X-well-Noun'},
 {p1:/(ま)(?!X)(た)(?!X)/g,r1:'$1Xma$2Xta-again-Noun'},
 {p1:/(ま)(?!X)(だ)(?!X)/g,r1:'$1Xma$2Xda-yet-Noun'},
-{p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-until=to-Noun'},
+{p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-until-Postposition-Noun'},
 {p1:/(ま)(?!X)(ね)(?!X)/g,r1:'$1Xma$2Xne-imitation=mimicry-Noun'},
 {p1:/(ま)(?!X)(ま)(?!X)/g,r1:'$1Xma$2Xma-as it is-Noun'},
 {p1:/(も)(?!X)(し)(?!X)/g,r1:'$1Xmo$2Xshi-if-Noun'},
@@ -5252,6 +5250,7 @@ const replsB = [
 {p1:/(火)(?!X)(星)(?!X)/g,r1:'$1Xka$2Xsei-planet Mars-Noun'},
 {p1:/(火)(?!X)(災)(?!X)/g,r1:'$1Xka$2Xsai-fire-Noun'},
 {p1:/(火)(?!X)(葬)(?!X)/g,r1:'$1Xka$2Xsou-cremation-Noun'},
+{p1:/(時)(?!X)(間)(?!X)/g,r1:'$1Xji$2Xkan-time-Noun'},
 {p1:/(灯)(?!X)(油)(?!X)/g,r1:'$1Xtou$2Xyu-kerosene=lamp oil-Noun'},
 {p1:/(灰)(?!X)(皿)(?!X)/g,r1:'$1Xhai$2Xzara-ashtray-Noun'},
 {p1:/(灰)(?!X)(色)(?!X)/g,r1:'$1Xhai$2Xiro-ash color=gray-Noun'},
@@ -7695,6 +7694,7 @@ const replsB = [
 {p1:/(品)(?!X)/g,r1:'$1Xhin-article=item-Noun'},
 {p1:/(哉)(?!X)/g,r1:'$1Xya-yeah-Noun'},
 {p1:/(員)(?!X)/g,r1:'$1Xin-employee-Noun'},
+{p1:/(\d{1})(?!X)(時)(?!X)/g,r1:'$1$2Xji-hour-Noun'},
 {p1:/(唇)(?!X)/g,r1:'$1Xkuchibiru-lip=lips-Noun'},
 {p1:/(唾)(?!X)/g,r1:'$1Xtsuba-saliva=spittle-Noun'},
 {p1:/(喉)(?!X)/g,r1:'$1Xnodo-throat-Noun'},
@@ -8486,7 +8486,6 @@ const replsB = [
 
 {p1:/(Nounか|Verbか|Nounか)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xra-from-Postposition-Noun'},
 {p1:/(Verbべ)(?!X)(き)(?!X)/g,r1:'$1Xsho$2Xuld-Postposition-Noun'},
-{p1:/(Verbま|Nounま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde-until=to-Postposition-Noun'},
 {p1:/(で)(?!X)(も)(?!X)/g,r1:'$1Xde$2Xmo-but-Postposition-Noun'},
 {p1:/(と)(?!X)(の)(?!X)/g,r1:'$1Xtou$2Xno-about-Postposition-Noun'},
 {p1:/(に)(?!X)(は)(?!X)/g,r1:'$1Xni$2Xwa-as for=in order to-Postposition-Noun'},
@@ -8551,7 +8550,17 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-SBI新生銀行が、4月から60歳以上の普通預金の金利を通常のおよそ2倍に引き上げることがわかりました。“金利ある世界”の到来で、銀行の預金獲得に向けた動きが活発化しています。
+強烈な寒波の影響で、石川県では記録的な大雪になっています。
+
+石川県の宝達志水町子浦では、午前8時までの6時間に28㎝の降雪を観測しました。
+
+そのため、気象庁はさきほど、顕著な大雪に関する気象情報を発表しました。
+
+短い時間で急激に積雪が増えていて、大規模かつ深刻な交通障害が発生する恐れが高まっている状況です。不要不急の外出は控えるようにしてください。
+
+また停電や集落の孤立などにも注意が必要です。
+
+この強い雪はきょう昼過ぎにかけて続くほか、寒波が3連休にかけて居座るため、その後も断続的に雪が強まる恐れがあります。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
