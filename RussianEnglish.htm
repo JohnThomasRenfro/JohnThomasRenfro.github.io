@@ -140,58 +140,49 @@ const replsB = [
 
 {p:/ /ig,r:' <p> '},
 
-// Adjective-Noun pairs (Plural Nominative)
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ы|и) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative' },
+// Adjective-Noun pairs: Plural Nominative
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ы|и)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative' },
 
 // Adjective-Noun pairs (Plural Nominative) with different noun endings
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(а|я) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative/Feminine' },
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ов|ев) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(у|ю) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative' },
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(а|я)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative/Feminine' },
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ов|ев)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(у|ю)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative' },
 
-// Adjective-Noun pairs with Noun in Singular
-{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(у|ю) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
-{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
+// Adjective-Noun pairs with Noun in Singular (Feminine, Accusative)
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(у|ю)/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и)/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
 
-// Adjective-Noun pairs with Noun in Plural
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ами|ями) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Instrumental' },
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ах|ях) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Prepositional' },
+// Noun pairs with different endings (Instrumental and Prepositional Singular)
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ами|ями)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Instrumental' },
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ах|ях)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Prepositional' },
 
-// More specific cases for other possible suffixes
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ом|ем) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Instrumental' },
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Dative' },
+// Verb + Noun (to drink, test, etc.)
+{ p: /пил|пить ([А-Яа-яЁё]+)/ig, r: 'Verb, Past Tense, Singular, Masculine/Feminine, $1 - Noun' },
+{ p: /дад|давать|даст ([А-Яа-яЁё]+)/ig, r: 'Verb, Future Tense, 3rd Person, $1 - Noun' },
 
-// Singular forms in accusative with matching adjectives
-{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(у|ю) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
+// Matching positive adjectives with noun phrases
+{ p: /положительн|позитивн ([А-Яа-яЁё]+)/ig, r: '$1 - Noun, Positive Meaning, $2 - Adjective' },
 
-// Handling plural nominative forms with matching endings for each case
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Prepositional' },
+// Prepositions + Noun (indicating location or direction)
+{ p: /(в|на|от|из|по|к|для) ([А-Яа-яЁё]+)/ig, r: '$1 - Preposition, $2 - Noun' },
 
-// Handling plural genitive (possessive, etc.)
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ов|ев) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
+// Time-related words (matching 'время', 'час' with phrases like 'вчера', 'сегодня')
+{ p: /(время|час)(а|ов|е)/ig, r: '$1 - Noun, Time, $2 - Case Ending' },
 
-// Handling genitive singular endings
-{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(ы|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Genitive' },
+// "Не" + Verb or Adverb (negation phrases)
+{ p: /не ([А-Яа-яЁё]+)/ig, r: 'Negative Adverb, $1 - Verb' },
 
-// Adjective-Noun pairs (Singular Accusative)
-{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
+// Noun + Verb phrase in reflexive form
+{ p: /([А-Яа-яЁё]+) ([сохран|сохраняться])/ig, r: '$1 - Noun, $2 - Verb, Reflexive Form' },
 
-// Singular Dative with adjectives and nouns
-{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Dative' },
+// Describing alcohol and smell pairs
+{ p: /(алкогол|алкоголь) ([запах|аромат])/ig, r: '$1 - Noun, Alcohol, $2 - Noun, Smell' },
 
-// Adjective-Noun pairs with Noun in Accusative Plural (animate)
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ов|ев) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
+// Dependent phrases with "зависимость" (dependence)
+{ p: /([зависим|зависимость]) ([от|с|для])/ig, r: '$1 - Adjective/Noun, Dependence, $2 - Preposition' },
 
-// Adjective-Noun pairs with Noun in Prepositional Singular
-{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
-
-// Adjective-Noun pairs with Noun in Instrumental Singular
-{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(ом|ем) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Instrumental' },
-
-// Handling nominative plural forms with endings
-{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ах|ях) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Prepositional' },
-
-// Singular accusative and plural nominative
-{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(ы|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Genitive' },
+// Verb + Noun (keeping something)
+{ p: /сохран|сохраняться ([А-Яа-яЁё]+)/ig, r: '$1 - Noun, Keeping, $2 - Verb Reflexive Form' },
 
 {p:/ (контр)/ig,r:'$1|counter| '},
 {p:/ (само)/ig,r:'$1|oneself~prefix| '},
