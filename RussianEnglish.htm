@@ -166,6 +166,8 @@ const replsB = [
   // Pronouns (fixes "эти", "какие")
   { p: / (этот|эта|это|эти|тот|та|то|те|какой|какая|какое|какие) /ig, r: '$1 - Pronoun' },
 
+{p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ы|и) /ig, r:'$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative'},    
+
 {p:/ (контр)/ig,r:'$1|counter| '},
 {p:/ (само)/ig,r:'$1|oneself~prefix| '},
 {p:/ (гос)/ig,r:'$1|state| '},
