@@ -140,7 +140,7 @@ const replsB = [
 
 {p:/ /ig,r:' <p> '},
 
-{ p: /([А-Яа-яЁё]+)(ые |ие )/ig, r: '$1 $2 - Adjective, Plural, Nominative' },
+{ p: /([А-Яа-яЁё ]+)(ля )([А-Яа-яЁё ]+)(ается )/ig, r: '$1 $2 - singular, feminine' },
 { p: /([А-Яа-яЁё]+)(ая |яя )/ig, r: '$1 $2 - Adjective, Singular, Feminine, Nominative' },
 { p: /([А-Яа-яЁё]+)(ое |ее )/ig, r: '$1 $2 - Adjective, Singular, Neuter, Nominative' },
 { p: /([А-Яа-яЁё]+)(ую |юю )/ig, r: '$1 $2 - Adjective, Singular, Feminine, Accusative' },
