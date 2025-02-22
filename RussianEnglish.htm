@@ -140,8 +140,21 @@ const replsB = [
 
 {p:/ /ig,r:' <p> '},
 
-{ p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(и |ы )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative' },
-{ p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(е |и )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Prepositional' },
+{ p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(ы |и )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative' },
+{ p: /([А-Яа-яЁё]+)(ая |яя )([А-Яа-яЁё]+)(у |ю )/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
+{ p: /([А-Яа-яЁё]+)(ая |яя )([А-Яа-яЁё]+)(е |и )/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
+{ p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(ах |ях )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Prepositional' },
+{ p: /([А-Яа-яЁё]+)(ый |ий )([А-Яа-яЁё]+)(у |ю )/ig, r: '$1$2 - Adjective, Singular, Masculine, $3$4 - Noun, Singular, Accusative' },
+{ p: /([А-Яа-яЁё]+)(л )/ig, r: '$1 - Verb, Past Tense, Singular' },
+{ p: /([А-Яа-яЁё]+)(ет |ут )/ig, r: '$1 - Verb, Future Tense, 3rd Person' },
+{ p: /([А-Яа-яЁё]+)(ть )/ig, r: '$1 - Verb, Infinitive' },
+{ p: /([А-Яа-яЁё]+)(ю |у )/ig, r: '$1 - Verb, Present Tense, 1st Person Singular' },
+{ p: /([А-Яа-яЁё]+)(ешь |ишь )/ig, r: '$1 - Verb, Present Tense, 2nd Person Singular' },
+{ p: /([А-Яа-яЁё]+)(ет |ит )/ig, r: '$1 - Verb, Present Tense, 3rd Person Singular' },
+{ p: /([А-Яа-яЁё]+)(ем |им )/ig, r: '$1 - Verb, Present Tense, 1st Person Plural' },
+{ p: /([А-Яа-яЁё]+)(ете |ите )/ig, r: '$1 - Verb, Present Tense, 2nd Person Plural' },
+{ p: /([А-Яа-яЁё]+)(ют |ат )/ig, r: '$1 - Verb, Present Tense, 3rd Person Plural' },
+{ p: /([А-Яа-яЁё]+)(у |им )/ig, r: '$1 - Verb, Future Tense, 1st/2nd Person Singular/Plural' },
 
 {p:/ (контр)/ig,r:'$1|counter| '},
 {p:/ (само)/ig,r:'$1|oneself~prefix| '},
