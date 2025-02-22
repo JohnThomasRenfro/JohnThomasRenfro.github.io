@@ -140,37 +140,59 @@ const replsB = [
 
 {p:/ /ig,r:' <p> '},
 
-  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ы|и)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative' },
+// Adjective-Noun pairs (Plural Nominative)
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ы|и) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative' },
 
-  // Adjective-Noun pairs (Plural Nominative)
-  { p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(а |я )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative/Feminine' },
-  { p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(ов |ев )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
-  { p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(у |ю )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative' },
+// Adjective-Noun pairs (Plural Nominative) with different noun endings
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(а|я) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative/Feminine' },
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ов|ев) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(у|ю) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative' },
 
-  // Adjective-Noun pairs with Noun in Singular
-  { p: /([А-Яа-яЁё]+)(ая |яя )([А-Яа-яЁё]+)(у |ю )/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
-  { p: /([А-Яа-яЁё]+)(ая |яя )([А-Яа-яЁё]+)(е |и )/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
+// Adjective-Noun pairs with Noun in Singular
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(у|ю) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
 
-  // Adjective-Noun pairs with Noun in Plural
-  { p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(ами |ями )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Instrumental' },
-  { p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(ах |ях )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Prepositional' },
+// Adjective-Noun pairs with Noun in Plural
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ами|ями) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Instrumental' },
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ах|ях) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Prepositional' },
 
-  // More specific cases for other possible suffixes
-  { p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(ом |ем )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Instrumental' },
-  { p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(е |и )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Dative' },
-  
-  // Singular forms in accusative with matching adjectives
-  { p: /([А-Яа-яЁё]+)(ая |яя )([А-Яа-яЁё]+)(у |ю )/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
+// More specific cases for other possible suffixes
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ом|ем) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Instrumental' },
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Dative' },
 
-  // Handling plural nominative forms with matching endings for each case
-  { p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(е |и )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Prepositional' },
-  
-  // Handling plural genitive (possessive, etc.)
-  { p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(ов |ев )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
+// Singular forms in accusative with matching adjectives
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(у|ю) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
 
-  // Handling genitive singular endings
-  { p: /([А-Яа-яЁё]+)(ая |яя )([А-Яа-яЁё]+)(ы |и )/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Genitive' },
-    
+// Handling plural nominative forms with matching endings for each case
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Prepositional' },
+
+// Handling plural genitive (possessive, etc.)
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ов|ев) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
+
+// Handling genitive singular endings
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(ы|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Genitive' },
+
+// Adjective-Noun pairs (Singular Accusative)
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
+
+// Singular Dative with adjectives and nouns
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Dative' },
+
+// Adjective-Noun pairs with Noun in Accusative Plural (animate)
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ов|ев) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
+
+// Adjective-Noun pairs with Noun in Prepositional Singular
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
+
+// Adjective-Noun pairs with Noun in Instrumental Singular
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(ом|ем) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Instrumental' },
+
+// Handling nominative plural forms with endings
+{ p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ах|ях) /ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Prepositional' },
+
+// Singular accusative and plural nominative
+{ p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(ы|и) /ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Genitive' },
+
 {p:/ (контр)/ig,r:'$1|counter| '},
 {p:/ (само)/ig,r:'$1|oneself~prefix| '},
 {p:/ (гос)/ig,r:'$1|state| '},
