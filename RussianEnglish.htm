@@ -140,34 +140,37 @@ const replsB = [
 
 {p:/ /ig,r:' <p> '},
 
-  // Adjective endings (ensure correct detection)
-  { p: /([А-Яа-яЁё]+)(ый|ой|ий|ая|яя|ое|ее|ые|ие|ых|их|ым|им|ую|юю|ом|ем) /ig, 
-    r: '$1$2 - Adjective' },
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ы|и)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative' },
 
-  // Noun endings (expanded cases)
-  { p: /([А-Яа-яЁё]+)(а|я) /ig, r: '$1$2 - Noun, Feminine, Singular, Nominative' },
-  { p: /([А-Яа-яЁё]+)(о|е) /ig, r: '$1$2 - Noun, Neuter, Singular, Nominative' },
-  { p: /([А-Яа-яЁё]+)(ы|и) (?!\s+[а-я])/ig, r: '$1$2 - Noun, Plural, Nominative' },
-  { p: /([А-Яа-яЁё]+)(ость|есть) /ig, r: '$1$2 - Noun, Abstract/Quality' }, // Fixes "зависимость"
+  // Adjective-Noun pairs (Plural Nominative)
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(а|я)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative/Feminine' },
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ов|ев)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(у|ю)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Accusative' },
 
-{ p: /([А-Яа-яЁё]+)(ые|ие) /ig, r: '$1$2 - Adjective, Plural, Nominative' },
+  // Adjective-Noun pairs with Noun in Singular
+  { p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(у|ю)/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
+  { p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(е|и)/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Prepositional' },
+
+  // Adjective-Noun pairs with Noun in Plural
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ами|ями)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Instrumental' },
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ах|ях)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Prepositional' },
+
+  // More specific cases for other possible suffixes
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ом|ем)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Instrumental' },
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(е|и)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Dative' },
+  
+  // Singular forms in accusative with matching adjectives
+  { p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(у|ю)/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Accusative' },
+
+  // Handling plural nominative forms with matching endings for each case
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(е|и)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Singular, Prepositional' },
+  
+  // Handling plural genitive (possessive, etc.)
+  { p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ов|ев)/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Genitive' },
+
+  // Handling genitive singular endings
+  { p: /([А-Яа-яЁё]+)(ая|яя) ([А-Яа-яЁё]+)(ы|и)/ig, r: '$1$2 - Adjective, Singular, Feminine, $3$4 - Noun, Singular, Genitive' },
     
-  // Verb endings (fixes "дать" issue)
-  { p: /([А-Яа-яЁё]+)(ать|ять|еть|ить) /ig, r: '$1$2 - Verb, Infinitive' },
-  { p: /([А-Яа-яЁё]+)(л|ла|ло|ли) /ig, r: '$1$2 - Verb, Past Tense' }, // Fixes "пил"
-  { p: /([А-Яа-яЁё]+)(ешь|ёшь|ет|ёт|ем|ём|ете|ёте|ут|ют) /ig, r: '$1$2 - Verb, Present/Future' },
-
-  // Reflexive verbs
-  { p: /([А-Яа-яЁё]+)(ся|сь) /ig, r: '$1$2 - Reflexive Verb' },
-
-  // Prepositions (fixes "из", "от" issues)
- // { p: / (на|от|из|в|с|без|к|по|о|до|при|через|за|под|над|между|об|про|для|через|у|возле|рядом|спереди|сзади|после|внутри|вне) /ig, r: '$1 - Preposition' },
-
-  // Pronouns (fixes "эти", "какие")
-  { p: / (этот|эта|это|эти|тот|та|то|те|какой|какая|какое|какие) /ig, r: '$1 - Pronoun' },
-
-{p: /([А-Яа-яЁё]+)(ые|ие) ([А-Яа-яЁё]+)(ы|и) /ig, r:'$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative'},    
-
 {p:/ (контр)/ig,r:'$1|counter| '},
 {p:/ (само)/ig,r:'$1|oneself~prefix| '},
 {p:/ (гос)/ig,r:'$1|state| '},
