@@ -149,7 +149,9 @@ const replsB = [
   { p: /([А-Яа-яЁё]+)(о|е) /ig, r: '$1$2 - Noun, Neuter, Singular, Nominative' },
   { p: /([А-Яа-яЁё]+)(ы|и) (?!\s+[а-я])/ig, r: '$1$2 - Noun, Plural, Nominative' },
   { p: /([А-Яа-яЁё]+)(ость|есть) /ig, r: '$1$2 - Noun, Abstract/Quality' }, // Fixes "зависимость"
-  
+
+{ p: /([А-Яа-яЁё]+)(ые|ие) /ig, r: '$1$2 - Adjective, Plural, Nominative' },
+    
   // Verb endings (fixes "дать" issue)
   { p: /([А-Яа-яЁё]+)(ать|ять|еть|ить) /ig, r: '$1$2 - Verb, Infinitive' },
   { p: /([А-Яа-яЁё]+)(л|ла|ло|ли) /ig, r: '$1$2 - Verb, Past Tense' }, // Fixes "пил"
