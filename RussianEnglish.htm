@@ -141,7 +141,7 @@ const replsB = [
 {p:/ /ig,r:' <p> '},
 
 // Adjective-Noun pairs: Plural Nominative (matching suffixes)
-{ p: /([А-Яа-яЁё]+)(ые |ие )([А-Яа-яЁё]+)(ы |и )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative' },
+{ p: /([А-Яа-яЁё]+)(ые |ие ) ([А-Яа-яЁё]+)(ы |и )/ig, r: '$1$2 - Adjective, Plural, Nominative, $3$4 - Noun, Plural, Nominative' },
 
 {p:/ (контр)/ig,r:'$1|counter| '},
 {p:/ (само)/ig,r:'$1|oneself~prefix| '},
