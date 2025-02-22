@@ -138,13 +138,70 @@ const replsB = [
 
 {p:/(\,|\,|\«|\»|\:|\"|\.|\?|\-)/ig,r:'<br>$1 '},
 
-{ p:/ ([А-Яа-яЁё]+)(ое) ([А-Яа-яЁё]+)(я)/ig, r:'$1 $2-suffix-adjective, neuter, singular, nominative $3 $4-suffix-noun, neuter, singular, nominative'},
-{ p:/ ([А-Яа-яЁё]+)(ии) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-noun, neuter, singular, prepositional $3 $4-suffix-noun, masculine, singular, prepositional' },
-{ p:/ ([А-Яа-яЁё]+)(ое) ([А-Яа-яЁё]+)(ие)/ig, r:'$1 $2-suffix-adjective, neuter, singular, nominative $3 $4-suffix-noun, neuter, singular, nominative' },
-{ p:/ ([А-Яа-яЁё]+)(а|я) ([А-Яа-яЁё]+)(и)/ig, r:'$1 $2-suffix-noun, neuter, plural, nominative $3 $4-suffix-noun, neuter, plural, nominative' },
-{ p:/ ([А-Яа-яЁё]+)(а) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-preposition, after $3 $4-suffix-noun, neuter, singular, prepositional' },
-{ p:/ ([А-Яа-яЁё]+)(ая) ([А-Яа-яЁё]+)(а)/ig, r:'$1 $2-suffix-adjective, feminine, singular, nominative $3 $4-suffix-noun, feminine, singular, nominative' },
-{ p:/ ([А-Яа-яЁё]+)(ые) ([А-Яа-яЁё]+)(и)/ig, r:'$1 $2-suffix-adjective, feminine, plural, nominative $3 $4-suffix-noun, feminine, plural, nominative' },
+  { p:/ ([А-Яа-яЁё]+)(ое) ([А-Яа-яЁё]+)(я)/ig, r:'$1 $2-suffix-adjective, neuter, singular, nominative $3 $4-suffix-noun, neuter, singular, nominative' },
+  { p:/ ([А-Яа-яЁё]+)(ии) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-noun, neuter, singular, prepositional $3 $4-suffix-noun, masculine, singular, prepositional' },
+  { p:/ ([А-Яа-яЁё]+)(ое) ([А-Яа-яЁё]+)(ие)/ig, r:'$1 $2-suffix-adjective, neuter, singular, nominative $3 $4-suffix-noun, neuter, singular, nominative' },
+  { p:/ ([А-Яа-яЁё]+)(а|я) ([А-Яа-яЁё]+)(и)/ig, r:'$1 $2-suffix-noun, neuter, plural, nominative $3 $4-suffix-noun, neuter, plural, nominative' },
+  { p:/ ([А-Яа-яЁё]+)(а) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-preposition, after $3 $4-suffix-noun, neuter, singular, prepositional' },
+  { p:/ ([А-Яа-яЁё]+)(ая) ([А-Яа-яЁё]+)(а)/ig, r:'$1 $2-suffix-adjective, feminine, singular, nominative $3 $4-suffix-noun, feminine, singular, nominative' },
+  { p:/ ([А-Яа-яЁё]+)(ые) ([А-Яа-яЁё]+)(и)/ig, r:'$1 $2-suffix-adjective, feminine, plural, nominative $3 $4-suffix-noun, feminine, plural, nominative' },
+  
+  // Masculine singular nominative agreement
+  { p:/ ([А-Яа-яЁё]+)(ый) ([А-Яа-яЁё]+)(ь)/ig, r:'$1 $2-suffix-adjective, masculine, singular, nominative $3 $4-suffix-noun, masculine, singular, nominative' },
+  { p:/ ([А-Яа-яЁё]+)(ой) ([А-Яа-яЁё]+)(г)/ig, r:'$1 $2-suffix-adjective, masculine, singular, nominative $3 $4-suffix-noun, masculine, singular, nominative' },
+  
+  // Neuter singular prepositional agreement
+  { p:/ ([А-Яа-яЁё]+)(ом) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-adjective, neuter, singular, prepositional $3 $4-suffix-noun, neuter, singular, prepositional' },
+
+  // Feminine singular prepositional agreement
+  { p:/ ([А-Яа-яЁё]+)(ой) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-adjective, feminine, singular, prepositional $3 $4-suffix-noun, feminine, singular, prepositional' },
+
+  // Plural nominative agreement (masculine, neuter, and feminine)
+  { p:/ ([А-Яа-яЁё]+)(ые) ([А-Яа-яЁё]+)(ы)/ig, r:'$1 $2-suffix-adjective, plural, nominative $3 $4-suffix-noun, plural, nominative' },
+  { p:/ ([А-Яа-яЁё]+)(ие) ([А-Яа-яЁё]+)(я)/ig, r:'$1 $2-suffix-adjective, plural, nominative $3 $4-suffix-noun, plural, nominative' },
+
+  // Plural prepositional agreement
+  { p:/ ([А-Яа-яЁё]+)(их) ([А-Яа-яЁё]+)(ах)/ig, r:'$1 $2-suffix-adjective, plural, prepositional $3 $4-suffix-noun, plural, prepositional' },
+  
+  // Instrumental agreement
+  { p:/ ([А-Яа-яЁё]+)(ым) ([А-Яа-яЁё]+)(ом)/ig, r:'$1 $2-suffix-adjective, masculine/neuter, singular, instrumental $3 $4-suffix-noun, masculine/neuter, singular, instrumental' },
+  { p:/ ([А-Яа-яЁё]+)(ой) ([А-Яа-яЁё]+)(ой)/ig, r:'$1 $2-suffix-adjective, feminine, singular, instrumental $3 $4-suffix-noun, feminine, singular, instrumental' },
+
+  // Dative agreement
+  { p:/ ([А-Яа-яЁё]+)(ому) ([А-Яа-яЁё]+)(у)/ig, r:'$1 $2-suffix-adjective, masculine/neuter, singular, dative $3 $4-suffix-noun, masculine/neuter, singular, dative' },
+  { p:/ ([А-Яа-яЁё]+)(ой) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-adjective, feminine, singular, dative $3 $4-suffix-noun, feminine, singular, dative' },
+  { p:/ ([А-Яа-яЁё]+)(ым) ([А-Яа-яЁё]+)(ам)/ig, r:'$1 $2-suffix-adjective, plural, dative $3 $4-suffix-noun, plural, dative' },
+
+  // Genitive agreement
+  { p:/ ([А-Яа-яЁё]+)(ого) ([А-Яа-яЁё]+)(а)/ig, r:'$1 $2-suffix-adjective, masculine/neuter, singular, genitive $3 $4-suffix-noun, masculine/neuter, singular, genitive' },
+  { p:/ ([А-Яа-яЁё]+)(ой) ([А-Яа-яЁё]+)(ы)/ig, r:'$1 $2-suffix-adjective, feminine, singular, genitive $3 $4-suffix-noun, feminine, singular, genitive' },
+  { p:/ ([А-Яа-яЁё]+)(ых) ([А-Яа-яЁё]+)(ов)/ig, r:'$1 $2-suffix-adjective, plural, genitive $3 $4-suffix-noun, plural, genitive' },
+
+  // Accusative agreement
+  { p:/ ([А-Яа-яЁё]+)(ого) ([А-Яа-яЁё]+)(а)/ig, r:'$1 $2-suffix-adjective, masculine, singular, accusative (animate) $3 $4-suffix-noun, masculine, singular, accusative (animate)' },
+  { p:/ ([А-Яа-яЁё]+)(ую) ([А-Яа-яЁё]+)(у)/ig, r:'$1 $2-suffix-adjective, feminine, singular, accusative $3 $4-suffix-noun, feminine, singular, accusative' },
+  { p:/ ([А-Яа-яЁё]+)(ые) ([А-Яа-яЁё]+)(ых)/ig, r:'$1 $2-suffix-adjective, plural, accusative (animate) $3 $4-suffix-noun, plural, accusative (animate)' },
+
+    { p:/([А-Яа-яЁё]+)(ое) ([А-Яа-яЁё]+)(ие)/ig, r:'$1 $2-suffix-adjective, neuter, singular, nominative $3 $4-suffix-noun, neuter, singular, nominative'},
+    { p:/([А-Яа-яЁё]+)(ии) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-noun, neuter, singular, prepositional $3 $4-suffix-noun, masculine, singular, prepositional' },
+    { p:/([А-Яа-яЁё]+)(а|я) ([А-Яа-яЁё]+)(и)/ig, r:'$1 $2-suffix-noun, neuter, plural, nominative $3 $4-suffix-noun, neuter, plural, nominative' },
+    { p:/([А-Яа-яЁё]+)(а) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-preposition, after $3 $4-suffix-noun, neuter, singular, prepositional' },
+    { p:/([А-Яа-яЁё]+)(ая) ([А-Яа-яЁё]+)(а)/ig, r:'$1 $2-suffix-adjective, feminine, singular, nominative $3 $4-suffix-noun, feminine, singular, nominative' },
+    { p:/([А-Яа-яЁё]+)(ые) ([А-Яа-яЁё]+)(и)/ig, r:'$1 $2-suffix-adjective, feminine, plural, nominative $3 $4-suffix-noun, feminine, plural, nominative' },
+    { p:/([А-Яа-яЁё]+)(ен) ([А-Яа-яЁё]+)(и)/ig, r:'$1 $2-suffix-verb, passive past participle $3 $4-suffix-noun, neuter, plural, nominative' },
+    { p:/([А-Яа-яЁё]+)(ом) ([А-Яа-яЁё]+)(ом)/ig, r:'$1 $2-suffix-adjective, masculine/neuter, singular, prepositional $3 $4-suffix-adjective, masculine/neuter, singular, prepositional' },
+    { p:/([А-Яа-яЁё]+)(ился)/ig, r:'$1 $2-suffix-verb, past, reflexive, singular' },
+    { p:/([А-Яа-яЁё]+)(ить)/ig, r:'$1 $2-suffix-verb, infinitive' },
+    { p:/([А-Яа-яЁё]+)(ли)/ig, r:'$1 $2-suffix-verb, past, plural' },
+    { p:/([А-Яа-яЁё]+)(ет)/ig, r:'$1 $2-suffix-verb, 3rd person, singular, present' },
+    { p:/([А-Яа-яЁё]+)(ых) ([А-Яа-яЁё]+)(ий)/ig, r:'$1 $2-suffix-adjective, plural, genitive $3 $4-suffix-noun, plural, genitive' },
+    { p:/([А-Яа-яЁё]+)(ена)/ig, r:'$1 $2-suffix-verb, past passive participle, feminine, singular' },
+    { p:/([А-Яа-яЁё]+)(ешь)/ig, r:'$1 $2-suffix-verb, 2nd person, singular, present' },
+    { p:/([А-Яа-яЁё]+)(ем)/ig, r:'$1 $2-suffix-verb, 1st person, plural, present' },
+    { p:/([А-Яа-яЁё]+)(ют)/ig, r:'$1 $2-suffix-verb, 3rd person, plural, present' },
+    { p:/([А-Яа-яЁё]+)(ешься)/ig, r:'$1 $2-suffix-verb, 2nd person, singular, present, reflexive' },
+    { p:/([А-Яа-яЁё]+)(утся)/ig, r:'$1 $2-suffix-verb, 3rd person, plural, present, reflexive' },
+    { p:/([А-Яа-яЁё]+)(ился)/ig, r:'$1 $2-suffix-verb, past, singular, reflexive' },
 
 {p:/ (packageн)/ig,r:'$1=ability'},
 {p:/ (в-третьих)/ig,r:'$1=thirdly'},
@@ -9375,13 +9432,11 @@ function translateC() {
 <div class="HeaderStyle">Studying Russian Language</div>
 Cut and paste this Russian text into text area below.
 <p>
-На Покровском направлении районе н. п. Удачное российские войска после оперативной паузы продолжили атаки. Противник имеет здесь достаточно резерва для нанесения контрударов, но план — оттеснить ВС РФ от юга Покровска и выбить с занятых позиций в Удачном, Песчаном и Котлино провалился.
+В Андреевке ВС РФ заняли восточную часть посёлка. Идут бои в районе Зелёного Поля Водяного Второго. Штурмовики работают и в селе Тарасовка. Там идут бои за Малиновскую развязку.
 Читайте больше на https://military.pravda.ru/2181842-svodka-s-fronta/
 </p><p>
 <textarea cols="25" rows="6" onchange='a=" "+this.value+" ",translateC()'></textarea><br>
 <span id="translatedTextDisplay"></span>
-</p><p>
-source:GazeteRU
 </p><hr>
  
  <div class="header">// MY OTHER PROJECTS //</div>
