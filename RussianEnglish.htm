@@ -138,6 +138,15 @@ const replsB = [
 
 {p:/(\,|\,|\«|\»|\:|\"|\.|\?|\-)/ig,r:'<br>$1 '},
 
+{ p:/ ([А-Яа-яЁё]+)(е) ([А-Яа-яЁё]+)(ого)/ig, r:'$1 $2-suffix-preposition, prepositional case $3 $4-suffix-adjective, masculine/neuter, singular, genitive case' },
+
+{ p:/ ([А-Яа-яЁё]+)(я) ([А-Яа-яЁё]+)(ого)/ig, r:'$1 $2-suffix-adjective, feminine, singular, nominative case $3 $4-suffix-adjective, masculine/neuter, singular, genitive case' },
+
+{ p:/ ([А-Яа-яЁё]+)(ого) ([А-Яа-яЁё]+)(а)/ig, r:'$1 $2-suffix-adjective, masculine/neuter, singular, genitive case $3 $4-suffix-noun, masculine, singular, genitive case' },
+
+{ p:/ ([А-Яа-яЁё]+)(ого) ([А-Яа-яЁё]+)(ого)/ig, r:'$1 $2-suffix-adjective, masculine/neuter, singular, genitive case $3 $4-suffix-adjective, masculine/neuter, singular, genitive case' },
+
+  { p:/ ([А-Яа-яЁё]+)(ую) ([А-Яа-яЁё]+)(ь)/ig, r:'$1 $2-suffix-adjective,  that matches the feminine, singular, accusative case $3 $4-suffix-noun,  feminine, singular, accusative case' },
   { p:/ ([А-Яа-яЁё]+)(ое) ([А-Яа-яЁё]+)(я)/ig, r:'$1 $2-suffix-adjective, neuter, singular, nominative $3 $4-suffix-noun, neuter, singular, nominative' },
   { p:/ ([А-Яа-яЁё]+)(ии) ([А-Яа-яЁё]+)(е)/ig, r:'$1 $2-suffix-noun, neuter, singular, prepositional $3 $4-suffix-noun, masculine, singular, prepositional' },
   { p:/ ([А-Яа-яЁё]+)(ое) ([А-Яа-яЁё]+)(ие)/ig, r:'$1 $2-suffix-adjective, neuter, singular, nominative $3 $4-suffix-noun, neuter, singular, nominative' },
@@ -9041,7 +9050,6 @@ const replsB = [
 {p:/ (обн)/ig,r:'$1=embrace'},
 {p:/ (общ)/ig,r:'$1=associate with'},
 {p:/ (овц)/ig,r:'$1=sheep'},
-{p:/ (ого)/ig,r:'$1=oho!'},
 {p:/ (озл)/ig,r:'$1=get angry'},
 {p:/ (окн)/ig,r:'$1=window'},
 {p:/ (око)/ig,r:'$1=eye(bookish)'},
