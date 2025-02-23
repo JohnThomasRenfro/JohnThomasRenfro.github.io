@@ -24,7 +24,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: #d3c6aa;
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Noto Serif JP',serif;
   font-size: 20px;
   margin: 5%;
   position: relative;
@@ -32,7 +32,7 @@ body {
 }
 
 body::before {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0,0,0,0.7);
   content: "";
   height: 100%;
   position: absolute;
@@ -44,7 +44,7 @@ body::before {
 .HeaderStyle {
   border-bottom: 2px solid #867b74;
   color: #b7a57a;
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Noto Serif JP',serif;
   font-size: 32px;
   margin-bottom: 20px;
   padding-bottom: 5px;
@@ -63,20 +63,20 @@ body::before {
   padding: 10px;
 }
 
-a:link, a:visited {
+a:link,a:visited {
   color: #a89984;
   text-decoration: none;
 }
 
-a:hover, a:active {
+a:hover,a:active {
   color: #f4bf75;
 }
 
-input, textarea {
+input,textarea {
   background-color: #3a3a3a;
   border: 1px solid #6b5b4b;
   border-radius: 20px;
-  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.5);
   color: inherit;
   font-size: 20px;
   max-height: 120px;
@@ -107,8 +107,8 @@ hr.style-eight:after {
     background: white;
 }    
 
-input:hover, textarea:hover {
-  box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.6);
+input:hover,textarea:hover {
+  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
 }
 
 @media screen and (max-width: 768px) {
@@ -121,7 +121,7 @@ input:hover, textarea:hover {
     font-size: 28px;
   }
   
-  hr, input, textarea {
+  hr,input,textarea {
     font-size: 18px;
     padding: 12px;
   }
@@ -135,10 +135,10 @@ function translateB()
 
 const replsB = [
 
-{p1:/(ガ)(?!X)(タ)(?!X)(ガ)(?!X)(タ)(?!X)/g,r1:'$1Xka$2Xta$3Xka$4Xta,rattling,Noun'}, 
-{p1:/(バ)(?!X)(ク)(?!X)(バ)(?!X)(ク)(?!X)/g,r1:'$1Xba$2Xku$3Xba$4Xku,throbbing,Noun'},  
+{p1:/(ガ)(?!X)(タ)(?!X)(ガ)(?!X)(タ)(?!X)/g,r1:'$1Xka$2Xta$3Xka$4Xta,rattling,Noun'},
+{p1:/(バ)(?!X)(ク)(?!X)(バ)(?!X)(ク)(?!X)/g,r1:'$1Xba$2Xku$3Xba$4Xku,throbbing,Noun'},
 
-{p1:/([ァ-ヴーa-zA-Z]+)/g,r1:'<br>$1,Noun'}, 
+{p1:/([ァ-ヴーa-zA-Z]+)/g,r1:'<br>$1,Noun'},
 {p1:/([\(\（])(?!X)/g,r1:'$1Xopen parenthesis,Punctuation'},
 {p1:/([\)\）])(?!X)/g,r1:'$1Xclose parenthesis,Punctuation'},
 {p1:/([「『])(?!X)/g,r1:'$1Xopen quote,Punctuation'},
@@ -146,8 +146,8 @@ const replsB = [
 {p1:/(\“)(?!X)/g,r1:'$1Xopen quote,Punctuation'},
 {p1:/(\”)(?!X)/g,r1:'$1Xclose quote,Punctuation'},
 {p1:/(\・)(?!X)/g,r1:'$1Xword separator,Punctuation'},
-{p1:/(、)(?!X)/g,r1:'$1Xcomma,Punctuation'}, 
-{p1:/(。)(?!X)/g,r1:'$1Xperiod,Punctuation'}, 
+{p1:/(、)(?!X)/g,r1:'$1Xcomma,Punctuation'},
+{p1:/(。)(?!X)/g,r1:'$1Xperiod,Punctuation'},
 {p1:/(【)(?!X)/g,r1:'$1Xopen bracket,Punctuation'},
 {p1:/(】)(?!X)/g,r1:'$1Xclose bracket,Punctuation'},
 {p1:/(．)(?!X)/g,r1:'$1Xten,dot,decimal point,Punctuation'},
@@ -322,7 +322,7 @@ const replsB = [
 {p1:/(か)(?!X)(ど)(?!X)(う)(?!X)(か)(?!X)/g,r1:'$1Xka$2Xdo$3Xu$4Xka,whether or not,Noun'},
 {p1:/(か)(?!X)(ぼ)(?!X)(ち)(?!X)(ゃ)(?!X)/g,r1:'$1X$2Xpu$3Xm$4Xpkin,Noun'},
 {p1:/(か)(?!X)(み)(?!X)(そ)(?!X)(り)(?!X)/g,r1:'$1X$2Xra$3Xz$4Xor,Noun'},
-{p1:/(わ)(?!X)(れ)(?!X)(わ)(?!X)(れ)(?!X)/g,r1:'$1Xwa$2Xre$3Xwa$4Xre,we,FormalNoun'},  
+{p1:/(わ)(?!X)(れ)(?!X)(わ)(?!X)(れ)(?!X)/g,r1:'$1Xwa$2Xre$3Xwa$4Xre,we,FormalNoun'},
 {p1:/(か)(?!X)(も)(?!X)(し)(?!X)(れ)(?!X)/g,r1:'$1Xka$2Xmo$3Xshi$4Xre,might,IchidanVerb'},
 {p1:/(か)(?!X)(ら)(?!X)(か)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xra$3Xka$4Xra,thirsty,dry,Noun'},
 {p1:/(か)(?!X)(ら)(?!X)(か)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xro$3Xa$4Xr,laugh loudly,Noun'},
@@ -747,7 +747,7 @@ const replsB = [
 {p1:/(有)(?!X)(り)(?!X)(難)(?!X)([いくかさ])(?!X)/g,r1:'$1Xari$2Xga$3Xta,welcome,grateful$4X,IAdjective,Noun'},
 {p1:/(望)(?!X)(ま)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xnozoma$2Xsh$3Xi,desirable,welcome$4X,IAdjective,Noun'},
 {p1:/(欲)(?!X)(し)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xho$2Xshi$3Xga,desire,wish for,covet$4X,RuVerb'},
-{p1:/(気)(?!X)(に)(?!X)(な)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xki$2Xni$3Xna,to become aware of$4X,RuVerb'},  
+{p1:/(気)(?!X)(に)(?!X)(な)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xki$2Xni$3Xna,to become aware of$4X,RuVerb'},
 {p1:/(気)(?!X)(に)(?!X)(入)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkin$2Xii$3X,like,be pleased with$4X,RuVerb'},
 {p1:/(流)(?!X)(れ)(?!X)(込)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xnaga$2Xre$3Xko,flow into$4X,MuVerb'},
 {p1:/(浮)(?!X)(か)(?!X)(べ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xuka$2Xbe$3X,set afloat$4X,RuVerb'},
@@ -783,7 +783,7 @@ const replsB = [
 {p1:/(聞)(?!X)(き)(?!X)(取)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkiki$2Xto$3X,dictation$4X,RuVerb'},
 {p1:/(聞)(?!X)(こ)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkik$2Xoe$3X,hear,be heard$4X,RuVerb'},
 {p1:/(腰)(?!X)(掛)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xko$2Xshi$3Xkake,sit down$4X,RuVerb'},
-{p1:/(若)(?!X)(々)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xwakawaka$2Xsh$3Xi,youthful,young,looking$4X,IAdjective,Noun'},  
+{p1:/(若)(?!X)(々)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xwakawaka$2Xsh$3Xi,youthful,young,looking$4X,IAdjective,Noun'},
 {p1:/(苦)(?!X)(し)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkurushi$2Xme$3Xi,torment,trouble$4X,RuVerb'},
 {p1:/(華)(?!X)(々)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xhana$2Xba$3Xnashi$4Xbrilliant,IAdjective,Noun'},
 {p1:/(落)(?!X)(ち)(?!X)(着)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xo$2Xchi$3Xtsu,calm down$4X,KuVerb'},
@@ -833,7 +833,7 @@ const replsB = [
 {p1:/(2|２)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xshichi$3Xnichi,twenty seventh day of the month,Noun'},
 {p1:/(2|２)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1Xni jyuu$2Xku$3Xnichi,twenty nineth day of the month,Noun'},
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhap pyaku,eight hundred,Noun$2$3'},
-{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu hyaku,nine,hundred,Noun$2$3'},  
+{p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu hyaku,nine,hundred,Noun$2$3'},
 {p1:/(あ)(?!X)(え)(?!X)(て)(?!X)/g,r1:'$1Xaet$2X$3Xe,boldly,Noun'},
 {p1:/(あ)(?!X)(く)(?!X)(び)(?!X)/g,r1:'$1Xa$2Xku$3Xbi,yawn,Noun'},
 {p1:/(あ)(?!X)(ぐ)(?!X)(ら)(?!X)/g,r1:'$1Xagu$2Xra$3X,sit cross legged,Noun'},
@@ -1120,7 +1120,7 @@ const replsB = [
 {p1:/(全)(?!X)(面)(?!X)(的)(?!X)/g,r1:'$1Xzen$2Xmen$3Xteki,all,out,overall,Noun'},
 {p1:/(八)(?!X)(百)(?!X)(屋)(?!X)/g,r1:'$1Xya$2Xoy$3Xa,vegetable store,greengrocer,Noun'},
 {p1:/(公)(?!X)(務)(?!X)(員)(?!X)/g,r1:'$1Xkou$2Xmu$3Xin,public officer,government worker,Noun'},
-{p1:/(公)(?!X)(捜)(?!X)(処)(?!X)/g,r1:'$1Xkou$2Xsou$3Xsyo,public prosecutor s office,Noun'},  
+{p1:/(公)(?!X)(捜)(?!X)(処)(?!X)/g,r1:'$1Xkou$2Xsou$3Xsyo,public prosecutor s office,Noun'},
 {p1:/(公)(?!X)(文)(?!X)(書)(?!X)/g,r1:'$1Xkou$2Xbun$3Xsyo,official document,Noun'},
 {p1:/(公)(?!X)(明)(?!X)(党)(?!X)/g,r1:'$1Xkou$2Xmei$3Xtou,The Koumeito Party of Japan,Noun'},
 {p1:/(公)(?!X)(聴)(?!X)(会)(?!X)/g,r1:'$1Xkou$2Xcyou$3Xkai,public hearing,Noun'},
@@ -1154,7 +1154,7 @@ const replsB = [
 {p1:/(前)(?!X)(々)(?!X)(回)(?!X)/g,r1:'$1Xzen$2Xzen$3Xkai,the time before last,Noun'},
 {p1:/(前)(?!X)(向)(?!X)(き)(?!X)/g,r1:'$1Xmae$2Xmu$3Xki,facing forward,positively,Noun'},
 {p1:/(前)(?!X)(月)(?!X)(比)(?!X)/g,r1:'$1Xzen$2Xgetsu$3Xhi,month over month comparison,Noun'},
-{p1:/(副)(?!X)(作)(?!X)(用)(?!X)/g,r1:'$1Xfuku$2Xsa$3Xyou,side effects,Noun'},  
+{p1:/(副)(?!X)(作)(?!X)(用)(?!X)/g,r1:'$1Xfuku$2Xsa$3Xyou,side effects,Noun'},
 {p1:/(割)(?!X)(り)(?!X)(算)(?!X)/g,r1:'$1Xwar$2Xiz$3Xan,division,Noun'},
 {p1:/(割)(?!X)(り)(?!X)(箸)(?!X)/g,r1:'$1Xwariba$2Xsh$3Xi,disposable chopsticks,Noun'},
 {p1:/(割)(?!X)(合)(?!X)(に)(?!X)/g,r1:'$1Xwar$2Xia$3Xini,relatively,rather,Noun'},
@@ -1229,7 +1229,7 @@ const replsB = [
 {p1:/(大)(?!X)(い)(?!X)(に)(?!X)/g,r1:'$1Xoo$2Xin$3Xi,greatly,Noun'},
 {p1:/(大)(?!X)(き)(?!X)(さ)(?!X)/g,r1:'$1Xoo$2Xki$3Xsa,size,Noun'},
 {p1:/(大)(?!X)(げ)(?!X)(さ)(?!X)/g,r1:'$1Xoo$2Xge$3Xsa,exaggerate,Noun'},
-{p1:/(大)(?!X)(し)(?!X)(て)(?!X)/g,r1:'$1Xtai$2Xsh$3Xite,very,greatly/Oita, Japan,Noun'},
+{p1:/(大)(?!X)(し)(?!X)(て)(?!X)/g,r1:'$1Xtai$2Xsh$3Xite,very,greatly/Oita,Japan,Noun'},
 {p1:/(大)(?!X)(丈)(?!X)(夫)(?!X)/g,r1:'$1Xdai$2Xjyou$3Xbu,alright,Noun'},
 {p1:/(大)(?!X)(使)(?!X)(館)(?!X)/g,r1:'$1Xtai$2Xshi$3Xkan,embassy,Noun'},
 {p1:/(大)(?!X)(喜)(?!X)(び)(?!X)/g,r1:'$1Xoo$2Xyo$3Xrokobi,great joy,delight,Noun'},
@@ -1751,7 +1751,7 @@ const replsB = [
 {p1:/(う)(?!X)(が)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuga$2X,gargling$3X,IAdjective,Noun'},
 {p1:/(う)(?!X)(ね)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xu$2Xne,undulation$3X,RuVerb'},
 {p1:/(う)(?!X)(ま)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuma$2X,delicious,tasty$3X,IAdjective,Noun'},
-{p1:/(う)(?!X)(ま)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuma$2X,good at$3X,IAdjective,Noun'},  
+{p1:/(う)(?!X)(ま)(?!X)([いくかさ])(?!X)/g,r1:'$1Xuma$2X,good at$3X,IAdjective,Noun'},
 {p1:/(お)(?!X)(ご)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xogo$2X,treat$3X,RuVerb'},
 {p1:/(お)(?!X)(や)(?!X)([たちつてとっ])(?!X)/g,r1:'$1Xoya$2X,snack,refreshment$3X,TsuVerb'},
 {p1:/(お)(?!X)(互)(?!X)([いくかさ])(?!X)/g,r1:'$1Xota$2Xga,each other$3X,IAdjective,Noun'},
@@ -2457,7 +2457,7 @@ const replsB = [
 {p1:/(カ)(?!X)(月)(?!X)/g,r1:'$1Xka$2Xgetsu month s time,Noun'},
 {p1:/(カ)(?!X)(月)(?!X)/g,r1:'$1Xka$2Xgetsu,a period of the months,Noun'},
 {p1:/(一)(?!X)(つ)(?!X)/g,r1:'$1Xhito$2Xtsu,one thing,Noun'},
-{p1:/(一)(?!X)(世)(?!X)/g,r1:'$1Xis$2Xsei,generation,Noun'},  
+{p1:/(一)(?!X)(世)(?!X)/g,r1:'$1Xis$2Xsei,generation,Noun'},
 {p1:/(一)(?!X)(体)(?!X)/g,r1:'$1Xit$2Xtai,what on earth,Noun'},
 {p1:/(一)(?!X)(切)(?!X)/g,r1:'$1Xis$2Xsai,not at all,not one bit,Noun'},
 {p1:/(一)(?!X)(口)(?!X)/g,r1:'$1Xhitoku$2Xchi,mouthful,bite,Noun'},
@@ -2480,14 +2480,14 @@ const replsB = [
 {p1:/(一)(?!X)(環)(?!X)/g,r1:'$1Xik$2Xkan,linked,Noun'},
 {p1:/(一)(?!X)(生)(?!X)/g,r1:'$1Xis$2Xsyou,a lifetime,Noun'},
 {p1:/(一)(?!X)(瞬)(?!X)/g,r1:'$1Xiss$2Xyun,instant,Noun'},
-{p1:/(一)(?!X)(社)(?!X)/g,r1:'$1Xis$2Xsya,one company,Noun'}, 
+{p1:/(一)(?!X)(社)(?!X)/g,r1:'$1Xis$2Xsya,one company,Noun'},
 {p1:/(一)(?!X)(種)(?!X)/g,r1:'$1Xis$2Xsyu,a kind of,a sort of,Noun'},
 {p1:/(一)(?!X)(緒)(?!X)/g,r1:'$1Xis$2Xsyou,together,Noun'},
 {p1:/(一)(?!X)(致)(?!X)/g,r1:'$1Xic$2Xchi,accord,Noun'},
 {p1:/(一)(?!X)(般)(?!X)/g,r1:'$1Xip$2Xpan,common,Noun'},
 {p1:/(一)(?!X)(見)(?!X)/g,r1:'$1Xik$2Xken,at a glance,Noun'},
 {p1:/(一)(?!X)(言)(?!X)/g,r1:'$1Xhito$2Xkoto,single word,Noun'},
-{p1:/(一)(?!X)(貫)(?!X)/g,r1:'$1Xik$2Xkan,consistency,Noun'},  
+{p1:/(一)(?!X)(貫)(?!X)/g,r1:'$1Xik$2Xkan,consistency,Noun'},
 {p1:/(一)(?!X)(躍)(?!X)/g,r1:'$1Xichi$2Xyaku,breakthrough performance,Noun'},
 {p1:/(一)(?!X)(連)(?!X)/g,r1:'$1Xichi$2Xren,chain of events,Noun'},
 {p1:/(一)(?!X)(部)(?!X)/g,r1:'$1Xichi$2Xbu,part,Noun'},
@@ -2603,7 +2603,7 @@ const replsB = [
 {p1:/(中)(?!X)(継)(?!X)/g,r1:'$1Xcyuu$2Xkei,relay,Noun'},
 {p1:/(中)(?!X)(身)(?!X)/g,r1:'$1Xnaka$2Xmi,content,interior,Noun'},
 {p1:/(中)(?!X)(途)(?!X)/g,r1:'$1Xcyuu$2Xto,halfway,Noun'},
-{p1:/(陛)(?!X)(下)(?!X)/g,r1:'$1Xhei$2Xka,his majesty,Noun'},  
+{p1:/(陛)(?!X)(下)(?!X)/g,r1:'$1Xhei$2Xka,his majesty,Noun'},
 {p1:/(中)(?!X)(部)(?!X)/g,r1:'$1Xcyuu$2Xbu,central region,Noun'},
 {p1:/(中)(?!X)(間)(?!X)/g,r1:'$1Xcyuu$2Xkan,middle,between,Noun'},
 {p1:/(主)(?!X)(に)(?!X)/g,r1:'$1Xomo$2Xni,mainly,mostly,Noun'},
@@ -2928,10 +2928,10 @@ const replsB = [
 {p1:/(停)(?!X)(滞)(?!X)/g,r1:'$1Xtei$2Xtai,standstill,Noun'},
 {p1:/(停)(?!X)(車)(?!X)/g,r1:'$1Xtei$2Xsya,stoppage,Noun'},
 {p1:/(停)(?!X)(電)(?!X)/g,r1:'$1Xtei$2Xden,power cut,Noun'},
-{p1:/(実)(?!X)(情)(?!X)/g,r1:'$1Xjitsu$2Xjou,the reality of the situation,Noun'},  
+{p1:/(実)(?!X)(情)(?!X)/g,r1:'$1Xjitsu$2Xjou,the reality of the situation,Noun'},
 {p1:/(健)(?!X)(全)(?!X)/g,r1:'$1Xken$2Xzen,healthy,sound,Noun'},
 {p1:/(健)(?!X)(康)(?!X)/g,r1:'$1Xken$2Xkou,health,Noun'},
-{p1:/(偲)(?!X)(び)(?!X)/g,r1:'$1Xshino$2Xbi,in memory of,Noun'},  
+{p1:/(偲)(?!X)(び)(?!X)/g,r1:'$1Xshino$2Xbi,in memory of,Noun'},
 {p1:/(側)(?!X)(近)(?!X)/g,r1:'$1Xsok$2Xkin,close associate,Noun'},
 {p1:/(側)(?!X)(面)(?!X)/g,r1:'$1Xsoku$2Xmen,side,flank,Noun'},
 {p1:/(偵)(?!X)(察)(?!X)/g,r1:'$1Xtei$2Xsatsu,reconnaissance,Noun'},
@@ -3025,7 +3025,7 @@ const replsB = [
 {p1:/(全)(?!X)(面)(?!X)/g,r1:'$1Xzen$2Xmen,entire,Noun'},
 {p1:/(全)(?!X)(額)(?!X)/g,r1:'$1Xzen$2Xgaku,full amount,Noun'},
 {p1:/(八)(?!X)(日)(?!X)/g,r1:'$1Xyou$2Xka,eight days,8th of the month,Noun'},
-{p1:/(公)(?!X)(の)(?!X)/g,r1:'$1Xkou$2Xno,public,Noun'},  
+{p1:/(公)(?!X)(の)(?!X)/g,r1:'$1Xkou$2Xno,public,Noun'},
 {p1:/(公)(?!X)(共)(?!X)/g,r1:'$1Xkou$2Xkyou,public services,Noun'},
 {p1:/(公)(?!X)(判)(?!X)/g,r1:'$1Xkou$2Xhan,public hearing,Noun'},
 {p1:/(公)(?!X)(募)(?!X)/g,r1:'$1Xkou$2Xbo,public appeal,Noun'},
@@ -3039,7 +3039,7 @@ const replsB = [
 {p1:/(公)(?!X)(民)(?!X)/g,r1:'$1Xkou$2Xmin,citizen,Noun'},
 {p1:/(公)(?!X)(演)(?!X)/g,r1:'$1Xkou$2Xen,public performance,Noun'},
 {p1:/(公)(?!X)(的)(?!X)/g,r1:'$1Xkyou$2Xteki,public,Noun'},
-{p1:/(公)(?!X)(益)(?!X)/g,r1:'$1Xkou$2Xeki,public interest,Noun'},  
+{p1:/(公)(?!X)(益)(?!X)/g,r1:'$1Xkou$2Xeki,public interest,Noun'},
 {p1:/(公)(?!X)(示)(?!X)/g,r1:'$1Xkou$2Xji,public announcement,Noun'},
 {p1:/(公)(?!X)(私)(?!X)/g,r1:'$1Xkou$2Xshi,private and public,Noun'},
 {p1:/(公)(?!X)(立)(?!X)/g,r1:'$1Xkou$2Xritsu,public,Noun'},
@@ -3136,7 +3136,7 @@ const replsB = [
 {p1:/(出)(?!X)(航)(?!X)/g,r1:'$1Xsyuk$2Xkou,leaving port,Noun'},
 {p1:/(出)(?!X)(荷)(?!X)/g,r1:'$1Xsyuk$2Xka,shipping,Noun'},
 {p1:/(出)(?!X)(血)(?!X)/g,r1:'$1Xsyuk$2Xketsu,bleeding,Noun'},
-{p1:/(出)(?!X)(資)(?!X)/g,r1:'$1Xsyus$2Xshi,investment,Noun'},  
+{p1:/(出)(?!X)(資)(?!X)/g,r1:'$1Xsyus$2Xshi,investment,Noun'},
 {p1:/(出)(?!X)(身)(?!X)/g,r1:'$1Xsyus$2Xshin,origin,Noun'},
 {p1:/(出)(?!X)(頭)(?!X)/g,r1:'$1Xsyut$2Xtou,appearance,Noun'},
 {p1:/(出|で)(?!X)(来|き)(?!X)/g,r1:'$1Xde$2Xki,can do,IchidanVerb'},
@@ -3193,7 +3193,7 @@ const replsB = [
 {p1:/(制)(?!X)(作)(?!X)/g,r1:'$1Xsei$2Xsaku,production,Noun'},
 {p1:/(制)(?!X)(圧)(?!X)/g,r1:'$1Xsei$2Xatsu,gaining total control,Noun'},
 {p1:/(制)(?!X)(度)(?!X)/g,r1:'$1Xsei$2Xdo,system,Noun'},
-{p1:/(制)(?!X)(御)(?!X)/g,r1:'$1Xsei$2Xgyo,control,command,Noun'},  
+{p1:/(制)(?!X)(御)(?!X)/g,r1:'$1Xsei$2Xgyo,control,command,Noun'},
 {p1:/(制)(?!X)(服)(?!X)/g,r1:'$1Xsei$2Xfuku,uniform,Noun'},
 {p1:/(制)(?!X)(裁)(?!X)/g,r1:'$1Xsei$2Xsai,economic sanctions,Noun'},
 {p1:/(制)(?!X)(限)(?!X)/g,r1:'$1Xsei$2Xgen,restriction,Noun'},
@@ -3312,7 +3312,7 @@ const replsB = [
 {p1:/(医)(?!X)(学)(?!X)/g,r1:'$1Xi$2Xgaku,medical science,medicine,Noun'},
 {p1:/(医)(?!X)(師)(?!X)/g,r1:'$1Xi$2Xshi,doctor,Noun'},
 {p1:/(医)(?!X)(療)(?!X)/g,r1:'$1Xi$2Xryou,healthcare,Noun'},
-{p1:/(医)(?!X)(科)(?!X)/g,r1:'$1Xi$2Xka,medical department,Noun'},  
+{p1:/(医)(?!X)(科)(?!X)/g,r1:'$1Xi$2Xka,medical department,Noun'},
 {p1:/(医)(?!X)(者)(?!X)/g,r1:'$1Xi$2Xsya,doctor,Noun'},
 {p1:/(匿)(?!X)(名)(?!X)/g,r1:'$1Xtoku$2Xmei,anonymous,Noun'},
 {p1:/(十)(?!X)(分)(?!X)/g,r1:'$1Xjyuu$2X,bun,enough,Noun'},
@@ -3361,7 +3361,7 @@ const replsB = [
 {p1:/(危)(?!X)(険)(?!X)/g,r1:'$1Xki$2Xken,danger,Noun'},
 {p1:/(即)(?!X)(応)(?!X)/g,r1:'$1Xsoku$2Xou,immediate response,Noun'},
 {p1:/(即)(?!X)(時)(?!X)/g,r1:'$1Xsoku$2Xji,prompt,Noun'},
-{p1:/(却)(?!X)(下)(?!X)/g,r1:'$1Xkya$2Xka,rejected,Noun'},  
+{p1:/(却)(?!X)(下)(?!X)/g,r1:'$1Xkya$2Xka,rejected,Noun'},
 {p1:/(厚)(?!X)(さ)(?!X)/g,r1:'$1Xatsu$2Xsa,thickness,Noun'},
 {p1:/(厚)(?!X)(生)(?!X)/g,r1:'$1Xkou$2Xsei,public welfare,Noun'},
 {p1:/(厚)(?!X)(着)(?!X)/g,r1:'$1Xatsu$2Xgi,heavy clothing,Noun'},
@@ -3585,7 +3585,7 @@ const replsB = [
 {p1:/(国)(?!X)(会)(?!X)/g,r1:'$1Xkok$2Xkai,National Diet,Noun'},
 {p1:/(国)(?!X)(債)(?!X)/g,r1:'$1Xkoku$2Xsai,national debt,Noun'},
 {p1:/(国)(?!X)(内)(?!X)/g,r1:'$1Xkoku$2Xnai,domestic,Noun'},
-{p1:/(国)(?!X)(務)(?!X)/g,r1:'$1Xkoku$2Xmu,affairs of state,Noun'},  
+{p1:/(国)(?!X)(務)(?!X)/g,r1:'$1Xkoku$2Xmu,affairs of state,Noun'},
 {p1:/(国)(?!X)(名)(?!X)/g,r1:'$1Xkoku$2Xmei,countries name,Noun'},
 {p1:/(国)(?!X)(営)(?!X)/g,r1:'$1Xkoku$2Xei,state management,Noun'},
 {p1:/(国)(?!X)(土)(?!X)/g,r1:'$1Xkoku$2Xdo,territory,Noun'},
@@ -3793,7 +3793,7 @@ const replsB = [
 {p1:/(奉)(?!X)(納)(?!X)/g,r1:'$1Xhou$2Xnou,dedicated offering,Noun'},
 {p1:/(契)(?!X)(約)(?!X)/g,r1:'$1Xkei$2Xyaku,contract,Noun'},
 {p1:/(奥)(?!X)(様)(?!X)/g,r1:'$1Xoku$2Xsama,married woman,someyour wife,Noun'},
-{p1:/(奪)(?!X)(取)(?!X)/g,r1:'$1Xdas$2Xsyu,seize,Noun'},  
+{p1:/(奪)(?!X)(取)(?!X)/g,r1:'$1Xdas$2Xsyu,seize,Noun'},
 {p1:/(奪)(?!X)(還)(?!X)/g,r1:'$1Xdak$2Xkan,retaking,Noun'},
 {p1:/(女)(?!X)(優)(?!X)/g,r1:'$1Xjyo$2Xyuu,actress,Noun'},
 {p1:/(女)(?!X)(子)(?!X)/g,r1:'$1Xjyo$2Xshi,girl,Noun'},
@@ -3930,7 +3930,7 @@ const replsB = [
 {p1:/(密)(?!X)(か)(?!X)/g,r1:'$1Xhi$2Xsoka,secret,private,Noun'},
 {p1:/(密)(?!X)(接)(?!X)/g,r1:'$1Xmis$2Xsetsu,close relationship,Noun'},
 {p1:/(寒)(?!X)(さ)(?!X)/g,r1:'$1Xsamu$2Xsa,coldness,Noun'},
-{p1:/(寒)(?!X)(中)(?!X)/g,r1:'$1Xkan$2Xcyuu,in the cold,Noun'}, 
+{p1:/(寒)(?!X)(中)(?!X)/g,r1:'$1Xkan$2Xcyuu,in the cold,Noun'},
 {p1:/(寒)(?!X)(気)(?!X)/g,r1:'$1Xsamu$2Xke,chilly,Noun'},
 {p1:/(寒)(?!X)(波)(?!X)/g,r1:'$1Xkan$2Xpa,cold wave,Noun'},
 {p1:/(寝)(?!X)(具)(?!X)/g,r1:'$1Xshin$2Xgu,bedding,pajamas,Noun'},
@@ -3967,7 +3967,7 @@ const replsB = [
 {p1:/(射)(?!X)(殺)(?!X)/g,r1:'$1Xsya$2Xsatsu,shot dead,Noun'},
 {p1:/(将)(?!X)(来)(?!X)/g,r1:'$1Xsyou$2Xrai,future prospects,Noun'},
 {p1:/(将)(?!X)(校)(?!X)/g,r1:'$1Xcom$2Xmissioned officers,Noun'},
-{p1:/(将)(?!X)(棋)(?!X)/g,r1:'$1Xsyou$2Xgi,Syougi a chess,like game,Noun'},  
+{p1:/(将)(?!X)(棋)(?!X)/g,r1:'$1Xsyou$2Xgi,Syougi a chess,like game,Noun'},
 {p1:/(尊)(?!X)(厳)(?!X)/g,r1:'$1Xson$2Xgen,dignity,Noun'},
 {p1:/(尊)(?!X)(敬)(?!X)/g,r1:'$1Xson$2Xkei,respect,esteem,hon,or,Noun'},
 {p1:/(尊)(?!X)(重)(?!X)/g,r1:'$1Xson$2Xcyou,deep respect,Noun'},
@@ -4134,7 +4134,7 @@ const replsB = [
 {p1:/(強)(?!X)(化)(?!X)/g,r1:'$1Xkyou$2Xka,strengthening,Noun'},
 {p1:/(強)(?!X)(固)(?!X)/g,r1:'$1Xkyou$2Xko,solid,stable,Noun'},
 {p1:/(強)(?!X)(引)(?!X)/g,r1:'$1Xgou$2Xin,coercive,Noun'},
-{p1:/(強)(?!X)(弱)(?!X)/g,r1:'$1Xkyou$2Xjyaku,degree of strength, strengths and weaknesses,Noun'},
+{p1:/(強)(?!X)(弱)(?!X)/g,r1:'$1Xkyou$2Xjyaku,degree of strength,strengths and weaknesses,Noun'},
 {p1:/(強)(?!X)(気)(?!X)/g,r1:'$1Xtsuyo$2Xki,tough,Noun'},
 {p1:/(強)(?!X)(烈)(?!X)/g,r1:'$1Xkyou$2Xretsu,intense,Noun'},
 {p1:/(強)(?!X)(盗)(?!X)/g,r1:'$1Xgou$2Xtou,robbery,Noun'},
@@ -4180,7 +4180,7 @@ const replsB = [
 {p1:/(後)(?!X)(悔)(?!X)/g,r1:'$1Xkou$2Xkai,regret,Noun'},
 {p1:/(後)(?!X)(方)(?!X)/g,r1:'$1Xkou$2Xhou,back,Noun'},
 {p1:/(後)(?!X)(期)(?!X)/g,r1:'$1Xkou$2Xki,latter period,Noun'},
-{p1:/(後)(?!X)(編)(?!X)/g,r1:'$1Xkou$2Xhen,sequel,updated edition,Noun'},  
+{p1:/(後)(?!X)(編)(?!X)/g,r1:'$1Xkou$2Xhen,sequel,updated edition,Noun'},
 {p1:/(後)(?!X)(者)(?!X)/g,r1:'$1Xkou$2Xsya,latter,Noun'},
 {p1:/(後)(?!X)(輩)(?!X)/g,r1:'$1Xkou$2Xhai,your junior,Noun'},
 {p1:/(後)(?!X)(退)(?!X)/g,r1:'$1Xkou$2Xtai,retreat,Noun'},
@@ -4337,7 +4337,7 @@ const replsB = [
 {p1:/(所)(?!X)(属)(?!X)/g,r1:'$1Xsyo$2Xzoku,belonging to a group,Noun'},
 {p1:/(所)(?!X)(得)(?!X)/g,r1:'$1Xsyo$2Xtoku,income,earnings,Noun'},
 {p1:/(所)(?!X)(持)(?!X)/g,r1:'$1Xsyo$2Xji,possession,Noun'},
-{p1:/(所|いわ)(?!X)(謂|ゆる)(?!X)/g,r1:'$1Xiwa$2Xyuru,so called, what you call,Noun'},
+{p1:/(所|いわ)(?!X)(謂|ゆる)(?!X)/g,r1:'$1Xiwa$2Xyuru,so called,what you call,Noun'},
 {p1:/(扇)(?!X)(動)(?!X)/g,r1:'$1Xsen$2Xdou,incitement,Noun'},
 {p1:/(手)(?!X)(元)(?!X)/g,r1:'$1Xtem$2Xoto,at hand,Noun'},
 {p1:/(手)(?!X)(前)(?!X)/g,r1:'$1Xte$2Xmae,in front,Noun'},
@@ -4538,7 +4538,7 @@ const replsB = [
 {p1:/(改)(?!X)(選)(?!X)/g,r1:'$1Xkai$2Xsen,re,election,Noun'},
 {p1:/(改)(?!X)(革)(?!X)/g,r1:'$1Xkai$2Xkaku,reform,Noun'},
 {p1:/(攻)(?!X)(勢)(?!X)/g,r1:'$1Xkou$2Xsei,offensive,Noun'},
-  {p1:/(さ)(?!X)(ま)(?!X)/g,r1:'$1Xsa$2Xma,lord, lady, honored client,Noun'},
+  {p1:/(さ)(?!X)(ま)(?!X)/g,r1:'$1Xsa$2Xma,lord,lady,honored client,Noun'},
 {p1:/(攻)(?!X)(撃)(?!X)/g,r1:'$1Xkou$2Xgeki,attack,Noun'},
 {p1:/(放)(?!X)(出)(?!X)/g,r1:'$1Xhou$2Xsyutsu,release,Noun'},
 {p1:/(放)(?!X)(射)(?!X)/g,r1:'$1Xhou$2Xsya,radiation,Noun'},
@@ -4662,7 +4662,7 @@ const replsB = [
 {p1:/(日)(?!X)(程)(?!X)/g,r1:'$1Xnit$2Xtei,schedule,Noun'},
 {p1:/(日)(?!X)(米)(?!X)/g,r1:'$1Xnichi$2Xbei,Japan and America,Noun'},
 {p1:/(日)(?!X)(記)(?!X)/g,r1:'$1Xnik$2Xki,diary,Noun'},
-{p1:/(日)(?!X)(誌)(?!X)/g,r1:'$1Xnis$2Xshi,journal,Noun'},  
+{p1:/(日)(?!X)(誌)(?!X)/g,r1:'$1Xnis$2Xshi,journal,Noun'},
 {p1:/(日)(?!X)(課)(?!X)/g,r1:'$1Xnik$2Xka,daily routine,Noun'},
 {p1:/(日)(?!X)(銀)(?!X)/g,r1:'$1Xnichi$2Xgin,Bank of Japan,Noun'},
 {p1:/(日)(?!X)(陰)(?!X)/g,r1:'$1Xhi$2Xkage,shade,Noun'},
@@ -4759,7 +4759,7 @@ const replsB = [
 {p1:/(最)(?!X)(小)(?!X)/g,r1:'$1Xsai$2Xsyou,minimum,Noun'},
 {p1:/(最)(?!X)(小)(?!X)/g,r1:'$1Xsai$2Xsyou,smallest,minimum,Noun'},
 {p1:/(最)(?!X)(強)(?!X)/g,r1:'$1Xsai$2Xkyou,strongest,Noun'},
-{p1:/(最)(?!X)(後)(?!X)/g,r1:'$1Xsai$2Xgo,at the end,Noun'},  
+{p1:/(最)(?!X)(後)(?!X)/g,r1:'$1Xsai$2Xgo,at the end,Noun'},
 {p1:/(最)(?!X)(後)(?!X)/g,r1:'$1Xsai$2Xgo,final,Noun'},
 {p1:/(最)(?!X)(悪)(?!X)/g,r1:'$1Xsai$2Xaku,worst,Noun'},
 {p1:/(最)(?!X)(新)(?!X)/g,r1:'$1Xsai$2Xshin,latest,Noun'},
@@ -5225,7 +5225,7 @@ const replsB = [
 {p1:/(漁)(?!X)(業)(?!X)/g,r1:'$1Xgyo$2Xgyou,fishing industry,Noun'},
 {p1:/(漁)(?!X)(獲)(?!X)/g,r1:'$1Xgyo$2X,fishing,Noun'},
 {p1:/(漂)(?!X)(流)(?!X)/g,r1:'$1Xhyou$2Xryuu,drift,Noun'},
-{p1:/(演)(?!X)(じ)(?!X)/g,r1:'$1Xen$2Xji,acting performance,Noun'}, 
+{p1:/(演)(?!X)(じ)(?!X)/g,r1:'$1Xen$2Xji,acting performance,Noun'},
 {p1:/(演)(?!X)(出)(?!X)/g,r1:'$1Xen$2Xsyutsu,entertainment production,Noun'},
 {p1:/(演)(?!X)(劇)(?!X)/g,r1:'$1Xen$2Xgeki,drama,play,Noun'},
 {p1:/(演)(?!X)(奏)(?!X)/g,r1:'$1Xen$2Xsou,musical performance,Noun'},
@@ -5338,7 +5338,7 @@ const replsB = [
 {p1:/(特)(?!X)(派)(?!X)/g,r1:'$1Xtoku$2Xha,envoy,Noun'},
 {p1:/(特)(?!X)(色)(?!X)/g,r1:'$1Xtok$2Xusyoku,characteristic,Noun'},
 {p1:/(特)(?!X)(許)(?!X)/g,r1:'$1Xtok$2Xkyo,patent,Noun'},
-{p1:/(特)(?!X)(進)(?!X)/g,r1:'$1Xtoku$2Xshin,special,Noun'},  
+{p1:/(特)(?!X)(進)(?!X)/g,r1:'$1Xtoku$2Xshin,special,Noun'},
 {p1:/(特)(?!X)(集)(?!X)/g,r1:'$1Xtoku$2Xsyuu,special edition,Noun'},
 {p1:/(犠)(?!X)(牲)(?!X)/g,r1:'$1Xgi$2Xsei,sacrifice,Noun'},
 {p1:/(犯)(?!X)(人)(?!X)/g,r1:'$1Xhan$2Xnin,criminal,Noun'},
@@ -5408,7 +5408,7 @@ const replsB = [
 {p1:/(用)(?!X)(例)(?!X)/g,r1:'$1Xyou$2Xrei,example,illustration,Noun'},
 {p1:/(用)(?!X)(心)(?!X)/g,r1:'$1Xyou$2Xjin,care,caution,Noun'},
 {p1:/(用)(?!X)(意)(?!X)/g,r1:'$1Xyou$2Xi,ready oneself,Noun'},
-{p1:/(用)(?!X)(法)(?!X)/g,r1:'$1Xyou$2Xhou,usage directions,Noun'},  
+{p1:/(用)(?!X)(法)(?!X)/g,r1:'$1Xyou$2Xhou,usage directions,Noun'},
 {p1:/(用)(?!X)(紙)(?!X)/g,r1:'$1Xyou$2Xshi,blank form,stationery,Noun'},
 {p1:/(用)(?!X)(途)(?!X)/g,r1:'$1Xyou$2Xto,use,service,Noun'},
 {p1:/(用)(?!X)(量)(?!X)/g,r1:'$1Xyou$2Xryou,dosage,Noun'},
@@ -5740,7 +5740,7 @@ const replsB = [
 {p1:/(系)(?!X)(列)(?!X)/g,r1:'$1Xkei$2Xretsu,affiliation,Noun'},
 {p1:/(系)(?!X)(統)(?!X)/g,r1:'$1Xkei$2Xtou,system,lineage,Noun'},
 {p1:/(糾)(?!X)(弾)(?!X)/g,r1:'$1Xkyuu$2Xdan,denunciation,Noun'},
-{p1:/(紀)(?!X)(伊)(?!X)/g,r1:'$1Xki$2Xi,province, Wakayama,Noun'},
+{p1:/(紀)(?!X)(伊)(?!X)/g,r1:'$1Xki$2Xi,province,Wakayama,Noun'},
 {p1:/(約)(?!X)(束)(?!X)/g,r1:'$1Xyaku$2Xsoku,promise,Noun'},
 {p1:/(約)(?!X)(款)(?!X)/g,r1:'$1Xyak$2Xkan,agreement,Noun'},
 {p1:/(紅)(?!X)(茶)(?!X)/g,r1:'$1Xkou$2Xcya,black tea,Noun'},
@@ -5968,7 +5968,7 @@ const replsB = [
 {p1:/(芸)(?!X)(人)(?!X)/g,r1:'$1Xgei$2Xnin,entertainer,Noun'},
 {p1:/(芸)(?!X)(能)(?!X)/g,r1:'$1Xgei$2Xnou,entertainment,Noun'},
 {p1:/(芸)(?!X)(術)(?!X)/g,r1:'$1Xgei$2Xjyutsu,art,Noun'},
-{p1:/(芸)(?!X)(風)(?!X)/g,r1:'$1Xgei$2Xfu,style of acting,Noun'},  
+{p1:/(芸)(?!X)(風)(?!X)/g,r1:'$1Xgei$2Xfu,style of acting,Noun'},
 {p1:/(苛)(?!X)(め)(?!X)/g,r1:'$1Xiji$2Xme,bullying,Noun'},
 {p1:/(若)(?!X)(手)(?!X)/g,r1:'$1Xwaka$2Xte,young person,Noun'},
 {p1:/(若)(?!X)(者)(?!X)/g,r1:'$1Xwaka$2Xmono,young people,Noun'},
@@ -6656,13 +6656,13 @@ const replsB = [
 {p1:/(金)(?!X)(融)(?!X)/g,r1:'$1Xkin$2Xyuu,finance,Noun'},
 {p1:/(金)(?!X)(銭)(?!X)/g,r1:'$1Xkin$2Xsen,money,Noun'},
 {p1:/(金)(?!X)(額)(?!X)/g,r1:'$1Xkin$2Xgaku,sum,Noun'},
-{p1:/(釜)(?!X)(山)(?!X)/g,r1:'$1Xpu$2Xsan, South Korea,Noun'},
+{p1:/(釜)(?!X)(山)(?!X)/g,r1:'$1Xpu$2Xsan,South Korea,Noun'},
 {p1:/(釣)(?!X)(り)(?!X)/g,r1:'$1Xtsu$2Xri,angling,Noun'},
 {p1:/(鈍)(?!X)(化)(?!X)/g,r1:'$1Xdon$2Xka,dull down,slow down,Noun'},
 {p1:/(鈍)(?!X)(器)(?!X)/g,r1:'$1Xdon$2Xki,blunt weapon,Noun'},
 {p1:/(鈍)(?!X)(感)(?!X)/g,r1:'$1Xdon$2Xkan,thick,headedness,Noun'},
 {p1:/(鉄)(?!X)(道)(?!X)/g,r1:'$1Xtetsu$2Xdou,railway,Noun'},
-{p1:/(鉄)(?!X)(鋼)(?!X)/g,r1:'$1Xtek$2Xkou,iron and steel,Noun'},  
+{p1:/(鉄)(?!X)(鋼)(?!X)/g,r1:'$1Xtek$2Xkou,iron and steel,Noun'},
 {p1:/(鉛)(?!X)(筆)(?!X)/g,r1:'$1X$2Xenぴtsu,pencil,Noun'},
 {p1:/(鉱)(?!X)(物)(?!X)/g,r1:'$1Xkou$2Xbutsu,mineral,Noun'},
 {p1:/(銀)(?!X)(行)(?!X)/g,r1:'$1Xgin$2Xkou,bank,Noun'},
@@ -6879,7 +6879,7 @@ const replsB = [
 {p1:/(食)(?!X)(用)(?!X)/g,r1:'$1Xsyoku$2Xyou,edible,Noun'},
 {p1:/(食)(?!X)(費)(?!X)/g,r1:'$1Xsyoku$2Xhi,food expenses,board,Noun'},
 {p1:/(再)(?!X)(編)(?!X)/g,r1:'$1Xsai$2Xhen,reorganization,Noun'},
-{p1:/(飯)(?!X)(能)(?!X)/g,r1:'$1Xhan$2X,nou,Japan,Noun'},  
+{p1:/(飯)(?!X)(能)(?!X)/g,r1:'$1Xhan$2X,nou,Japan,Noun'},
 {p1:/(飼)(?!X)(育)(?!X)/g,r1:'$1Xshi$2Xiku,breed,Noun'},
 {p1:/(飽)(?!X)(和)(?!X)/g,r1:'$1Xhou$2Xwa,saturation,Noun'},
 {p1:/(飾)(?!X)(り)(?!X)/g,r1:'$1Xkaz$2Xari,ornament,decoration,Noun'},
@@ -7242,7 +7242,7 @@ const replsB = [
 {p1:/(流)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xnaga,flow$2X,SuVerb'},
 {p1:/(浅)(?!X)([いくかさ])(?!X)/g,r1:'$1Xasa,shallow,superficial$2X,IAdjective,Noun'},
 {p1:/(浮)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xu,float$2X,KuVerb'},
-{p1:/(浴)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1Xa,take (a shower)$2X,BuVerb'},  
+{p1:/(浴)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1Xa,take (a shower)$2X,BuVerb'},
 {p1:/(消)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xke,erase$2X,SuVerb'},
 {p1:/(消)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xke,switch off,turn off$2X,SuVerb'},
 {p1:/(深)(?!X)([いくかさ])(?!X)/g,r1:'$1Xfuka,deep,profound$2X,IAdjective,Noun'},
@@ -7260,7 +7260,7 @@ const replsB = [
 {p1:/(漏)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmo,leak$2X,RuVerb'},
 {p1:/(漕)(?!X)([がぎぐげごい])(?!X)/g,r1:'$1Xko,row$2X,GuVerb'},
 {p1:/(潜)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmogu,dive into$2X,RuVerb'},
-{p1:/(潤)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xuruo,moisten$2X,SuVerb'},  
+{p1:/(潤)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xuruo,moisten$2X,SuVerb'},
 {p1:/(潰)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xtsubu,crush$2X,SuVerb'},
 {p1:/(澄)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xsu,become clear$2X,MuVerb'},
 {p1:/(濁)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xnigo,get cloudy$2X,RuVerb'},
@@ -7319,7 +7319,7 @@ const replsB = [
 {p1:/(空)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xa,become available,vacant$2X,KuVerb'},
 {p1:/(突)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xtsu,thrust,poke$2X,KuVerb'},
 {p1:/(立)(?!X)([たちつてとっ])(?!X)/g,r1:'$1Xta,stand$2XTsuVerb'},
-{p1:/(競)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xkiso,compete with$2X,UVerb'},  
+{p1:/(競)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xkiso,compete with$2X,UVerb'},
 {p1:/(笑)(?!X)([いくかさ])(?!X)/g,r1:'$1Xwara,laughter,comedy$2X,IAdjective,Noun'},
 {p1:/(笑)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xe,to smile$2X,MuVerb'},
 {p1:/(笑)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xwara,laugh,smile$2X,UVerb'},
@@ -7367,7 +7367,7 @@ const replsB = [
 {p1:/(薄)(?!X)([いくかさ])(?!X)/g,r1:'$1Xusu,thin,weak,pale$2X,IAdjective,Noun'},
 {p1:/(行)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xi,ko,gyou,okona,happen$2X,KuVerb'},
 {p1:/(行)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xokona,conduct$2X,UVerb'},
-{p1:/(表)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xarawa,express,represent$2X,SuVerb'}, 
+{p1:/(表)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xarawa,express,represent$2X,SuVerb'},
 {p1:/(被)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkabu,wear,put on$2X,RuVerb'},
 {p1:/(補)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xogina,supplement,replenish$2X,UVerb'},
 {p1:/(襲)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xoso,suddenly rush$2X,UVerb'},
@@ -7661,7 +7661,7 @@ const replsB = [
 {p1:/(匹)(?!X)/g,r1:'$1Xpiki,counter for small animals,Noun'},
 {p1:/(区)(?!X)/g,r1:'$1Xku,ward,Noun'},
 {p1:/(苫)(?!X)/g,r1:'$1Xtoma,woven mat,Noun'},
-{p1:/(医)(?!X)/g,r1:'$1Xi,medical,Noun'},  
+{p1:/(医)(?!X)/g,r1:'$1Xi,medical,Noun'},
 {p1:/(十)(?!X)/g,r1:'$1Xjyuu,to,ten,Noun'},
 {p1:/(千)(?!X)/g,r1:'$1Xsen,chi,thousand,Noun'},
 {p1:/(半)(?!X)/g,r1:'$1Xhan,half,Noun'},
@@ -7768,7 +7768,7 @@ const replsB = [
 {p1:/(姪)(?!X)/g,r1:'$1Xmei,niece,Noun'},
 {p1:/(姫)(?!X)/g,r1:'$1Xhime,princess,Noun'},
 {p1:/(姿)(?!X)/g,r1:'$1Xsugata,figure,Noun'},
-{p1:/(雅)(?!X)/g,r1:'$1Xmasa,miyabi,elegance,Noun'},  
+{p1:/(雅)(?!X)/g,r1:'$1Xmasa,miyabi,elegance,Noun'},
 {p1:/(娘)(?!X)/g,r1:'$1Xmusume,daughter,girl,Noun'},
 {p1:/(婚)(?!X)/g,r1:'$1Xyobai,kon,marriage,Noun'},
 {p1:/(嫁)(?!X)/g,r1:'$1Xyome,bride,daughter in law,Noun'},
@@ -7928,7 +7928,7 @@ const replsB = [
 {p1:/(木)(?!X)/g,r1:'$1Xki,gi,boku,tree,wood,moku,Thursday,Noun'},
 {p1:/(未)(?!X)/g,r1:'$1Xmi,south,sixth lunar month,Noun'},
 {p1:/(末)(?!X)/g,r1:'$1Xmatsu,last part,Noun'},
-{p1:/(本)(?!X)/g,r1:'$1Xhon,book,moto,home,bon,hon, counter for long objects,Noun'},
+{p1:/(本)(?!X)/g,r1:'$1Xhon,book,moto,home,bon,hon,counter for long objects,Noun'},
 {p1:/(札)(?!X)/g,r1:'$1Xfuda,satsu,sap,billboard,paper bill,Noun'},
 {p1:/(杉)(?!X)/g,r1:'$1Xsugi,cedar,Noun'},
 {p1:/(村)(?!X)/g,r1:'$1Xmura,village,Noun'},
@@ -7953,7 +7953,7 @@ const replsB = [
 {p1:/(株)(?!X)/g,r1:'$1Xkabu,stock,strain,Noun'},
 {p1:/(核)(?!X)/g,r1:'$1Xkaku,core,atomic nucleus,Noun'},
 {p1:/(根)(?!X)/g,r1:'$1Xne,root,source,Noun'},
-{p1:/(格)(?!X)/g,r1:'$1Xkaku,rank,Noun'},  
+{p1:/(格)(?!X)/g,r1:'$1Xkaku,rank,Noun'},
 {p1:/(桃)(?!X)/g,r1:'$1Xmomo,peach,peach tree,Noun'},
 {p1:/(案)(?!X)/g,r1:'$1Xan,bill,Noun'},
 {p1:/(桜)(?!X)/g,r1:'$1Xsakura,cherry blossom,Noun'},
@@ -8085,7 +8085,7 @@ const replsB = [
 {p1:/(癖)(?!X)/g,r1:'$1Xkuse,habit,mannerism,Noun'},
 {p1:/(発)(?!X)/g,r1:'$1Xhatsu,start out,Noun'},
 {p1:/(白)(?!X)/g,r1:'$1Xshiro,white,Noun'},
-{p1:/(百)(?!X)/g,r1:'$1Xhyaku,hundred,Noun'},  
+{p1:/(百)(?!X)/g,r1:'$1Xhyaku,hundred,Noun'},
 {p1:/(的)(?!X)/g,r1:'$1Xteki,ly,Adverb'},
 {p1:/(皆)(?!X)/g,r1:'$1Xmina,everybody,Noun'},
 {p1:/(皮)(?!X)/g,r1:'$1Xkawa,peel,fur,Noun'},
@@ -8274,7 +8274,7 @@ const replsB = [
 {p1:/(象)(?!X)/g,r1:'$1Xzou,elephant,Noun'},
 {p1:/(貝)(?!X)/g,r1:'$1Xkai,shellfish,shell,Noun'},
 {p1:/(負)(?!X)/g,r1:'$1Xfu,burden,Noun'},
-{p1:/(貫)(?!X)/g,r1:'$1Xnuki,through,Noun'},  
+{p1:/(貫)(?!X)/g,r1:'$1Xnuki,through,Noun'},
 {p1:/(費)(?!X)/g,r1:'$1Xhi,expense,Noun'},
 {p1:/(賀)(?!X)/g,r1:'$1Xka,ga,celebration,Noun'},
 {p1:/(賃)(?!X)/g,r1:'$1Xchin,wages,Noun'},
@@ -8381,7 +8381,7 @@ const replsB = [
 {p1:/(額)(?!X)/g,r1:'$1Xgaku,amount,hitai,forehead,Noun'},
 {p1:/(額)(?!X)/g,r1:'$1Xgaku,picture frame,Noun'},
 {p1:/(顎)(?!X)/g,r1:'$1Xago,jaw,chin,Noun'},
-{p1:/(斎)(?!X)/g,r1:'$1Xsai,toki ,religious purification,Noun'},  
+{p1:/(斎)(?!X)/g,r1:'$1Xsai,toki ,religious purification,Noun'},
 {p1:/(顔)(?!X)/g,r1:'$1Xkao,face,Noun'},
 {p1:/(類)(?!X)/g,r1:'$1Xrui,type,Noun'},
 {p1:/(麺)(?!X)/g,r1:'$1Xmen,noodles,Noun'},
@@ -8519,7 +8519,7 @@ const replsB = [
 {p1:/(を)(?!X)/g,r1:'$1Xoo,direct object above is acted on,Postposition'},
 {p1:/(Nounな)(?!X)/g,r1:'$1Xna,NaAdjective,Noun'},
 
-{p1:/(Postposition|Punctuation)/g,r1:'$1<hr>'},  
+{p1:/(Postposition|Punctuation)/g,r1:'$1<hr>'},
 
 {p1:/(KuVerb|UVerb|MuVerb|RuVerb|TsuVerb|SuVerb|BuVerb)/g,r1:'$1 '},
 
@@ -8572,7 +8572,7 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p><a href="dnd/Game.htm" target="_blank">The Dungeons & Dragons Single Encounter Manager</a></p>
     <div class="header">// KILLING TIME //</div>
     <p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022) Chapter 16</p>
-    <p>[VIEWING] <i>Northern Exposure</i>, S3E3 (1991)</p>
+    <p>[VIEWING] <i>Northern Exposure</i>,S3E3 (1991)</p>
     
     <div class="header">// LINKS //</div>
     <p><a href="https://www.pinterest.jp/johnrenfro2016/" target="_blank">My Pinterest.Com Page</a></p>
