@@ -8463,7 +8463,7 @@ const replsB = [
 {p1:/(Nounご)(?!X)/g,r1:'$1Xgo,respected,formal,Noun'},
 {p1:/(Verb)(ま)(?!X)(す)(?!X)/g,r1:'$1$2Xma$3Xsu,to do,will do,FormalVerb'},
 
-{p1:/(Nounな)(?!X)(か)(?!X)(っ)(?!X)(た)(?!X)/g,r1:'$1X$2Xna$3Xk$4Xatta,did not,InformalSuruVerb'},
+{p1:/(Nounな)(?!X)(か)(?!X)(っ)(?!X)(た)(?!X)/g,r1:'$1Xna$2Xka$3Xt$4Xta,did not,InformalSuruVerb'},
 
 {p1:/(Nounだ|Verbだ)(?!X)(っ)(?!X)(た)(?!X)/g,r1:'$1Xda$2Xt$3Xta,was,InformalVerb'},
 {p1:/(さ)(?!X)(れ)(?!X)(た)(?!X)/g,r1:'$1Xsa$2Xre$3Xta,was done,informalVerb'},
@@ -8481,8 +8481,8 @@ const replsB = [
 {p1:/(Verb)(だ)(?!X)/g,r1:'$1X$2Xda,did,InformalVerb'},
 {p1:/(Verb)(る)(?!X)/g,r1:'$1X$2Xru,do,will do,InformalVerb'},
 {p1:/(Verbね)(?!X)/g,r1:'$1Xne,isn t it\?,InformalVerb'},
-{p1:/(-IchidanVerbる)/g,r1:'るXru,to do,will do,IchidanVerb,InformalVerb'},
-{p1:/(るX)(-RuVerb)/g,r1:'るXru,to do,will do,InformalVerb$2'},
+{p1:/(IchidanVerbる)/g,r1:'るXru,to do,will do,IchidanVerb,InformalVerb'},
+{p1:/(るX)(RuVerb)/g,r1:'るXru,to do,will do,InformalVerb$2'},
 
 {p1:/(に)(?!X)(お)(?!X)(い)(?!X)(て)(?!X)/g,r1:'$1Xni$2Xo$3Xi$4Xte,in,Postposition'},
 {p1:/(に)(?!X)(つ)(?!X)(い)(?!X)(て)(?!X)/g,r1:'$1Xni $2Xtsu$3Xi$4Xte,about,Postposition'},
