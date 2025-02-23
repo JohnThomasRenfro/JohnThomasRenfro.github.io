@@ -1314,6 +1314,7 @@ const replsB = [
 {p1:/(屈)(?!X)(辱)(?!X)(的)(?!X)/g,r1:'$1Xkutsu$2Xjyoku$3Xteki,humiliating,Noun'},
 {p1:/(展)(?!X)(覧)(?!X)(会)(?!X)/g,r1:'$1Xtenran$2Xka$3Xi,exhibition,Noun'},
 {p1:/(履)(?!X)(歴)(?!X)(書)(?!X)/g,r1:'$1Xrir$2Xek$3Xisyo,resume,bio,Noun'},
+{p1:/(花)(?!X)(粉)(?!X)(症)(?!X)/g,r1:'$1Xka$2Xfun$3Xsyou,pollen allergy,Noun'},
 {p1:/(山)(?!X)(登)(?!X)(り)(?!X)/g,r1:'$1Xya$2Xman$3Xobori,mountain climbing,Noun'},
 {p1:/(巡)(?!X)(洋)(?!X)(艦)(?!X)/g,r1:'$1Xjyun$2Xyou$3Xkan,battle cruiser,Noun'},
 {p1:/(工)(?!X)(学)(?!X)(部)(?!X)/g,r1:'$1Xkou$2Xgaku$3Xbu,department of engineering,Noun'},
@@ -5599,6 +5600,7 @@ const replsB = [
 {p1:/(矛)(?!X)(盾)(?!X)/g,r1:'$1Xmu$2Xjyun,contradiction,Noun'},
 {p1:/(矢)(?!X)(印)(?!X)/g,r1:'$1Xyajiru$2Xshi,arrow,Noun'},
 {p1:/(知)(?!X)(事)(?!X)/g,r1:'$1Xchi$2Xji,governor,Noun'},
+{p1:/(口)(?!X)(腔)(?!X)/g,r1:'$1Xkou$2Xkou,oral cavity,Noun'},
 {p1:/(知)(?!X)(人)(?!X)/g,r1:'$1Xchi$2Xjin,acquaintance,Noun'},
 {p1:/(知)(?!X)(的)(?!X)/g,r1:'$1Xchi$2Xteki,intellectual,mental,Noun'},
 {p1:/(知)(?!X)(能)(?!X)/g,r1:'$1Xchi$2Xnou,mental capacity,Noun'},
@@ -14619,10 +14621,10 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 </li></ul>
  
 <hr>
-
-     <input type="text" id="wordInput" placeholder="Enter Japanese word">
-    <input type="text" id="pronunciationInput" placeholder="Enter pronunciation">
-    <input type="text" id="definitionInput" placeholder="Enter definition">
+If you download a copy of this index.html file, you can add your own entries in longest word to shortest word order. Otherwise, this workspace is for me.<br>
+     <input type="text" id="wordInput" placeholder="Enter the Japanese word">
+    <input type="text" id="pronunciationInput" placeholder="Enter spaced English pronunciation">
+    <input type="text" id="definitionInput" placeholder="Enter the English definition">
     <button onclick="formatAndDisplay()">Format</button>
     <div id="outputContainer">
         <p id="output">Formatted output will appear here...</p>
