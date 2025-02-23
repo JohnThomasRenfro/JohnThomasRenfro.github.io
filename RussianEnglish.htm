@@ -213,6 +213,8 @@ const replsB = [
     { p:/([А-Яа-яЁё]+)(ешься)/ig, r:'$1 $2-suffix-verb, 2nd person, singular, present, reflexive' },
     { p:/([А-Яа-яЁё]+)(утся)/ig, r:'$1 $2-suffix-verb, 3rd person, plural, present, reflexive' },
 
+     { p:/([А-Яа-яЁё]+)(ний)/ig, r:'$1 $2-suffix-adjective, singular, masculine, nominative' },
+
 {p:/(иностр)/ig,r:'$1=foreign'},
 
 {p:/ (packageн)/ig,r:'$1=ability '},
@@ -8856,7 +8858,7 @@ const replsB = [
 {p:/ (доч)/ig,r:'$1=daughter '},
 {p:/ (дуб)/ig,r:'$1=oak '},
 {p:/ (дуг)/ig,r:'$1=arc '},
-{p:/ (Дум)/g,r:'$1=Duma '},
+{p:/ (это)/g,r:'$1=this '},
 {p:/ (дум)/g,r:'$1=to think '},
 {p:/ (дур)/ig,r:'$1=be naughty about '},
 {p:/ (дух)/ig,r:'$1=spirit '},
