@@ -16,12 +16,10 @@
 <link rel="icon" type="image/png" href="reading.png">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family,Noto+Serif+JP:wght@400,700&display,swap');
 
 body {
   background-attachment: fixed;
   background-color: #2b2b2b;
-  background-image: url('https://tse4.mm.bing.net/th?id,OIP.GZ,c1PiXMuuQMhJFoB3gAgAAAA&pid,Api');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8524,9 +8522,9 @@ const replsB = [
 {p1:/(を)(?!X)/g,r1:'$1Xoo,direct object above is acted on,Postposition,Noun'},
 {p1:/(Nounな)(?!X)/g,r1:'$1Xna,NaAdjective,Noun'},
 
-{p1:/(-Postposition|-Punctuation)/g,r1:'$1<hr>'},  
+{p1:/(Postposition|Punctuation)/g,r1:'$1<hr>'},  
 
-{p1:/(-KuVerb|-UVerb|-MuVerb|-RuVerb|-TsuVerb|-SuVerb|-BuVerb)/g,r1:'$1 '},
+{p1:/(KuVerb|UVerb|MuVerb|RuVerb|TsuVerb|SuVerb|BuVerb)/g,r1:'$1 '},
 
 {p1:/(\.)/g,r1:'$1ten,decimal'},
 
