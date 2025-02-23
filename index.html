@@ -322,6 +322,7 @@ const replsB = [
 {p1:/(か)(?!X)(ど)(?!X)(う)(?!X)(か)(?!X)/g,r1:'$1Xka$2Xdo$3Xu$4Xka,whether or not,Noun'},
 {p1:/(か)(?!X)(ぼ)(?!X)(ち)(?!X)(ゃ)(?!X)/g,r1:'$1X$2Xpu$3Xm$4Xpkin,Noun'},
 {p1:/(か)(?!X)(み)(?!X)(そ)(?!X)(り)(?!X)/g,r1:'$1X$2Xra$3Xz$4Xor,Noun'},
+{p1:/(わ)(?!X)(れ)(?!X)(わ)(?!X)(れ)(?!X)/g,r1:'$1Xwa$2Xre$3Xwa$4Xre,we,FormalNoun'},  
 {p1:/(か)(?!X)(も)(?!X)(し)(?!X)(れ)(?!X)/g,r1:'$1Xka$2Xmo$3Xshi$4Xre,might,IchidanVerb'},
 {p1:/(か)(?!X)(ら)(?!X)(か)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xra$3Xka$4Xra,thirsty,dry,Noun'},
 {p1:/(か)(?!X)(ら)(?!X)(か)(?!X)(ら)(?!X)/g,r1:'$1Xka$2Xro$3Xa$4Xr,laugh loudly,Noun'},
@@ -8452,16 +8453,13 @@ const replsB = [
 
 {p1:/(ご)(?!X)/g,r1:'$1Xgo,honorable,makes words polite'},
 
-{p1:/(わ)(?!X)(れ)(?!X)(わ)(?!X)(れ)(?!X)/g,r1:'$1Xwa$2Xre$3Xwa$4Xre,we,FormalNoun'},
-{p1:/(奥)(?!X)(さ)(?!X)(ん)(?!X)/g,r1:'$1Xwif$2X$3Xe,formal,Noun'},
-{p1:/(Verbま|Nounま)(?!X)(し)(?!X)(ょ)(?!X)(う)(?!X)/g,r1:'$1Xma$2Xs$3Xyo$4Xu,let us do,FormalVerb'},
-{p1:/(Nounま|Verbま)(?!X)(し)(?!X)(た)(?!X)/g,r1:'$1Xma$2Xshi$3Xta,did,FormalVerb'},
-{p1:/(Nounま|Verbま)(?!X)(せ)(?!X)(ん)(?!X)/g,r1:'$1Xma$2Xse$3Xn,didn t,FormalVerb'},
-{p1:/(Nounま|Verbま)(?!X)(す)(?!X)/g,r1:'$1Xma$2Xsu,FormalVerb'},
+{p1:/(Verbま)(?!X)(し)(?!X)(ょ)(?!X)(う)(?!X)/g,r1:'$1Xma$2Xs$3Xyo$4Xu,let us do,FormalVerb'},
+{p1:/(Verbま)(?!X)(し)(?!X)(た)(?!X)/g,r1:'$1Xma$2Xshi$3Xta,did,FormalVerb'},
+{p1:/(Verbま)(?!X)(せ)(?!X)(ん)(?!X)/g,r1:'$1Xma$2Xse$3Xn,didn t,FormalVerb'},
+{p1:/(Verbま)(?!X)(す)(?!X)/g,r1:'$1Xma$2Xsu,to do,will do,FormalVerb'},
 {p1:/(し)(?!X)/g,r1:'$1Xshi,to do,will do,SuruVerb'},
 {p1:/(Nounお)(?!X)/g,r1:'$1Xo,respected,formal,Noun'},
 {p1:/(Nounご)(?!X)/g,r1:'$1Xgo,respected,formal,Noun'},
-{p1:/(Verb)(ま)(?!X)(す)(?!X)/g,r1:'$1$2Xma$3Xsu,to do,will do,FormalVerb'},
 
 {p1:/(Nounな)(?!X)(か)(?!X)(っ)(?!X)(た)(?!X)/g,r1:'$1Xna$2Xka$3Xt$4Xta,did not,InformalSuruVerb'},
 
@@ -8486,8 +8484,8 @@ const replsB = [
 
 {p1:/(に)(?!X)(お)(?!X)(い)(?!X)(て)(?!X)/g,r1:'$1Xni$2Xo$3Xi$4Xte,in,Postposition'},
 {p1:/(に)(?!X)(つ)(?!X)(い)(?!X)(て)(?!X)/g,r1:'$1Xni $2Xtsu$3Xi$4Xte,about,Postposition'},
-{p1:/(に)(?!X)(よ)(?!X)(る)(?!X)/g,r1:'$1Xni $2Xyo$3Xru,according to,Postposition'},
 
+{p1:/(に)(?!X)(よ)(?!X)(る)(?!X)/g,r1:'$1Xni $2Xyo$3Xru,according to,Postposition'},
 {p1:/(ま)(?!X)(で)(?!X)(も)(?!X)/g,r1:'$1Xma$2Xde$3Xmo,to an extent,so far as to,Postposition'},
 {p1:/(も)(?!X)(と)(?!X)(で)(?!X)/g,r1:'$1Xmo$2Xto$3Xde,under,Postposition'},
 
