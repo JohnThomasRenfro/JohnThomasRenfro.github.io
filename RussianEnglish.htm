@@ -213,7 +213,8 @@ const replsB = [
     { p:/([А-Яа-яЁё]+)(ешься)/ig, r:'$1 $2-suffix-verb, 2nd person, singular, present, reflexive' },
     { p:/([А-Яа-яЁё]+)(утся)/ig, r:'$1 $2-suffix-verb, 3rd person, plural, present, reflexive' },
 
-     { p:/([А-Яа-яЁё]+)(ний)/ig, r:'$1 $2-suffix-adjective, singular, masculine, nominative' },
+     { p:/([А-Яа-яЁё]+)(ний) /ig, r:'$1 $2-suffix-adjective, singular, masculine, nominative' },
+     { p:/([А-Яа-яЁё]+)(ем) /ig, r:'$1 $2-suffix-noun, singular, masculine, nominative' },
 
 {p:/(иностр)/ig,r:'$1=foreign'},
 
@@ -9092,7 +9093,7 @@ const replsB = [
 {p:/ (пор)/ig,r:'$1=at times '},
 {p:/ (пос)/ig,r:'$1=sow '},
 {p:/ (пот)/ig,r:'$1=sweat '},
-{p:/ (при)/ig,r:'$1=in the presence time of to '},
+{p:/ (при)/ig,r:'$1=intake '},
 {p:/ (про)/ig,r:'$1=about '},
 {p:/ (пуг)/ig,r:'$1=frighten '},
 {p:/ (пуд)/ig,r:'$1=pood(16.38 kg) '},
