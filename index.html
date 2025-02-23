@@ -257,7 +257,7 @@ const replsB = [
 {p1:/(引)(?!X)(っ)(?!X)(掛)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xhi$3Xk$4Xkake,hook on$5X,RuVerb'},
 {p1:/(待)(?!X)(ち)(?!X)(遠)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2Xma$3Xc$4Xhi,doushi,just can t wait for$5X,IAdjective'},
 {p1:/(打)(?!X)(ち)(?!X)(上)(?!X)(げ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xu$2Xchi$3Xa$4Xge,shoot up$5X,RuVerb'},
-{p1:/(打)(?!X)(ち)(?!X)(明)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xuc$3Xh$4Xiake,confide in,reveal$5X,RuVerb'},
+{p1:/(打)(?!X)(ち)(?!X)(明)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xu$2Xchi$3Xa$4Xke,confide in,reveal$5X,RuVerb'},
 {p1:/(持)(?!X)(っ)(?!X)(て)(?!X)(来)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xmo$3Xt$4Xteku,bring$5X,RuVerb'},
 {p1:/(持)(?!X)(っ)(?!X)(て)(?!X)(行)(?!X)([かきくけこい])(?!X)/g,r1:'$1X$2Xmo$3Xt$4Xtei,take$5X,KuVerb'},
 {p1:/(握)(?!X)(り)(?!X)(締)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2Xni$3Xg$4Xirishi,mei,squeeze,grip$5X,RuVerb'},
@@ -809,8 +809,8 @@ const replsB = [
 {p1:/(聞)(?!X)(こ)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkik$2Xoe$3X,hear,be heard$4X,RuVerb'},
 {p1:/(腰)(?!X)(掛)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xko$2Xshi$3Xkake,sit down$4X,RuVerb'},
 {p1:/(若)(?!X)(々)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xwakawaka$2Xsh$3Xi,youthful,young,looking$4X,IAdjective'},
-{p1:/(苦)(?!X)(し)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkurushi$2Xme$3Xi,torment,trouble$4X,RuVerb'},
-{p1:/(華)(?!X)(々)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xhana$2Xba$3Xnashi$4Xbrilliant,IAdjective'},
+{p1:/(苦)(?!X)(し)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkuru$2Xshi$3Xme,torment,trouble$4X,RuVerb'},
+{p1:/(華)(?!X)(々)(?!X)(し)(?!X)([いくかさ])(?!X)/g,r1:'$1Xhana$i2Xba$3Xnashi$4Xbrilliant,IAdjective'},
 {p1:/(落)(?!X)(ち)(?!X)(着)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xo$2Xchi$3Xtsu,calm down$4X,KuVerb'},
 {p1:/(見)(?!X)(つ)(?!X)(か)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmi$2Xtsu$3Xka,be found$4X,RuVerb'},
 {p1:/(見)(?!X)(つ)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmit$2Xsu$3Xke,find$4X,RuVerb'},
@@ -5824,6 +5824,7 @@ const replsB = [
 {p1:/(結)(?!X)(構)(?!X)/g,r1:'$1Xkek$2Xkou,all right,no thank you,Noun'},
 {p1:/(結)(?!X)(構)(?!X)/g,r1:'$1Xkek$2Xkou,quite,Noun'},
 {p1:/(結)(?!X)(論)(?!X)/g,r1:'$1Xketsu$2Xron,conclusion,Noun'},
+{p1:/(延)(?!X)(々)(?!X)/g,r1:'$1Xen$2Xen,endlessly,Noun'},
 {p1:/(絞)(?!X)(め)(?!X)/g,r1:'$1Xshi$2Xme,strangle,IchidanVerb'},
 {p1:/(絡)(?!X)(め)(?!X)/g,r1:'$1Xkara$2Xme,entwine,IchidanVerb'},
 {p1:/(給)(?!X)(与)(?!X)/g,r1:'$1Xkyuu$2Xyo,wages,Noun'},
@@ -6283,13 +6284,17 @@ const replsB = [
 {p1:/(謄)(?!X)(本)(?!X)/g,r1:'$1Xtou$2Xhon,certified copy,Noun'},
 {p1:/(謙)(?!X)(虚)(?!X)/g,r1:'$1Xken$2Xkyo,humble,Noun'},
 {p1:/(謙)(?!X)(遜)(?!X)/g,r1:'$1Xken$2Xson,humility,modesty,Noun'},
+{p1:/(恐)(?!X)(怖)(?!X)/g,r1:'$1Xkyou$2Xfu,terror,Noun'},
 {p1:/(講)(?!X)(じ)(?!X)/g,r1:'$1Xkou$2Xji,take measures,IchidanVerb'},
 {p1:/(講)(?!X)(堂)(?!X)/g,r1:'$1Xkou$2Xdou,lecture hall,auditorium,Noun'},
 {p1:/(講)(?!X)(師)(?!X)/g,r1:'$1Xkou$2Xshi,lecturer,Noun'},
 {p1:/(講)(?!X)(演)(?!X)/g,r1:'$1Xkou$2Xen,lecture,Noun'},
+{p1:/(一)(?!X)(件)(?!X)/g,r1:'$1Xik$2Xken,an issue,Noun'},
+{p1:/(落)(?!X)(着)(?!X)/g,r1:'$1Xraku$2Xcyaku,being settled,Noun'},
 {p1:/(講)(?!X)(義)(?!X)/g,r1:'$1Xkou$2Xgi,lecture,Noun'},
 {p1:/(講)(?!X)(習)(?!X)/g,r1:'$1Xkou$2Xsyuu,short training course,Noun'},
 {p1:/(謝)(?!X)(罪)(?!X)/g,r1:'$1Xsya$2Xzai,appology,Noun'},
+{p1:/(葛)(?!X)(藤)(?!X)/g,r1:'$1Xkat$2Xtou,conflict,Noun'},
 {p1:/(謳)(?!X)(歌)(?!X)/g,r1:'$1Xou$2Xka,rejoicing,Noun'},
 {p1:/(警)(?!X)(備)(?!X)/g,r1:'$1Xkei$2Xbi,guarding,Noun'},
 {p1:/(警)(?!X)(告)(?!X)/g,r1:'$1Xkei$2Xkoku,warning,Noun'},
@@ -6777,6 +6782,7 @@ const replsB = [
 {p1:/(陥)(?!X)(没)(?!X)/g,r1:'$1Xkan$2Xbotsu,cave in,Noun'},
 {p1:/(陥)(?!X)(落)(?!X)/g,r1:'$1Xkan$2Xraku,collapse,Noun'},
 {p1:/(陰)(?!X)(性)(?!X)/g,r1:'$1Xin$2Xsei,negative result,Noun'},
+{p1:/(こ)(?!X)(ろ)(?!X)/g,r1:'$1Xko$2Xro,approximate time,Noun'},
 {p1:/(陰)(?!X)(謀)(?!X)/g,r1:'$1Xin$2Xbou,conspiracy,Noun'},
 {p1:/(陳)(?!X)(謝)(?!X)/g,r1:'$1Xchin$2Xsya,appology,Noun'},
 {p1:/(陸)(?!X)(上)(?!X)/g,r1:'$1Xriku$2Xjyou,shore,Noun'},
@@ -8013,6 +8019,7 @@ const replsB = [
 {p1:/(歯)(?!X)/g,r1:'$1Xha,tooth,cog,Noun'},
 {p1:/(歳)(?!X)/g,r1:'$1Xsai,years old,Noun'},
 {p1:/(歴)(?!X)/g,r1:'$1Xreki,history,record,Noun'},
+{p1:/(凜)(?!X)/g,r1:'$1Xrin,cold,dignified,Noun'},
 {p1:/(落)(?!X)/g,r1:'$1Xochi,slip,omission,Noun'},
 {p1:/(死)(?!X)/g,r1:'$1Xshi,death,Noun'},
 {p1:/(段)(?!X)/g,r1:'$1Xdan,step,grade,Noun'},
@@ -8079,7 +8086,7 @@ const replsB = [
 {p1:/(熊)(?!X)/g,r1:'$1Xkuma,bear,Noun'},
 {p1:/(熱)(?!X)/g,r1:'$1Xnetsu,ata,heat,fever,Noun'},
 {p1:/(爪)(?!X)/g,r1:'$1Xtsume,nail,claw,Noun'},
-{p1:/(父)(?!X)/g,r1:'$1Xchi+chi,father,Noun'},
+{p1:/(父)(?!X)/g,r1:'$1Xchi chi,father,Noun'},
 {p1:/(版)(?!X)/g,r1:'$1Xban,han,version,Noun'},
 {p1:/(牛)(?!X)/g,r1:'$1Xushi,cattle,cow,Noun'},
 {p1:/(物)(?!X)/g,r1:'$1Xbutsu,material,or mono,person,koto,thing,Noun'},
@@ -8136,6 +8143,7 @@ const replsB = [
 {p1:/(着)(?!X)/g,r1:'$1Xki,wear,IchidanVerb'},
 {p1:/(知)(?!X)/g,r1:'$1Xchi,wisdom,Noun'},
 {p1:/(石)(?!X)/g,r1:'$1Xishi,stone,Noun'},
+{p1:/(莉)(?!X)/g,r1:'$1Xmari,jasmine,Noun'},
 {p1:/(砂)(?!X)/g,r1:'$1Xsuna,sago,sand,grit,Noun'},
 {p1:/(破)(?!X)/g,r1:'$1Xha,ba,middle part of a song,Noun'},
 {p1:/(磨)(?!X)/g,r1:'$1XMa,polished,Noun'},
@@ -14560,6 +14568,7 @@ const replsB = [
 {p1:/(ま)(?!X)/g,r1:'$1X interval, duration of time, chamber,Noun'},
 {p1:/(み)(?!X)/g,r1:'$1X body, ones own person,Noun'},
 {p1:/(み)(?!X)/g,r1:'$1X fruit, nut,Noun'},
+{p1:/(寛)(?!X)/g,r1:'$1Xyuta,relaxed,Noun'},
 {p1:/(め)(?!X)/g,r1:'$1X eye,Noun'},
 {p1:/(め)(?!X)/g,r1:'$1X bud, sprout,Noun'},
 {p1:/(ゆ)(?!X)/g,r1:'$1X hot water, hot bath, bathhouse,Noun'},
@@ -14592,17 +14601,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-大学以上に募集停止が続いているのが短大です。
-
-1995年に596校、それが2023年には303校にまで減少しています。
-
-近年も募集停止ラッシュとなっています。
-
-2023年：上智大学短期大学部、岐阜聖徳学園大学短期大学部、龍谷大学短期大学部、池坊短期大学、武庫川女子大学短期大学部など
-
-2024年：九州龍谷短期大学、北星学園大学短期大学部、創価女子短期大学、国学院大学栃木短期大学など
-
-2025年（2月22日まで）：鹿児島純心女子短期大学、甲子園短期大学、札幌国際大学短期大学部、拓殖大学北海道短期大学
+首都圏の大学に通う20歳の鈴木莉子さん（仮名）は、中学生のころ、妹の凜さん（19歳、仮名）から「パパから性暴力を受けている」と打ち明けられた。その後も延々と被害は続いていた。莉子さんは、父への恐怖との6年にわたる葛藤の末に勇気を出して警察に通報、すぐに父は逮捕されたが、これで一件落着とはならなかった。凜さんは事情聴取された警察官から耳を疑うような言葉を投げかけられ、莉子さんは自分が警察に通報したことを父に知られることに日々おびえていた。性虐待の被害者と家族は、事件後も苦しめられ続ける。（共同通信＝宮本寛）
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
