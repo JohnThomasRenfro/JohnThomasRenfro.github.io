@@ -90,12 +90,13 @@
                 const wordLower = word.toLowerCase();
                 let suffixDetails = '';
 
+                // For each suffix in the array
                 suffixes.forEach(suffixDefinition => {
                     const [suffix, definition] = suffixDefinition.split(" : ");
-
-                    // Check if the word ends with the suffix and is followed by a space
+                    
+                    // Use the replace function to check for suffixes followed by a space
                     if (wordLower.endsWith(suffix + " ")) {
-                        const wordRoot = word.slice(0, -suffix.length - 1); // Slice off the suffix and the space
+                        const wordRoot = word.replace(suffix + " ", ''); // Replace suffix + space with an empty string
                         suffixDetails += `${wordRoot} - ${suffix} : ${definition}<br>`;
                     }
                 });
