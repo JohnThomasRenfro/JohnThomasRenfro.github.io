@@ -46,44 +46,38 @@
 
     <script>
         const suffixes = [
-            {suffix: "ский", definition: "Masculine singular adjective suffix (e.g., русский)"},
-            {suffix: "ая", definition: "Feminine singular adjective suffix (e.g., красная)"},
-            {suffix: "ие", definition: "Plural adjective suffix (e.g., красные)"},
-            {suffix: "ое", definition: "Neuter adjective suffix (e.g., красное)"},
-            {suffix: "и", definition: "Plural noun suffix (e.g., друг -> друзья)"},
-            {suffix: "ть", definition: "Verb infinitive suffix (e.g., делать)"},
-            {suffix: "ю", definition: "1st person singular verb suffix (e.g., пишу)"},
-            {suffix: "ет", definition: "3rd person singular verb suffix (e.g., читает)"},
-            {suffix: "ися", definition: "Reflexive verb suffix (e.g., моется)"},
-            {suffix: "у", definition: "Accusative singular noun suffix for feminine (e.g., книга -> книгу)"},
-            {suffix: "о", definition: "Neuter noun suffix (e.g., молоко)"},
-            {suffix: "а", definition: "Nominative singular suffix for feminine nouns (e.g., женщина)"},
-            {suffix: "в", definition: "Prepositional case suffix (e.g., в столе)"},
-            {suffix: "е", definition: "Prepositional singular (e.g., в столе)"},
-            {suffix: "м", definition: "Dative singular suffix for masculine (e.g., другу)"},
-            {suffix: "я", definition: "Nominative singular suffix for feminine nouns (e.g., семья)"},
-            {suffix: "ы", definition: "Plural noun suffix for masculine (e.g., дети)"},
-            {suffix: "н", definition: "Verb stem suffix (e.g., знать -> знан)"},
-            {suffix: "л", definition: "Past tense verb suffix for masculine (e.g., шёл)"},
-            {suffix: "ш", definition: "Past tense verb suffix for masculine (e.g., пришёл)"},
-            {suffix: "ч", definition: "Plural accusative case (e.g., людей -> людей)"},
-            {suffix: "я", definition: "Nominative case suffix for feminine singular (e.g., мама)"},
-            {suffix: "е", definition: "Singular prepositional case (e.g., в доме)"},
-            {suffix: "г", definition: "Possessive case suffix (e.g., его)"},
-            {suffix: "м", definition: "Dative case (e.g., другу)"},
-            {suffix: "т", definition: "Past tense suffix for second person singular (e.g., сделал)"},
-            {suffix: "ж", definition: "Used for making comparative adjectives (e.g., сильнее)"},
-            {suffix: "я", definition: "Verb participle ending (e.g., читающий)"},
-            {suffix: "р", definition: "Verb stem suffix for some irregular verbs (e.g., бегать)"},
-            {suffix: "г", definition: "Diminutive suffix (e.g., кошка -> кошечка)"},
-            {suffix: "чь", definition: "Verb suffix in imperative form (e.g., пейте)"},
-            {suffix: "и", definition: "Plural case in accusative (e.g., детей)"},
-            {suffix: "ш", definition: "Comparative suffix for adjectives (e.g., красивее)"},
-            {suffix: "ть", definition: "Infinitive verb ending (e.g., петь)"},
-            {suffix: "к", definition: "Adjective diminutive suffix (e.g., маленький)"},
-            {suffix: "сь", definition: "Reflexive verb form (e.g., одеваться)"},
-            {suffix: "у", definition: "Past tense suffix for first person (e.g., говорил)"},
-            {suffix: "л", definition: "Past tense verb suffix for singular masculine (e.g., работал)"},
+            // Just copy-paste new entries here
+            // Format: "suffix : definition"
+            "ский : Masculine singular adjective suffix (e.g., русский)",
+            "ая : Feminine singular adjective suffix (e.g., красная)",
+            "ие : Plural adjective suffix (e.g., красные)",
+            "ое : Neuter adjective suffix (e.g., красное)",
+            "и : Plural noun suffix (e.g., друг -> друзья)",
+            "ть : Verb infinitive suffix (e.g., делать)",
+            "ю : 1st person singular verb suffix (e.g., пишу)",
+            "ет : 3rd person singular verb suffix (e.g., читает)",
+            "ися : Reflexive verb suffix (e.g., моется)",
+            "у : Accusative singular noun suffix for feminine (e.g., книга -> книгу)",
+            "о : Neuter noun suffix (e.g., молоко)",
+            "а : Nominative singular suffix for feminine nouns (e.g., женщина)",
+            "в : Prepositional case suffix (e.g., в столе)",
+            "е : Prepositional singular (e.g., в столе)",
+            "м : Dative singular suffix for masculine (e.g., другу)",
+            "я : Nominative singular suffix for feminine nouns (e.g., семья)",
+            "ы : Plural noun suffix for masculine (e.g., дети)",
+            "н : Verb stem suffix (e.g., знать -> знан)",
+            "л : Past tense verb suffix for masculine (e.g., шёл)",
+            "ш : Past tense verb suffix for masculine (e.g., пришёл)",
+            "ч : Plural accusative case (e.g., людей -> людей)",
+            "г : Possessive case suffix (e.g., его)",
+            "т : Past tense suffix for second person singular (e.g., сделал)",
+            "ж : Used for making comparative adjectives (e.g., сильнее)",
+            "я : Verb participle ending (e.g., читающий)",
+            "р : Verb stem suffix for some irregular verbs (e.g., бегать)",
+            "к : Adjective diminutive suffix (e.g., маленький)",
+            "сь : Reflexive verb form (e.g., одеваться)",
+            "у : Past tense suffix for first person (e.g., говорил)",
+            "л : Past tense verb suffix for singular masculine (e.g., работал)",
         ];
 
         function processText() {
@@ -96,10 +90,13 @@
                 const wordLower = word.toLowerCase();
                 let suffixDetails = '';
 
-                suffixes.forEach(suffixObj => {
-                    if (wordLower.endsWith(suffixObj.suffix)) {
-                        const wordRoot = word.slice(0, -suffixObj.suffix.length);
-                        suffixDetails += `${wordRoot} - ${suffixObj.suffix} : ${suffixObj.definition}<br>`;
+                suffixes.forEach(suffixDefinition => {
+                    const [suffix, definition] = suffixDefinition.split(" : ");
+
+                    // Check if the word ends with the suffix and is followed by a space
+                    if (wordLower.endsWith(suffix + " ")) {
+                        const wordRoot = word.slice(0, -suffix.length - 1); // Slice off the suffix and the space
+                        suffixDetails += `${wordRoot} - ${suffix} : ${definition}<br>`;
                     }
                 });
 
