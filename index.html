@@ -14629,22 +14629,22 @@ If you download a copy of this index.html file, you can add your own entries in 
         <p id="output">Formatted output will appear here...</p>
     </div>
 
-    <script>
-        function formatJapaneseRegex(word, pronunciation, definition) {
-            let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
-            let pronunciationParts = pronunciation.split(/\s+/);
-            let replacement = word.split('').map((char =  i) => `$${i + 1}X${pronunciationParts[i] || char}`).join('');
-            return `{p1:/${regexPattern}/g,r1:'${replacement} , ${definition},Noun'},`;
-        }
+<script>
+    function formatJapaneseRegex(word, pronunciation, definition) {
+        let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
+        let pronunciationParts = pronunciation.split(/\s+/);
+        let replacement = word.split('').map((_, i) => `$${i + 1}X${pronunciationParts[i] || word[i]}`).join('');
+        return `{p1:/${regexPattern}/g,r1:'${replacement}, ${definition},Noun'},`;
+    }
 
-        function formatAndDisplay() {
-            const inputWord = document.getElementById("wordInput").value;
-            const inputPronunciation = document.getElementById("pronunciationInput").value;
-            const inputDefinition = document.getElementById("definitionInput").value;
-            const output = formatJapaneseRegex(inputWord, inputPronunciation, inputDefinition);
-            document.getElementById("output").innerText = output;
-        }
-    </script>
+    function formatAndDisplay() {
+        const inputWord = document.getElementById("wordInput").value;
+        const inputPronunciation = document.getElementById("pronunciationInput").value;
+        const inputDefinition = document.getElementById("definitionInput").value;
+        const output = formatJapaneseRegex(inputWord, inputPronunciation, inputDefinition);
+        document.getElementById("output").innerText = output;
+    }
+</script>
 
 <hr>    
     <div class="header">// MY OTHER PROJECTS //</div>
