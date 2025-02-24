@@ -60,16 +60,17 @@
       ш: "sh",  ч: "ch",  ц: "ts",  к: "k",  г: "g",  л: "l",  м: "m",  н: "n"
     };
 
-    // Define Russian suffix rules for nouns, verbs, and adjectives with definitions
+    // Define Russian suffix rules for nouns, verbs, and adjectives
     const suffixRules = [
-      { suffix: /([ая])$/, type: "Feminine singular", example: "женщина -> женщ-ина" },
-      { suffix: /и$/, type: "Plural", example: "дети -> дет-ы" },
-      { suffix: /е$/, type: "Prepositional case", example: "столе -> стол-е" },
-      { suffix: /ть$/, type: "Verb infinitive", example: "работать -> работ-ать" },
-      { suffix: /ю$/, type: "1st person singular", example: "делаю -> дел-аю" },
-      { suffix: /ет$/, type: "3rd person singular", example: "делает -> дел-ает" },
-      { suffix: /ая$/, type: "Feminine adjective", example: "красная -> красн-ая" },
-      { suffix: /ое$/, type: "Neuter adjective", example: "новое -> нов-ое" },
+      { suffix: /ский$/, type: "Adjective - masculine singular" },
+      { suffix: /ая$/, type: "Feminine singular adjective" },
+      { suffix: /ие$/, type: "Plural adjective" },
+      { suffix: /о$/, type: "Neuter adjective" },
+      { suffix: /и$/, type: "Plural noun" },
+      { suffix: /е$/, type: "Prepositional case" },
+      { suffix: /ть$/, type: "Verb infinitive" },
+      { suffix: /ю$/, type: "1st person singular verb" },
+      { suffix: /ет$/, type: "3rd person singular verb" },
     ];
 
     // Function to convert a Russian word into its pronunciation using the rules
@@ -85,45 +86,29 @@
       return pronunciation;
     }
 
-    // Function to process the input text
+    // Function to process the text, match suffixes, and display the output
     function processText() {
-      const inputText = document.getElementById('inputText').value;
-      let outputText = "";
-
-      // Split the input text into words and process each word
+      const inputText = document.getElementById("inputText").value;
       const words = inputText.split(/\s+/);
-      
-      words.forEach(word => {
-        let wordProcessed = word;
-        let wordSuffixes = [];
-        let wordPronunciation = getPronunciation(word);
+      let output = "";
 
-        // Check for each suffix rule
-        suffixRules.forEach(rule => {
+      words.forEach((word) => {
+        let matchedSuffix = null;
+        // Check suffixes for each word
+        suffixRules.forEach((rule) => {
           if (word.match(rule.suffix)) {
-            const root = word.replace(rule.suffix, ""); // Remove suffix to get root
-            wordSuffixes.push(`${root} (${word}) - ${rule.type} - ${rule.example}`);
+            matchedSuffix = word.replace(rule.suffix, "");
+            output += `${matchedSuffix} ${word.match(rule.suffix)[0]} : ${getPronunciation(word)}\n`;
           }
         });
 
-        // If no match is found, add the word as it is
-        if (wordSuffixes.length === 0) {
-          wordProcessed = `${word} (No matching suffixes found)`;
-        } else {
-          wordProcessed = wordSuffixes.join(", ");
+        if (!matchedSuffix) {
+          output += `${word} : No matching suffixes found\n`;
         }
-
-        // Add pronunciation and suffix information to the output
-        outputText += `${word} (${wordPronunciation}) : ${wordProcessed}\n`;
       });
 
-      // Display the output in the div
-      document.getElementById('output').textContent = outputText;
+      document.getElementById("output").textContent = output;
     }
   </script>
-</body>
-</html>
-
-
 </body>
 </html>
