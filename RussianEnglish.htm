@@ -59,6 +59,11 @@
             const words = paragraph.split(/(\s+|\b[^а-яА-ЯёЁ]+|\b)/).filter(Boolean);
 
             const processedWords = words.map(word => {
+                // Avoid splitting certain small words
+                if (['что', 'же', 'и', 'или'].includes(word.toLowerCase())) {
+                    return word; // Skip splitting for small functional words
+                }
+
                 // Check if the word contains letters and match suffixes
                 if (/^[а-яА-ЯёЁ]+$/.test(word)) {
                     let result = word;
