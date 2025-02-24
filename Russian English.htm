@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian Suffix Separator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Russian Word Suffix Separator</h1>
+    <p>Enter a Russian word and see the suffixes spaced out!</p>
+    
+    <input type="text" id="russianWord" placeholder="Enter Russian word">
+    <button onclick="processWord()">Separate Suffixes</button>
+
+    <div id="result"></div>
+
+    <script>
+        function processWord() {
+            const word = document.getElementById('russianWord').value.trim();
+            const suffixes = [
+                'ся', 'сь', 'ет', 'ет', 'и', 'ой', 'ым', 'ая', 'ой', 'ом', 'ые', 'ая', 'ное', 'ая', 'о', 'ая', 'ев', 'е',
+                'ого', 'ому', 'или', 'ший', 'ше', 'ут', 'ете', 'ий', 'ью', 'ой', 'ем', 'ишь', 'или', 'ении'
+            ];
+            
+            let result = word;
+            for (let suffix of suffixes) {
+                if (word.endsWith(suffix)) {
+                    result = word.slice(0, word.length - suffix.length) + ' ' + suffix;
+                    break;
+                }
+            }
+
+            if (!result.includes(" ")) {
+                result = "No recognizable suffix found";
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
