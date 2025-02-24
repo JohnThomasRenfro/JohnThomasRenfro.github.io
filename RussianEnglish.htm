@@ -5,30 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Russian Suffix Separator and Pronunciation Tool</title>
   <style>
+    /* Dark Russian-themed background */
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
+      background-color: #2a2a2a;  /* Dark background */
+      color: #f4f4f4;  /* Light text for contrast */
     }
+
+    h1, h3 {
+      color: #f2d034;  /* Bright yellow for headings */
+    }
+
     textarea {
       width: 100%;
       height: 150px;
       margin-bottom: 20px;
+      background-color: #333333;  /* Darker textarea */
+      color: #f4f4f4;  /* Light text in textarea */
+      border: 2px solid #f2d034;  /* Yellow border */
+      padding: 10px;
+      font-size: 16px;
     }
+
+    button {
+      background-color: #f2d034;  /* Yellow button */
+      color: #2a2a2a;  /* Dark text for button */
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #e1c32f;  /* Slightly darker yellow for hover effect */
+    }
+
     .output {
       white-space: pre-wrap;
       font-family: Courier, monospace;
+      background-color: #222222;  /* Dark background for output */
+      color: #e0e0e0;  /* Light gray text */
+      padding: 20px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    /* Styling for input/output area */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   </style>
 </head>
 <body>
 
-  <h1>Russian Suffix Separator and Pronunciation Tool</h1>
-  
-  <textarea id="inputText" placeholder="Enter a Russian paragraph..."></textarea><br>
-  <button onclick="processText()">Process</button>
+  <div class="container">
+    <h1>Russian Suffix Separator and Pronunciation Tool</h1>
+    
+    <textarea id="inputText" placeholder="Enter a Russian paragraph..."></textarea><br>
+    <button onclick="processText()">Process</button>
 
-  <h3>Processed Output:</h3>
-  <div id="output" class="output"></div>
+    <h3>Processed Output:</h3>
+    <div id="output" class="output"></div>
+  </div>
 
   <script>
     function processText() {
@@ -100,12 +141,11 @@
         let suffixInfo = suffixPatterns.find(suffix => suffix.pattern.test(wordLower));
         
         if (suffixInfo) {
-          resultText += `${pronunciation} (${word})\n`;
-          
-          // Separate the word into the root and suffix
           let suffixMatch = wordLower.match(suffixInfo.pattern);
           let root = wordLower.replace(suffixInfo.pattern, '');
           
+          // Format the result
+          resultText += `${pronunciation} (${word})\n`;
           resultText += `${root} - ${suffixMatch[0]} - ${suffixInfo.description}\n\n`;
         } else {
           resultText += `${pronunciation} (${word})\n\n`;
@@ -116,9 +156,6 @@
       output.textContent = resultText;
     }
   </script>
-
-Ему невдомёк, что эти поколения он уже уничтожил войной, а гранты ему давал Джо Байден, который далече. К тому же получатель гранта должен полностью возвратить деньги, если предоставил недостоверную информацию или поддельные документы.
-Читайте больше на https://www.pravda.ru/world/2182442-zelenskiy/  
 
 </body>
 </html>
