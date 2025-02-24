@@ -14634,7 +14634,7 @@ If you download a copy of this index.html file, you can add your own entries in 
             let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
             let pronunciationParts = pronunciation.split(/\s+/);
             let replacement = word.split('').map((char =  i) => `$${i + 1}X${pronunciationParts[i] || char}`).join('');
-            return `{p1:/${regexPattern}/g,r1:'${replacement} = ${definition},Noun'},`;
+            return `{p1:/${regexPattern}/g,r1:'${replacement} , ${definition},Noun'},`;
         }
 
         function formatAndDisplay() {
