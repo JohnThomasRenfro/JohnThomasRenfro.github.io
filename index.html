@@ -8456,6 +8456,7 @@ const replsB = [
 {p1:/(鳩)(?!X)/g,r1:'$1Xhato = pigeon,dove,Noun'},
 {p1:/(鶏)(?!X)/g,r1:'$1Xniwatori = chicken,Noun'},
 {p1:/(鹿)(?!X)/g,r1:'$1Xka = deer,Noun'},
+{p1:/(ロ)(?!X)/g,r1:'$1Xro = Russia,Noun'},
 {p1:/(麦)(?!X)/g,r1:'$1Xmugi = wheat,Noun'},
 {p1:/(黒)(?!X)/g,r1:'$1Xkuro = guro,black,Noun'},
 {p1:/(鼻)(?!X)/g,r1:'$1Xhana = nose,Noun'},
@@ -8559,7 +8560,7 @@ const replsB = [
 {p1:/(Adverbな)(?!X)/g,r1:'$1Xna = Adverb'},
 {p1:/(Nounら|Noun等)(?!X)/g,r1:'$1Xra = plural,Postposition'},
 {p1:/(Postpositionの|Verbの|Nounの)(?!X)/g,r1:'$1Xno = of the above,Postposition'},
-{p1:/(Verb)(と)(?!X)/g,r1:'$1 $2Xto = by way of the above,Postposition'},
+{p1:/(Verb|Punctuation)(と)(?!X)/g,r1:'$1 $2Xto = by way of the above,Postposition'},
 {p1:/(か)(?!X)/g,r1:'$1Xka = indicates a question above,Postposition'},
 {p1:/(が)(?!X)/g,r1:'$1Xga = the subject above acts,Postposition'},
 {p1:/(で)(?!X)/g,r1:'$1Xde = at,with the above,Postposition'},
@@ -8602,11 +8603,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-戸建ての新築に引っ越してきて半年という相談者ですが、引っ越して間もなく家の壁にコーヒーをかけられるという嫌がらせを受けるようになりました。
-
-数カ月で20回以上かけられ、警察も複数回呼んで相談しましたが「コーヒーだけでは被害届出せない」と言われてしまい、いまだに被害届を出せていません。防犯カメラを設置するなどの対策も講じましたが犯人特定には至らず、精神的なダメージも蓄積しているようです。
-
-もし犯人が捕まったら、壁への損害のほか、「防犯カメラの設置費用や警察対応で仕事を休んだ給与分も請求したい」と憤っています。コーヒーを家の壁にかける行為は犯罪ではないのでしょうか。本間久雄弁護士に聞きました。
+【北京共同】中国の習近平国家主席は24日、ロシアのプーチン大統領と電話会談した。中国国営通信新華社が伝えた。ロシアのウクライナ侵攻から3年となり米ロ主導の和平交渉が進む中、プーチン氏は「ウクライナとの衝突の根本的原因の除去に取り組む」と主張した。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
