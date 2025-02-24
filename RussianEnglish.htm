@@ -86,10 +86,16 @@
       return pronunciation;
     }
 
+    // Function to handle punctuation and add spaces around punctuation marks
+    function addSpacesAroundPunctuation(text) {
+      return text.replace(/([,.!?;:(){}[\]“”‘’])/g, ' $1 ');  // Add spaces around punctuation
+    }
+
     // Function to process the text, match suffixes, and display the output
     function processText() {
       const inputText = document.getElementById("inputText").value;
-      const words = inputText.split(/\s+/);
+      const textWithSpaces = addSpacesAroundPunctuation(inputText); // Add spaces around punctuation
+      const words = textWithSpaces.split(/\s+/); // Split by spaces
       let output = "";
 
       words.forEach((word) => {
