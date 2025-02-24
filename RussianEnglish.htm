@@ -46,7 +46,6 @@
 
     <script>
         const suffixes = [
-            // Just copy-paste new entries here
             // Format: "suffix : definition"
             "ский : Masculine singular adjective suffix (e.g., русский)",
             "ая : Feminine singular adjective suffix (e.g., красная)",
@@ -82,7 +81,7 @@
 
         function processText() {
             const inputText = document.getElementById("inputText").value;
-            const words = inputText.split(/\s+/); // Split by spaces
+            const words = inputText.split(' '); // Split by actual space, no regex used
 
             let outputText = '';
 
@@ -94,9 +93,9 @@
                 suffixes.forEach(suffixDefinition => {
                     const [suffix, definition] = suffixDefinition.split(" : ");
                     
-                    // Use the replace function to check for suffixes followed by a space
-                    if (wordLower.endsWith(suffix + " ")) {
-                        const wordRoot = word.replace(suffix + " ", ''); // Replace suffix + space with an empty string
+                    // Check if the word ends with the suffix followed by a space
+                    if (wordLower.endsWith(suffix)) {
+                        const wordRoot = word.slice(0, -suffix.length); // Remove suffix part
                         suffixDetails += `${wordRoot} - ${suffix} : ${definition}<br>`;
                     }
                 });
