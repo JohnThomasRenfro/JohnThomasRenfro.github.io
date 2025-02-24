@@ -6220,6 +6220,7 @@ const replsB = [
 {p1:/(証)(?!X)(拠)(?!X)/g,r1:'$1Xsyou$2Xko = proof,Noun'},
 {p1:/(証)(?!X)(明)(?!X)/g,r1:'$1Xsyou$2Xmei = proof,Noun'},
 {p1:/(証)(?!X)(言)(?!X)/g,r1:'$1Xsyou$2Xgen = testimony,Noun'},
+{p1:/(駆)(?!X)(使)(?!X)/g,r1:'$1Xku$2Xshi = make full use of,Noun'},
 {p1:/(詐)(?!X)(欺)(?!X)/g,r1:'$1Xsa$2Xgi = fraud,Noun'},
 {p1:/(評)(?!X)(価)(?!X)/g,r1:'$1Xhyou$2Xka = assessment,Noun'},
 {p1:/(評)(?!X)(判)(?!X)/g,r1:'$1Xhyou$2Xban = fame,Noun'},
@@ -14634,7 +14635,7 @@ If you download a copy of this index.html file, you can add your own entries in 
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let pronunciationParts = pronunciation.split(/\s+/);
         let replacement = word.split('').map((_, i) => `$${i + 1}X${pronunciationParts[i] || word[i]}`).join('');
-        return `{p1:/${regexPattern}/g,r1:'${replacement}, ${definition},Noun'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement} \= ${definition},Noun'},`;
     }
 
     function formatAndDisplay() {
