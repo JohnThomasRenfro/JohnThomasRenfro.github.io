@@ -1,130 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Russian Word Suffix Separator with Pronunciation</title>
-  <style>
-    body {
-      background-color: #2e2e2e;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    .input-container, .output-container {
-      margin-bottom: 20px;
-    }
-    textarea {
-      width: 100%;
-      height: 120px;
-      padding: 10px;
-      font-size: 16px;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-    }
-    button {
-      background-color: #5c5c5c;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #777;
-    }
-    .output-text {
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian Suffix Separator</title>
+    <style>
+        body {
+            background-color: #2d2d2d;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .output {
+            margin-top: 20px;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        input, button {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
-  <h1>Russian Word Suffix Separator with Pronunciation</h1>
-  <div class="input-container">
-    <textarea id="inputText" placeholder="Enter a Russian paragraph here..."></textarea>
-  </div>
-  <button onclick="processText()">Process Text</button>
-  <div class="output-container">
-    <h3>Processed Output</h3>
-    <div id="output" class="output-text"></div>
-  </div>
 
-  <script>
-    // Pronunciation rules for Russian vowels
-    const pronunciationRules = {
-      а: "ah",  э: "eh",  и: "ih",  о: "ah",  у: "uh",  ы: "ih",  е: "eh", 
-      ё: "yo",  ю: "yoo",  я: "yah",  э: "eh",  и: "ee",  ё: "yo",  ж: "zh",
-      ш: "sh",  ч: "ch",  ц: "ts",  к: "k",  г: "g",  л: "l",  м: "m",  н: "n"
-    };
+    <h1>Russian Suffix Separator</h1>
+    <p>Enter a Russian sentence and the program will show you the suffixes and their definitions.</p>
+    
+    <textarea id="inputText" rows="4" cols="50" placeholder="Enter Russian text here..."></textarea>
+    <br>
+    <button onclick="processText()">Process Text</button>
 
-    // Define Russian suffix rules for nouns, verbs, and adjectives
-    const suffixRules = [
-      { suffix: /ский$/, type: "Adjective - masculine singular" },
-      { suffix: /ая$/, type: "Feminine singular adjective" },
-      { suffix: /ие$/, type: "Plural adjective" },
-      { suffix: /о$/, type: "Neuter adjective" },
-      { suffix: /и$/, type: "Plural noun" },
-      { suffix: /е$/, type: "Prepositional case" },
-      { suffix: /ть$/, type: "Verb infinitive" },
-      { suffix: /ю$/, type: "1st person singular verb" },
-      { suffix: /ет$/, type: "3rd person singular verb" },
-    ];
+    <div class="output" id="output"></div>
 
-    // List of conjunctions and particles to exclude from suffix matching
-    const conjunctionsAndParticles = [
-      "чтобы", "и", "но", "или", "также", "ведь", "поэтому", "потому", "для", "после", "в", "на", "с"
-    ];
+    <script>
+        const suffixes = [
+            {suffix: "ский", definition: "Masculine singular adjective suffix (e.g., русский)"},
+            {suffix: "ая", definition: "Feminine singular adjective suffix (e.g., красная)"},
+            {suffix: "ие", definition: "Plural adjective suffix (e.g., красные)"},
+            {suffix: "ое", definition: "Neuter adjective suffix (e.g., красное)"},
+            {suffix: "и", definition: "Plural noun suffix (e.g., друг -> друзья)"},
+            {suffix: "ть", definition: "Verb infinitive suffix (e.g., делать)"},
+            {suffix: "ю", definition: "1st person singular verb suffix (e.g., пишу)"},
+            {suffix: "ет", definition: "3rd person singular verb suffix (e.g., читает)"},
+            {suffix: "ися", definition: "Reflexive verb suffix (e.g., моется)"},
+            {suffix: "у", definition: "Accusative singular noun suffix for feminine (e.g., книга -> книгу)"},
+            {suffix: "о", definition: "Neuter noun suffix (e.g., молоко)"},
+            {suffix: "а", definition: "Nominative singular suffix for feminine nouns (e.g., женщина)"},
+            {suffix: "в", definition: "Prepositional case suffix (e.g., в столе)"},
+            {suffix: "е", definition: "Prepositional singular (e.g., в столе)"},
+            {suffix: "м", definition: "Dative singular suffix for masculine (e.g., другу)"},
+            {suffix: "я", definition: "Nominative singular suffix for feminine nouns (e.g., семья)"},
+            {suffix: "ы", definition: "Plural noun suffix for masculine (e.g., дети)"},
+            {suffix: "н", definition: "Verb stem suffix (e.g., знать -> знан)"},
+            {suffix: "л", definition: "Past tense verb suffix for masculine (e.g., шёл)"},
+            {suffix: "ш", definition: "Past tense verb suffix for masculine (e.g., пришёл)"},
+            {suffix: "ч", definition: "Plural accusative case (e.g., людей -> людей)"},
+            {suffix: "я", definition: "Nominative case suffix for feminine singular (e.g., мама)"},
+            {suffix: "е", definition: "Singular prepositional case (e.g., в доме)"},
+            {suffix: "г", definition: "Possessive case suffix (e.g., его)"},
+            {suffix: "м", definition: "Dative case (e.g., другу)"},
+            {suffix: "т", definition: "Past tense suffix for second person singular (e.g., сделал)"},
+            {suffix: "ж", definition: "Used for making comparative adjectives (e.g., сильнее)"},
+            {suffix: "я", definition: "Verb participle ending (e.g., читающий)"},
+            {suffix: "р", definition: "Verb stem suffix for some irregular verbs (e.g., бегать)"},
+            {suffix: "г", definition: "Diminutive suffix (e.g., кошка -> кошечка)"},
+            {suffix: "чь", definition: "Verb suffix in imperative form (e.g., пейте)"},
+            {suffix: "и", definition: "Plural case in accusative (e.g., детей)"},
+            {suffix: "ш", definition: "Comparative suffix for adjectives (e.g., красивее)"},
+            {suffix: "ть", definition: "Infinitive verb ending (e.g., петь)"},
+            {suffix: "к", definition: "Adjective diminutive suffix (e.g., маленький)"},
+            {suffix: "сь", definition: "Reflexive verb form (e.g., одеваться)"},
+            {suffix: "у", definition: "Past tense suffix for first person (e.g., говорил)"},
+            {suffix: "л", definition: "Past tense verb suffix for singular masculine (e.g., работал)"},
+        ];
 
-    // Function to convert a Russian word into its pronunciation using the rules
-    function getPronunciation(word) {
-      let pronunciation = "";
-      for (let char of word) {
-        if (pronunciationRules[char]) {
-          pronunciation += pronunciationRules[char];
-        } else {
-          pronunciation += char;
+        function processText() {
+            const inputText = document.getElementById("inputText").value;
+            const words = inputText.split(/\s+/); // Split by spaces
+
+            let outputText = '';
+
+            words.forEach(word => {
+                const wordLower = word.toLowerCase();
+                let suffixDetails = '';
+
+                suffixes.forEach(suffixObj => {
+                    if (wordLower.endsWith(suffixObj.suffix)) {
+                        const wordRoot = word.slice(0, -suffixObj.suffix.length);
+                        suffixDetails += `${wordRoot} - ${suffixObj.suffix} : ${suffixObj.definition}<br>`;
+                    }
+                });
+
+                if (!suffixDetails) {
+                    suffixDetails = `${word} : No matching suffixes found.<br>`;
+                }
+
+                outputText += suffixDetails;
+            });
+
+            document.getElementById("output").innerHTML = outputText;
         }
-      }
-      return pronunciation;
-    }
+    </script>
 
-    // Function to handle punctuation and add spaces around punctuation marks
-    function addSpacesAroundPunctuation(text) {
-      return text.replace(/([,.!?;:(){}[\]“”‘’])/g, ' $1 ');  // Add spaces around punctuation
-    }
-
-    // Function to process the text, match suffixes, and display the output
-    function processText() {
-      const inputText = document.getElementById("inputText").value;
-      const textWithSpaces = addSpacesAroundPunctuation(inputText); // Add spaces around punctuation
-      const words = textWithSpaces.split(/\s+/); // Split by spaces
-      let output = "";
-
-      words.forEach((word) => {
-        if (conjunctionsAndParticles.includes(word)) {
-          output += `${word} : No matching suffixes found (conjunction/particle)\n`;
-        } else {
-          let matchedSuffix = null;
-          // Check suffixes for each word
-          suffixRules.forEach((rule) => {
-            if (word.match(rule.suffix)) {
-              matchedSuffix = word.replace(rule.suffix, "");
-              output += `${matchedSuffix} ${word.match(rule.suffix)[0]} : ${getPronunciation(word)}\n`;
-            }
-          });
-
-          if (!matchedSuffix) {
-            output += `${word} : No matching suffixes found\n`;
-          }
-        }
-      });
-
-      document.getElementById("output").textContent = output;
-    }
-  </script>
 </body>
 </html>
-
