@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Russian Suffix Separator</title>
+    <title>Russian Paragraph Suffix Separator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
         }
-        input {
+        textarea {
             padding: 10px;
             font-size: 16px;
             margin: 10px;
-            width: 300px;
+            width: 80%;
+            height: 150px;
         }
         button {
             padding: 10px 20px;
@@ -30,40 +31,43 @@
             font-size: 20px;
             font-weight: bold;
             color: #333;
+            white-space: pre-wrap; /* Keeps formatting with newlines */
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
 
-    <h1>Russian Word Suffix Separator</h1>
-    <p>Enter a Russian word and see the suffixes spaced out!</p>
+    <h1>Russian Paragraph Suffix Separator</h1>
+    <p>Enter a Russian paragraph and see the suffixes separated in each word!</p>
     
-    <input type="text" id="russianWord" placeholder="Enter Russian word">
-    <button onclick="processWord()">Separate Suffixes</button>
+    <textarea id="russianParagraph" placeholder="Enter Russian paragraph"></textarea><br>
+    <button onclick="processParagraph()">Separate Suffixes</button>
 
     <div id="result"></div>
 
     <script>
-        function processWord() {
-            const word = document.getElementById('russianWord').value.trim();
+        function processParagraph() {
+            const paragraph = document.getElementById('russianParagraph').value.trim();
             const suffixes = [
                 'ся', 'сь', 'ет', 'ет', 'и', 'ой', 'ым', 'ая', 'ой', 'ом', 'ые', 'ая', 'ное', 'ая', 'о', 'ая', 'ев', 'е',
                 'ого', 'ому', 'или', 'ший', 'ше', 'ут', 'ете', 'ий', 'ью', 'ой', 'ем', 'ишь', 'или', 'ении'
             ];
             
-            let result = word;
-            for (let suffix of suffixes) {
-                if (word.endsWith(suffix)) {
-                    result = word.slice(0, word.length - suffix.length) + ' ' + suffix;
-                    break;
+            const words = paragraph.split(/\s+/); // Split the paragraph into words by spaces
+            const processedWords = words.map(word => {
+                let result = word;
+                for (let suffix of suffixes) {
+                    if (word.endsWith(suffix)) {
+                        result = word.slice(0, word.length - suffix.length) + ' ' + suffix;
+                        break;
+                    }
                 }
-            }
+                return result;
+            });
 
-            if (!result.includes(" ")) {
-                result = "No recognizable suffix found";
-            }
-
-            document.getElementById('result').innerText = result;
+            // Display the processed words with spaces between suffixes
+            document.getElementById('result').innerText = processedWords.join(' ');
         }
     </script>
 </body>
