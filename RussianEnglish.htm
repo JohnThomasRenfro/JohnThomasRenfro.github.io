@@ -73,6 +73,11 @@
       { suffix: /ет$/, type: "3rd person singular verb" },
     ];
 
+    // List of conjunctions and particles to exclude from suffix matching
+    const conjunctionsAndParticles = [
+      "чтобы", "и", "но", "или", "также", "ведь", "поэтому", "потому", "для", "после", "в", "на", "с"
+    ];
+
     // Function to convert a Russian word into its pronunciation using the rules
     function getPronunciation(word) {
       let pronunciation = "";
@@ -99,17 +104,21 @@
       let output = "";
 
       words.forEach((word) => {
-        let matchedSuffix = null;
-        // Check suffixes for each word
-        suffixRules.forEach((rule) => {
-          if (word.match(rule.suffix)) {
-            matchedSuffix = word.replace(rule.suffix, "");
-            output += `${matchedSuffix} ${word.match(rule.suffix)[0]} : ${getPronunciation(word)}\n`;
-          }
-        });
+        if (conjunctionsAndParticles.includes(word)) {
+          output += `${word} : No matching suffixes found (conjunction/particle)\n`;
+        } else {
+          let matchedSuffix = null;
+          // Check suffixes for each word
+          suffixRules.forEach((rule) => {
+            if (word.match(rule.suffix)) {
+              matchedSuffix = word.replace(rule.suffix, "");
+              output += `${matchedSuffix} ${word.match(rule.suffix)[0]} : ${getPronunciation(word)}\n`;
+            }
+          });
 
-        if (!matchedSuffix) {
-          output += `${word} : No matching suffixes found\n`;
+          if (!matchedSuffix) {
+            output += `${word} : No matching suffixes found\n`;
+          }
         }
       });
 
@@ -118,3 +127,4 @@
   </script>
 </body>
 </html>
+
