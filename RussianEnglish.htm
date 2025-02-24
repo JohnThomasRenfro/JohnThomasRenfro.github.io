@@ -51,23 +51,31 @@
             const paragraph = document.getElementById('russianParagraph').value.trim();
             const suffixes = [
                 'ся', 'сь', 'ет', 'ет', 'и', 'ой', 'ым', 'ая', 'ой', 'ом', 'ые', 'ая', 'ное', 'ая', 'о', 'ая', 'ев', 'е',
-                'ого', 'ому', 'или', 'ший', 'ше', 'ут', 'ете', 'ий', 'ью', 'ой', 'ем', 'ишь', 'или', 'ении'
+                'ого', 'ому', 'или', 'ший', 'ше', 'ут', 'ете', 'ий', 'ью', 'ой', 'ем', 'ишь', 'или', 'ении', 'ний', 'нее',
+                'ше', 'й', 'ив', 'лив', 'ним', 'ян', 'ать', 'ать', 'ение', 'ий', 'ила', 'ив', 'вший', 'ливой'
             ];
-            
-            const words = paragraph.split(/\s+/); // Split the paragraph into words by spaces
+
+            // Match words including punctuation and process them
+            const words = paragraph.split(/(\s+|\b[^а-яА-ЯёЁ]+|\b)/).filter(Boolean);
+
             const processedWords = words.map(word => {
-                let result = word;
-                for (let suffix of suffixes) {
-                    if (word.endsWith(suffix)) {
-                        result = word.slice(0, word.length - suffix.length) + ' ' + suffix;
-                        break;
+                // Check if the word contains letters and match suffixes
+                if (/^[а-яА-ЯёЁ]+$/.test(word)) {
+                    let result = word;
+                    for (let suffix of suffixes) {
+                        if (word.endsWith(suffix)) {
+                            result = word.slice(0, word.length - suffix.length) + ' ' + suffix;
+                            break;
+                        }
                     }
+                    return result;
+                } else {
+                    return word; // Non-words (like punctuation) remain unchanged
                 }
-                return result;
             });
 
             // Display the processed words with spaces between suffixes
-            document.getElementById('result').innerText = processedWords.join(' ');
+            document.getElementById('result').innerText = processedWords.join('');
         }
     </script>
 </body>
