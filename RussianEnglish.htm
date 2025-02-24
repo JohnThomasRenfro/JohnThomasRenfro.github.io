@@ -1,80 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Russian Phonetic Transcription</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        textarea {
-            padding: 10px;
-            font-size: 16px;
-            margin: 10px;
-            width: 80%;
-            height: 150px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            white-space: pre-wrap; /* Keeps formatting with newlines */
-            word-wrap: break-word;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Russian Suffix Separator and Pronunciation Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+    .output {
+      white-space: pre-wrap;
+      font-family: Courier, monospace;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Russian Phonetic Transcription</h1>
-    <p>Enter a Russian paragraph and see the phonetic transcription for pronunciation!</p>
-    
-    <textarea id="russianParagraph" placeholder="Enter Russian paragraph"></textarea><br>
-    <button onclick="processParagraph()">Show Phonetic Transcription</button>
+  <h1>Russian Suffix Separator and Pronunciation Tool</h1>
+  
+  <textarea id="inputText" placeholder="Enter a Russian paragraph..."></textarea><br>
+  <button onclick="processText()">Process</button>
 
-    <div id="result"></div>
+  <h3>Processed Output:</h3>
+  <div id="output" class="output"></div>
 
-    <script>
-        // Russian phonetic mapping
-        const phoneticMapping = {
-            'а': 'ah', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'eh', 'ё': 'yo', 'ж': 'zh', 
-            'з': 'z', 'и': 'ee', 'й': 'ee', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'oe', 
-            'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'ue', 'ф': 'f', 'х': 'kh', 'ц': 'ts', 
-            'ч': 'ch', 'ш': 'sh', 'щ': 'shch', 'ъ': '', 'ы': 'i', 'ь': '', 'э': 'eh', 'ю': 'yoo', 
-            'я': 'ya'
-        };
+  <script>
+    function processText() {
+      const inputText = document.getElementById("inputText").value;
+      const output = document.getElementById("output");
 
-        // Function to convert Russian text to phonetic transcription
-        function processParagraph() {
-            const paragraph = document.getElementById('russianParagraph').value.trim();
-            const words = paragraph.split(/(\s+|\b[^а-яА-ЯёЁ]+|\b)/).filter(Boolean);
+      const suffixes = {
+        "стол": ["-о", "-а", "-у", "-ом", "-е"],
+        "папа": ["-ы", "-е", "-у", "-ой", "-е"],
+        "машина": ["-ы", "-е", "-у", "-ой", "-е"],
+        "окно": ["-о", "-а", "-у", "-ом", "-е"],
+        // Add more suffixes based on the gender, case, and number.
+      };
 
-            const processedWords = words.map(word => {
-                return word.split('').map(char => {
-                    // Apply phonetic mapping if the character is a Russian letter
-                    if (phoneticMapping[char.toLowerCase()]) {
-                        return phoneticMapping[char.toLowerCase()];
-                    } else {
-                        return char; // Non-Russian characters (spaces, punctuation, etc.) remain unchanged
-                    }
-                }).join('');
-            });
+      const pronunciation = {
+        "стол": "stol",
+        "папа": "papa",
+        "машина": "mashina",
+        "окно": "okno",
+        // Add more pronunciations here.
+      };
 
-            // Display the phonetic transcription result
-            document.getElementById('result').innerText = processedWords.join('');
+      const inputWords = inputText.split(/\s+/);
+      let resultText = "";
+
+      inputWords.forEach(word => {
+        const lowerWord = word.toLowerCase();
+        if (suffixes[lowerWord]) {
+          let wordWithSuffixes = word;
+          const wordPronunciation = pronunciation[lowerWord];
+
+          // Add spaces between suffixes for visual clarity
+          const suffixedWord = suffixes[lowerWord].map(suffix => `${wordWithSuffixes}${suffix}`).join(' ');
+
+          resultText += `${wordPronunciation} (${word})\n${suffixedWord}\n\n`;
+        } else {
+          resultText += `${word}\n`;
         }
-    </script>
+      });
+
+      output.textContent = resultText;
+    }
+  </script>
+
 </body>
 </html>
