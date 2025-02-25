@@ -105,7 +105,7 @@
 <body>
     <h1>Korean Pronunciation Analyzer</h1>
     <p>Enter a Korean paragraph below:</p>
-“尹 ‘헌재결정 승복’ 직접 밝힐 마지막 기회”       
+25일 오전 충남 천안 서울세종고속도로 공사 현장에서 도로 교량 상판으로 추정되는 구조물이 붕괴하는
     <textarea id="inputText" placeholder="Type Korean text here..."></textarea>
     <button onclick="analyzeText()">Analyze</button>
     <div id="output"></div>
@@ -186,6 +186,7 @@ const dictionary = {
     '마지못하': { pronunciation: 'maji못ha', definition: 'to be compelled to do, forced to do; reluctant, unwilling, halfhearted; unavoidable, inevitable' },
     '말대꾸하': { pronunciation: '말대꾸ha', definition: 'to talk back, retort (without accepting what the other person said)' },
     '말씀하시': { pronunciation: '말씀hasi', definition: '?, , , to speak, talk, tell , said/say (hon.)' },
+    '고속도로': { pronunciation: 'goe-soek-doe-loe', definition: 'expressway' },
     '무서워하': { pronunciation: 'museo워ha', definition: 'to fear, be afraid (of something)' },
     '바래다주': { pronunciation: 'ba래daju', definition: 'to see somebody off, take someone home' },
     '받아들이': { pronunciation: '받a들i', definition: 'to accept, embrace, adopt, absorb, receive; comply (with), consent (to)' },
@@ -219,7 +220,7 @@ const dictionary = {
     '거스름돈': { pronunciation: 'geo스름돈', definition: 'change (coins)' },
     '고등학교': { pronunciation: 'go등학교', definition: 'high school, , 거스름돈' },
     '고등학생': { pronunciation: 'go등학생', definition: 'high school student, , 내기' },
-    '고속도로': { pronunciation: 'go속doro', definition: 'expressway, highway' },
+    '고속도로': { pronunciation: 'go-sog-do-ro', definition: 'expressway, highway' },
     '고속버스': { pronunciation: 'go속beo스', definition: 'express bus' },
     '공중전화': { pronunciation: '공중전화', definition: 'public phone, pay phone' },
     '교환학생': { pronunciation: '교환학생', definition: 'exchange student' },
@@ -292,6 +293,7 @@ const dictionary = {
     '장바구니': { pronunciation: '장baguni', definition: 'shopping basket' },
     '저기까지': { pronunciation: 'jeogi까ji', definition: 'to that extent' },
     '전기밥솥': { pronunciation: '전gi밥솥', definition: 'electric rice cooker' },
+'추정되는': { pronunciation: 'chue-juhng-due-nuen', definition: 'estimated' },  
     '전화번호': { pronunciation: '전화번ho', definition: 'phone number' },
     '진심으로': { pronunciation: '진심으ro', definition: 'sincerely, from one\'s heart' },
     '초등학교': { pronunciation: 'cho등학교', definition: 'elementary school, , 문화재' },
@@ -2062,7 +2064,7 @@ const dictionary = {
     '공기': { pronunciation: '공gi', definition: 'air, atmosphere; atmosphere (mood); bowl' },
     '공동': { pronunciation: '공동', definition: 'joint, group, collaboration; work together, cooperate' },
     '공부': { pronunciation: '공bu', definition: 'studying, , 하는 일' },
-    '공사': { pronunciation: '공sa', definition: 'construction; public corporation; official and personal affairs' },
+    '공사': { pronunciation: 'gong-sa', definition: 'construction; public corporation; official and personal affairs' },
     '공업': { pronunciation: '공업', definition: '(manufacturing) industry' },
     '공연': { pronunciation: '공연', definition: 'public performance, concert, show' },
     '공원': { pronunciation: '공원', definition: 'park' },
@@ -2733,6 +2735,10 @@ const dictionary = {
     '수저': { pronunciation: 'sujeo', definition: 'spoon and chopsticks (traditional Korean utensils)' },
     '수준': { pronunciation: 'su준', definition: 'level, standard, norm, average' },
     '수첩': { pronunciation: 'su첩', definition: '(pocket) notebook, personal organizer, , 공동' },
+    '교량': { pronunciation: 'gyoe-lyahng', definition: 'bridge' },
+    '상판': { pronunciation: 'sahng-pahn', definition: 'top' },
+    '에서': { pronunciation: 'aei-suh', definition: 'in' },
+    '으로': { pronunciation: 'ue-loe', definition: 'to the' },
     '수출': { pronunciation: 'su출', definition: 'export' },
     '수표': { pronunciation: 'su표', definition: 'check (you\'re writing or receiving)' },
     '수필': { pronunciation: 'su필', definition: 'essay (that a writer would write), , 승진' },
@@ -3474,7 +3480,7 @@ const dictionary = {
     '현대': { pronunciation: '현대', definition: 'modern times, today, present era' },
     '현상': { pronunciation: '현상', definition: 'the present situation, phenomenon, existing circumstances, status quo; develop, have something developed; reward, bounty, prize' },
     '현실': { pronunciation: '현실', definition: 'actuality, reality' },
-    '현장': { pronunciation: '현장', definition: 'the actual spot, scene (of action), site; field' },
+    '현장': { pronunciation: 'huhn-jahng', definition: 'the actual spot, scene (of action), site; field' },
     '현재': { pronunciation: '현재', definition: 'present tense' },
     '형사': { pronunciation: '형sa', definition: 'detective, investigator; (criminal) investigation, case' },
     '형식': { pronunciation: '형식', definition: 'form, formality, convention; type, style, format, template, form' },
@@ -3770,6 +3776,7 @@ const dictionary = {
     '풀': { pronunciation: '풀', definition: '풀어요, 풀었어요, 풀 거예요, to untangle, unpack, open, take off, unwrap, unfasten; solve; relax, loosen up' },
     '피': { pronunciation: 'pi', definition: '펴요, 폈어요, 필 거예요, to bloom, blossom, flower; burn; look great' },
     '하': { pronunciation: 'ha', definition: 'job (2), work that you do' },
+    '에': { pronunciation: 'ae', definition: 'at,in,on' },    
     '혹': { pronunciation: '혹', definition: 'or, if not; sometimes' },
     '화': { pronunciation: '화', definition: 'painter, artist' },
     '효': { pronunciation: '효', definition: 'effect, efficiency, effectiveness' },
@@ -3936,102 +3943,83 @@ const dictionary = {
             '과': { pronunciation: 'gwa', definition: 'and/with (used after consonants)' }
         };
 
-        // Main analysis function
-        function analyzeText() {
-            const input = document.getElementById('inputText').value.trim();
-            const outputDiv = document.getElementById('output');
-            outputDiv.innerHTML = '';
+ // Function to segment words and analyze text
+function analyzeText() {
+    const input = document.getElementById('inputText').value.trim();
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = '';
 
-            if (!input) {
-                outputDiv.innerHTML = '<p>Please enter some Korean text.</p>';
-                return;
+    if (!input) {
+        outputDiv.innerHTML = '<p>Please enter some Korean text.</p>';
+        return;
+    }
+
+    // Remove spaces and punctuation
+    const cleanInput = input.replace(/[.,!?;:"'()\[\]{}‘’“”\s]/g, '');
+    
+    // Segment the text into words
+    const segmentedWords = segmentKoreanText(cleanInput, dictionary);
+
+    let outputHtml = '';
+    segmentedWords.forEach(word => {
+        if (dictionary[word]) {
+            outputHtml += formatWordEntry(word, dictionary[word]);
+        } else {
+            outputHtml += formatNotFound(word);
+        }
+    });
+
+    outputDiv.innerHTML = outputHtml;
+}
+
+// Function to segment text based on the longest dictionary match
+function segmentKoreanText(text, dictionary) {
+    let words = [];
+    let i = 0;
+
+    while (i < text.length) {
+        let found = false;
+
+        // Try to match the longest word first
+        for (let j = text.length; j > i; j--) {
+            let segment = text.slice(i, j);
+            if (dictionary[segment]) {
+                words.push(segment);
+                i = j; // Move forward by the length of the matched word
+                found = true;
+                break;
             }
-
-            // Define punctuation to remove or handle
-            const punctuationRegex = /[.,!?;:"'()\[\]{}‘’“”]/g;
-
-            // Split by spaces and process each word
-            const words = input.split(/\s+/);
-            words.forEach(word => {
-                let cleanWord = word.replace(punctuationRegex, ''); // Remove punctuation
-                let root = cleanWord;
-                let particle = '';
-                let punctuation = word.replace(cleanWord, ''); // Extract punctuation
-                
-                // Check for particles at the end
-                for (let p in particles) {
-                    if (cleanWord.endsWith(p)) {
-                        root = cleanWord.slice(0, -p.length);
-                        particle = p;
-                        break;
-                    }
-                }
-
-                // Check for compound word matches
-                let compoundMatches = splitCompoundWord(root, dictionary);
-                
-                // Process root word
-                let rootOutput = '';
-                if (dictionary[root]) {
-                    rootOutput = `
-                        <div class="word-entry">
-                            <p><strong>Original:</strong> ${root}</p>
-                            <p><strong>Pronunciation:</strong> ${dictionary[root].pronunciation}</p>
-                            <p><strong>Definition:</strong> ${dictionary[root].definition}</p>
-                        </div>`;
-                } else if (compoundMatches.length > 0) {
-                    rootOutput = compoundMatches.map(match => `
-                        <div class="word-entry">
-                            <p><strong>Original:</strong> ${match.word}</p>
-                            <p><strong>Pronunciation:</strong> ${match.definition.pronunciation}</p>
-                            <p><strong>Definition:</strong> ${match.definition.definition}</p>
-                        </div>`).join('');
-                } else {
-                    rootOutput = `
-                        <div class="word-entry">
-                            <p><strong>Original:</strong> ${root}</p>
-                            <p><strong>Pronunciation:</strong> (Not in dictionary)</p>
-                            <p><strong>Definition:</strong> (Not in dictionary)</p>
-                        </div>`;
-                }
-
-                // Process particle if present
-                let particleOutput = '';
-                if (particle) {
-                    particleOutput = `
-                        <div class="word-entry">
-                            <p><strong>Original:</strong> ${particle}</p>
-                            <p><strong>Pronunciation:</strong> ${particles[particle].pronunciation}</p>
-                            <p><strong>Definition:</strong> ${particles[particle].definition}</p>
-                        </div>`;
-                }
-
-                // Process punctuation if present
-                let punctuationOutput = '';
-                if (punctuation) {
-                    punctuationOutput = `
-                        <div class="word-entry">
-                            <p><strong>Punctuation:</strong> ${punctuation}</p>
-                        </div>`;
-                }
-
-                outputDiv.innerHTML += rootOutput + particleOutput + punctuationOutput;
-            });
         }
 
-        function splitCompoundWord(word, dictionary) {
-            let matches = [];
-            for (let i = 1; i < word.length; i++) {
-                let firstPart = word.slice(0, i);
-                let secondPart = word.slice(i);
-                if (dictionary[firstPart] && dictionary[secondPart]) {
-                    matches.push({ word: firstPart, definition: dictionary[firstPart] });
-                    matches.push({ word: secondPart, definition: dictionary[secondPart] });
-                    break;
-                }
-            }
-            return matches;
+        // If no match is found, move one character forward
+        if (!found) {
+            words.push(text[i]);
+            i++;
         }
+    }
+
+    return words;
+}
+
+// Function to format found words
+function formatWordEntry(word, entry) {
+    return `
+        <div class="word-entry">
+            <p><strong>Original:</strong> ${word}</p>
+            <p><strong>Pronunciation:</strong> ${entry.pronunciation}</p>
+            <p><strong>Definition:</strong> ${entry.definition}</p>
+        </div>`;
+}
+
+// Function to format words not found in dictionary
+function formatNotFound(word) {
+    return `
+        <div class="word-entry">
+            <p><strong>Original:</strong> ${word}</p>
+            <p><strong>Pronunciation:</strong> (Not in dictionary)</p>
+            <p><strong>Definition:</strong> (Not in dictionary)</p>
+        </div>`;
+}
 
     </script>
 
