@@ -838,6 +838,7 @@ const replsB = [
 {p1:/(間)(?!X)(に)(?!X)(合)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xman$2Xia$3X = be in time,answer purpose,can do without$4X,UVerb'},
 {p1:/(間)(?!X)(も)(?!X)(無)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xmam$2Xon$3Xa = soon,in a short time$4X,KuVerb'},
 {p1:/(間)(?!X)(違)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmac$2Xhi$3Xgae = mistake,confuse$4X,RuVerb'},
+{p1:/(受)(?!X)(け)(?!X)(取)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xu$2Xke$3Xto = to receive,$4XRuVerb'},
 {p1:/(隣)(?!X)(り)(?!X)(合)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xton$2Xar$3Xia = adjoin,be next door to each other$4X,UVerb'},
 {p1:/(飛)(?!X)(び)(?!X)(出)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xtob$2Xid$3Xa = fly out,dash out$4X,SuVerb'},
 {p1:/(飛)(?!X)(び)(?!X)(込)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xtob$2Xik$3Xo = dive into$4X,MuVerb'},
@@ -1527,6 +1528,7 @@ const replsB = [
 {p1:/(生)(?!X)(き)(?!X)(方)(?!X)/g,r1:'$1Xiki$2Xka$3Xta = way of life,lifestyle,Noun'},
 {p1:/(生)(?!X)(き)(?!X)(物)(?!X)/g,r1:'$1Xiki$2Xmo$3Xno = living creature,Noun'},
 {p1:/(生)(?!X)(け)(?!X)(花)(?!X)/g,r1:'$1Xike$2Xba$3Xna = flower arrangement,Noun'},
+{p1:/(先)(?!X)(送)(?!X)(り)(?!X)/g,r1:'$1Xsaki$2Xoku$3Xri = postponement,Noun'},
 {p1:/(生)(?!X)(ま)(?!X)(れ)(?!X)/g,r1:'$1Xu$2Xma$3Xre = birth,IchidanVerb'},
 {p1:/(生)(?!X)(意)(?!X)(気)(?!X)/g,r1:'$1Xnama$2Xik$3Xi = cheeky,conceited,Noun'},
 {p1:/(田)(?!X)(ん)(?!X)(ぼ)(?!X)/g,r1:'$1Xtan$2Xbo$3X = rice field,Noun'},
@@ -4448,6 +4450,7 @@ const replsB = [
 {p1:/(昨)(?!X)(晩)(?!X)/g,r1:'$1Xsaku$2Xban = last night,last evening,Noun'},
 {p1:/(昭)(?!X)(和)(?!X)/g,r1:'$1Xsyou$2Xwa = Showa era,Noun'},
 {p1:/(是)(?!X)(非)(?!X)/g,r1:'$1Xze$2Xhi = by all means,at any cost,Noun'},
+{p1:/(異)(?!X)(論)(?!X)/g,r1:'$1Xi$2Xron = different opinion,Noun'},
 {p1:/(昼)(?!X)(前)(?!X)/g,r1:'$1Xhiru$2Xmae = before noon,Noun'},
 {p1:/(昼)(?!X)(寝)(?!X)/g,r1:'$1Xhiru$2Xne = siesta,nap,Noun'},
 {p1:/(昼)(?!X)(間)(?!X)/g,r1:'$1Xhiru$2Xma = daytime,Noun'},
@@ -7000,8 +7003,6 @@ const replsB = [
 {p1:/(で)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xde = to be,is$2X,BeVerb'},
 {p1:/(と)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xto = to try to do$2X,SuVerb'},
 {p1:/(呈)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xtei = to offer$2X,SuVerb'},
-{p1:/(ど)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xdo = move out of way$2X,KuVerb'},
-{p1:/(ど)(?!X)([わいうえおっ])(?!X)/g,r1:'$1Xhow = what$2X,UVerb'},
 {p1:/(な)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xna = become$2X,RuVerb'},
 {p1:/(ひ)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xhi = run over$2X,KuVerb'},
 {p1:/(忍)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1Xshino = to sneak,to endure$2X,BuVerb'},
@@ -8548,15 +8549,8 @@ const replsB = [
 {p1:/(の)(?!X)(は)(?!X)/g,r1:'$1Xno$2Xwa = as for this in noun form,Postposition'},
 {p1:/(べ)(?!X)(き)(?!X)/g,r1:'$1Xbe$2Xki = should,Postposition'},
 {p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde = up to,Postposition'},
-{p1:/(等|な)(?!X)(ど)(?!X)/g,r1:'$1Xna$2Xdo = etcetera,Postposition'},
+{p1:/(等|な)(?!X)(ど)(?!X)/g,r1:'$1Xna$2Xdo = etcetera,Conjunction'},
 
-{p1:/(Adverb)(く)(?!X)/g,r1:'$1 $2Xku = and,Postposition'},
-{p1:/(Nounと)(?!X)/g,r1:'$1Xto = with the above,the person said,Postposition'},
-{p1:/(Adjectiveな)(?!X)/g,r1:'$1Xna = NaAdjective'},
-{p1:/(Adverbな)(?!X)/g,r1:'$1Xna = Adverb'},
-{p1:/(Nounら|Noun等)(?!X)/g,r1:'$1Xra = plural,Postposition'},
-{p1:/(Postpositionの|Verbの|Nounの)(?!X)/g,r1:'$1Xno = of the above,Postposition'},
-{p1:/(Verb|Punctuation)(と)(?!X)/g,r1:'$1 $2Xto = by way of the above,Postposition'},
 {p1:/(か)(?!X)/g,r1:'$1Xka = indicates a question above,Postposition'},
 {p1:/(が)(?!X)/g,r1:'$1Xga = the subject above acts,Postposition'},
 {p1:/(で)(?!X)/g,r1:'$1Xde = at,with the above,Postposition'},
@@ -8566,6 +8560,14 @@ const replsB = [
 {p1:/(も)(?!X)/g,r1:'$1Xmo = the above too,Postposition'},
 {p1:/(や)(?!X)/g,r1:'$1Xya = and,comma,Postposition'},
 {p1:/(を)(?!X)/g,r1:'$1Xoo = direct object above is acted on,Postposition'},
+
+{p1:/(Adverb)(く)(?!X)/g,r1:'$1 $2Xku = and,Postposition'},
+{p1:/(Nounと)(?!X)/g,r1:'$1Xto = with the above,the person said,Postposition'},
+{p1:/(Adjectiveな)(?!X)/g,r1:'$1Xna = NaAdjective'},
+{p1:/(Adverbな)(?!X)/g,r1:'$1Xna = Adverb'},
+{p1:/(Nounら|Noun等)(?!X)/g,r1:'$1Xra = plural,Postposition'},
+{p1:/(Punctuation|Postposition|Verb|Noun)(の)(?!X)/g,r1:'$1X$2no = of the above,Postposition'},
+{p1:/(Verb|Punctuation)(と)(?!X)/g,r1:'$1 $2Xto = by way of the above,Postposition'},
 
 {p1:/(Postposition|Punctuation)/g,r1:'$1<hr>'},
 
@@ -8599,7 +8601,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-（ブルームバーグ）： 米アップルは24日、今後４年間で米国内に5000億ドル（約74兆8800億円）を投資する計画を発表した。２万人を新規雇用し、人工知能（ＡＩ）サーバーの生産を行うという。アップルは、トランプ米大統領が中国からの輸入品に課す予定の関税について、救済措置を求めている。
+政府、与党内で、年金制度改革関連法案の今国会提出を先送りし、夏の参院選後とする案が浮上していることが25日、分かった。全ての国民が受け取る基礎年金（国民年金）の底上げや、パートらの厚生年金加入拡大を目指していたが、現役世代や企業の負担増を伴うため、与党や経済界などから異論が出ていた。選挙への影響を考慮し、世論の批判や野党の追及を避ける判断に傾いたとみられる。
 
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
