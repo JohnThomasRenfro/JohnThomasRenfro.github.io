@@ -154,23 +154,23 @@ function translateB()
 
 const replsB=[
 
-{p1:/([\(\（])(?!X)/g,r1:'$1Xopen parenthesis=Punctuation'},
-{p1:/([\)\）])(?!X)/g,r1:'$1Xclose parenthesis=Punctuation'},
-{p1:/([「『])(?!X)/g,r1:'$1Xopen quote=Punctuation'},
-{p1:/([」』])(?!X)/g,r1:'$1Xclose quote=Punctuation'},
-{p1:/(\“)(?!X)/g,r1:'$1Xopen quote=Punctuation'},
-{p1:/(\”)(?!X)/g,r1:'$1Xclose quote=Punctuation'},
-{p1:/(\・)(?!X)/g,r1:'$1Xword separator=Punctuation'},
-{p1:/(、)(?!X)/g,r1:'$1Xcomma=Punctuation'},
-{p1:/(。)(?!X)/g,r1:'$1Xperiod=Punctuation'},
-{p1:/(【)(?!X)/g,r1:'$1Xopen bracket=Punctuation'},
-{p1:/(】)(?!X)/g,r1:'$1Xclose bracket=Punctuation'},
+{p1:/([\(\（])(?!X)/g,r1:'$1Xopen parenthesis;Punctuation'},
+{p1:/([\)\）])(?!X)/g,r1:'$1Xclose parenthesis;Punctuation'},
+{p1:/([「『])(?!X)/g,r1:'$1Xopen quote;Punctuation'},
+{p1:/([」』])(?!X)/g,r1:'$1Xclose quote;Punctuation'},
+{p1:/(\“)(?!X)/g,r1:'$1Xopen quote;Punctuation'},
+{p1:/(\”)(?!X)/g,r1:'$1Xclose quote;Punctuation'},
+{p1:/(\・)(?!X)/g,r1:'$1Xword separator;Punctuation'},
+{p1:/(、)(?!X)/g,r1:'$1Xcomma;Punctuation'},
+{p1:/(。)(?!X)/g,r1:'$1Xperiod;Punctuation'},
+{p1:/(【)(?!X)/g,r1:'$1Xopen bracket;Punctuation'},
+{p1:/(】)(?!X)/g,r1:'$1Xclose bracket;Punctuation'},
 {p1:/(．)(?!X)/g,r1:'$1Xten=dot,decimal point,Punctuation'},
-{p1:/(：)(?!X)/g,r1:'$1Xcolon=Punctuation'},
-{p1:/(＝)(?!X)/g,r1:'$1Xequals=Punctuation'},
+{p1:/(：)(?!X)/g,r1:'$1Xcolon;Punctuation'},
+{p1:/(＝)(?!X)/g,r1:'$1Xequals;Punctuation'},
 {p1:/(～)(?!X)/g,r1:'$1Xhyphen=from to,Punctuation'},
-{p1:/(\?)(?!X)/g,r1:'$1question mark=Punctuation'},
-{p1:/(\/)(?!X)/g,r1:'$1forward slash=Punctuation'},
+{p1:/(\?)(?!X)/g,r1:'$1question mark;Punctuation'},
+{p1:/(\/)(?!X)/g,r1:'$1forward slash;Punctuation'},
   
 {p1:/(せ)(?!X)(ざ)(?!X)(る)(?!X)(を)(?!X)(え)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xse$2Xza$3Xru$4Xo$5Xe$6Xna$7Xi=can t help but do;Noun'},
 {p1:/(あ)(?!X)(ち)(?!X)(ら)(?!X)(こ)(?!X)(ち)(?!X)(ら)(?!X)/g,r1:'$1Xa$2Xchi$3Xra$4Xko$5Xchi$6Xra=all over;Noun'},
@@ -1188,6 +1188,7 @@ const replsB=[
 {p1:/(労)(?!X)(働)(?!X)(者)(?!X)/g,r1:'$1Xrou$2Xdou$3Xsya=worker;Noun'},
 {p1:/(効)(?!X)(き)(?!X)(目)(?!X)/g,r1:'$1Xkik$2Xim$3Xe=effect,efficacy;Noun'},
 {p1:/(動)(?!X)(物)(?!X)(園)(?!X)/g,r1:'$1Xdou$2Xbu$3Xtsuen=zoo;Noun'},
+{p1:/(検)(?!X)(討)(?!X)(中)(?!X)/g,r1:'$1Xken$2Xtou$3Xcyuu=under investigation;Noun'},
 {p1:/(勤)(?!X)(め)(?!X)(先)(?!X)/g,r1:'$1Xtsu$2Xto$3Xmesaki=employment;Noun'},
 {p1:/(包)(?!X)(み)(?!X)(紙)(?!X)/g,r1:'$1Xtsutsumi$2Xga$3Xmi=wrapping paper;Noun'},
 {p1:/(北)(?!X)(朝)(?!X)(鮮)(?!X)/g,r1:'$1Xkita$2Xcyou$3Xsen=North Korea;Noun'},
@@ -2806,6 +2807,7 @@ const replsB=[
 {p1:/(任)(?!X)(期)(?!X)/g,r1:'$1Xnin$2Xki=term in office;Noun'},
 {p1:/(企)(?!X)(業)(?!X)/g,r1:'$1Xki$2Xgyou=business;Noun'},
 {p1:/(企)(?!X)(画)(?!X)/g,r1:'$1Xki$2Xkaku=plan;Noun'},
+{p1:/(自)(?!X)(公)(?!X)/g,r1:'$1Xji$2Xkou=LDP and Komeito coalition;Noun'},
 {p1:/(休)(?!X)(み)(?!X)/g,r1:'$1Xya$2Xsumi=rest;Noun'},
 {p1:/(休)(?!X)(学)(?!X)/g,r1:'$1Xkyuu$2Xgaku=leave of absence,absence;Noun'},
 {p1:/(休)(?!X)(息)(?!X)/g,r1:'$1Xkyuu$2Xsoku=rest,break;Noun'},
@@ -2813,6 +2815,7 @@ const replsB=[
 {p1:/(休)(?!X)(戦)(?!X)/g,r1:'$1Xkyuu$2Xsen=cease,fire;Noun'},
 {p1:/(休)(?!X)(日)(?!X)/g,r1:'$1Xkyuu$2Xjitsu=day off;Noun'},
 {p1:/(休)(?!X)(暇)(?!X)/g,r1:'$1Xkyuu$2Xka=holiday;Noun'},
+{p1:/(歳)(?!X)(出)(?!X)/g,r1:'$1Xsai$2Xsyutsu=annual expenditures;Noun'},
 {p1:/(休)(?!X)(校)(?!X)/g,r1:'$1Xkyuu$2Xkou=temporary closure of school;Noun'},
 {p1:/(休)(?!X)(業)(?!X)/g,r1:'$1Xkyuu$2Xgyou=suspension of business,closure;Noun'},
 {p1:/(休)(?!X)(止)(?!X)/g,r1:'$1Xkyuu$2Xshi=cease,fire,pause,suspension;Noun'},
@@ -2823,7 +2826,7 @@ const replsB=[
 {p1:/(会)(?!X)(場)(?!X)/g,r1:'$1Xkai$2Xjyou=venue;Noun'},
 {p1:/(会)(?!X)(社)(?!X)/g,r1:'$1Xkai$2Xsya=company;Noun'},
 {p1:/(会)(?!X)(見)(?!X)/g,r1:'$1Xkai$2Xken=press conference;Noun'},
-{p1:/(会)(?!X)(計)(?!X)/g,r1:'$1Xkai$2Xkei=finance;Noun'},
+{p1:/(会)(?!X)(計)(?!X)/g,r1:'$1Xkai$2Xkei=accounting;Noun'},
 {p1:/(会)(?!X)(話)(?!X)/g,r1:'$1Xkai$2Xwa=conversation;Noun'},
 {p1:/(会)(?!X)(談)(?!X)/g,r1:'$1Xkai$2Xdan=formal talks;Noun'},
 {p1:/(会)(?!X)(議)(?!X)/g,r1:'$1Xkai$2Xgi=conference;Noun'},
@@ -8632,7 +8635,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-忙しい日々の暮らしにおいて、時短や効率の良さはとても重要です。ちょっとした収納の工夫で、無駄な動きを減らし、ストレスなく片付く仕組みを作ることができます。今回は、筆者が生活の中で実際に効果を感じた最短動線の収納アイデア
+自民、公明両党は27日、検討中の2025年度予算案の修正案について、一般会計の歳出総額を政府案より3400億円程度減額する方向で調整に入った。自公は詰めの作業をしたうえで、28日にも修正案を開会中の通常国会に提出する。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <br>
