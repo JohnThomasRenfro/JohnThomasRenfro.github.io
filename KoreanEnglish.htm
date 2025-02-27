@@ -82,7 +82,7 @@
   <!-- Korean Text Analyzer -->
   <h2>Korean Text Analyzer</h2>
 Cut and paste this Korean text into the textarea below.<br>  
-출생아 수를 의미한다.출생아 수와 조출생률(인구 1000명당 출생아
+26일 글로벌 가상화폐 거래소 바이낸스에 따르면 비트코인은 이날 오후 3시 8만8500달러에 거래 중이다. 이날
   <textarea id="inputText" placeholder="Enter Korean text..." rows="4"></textarea>
 
   <button onclick="analyzeText()">Analyze Text</button>
@@ -94,10 +94,10 @@ Cut and paste this Korean text into the textarea below.<br>
   <h2>Korean Dictionary Entry Formatter</h2>This is for admin use.<br> 
 
   <label for="hangul">Hangul:</label>
-  <input type="text" id="hangul" placeholder="Enter Hangul"/>
+  <input type="text" id="hangul" placeholder="Enter the Hangul"/>
 
-  <label for="d1">English d1:</label>
-  <input type="text" id="d1" placeholder="Enter English d1"/>
+  <label for="d1">English Definition:</label>
+  <input type="text" id="d1" placeholder="Enter the English definition"/>
 
   <button onclick="formatEntry()">Format Dictionary Entry</button>
 
@@ -189,6 +189,8 @@ function formatWordWithPhonetics(word, meaning) {
     const dictionary = {
 '기말/학기말':'end of a term, end of a semester, , 보상',
 '우리나라의':'Korean',
+'바이낸스에':'Binance',
+'비트코인은':'Bitcoin',
 '가물가물하':'to be blurry, blurred, faint memory',
 '곱슬곱슬하':'to be curly',
 '따끈따끈하':'to be very hot, warm (can refer to nouns as being hot/not common)',
@@ -212,6 +214,7 @@ function formatWordWithPhonetics(word, meaning) {
 '달라고하':'to request (ask) to give (quoting an imperative sentence of the original speaker)',
 '당황스럽':'to be flustered, disconcerted (not composed), confused, embarrassed',
 '데이트하':'to date',
+'가상화폐':'cryptocurrency',
 '도둑질하':'to steal, rob',
 '돌아가시':'to pass away, die (hon); return (to), go back (to); be restored, revert; make a detour',
 '비상계엄':'martial law',
@@ -260,6 +263,7 @@ function formatWordWithPhonetics(word, meaning) {
 '고속도로':'expressway, highway',
 '고속버스':'express bus',
 '공중전화':'public phone, pay phone',
+'당선으로':'elected',
 '교환학생':'exchange student',
 '그러니까':'therefore, consequently, so; exactly (agreeing with something stated)',
 '그럭저럭':'somehow (barely managing to do something), passably (not satisfactory but to some degree); before one realizes it',
@@ -327,7 +331,9 @@ function formatWordWithPhonetics(word, meaning) {
 '이리저리':'here and there, this way and that',
 '이쪽으로':'this way, over here',
 '일기예보':'weather forecast',
+'기대됐던':'expected',
 '일상생활':'everyday life',
+'트레이드':'trade',
 '자기소개':'self-introduction',
 '자랑거리':'something one is proud of, pride and joy',
 '장바구니':'shopping basket',
@@ -588,10 +594,12 @@ function formatWordWithPhonetics(word, meaning) {
 '미련하':'to be stupid, foolish, dull, stubborn (slow and lazy) (can be used for lingering feelings)',
 '미숙하':'to be inexperienced, unskilled; be unripe, immature',
 '미안하':'to be sorry (less formal)',
+'크립토':'crypto',
 '미워하':'to hate, loathe, dislike',
 '밋밋하':'to be flat, level, even (no slope/curve); plain, dull',
 '바라보':'to look at, watch, gaze, stare; look (at), see; hope, expect; approach, come near; regard, consider',
 '바람둥':'womanizer, playboy',
+'약발이':'weak',
 '반납하':'to return, give back, hand in (sino)',
 '반대하':'to oppose, be against, reverse, object',
 '반복하':'to repeat',
@@ -825,6 +833,7 @@ function formatWordWithPhonetics(word, meaning) {
 '유용하':'to be useful, helpful (more formal); valuable; misuse',
 '유일하':'to be the only one, sole',
 '유지하':'to keep up, maintain',
+'글로벌':'global',
 '유치하':'to be childish, immature; invite, attract (funds, event, business)',
 '유쾌하':'to be cheerful, pleasant (describing someone/thing that gives you a pleasant feeling)',
 '유효하':'to be valid, good, available',
@@ -1032,6 +1041,8 @@ function formatWordWithPhonetics(word, meaning) {
 '화려하':'to be flashy, fancy, magnificent, glamorous, colorful; impressive, glorious',
 '화창하':'to be sunny, beautiful day (clear weather warm and gentle wind)',
 '화해하':'to be reconciled, make up with, settle, compromise',
+'솟았던':'rising',
+'퍼스트':'first',
 '확대하':'to enlarge, expand, magnify; exaggerate',
 '확보하':'to secure, procure, ensure, assure, retain (ensure possession)',
 '확실하':'to be certain, be reliable, for sure, definite, confident',
@@ -1459,6 +1470,7 @@ function formatWordWithPhonetics(word, meaning) {
 '일과표':'daily schedule (timetable of activities)',
 '일반적':'being general (widely applicable), typical, usual, average, ordinary',
 '일본어':'japanese',
+'거래소':'exchange',
 '일부러':'intentionally, on purpose, deliberately',
 '일식집':'Japanese restaurant',
 '일요일':'Sunday',
@@ -1554,6 +1566,7 @@ function formatWordWithPhonetics(word, meaning) {
 '캠퍼스':'campus, , 장사',
 '커피숍':'coffee shop',
 '컴퓨터':'computer',
+'테슬라':'Tesla',
 '코끼리':'elephant',
 '코멘트':'comment, remark',
 '코미디':'comedy',
@@ -1645,6 +1658,9 @@ function formatWordWithPhonetics(word, meaning) {
 '과하':'to overdo',
 '괴롭':'to be painful (emotional or moral), distressing',
 '구하':'to look for, seek, obtain, find (out); ask (for), request; calculate; rescue, save, help',
+'수혜':'beneficiary',
+'자산':'assets',
+'투자':'investment',
 '권하':'to advise, recommend (stronger, speaker wants you to do it); offer',
 '귀걸':'earring',
 '귀엽':'to be cute',
@@ -1900,6 +1916,8 @@ function formatWordWithPhonetics(word, meaning) {
 '어렵':'to be hard, difficult',
 '어리':'어려요, 어렸어요, 어릴 거예요, to be young, little; immature',
 '어린':'young children, kids',
+'증발':'evaporation',
+'했다':'did',
 '어쩌':'somehow, accidentally, by chance; sometimes, occasionally; do, be a certain (short for 어쩌다가)',
 '언젠':'someday',
 '얼마':'price',
@@ -2908,6 +2926,8 @@ function formatWordWithPhonetics(word, meaning) {
 '아까':'earlier',
 '아내':'(your own) wife',
 '아래':'under, beneath',
+'거래':'transaction',
+'이날':'on this day',
 '아마':'probably, maybe, likely, possibly',
 '아예':'from the beginning; not at all, never; fully, completely (focuses on time)',
 '아주':'very, quite, exceedingly; totally, completely (colloquial/associated with personal emotion)',
@@ -3996,7 +4016,7 @@ function formatWordWithPhonetics(word, meaning) {
 '월':'month',
 '위':'above; stomach; ranking',
 '음':'sound, tone, pronunciation of Chinese characters; yin, negative; umm, hmm, mhmm',
-'일':'day',
+'일':'day of the month',
 '잎':'leaf; blade, needle',
 '잔':'cup',
 '잘':'well',
