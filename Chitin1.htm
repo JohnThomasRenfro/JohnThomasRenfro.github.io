@@ -14,6 +14,7 @@
             grid-template-columns: repeat(10, 30px);
             grid-gap: 2px;
             margin: 20px auto;
+            border: 2px solid #000;
         }
         .cell {
             width: 30px;
@@ -35,10 +36,31 @@
         .scoreboard {
             margin-top: 20px;
         }
+        .pieces {
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+        }
+        .piece {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            cursor: grab;
+        }
+        .player1Piece {
+            background-color: green;
+        }
+        .player2Piece {
+            background-color: red;
+        }
     </style>
 </head>
 <body>
     <h1>Chitin - Microgame</h1>
+    <div class="pieces">
+        <div id="player1Piece" class="piece player1Piece" draggable="true"></div>
+        <div id="player2Piece" class="piece player2Piece" draggable="true"></div>
+    </div>
     <div class="grid" id="gameGrid"></div>
     <div class="turn" id="turnIndicator">Player 1's Turn</div>
     <div class="scoreboard">
@@ -69,15 +91,30 @@
                     rowArr.push(null);
                     const cell = document.createElement('div');
                     cell.classList.add('cell');
-                    cell.addEventListener('click', () => cellClicked(row, col));
+                    cell.setAttribute('data-row', row);
+                    cell.setAttribute('data-col', col);
+                    cell.addEventListener('dragover', (e) => e.preventDefault());  // Allow drop
+                    cell.addEventListener('drop', (e) => cellDropped(e, row, col));
                     grid.appendChild(cell);
                 }
                 board.push(rowArr);
             }
         }
 
-        // Handle a cell click event
-        function cellClicked(row, col) {
+        // Handle the drag start event (for pieces)
+        function handleDragStart(e) {
+            e.dataTransfer.setData('piece', e.target.id);
+        }
+
+        // Handle the drop event on a cell
+        function cellDropped(e, row, col) {
+            e.preventDefault();
+
+            // Get the dragged piece
+            const pieceId = e.dataTransfer.getData('piece');
+            const pieceElement = document.getElementById(pieceId);
+
+            // Check if the cell is empty
             if (board[row][col] !== null) {
                 alert('This cell is already occupied!');
                 return;
@@ -136,6 +173,13 @@
 
         // Initialize the game
         initializeBoard();
+
+        // Enable drag for pieces
+        const player1Piece = document.getElementById('player1Piece');
+        const player2Piece = document.getElementById('player2Piece');
+
+        player1Piece.addEventListener('dragstart', handleDragStart);
+        player2Piece.addEventListener('dragstart', handleDragStart);
     </script>
 </body>
 </html>
