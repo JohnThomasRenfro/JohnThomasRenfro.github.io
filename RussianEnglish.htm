@@ -7870,39 +7870,24 @@ function russianToPhonetic(text) {
     return text.split('').map(char => mapping[char] || char).join('');
 }
 
-// Function to process Russian words and suffixes with phonetics
 function processText() {
     const inputText = document.getElementById("inputText").value.trim();
-    let words = inputText.split(/\s+/).map(cleanWord);
+    let words = inputText.split(/\s+/).map(cleanWord); // Clean and split the text into words
     let outputText = "";
 
     words.forEach((word) => {
-        let { root, suffix } = separateSuffix(word);
+        let root = word;  // No suffix stripping anymore, so the word is the root.
         let rootMatch = dictionary[root] || "Unknown";
-        let suffixMatch = suffix ? suffixes[suffix] || "Unknown suffix" : "";
         let rootPhonetic = russianToPhonetic(root);
-        let suffixPhonetic = suffix ? russianToPhonetic(suffix) : "";
 
         if (dictionary[root]) {
             outputText += `<p>Russian word:(${root})<br>pronunciation:(<span class='phonetic'>${rootPhonetic}</span>)<br>translation:(${rootMatch})</p>`;
-            if (suffix) {
-                outputText += `<p>→Suffix(${suffix})<br>pronunciation:(<span class='phonetic'>${suffixPhonetic}</span>)<br>translation:(${suffixMatch})</p>`;
-            }
         } else {
             outputText += `<p>${word} ( <span class='phonetic'>${russianToPhonetic(word)}</span> ) ${rootMatch}</p>`; // Keep words without a match
         }
     });
 
     document.getElementById("output").innerHTML = outputText;
-}
-
-// Function to process suffixes separately
-function processSuffixes(suffix) {
-    let phonetic = russianToPhonetic(suffix);
-    let suffixMeaning = suffixDictionary[suffix] || "Unknown suffix";
-
-    return `<p><span class='suffix'>${suffix}</span> | <span class='phonetic'>${phonetic}</span> →
-    <span class='suffix-desc'>${suffixMeaning}</span></p>`;
 }
 
 </script>
