@@ -118,6 +118,11 @@
       const square = e.target;
 
       if (square && square !== board) {
+        // Prevent duplication if piece is already on the board
+        if (square.querySelector(".piece")) {
+          return; // Do not allow duplication if a piece already exists in this square
+        }
+
         // Create a new piece on the square (duplicate the dragged piece)
         const newPiece = document.createElement("div");
         newPiece.classList.add("piece");
@@ -177,6 +182,7 @@
   </script>
 </body>
 </html>
+
 
 
 
