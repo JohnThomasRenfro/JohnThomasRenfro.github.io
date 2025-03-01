@@ -110,15 +110,15 @@
         function cellDropped(e, row, col) {
             e.preventDefault();
 
-            // Get the dragged piece
-            const pieceId = e.dataTransfer.getData('piece');
-            const pieceElement = document.getElementById(pieceId);
-
-            // Check if the cell is empty
+            // Only place a piece if the cell is empty
             if (board[row][col] !== null) {
                 alert('This cell is already occupied!');
                 return;
             }
+
+            // Get the dragged piece
+            const pieceId = e.dataTransfer.getData('piece');
+            const pieceElement = document.getElementById(pieceId);
 
             // Place the current player's piece on the board
             board[row][col] = currentPlayer;
@@ -130,6 +130,10 @@
                 cell.classList.add('player2');
             }
 
+            // Change the turn
+            currentPlayer = currentPlayer === 1 ? 2 : 1;
+            turnIndicator.textContent = `Player ${currentPlayer}'s Turn`;
+
             // Check for scoring
             if (checkForScore(row, col)) {
                 if (currentPlayer === 1) {
@@ -140,15 +144,10 @@
                     score2.textContent = player2Score;
                 }
             }
-
-            // Change turn
-            currentPlayer = currentPlayer === 1 ? 2 : 1;
-            turnIndicator.textContent = `Player ${currentPlayer}'s Turn`;
         }
 
         // Check if the current move scores points
         function checkForScore(row, col) {
-            // For simplicity, we score based on surrounding cells
             const directions = [
                 { r: -1, c: 0 },  // Up
                 { r: 1, c: 0 },   // Down
@@ -171,15 +170,15 @@
             return score > 0;
         }
 
-        // Initialize the game
-        initializeBoard();
-
-        // Enable drag for pieces
+        // Enable drag for the initial pieces (player 1 and player 2)
         const player1Piece = document.getElementById('player1Piece');
         const player2Piece = document.getElementById('player2Piece');
 
         player1Piece.addEventListener('dragstart', handleDragStart);
         player2Piece.addEventListener('dragstart', handleDragStart);
+
+        // Initialize the board
+        initializeBoard();
     </script>
 </body>
 </html>
