@@ -104,11 +104,21 @@
         // Handle the drag start event (for pieces)
         function handleDragStart(e) {
             e.dataTransfer.setData('piece', e.target.id);
+            e.target.classList.add('dragging');  // Add a class to show it's being dragged
+        }
+
+        // Handle the drag end event (for pieces)
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
         }
 
         // Handle the drop event on a cell
         function cellDropped(e, row, col) {
             e.preventDefault();
+
+            // Get the dragged piece
+            const pieceId = e.dataTransfer.getData('piece');
+            const pieceElement = document.getElementById(pieceId);
 
             // Only place a piece if the cell is empty
             if (board[row][col] !== null) {
@@ -116,15 +126,14 @@
                 return;
             }
 
-            // Get the dragged piece
-            const pieceId = e.dataTransfer.getData('piece');
-            const pieceElement = document.getElementById(pieceId);
+            // Get the current player from the dragged piece's ID
+            const player = pieceElement.id === 'player1Piece' ? 1 : 2;
 
             // Place the current player's piece on the board
-            board[row][col] = currentPlayer;
+            board[row][col] = player;
             const cell = grid.children[row * gridSize + col];
 
-            if (currentPlayer === 1) {
+            if (player === 1) {
                 cell.classList.add('player1');
             } else {
                 cell.classList.add('player2');
@@ -143,31 +152,6 @@
                     player2Score++;
                     score2.textContent = player2Score;
                 }
-            }
-        }
-
-        // Check if the current move scores points
-        function checkForScore(row, col) {
-            const directions = [
-                { r: -1, c: 0 },  // Up
-                { r: 1, c: 0 },   // Down
-                { r: 0, c: -1 },  // Left
-                { r: 0, c: 1 }    // Right
-            ];
-
-            let score = 0;
-            directions.forEach(direction => {
-                const newRow = row + direction.r;
-                const newCol = col + direction.c;
-
-                if (newRow >= 0 && newRow < gridSize && newCol >= 0 && newCol < gridSize) {
-                    if (board[newRow][newCol] === currentPlayer) {
-                        score++;
-                    }
-                }
-            });
-
-            return score > 0;
         }
 
         // Enable drag for the initial pieces (player 1 and player 2)
@@ -180,5 +164,8 @@
         // Initialize the board
         initializeBoard();
     </script>
+
 </body>
 </html>
+
+
