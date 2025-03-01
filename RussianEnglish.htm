@@ -7871,19 +7871,23 @@ function russianToPhonetic(text) {
 }
 
 function processText() {
-    const inputText = document.getElementById("inputText").value.trim();
-    let words = inputText.split(/\s+/).map(cleanWord); // Clean and split the text into words
+    const inputText = document.getElementById("inputText").value.trim(); // Get the input text
+    let words = inputText.split(/(\s+)/); // Split the input into words and spaces
     let outputText = "";
 
     words.forEach((word) => {
-        let root = word;  // No suffix stripping anymore, so the word is the root.
-        let rootMatch = dictionary[root] || "Unknown";
-        let rootPhonetic = russianToPhonetic(root);
-
-        if (dictionary[root]) {
-            outputText += `<p>Russian word:(${root})<br>pronunciation:(<span class='phonetic'>${rootPhonetic}</span>)<br>translation:(${rootMatch})</p>`;
+        if (/\s+/.test(word)) {
+            outputText += word;
         } else {
-            outputText += `<p>${word} ( <span class='phonetic'>${russianToPhonetic(word)}</span> ) ${rootMatch}</p>`; // Keep words without a match
+            let root = word;  // No suffix stripping anymore, so the word is the root.
+            let rootMatch = dictionary[root] || "Unknown";
+            let rootPhonetic = russianToPhonetic(root);
+
+            if (dictionary[root]) {
+                outputText += `<p>Russian word:(${root})<br>pronunciation:(<span class='phonetic'>${rootPhonetic}</span>)<br>translation:(${rootMatch})</p>`;
+            } else {
+                outputText += `<p>${word} ( <span class='phonetic'>${russianToPhonetic(word)}</span> ) ${rootMatch}</p>`; // Keep words without a match
+            }
         }
     });
 
