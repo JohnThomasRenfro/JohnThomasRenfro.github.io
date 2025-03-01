@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitin - Microgame</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 30px);
+            grid-gap: 2px;
+            margin: 20px auto;
+        }
+        .cell {
+            width: 30px;
+            height: 30px;
+            background-color: lightgray;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .player1 {
+            background-color: green;
+        }
+        .player2 {
+            background-color: red;
+        }
+        .turn {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .scoreboard {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chitin - Microgame</h1>
+    <div class="grid" id="gameGrid"></div>
+    <div class="turn" id="turnIndicator">Player 1's Turn</div>
+    <div class="scoreboard">
+        <p>Player 1 Score: <span id="score1">0</span></p>
+        <p>Player 2 Score: <span id="score2">0</span></p>
+    </div>
+
+    <script>
+        // Game settings
+        const gridSize = 10;  // 10x10 grid
+        let currentPlayer = 1;  // Player 1 starts
+        let player1Score = 0;
+        let player2Score = 0;
+        let board = [];
+
+        // Initialize the game grid
+        const grid = document.getElementById('gameGrid');
+        const turnIndicator = document.getElementById('turnIndicator');
+        const score1 = document.getElementById('score1');
+        const score2 = document.getElementById('score2');
+
+        // Function to initialize the board
+        function initializeBoard() {
+            board = [];
+            for (let row = 0; row < gridSize; row++) {
+                let rowArr = [];
+                for (let col = 0; col < gridSize; col++) {
+                    rowArr.push(null);
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    cell.addEventListener('click', () => cellClicked(row, col));
+                    grid.appendChild(cell);
+                }
+                board.push(rowArr);
+            }
+        }
+
+        // Handle a cell click event
+        function cellClicked(row, col) {
+            if (board[row][col] !== null) {
+                alert('This cell is already occupied!');
+                return;
+            }
+
+            // Place the current player's piece on the board
+            board[row][col] = currentPlayer;
+            const cell = grid.children[row * gridSize + col];
+
+            if (currentPlayer === 1) {
+                cell.classList.add('player1');
+            } else {
+                cell.classList.add('player2');
+            }
+
+            // Check for scoring
+            if (checkForScore(row, col)) {
+                if (currentPlayer === 1) {
+                    player1Score++;
+                    score1.textContent = player1Score;
+                } else {
+                    player2Score++;
+                    score2.textContent = player2Score;
+                }
+            }
+
+            // Change turn
+            currentPlayer = currentPlayer === 1 ? 2 : 1;
+            turnIndicator.textContent = `Player ${currentPlayer}'s Turn`;
+        }
+
+        // Check if the current move scores points
+        function checkForScore(row, col) {
+            // For simplicity, we score based on surrounding cells
+            const directions = [
+                { r: -1, c: 0 },  // Up
+                { r: 1, c: 0 },   // Down
+                { r: 0, c: -1 },  // Left
+                { r: 0, c: 1 }    // Right
+            ];
+
+            let score = 0;
+            directions.forEach(direction => {
+                const newRow = row + direction.r;
+                const newCol = col + direction.c;
+
+                if (newRow >= 0 && newRow < gridSize && newCol >= 0 && newCol < gridSize) {
+                    if (board[newRow][newCol] === currentPlayer) {
+                        score++;
+                    }
+                }
+            });
+
+            return score > 0;
+        }
+
+        // Initialize the game
+        initializeBoard();
+    </script>
+</body>
+</html>
