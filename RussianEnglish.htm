@@ -6,7 +6,7 @@
   content="text/html;
   charset=UTF-8"
 >
-<title>The Japanese to English Parser</title>
+<title>The Russian to English Parser</title>
 
 <style>
 body {
@@ -45,7 +45,6 @@ body::before {
   text-shadow: 1px 1px 4px #6b5b4b;
 }
 
-/* Japanese Kikkō (Tortoise Shell) Pattern for TheStripe */
 .TheStripe {
   background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
   border: 3px solid #6b5b4b;
@@ -64,7 +63,6 @@ a:hover,a:active {
   color: #f4bf75;
 }
 
-/* Inputs and Textareas with Japanese Kumiko-Inspired Borders */
 input,textarea {
   background-color: #3a3a3a;
   border: 3px solid transparent;
@@ -82,7 +80,6 @@ input:hover,textarea:hover {
   box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
 }
 
-/* Output Container with Seigaiha (Wave) Pattern */
 #outputContainer {
   background: radial-gradient(circle,#2b2b2b 10%,#3a3a3a 60%,#2b2b2b 90%);
   border: 3px solid #6b5b4b;
@@ -1544,7 +1541,7 @@ const replsB=[
 {p1:/ (подвешив|подвес)(|и )/gi,r1:"$1=(+a) to suspend"},
 {p1:/ (подскакив|подскоч)(|и )/gi,r1:"$1=to run up; jump up"},
 {p1:/ (подтвержд|подтверд)(|и )/gi,r1:"$1=to be confirmed"},
-{p1:/ (пи|поп)(|и )/gi,r1:"$1=to have a drink"},
+{p1:/ (поп)(|и )/gi,r1:"$1=to have a drink"},
 {p1:/ (поспев|посп)(|е )/gi,r1:"$1=(к +d/нa +a) to be in time for; ripen (coll), be on time; keep up with"},
 {p1:/ (потир|потер)(|е )/gi,r1:"$1=(+a) to rub"},
 {p1:/ (тревожи|потревож)(|и )/gi,r1:"$1=(+a) to trouble"},
