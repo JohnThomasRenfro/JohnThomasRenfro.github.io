@@ -2,145 +2,145 @@
 <html>
 <head>
 <meta
-  http-equiv="content-type"
-  content="text/html;
-  charset=UTF-8"
+ http-equiv="content-type"
+ content="text/html;
+ charset=UTF-8"
 >
 <title>The Russian to English Parser</title>
 
 <style>
 body {
-  background-attachment: fixed;
-  background-color: #2b2b2b;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #d3c6aa;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 20px;
-  margin: 5%;
-  padding: 20px;
-  position: relative;
-  word-wrap: break-word;
+ background-attachment: fixed;
+ background-color: #2b2b2b;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ color: #d3c6aa;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 20px;
+ margin: 5%;
+ padding: 20px;
+ position: relative;
+ word-wrap: break-word;
 }
 
 body::before {
-  background: rgba(0,0,0,0.7);
-  content: "";
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
+ background: rgba(0,0,0,0.7);
+ content: "";
+ height: 100%;
+ position: absolute;
+ top: 0;
+ width: 100%;
+ z-index: -1;
 }
 
 /* Header Style */
 .HeaderStyle {
-  background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
-  border: 3px solid #6b5b4b;
-  border-bottom: 2px solid #867b74;
-  color: #b7a57a;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 25px;
-  text-shadow: 1px 1px 4px #6b5b4b;
+ background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
+ border: 3px solid #6b5b4b;
+ border-bottom: 2px solid #867b74;
+ color: #b7a57a;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 25px;
+ text-shadow: 1px 1px 4px #6b5b4b;
 }
 
 .TheStripe {
-  background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
-  border: 3px solid #6b5b4b;
-  text-align: center;
-  font-weight: bold;
-  font-size: 30px;
+ background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
+ border: 3px solid #6b5b4b;
+ text-align: center;
+ font-weight: bold;
+ font-size: 30px;
 }
 
 /* Links */
 a:link,a:visited {
-  color: #a89984;
-  text-decoration: none;
+ color: #a89984;
+ text-decoration: none;
 }
 
 a:hover,a:active {
-  color: #f4bf75;
+ color: #f4bf75;
 }
 
 input,textarea {
-  background-color: #3a3a3a;
-  border: 3px solid transparent;
-  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.5);
-  border-image: linear-gradient(45deg,#6b5b4b,#867b74,#6b5b4b) 10;
-  color: inherit;
-  font-size: 20px;
-  max-height: 120px;
-  outline: none;
-  transition: all 0.4s ease-in-out;
-  width: 100%;
+ background-color: #3a3a3a;
+ border: 3px solid transparent;
+ box-shadow: inset 2px 2px 6px rgba(0,0,0,0.5);
+ border-image: linear-gradient(45deg,#6b5b4b,#867b74,#6b5b4b) 10;
+ color: inherit;
+ font-size: 20px;
+ max-height: 120px;
+ outline: none;
+ transition: all 0.4s ease-in-out;
+ width: 100%;
 }
 
 input:hover,textarea:hover {
-  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
+ box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
 }
 
 #outputContainer {
-  background: radial-gradient(circle,#2b2b2b 10%,#3a3a3a 60%,#2b2b2b 90%);
-  border: 3px solid #6b5b4b;
-  color: #d3c6aa;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 20px;
-  white-space: pre-wrap;
-  width: 80%;
+ background: radial-gradient(circle,#2b2b2b 10%,#3a3a3a 60%,#2b2b2b 90%);
+ border: 3px solid #6b5b4b;
+ color: #d3c6aa;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 20px;
+ white-space: pre-wrap;
+ width: 80%;
 }
 
 /* Buttons */
 button {
-  background: linear-gradient(to bottom,#6b5b4b,#b7a57a);
-  border: 3px solid #6b5b4b;
-  color: #2b2b2b;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 18px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-  border-radius: 10px;
+ background: linear-gradient(to bottom,#6b5b4b,#b7a57a);
+ border: 3px solid #6b5b4b;
+ color: #2b2b2b;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 18px;
+ padding: 10px 20px;
+ cursor: pointer;
+ transition: background 0.3s ease-in-out;
+ border-radius: 10px;
 }
 
 button:hover {
-  background: #b7a57a;
-  color: #2b2b2b;
-  transform: scale(1.05);
+ background: #b7a57a;
+ color: #2b2b2b;
+ transform: scale(1.05);
 }
 
 hr {
-  border: none;
-  height: 3px;
-  background: linear-gradient(to right,#6b5b4b,#b7a57a,#6b5b4b);
-  margin: 20px 0;
-  position: relative;
+ border: none;
+ height: 3px;
+ background: linear-gradient(to right,#6b5b4b,#b7a57a,#6b5b4b);
+ margin: 20px 0;
+ position: relative;
 }
 
 hr::after {
-  content: "✦";
-  display: block;
-  text-align: center;
-  color: #b7a57a;
-  font-size: 28px;
-  margin-top: -16px;
+ content: "✦";
+ display: block;
+ text-align: center;
+ color: #b7a57a;
+ font-size: 28px;
+ margin-top: -16px;
 }
 
 @media screen and (max-width: 768px) {
-  body {
-    font-size: 18px;
-    margin: 3%;
-  }
-  .HeaderStyle {
-    font-size: 10px;
-  }
-  input,textarea {
-    font-size: 18px;
-    width: 100%;
-  }
-  #outputContainer {
-    width: 100%;
-  }
+ body {
+  font-size: 18px;
+  margin: 3%;
+ }
+ .HeaderStyle {
+  font-size: 10px;
+ }
+ input,textarea {
+  font-size: 18px;
+  width: 100%;
+ }
+ #outputContainer {
+  width: 100%;
+ }
 }
 </style>
 
@@ -298,7 +298,7 @@ const replsB=[
 {p1:/ (достав|дост)/gi,r1:"$1=(+a) to get, obtain; take out; reach"},
 {p1:/ (закрыв|закры)/gi,r1:"$1=(+a) to close, shut; to cover"},
 {p1:/ (проводи|провест)(и|.+) /gi,r1:"$1=(+a) to lead, conduct; spend (time)"},
-{p1:/ (разреш|разреш)(и|.+) /gi,r1:"$1=(+d of person)  to allow, permit; solve"},
+{p1:/ (разреш|разреш)(и|.+) /gi,r1:"$1=(+d of person) to allow, permit; solve"},
 {p1:/ (устанавлив|установ)(и|.+) /gi,r1:"$1=(+a) to set up, establish"},
 {p1:/ (получ|получ)(и|.+) /gi,r1:"$1=to turn out, work out, result"},
 {p1:/ (соглаш|соглас)(и|.+) /gi,r1:"$1=to agree (c +inst) with, (на +a) to"},
@@ -385,7 +385,7 @@ const replsB=[
 {p1:/ (ходи|поход)(и|.+) /gi,r1:"$1=to walk about"},
 {p1:/ (указыв|указ)/gi,r1:"$1=(+a or на +a) to point out"},
 {p1:/ (задумыв|задум)/gi,r1:"$1=(о +pr/над +inst) to think deeply, become thoughtful (about)"},
-{p1:/ (изменя|измен)(и|.+) /gi,r1:"$1=(+a)  to change, alter; (+d) betray"},
+{p1:/ (изменя|измен)(и|.+) /gi,r1:"$1=(+a) to change, alter; (+d) betray"},
 {p1:/ (серди|рассерд)(и|.+) /gi,r1:"$1=(на +a) to be angry (with)"},
 {p1:/ (защищ|защит)(и|.+) /gi,r1:"$1=(+a) to defend"},
 {p1:/ (спори|поспор)(и|.+) /gi,r1:"$1=to argue"},
@@ -571,7 +571,7 @@ const replsB=[
 {p1:/ (трог|трон)(у|.+) /gi,r1:"$1=(+a) to touch"},
 {p1:/ (броди|поброд)(и|.+) /gi,r1:"$1=to wander"},
 {p1:/ (волнов|взволнов)/gi,r1:"$1=(+a) to worry, excite, disturb (s.o.)"},
-{p1:/ (исполня|исполн)(и|.+) /gi,r1:"$1=(+a) to carry out, fulfil;  perform"},
+{p1:/ (исполня|исполн)(и|.+) /gi,r1:"$1=(+a) to carry out, fulfil; perform"},
 {p1:/ (любов|полюбов)/gi,r1:"$1=(+inst or на +a) to admire"},
 {p1:/ (отраж|отраз)(и|.+) /gi,r1:"$1=(+a) to reflect; repulse"},
 {p1:/ (призыв|призв)/gi,r1:"$1=to summon, appeal"},
@@ -821,7 +821,7 @@ const replsB=[
 {p1:/ (вали|свал)(и|.+) /gi,r1:"$1=to fall down"},
 {p1:/ (сталкив|столкн)(у|.+) /gi,r1:"$1=(с +inst) to collide with"},
 {p1:/ (тону|потону|утон)(у|.+) /gi,r1:"$1=to sink; drown"},
-{p1:/ (увлек|увлечься) /gi,r1:"$1=(+inst) to be keen on"},
+{p1:/ (увлек|увлечь)(ся|.+) /gi,r1:"$1=(+inst) to be keen on"},
 {p1:/ (уводи|увест)(и|.+) /gi,r1:"$1=(+a от +g) to lead away"},
 {p1:/ (верте|поверт)(е|+.) /gi,r1:"$1=to twirl"},
 {p1:/ (всходи|взойт)(и|.+) /gi,r1:"$1=(на +a) to ascend"},
@@ -1079,7 +1079,7 @@ const replsB=[
 {p1:/ (гоня|погоня)/gi,r1:"$1=(+a) to drive, make (s.o.) run"},
 {p1:/ (граби|ограб)(и|.+) /gi,r1:"$1=(+a) to rob, pillage"},
 {p1:/ (двиг|двин)(у|.+) /gi,r1:"$1=(+a or +inst) to move, set in motion"},
-{p1:/ (доноси|донест)(и|.+) /gi,r1:"$1=(+a до +g)  to carry (sth to); (+a +d) report (sth to s.o.); (на +a) inform (on s.o.), denounce (s.o.)"},
+{p1:/ (доноси|донест)(и|.+) /gi,r1:"$1=(+a до +g) to carry (sth to); (+a +d) report (sth to s.o.); (на +a) inform (on s.o.), denounce (s.o.)"},
 {p1:/ (жев|прожев)/gi,r1:"$1=(+a) to chew"},
 {p1:/ (загоня|загн)/gi,r1:"$1=(+a) to drive in"},
 {p1:/ (души|задуш)(и|.+) /gi,r1:"$1=(+a) to strangle, suffocate, stifle"},
@@ -1134,7 +1134,7 @@ const replsB=[
 {p1:/ (затих|затихн)(у|.+) /gi,r1:"$1=to die down"},
 {p1:/ (кры|покры)/gi,r1:"$1=(+a) to cover"},
 {p1:/ (набив|наб)(и|.+) /gi,r1:"$1=(+a +inst) to stuff (sth with sth)"},
-{p1:/ (наговарив|наговор)(и|.+) /gi,r1:"$1=(на +a)  (coll) to slander s.o.; (+a or +g) say a lot of"},
+{p1:/ (наговарив|наговор)(и|.+) /gi,r1:"$1=(на +a) (coll) to slander s.o.; (+a or +g) say a lot of"},
 {p1:/ (нажим|наж)/gi,r1:"$1=(+a or на +a) to press"},
 {p1:/ (настраив|настро)(и|.+) /gi,r1:"$1=(+a) to tune, adjust; (на +a) put s.o. in the mood (for sth)"},
 {p1:/ (обрет|обрест)(и|.+) /gi,r1:"$1=(+a) to find (bookish)"},
@@ -1238,7 +1238,7 @@ const replsB=[
 {p1:/ (вывози|вывезт)(и|.+) /gi,r1:"$1=(+a) to transport away; export"},
 {p1:/ (вытягив|вытян)(у|.+) /gi,r1:"$1=to stretch out"},
 {p1:/ (вышиб|вышиб)(и|.+) /gi,r1:"$1=(+a) to knock out, kick out (coll)"},
-{p1:/ (достиг|достичься) /gi,r1:"$1=to be achieved"},
+{p1:/ (достиг|достичь)(ся|.+) /gi,r1:"$1=to be achieved"},
 {p1:/ (замир|замер)(е|+.) /gi,r1:"$1=to stand still, die away"},
 {p1:/ (ор|заор)/gi,r1:"$1=to start yelling"},
 {p1:/ (засовыв|засун)(у|.+) /gi,r1:"$1=(+a в +a) to thrust (sth into sth)"},
@@ -1279,7 +1279,7 @@ const replsB=[
 {p1:/ (сознав|созн)/gi,r1:"$1=(в +pr) to confess"},
 {p1:/ (стави|п) /gi,r1:"$1=oставиться to be placed"},
 {p1:/ (стир|выстир)/gi,r1:"$1=(+a) to wash (clothes); rub off"},
-{p1:/ (угожд|угод)(и|.+) /gi,r1:"$1=(+d)  to please; (coll) get into, end up (p only)"},
+{p1:/ (угожд|угод)(и|.+) /gi,r1:"$1=(+d) to please; (coll) get into, end up (p only)"},
 {p1:/ (упомин|упомян)(у|.+) /gi,r1:"$1=(+a or о +pr) to mention"},
 {p1:/ (усажив|усес)/gi,r1:"$1=to sit down, settle down, take a seat"},
 {p1:/ (хлест|хлестн)(у|.+) /gi,r1:"$1=(+a) to whip"},
@@ -1340,7 +1340,7 @@ const replsB=[
 {p1:/ (удаля|удал)(и|.+) /gi,r1:"$1=(+a) to send away, remove"},
 {p1:/ (умыв|умы)/gi,r1:"$1=to wash os"},
 {p1:/ (черп|черпн)(у|.+) /gi,r1:"$1=(+a из +g) to scoop, draw (from)"},
-{p1:/ (щёлк|щёлкн)(у|.+) /gi,r1:"$1=(+а)  to flick; (+inst) click, crack, snap"},
+{p1:/ (щёлк|щёлкн)(у|.+) /gi,r1:"$1=(+а) to flick; (+inst) click, crack, snap"},
 {p1:/ (балов|избалов)/gi,r1:"$1=(+a) to spoil (s.o.)"},
 {p1:/ (весели|повесел)(и|.+) /gi,r1:"$1=to make merry"},
 {p1:/ (воров|своров)/gi,r1:"$1=(+a) to steal"},
@@ -1383,7 +1383,7 @@ const replsB=[
 {p1:/ (прибег|прибеж)/gi,r1:"$1=to run up, come running"},
 {p1:/ (прибир|прибр)/gi,r1:"$1=(+a) to tidy up; (coll) take over, pocket"},
 {p1:/ (привязыв|привяз)/gi,r1:"$1=(к +d) to become attached to"},
-{p1:/ (примиря|примир)(и|.+) /gi,r1:"$1=(с +inst)  to be reconciled with"},
+{p1:/ (примиря|примир)(и|.+) /gi,r1:"$1=(с +inst) to be reconciled with"},
 {p1:/ (припомин|припомн)(и|.+) /gi,r1:"$1=(+a) to remember, recall"},
 {p1:/ (приставля|пристав)(и|.+) /gi,r1:"$1=(+a к +d) to place sth against sth"},
 {p1:/ (пристав|прист)/gi,r1:"$1=(к +d) to stick to, adhere (to); pester"},
@@ -1490,7 +1490,7 @@ const replsB=[
 {p1:/ (тере|потер)(е|+.) /gi,r1:"$1=(+a) to rub"},
 {p1:/ (торопи|потороп)(и|.+) /gi,r1:"$1=(+a) to hurry (s.o.)"},
 {p1:/ (укладыв|улож)(и|.+) /gi,r1:"$1=to pack one’s things; (в +a) fit (into sth)"},
-{p1:/ (укладыв|улечься) /gi,r1:"$1=to lie down, go to bed; (p only) calm down; (p only) settle"},
+{p1:/ (укладыв|улечь)(ся|.+) /gi,r1:"$1=to lie down, go to bed; (p only) calm down; (p only) settle"},
 {p1:/ (улавлив|улов)(и|.+) /gi,r1:"$1=(+a) to catch; detect"},
 {p1:/ (упуск|упуст)(и|.+) /gi,r1:"$1=(+a) to let slip; miss"},
 {p1:/ (ускольз|ускользн)(у|.+) /gi,r1:"$1=to slip away"},
@@ -1605,7 +1605,7 @@ const replsB=[
 {p1:/ (др|содр)/gi,r1:"$1=(+a) to tear; thrash; fleece (coll)"},
 {p1:/ (загиб|загн)(у|.+) /gi,r1:"$1=(+a) to bend"},
 {p1:/ (загоражив|загород)(и|.+) /gi,r1:"$1=(+a) to fence in; obstruct"},
-{p1:/ (залет|залет)(е|+.) /gi,r1:"$1=(в +a)  to fly in; (за +a) fly behind"},
+{p1:/ (залет|залет)(е|+.) /gi,r1:"$1=(в +a) to fly in; (за +a) fly behind"},
 {p1:/ (залив|зал)(и|.+) /gi,r1:"$1=to be flooded; (+inst) start to do sth vigorously"},
 {p1:/ (маскиров|замаскиров)/gi,r1:"$1=(+a) to disguise, camouflage"},
 {p1:/ (зараж|зараз)(и|.+) /gi,r1:"$1=(+a +inst) to infect (s.o. with sth)"},
@@ -1642,7 +1642,7 @@ const replsB=[
 {p1:/ (насторажив|насторож)(и|.+) /gi,r1:"$1=to prick up one’s ears, be on one’s guard"},
 {p1:/ (насыщ|насыт)(и|.+) /gi,r1:"$1=(+a +inst) to satiate; fill (sth with sth), saturate"},
 {p1:/ (натягив|натян)(у|.+) /gi,r1:"$1=(+a) to pull tight; pull on"},
-{p1:/ (обкладыв|облож)(и|.+) /gi,r1:"$1=(+a)  to put round"},
+{p1:/ (обкладыв|облож)(и|.+) /gi,r1:"$1=(+a) to put round"},
 {p1:/ (облаг|облож)(и|.+) /gi,r1:"$1=(+a) to assess (for tax)"},
 {p1:/ (обним|обня)/gi,r1:"$1=to embrace one another"},
 {p1:/ (обогащ|обогат)(и|.+) /gi,r1:"$1=to become rich"},
@@ -1670,7 +1670,7 @@ const replsB=[
 {p1:/ (подпир|подпер)(е|+.) /gi,r1:"$1=(+a) to prop up"},
 {p1:/ (подставля|подстав)(и|.+) /gi,r1:"$1=(+a под +a) to put under"},
 {p1:/ (подталкив|подтолкн)(у|.+) /gi,r1:"$1=(+a) to push slightly; (coll) urge on"},
-{p1:/ (жертвов|пожертвов)/gi,r1:"$1=(+a)  to donate; (+inst) sacrifice"},
+{p1:/ (жертвов|пожертвов)/gi,r1:"$1=(+a) to donate; (+inst) sacrifice"},
 {p1:/ (мах|помах)/gi,r1:"$1=(+inst) to wave (for a while)"},
 {p1:/ (медли|помедл)(и|.+) /gi,r1:"$1=to delay, hesitate"},
 {p1:/ (мерещи|померещ)(и|.+) /gi,r1:"$1=to seem (coll), imagine"},
@@ -1730,7 +1730,7 @@ const replsB=[
 {p1:/ (забрасыв|заброс)(и|.+) /gi,r1:"$1=(+a) to throw, cast; abandon; neglect"},
 {p1:/ (заверш|заверш)(и|.+) /gi,r1:"$1=to be finishing, end"},
 {p1:/ (глохну|заглохн)(у|.+) /gi,r1:"$1=to die away; stall (engine); go to seed"},
-{p1:/ (зажиг|зажечься) /gi,r1:"$1=to light up, be lit"},
+{p1:/ (зажиг|зажечь)(ся|.+) /gi,r1:"$1=to light up, be lit"},
 {p1:/ (жмури|за-) /gi,r1:"$1=to screw up one’s eyes; halfжмуритьсяclose one’s eyes"},
 {p1:/ (кипе|закип)(е|+.) /gi,r1:"$1=to boil"},
 {p1:/ (заматыв|замот)/gi,r1:"$1=(+a) to wind, twist; tire out"},
@@ -1769,7 +1769,7 @@ const replsB=[
 {p1:/ (освещ|освет)(и|.+) /gi,r1:"$1=to be illuminated, light up"},
 {p1:/ (отбив|отб)(и|.+) /gi,r1:"$1=(от +g) to break away from; repulse, beat off; stray"},
 {p1:/ (печат|отпечат)/gi,r1:"$1=(+a) to print (off)"},
-{p1:/ (отрек|отречься) /gi,r1:"$1=(от +g) to renounce (sth)"},
+{p1:/ (отрек|отречь)(ся|.+) /gi,r1:"$1=(от +g) to renounce (sth)"},
 {p1:/ (отруб|отруб)(и|.+) /gi,r1:"$1=(+a) to chop off"},
 {p1:/ (отстраня|отстран)(и|.+) /gi,r1:"$1=(+a) to push aside; remove"},
 {p1:/ (охлажд|охлад)(и|.+) /gi,r1:"$1=(+a) to cool"},
@@ -2064,7 +2064,7 @@ const replsB=[
 {p1:/ (приготовлен)(ие|.+) /gi,r1:"$1=preparation"},
 {p1:/ (разочарован)(ие|.+) /gi,r1:"$1=disappointment"},
 {p1:/ (самодеятельнос)/gi,r1:"$1=(f) individual initiative; amateur activity"},
-{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst)  to be accompanied by"},
+{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst) to be accompanied by"},
 {p1:/ (сопротивля)/gi,r1:"$1=(i) (+d) to resist"},
 {p1:/ (увлекательн)(ый|.+) /gi,r1:"$1=fascinating, absorbing"},
 {p1:/ (установленн)(ый|.+) /gi,r1:"$1=established, prescribed"},
@@ -2078,7 +2078,7 @@ const replsB=[
 {p1:/ (перспективн)(ый|.+) /gi,r1:"$1=promising, having prospects; long-term"},
 {p1:/ (подготовительн)(ый|.+) /gi,r1:"$1=preparatory"},
 {p1:/ (принадлежнос)/gi,r1:"$1=(f) (к +d) membership (of); (pl) equipment, accessories"},
-{p1:/ (развивающийся) /gi,r1:"$1=developing"},
+{p1:/ (развивающий)(ся|.+) /gi,r1:"$1=developing"},
 {p1:/ (систематическ)(и|.+) /gi,r1:"$1=systematically"},
 {p1:/ (бомбардировк) /gi,r1:"$1=bombardment"},
 {p1:/ (взаимопониман)(ие|.+) /gi,r1:"$1=mutual understanding"},
@@ -2501,7 +2501,7 @@ const replsB=[
 {p1:/ (приготовлен)(ие|.+) /gi,r1:"$1=preparation"},
 {p1:/ (разочарован)(ие|.+) /gi,r1:"$1=disappointment"},
 {p1:/ (самодеятельнос)/gi,r1:"$1=(f) individual initiative; amateur activity"},
-{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst)  to be accompanied by"},
+{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst) to be accompanied by"},
 {p1:/ (сопротивля)/gi,r1:"$1=(i) (+d) to resist"},
 {p1:/ (увлекательн)(ый|.+) /gi,r1:"$1=fascinating, absorbing"},
 {p1:/ (установленн)(ый|.+) /gi,r1:"$1=established, prescribed"},
@@ -2515,7 +2515,7 @@ const replsB=[
 {p1:/ (перспективн)(ый|.+) /gi,r1:"$1=promising, having prospects; long-term"},
 {p1:/ (подготовительн)(ый|.+) /gi,r1:"$1=preparatory"},
 {p1:/ (принадлежнос)/gi,r1:"$1=(f) (к +d) membership (of); (pl) equipment, accessories"},
-{p1:/ (развивающийся) /gi,r1:"$1=developing"},
+{p1:/ (развивающий)(ся|.+) /gi,r1:"$1=developing"},
 {p1:/ (систематическ)(и|.+) /gi,r1:"$1=systematically"},
 {p1:/ (бомбардировк) /gi,r1:"$1=bombardment"},
 {p1:/ (взаимопониман)(ие|.+) /gi,r1:"$1=mutual understanding"},
@@ -2925,7 +2925,7 @@ const replsB=[
 {p1:/ (приготовлен)(ие|.+) /gi,r1:"$1=preparation"},
 {p1:/ (разочарован)(ие|.+) /gi,r1:"$1=disappointment"},
 {p1:/ (самодеятельнос)/gi,r1:"$1=(f) individual initiative; amateur activity"},
-{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst)  to be accompanied by"},
+{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst) to be accompanied by"},
 {p1:/ (сопротивля)/gi,r1:"$1=(i) (+d) to resist"},
 {p1:/ (увлекательн)(ый|.+) /gi,r1:"$1=fascinating, absorbing"},
 {p1:/ (установленн)(ый|.+) /gi,r1:"$1=established, prescribed"},
@@ -2939,7 +2939,7 @@ const replsB=[
 {p1:/ (перспективн)(ый|.+) /gi,r1:"$1=promising, having prospects; long-term"},
 {p1:/ (подготовительн)(ый|.+) /gi,r1:"$1=preparatory"},
 {p1:/ (принадлежнос)/gi,r1:"$1=(f) (к +d) membership (of); (pl) equipment, accessories"},
-{p1:/ (развивающийся) /gi,r1:"$1=developing"},
+{p1:/ (развивающий)(ся|.+) /gi,r1:"$1=developing"},
 {p1:/ (систематическ)(и|.+) /gi,r1:"$1=systematically"},
 {p1:/ (бомбардировк) /gi,r1:"$1=bombardment"},
 {p1:/ (взаимопониман)(ие|.+) /gi,r1:"$1=mutual understanding"},
@@ -3326,7 +3326,7 @@ const replsB=[
 {p1:/ (по-настоящем)(у|.+) /gi,r1:"$1=properly, in the right way"},
 {p1:/ (приготовлен)(ие|.+) /gi,r1:"$1=preparation"},
 {p1:/ (разочарован)(ие|.+) /gi,r1:"$1=disappointment"},
-{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst)  to be accompanied by"},
+{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst) to be accompanied by"},
 {p1:/ (сопротивля)/gi,r1:"$1=(i) (+d) to resist"},
 {p1:/ (увлекательн)(ый|.+) /gi,r1:"$1=fascinating, absorbing"},
 {p1:/ (установленн)(ый|.+) /gi,r1:"$1=established, prescribed"},
@@ -3339,7 +3339,7 @@ const replsB=[
 {p1:/ (первостепенн)(ый|.+) /gi,r1:"$1=paramount"},
 {p1:/ (перспективн)(ый|.+) /gi,r1:"$1=promising, having prospects; long-term"},
 {p1:/ (принадлежнос)/gi,r1:"$1=(f) (к +d) membership (of); (pl) equipment, accessories"},
-{p1:/ (развивающийся) /gi,r1:"$1=developing"},
+{p1:/ (развивающий)(ся|.+) /gi,r1:"$1=developing"},
 {p1:/ (систематическ)(и|.+) /gi,r1:"$1=systematically"},
 {p1:/ (бомбардировк) /gi,r1:"$1=bombardment"},
 {p1:/ (взаимопониман)(ие|.+) /gi,r1:"$1=mutual understanding"},
@@ -3679,7 +3679,7 @@ const replsB=[
 {p1:/ (по-настоящем)(у|.+) /gi,r1:"$1=properly, in the right way"},
 {p1:/ (приготовлен)(ие|.+) /gi,r1:"$1=preparation"},
 {p1:/ (разочарован)(ие|.+) /gi,r1:"$1=disappointment"},
-{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst)  to be accompanied by"},
+{p1:/ (сопровожд)/gi,r1:"$1=(i) (+inst) to be accompanied by"},
 {p1:/ (сопротивля)/gi,r1:"$1=(i) (+d) to resist"},
 {p1:/ (увлекательн)(ый|.+) /gi,r1:"$1=fascinating, absorbing"},
 {p1:/ (установленн)(ый|.+) /gi,r1:"$1=established, prescribed"},
@@ -3690,7 +3690,7 @@ const replsB=[
 {p1:/ (первостепенн)(ый|.+) /gi,r1:"$1=paramount"},
 {p1:/ (перспективн)(ый|.+) /gi,r1:"$1=promising, having prospects; long-term"},
 {p1:/ (принадлежнос)/gi,r1:"$1=(f) (к +d) membership (of); (pl) equipment, accessories"},
-{p1:/ (развивающийся) /gi,r1:"$1=developing"},
+{p1:/ (развивающий)(ся|.+) /gi,r1:"$1=developing"},
 {p1:/ (систематическ)(и|.+) /gi,r1:"$1=systematically"},
 {p1:/ (бомбардировк) /gi,r1:"$1=bombardment"},
 {p1:/ (недоразумен)(ие|.+) /gi,r1:"$1=misunderstanding"},
@@ -3948,7 +3948,7 @@ const replsB=[
 {p1:/ (бесконечнос)/gi,r1:"$1=(f) infinity"},
 {p1:/ (настойчивос)/gi,r1:"$1=(f) persistence"},
 {p1:/ (перспективн)(ый|.+) /gi,r1:"$1=promising, having prospects; long-term"},
-{p1:/ (развивающийся) /gi,r1:"$1=developing"},
+{p1:/ (развивающий)(ся|.+) /gi,r1:"$1=developing"},
 {p1:/ (бомбардировк) /gi,r1:"$1=bombardment"},
 {p1:/ (недоразумен)(ие|.+) /gi,r1:"$1=misunderstanding"},
 {p1:/ (современнос)/gi,r1:"$1=(f) the present age"},
@@ -4539,7 +4539,7 @@ const replsB=[
 {p1:/ (редакционн)(ый|.+) /gi,r1:"$1=editorial, editing"},
 {p1:/ (реставрац)(ия|.+) /gi,r1:"$1=restoration"},
 {p1:/ (своевременн)(о|.+) /gi,r1:"$1=in good time"},
-{p1:/ (сложившийся) /gi,r1:"$1=developed"},
+{p1:/ (сложивший)(ся|.+) /gi,r1:"$1=developed"},
 {p1:/ (сокровищниц) /gi,r1:"$1=treasure-house"},
 {p1:/ (таинственн)(о|.+) /gi,r1:"$1=mysteriously"},
 {p1:/ (хорошеньк)(ий|.+) /gi,r1:"$1=pretty"},
@@ -4782,7 +4782,7 @@ const replsB=[
 {p1:/ (писательск)(ий|.+) /gi,r1:"$1=writer’s, literary"},
 {p1:/ (планомерн)(ый|.+) /gi,r1:"$1=planned, systematic"},
 {p1:/ (пользован)(ие|.+) /gi,r1:"$1=(+inst) use (of sth)"},
-{p1:/ (помалкив)/gi,r1:"$1=(i)  to keep quiet (coll)"},
+{p1:/ (помалкив)/gi,r1:"$1=(i) to keep quiet (coll)"},
 {p1:/ (послезавтр) /gi,r1:"$1=the day after tomorrow"},
 {p1:/ (постукив)/gi,r1:"$1=(i) to knock, tap, patter"},
 {p1:/ (превосходн)(о|.+) /gi,r1:"$1=splendidly"},
@@ -5125,7 +5125,7 @@ const replsB=[
 {p1:/ (равноправ)(ие|.+) /gi,r1:"$1=equality"},
 {p1:/ (развлечен)(ие|.+) /gi,r1:"$1=entertainment"},
 {p1:/ (реставрац)(ия|.+) /gi,r1:"$1=restoration"},
-{p1:/ (сложившийся) /gi,r1:"$1=developed"},
+{p1:/ (сложивший)(ся|.+) /gi,r1:"$1=developed"},
 {p1:/ (таинственн)(о|.+) /gi,r1:"$1=mysteriously"},
 {p1:/ (хорошеньк)(ий|.+) /gi,r1:"$1=pretty"},
 {p1:/ (вдохновен)(ие|.+) /gi,r1:"$1=inspiration"},
@@ -5271,7 +5271,7 @@ const replsB=[
 {p1:/ (озлобленн)(ый|.+) /gi,r1:"$1=embittered"},
 {p1:/ (планомерн)(ый|.+) /gi,r1:"$1=planned, systematic"},
 {p1:/ (пользован)(ие|.+) /gi,r1:"$1=(+inst) use (of sth)"},
-{p1:/ (помалкив)/gi,r1:"$1=(i)  to keep quiet (coll)"},
+{p1:/ (помалкив)/gi,r1:"$1=(i) to keep quiet (coll)"},
 {p1:/ (послезавтр) /gi,r1:"$1=the day after tomorrow"},
 {p1:/ (постукив)/gi,r1:"$1=(i) to knock, tap, patter"},
 {p1:/ (превосходн)(о|.+) /gi,r1:"$1=splendidly"},
@@ -5388,7 +5388,7 @@ const replsB=[
 {p1:/ (экспедиц)(ия|.+) /gi,r1:"$1=expedition"},
 {p1:/ (информац)(ия|.+) /gi,r1:"$1=information"},
 {p1:/ (объяснен)(ие|.+) /gi,r1:"$1=explanation"},
-{p1:/ (выдающийся) /gi,r1:"$1=eminent, prominent [participle used as (adj)]"},
+{p1:/ (выдающий)(ся|.+) /gi,r1:"$1=eminent, prominent [participle used as (adj)]"},
 {p1:/ (напряжен)(ие|.+) /gi,r1:"$1=tension"},
 {p1:/ (нормальн)(ый|.+) /gi,r1:"$1=normal"},
 {p1:/ (наблюден)(ие|.+) /gi,r1:"$1=observation"},
@@ -5491,7 +5491,7 @@ const replsB=[
 {p1:/ (могуществ)(о|.+) /gi,r1:"$1=power, might"},
 {p1:/ (невиданн)(ый|.+) /gi,r1:"$1=unprecedented"},
 {p1:/ (неподвижн)(о|.+) /gi,r1:"$1=motionlessly, still"},
-{p1:/ (трудящийся) /gi,r1:"$1=labouring  (participle)"},
+{p1:/ (трудящий)(ся|.+) /gi,r1:"$1=labouring (participle)"},
 {p1:/ (химическ)(ий|.+) /gi,r1:"$1=chemical"},
 {p1:/ (артиллер)(ия|.+) /gi,r1:"$1=artillery"},
 {p1:/ (буржуазн)(ый|.+) /gi,r1:"$1=bourgeois"},
@@ -5734,7 +5734,7 @@ const replsB=[
 {p1:/ (образцов)(ый|.+) /gi,r1:"$1=model, exemplary"},
 {p1:/ (оживлённ)(ый|.+) /gi,r1:"$1=animated, excited"},
 {p1:/ (осложнен)(ие|.+) /gi,r1:"$1=complication"},
-{p1:/ (оставшийся) /gi,r1:"$1=remaining"},
+{p1:/ (оставший)(ся|.+) /gi,r1:"$1=remaining"},
 {p1:/ (остроумн)(ый|.+) /gi,r1:"$1=witty"},
 {p1:/ (по-другом)(у|.+) /gi,r1:"$1=differently"},
 {p1:/ (посредств)(о|.+) /gi,r1:"$1=mediation"},
@@ -5760,7 +5760,7 @@ const replsB=[
 {p1:/ (гимнастик) /gi,r1:"$1=gymnastics"},
 {p1:/ (желательн)(о|.+) /gi,r1:"$1=(it is) desirable"},
 {p1:/ (всесоюзн)(ый|.+) /gi,r1:"$1=all-union (relating to all the republics of the USSR)"},
-{p1:/ (светящийся) /gi,r1:"$1=luminous"},
+{p1:/ (светящий)(ся|.+) /gi,r1:"$1=luminous"},
 {p1:/ (лирическ)(ий|.+) /gi,r1:"$1=lyrical"},
 {p1:/ (египетск)(ий|.+) /gi,r1:"$1=Egyptian"},
 {p1:/ (альпийск)(ий|.+) /gi,r1:"$1=alpine"},
@@ -5828,7 +5828,7 @@ const replsB=[
 {p1:/ (иностранец) /gi,r1:"$1=foreigner"},
 {p1:/ (испытанн)(ый|.+) /gi,r1:"$1=tested, tried"},
 {p1:/ (консервн)(ый|.+) /gi,r1:"$1=canned food (adj)"},
-{p1:/ (кривля)/gi,r1:"$1=(i)  to behave affectedly (coll)"},
+{p1:/ (кривля)/gi,r1:"$1=(i) to behave affectedly (coll)"},
 {p1:/ (нарастан)(ие|.+) /gi,r1:"$1=growth, increase"},
 {p1:/ (нахальств)(о|.+) /gi,r1:"$1=against impudence"},
 {p1:/ (нездоров)(ый|.+) /gi,r1:"$1=unhealthy"},
@@ -6225,7 +6225,7 @@ const replsB=[
 {p1:/ (церемон)(ия|.+) /gi,r1:"$1=ceremony"},
 {p1:/ (шепт)/gi,r1:"$1=(i) to whisper"},
 {p1:/ (энтузиазм) /gi,r1:"$1=enthusiasm"},
-{p1:/ (борющийся) /gi,r1:"$1=struggling"},
+{p1:/ (борющий)(ся|.+) /gi,r1:"$1=struggling"},
 {p1:/ (избранн)(ый|.+) /gi,r1:"$1=selected"},
 {p1:/ (измерен)(ие|.+) /gi,r1:"$1=measurement; dimension"},
 {p1:/ (индийск)(ий|.+) /gi,r1:"$1=Indian"},
@@ -6617,7 +6617,7 @@ const replsB=[
 {p1:/ (эффектн)(ый|.+) /gi,r1:"$1=striking, done for effect"},
 {p1:/ (авианосец) /gi,r1:"$1=aircraft carrier"},
 {p1:/ (беспечн)(ый|.+) /gi,r1:"$1=carefree, unconcerned"},
-{p1:/ (болт)/gi,r1:"$1=(i)  to dangle; hang about (coll)"},
+{p1:/ (болт)/gi,r1:"$1=(i) to dangle; hang about (coll)"},
 {p1:/ (бюллетен)(ь|.+) /gi,r1:"$1=(m) bulletin; ballot-paper; medical certificate"},
 {p1:/ (величав)(ый|.+) /gi,r1:"$1=majestic"},
 {p1:/ (евангел)(ие|.+) /gi,r1:"$1=gospel"},
@@ -7116,7 +7116,7 @@ const replsB=[
 {p1:/ (столов)(ый|.+) /gi,r1:"$1=table (adj)"},
 {p1:/ (трагед)(ия|.+) /gi,r1:"$1=tragedy"},
 {p1:/ (тропинк) /gi,r1:"$1=path"},
-{p1:/ (учащийся) /gi,r1:"$1=student (active participle)"},
+{p1:/ (учащий)(ся|.+) /gi,r1:"$1=student (active participle)"},
 {p1:/ (фельетон)(.+) /gi,r1:"$1=satirical article"},
 {p1:/ (хранен)(ие|.+) /gi,r1:"$1=keeping; storage"},
 {p1:/ (чересчур) /gi,r1:"$1=too, excessive(ly)"},
@@ -7284,7 +7284,7 @@ const replsB=[
 {p1:/ (ожерель)(е|+.) /gi,r1:"$1=necklace"},
 {p1:/ (озорств)(о|.+) /gi,r1:"$1=naughtiness (coll)"},
 {p1:/ (отставк) /gi,r1:"$1=retirement, resignation"},
-{p1:/ (парнишк) /gi,r1:"$1=(m)  lad (coll)"},
+{p1:/ (парнишк) /gi,r1:"$1=(m) lad (coll)"},
 {p1:/ (персонаж) /gi,r1:"$1=character"},
 {p1:/ (повестк) /gi,r1:"$1=notification"},
 {p1:/ (почтов)(ый|.+) /gi,r1:"$1=postal, mail (adj)"},
@@ -7383,7 +7383,7 @@ const replsB=[
 {p1:/ (тряхн)(у|.+) /gi,r1:"$1=(p) to shake"},
 {p1:/ (угнет)/gi,r1:"$1=(i) (+a) to oppress"},
 {p1:/ (усиленн)(о|.+) /gi,r1:"$1=intensively"},
-{p1:/ (хлебн)(у|.+) /gi,r1:"$1=(р)  to drink (coll)"},
+{p1:/ (хлебн)(у|.+) /gi,r1:"$1=(р) to drink (coll)"},
 {p1:/ (цветущ)(ий|.+) /gi,r1:"$1=blooming; flourishing"},
 {p1:/ (чудовищ)(е|+.) /gi,r1:"$1=monster"},
 {p1:/ (аргумент)(.+) /gi,r1:"$1=argument"},
@@ -7506,7 +7506,7 @@ const replsB=[
 {p1:/ (экономн)(о|.+) /gi,r1:"$1=economically, thriftily"},
 {p1:/ (янтарн)(ый|.+) /gi,r1:"$1=amber (adj)"},
 {p1:/ (апельсин)(.+) /gi,r1:"$1=orange"},
-{p1:/ (беречься) /gi,r1:"$1=(i) to be careful"},
+{p1:/ (беречь)(ся|.+) /gi,r1:"$1=(i) to be careful"},
 {p1:/ (блюдечк)(о|.+) /gi,r1:"$1=small dish, saucer"},
 {p1:/ (брожен)(ие|.+) /gi,r1:"$1=ferment"},
 {p1:/ (военщин)(.+) /gi,r1:"$1=militarism; militarists"},
@@ -7527,7 +7527,7 @@ const replsB=[
 {p1:/ (крашен)(ый|.+) /gi,r1:"$1=painted; dyed"},
 {p1:/ (любовн)(ый|.+) /gi,r1:"$1=love (adj)"},
 {p1:/ (медвеж)(ий|.+) /gi,r1:"$1=bear’s"},
-{p1:/ (мот)/gi,r1:"$1=(i)  to sway; rush about (coll)"},
+{p1:/ (мот)/gi,r1:"$1=(i) to sway; rush about (coll)"},
 {p1:/ (моторн)(ый|.+) /gi,r1:"$1=motor, engine (adj)"},
 {p1:/ (мотоцикл) /gi,r1:"$1=motorcycle"},
 {p1:/ (мошенник) /gi,r1:"$1=swindler"},
@@ -8836,7 +8836,7 @@ const replsB=[
 {p1:/ (техник) /gi,r1:"$1=technician"},
 {p1:/ (трижд)(.+|ы) /gi,r1:"$1=thrice, three times"},
 {p1:/ (узелок) /gi,r1:"$1=small knot; small bundle"},
-{p1:/ (умниц) /gi,r1:"$1=(m/f)  clever person (coll)"},
+{p1:/ (умниц) /gi,r1:"$1=(m/f) clever person (coll)"},
 {p1:/ (уныл)(ый|.+) /gi,r1:"$1=sad, cheerless"},
 {p1:/ (устал)(ый|.+) /gi,r1:"$1=tired"},
 {p1:/ (шутлив)(о|.+) /gi,r1:"$1=jokingly, facetiously"},
@@ -9053,7 +9053,7 @@ const replsB=[
 {p1:/ (белизн)(.+) /gi,r1:"$1=whiteness"},
 {p1:/ (болван)(.+) /gi,r1:"$1=blockhead, idiot"},
 {p1:/ (бывал)(ый|.+) /gi,r1:"$1=experienced"},
-{p1:/ (вед)/gi,r1:"$1=(i) (+inst)  to manage, be in charge of; (+a) know"},
+{p1:/ (вед)/gi,r1:"$1=(i) (+inst) to manage, be in charge of; (+a) know"},
 {p1:/ (вежлив)(о|.+) /gi,r1:"$1=politely"},
 {p1:/ (вывеск) /gi,r1:"$1=signboard"},
 {p1:/ (выговор) /gi,r1:"$1=reprimand; pronunciation"},
@@ -9400,10 +9400,10 @@ const replsB=[
 {p1:/ (доброт) /gi,r1:"$1=goodness, kindness"},
 {p1:/ (досадн)(о|.+) /gi,r1:"$1=annoying"},
 {p1:/ (дубов)(ый|.+) /gi,r1:"$1=oak (adj)"},
-{p1:/ (дур)(и|.+) /gi,r1:"$1=(i)  to be naughty, fool about (coll)"},
+{p1:/ (дур)(и|.+) /gi,r1:"$1=(i) to be naughty, fool about (coll)"},
 {p1:/ (дымн)(ый|.+) /gi,r1:"$1=smoky"},
 {p1:/ (дьякон)(.+) /gi,r1:"$1=deacon"},
-{p1:/ (дядьк) /gi,r1:"$1=(m)  uncle; man, bloke (coll)"},
+{p1:/ (дядьк) /gi,r1:"$1=(m) uncle; man, bloke (coll)"},
 {p1:/ (ёмкос)/gi,r1:"$1=(f) capacity"},
 {p1:/ (жгуч)(ий|.+) /gi,r1:"$1=burning"},
 {p1:/ (жёрнов) /gi,r1:"$1=millstone"},
@@ -9691,7 +9691,7 @@ const replsB=[
 {p1:/ (переезд) /gi,r1:"$1=crossing; removal (change of residence)"},
 {p1:/ (перел)(|ом) /gi,r1:"$1=break, fracture; turning-point"},
 {p1:/ (перенос) /gi,r1:"$1=transfer, carrying over; hyphenation"},
-{p1:/ (пер)(е|+.) /gi,r1:"$1=(i)  to shove, barge, push (coll)"},
+{p1:/ (пер)(е|+.) /gi,r1:"$1=(i) to shove, barge, push (coll)"},
 {p1:/ (персон)(.+) /gi,r1:"$1=person"},
 {p1:/ (плавн)(ый|.+) /gi,r1:"$1=smooth, flowing"},
 {p1:/ (пляск) /gi,r1:"$1=dance"},
@@ -9749,7 +9749,7 @@ const replsB=[
 {p1:/ (шахмат)(.+|ы) /gi,r1:"$1=(pl) chess"},
 {p1:/ (швейн)(ый|.+) /gi,r1:"$1=sewing"},
 {p1:/ (шелух) /gi,r1:"$1=skin, peel, husk"},
-{p1:/ (шля)/gi,r1:"$1=(i)  to loaf about (coll)"},
+{p1:/ (шля)/gi,r1:"$1=(i) to loaf about (coll)"},
 {p1:/ (яичниц) /gi,r1:"$1=fried eggs"},
 {p1:/ (ярмарк) /gi,r1:"$1=fair, trade fair"},
 {p1:/ (азбук) /gi,r1:"$1=alphabet"},
@@ -9760,7 +9760,7 @@ const replsB=[
 {p1:/ (буйн)(ый|.+) /gi,r1:"$1=wild, unruly"},
 {p1:/ (внятн)(о|.+) /gi,r1:"$1=distinctly, clearly, audibly"},
 {p1:/ (воня)/gi,r1:"$1=(i) (+inst) to stink (of)"},
-{p1:/ (вооч)(ию|.+)  /gi,r1:"$1=with one’s own eyes, for os"},
+{p1:/ (вооч)(ию|.+) /gi,r1:"$1=with one’s own eyes, for os"},
 {p1:/ (выручк) /gi,r1:"$1=proceeds, earnings; rescue"},
 {p1:/ (выступ) /gi,r1:"$1=projection; ledge"},
 {p1:/ (гнусн)(ый|.+) /gi,r1:"$1=vile"},
@@ -10446,7 +10446,7 @@ const replsB=[
 {p1:/ (техник) /gi,r1:"$1=technician"},
 {p1:/ (трижд)(.+|ы) /gi,r1:"$1=thrice, three times"},
 {p1:/ (узелок) /gi,r1:"$1=small knot; small bundle"},
-{p1:/ (умниц) /gi,r1:"$1=(m/f)  clever person (coll)"},
+{p1:/ (умниц) /gi,r1:"$1=(m/f) clever person (coll)"},
 {p1:/ (уныл)(ый|.+) /gi,r1:"$1=sad, cheerless"},
 {p1:/ (яблоня) /gi,r1:"$1=apple-tree"},
 {p1:/ (выбор)(.+|ы) /gi,r1:"$1=(m pl) election"},
@@ -10556,7 +10556,7 @@ const replsB=[
 {p1:/ (атеист)(.+) /gi,r1:"$1=atheist"},
 {p1:/ (бандит)(.+) /gi,r1:"$1=bandit"},
 {p1:/ (болван)(.+) /gi,r1:"$1=blockhead, idiot"},
-{p1:/ (вед)/gi,r1:"$1=(i) (+inst)  to manage, be in charge of; (+a) know"},
+{p1:/ (вед)/gi,r1:"$1=(i) (+inst) to manage, be in charge of; (+a) know"},
 {p1:/ (грозн)(о|.+) /gi,r1:"$1=threateningly"},
 {p1:/ (двойк) /gi,r1:"$1=the number two; fail (mark in exam)"},
 {p1:/ (злос)/gi,r1:"$1=(f) spite, bad temper"},
@@ -10718,10 +10718,10 @@ const replsB=[
 {p1:/ (вкусн)(о|.+) /gi,r1:"$1=tasty"},
 {p1:/ (вражд) /gi,r1:"$1=enmity"},
 {p1:/ (гаван)(ь|.+) /gi,r1:"$1=(f) harbour"},
-{p1:/ (дур)(и|.+) /gi,r1:"$1=(i)  to be naughty, fool about (coll)"},
+{p1:/ (дур)(и|.+) /gi,r1:"$1=(i) to be naughty, fool about (coll)"},
 {p1:/ (дымн)(ый|.+) /gi,r1:"$1=smoky"},
 {p1:/ (дьякон)(.+) /gi,r1:"$1=deacon"},
-{p1:/ (дядьк) /gi,r1:"$1=(m)  uncle; man, bloke (coll)"},
+{p1:/ (дядьк) /gi,r1:"$1=(m) uncle; man, bloke (coll)"},
 {p1:/ (жгуч)(ий|.+) /gi,r1:"$1=burning"},
 {p1:/ (жёрнов) /gi,r1:"$1=millstone"},
 {p1:/ (зараз) /gi,r1:"$1=infection; (coll) pest"},
@@ -10866,7 +10866,7 @@ const replsB=[
 {p1:/ (ночлег) /gi,r1:"$1=spending the night, night’s lodging"},
 {p1:/ (общин)(.+) /gi,r1:"$1=community"},
 {p1:/ (овац)(ия|.+) /gi,r1:"$1=ovation"},
-{p1:/ (пер)(е|+.) /gi,r1:"$1=(i)  to shove, barge, push (coll)"},
+{p1:/ (пер)(е|+.) /gi,r1:"$1=(i) to shove, barge, push (coll)"},
 {p1:/ (пляск) /gi,r1:"$1=dance"},
 {p1:/ (подач) /gi,r1:"$1=giving; serve (tennis)"},
 {p1:/ (помост)(.+) /gi,r1:"$1=platform, rostrum; scaffold"},
@@ -10905,7 +10905,7 @@ const replsB=[
 {p1:/ (буйн)(ый|.+) /gi,r1:"$1=wild, unruly"},
 {p1:/ (внятн)(о|.+) /gi,r1:"$1=distinctly, clearly, audibly"},
 {p1:/ (воня)/gi,r1:"$1=(i) (+inst) to stink (of)"},
-{p1:/ (вооч)(ию|.+)  /gi,r1:"$1=with one’s own eyes, for os"},
+{p1:/ (вооч)(ию|.+) /gi,r1:"$1=with one’s own eyes, for os"},
 {p1:/ (выступ) /gi,r1:"$1=projection; ledge"},
 {p1:/ (жутк)(ий|.+) /gi,r1:"$1=terrible"},
 {p1:/ (заочн)(о|.+) /gi,r1:"$1=in one’s absence; externally (of study for a degree)"},
@@ -11530,7 +11530,7 @@ const replsB=[
 {p1:/ (удач) /gi,r1:"$1=success"},
 {p1:/ (шумн)(о|.+) /gi,r1:"$1=noisily"},
 {p1:/ (бочк) /gi,r1:"$1=barrel"},
-{p1:/ (вздор) /gi,r1:"$1=nonsense  (coll)"},
+{p1:/ (вздор) /gi,r1:"$1=nonsense (coll)"},
 {p1:/ (влаг) /gi,r1:"$1=damp, moisture"},
 {p1:/ (горох) /gi,r1:"$1=peas"},
 {p1:/ (носок) /gi,r1:"$1=sock; toe of boot"},
@@ -12341,7 +12341,7 @@ const replsB=[
 {p1:/ (брус) /gi,r1:"$1=beam (of wood or metal)"},
 {p1:/ (обоз) /gi,r1:"$1=string of carts; military transport"},
 {p1:/ (суш) /gi,r1:"$1=(dry) land (opposite of sea)"},
-{p1:/ (батя) /gi,r1:"$1=(m)  dad, father (coll) (= батюшка)"},
+{p1:/ (батя) /gi,r1:"$1=(m) dad, father (coll) (= батюшка)"},
 {p1:/ (штык) /gi,r1:"$1=bayonet"},
 {p1:/ (сер) /gi,r1:"$1=sulphur"},
 {p1:/ (ввод) /gi,r1:"$1=bringing in"},
@@ -12432,7 +12432,7 @@ const replsB=[
 {p1:/ (год) /gi,r1:"$1=year"},
 {p1:/ (кт)(о|.+) /gi,r1:"$1=who"},
 {p1:/ (нет)(.+) /gi,r1:"$1=no; (+g) there is no"},
-{p1:/ (дв) /gi,r1:"$1=(f две)  two"},
+{p1:/ (дв) /gi,r1:"$1=(f две) two"},
 {p1:/ (м)(ой|.+) /gi,r1:"$1=my"},
 {p1:/ (гд)(е|+.) /gi,r1:"$1=where"},
 {p1:/ (д)(|ом) /gi,r1:"$1=house"},
@@ -12729,42 +12729,42 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 </p>
 <hr>
 If you download a copy of this index.html file,you can add your own entries in longest word to shortest word order. Otherwise,this workspace is for me.<br>
-     <input type="text" id="wordInput" placeholder="Enter the Japanese word">
-    <input type="text" id="pronunciationInput" placeholder="Enter spaced English pronunciation">
-    <input type="text" id="definitionInput" placeholder="Enter the English definition">
-    <button onclick="formatAndDisplay()">Format</button>
-    <div id="outputContainer">
-        <p id="output">Formatted output will appear here...</p>
-    </div>
+   <input type="text" id="wordInput" placeholder="Enter the Japanese word">
+  <input type="text" id="pronunciationInput" placeholder="Enter spaced English pronunciation">
+  <input type="text" id="definitionInput" placeholder="Enter the English definition">
+  <button onclick="formatAndDisplay()">Format</button>
+  <div id="outputContainer">
+    <p id="output">Formatted output will appear here...</p>
+  </div>
 
 <script>
-    function formatJapaneseRegex(word,pronunciation,definition) {
-        let regexPattern=word.split('').map(char=> `(${char})(?!X)`).join('');
-        let pronunciationParts=pronunciation.split(/\s+/);
-        let replacement=word.split('').map((_,i)=> `$${i + 1}X${pronunciationParts[i] || word[i]}`).join('');
-        return `{p1:/${regexPattern}/g,r1:'${replacement}\=${definition};Noun'},`;
-    }
+  function formatJapaneseRegex(word,pronunciation,definition) {
+    let regexPattern=word.split('').map(char=> `(${char})(?!X)`).join('');
+    let pronunciationParts=pronunciation.split(/\s+/);
+    let replacement=word.split('').map((_,i)=> `$${i + 1}X${pronunciationParts[i] || word[i]}`).join('');
+    return `{p1:/${regexPattern}/g,r1:'${replacement}\=${definition};Noun'},`;
+  }
 
-    function formatAndDisplay() {
-        const inputWord=document.getElementById("wordInput").value;
-        const inputPronunciation=document.getElementById("pronunciationInput").value;
-        const inputDefinition=document.getElementById("definitionInput").value;
-        const output=formatJapaneseRegex(inputWord,inputPronunciation,inputDefinition);
-        document.getElementById("output").innerText=output;
-    }
+  function formatAndDisplay() {
+    const inputWord=document.getElementById("wordInput").value;
+    const inputPronunciation=document.getElementById("pronunciationInput").value;
+    const inputDefinition=document.getElementById("definitionInput").value;
+    const output=formatJapaneseRegex(inputWord,inputPronunciation,inputDefinition);
+    document.getElementById("output").innerText=output;
+  }
 </script>
 
-<hr>    
-    <div class="HeaderStyle">My Other Projects</div>
+<hr>  
+  <div class="HeaderStyle">My Other Projects</div>
 <p><a href="dnd/Game.htm" target="_blank">The Dungeons & Dragons Single Encounter Manager</a></p>
-    <div class="HeaderStyle">Killing Time</div>
-    <p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022) Chapter 16</p>
-    <p>[VIEWING] <i>Northern Exposure</i>,S3E3 (1991)</p>
+  <div class="HeaderStyle">Killing Time</div>
+  <p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022) Chapter 16</p>
+  <p>[VIEWING] <i>Northern Exposure</i>,S3E3 (1991)</p>
 
-    <div class="HeaderStyle">External Links</div>
-    <p><a href="https://x.com/JohnRenfro2016" target="_blank">My X Profile</a></p>
-    <p><a href="https://www.pinterest.jp/johnrenfro2016/" target="_blank">My Pinterest.Com Page</a></p>
-    <p><a href="https://archive.org/details/fav-johnrenfro?tab=collection" target="_blank">My Archive.Org Page</a></p>
+  <div class="HeaderStyle">External Links</div>
+  <p><a href="https://x.com/JohnRenfro2016" target="_blank">My X Profile</a></p>
+  <p><a href="https://www.pinterest.jp/johnrenfro2016/" target="_blank">My Pinterest.Com Page</a></p>
+  <p><a href="https://archive.org/details/fav-johnrenfro?tab=collection" target="_blank">My Archive.Org Page</a></p>
 
 </body>
 </html>
