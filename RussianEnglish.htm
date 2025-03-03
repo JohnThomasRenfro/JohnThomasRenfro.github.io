@@ -9281,14 +9281,14 @@
 
         function analyzeText() {
             let text = document.getElementById("inputText").value;
-            let words = text.split(/(\s+|\p{P}+)/u);
+            let words = text.split(/(\s+|[.,!?;:"'()])/g);
             let processedWords = words.map(word => {
-                if (!word.trim()) return word;
+                if (!word.trim() || /[.,!?;:"'()]/.test(word)) return word;
                 let { root, suffix } = stripRussianSuffixes(word);
                 
                 for (let entry of entries) {
                     if (entry.p1.test(root)) {
-                        return root.replace(entry.p1, entry.r1.replace('$2', suffix));
+                        return entry.r1.replace('$2', suffix);
                     }
                 }
                 return word;
