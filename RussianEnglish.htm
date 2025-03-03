@@ -5681,11 +5681,44 @@ const replsB=[
 
 ];
 
-replsB.forEach(replace=> {
- a=a.replace(replace.p1,replace.r1);
+function stripRussianSuffixes(word) {
+    const suffixes = [
+        'овать', 'евать', 'ить', 'еть', 'ать', 'ять', 'иться', 'еться', 'ать', 'ять',
+        'ого', 'его', 'ому', 'ему', 'ым', 'им', 'ой', 'ей', 'ою', 'ею', 'ах', 'ях', 'ам', 'ям',
+        'ов', 'ев', 'ёв', 'ий', 'ый', 'ой', 'ая', 'яя', 'ое', 'ее', 'ые', 'ие', 'ых', 'их',
+        'у', 'ю', 'а', 'я', 'о', 'е', 'ы', 'и'  
+    ];
+    
+    for (let suffix of suffixes) {
+        if (word.endsWith(suffix)) {
+            return word.slice(0, -suffix.length);
+        }
+    }
+    return word;
+}
+
+// Example usage:
+const entries = [
+    { word: "противопоставлять", meaning: "to contrast (sth with sth), set sth against sth" },
+    { word: "говорить", meaning: "to speak" },
+    { word: "написать", meaning: "to write" }
+];
+
+entries.forEach(entry => {
+    entry.root = stripRussianSuffixes(entry.word);
 });
 
-document.getElementById("translatedTextDisplay").innerHTML=a;
+let a = JSON.stringify(entries);
+
+const replsB = [
+    {p1:/ (о) /gi, r1:"$1=́рган organ (biol, political); suf~$2"}
+];
+
+replsB.forEach(replace => {
+    a = a.replace(replace.p1, replace.r1);
+});
+
+document.getElementById("translatedTextDisplay").innerHTML = a;
 
 }
 
