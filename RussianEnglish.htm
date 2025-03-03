@@ -63,7 +63,7 @@
 function translateB()
 {
 
-const replsB=[
+const entries=[
 {p1:/([\.\(\)])/gi,r1:" $1 "},
 {p1:/([А-Яа-яЁё]+)/gi,r1:"<br> $1 "},
 {p1:/ (придержива)(ться|.+) /gi,r1:"$1=(i) (+g) to keep to, adhere to; suf~$2"},
@@ -5697,24 +5697,9 @@ function stripRussianSuffixes(word) {
     return word;
 }
 
-// Example usage:
-const entries = [
-    { word: "противопоставлять", meaning: "to contrast (sth with sth), set sth against sth" },
-    { word: "говорить", meaning: "to speak" },
-    { word: "написать", meaning: "to write" }
-];
+let a = document.getElementById("translatedTextDisplay").innerHTML;
 
-entries.forEach(entry => {
-    entry.root = stripRussianSuffixes(entry.word);
-});
-
-let a = JSON.stringify(entries);
-
-const replsB = [
-    {p1:/ (о) /gi, r1:"$1=́рган organ (biol, political); suf~$2"}
-];
-
-replsB.forEach(replace => {
+entries.forEach(replace => {
     a = a.replace(replace.p1, replace.r1);
 });
 
