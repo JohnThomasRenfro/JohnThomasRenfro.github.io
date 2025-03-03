@@ -6,14 +6,14 @@
     <style>
         body {
             font-family: 'Trebuchet MS', 'Arial', sans-serif;
-            background-color: #f5f1e9; /* Creamy off-white background */
+            background-color: #f5f1e9;
             margin: 40px;
-            color: #4a536b; /* Soft slate blue for text */
+            color: #4a536b;
         }
 
         h2 {
             font-family: 'Georgia', serif;
-            color: #8b6f47; /* Warm pastel brown */
+            color: #8b6f47;
             text-align: center;
             margin-bottom: 30px;
             font-size: 28px;
@@ -28,8 +28,8 @@
             padding: 15px;
             font-family: 'Trebuchet MS', sans-serif;
             font-size: 16px;
-            background-color: #e6eef9; /* Pale Russian blue */
-            border: 2px solid #c9d6ea; /* Slightly darker blue border */
+            background-color: #e6eef9;
+            border: 2px solid #c9d6ea;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -38,7 +38,7 @@
 
         textarea:focus {
             outline: none;
-            border-color: #b19cd9; /* Pastel lavender on focus */
+            border-color: #b19cd9;
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
@@ -47,23 +47,24 @@
             min-height: 150px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fef7f6; /* Very pale pink */
-            border: 2px dashed #eac7c7; /* Soft rosy dashed border */
+            background-color: #fef7f6;
+            border: 2px dashed #eac7c7;
             border-radius: 10px;
             font-family: 'Trebuchet MS', sans-serif;
             font-size: 16px;
-            color: #5d4037; /* Warm brown text */
+            color: #5d4037;
             white-space: pre-wrap;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
     </style>
 </head>
-<script>
-
-function translateB()
-{
-
-const entries=[
+<body>
+    <h2>Russian Word Analyzer</h2>
+    <textarea id="inputText" placeholder="Enter Russian text here..."></textarea>
+    <div id="output"></div>
+    
+    <script>
+        const entries = [
 {p1:/([\.\(\)])/gi,r1:" $1 "},
 {p1:/([А-Яа-яЁё]+)/gi,r1:"<br> $1 "},
 {p1:/ (придержива)(ться|.+) /gi,r1:"$1=(i) (+g) to keep to, adhere to; suf~$2"},
@@ -5678,83 +5679,38 @@ const entries=[
 {p1:/ (к) /gi,r1:"$1=(ко) (+d) towards, to; suf~$2"},
 {p1:/ (о) /gi,r1:"$1=(об /обо) (+pr) about, concerning; suf~$2"},
 {p1:/ (о) /gi,r1:"$1=́рган organ (biol, political); suf~$2"},
+        ];
 
-];
-
-function stripRussianSuffixes(word) {
-    const suffixes = [
-        'овать', 'евать', 'ить', 'еть', 'ать', 'ять', 'иться', 'еться', 'ать', 'ять',
-        'ого', 'его', 'ому', 'ему', 'ым', 'им', 'ой', 'ей', 'ою', 'ею', 'ах', 'ях', 'ам', 'ям',
-        'ов', 'ев', 'ёв', 'ий', 'ый', 'ой', 'ая', 'яя', 'ое', 'ее', 'ые', 'ие', 'ых', 'их',
-        'у', 'ю', 'а', 'я', 'о', 'е', 'ы', 'и'  
-    ];
-    
-    for (let suffix of suffixes) {
-        if (word.endsWith(suffix)) {
-            return word.slice(0, -suffix.length);
+        function stripRussianSuffixes(word) {
+            const suffixes = [
+                'овать', 'евать', 'ить', 'еть', 'ать', 'ять', 'иться', 'еться',
+                'ого', 'его', 'ому', 'ему', 'ым', 'им', 'ой', 'ей', 'ою', 'ею',
+                'ах', 'ях', 'ам', 'ям', 'ов', 'ев', 'ёв', 'ий', 'ый', 'ой',
+                'ая', 'яя', 'ое', 'ее', 'ые', 'ие', 'ых', 'их', 'у', 'ю', 'а', 'я', 'о', 'е', 'ы', 'и'
+            ];
+            
+            for (let suffix of suffixes) {
+                if (word.endsWith(suffix)) {
+                    return word.slice(0, -suffix.length);
+                }
+            }
+            return word;
         }
-    }
-    return word;
-}
 
-let a = document.getElementById("translatedTextDisplay").innerHTML;
+        function analyzeText() {
+            let text = document.getElementById("inputText").value;
+            let words = text.split(/\s+/);
+            let processedWords = words.map(word => {
+                let strippedWord = stripRussianSuffixes(word);
+                entries.forEach(entry => {
+                    strippedWord = strippedWord.replace(entry.p1, entry.r1);
+                });
+                return strippedWord;
+            });
+            document.getElementById("output").innerText = processedWords.join(" ");
+        }
 
-entries.forEach(replace => {
-    a = a.replace(replace.p1, replace.r1);
-});
-
-document.getElementById("translatedTextDisplay").innerHTML = a;
-
-}
-
-</script></head>
-
-<body>
-<div class="TheStripe">Studying Russian Language</div>
-<br>
-Cut and paste this Russian text into text area below. SOURCE: Pravda
-<p>
-Сегодня в мире красоты появляется всё больше новинок, обещающих чудеса: сияющая кожа, борьба с морщинами, улучшение овала лица. Но так ли эффективны эти процедуры на самом деле? Часто за эффектами скрывается лишь маркетинг, а не реальный результат.
-Читайте больше на https://www.pravda.ru/news/beauty/2185764-cosmetic-procedures-effectiveness/<p>
-<textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
-<br>
-<span id="translatedTextDisplay"></span>
-</p>
-<hr>
-If you download a copy of this index.html file, you can add your own entries in longest word to shortest word order. Otherwise, this workspace is for me.<br>
-     <input type="text" id="wordInput" placeholder="Enter the Russian word">
-    <input type="text" id="definitionInput" placeholder="Enter the English definition">
-    <button onclick="formatAndDisplay()">Format</button>
-    <div id="outputContainer">
-        <p id="output">Formatted output will appear here...</p>
-    </div>
-
-<script>
-    function formatRussianRegex(word, definition) {
-        let regexPattern = ` (${word})`;
-        let replacement = `$1=${definition}`;
-        return `{p1:/${regexPattern}(|.+) /gi,r1:"${replacement}; suf~$2"},`;
-    }
-
-    function formatAndDisplay() {
-        const inputWord = document.getElementById("wordInput").value;
-        const inputDefinition = document.getElementById("definitionInput").value;
-        const output = formatRussianRegex(inputWord, inputDefinition);
-        document.getElementById("output").innerText = output;
-    }
-</script>
-
-<hr>    
-    <div class="HeaderStyle">My Other Projects</div>
-<p><a href="dnd/Game.htm" target="_blank">The Dungeons & Dragons Single Encounter Manager</a></p>
-    <div class="HeaderStyle">Killing Time</div>
-    <p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022) Chapter 16</p>
-    <p>[VIEWING] <i>Northern Exposure</i>,S3E3 (1991)</p>
-
-    <div class="HeaderStyle">External Links</div>
-    <p><a href="https://x.com/JohnRenfro2016" target="_blank">My X Profile</a></p>
-    <p><a href="https://www.pinterest.jp/johnrenfro2016/" target="_blank">My Pinterest.Com Page</a></p>
-    <p><a href="https://archive.org/details/fav-johnrenfro?tab=collection" target="_blank">My Archive.Org Page</a></p>
-
+        document.getElementById("inputText").addEventListener("input", analyzeText);
+    </script>
 </body>
 </html>
