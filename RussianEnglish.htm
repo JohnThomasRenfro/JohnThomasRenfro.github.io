@@ -69,8 +69,6 @@
     
     <script>
         const entries = [
-{p1:/([а-яА-ЯЁё]+)/gi,r1:"<br>$1"},
-
 {p1:/ (совершенствоваться|усовершенствоваться) /gi,r1:"$1=(в +pr) to improve os; improve one’s knowledge (of); suf~$2"},
 {p1:/ (заинтересовываться|заинтересоваться) /gi,r1:"$1=(+inst) to become interested in; suf~$2"},
 {p1:/ (противопоставлять|противопоставить) /gi,r1:"$1=(+a +d) to contrast (sth with sth), set sth against sth; suf~$2"},
@@ -9269,6 +9267,7 @@
 {p1:/ (и) /gi,r1:"$1=1; suf~$2"},
 {p1:/ (я) /gi,r1:"$1=I; suf~$2"},
 {p1:/ (а) /gi,r1:"$1=and, but (slight contrast); suf~$2"},
+{p1:/([а-яА-ЯЁё]+)/gi,r1:"<br>$1"},    
         ];
 
         function stripRussianSuffixes(word) {
