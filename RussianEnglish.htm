@@ -9295,7 +9295,7 @@
                 for (let entry of entries) {
                     let match = entry.p1.exec(` ${root} `);
                     if (match) {
-                        return entry.r1.replace('$1', root).replace('$2', formattedSuffix);
+                        return `${root}=${entry.r1.split('=')[1].split(';')[0]}; suf~${formattedSuffix}`;
                     }
                 }
                 return root + formattedSuffix;
