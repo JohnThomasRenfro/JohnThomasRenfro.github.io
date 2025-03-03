@@ -1063,6 +1063,7 @@ const replsB=[
 {p1:/(不)(?!X)(平)(?!X)(等)(?!X)/g,r1:'$1Xfu$2Xbyou$3Xdou=unequal,unfair;Noun'},
 {p1:/(不)(?!X)(幸)(?!X)(せ)(?!X)/g,r1:'$1Xfu$2Xsh$3Xiawase=unhappiness,misfortune;Noun'},
 {p1:/(不)(?!X)(得)(?!X)(意)(?!X)/g,r1:'$1Xfu$2Xto$3Xkui=your weak point;Noun'},
+{p1:/(卸)(?!X)(業)(?!X)(者)(?!X)/g,r1:'$1Xoroshi$2Xgyou$3Xsya=wholesaler;Noun'},
 {p1:/(不)(?!X)(必)(?!X)(要)(?!X)/g,r1:'$1Xfu$2Xhi$3Xtsuyou=unnecessary,superfluous;Noun'},
 {p1:/(不)(?!X)(思)(?!X)(議)(?!X)/g,r1:'$1Xfu$2Xshi$3Xgi=mystery,wonder;Noun'},
 {p1:/(不)(?!X)(愉)(?!X)(快)(?!X)/g,r1:'$1Xfu$2Xyu$3Xkai=unpleasant,disagreeable;Noun'},
@@ -1134,7 +1135,7 @@ const replsB=[
 {p1:/(保)(?!X)(護)(?!X)(者)(?!X)/g,r1:'$1Xho$2Xgo$3Xsya=guardian;Noun'},
 {p1:/(候)(?!X)(補)(?!X)(生)(?!X)/g,r1:'$1Xkou$2Xho$3Xsei=cadet;Noun'},
 {p1:/(値)(?!X)(上)(?!X)(げ)(?!X)/g,r1:'$1Xne$2Xa$3Xge=price hike;Noun'},
-{p1:/(値)(?!X)(下)(?!X)(げ)(?!X)/g,r1:'$1Xnes$2Xag$3Xe=price reduction;Noun'},
+{p1:/(値)(?!X)(下)(?!X)(げ)(?!X)/g,r1:'$1Xne$2Xsa$3Xge=price reduction;Noun'},
 {p1:/(値)(?!X)(引)(?!X)(き)(?!X)/g,r1:'$1Xneb$2Xik$3Xi=discount;Noun'},
 {p1:/(値)(?!X)(打)(?!X)(ち)(?!X)/g,r1:'$1Xneu$2Xch$3Xi=value,worth;Noun'},
 {p1:/(倶)(?!X)(楽)(?!X)(部)(?!X)/g,r1:'$1Xku$2Xra$3Xbu=club;Noun'},
@@ -1516,6 +1517,7 @@ const replsB=[
 {p1:/(無)(?!X)(制)(?!X)(限)(?!X)/g,r1:'$1Xmu$2Xsei$3Xgen=unlimited;Noun'},
 {p1:/(無)(?!X)(差)(?!X)(別)(?!X)/g,r1:'$1Xmu$2Xsa$3Xbetsu=indiscriminate;Noun'},
 {p1:/(無)(?!X)(意)(?!X)(味)(?!X)/g,r1:'$1Xmui$2Xmi$3X=meaningless,absurd;Noun'},
+{p1:/(懐)(?!X)(疑)(?!X)(的)(?!X)/g,r1:'$1Xkai$2Xgi$3Xteki=skeptical;Noun'},
 {p1:/(無)(?!X)(意)(?!X)(識)(?!X)/g,r1:'$1Xmui$2Xsh$3Xiki=unconsciously,without thinking;Noun'},
 {p1:/(無)(?!X)(生)(?!X)(物)(?!X)/g,r1:'$1Xmusei$2Xbu$3Xtsu=inanimate object;Noun'},
 {p1:/(無)(?!X)(責)(?!X)(任)(?!X)/g,r1:'$1Xmu$2Xseki$3Xnin=irresponsibility;Noun'},
@@ -2991,7 +2993,7 @@ const replsB=[
 {p1:/(傘)(?!X)(下)(?!X)/g,r1:'$1Xsan$2Xka=affiliation;Noun'},
 {p1:/(備)(?!X)(え)(?!X)/g,r1:'$1Xsona$2X=equip with;IchidanVerb'},
 {p1:/(備)(?!X)(え)(?!X)/g,r1:'$1Xsona$2X=offering,dedication;IchidanVerb'},
-{p1:/(備)(?!X)(蓄)(?!X)/g,r1:'$1Xbi$2Xchiku=reserves;Noun'},
+{p1:/(備)(?!X)(蓄)(?!X)/g,r1:'$1Xbi$2Xchiku=reserves,stockpile;Noun'},
 {p1:/(催)(?!X)(し)(?!X)/g,r1:'$1Xmoyoo$2Xshi=event,function;Noun'},
 {p1:/(催)(?!X)(促)(?!X)/g,r1:'$1Xsai$2Xsoku=demand,urging;Noun'},
 {p1:/(債)(?!X)(務)(?!X)/g,r1:'$1Xsai$2Xmu=debt;Noun'},
@@ -3224,6 +3226,7 @@ const replsB=[
 {p1:/(判)(?!X)(定)(?!X)/g,r1:'$1Xhan$2Xtei=judgement;Noun'},
 {p1:/(判)(?!X)(断)(?!X)/g,r1:'$1Xhan$2Xdan=judgment;Noun'},
 {p1:/(判)(?!X)(明)(?!X)/g,r1:'$1Xhan$2Xmei=acertain;Noun'},
+{p1:/(集)(?!X)(荷)(?!X)/g,r1:'$1Xsyuu$2Xka=cargo; collected produce;Noun'},
 {p1:/(判)(?!X)(決)(?!X)/g,r1:'$1Xhan$2Xketsu=judgment;Noun'},
 {p1:/(別)(?!X)(々)(?!X)/g,r1:'$1Xbetsu$2Xbetsu=separately;Noun'},
 {p1:/(別)(?!X)(に)(?!X)/g,r1:'$1Xbetsu$2X=ni=particularly,I don t care;Noun'},
@@ -8660,7 +8663,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-きのうから3月が始まっていますが、気温は3月というより4月並みの暖かさになった所が多くなりました。きょう2日（日）もこの時季としては気温の高い状態が続くでしょう。ただ、週明けあす3日（月）以降は気温が急降下し、寒の戻りがありそうです。
+政府はコメの価格抑制に向けた備蓄米放出の入札の詳細を発表した。ただ2月に放出の方針を発表した後もコメの価格は高止まりしており、当初予定する15万トン放出による値下げ効果には集荷業者や卸業者の多くが懐疑的。早くも追加放出が必要だとの声も出ている。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <br>
