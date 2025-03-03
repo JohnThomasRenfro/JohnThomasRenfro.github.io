@@ -110,6 +110,114 @@
 {p1:/ (договариваться|договориться) /gi,r1:"договориться=(с +inst) to reach agreement (with); suf~$2"},
 {p1:/ (ограничиваться|ограничиться) /gi,r1:"ограничиться=(+inst) to limit oneself (to); be limited (to); suf~$2"},
 {p1:/ (воздерживаться|воздержаться) /gi,r1:"воздержаться=(от +g) to abstain (from); suf~$2"},
+{p1:/ (прислушиваться|прислушаться) /gi,r1:"прислушаться=(к +d) to listen carefully (to); suf~$2"},<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Russian Word Analyzer</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Arial', sans-serif;
+            background-color: #f5f1e9;
+            margin: 40px;
+            color: #4a536b;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Georgia', serif;
+            color: #8b6f47;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 500px;
+            height: 120px;
+            margin: 10px auto;
+            display: block;
+            padding: 15px;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-size: 16px;
+            background-color: #e6eef9;
+            border: 2px solid #c9d6ea;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            resize: none;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #b19cd9;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        #output {
+            width: 500px;
+            min-height: 150px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fef7f6;
+            border: 2px dashed #eac7c7;
+            border-radius: 10px;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-size: 16px;
+            color: #5d4037;
+            white-space: pre-wrap;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Russian Word Analyzer</h2>
+    <textarea id="inputText" placeholder="Enter Russian text here..."></textarea>
+    <div id="output"></div>
+    
+    <script>
+        const entries = [
+{p1:/ (совершенствоваться|усовершенствоваться) /gi,r1:"усовершенствоваться=(в +pr) to improve os; improve one’s knowledge (of); suf~$2"},
+{p1:/ (заинтересовываться|заинтересоваться) /gi,r1:"заинтересоваться=(+inst) to become interested in; suf~$2"},
+{p1:/ (противопоставлять|противопоставить) /gi,r1:"противопоставить=(+a +d) to contrast (sth with sth), set sth against sth; suf~$2"},
+{p1:/ (приостанавливаться|приостановиться) /gi,r1:"приостановиться=to stop (for a while), pause; suf~$2"},
+{p1:/ (демонстрировать|продемонстрировать) /gi,r1:"продемонстрировать=(+a) to demonstrate, show; suf~$2"},
+{p1:/ (совершенствовать|усовершенствовать) /gi,r1:"усовершенствовать=(+a) to perfect, improve; suf~$2"},
+{p1:/ (сосредоточиваться|сосредоточиться) /gi,r1:"сосредоточиться=(на +pr) to concentrate (on); suf~$2"},
+{p1:/ (распространяться|распространиться) /gi,r1:"распространиться=to spread; suf~$2"},
+{p1:/ (приспосабливаться|приспособиться) /gi,r1:"приспособиться=(к +d) to adapt (to); suf~$2"},
+{p1:/ (контролировать|проконтролировать) /gi,r1:"проконтролировать=(+a) to check; suf~$2"},
+{p1:/ (предназначаться|предназначиться) /gi,r1:"предназначиться=(для +g or на+a) to be intended for; suf~$2"},
+{p1:/ (интересоваться|заинтересоваться) /gi,r1:"заинтересоваться=(+inst) to be interested in; suf~$2"},
+{p1:/ (путешествовать|попутешествовать) /gi,r1:"попутешествовать=to travel; suf~$2"},
+{p1:/ (анализировать|проанализировать) /gi,r1:"проанализировать=(+a) to analyse; suf~$2"},
+{p1:/ (сосредоточивать|сосредоточить) /gi,r1:"сосредоточить=(+a на +pr) to concentrate (sth on sth); suf~$2"},
+{p1:/ (переглядываться|переглянуться) /gi,r1:"переглянуться=(с +inst) to exchange glances (with); suf~$2"},
+{p1:/ (присоединяться|присоединиться) /gi,r1:"присоединиться=(к +d) to join, join (a group); suf~$2"},
+{p1:/ (присматриваться|присмотреться) /gi,r1:"присмотреться=(к +d) to look closely (at); get used (to); suf~$2"},
+{p1:/ (распространять|распространить) /gi,r1:"распространить=(+a) to spread; suf~$2"},
+{p1:/ (преобразовывать|преобразовать) /gi,r1:"преобразовать=(+a) to reform; transform; suf~$2"},
+{p1:/ (предусматривать|предусмотреть) /gi,r1:"предусмотреть=to envisage, stipulate, foresee; suf~$2"},
+{p1:/ (предполагаться|предположиться) /gi,r1:"предположиться=to be proposed, intended; suf~$2"},
+{p1:/ (распределяться|распределиться) /gi,r1:"распределиться=to be distributed; suf~$2"},
+{p1:/ (настораживаться|насторожиться) /gi,r1:"насторожиться=to prick up one’s ears, be on one’s guard; suf~$2"},
+{p1:/ (рваться|порваться|разорваться) /gi,r1:"разорваться=to tear, burst; want strongly (to do sth); suf~$2"},
+{p1:/ (чувствоваться|почувствоваться) /gi,r1:"почувствоваться=to be felt; suf~$2"},
+{p1:/ (приготовляться|приготовиться) /gi,r1:"приготовиться=(+inf or к +d) to get ready; suf~$2"},
+{p1:/ (злоупотреблять|злоупотребить) /gi,r1:"злоупотребить=(+inst) to misuse, abuse (sth); suf~$2"},
+{p1:/ (восстанавливать|восстановить) /gi,r1:"восстановить=(+a) to restore, reconstruct; (+a против +g) set s.o. against s.o.; suf~$2"},
+{p1:/ (воспроизводить|воспроизвести) /gi,r1:"воспроизвести=(+a) to reproduce; suf~$2"},
+{p1:/ (останавливаться|остановиться) /gi,r1:"остановиться=to stop; suf~$2"},
+{p1:/ (осуществляться|осуществиться) /gi,r1:"осуществиться=to be brought about, be fulfilled, be put into effect; suf~$2"},
+{p1:/ (представляться|представиться) /gi,r1:"представиться=to introduce os; present itself, occur; suf~$2"},
+{p1:/ (устанавливаться|установиться) /gi,r1:"установиться=to become established; suf~$2"},
+{p1:/ (подчёркиваться|подчеркнуться) /gi,r1:"подчеркнуться=to be emphasized; suf~$2"},
+{p1:/ (подтверждаться|подтвердиться) /gi,r1:"подтвердиться=to be confirmed; suf~$2"},
+{p1:/ (пользоваться|воспользоваться) /gi,r1:"воспользоваться=(+inst) to use, make use of; suf~$2"},
+{p1:/ (маневрировать|сманеврировать) /gi,r1:"сманеврировать=to manoeuvre; suf~$2"},
+{p1:/ (предназначать|предназначить) /gi,r1:"предназначить=(на +a/для +g) to intend for, earmark (for); suf~$2"},
+{p1:/ (договариваться|договориться) /gi,r1:"договориться=(с +inst) to reach agreement (with); suf~$2"},
+{p1:/ (ограничиваться|ограничиться) /gi,r1:"ограничиться=(+inst) to limit oneself (to); be limited (to); suf~$2"},
+{p1:/ (воздерживаться|воздержаться) /gi,r1:"воздержаться=(от +g) to abstain (from); suf~$2"},
 {p1:/ (прислушиваться|прислушаться) /gi,r1:"прислушаться=(к +d) to listen carefully (to); suf~$2"},
 {p1:/ (приглядываться|приглядеться) /gi,r1:"приглядеться=(к +d) to look closely at (coll); suf~$2"},
 {p1:/ (удовлетворять|удовлетворить) /gi,r1:"удовлетворить=(+a) to satisfy; (+d) be in accordance with; suf~$2"},
@@ -8571,7 +8679,7 @@
 {p1:/ (цепь) /gi,r1:"цепь=(f) chain; suf~$2"},
 {p1:/ (сеть) /gi,r1:"сеть=(f) net; network; suf~$2"},
 {p1:/ (июль) /gi,r1:"июль=(m) July; suf~$2"},
-{p1:/ (огон) /gi,r1:"огон=(ё)к) /gi,r1:"к=light; suf~$2"},
+{p1:/ (огон) /gi,r1:"огон=light; suf~$2"},
 {p1:/ (боль) /gi,r1:"боль=(f) pain; suf~$2"},
 {p1:/ (июнь) /gi,r1:"июнь=(m) June; suf~$2"},
 {p1:/ (щель) /gi,r1:"щель=(f) chink, fissure, slot; suf~$2"},
@@ -9265,6 +9373,7 @@
 {p1:/ (и) /gi,r1:"и=1; suf~$2"},
 {p1:/ (я) /gi,r1:"я=I; suf~$2"},
 {p1:/ (а) /gi,r1:"а=and, but (slight contrast); suf~$2"},
+
         ];
 
         function stripRussianSuffixes(word) {
@@ -9277,21 +9386,21 @@
             
             for (let suffix of suffixes) {
                 if (word.endsWith(suffix)) {
-                    return word.slice(0, -suffix.length) + " suf~" + suffix;
+                    return [word.slice(0, -suffix.length), suffix];
                 }
             }
-            return word;
+            return [word, ''];
         }
 
         function analyzeText() {
             let text = document.getElementById("inputText").value;
             let words = text.split(/\s+/);
             let processedWords = words.map(word => {
-                let strippedWord = stripRussianSuffixes(word);
+                let [root, suffix] = stripRussianSuffixes(word);
                 entries.forEach(entry => {
-                    strippedWord = strippedWord.replace(entry.p1, entry.r1);
+                    root = root.replace(entry.p1, entry.r1.replace("$2", suffix));
                 });
-                return strippedWord;
+                return root;
             });
             document.getElementById("output").innerText = processedWords.join(" ");
         }
@@ -9300,3 +9409,4 @@
     </script>
 </body>
 </html>
+
