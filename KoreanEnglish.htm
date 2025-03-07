@@ -11,143 +11,52 @@
 <link rel="icon" href="reading.png" type="image/png">
 
 <style>
-body {
-  background-attachment: fixed;
-  background-color: #2b2b2b;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #d3c6aa;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 20px;
-  margin: 5%;
-  padding: 20px;
-  position: relative;
-  word-wrap: break-word;
-}
-
-body::before {
-  background: rgba(0,0,0,0.7);
-  content: "";
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
-}
-
-/* Header Style */
-.HeaderStyle {
-  background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
-  border: 3px solid #6b5b4b;
-  border-bottom: 2px solid #867b74;
-  color: #b7a57a;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 25px;
-  text-shadow: 1px 1px 4px #6b5b4b;
-}
-
-/* Korean Kikkō (Tortoise Shell) Pattern for TheStripe */
-.TheStripe {
-  background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
-  border: 3px solid #6b5b4b;
-  text-align: center;
-  font-weight: bold;
-  font-size: 30px;
-}
-
-/* Links */
-a:link,a:visited {
-  color: #a89984;
-  text-decoration: none;
-}
-
-a:hover,a:active {
-  color: #f4bf75;
-}
-
-/* Inputs and Textareas with Korean Kumiko-Inspired Borders */
-input,textarea {
-  background-color: #3a3a3a;
-  border: 3px solid transparent;
-  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.5);
-  border-image: linear-gradient(45deg,#6b5b4b,#867b74,#6b5b4b) 10;
-  color: inherit;
-  font-size: 20px;
-  max-height: 120px;
-  outline: none;
-  transition: all 0.4s ease-in-out;
-  width: 100%;
-}
-
-input:hover,textarea:hover {
-  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
-}
-
-/* Output Container with Seigaiha (Wave) Pattern */
-#outputContainer {
-  background: radial-gradient(circle,#2b2b2b 10%,#3a3a3a 60%,#2b2b2b 90%);
-  border: 3px solid #6b5b4b;
-  color: #d3c6aa;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 20px;
-  white-space: pre-wrap;
-  width: 80%;
-}
-
-/* Buttons */
-button {
-  background: linear-gradient(to bottom,#6b5b4b,#b7a57a);
-  border: 3px solid #6b5b4b;
-  color: #2b2b2b;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 18px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-button:hover {
-  background: #b7a57a;
-  color: #2b2b2b;
-  transform: scale(1.05);
-}
-
-hr {
-  border: none;
-  height: 3px;
-  background: linear-gradient(to right,#6b5b4b,#b7a57a,#6b5b4b);
-  margin: 20px 0;
-  position: relative;
-}
-
-hr::after {
-  content: "✦";
-  display: block;
-  text-align: center;
-  color: #b7a57a;
-  font-size: 28px;
-  margin-top: -16px;
-}
-
-@media screen and (max-width: 768px) {
   body {
-    font-size: 18px;
-    margin: 3%;
+    font-family: sans-serif;
+    background-color: #f9f9f9;
+    margin: 10px;
+    padding: 10px;
   }
-  .HeaderStyle {
-    font-size: 10px;
+
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px; /* Space below the heading */
   }
-  input,textarea {
-    font-size: 18px;
+
+  textarea {
     width: 100%;
+    height: 100px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px; /* Standard padding for content */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    background: #fafafa;
   }
-  #outputContainer {
+
+  button {
+    display: block;
     width: 100%;
+    padding: 10px;       /* Standard padding for buttons */
+    margin-top: 10px;    /* Space above the button */
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: #0078d4;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
-}
+
+  button:hover {
+    background: #005a9e;
+  }
 </style>
+
 
 <script>
 
@@ -1215,7 +1124,7 @@ const replsB=[
 {p1:/(맹)(?!X)(세)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X=to swear, pledge, vow"},
 {p1:/(매)(?!X)(달)(?!X)(리)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X=to hang, cling to;depend on;beg"},
 {p1:/(맞)(?!X)(이)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X=to receive, greet, accept, welcome"},
-{p1:/(전)(?!X)(투)(?!X)(기)(?!X)(가)(?!X)/g,r1:'$1Xchahn$2Xtue$3Xgee$4Xgah=fighter;Noun'},
+{p1:/(전)(?!X)(투)(?!X)(기)(?!X)(가)(?!X)/g,r1:'$1Xchahn$2Xtue$3Xgee$4Xgah=fighter'},
 {p1:/(망)(?!X)(설)(?!X)(이)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X=)(망)(?!X)(설)(?!X)(이)(?!X)(에)(?!X)(요)(?!X)("},
 {p1:/(망)(?!X)(가)(?!X)(지)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X=to break down, be damaged(impossible to use)"},
 {p1:/(말)(?!X)(짱)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X=to be perfectly okay, faultless, clean"},
@@ -2389,6 +2298,7 @@ const replsB=[
 {p1:/(선)(?!X)(택)(?!X)(권)(?!X)/g,r1:"$1X$2X$3X=option, choice"},
 {p1:/(선)(?!X)(입)(?!X)(견)(?!X)/g,r1:"$1X$2X$3X=prejudice, stereotype, preconceived notion"},
 {p1:/(선)(?!X)(생)(?!X)(님)(?!X)/g,r1:"$1X$2X$3X=teacher"},
+{p1:/(환)(?!X)(영)(?!X)(한)(?!X)/g,r1:'$1Xhwahn$2Xyuhng$3Xhahn=welcome'},
 {p1:/(섞)(?!X)(이)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=)(섞)(?!X)(여)(?!X)(요)(?!X)("},
 {p1:/(섞)(?!X)(이)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to be mixed, blended, shuffled;added"},
 {p1:/(서)(?!X)(비)(?!X)(스)(?!X)/g,r1:"$1X$2X$3X=service"},
@@ -2718,6 +2628,7 @@ const replsB=[
 {p1:/(레)(?!X)(이)(?!X)(더)(?!X)/g,r1:"$1X$2X$3X=radar"},
 {p1:/(러)(?!X)(시)(?!X)(아)(?!X)/g,r1:"$1X$2X$3X=Russia"},
 {p1:/(라)(?!X)(디)(?!X)(오)(?!X)/g,r1:"$1X$2X$3X=radio"},
+{p1:/(늦)(?!X)(었)(?!X)(지)(?!X)/g,r1:'$1Xnuej$2Xuhss$3Xjee=late'},
 {p1:/(띄)(?!X)(우)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=)(띄)(?!X)(워)(?!X)(요)(?!X)("},
 {p1:/(띄)(?!X)(우)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to make something fly or float;send, launch;praise, compliment;entertain"},
 {p1:/(뜻)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to mean, signify, indicate;intend, plan, aim;expect"},
@@ -2738,7 +2649,7 @@ const replsB=[
 {p1:/(떠)(?!X)(들)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to make a noise, speak loudly, be noisy;spread(talk about something);insist"},
 {p1:/(떠)(?!X)(나)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=)(떠)(?!X)(나)(?!X)(요)(?!X)("},
 {p1:/(떠)(?!X)(나)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to leave(stronger/longer), depart, start off;pass away"},
-{p1:/(실)(?!X)(사)(?!X)(격)(?!X)/g,r1:'$1Xseel$2Xsah$3Xguhk=diligence;Noun'},
+{p1:/(실)(?!X)(사)(?!X)(격)(?!X)/g,r1:'$1Xseel$2Xsah$3Xguhk=diligence'},
 {p1:/(떠)(?!X)(가)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to float, drift(away from the speaker)"},
 {p1:/(때)(?!X)(우)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to fill, patch up, supplement;solder;make do with, eat lightly;kill time"},
 {p1:/(때)(?!X)(문)(?!X)(에)(?!X)/g,r1:"$1X$2X$3X=because of"},
@@ -3203,6 +3114,9 @@ const replsB=[
 {p1:/(훈)(?!X)(련)(?!X)/g,r1:"$1X$2X=training, practice, discipline(receive some sort of training/military or physical training)"},
 {p1:/(후)(?!X)(회)(?!X)/g,r1:"$1X$2X=regret"},
 {p1:/(후)(?!X)(추)(?!X)/g,r1:"$1X$2X=black pepper"},
+{p1:/(비)(?!X)(상)(?!X)/g,r1:'$1Xbee$2Xsahng=emergency'},
+{p1:/(위)(?!X)(원)(?!X)/g,r1:'$1Xwee$2Xwuhn=commissioner'},
+{p1:/(대)(?!X)(책)(?!X)/g,r1:'$1Xdae$2Xchaek=response'},
 {p1:/(후)(?!X)(원)(?!X)/g,r1:"$1X$2X=support, backing, sponsorship"},
 {p1:/(후)(?!X)(식)(?!X)/g,r1:"$1X$2X=dessert"},
 {p1:/(후)(?!X)(보)(?!X)/g,r1:"$1X$2X=candidate, nominee;reserve, backup, substitute"},
@@ -4038,7 +3952,7 @@ const replsB=[
 {p1:/(이)(?!X)(성)(?!X)/g,r1:"$1X$2X=reason(rational), rationality, intellect;the opposite sex"},
 {p1:/(이)(?!X)(상)(?!X)/g,r1:"$1X$2X=more than, or more, that number or more;abnormality;ideal"},
 {p1:/(이)(?!X)(사)(?!X)/g,r1:"$1X$2X=moving(houses)"},
-{p1:/(민)(?!X)(가)(?!X)/g,r1:'$1Xmeen$2Xgah=private house;Noun'},
+{p1:/(민)(?!X)(가)(?!X)/g,r1:'$1Xmeen$2Xgah=private house'},
 {p1:/(이)(?!X)(빨)(?!X)/g,r1:"$1X$2X=tooth"},
 {p1:/(이)(?!X)(불)(?!X)/g,r1:"$1X$2X=comforter, bedding, blanket"},
 {p1:/(이)(?!X)(번)(?!X)/g,r1:"$1X$2X=this time"},
@@ -4114,9 +4028,10 @@ const replsB=[
 {p1:/(월)(?!X)(세)(?!X)/g,r1:"$1X$2X=monthly rent"},
 {p1:/(월)(?!X)(급)(?!X)/g,r1:"$1X$2X=monthly salary"},
 {p1:/(원)(?!X)(한)(?!X)/g,r1:"$1X$2X=grudge, resentment"},
+{p1:/(으)(?!X)(로)(?!X)/g,r1:'$1Xyue$2Xloe=as with'},
+{p1:/(밝)(?!X)(혔)(?!X)/g,r1:'$1Xbahrk$2Xhyuhs=said'},
 {p1:/(원)(?!X)(칙)(?!X)/g,r1:"$1X$2X=general principle, general rule(that are widely accepted)"},
 {p1:/(원)(?!X)(점)(?!X)/g,r1:"$1X$2X=starting point, square one, origin"},
-{p1:/(원)(?!X)(장)(?!X)/g,r1:"$1X$2X=director, president(of an institution ending in )(원)(?!X)"},
 {p1:/(원)(?!X)(작)(?!X)/g,r1:"$1X$2X=original(work)"},
 {p1:/(원)(?!X)(인)(?!X)/g,r1:"$1X$2X=cause, factor, reason"},
 {p1:/(원)(?!X)(수)(?!X)/g,r1:"$1X$2X=enemy, foe;head of state;general"},
@@ -4392,6 +4307,7 @@ const replsB=[
 {p1:/(안)(?!X)(경)(?!X)/g,r1:"$1X$2X=glasses, eyeglasses"},
 {p1:/(안)(?!X)(개)(?!X)/g,r1:"$1X$2X=fog, mist"},
 {p1:/(악)(?!X)(행)(?!X)/g,r1:"$1X$2X=evil deed, wrongdoing"},
+{p1:/(의)(?!X)(힘)(?!X)/g,r1:'$1Xwee$2Xheem=power'},
 {p1:/(악)(?!X)(필)(?!X)/g,r1:"$1X$2X=ugly handwriting"},
 {p1:/(악)(?!X)(취)(?!X)/g,r1:"$1X$2X=bad smell, stink"},
 {p1:/(악)(?!X)(역)(?!X)/g,r1:"$1X$2X=villain, bad guy"},
@@ -4405,7 +4321,7 @@ const replsB=[
 {p1:/(아)(?!X)(픔)(?!X)/g,r1:"$1X$2X=pain, ache, suffering;sorrow, grief, distress;sick"},
 {p1:/(아)(?!X)(침)(?!X)/g,r1:"$1X$2X=morning, breakfast"},
 {p1:/(아)(?!X)(직)(?!X)/g,r1:"$1X$2X=still;yet, not yet"},
-{p1:/(아)(?!X)(주)(?!X)/g,r1:"$1X$2X=very, quite, exceedingly;totally, completely(colloquial/associated with personal emotion)"},
+{p1:/(아)(?!X)(주)(?!X)/g,r1:"$1X$2X=very"},
 {p1:/(아)(?!X)(이)(?!X)/g,r1:"$1X$2X=child(personal/abstract)"},
 {p1:/(아)(?!X)(웃)(?!X)/g,r1:"$1X$2X=out"},
 {p1:/(아)(?!X)(우)(?!X)/g,r1:"$1X$2X=younger brother, younger sister(can be used with close friends)(not common)"},
@@ -5055,7 +4971,7 @@ const replsB=[
 {p1:/(미)(?!X)(남)(?!X)/g,r1:"$1X$2X=good-looking man"},
 {p1:/(미)(?!X)(국)(?!X)/g,r1:"$1X$2X=the United States"},
 {p1:/(뭔)(?!X)(가)(?!X)/g,r1:"$1X$2X=something"},
-{p1:/(공)(?!X)(군)(?!X)/g,r1:'$1Xdoeng$2Xneun=air force;Noun'},
+{p1:/(공)(?!X)(군)(?!X)/g,r1:'$1Xdoeng$2Xneun=air force'},
 {p1:/(물)(?!X)(품)(?!X)/g,r1:"$1X$2X=item, article;goods, commodity(objects made to be useful)"},
 {p1:/(물)(?!X)(집)(?!X)/g,r1:"$1X$2X=blister"},
 {p1:/(물)(?!X)(질)(?!X)/g,r1:"$1X$2X=matter, substance, material(closer to the scientific version);wealth, property"},
@@ -5834,7 +5750,7 @@ const replsB=[
 {p1:/(경)(?!X)(기)(?!X)/g,r1:"$1X$2X=game, match, event;economy, business;convulsion"},
 {p1:/(결)(?!X)(코)(?!X)/g,r1:"$1X$2X=never, by no means(written)(only neg. context, lit. with a strong determination)"},
 {p1:/(결)(?!X)(제)(?!X)/g,r1:"$1X$2X=payment, settlement;liquidation"},
-{p1:/(결)(?!X)(정)(?!X)/g,r1:"$1X$2X=decision, make up one's mind, resolution;(formal)determination;crystal;fruit, result"},
+{p1:/(결)(?!X)(정)(?!X)/g,r1:"$1X$2X=decision"},
 {p1:/(결)(?!X)(심)(?!X)/g,r1:"$1X$2X=determination, resolution, decision"},
 {p1:/(결)(?!X)(승)(?!X)/g,r1:"$1X$2X=finals, play-off"},
 {p1:/(결)(?!X)(말)(?!X)/g,r1:"$1X$2X=ending, finish, conclusion(of an event or story)"},
@@ -6032,7 +5948,7 @@ const replsB=[
 {p1:/(인)(?!X)/g,r1:"$1X=person"},
 {p1:/(이)(?!X)/g,r1:"$1X=(subject marker for consonents) indicates the previous word acts"},
 {p1:/(가)(?!X)/g,r1:"$1X=(subject marker for vowels) indicates the previous word acts"},
-{p1:/(은)(?!X)/g,r1:"$1X=(topic marker for consonents) indicates the previous word is contrasted or emphasized"},
+{p1:/(은)(?!X)/g,r1:"$1X=topic marker for consonents;previous is contrasted or emphasized"},
 {p1:/(는)(?!X)/g,r1:"$1X=(topic marker for vowels) indicates the previous word is contrasted or emphasized"},
 {p1:/(음)(?!X)/g,r1:"$1X=sound, tone, pronunciation of Chinese characters;yin, negative;umm, hmm, mhmm"},
 {p1:/(위)(?!X)/g,r1:"$1X=above;stomach;ranking"},
@@ -6224,7 +6140,8 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <br>
 Cut and paste this Korean text into text area below. SOURCE: Yahoo News
 <p>
-공군 전투기가 실사격 훈련 중 경기 포천의 민가에 폭탄을 떨어뜨리는 사고가 발생했다. 이 사고로 15명이 부상을 입은 것으로 집계됐다.<p>
+국민의힘 권영세 비상대책위원장은 “늦었지만 아주 잘된 결정으로 환영한다”고 밝혔다.
+<p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <br>
 <span id="translatedTextDisplay"></span>
@@ -6246,7 +6163,7 @@ If you download a copy of this index.html file,you can add your own entries in l
         let regexPattern=word.split('').map(char=> `(${char})(?!X)`).join('');
         let pronunciationParts=pronunciation.split(/\s+/);
         let replacement=word.split('').map((_,i)=> `$${i + 1}X${pronunciationParts[i] || word[i]}`).join('');
-        return `{p1:/${regexPattern}/g,r1:'${replacement}\=${definition};Noun'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}\=${definition}'},`;
     }
 
     function formatAndDisplay() {
