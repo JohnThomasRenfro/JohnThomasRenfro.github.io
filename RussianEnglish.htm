@@ -9423,6 +9423,8 @@ const replsB=[
 {p1:/s~(ам)/gi,r1:"$1 noun (dative plural)"},
 {p1:/s~(а)/gi,r1:"$1 noun, plural, masculine or neutral, nominative"},
 
+{ p1: /[А-Яа-яЁё]+/g, r1: '<span style="color:red;">$&</span>' }
+
 ];
 
 replsB.forEach(replace=> {
