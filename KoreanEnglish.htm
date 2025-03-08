@@ -91,44 +91,9 @@
       "ㅡ": "eu", "ㅢ": "ui", "ㅣ": "i"
     };
 
-    // Function to split Hangul into subsyllables and provide romanization
-    function splitAndRomanizeHangul(syllable) {
-      const syllableCode = syllable.charCodeAt(0) - 0xAC00; // Get the Unicode block for Hangul
-      if (syllableCode < 0 || syllableCode >= 11172) return syllable; // Non-Hangul characters
-
-      // Extracting initial, medial, and final components
-      const initialIndex = Math.floor(syllableCode / (21 * 28));
-      const medialIndex = Math.floor((syllableCode % (21 * 28)) / 28);
-      const finalIndex = syllableCode % 28;
-
-      const initial = hangulInitial[initialIndex];
-      const medial = hangulMedial[medialIndex];
-      const final = hangulFinal[finalIndex];
-
-      // Generate the romanized version
-      const romanized = hangulToRomanization[initial] + hangulToRomanization[medial] + (final ? hangulToRomanization[final] : "");
-
-      return syllable + " (" + romanized + ")"; // Add romanization next to the Hangul
-    }
-
-    function processInput() {
-      const inputText = document.getElementById("inputText").value;
-      let outputText = '';
-
-      // Process each syllable of the input text
-      for (let i = 0; i < inputText.length; i++) {
-        const char = inputText[i];
-        outputText += splitAndRomanizeHangul(char) + ' ';
-      }
-
-      // Display the output in the output area
-      document.getElementById("outputText").textContent = outputText.trim() || 'Romanized text will appear here...';
-    }
-  </script>
-
-</body>
-</html>
-	  
+    // Example dictionary with regular expressions and their English definitions
+    const dictionary = [
+      { 
 {p1:/(-)(에)(?!X)(관)(?!X)(련)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be related to, regarding, connected with"},
 {p1:/(흥)(?!X)(미)(?!X)(진)(?!X)(진)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be exciting, interesting, absorbing"},
 {p1:/(후)(?!X)(텁)(?!X)(지)(?!X)(근)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be sweltering, humid, stuffy(not common)"},
@@ -6183,4 +6148,54 @@
 {p1:/(강)(?!X)/g,r1:"$1X=river"},
 {p1:/(값)(?!X)/g,r1:"$1X=price, cost, value"},
 {p1:/(각)(?!X)/g,r1:"$1X=(determiner)each, every;(noun)angle, edge, corner"},
-{p1:/(\‘)(?!X)/g,r1:"$1X=(punctuation)quote"},
+{p1:/(\‘)(?!X)/g,r1:"$1X=(punctuation)quote"},	      
+    ];
+
+    // Function to split Hangul into subsyllables and provide romanization
+    function splitAndRomanizeHangul(syllable) {
+      const syllableCode = syllable.charCodeAt(0) - 0xAC00; // Get the Unicode block for Hangul
+      if (syllableCode < 0 || syllableCode >= 11172) return syllable; // Non-Hangul characters
+
+      // Extracting initial, medial, and final components
+      const initialIndex = Math.floor(syllableCode / (21 * 28));
+      const medialIndex = Math.floor((syllableCode % (21 * 28)) / 28);
+      const finalIndex = syllableCode % 28;
+
+      const initial = hangulInitial[initialIndex];
+      const medial = hangulMedial[medialIndex];
+      const final = hangulFinal[finalIndex];
+
+      // Generate the romanized version
+      const romanized = hangulToRomanization[initial] + hangulToRomanization[medial] + (final ? hangulToRomanization[final] : "");
+
+      return syllable + " (" + romanized + ")"; // Add romanization next to the Hangul
+    }
+
+    // Function to process the input and match dictionary entries
+    function processInput() {
+      const inputText = document.getElementById("inputText").value;
+      let outputText = '';
+
+      // Check for dictionary matches before romanizing
+      dictionary.forEach(entry => {
+        inputText = inputText.replace(entry.p1, (match) => {
+          return match + " (" + entry.r1 + ")";
+        });
+      });
+
+      // Process each syllable of the input text
+      for (let i = 0; i < inputText.length; i++) {
+        const char = inputText[i];
+        outputText += splitAndRomanizeHangul(char) + ' ';
+      }
+
+      // Display the output in the output area
+      document.getElementById("outputText").textContent = outputText.trim() || 'Romanized text will appear here...';
+    }
+  </script>
+
+</body>
+</html>
+
+	  
+
