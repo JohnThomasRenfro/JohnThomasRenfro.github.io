@@ -16,7 +16,7 @@
       text-align: center;
       font-size: 1.5rem;
       color: #333;
-      margin-bottom: 20px; /* Space below the heading */
+      margin-bottom: 20px;
     }
 
     textarea {
@@ -24,7 +24,7 @@
       height: 100px;
       border: 1px solid #ddd;
       border-radius: 3px;
-      padding: 10px; /* Standard padding for content */
+      padding: 10px;
       font-size: 1rem;
       line-height: 1.5;
       color: #333;
@@ -34,8 +34,8 @@
     button {
       display: block;
       width: 100%;
-      padding: 10px; /* Standard padding for buttons */
-      margin-top: 10px; /* Space above the button */
+      padding: 10px;
+      margin-top: 10px;
       font-size: 1rem;
       font-weight: bold;
       color: white;
@@ -59,7 +59,6 @@
       font-size: 1rem;
       min-height: 50px;
     }
-
   </style>
 </head>
 <body>
@@ -72,7 +71,6 @@
   <div class="output-area" id="outputText">Romanized text will appear here...</div>
 
   <script>
-    // Define Hangul components and their romanizations
     const hangulInitial = [
       "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
     ];
@@ -6147,7 +6145,6 @@
 {p1:/(강)(?!X)/g,r1:"$1X=river"},
 {p1:/(값)(?!X)/g,r1:"$1X=price, cost, value"},
 {p1:/(각)(?!X)/g,r1:"$1X=(determiner)each, every;(noun)angle, edge, corner"},
-    
     ];
 
     // Function to split Hangul into subsyllables and provide romanization
@@ -6172,7 +6169,7 @@
 
     // Function to process the input and match dictionary entries
     function processInput() {
-      const inputText = document.getElementById("inputText").value;
+      let inputText = document.getElementById("inputText").value;
       let outputText = "";
 
       // Check for dictionary matches before romanizing
