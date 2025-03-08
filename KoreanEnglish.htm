@@ -6148,9 +6148,9 @@
 {p1:/(강)(?!X)/g,r1:"$1X=river"},
 {p1:/(값)(?!X)/g,r1:"$1X=price, cost, value"},
 {p1:/(각)(?!X)/g,r1:"$1X=(determiner)each, every;(noun)angle, edge, corner"},
-{p1:/(\‘)(?!X)/g,r1:"$1X=(punctuation)quote"},	      
+    
     ];
-	  };
+
     // Function to split Hangul into subsyllables and provide romanization
     function splitAndRomanizeHangul(syllable) {
       const syllableCode = syllable.charCodeAt(0) - 0xAC00; // Get the Unicode block for Hangul
