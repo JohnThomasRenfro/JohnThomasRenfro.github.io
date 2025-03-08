@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fantasy Role-Playing Encounter Manager</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+  #stats-table th, #stats-table td {
+    border: 1px solid black;
+    padding: 2px 5px; /* Reduce padding to save space */
+    text-align: center; /* Center-align content for better readability */
+  }
+  #stats-table th { background-color: #f4f4f4; }
+  #stats-table td { white-space: nowrap; } /* Prevent line breaks in cells */
+  .column-name { width: 120px; } /* Name column */
+  .column-ac { width: 50px; } /* AC column */
+  .column-mv { width: 60px; } /* Move column */
+  .column-hd { width: 80px; } /* HD column */
+  .column-hp { width: 70px; } /* HP column */
+  .column-image { width: 120px; } /* Image column */
+    .character { 
+      width: 100px; 
+      height: 100px; 
+      padding: 5px; 
+      border: 1px solid black; 
+      border-radius: 10px; 
+      background: lightgray; 
+      position: absolute; 
+      cursor: grab; 
+      text-align: center; 
+      overflow: hidden; 
+    }
+    .character img { 
+      max-width: 50%; 
+      max-height: 50%; 
+      display: block; 
+      margin: 0 auto; 
+    }
+    #board { 
+      position: relative; 
+      width: 100%; 
+      height: 600px; 
+      border: 1px solid black; 
+      background-size: cover; 
+      background-position: center; 
+    }
+    .rotate-button { 
+      display: block; 
+      margin: 5px auto; 
+      background-color: #0078D4; 
+      color: white; 
+      border: none; 
+      padding: 5px; 
+      border-radius: 5px; 
+      cursor: pointer; 
+    }
+  </style>
+</head>
+<body>
+  <h1>Fantasy Role-Playing Encounter Manager</h1>
+  <button id="add-character">Add Character</button>
+  <label for="map-selector">Select Map:</label>
+  <input type="file" id="map-selector" accept="image/png, image/jpeg">
+  <table id="stats-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>AC</th>
+        <th>MV</th>
+        <th>HD</th>
+        <th>HP</th>
+        <th>#AT</th>
+        <th>D</th>
+        <th>Gear</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Stats rows will be dynamically added here -->
+    </tbody>
+  </table>
+  <div id="board"></div>
+  <script>
+    let idCounter = parseInt(localStorage.getItem('idCounter')) || 0;
+    const characters = JSON.parse(localStorage.getItem('characters')) || {};
+    const mapImage = localStorage.getItem('mapImage') || null;
+
+    const save = () => localStorage.setItem('characters', JSON.stringify(characters));
+    const saveIdCounter = () => localStorage.setItem('idCounter', idCounter);
+
+const updateStatsTable = () => {
+  const tbody = document.querySelector("#stats-table tbody");
+  tbody.innerHTML = ''; // Clear the table before rebuilding
+  Object.keys(characters).forEach(id => {
+    const data = characters[id];
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td class="column-name"><input type="text" value="${data.name}" data-id="${id}" data-key="name" size="10"></td>
+      <td class="column-ac"><input type="text" value="${data.ac}" data-id="${id}" data-key="ac" maxlength="2" size="2"></td>
+      <td class="column-mv"><input type="text" value="${data.mv}" data-id="${id}" data-key="mv" maxlength="3" size="3"></td>
+      <td class="column-hd"><input type="text" value="${data.hd}" data-id="${id}" data-key="hd" maxlength="9" size="9"></td>
+      <td class="column-hp"><input type="number" value="${data.hp}" data-id="${id}" data-key="hp" size="5"></td>
+      <td><input type="text" value="${data.at}" data-id="${id}" data-key="at" size="10"></td>
+      <td><input type="text" value="${data.dmg}" data-id="${id}" data-key="dmg" size="10"></td>
+      <td><input type="text" value="${data.gear}" data-id="${id}" data-key="gear" size="12"></td>
+      <td class="column-image">
+        <input type="file" data-id="${id}" data-key="img" accept="image/png, image/jpeg">
+        <span id="file-name-${id}">${data.img ? "Image selected" : "No image selected"}</span>
+      </td>
+      <td><button class="delete-character" data-id="${id}">Delete</button></td>
+    `;
+    tbody.appendChild(row);
+  });
+
+  // Add real-time event listeners for table inputs
+  document.querySelectorAll('#stats-table input[type="text"], input[type="number"]').forEach(input => {
+    input.addEventListener('input', e => {
+      const id = e.target.getAttribute('data-id');
+      const key = e.target.getAttribute('data-key');
+      const value = e.target.type === 'number' ? parseInt(e.target.value) : e.target.value;
+
+      characters[id][key] = value; // Update character data
+      if (key === 'name') {
+        const nameElement = document.querySelector(`#${id} h3`);
+        if (nameElement) {
+          nameElement.textContent = value; // Update name on the piece
+        }
+      }
+      save();
+    });
+  });
+
+  // Add event listeners for image upload
+  document.querySelectorAll('#stats-table input[type="file"]').forEach(input => {
+    input.addEventListener('change', e => {
+      const id = e.target.getAttribute('data-id');
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          characters[id].img = reader.result; // Save Base64 image
+          save();
+
+          // Update "Image selected" status
+          const fileNameElement = document.querySelector(`#file-name-${id}`);
+          if (fileNameElement) {
+            fileNameElement.textContent = "Image selected";
+          }
+
+          // Update the piece with the new image
+          const imgElement = document.querySelector(`#${id} img`);
+          if (imgElement) {
+            imgElement.src = reader.result;
+          }
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // Reset to "No image selected" if no file is chosen
+        const fileNameElement = document.querySelector(`#file-name-${id}`);
+        if (fileNameElement) {
+          fileNameElement.textContent = "No image selected";
+        }
+      }
+    });
+  });
+
+  // Attach event listeners for delete buttons
+  document.querySelectorAll('.delete-character').forEach(button => {
+    button.addEventListener('click', e => {
+      const id = e.target.getAttribute('data-id');
+      deleteCharacter(id);
+    });
+  });
+};
+
+// Utility function to extract the file name from the Base64 image
+const getFileName = (base64String) => {
+  return "Uploaded Image"; // Replace this with a more specific name if needed
+};
+
+    const addCharacter = (id, data = { 
+        name: 'Bugbear Shaman', 
+        ac: 3, 
+        mv: '9"', 
+        hd: '3d8 +3d4 +1', 
+        hp: 27, 
+        at: '1 as 4 HD monster', 
+        dmg: '2-8', 
+        gear: 'splint armor +1, morning star', 
+        left: '0px', 
+        top: '0px', 
+        img: null, 
+        rotation: 0 
+    }) => {
+      const characterId = id || `character-${idCounter++}`;
+      saveIdCounter(); 
+      characters[characterId] = { ...data };
+      save();
+
+      const c = document.createElement('div');
+      c.className = 'character'; 
+      c.id = characterId;
+      c.draggable = true; 
+      c.style.left = data.left; 
+      c.style.top = data.top;
+      c.style.transform = `rotate(${data.rotation}deg)`;
+
+      c.innerHTML = `
+        <h3 style="margin: 0; font-size: 14px;">${data.name}</h3>
+        <img src="${data.img || ''}" alt="Character Image">
+        <button class="rotate-button" data-id="${characterId}">⟳ Rotate</button>
+      `;
+
+      c.ondragstart = e => {
+        if (e.dataTransfer) {
+          e.dataTransfer.setData('text/plain', `${e.clientX - c.offsetLeft},${e.clientY - c.offsetTop}`);
+        }
+      };
+
+      c.ondragend = e => {
+        const [dx, dy] = e.dataTransfer.getData('text/plain').split(',').map(Number);
+        c.style.left = `${e.clientX - dx}px`; 
+        c.style.top = `${e.clientY - dy}px`;
+        characters[characterId] = { 
+          ...characters[characterId], 
+          left: c.style.left, 
+          top: c.style.top 
+        };
+        save();
+      };
+
+      // Rotate button functionality
+      c.querySelector(".rotate-button").addEventListener('click', () => {
+        const currentRotation = characters[characterId].rotation || 0;
+        const newRotation = (currentRotation + 60) % 360; // Rotate in 60-degree increments
+        characters[characterId].rotation = newRotation;
+        c.style.transform = `rotate(${newRotation}deg)`; // Update piece rotation visually
+        save();
+      });
+
+      document.getElementById('board').appendChild(c); // Add the piece to the board
+      updateStatsTable(); // Refresh the stats table
+    };
+
+    const deleteCharacter = id => {
+      const character = document.getElementById(id);
+      if (character) {
+        character.remove(); // Remove from board
+        delete characters[id]; // Remove from local storage
+        save();
+        updateStatsTable(); // Refresh the stats table
+      }
+    };
+
+    document.getElementById('add-character').addEventListener('click', () => addCharacter());
+
+    document.getElementById('map-selector').addEventListener('change', e => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const board = document.getElementById('board');
+        board.style.backgroundImage = `url(${reader.result})`;
+        localStorage.setItem('mapImage', reader.result); // Save map image to local storage
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    });
+
+    // Restore characters from local storage
+    Object.keys(characters).forEach(id => addCharacter(id, characters[id]));
+
+    // Restore map image from local storage
+    if (mapImage) {
+      document.getElementById('board').style.backgroundImage = `url(${mapImage})`;
+    }
+  </script>
+</body>
+</html>
