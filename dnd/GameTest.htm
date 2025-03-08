@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" http-equiv="content-type">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dungeons & Dragons 1st Edition Tabletop RPG Manager</title>
 <style>
@@ -25,7 +25,11 @@
   .MapSelection { height: auto; width: 3000px; }
   .die20, .die12, .die10, .die8, .die6, .die4 { height: 100px; width: 100px; object-fit: none; object-position: 100%; }
   mark { background-color: #f8ecdd; }
+  .DraggableDiv { position: absolute; cursor: move; }
 </style>
+<script src="Scripts/jquery-3.6.0.js"></script>
+<script src="Scripts/jquery-ui-1.13.1.js"></script>
+<script src="Scripts/draggable-div-with-touch.js"></script>
 </head>
 <body>
 <h1>Dungeons & Dragons 1st Edition Tabletop RPG Manager</h1>
@@ -36,6 +40,7 @@
 <input type="button" value="Save all characters?" onclick="saveAll()">
 <input type="button" value="Target then Clone a character?" onclick="cloneCharacter()">
 <input type="button" value="Create a new character?" onclick="newCharacter()">
+<input type="button" value="Create a new monster?" onclick="newMonster()">
 <a href="https://imgur.com/a/IXjjg" target="_blank">Ozuro's Dungeon Master Screen</a>
 <a href="https://fastcharacter.com/" target="_blank">FastCharacter.Com</a>
 <a href="dnd.zip" target="_blank">Download dnd.zip</a>
@@ -43,6 +48,12 @@
 <textarea cols="40" rows="4"></textarea>
 <input type="text" id="duration1" size="2" value="10"> turns.
 <button onclick="reduceByOne('duration1')">End turn?</button>
+<input type="text" id="duration2" size="2" value="10"> turns.
+<button onclick="reduceByOne('duration2')">End turn?</button>
+<input type="text" id="duration3" size="2" value="10"> turns.
+<button onclick="reduceByOne('duration3')">End turn?</button>
+<input type="text" id="duration4" size="2" value="10"> turns.
+<button onclick="reduceByOne('duration4')">End turn?</button>
 <img class="die20" src="Decorations/DiceSprite.jpeg"><br>
 <button onclick="rollDice(20, 'd20result')">Roll a 1d20?</button><b id="d20result"></b>
 <img class="die12" src="Decorations/DiceSprite.jpeg"><br>
@@ -55,29 +66,33 @@
 <button onclick="rollDice(6, 'd6result')">Roll a 1d6?</button><b id="d6result"></b>
 <img class="die4" src="Decorations/DiceSprite.jpeg"><br>
 <button onclick="rollDice(4, 'd4result')">Roll a 1d4?</button><b id="d4result"></b>
-<div>Random Skills:<br><span id="displayRandomSkills"></span></div>
-<div>Random Languages:<br><span id="displayRandomLanguages"></span></div>
-<div>Random Musical Instruments:<br><span id="displayRandomMusicalInstruments"></span></div>
-<div>Random Tools:<br><span id="displayRandomTools"></span></div>
-<div>Random Gambling Sets:<br><span id="displayRandomGamblingSets"></span></div>
+<div>Random Skills:<br><span id="displayRandomSkills">Climb Walls, Hear Noise, Hide in Shadows, Move Silently, Open Locks, Pick Pockets, Read Languages, Remove Traps</span></div>
+<div>Random Languages:<br><span id="displayRandomLanguages">Common, Dwarvish, Elvish, Gnome, Halfling, Orcish, Goblin, Kobold</span></div>
+<div>Random Musical Instruments:<br><span id="displayRandomMusicalInstruments">Harp, Flute, Lute, Drum, Horn, Lyre, Mandolin, Bagpipes</span></div>
+<div>Random Tools:<br><span id="displayRandomTools">Thieves' Tools, Herbalism Kit, Alchemist Supplies, Navigator's Tools, Smith's Tools, Carpenter's Tools, Mason's Tools, Leatherworker's Tools</span></div>
+<div>Random Gambling Sets:<br><span id="displayRandomGamblingSets">Dice Set, Playing Card Set, Dragon Chess Set</span></div>
 <img class="MapSelection" src="Maps/Map.png">
-<table width="900px"><tbody><tr><td rowspan="30">POLICE HQ: Use Illustration #30. There will be 1-3 police robots in the first room of this complex...</td></tr></tbody></table>
+<table width="900px"><tbody><tr><td rowspan="30">POLICE HQ: USE ILLUSTRATION #30. There will be 1-3 police robots in the first room of this complex. They will inquire what the nature of business of any entrant is, and the language will be totally unintelligible without some scientific or magical means of understanding, although the robots can translate the characters' speech in 1 turn. The robots will then apprehend the characters and place them in the security cells (six 10' x 10' rooms to the north) - as few per cell as possible - for detention and questioning by a "proper authority" unless the party has a red, gray or orange card to show. Of course, there are no "proper authorities" anymore, and prisoners will starve to death, as the computer-controlled feeding devices in the area turn out drinkable liquids but indigestible food. The cell locks (located in the doors) operate by any of the cards mentioned (gray, red, or orange). The cells have walls on three sides while across the front there is a row of short projecting studs on both the top and the bottom. In the center of this "wall" is a small post with a card lock similar to those found on other doors. Below this is a button and a dial that control the force screen. When a cell is in use, the force screen will be turned on and an invisible wall will radiate in the area between the studs. The cells are force field shells, so magic will not function beyond them, but cold has a 10% chance of causing a lock to malfunction, fireballs (from outside and distant, hopefully...) and magic missiles have a 50% chance, and lightning/electricity has a 10% chance per die of damage. The robots will not take away any gear from prisoners unless the item was used to attack one of their number or is a weapon they are familiar with (pistols, etc.). At various times robots will leave, so at some point within 12 turns there will be only 1 robot there, but there is a 1 in 12 chance of another entering each turn. A locked metal chest in the corner farthest from the cells contains 2 gas masks (give total immunity to all gasses on the ship), 12 sleep gas grenades, and 2 needler pistols with 1 clip of ammunition for each. (Weapons are detailed at the end of the module.) The chest can be forced open with magical weapons - one in six chance per weapon per round of forcing. It will also open by gray or red card placement in its lock slot. The first police robot disabled/destroyed here by the party will have a red card stored in its chest compartment, but it will have to be pried out carefully, so there is a 50% chance of destroying it, lowered 10% for each point of dexterity above 14 of the character making the attempt.</td></tr></tbody></table>
 <script>
+// Character statistic handling
 const setCharacterStatistic = (stat, value) => {
   this[stat] = value.replace(/'/g, stat === 'features' ? "'" : '').replace(/\s+/g, ' ').replace(/\./g, stat === 'features' || stat === 'featureNotes' ? '\\.\\n' : '.');
   this.refresh();
 };
 
+// Dice rolling function
 const rollDice = (sides, resultId) => {
   const roll = Math.ceil(Math.random() * sides);
   document.getElementById(resultId).textContent = roll;
 };
 
+// Reduce turn duration by one
 const reduceByOne = id => {
   const elem = document.getElementById(id);
   elem.value = parseInt(elem.value) - 1;
 };
 
+// Shuffle array elements
 const shuffleArray = array => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -85,41 +100,72 @@ const shuffleArray = array => {
   }
 };
 
+// Display random skills, languages, etc.
 const displayRandomSkills = () => {
-  const skills = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"];
+  const skills = ["Climb Walls", "Hear Noise", "Hide in Shadows", "Move Silently", "Open Locks", "Pick Pockets", "Read Languages", "Remove Traps"];
   shuffleArray(skills);
   document.getElementById("displayRandomSkills").innerText = skills.join(", ");
 };
 
 const displayRandomLanguages = () => {
-  const languages = ["Common", "Dwarvish", "Elvish", "Giant", "Gnomish", "Goblin", "Halfling", "Orc"];
+  const languages = ["Common", "Dwarvish", "Elvish", "Gnome", "Halfling", "Orcish", "Goblin", "Kobold"];
   shuffleArray(languages);
   document.getElementById("displayRandomLanguages").innerText = languages.join(", ");
 };
 
 const displayRandomMusicalInstruments = () => {
-  const instruments = ["Lyre", "Shawm", "Bagpipes", "Viol", "Horn", "Pan Flute", "Dulcimer", "Lute", "Flute", "Drum"];
+  const instruments = ["Harp", "Flute", "Lute", "Drum", "Horn", "Lyre", "Mandolin", "Bagpipes"];
   shuffleArray(instruments);
   document.getElementById("displayRandomMusicalInstruments").innerText = instruments.join(", ");
 };
 
 const displayRandomTools = () => {
-  const tools = ["Forgery Kit", "Herbalism Kit", "Tinker Tools", "Mason Tools", "Potter Tools", "Thieves Tools", "Weaver Tools", "Glassblower Tools", "Leatherworker Tools", "Navigator Tools", "Alchemist Supplies"];
+  const tools = ["Thieves' Tools", "Herbalism Kit", "Alchemist Supplies", "Navigator's Tools", "Smith's Tools", "Carpenter's Tools", "Mason's Tools", "Leatherworker's Tools"];
   shuffleArray(tools);
   document.getElementById("displayRandomTools").innerText = tools.join(", ");
 };
 
 const displayRandomGamblingSets = () => {
-  const sets = ["Dragon Dice Set", "Playing Card Set", "Darts Set"];
+  const sets = ["Dice Set", "Playing Card Set", "Dragon Chess Set"];
   document.getElementById("displayRandomGamblingSets").innerText = sets.sort(() => 0.5 - Math.random()).join(", ");
 };
 
+// Create a new character
+const newCharacter = () => {
+  const character = document.createElement('div');
+  character.className = 'DraggableDiv piece';
+  character.innerHTML = 'New Character';
+  document.body.appendChild(character);
+  $(character).draggable();
+};
+
+// Create a new monster
+const newMonster = () => {
+  const monster = document.createElement('div');
+  monster.className = 'DraggableDiv piece';
+  monster.innerHTML = 'New Monster';
+  document.body.appendChild(monster);
+  $(monster).draggable();
+};
+
+// Clone a character
+const cloneCharacter = () => {
+  const target = document.querySelector('.DraggableDiv.piece');
+  if (target) {
+    const clone = target.cloneNode(true);
+    document.body.appendChild(clone);
+    $(clone).draggable();
+  }
+};
+
+// Initialize when document is ready
 document.addEventListener('DOMContentLoaded', () => {
   displayRandomSkills();
   displayRandomLanguages();
   displayRandomMusicalInstruments();
   displayRandomTools();
   displayRandomGamblingSets();
+  $('.DraggableDiv').draggable();
 });
 </script>
 </body>
