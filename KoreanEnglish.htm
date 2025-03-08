@@ -60,6 +60,45 @@
 
 <script>
 
+// Define Hangul components and their romanizations
+const hangulInitial = [
+  "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+];
+const hangulMedial = [
+  "ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ", "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"
+];
+const hangulFinal = [
+  "", "ㄱ", "ㄲ", "ㄱㅅ", "ㄴ", "ㄴㅈ", "ㄴㅎ", "ㄷ", "ㄹ", "ㄹㄱ", "ㄹㅁ", "ㄹㅂ", "ㄹㅅ", "ㄹㅌ", "ㄹㅍ", "ㄹㅎ", "ㅁ", "ㅂ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+];
+
+const hangulToRomanization = {
+  "ㄱ": "g", "ㄲ": "kk", "ㄴ": "n", "ㄷ": "d", "ㄸ": "tt", "ㄹ": "r", "ㅁ": "m", "ㅂ": "b", "ㅃ": "pp", "ㅅ": "s",
+  "ㅆ": "ss", "ㅇ": "ng", "ㅈ": "j", "ㅉ": "jj", "ㅊ": "ch", "ㅋ": "k", "ㅌ": "t", "ㅍ": "p", "ㅎ": "h",
+  "ㅏ": "a", "ㅐ": "ae", "ㅑ": "ya", "ㅒ": "yae", "ㅓ": "eo", "ㅔ": "e", "ㅕ": "yeo", "ㅖ": "ye", "ㅗ": "o",
+  "ㅘ": "wa", "ㅙ": "wae", "ㅚ": "oe", "ㅛ": "yo", "ㅜ": "u", "ㅝ": "wo", "ㅞ": "we", "ㅟ": "wi", "ㅠ": "yu",
+  "ㅡ": "eu", "ㅢ": "ui", "ㅣ": "i"
+};
+
+// Function to split Hangul into subsyllables and provide romanization
+function splitAndRomanizeHangul(syllable) {
+  const syllableCode = syllable.charCodeAt(0) - 0xAC00; // Get the Unicode block for Hangul
+  if (syllableCode < 0 || syllableCode >= 11172) return syllable; // Non-Hangul characters
+
+  // Extracting initial, medial, and final components
+  const initialIndex = Math.floor(syllableCode / (21 * 28));
+  const medialIndex = Math.floor((syllableCode % (21 * 28)) / 28);
+  const finalIndex = syllableCode % 28;
+
+  const initial = hangulInitial[initialIndex];
+  const medial = hangulMedial[medialIndex];
+  const final = hangulFinal[finalIndex];
+
+  // Generate the romanized version
+  const romanized = hangulToRomanization[initial] + hangulToRomanization[medial] + (final ? hangulToRomanization[final] : "");
+
+  return syllable + " (" + romanized + ")"; // Add romanization next to the Hangul
+}
+
 function translateB()
 {
 
@@ -6133,13 +6172,24 @@ const replsB=[
 
 ];
 
-replsB.forEach(replace=> {
- a=a.replace(replace.p1,replace.r1);
+replsB.forEach(replace => {
+  a = a.replace(replace.p1, replace.r1);
 });
 
-document.getElementById("translatedTextDisplay").innerHTML=a;
+// Function to add romanization to each Hangul syllable
+a = a.split(" ").map(word => {
+  // Process each Hangul word and append its romanization
+  const romanizedWord = word.split('').map(char => {
+    if (/^[가-힣]$/.test(char)) {
+      return splitAndRomanizeHangul(char);
+    }
+    return char; // Non-Hangul characters remain unchanged
+  }).join('');
+  
+  return romanizedWord;
+}).join(" ");
 
-}
+document.getElementById("translatedTextDisplay").innerHTML = a;
 
 </script></head>
 
