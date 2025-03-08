@@ -99,11 +99,7 @@ function splitAndRomanizeHangul(syllable) {
   return syllable + " (" + romanized + ")"; // Add romanization next to the Hangul
 }
 
-function translateB()
-{
-
-const replsB=[
-
+// Define the replsB array at the beginning as required
 {p1:/(-)(에)(?!X)(관)(?!X)(련)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be related to, regarding, connected with"},
 {p1:/(흥)(?!X)(미)(?!X)(진)(?!X)(진)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be exciting, interesting, absorbing"},
 {p1:/(후)(?!X)(텁)(?!X)(지)(?!X)(근)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be sweltering, humid, stuffy(not common)"},
@@ -6172,6 +6168,7 @@ const replsB=[
 
 ];
 
+// Apply the replacements in replsB first
 replsB.forEach(replace => {
   a = a.replace(replace.p1, replace.r1);
 });
@@ -6191,46 +6188,7 @@ a = a.split(" ").map(word => {
 
 document.getElementById("translatedTextDisplay").innerHTML = a;
 
-</script></head>
-
-<body>
-<div class="TheStripe">Studying Korean Language</div>
-<br>
-Cut and paste this Korean text into text area below. SOURCE: Yahoo News
-<p>
-장영수 고려대 법학전문대학원 교수는 5일 중앙일보와의 전화 인터뷰에서 “윤석열 대통령 탄핵심판 사건에서 ‘정치인 체포’와 [출처:중앙일보] https://www.joongang.co.kr/article/25319118
-<p>
-<textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
-<br>
-<span id="translatedTextDisplay"></span>
-</p>
-<hr>
-
-<hr>
-If you download a copy of this index.html file,you can add your own entries in longest word to shortest word order. Otherwise,this workspace is for me.<br>
-     <input type="text" id="wordInput" placeholder="Enter the Korean word">
-    <input type="text" id="pronunciationInput" placeholder="Enter spaced English pronunciation">
-    <input type="text" id="definitionInput" placeholder="Enter the English definition">
-    <button onclick="formatAndDisplay()">Format</button>
-    <div id="outputContainer">
-        <p id="output">Formatted output will appear here...</p>
-    </div>
-
-<script>
-    function formatKoreanRegex(word,pronunciation,definition) {
-        let regexPattern=word.split('').map(char=> `(${char})(?!X)`).join('');
-        let pronunciationParts=pronunciation.split(/\s+/);
-        let replacement=word.split('').map((_,i)=> `$${i + 1}X${pronunciationParts[i] || word[i]}`).join('');
-        return `{p1:/${regexPattern}/g,r1:'${replacement}\=${definition}'},`;
-    }
-
-    function formatAndDisplay() {
-        const inputWord=document.getElementById("wordInput").value;
-        const inputPronunciation=document.getElementById("pronunciationInput").value;
-        const inputDefinition=document.getElementById("definitionInput").value;
-        const output=formatKoreanRegex(inputWord,inputPronunciation,inputDefinition);
-        document.getElementById("output").innerText=output;
-    }
+// Closing script tag
 </script>
 
 <hr>    
