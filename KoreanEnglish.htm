@@ -1,37 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Korean to English Parser</title>
-    <link rel="icon" href="reading.png" type="image/png">
-	<style>
+<meta
+  http-equiv="content-type"
+  content="text/html;
+  charset=UTF-8"
+>
+<title>The Korean to English Parser</title>
+
+<link rel="icon" href="reading.png" type="image/png">
+
+<style>
   body {
     font-family: sans-serif;
-    background-color: #fff8e7;
-    color: #333;
-    margin: 20px;
-    padding: 20px;
+    background-color: #f9f9f9;
+    margin: 10px;
+    padding: 10px;
   }
 
   h1 {
     text-align: center;
     font-size: 1.5rem;
-    color: #0055A4; /* Korean-themed blue */
+    color: #333;
     margin-bottom: 20px; /* Space below the heading */
   }
 
   textarea {
     width: 100%;
-    height: 150px;
-    border: 1px solid #ccc;
+    height: 100px;
+    border: 1px solid #ddd;
     border-radius: 3px;
     padding: 10px; /* Standard padding for content */
     font-size: 1rem;
     line-height: 1.5;
     color: #333;
-    background: #fdf5e6;
-    margin-bottom: 20px;
+    background: #fafafa;
   }
 
   button {
@@ -42,7 +45,7 @@
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    background: #C8102E; /* Korean-themed red */
+    background: #0078d4;
     border: none;
     border-radius: 3px;
     cursor: pointer;
@@ -50,11 +53,11 @@
   }
 
   button:hover {
-    background: #A60D20;
+    background: #005a9e;
   }
 </style>
-</head>
-<body>
+
+
 <script>
 
 function translateB()
@@ -2595,8 +2598,6 @@ const replsB=[
 {p1:/(맛)(?!X)(없)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=)(맛)(?!X)(없)(?!X)(어)(?!X)(요)(?!X)("},
 {p1:/(맛)(?!X)(보)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to taste, try, experience"},
 {p1:/(말)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to speak"},
-	{p1:/(장)(?!X)(영)(?!X)(수)(?!X)/g,r1:'$1Xjahn$2Xyuhng$3Xsue=business'},
-	{p1:/(고)(?!X)(려)(?!X)(대)(?!X)/g,r1:'$1Xgoe$2Xlyuh$3Xdae=Korea University'},
 {p1:/(말)(?!X)(리)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=)(말)(?!X)(려)(?!X)(요)(?!X)("},
 {p1:/(말)(?!X)(리)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to dry;make someone stop doing something, keep someone from doing;be rolled(up), be curled(up);be involved in"},
 {p1:/(말)(?!X)(다)(?!X)(툼)(?!X)/g,r1:"$1X$2X$3X=quarrel, dispute, argue(in order to tell right from wrong)"},
@@ -3767,7 +3768,7 @@ const replsB=[
 {p1:/(전)(?!X)(설)(?!X)/g,r1:"$1X$2X=legend(story)"},
 {p1:/(전)(?!X)(부)(?!X)/g,r1:"$1X$2X=(noun/adv)the whole, everything;all, in total, in all(the sum of all parts without exception/all of more than one thing)(sino)"},
 {p1:/(전)(?!X)(보)(?!X)/g,r1:"$1X$2X=telegram"},
-{p1:/(전)(?!X)(문)(?!X)/g,r1:"$1X$2X=specialty;whole text"},
+{p1:/(전)(?!X)(문)(?!X)/g,r1:"$1X$2X=specialty, specialize;the whole text"},
 {p1:/(전)(?!X)(망)(?!X)/g,r1:"$1X$2X=view(looking out from a distance);prospect, outlook, forecast"},
 {p1:/(전)(?!X)(략)(?!X)/g,r1:"$1X$2X=strategy, tactic"},
 {p1:/(전)(?!X)(날)(?!X)/g,r1:"$1X$2X=the day before(baseline day), the previous day, previously"},
@@ -6118,9 +6119,13 @@ const replsB=[
 {p1:/(각)(?!X)/g,r1:"$1X=(determiner)each, every;(noun)angle, edge, corner"},
 {p1:/(\‘)(?!X)/g,r1:"$1X=(punctuation)quote"},
 
-//{p1:/([가-힣])X/g,r1:"<br>$1"},
+{p1:/([가-힣\’\,\‘])X/g,r1:"<br>$1"},
 
 {p1:/X/g,r1:''},
+
+{p1:/([一-龠ぁ-ゔァ-ヴー々〆〤0-9０−９０-８\(\（\)\）「『」』\“\”\・、。【】．：＝]+)/g,r1:'<br><font color=#f5eee7>$1</font>'},
+
+{p1:/-([a-zA-Z]+)/g,r1:'=<font color=#e8d9cd>$1</font>'},
 
 {p1:/^\r\n/g,r1:''},
 
@@ -6141,7 +6146,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <br>
 Cut and paste this Korean text into text area below. SOURCE: Yahoo News
 <p>
-장영수 고려대 법학전문대학원 교수는 5일 중앙일보와의 전화 인터뷰에서 “윤석열 대통령 탄핵심판 사건에서 ‘정치인 체포’와 [출처:중앙일보] https://www.joongang.co.kr/article/25319118
+권 위원장은 이날 국회에서 기자들과 만나 “이번 구속은 구속까지 이르게 된 수사 과정을 생각하면 문
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <br>
