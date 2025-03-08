@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Korean to English Parser</title>
   <link rel="icon" href="reading.png" type="image/png">
   <style>
@@ -59,6 +60,16 @@
       font-size: 1rem;
       min-height: 50px;
     }
+
+    .debug-area {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px dashed #ddd;
+      background: #e0e0e0;
+      border-radius: 3px;
+      font-size: 1rem;
+      min-height: 50px;
+    }
   </style>
 </head>
 <body>
@@ -69,8 +80,14 @@
   <button onclick="processInput()">Convert to Romanization</button>
 
   <div class="output-area" id="outputText">Romanized text will appear here...</div>
+  
+  <!-- Debug Area for checking intermediate results -->
+  <div class="debug-area" id="inputDebug">Input Text: </div>
+  <div class="debug-area" id="dictionaryDebug">After Dictionary Replacement: </div>
+  <div class="debug-area" id="outputDebug">Processed Output: </div>
 
   <script>
+    // Hangul components
     const hangulInitial = [
       "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
     ];
@@ -89,7 +106,7 @@
       "ㅡ": "eu", "ㅢ": "ui", "ㅣ": "i"
     };
 
-    // Example dictionary with regular expressions and their English definitions
+    // Dictionary with regular expressions and their English definitions
     const dictionary = [
 {p1:/(-)(에)(?!X)(관)(?!X)(련)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be related to, regarding, connected with"},
 {p1:/(흥)(?!X)(미)(?!X)(진)(?!X)(진)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be exciting, interesting, absorbing"},
@@ -6172,6 +6189,9 @@
       let inputText = document.getElementById("inputText").value;
       let outputText = "";
 
+      // Display input text in the debug area
+      document.getElementById("inputDebug").innerHTML = "Input Text: " + inputText;
+
       // Check for dictionary matches before romanizing
       dictionary.forEach(entry => {
         inputText = inputText.replace(entry.p1, (match) => {
@@ -6179,11 +6199,17 @@
         });
       });
 
+      // Display modified text after dictionary replacement
+      document.getElementById("dictionaryDebug").innerHTML = "After Dictionary Replacement: " + inputText;
+
       // Process each syllable of the input text
       for (let i = 0; i < inputText.length; i++) {
         const char = inputText[i];
         outputText += splitAndRomanizeHangul(char) + " ";
       }
+
+      // Display the final processed output
+      document.getElementById("outputDebug").innerHTML = "Processed Output: " + outputText.trim();
 
       // Display the output in the output area
       document.getElementById("outputText").textContent = outputText.trim() || "Romanized text will appear here...";
