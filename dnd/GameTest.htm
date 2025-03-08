@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" http-equiv="content-type">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dungeons & Dragons 1st Edition Tabletop RPG Manager</title>
+<style>
+  @font-face { font-family: Futura; src: url("Decorations/Futura.ttf"); }
+  body { background-color: #fefefe; font-family: 'Futura'; font-size: 12px; margin: 20px; line-height: 1.5; }
+  table, tr, td, button, input, option, radio, select, textarea {
+    background-color: inherit; border: 1px solid inherit; border-radius: 4px; font-family: 'Futura'; font-size: 18px; margin: 1px; outline: 1px solid transparent; overflow-wrap: anywhere; padding: 1px; text-decoration: #22271f; text-decoration-thickness: 2px; vertical-align: top; word-break: break-word;
+  }
+  .piece { border-color: #333b2f; font-size: 50%; max-width: 100px; min-width: 100px; z-index: 1; }
+  table, .piece { box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15); }
+  .saveTable { font-size: 20%; max-width: 300px; min-width: 300px; }
+  .tablesTogether { display: inline-block; }
+  td, tr { min-width: 25px; word-wrap: normal; }
+  tr:nth-child(even), td:nth-child(even) { background: #fafafa; }
+  tr:nth-child(odd), td:nth-child(odd) { background: #f0f0f0; }
+  a:active { color: #f13a37; }
+  a:link, a:hover, a:selected, a:visited { color: #8e060f; }
+  h1 { color: #871604; }
+  h2 { color: #5c0904; }
+  h3 { color: #6c0b04; }
+  .MapSelection { height: auto; width: 3000px; }
+  .die20, .die12, .die10, .die8, .die6, .die4 { height: 100px; width: 100px; object-fit: none; object-position: 100%; }
+  mark { background-color: #f8ecdd; }
+</style>
+</head>
+<body>
+<h1>Dungeons & Dragons 1st Edition Tabletop RPG Manager</h1>
+<button onclick="switchEncounter('Map')">Return to Map</button>
+<button onclick="switchEncounter('Dungeon Raid')">Enter Dungeon Raid</button>
+<button onclick="switchEncounter('Forest Battle')">Enter Forest Battle</button>
+<input type="button" value="Roll all initiatives?" onclick="rollInitiatives()">
+<input type="button" value="Save all characters?" onclick="saveAll()">
+<input type="button" value="Target then Clone a character?" onclick="cloneCharacter()">
+<input type="button" value="Create a new character?" onclick="newCharacter()">
+<a href="https://imgur.com/a/IXjjg" target="_blank">Ozuro's Dungeon Master Screen</a>
+<a href="https://fastcharacter.com/" target="_blank">FastCharacter.Com</a>
+<a href="dnd.zip" target="_blank">Download dnd.zip</a>
+<textarea cols="40" rows="5" onchange="setStats(this.value)"></textarea><b id="statsDisplay"></b>
+<textarea cols="40" rows="4"></textarea>
+<input type="text" id="duration1" size="2" value="10"> turns.
+<button onclick="reduceByOne('duration1')">End turn?</button>
+<img class="die20" src="Decorations/DiceSprite.jpeg"><br>
+<button onclick="rollDice(20, 'd20result')">Roll a 1d20?</button><b id="d20result"></b>
+<img class="die12" src="Decorations/DiceSprite.jpeg"><br>
+<button onclick="rollDice(12, 'd12result')">Roll a 1d12?</button><b id="d12result"></b>
+<img class="die10" src="Decorations/DiceSprite.jpeg"><br>
+<button onclick="rollDice(10, 'd10result')">Roll a 1d10?</button><b id="d10result"></b>
+<img class="die8" src="Decorations/DiceSprite.jpeg"><br>
+<button onclick="rollDice(8, 'd8result')">Roll a 1d8?</button><b id="d8result"></b>
+<img class="die6" src="Decorations/DiceSprite.jpeg"><br>
+<button onclick="rollDice(6, 'd6result')">Roll a 1d6?</button><b id="d6result"></b>
+<img class="die4" src="Decorations/DiceSprite.jpeg"><br>
+<button onclick="rollDice(4, 'd4result')">Roll a 1d4?</button><b id="d4result"></b>
+<div>Random Skills:<br><span id="displayRandomSkills"></span></div>
+<div>Random Languages:<br><span id="displayRandomLanguages"></span></div>
+<div>Random Musical Instruments:<br><span id="displayRandomMusicalInstruments"></span></div>
+<div>Random Tools:<br><span id="displayRandomTools"></span></div>
+<div>Random Gambling Sets:<br><span id="displayRandomGamblingSets"></span></div>
+<img class="MapSelection" src="Maps/Map.png">
+<table width="900px"><tbody><tr><td rowspan="30">POLICE HQ: Use Illustration #30. There will be 1-3 police robots in the first room of this complex...</td></tr></tbody></table>
+<script>
+const setCharacterStatistic = (stat, value) => {
+  this[stat] = value.replace(/'/g, stat === 'features' ? "'" : '').replace(/\s+/g, ' ').replace(/\./g, stat === 'features' || stat === 'featureNotes' ? '\\.\\n' : '.');
+  this.refresh();
+};
+
+const rollDice = (sides, resultId) => {
+  const roll = Math.ceil(Math.random() * sides);
+  document.getElementById(resultId).textContent = roll;
+};
+
+const reduceByOne = id => {
+  const elem = document.getElementById(id);
+  elem.value = parseInt(elem.value) - 1;
+};
+
+const shuffleArray = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+};
+
+const displayRandomSkills = () => {
+  const skills = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"];
+  shuffleArray(skills);
+  document.getElementById("displayRandomSkills").innerText = skills.join(", ");
+};
+
+const displayRandomLanguages = () => {
+  const languages = ["Common", "Dwarvish", "Elvish", "Giant", "Gnomish", "Goblin", "Halfling", "Orc"];
+  shuffleArray(languages);
+  document.getElementById("displayRandomLanguages").innerText = languages.join(", ");
+};
+
+const displayRandomMusicalInstruments = () => {
+  const instruments = ["Lyre", "Shawm", "Bagpipes", "Viol", "Horn", "Pan Flute", "Dulcimer", "Lute", "Flute", "Drum"];
+  shuffleArray(instruments);
+  document.getElementById("displayRandomMusicalInstruments").innerText = instruments.join(", ");
+};
+
+const displayRandomTools = () => {
+  const tools = ["Forgery Kit", "Herbalism Kit", "Tinker Tools", "Mason Tools", "Potter Tools", "Thieves Tools", "Weaver Tools", "Glassblower Tools", "Leatherworker Tools", "Navigator Tools", "Alchemist Supplies"];
+  shuffleArray(tools);
+  document.getElementById("displayRandomTools").innerText = tools.join(", ");
+};
+
+const displayRandomGamblingSets = () => {
+  const sets = ["Dragon Dice Set", "Playing Card Set", "Darts Set"];
+  document.getElementById("displayRandomGamblingSets").innerText = sets.sort(() => 0.5 - Math.random()).join(", ");
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  displayRandomSkills();
+  displayRandomLanguages();
+  displayRandomMusicalInstruments();
+  displayRandomTools();
+  displayRandomGamblingSets();
+});
+</script>
+</body>
+</html>
