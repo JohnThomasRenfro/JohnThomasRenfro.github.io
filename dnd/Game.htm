@@ -4993,26 +4993,23 @@ this.setSpeed('30ft');
 this.setSpellAbility('cha');
 this.setTrait('15-80 yrs old('+(15+parseInt(rollDForm('1d65+0')))+'yrs old), 4ft 8in tall+2d10('+(4.8+(parseInt(rollDForm('2d10+0'))/12)).toFixed(1).replace('.', 'ft ')+'in), 110lbs+2d4('+(parseInt(110)+parseInt(rollDForm('2d4+0')))+'lbs)')}
 this.refresh()}
-function _setResistance(x){this.resistance=x;
-this.refresh()}
-function _setResults(x){this.results=x;
-this.refresh()}
-function _setRollName1(x){this.rollName1=x;
-this.refresh()}
-function _setRoll1(x){this.roll1=x;
-this.refresh()}
-function _setRollName2(x){this.rollName2=x;
-this.refresh()}
-function _setRoll2(x){this.roll2=x;
-this.refresh()}
-function _setSaving(x){this.saving=x;
-this.refresh()}
-function _setSenses(x){this.senses=x;
-this.refresh()}
-function _setShield(x){this.shield=x;
-this.refresh()}
-function _setSpeed(x){this.speed=x;
-this.refresh()}
+function _setProperty(property, value) {
+    this[property] = value;
+    this.refresh();
+}
+
+// Usage:
+_setProperty('resistance', x);
+_setProperty('results', x);
+_setProperty('rollName1', x);
+_setProperty('roll1', x);
+_setProperty('rollName2', x);
+_setProperty('roll2', x);
+_setProperty('saving', x);
+_setProperty('senses', x);
+_setProperty('shield', x);
+_setProperty('speed', x);
+
 function _setSpellAbility(x){this.spellAbility=x;
 if(x==='int'){this.setSpellAbilityNumber(this.intMod)}
 if(x==='wis'){this.setSpellAbilityNumber(this.wisMod)}
