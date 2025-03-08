@@ -127,26 +127,27 @@ document.querySelectorAll('.dice-button').forEach(button => {
         tbody.appendChild(row);
       });
 	  
-	  document.querySelectorAll('#stats-table input[type="file"]').forEach(input => {
-  input.addEventListener('change', e => {
+document.querySelectorAll('#stats-table input[type="text"], input[type="number"]').forEach(input => {
+  input.addEventListener('input', e => {
     const id = e.target.getAttribute('data-id');
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        characters[id].img = reader.result; // Save Base64 image
-        save();
+    const key = e.target.getAttribute('data-key');
+    const value = e.target.type === 'number' ? parseInt(e.target.value) : e.target.value;
 
-        // Update the piece with the new image
-        const imgElement = document.querySelector(`#${id} img`);
-        if (imgElement) {
-          imgElement.src = reader.result;
-        }
-      };
-      reader.readAsDataURL(file);
+    // Ensure the edited value is saved to the correct character
+    characters[id][key] = value;
+
+    // If the name is updated, update the board piece as well
+    if (key === 'name') {
+      const nameElement = document.querySelector(`#${id} h3`);
+      if (nameElement) {
+        nameElement.textContent = value;
+      }
     }
+
+    save(); // Persist changes
   });
 });
+
 
 
       // Add event listeners for Copy buttons
@@ -166,32 +167,37 @@ document.querySelectorAll('.dice-button').forEach(button => {
       });
     };
 
-    const copyCharacter = (id) => {
-      const originalCharacter = characters[id];
-      const newId = `character-${idCounter++}`;
-      saveIdCounter();
+const copyCharacter = (id) => {
+  const originalCharacter = characters[id];
+  const newId = `character-${idCounter++}`;
+  saveIdCounter();
 
-      const newCharacter = { ...originalCharacter };
+  // Perform a deep copy to ensure the new character is independent
+  const newCharacter = JSON.parse(JSON.stringify(originalCharacter));
 
-      const namePattern = /(.+?)\s(\d+)$/;
-      const match = originalCharacter.name.match(namePattern);
-      if (match) {
-        const baseName = match[1];
-        const incrementedNumber = parseInt(match[2]) + 1;
-        newCharacter.name = `${baseName} ${incrementedNumber}`;
-      } else {
-        newCharacter.name = `${originalCharacter.name} 1`;
-      }
+  // Update the name with an incremented number
+  const namePattern = /(.+?)\s(\d+)$/;
+  const match = originalCharacter.name.match(namePattern);
+  if (match) {
+    const baseName = match[1];
+    const incrementedNumber = parseInt(match[2]) + 1;
+    newCharacter.name = `${baseName} ${incrementedNumber}`;
+  } else {
+    newCharacter.name = `${originalCharacter.name} 1`;
+  }
 
-      newCharacter.left = `${parseInt(newCharacter.left, 10) + 20}px`;
-      newCharacter.top = `${parseInt(newCharacter.top, 10) + 20}px`;
+  // Ensure unique board positions
+  newCharacter.left = `${parseInt(newCharacter.left, 10) + 20}px`;
+  newCharacter.top = `${parseInt(newCharacter.top, 10) + 20}px`;
 
-      characters[newId] = newCharacter;
+  // Save the new character with a unique ID
+  characters[newId] = newCharacter;
 
-      save();
-      addCharacter(newId, newCharacter);
-      updateStatsTable();
-    };
+  save();
+  addCharacter(newId, newCharacter);
+  updateStatsTable();
+};
+
 
     const deleteCharacter = id => {
       const character = document.getElementById(id);
