@@ -6,54 +6,39 @@
   <title>Fantasy Role-Playing Encounter Manager</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
-  #stats-table th, #stats-table td {
-    border: 1px solid black;
-    padding: 2px 5px; /* Reduce padding to save space */
-    text-align: center; /* Center-align content for better readability */
-  }
-  #stats-table th { background-color: #f4f4f4; }
-  #stats-table td { white-space: nowrap; } /* Prevent line breaks in cells */
-  .column-name { width: 120px; } /* Name column */
-  .column-ac { width: 50px; } /* AC column */
-  .column-mv { width: 60px; } /* Move column */
-  .column-hd { width: 80px; } /* HD column */
-  .column-hp { width: 70px; } /* HP column */
-  .column-image { width: 120px; } /* Image column */
-    .character { 
-      width: 100px; 
-      height: 100px; 
-      padding: 5px; 
-      border: 1px solid black; 
-      border-radius: 10px; 
-      background: lightgray; 
-      position: absolute; 
-      cursor: grab; 
-      text-align: center; 
-      overflow: hidden; 
+    #stats-table th, #stats-table td {
+      border: 1px solid black;
+      padding: 2px 5px;
+      text-align: center;
     }
-    .character img { 
-      max-width: 50%; 
-      max-height: 50%; 
-      display: block; 
-      margin: 0 auto; 
+    #stats-table th { background-color: #f4f4f4; }
+    #stats-table td { white-space: nowrap; }
+    .column-name { width: 120px; }
+    .column-ac { width: 50px; }
+    .column-mv { width: 60px; }
+    .column-hd { width: 80px; }
+    .column-hp { width: 70px; }
+    .column-image { width: 40px; text-align: center; }
+    .character {
+      width: 100px; height: 100px; padding: 5px;
+      border: 1px solid black; border-radius: 10px;
+      background: lightgray; position: absolute;
+      cursor: grab; text-align: center; overflow: hidden;
     }
-    #board { 
-      position: relative; 
-      width: 100%; 
-      height: 600px; 
-      border: 1px solid black; 
-      background-size: cover; 
-      background-position: center; 
+    .character img {
+      max-width: 50%; max-height: 50%;
+      display: block; margin: 0 auto;
     }
-    .rotate-button { 
-      display: block; 
-      margin: 5px auto; 
-      background-color: #0078D4; 
-      color: white; 
-      border: none; 
-      padding: 5px; 
-      border-radius: 5px; 
-      cursor: pointer; 
+    #board {
+      position: relative; width: 100%; height: 600px;
+      border: 1px solid black; background-size: cover;
+      background-position: center;
+    }
+    .rotate-button {
+      display: block; margin: 5px auto;
+      background-color: #0078D4; color: white;
+      border: none; padding: 5px;
+      border-radius: 5px; cursor: pointer;
     }
   </style>
 </head>
@@ -62,6 +47,17 @@
   <button id="add-character">Add Character</button>
   <label for="map-selector">Select Map:</label>
   <input type="file" id="map-selector" accept="image/png, image/jpeg">
+  <!-- Dice rolling section -->
+<div id="dice-container" style="display: inline-block; margin-left: 20px;">
+  <label for="modifier">Modifier:</label>
+  <input type="number" id="modifier" value="0" size="2" style="width: 50px; text-align: center;">
+  <button class="dice-button" data-dice="20">1d20</button>
+  <button class="dice-button" data-dice="12">1d12</button>
+  <button class="dice-button" data-dice="8">1d8</button>
+  <button class="dice-button" data-dice="6">1d6</button>
+  <button class="dice-button" data-dice="4">1d4</button>
+  <span id="dice-result" style="margin-left: 10px; font-weight: bold;">Result: </span>
+</div>
   <table id="stats-table">
     <thead>
       <tr>
@@ -83,6 +79,21 @@
   </table>
   <div id="board"></div>
   <script>
+  // Function to roll a dice
+const rollDice = (sides, modifier) => {
+  return Math.floor(Math.random() * sides) + 1 + modifier; // Roll dice and add modifier
+};
+
+// Attach event listeners to dice buttons
+document.querySelectorAll('.dice-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const sides = parseInt(button.getAttribute('data-dice'), 10);
+    const modifier = parseInt(document.getElementById('modifier').value, 10);
+    const result = rollDice(sides, modifier);
+    document.getElementById('dice-result').textContent = `Result: ${result}`;
+  });
+});
+
     let idCounter = parseInt(localStorage.getItem('idCounter')) || 0;
     const characters = JSON.parse(localStorage.getItem('characters')) || {};
     const mapImage = localStorage.getItem('mapImage') || null;
@@ -90,95 +101,107 @@
     const save = () => localStorage.setItem('characters', JSON.stringify(characters));
     const saveIdCounter = () => localStorage.setItem('idCounter', idCounter);
 
-const updateStatsTable = () => {
-  const tbody = document.querySelector("#stats-table tbody");
-  tbody.innerHTML = ''; // Clear the table before rebuilding
-  Object.keys(characters).forEach(id => {
-    const data = characters[id];
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td class="column-name"><input type="text" value="${data.name}" data-id="${id}" data-key="name" size="10"></td>
-      <td class="column-ac"><input type="text" value="${data.ac}" data-id="${id}" data-key="ac" maxlength="2" size="2"></td>
-      <td class="column-mv"><input type="text" value="${data.mv}" data-id="${id}" data-key="mv" maxlength="3" size="3"></td>
-      <td class="column-hd"><input type="text" value="${data.hd}" data-id="${id}" data-key="hd" maxlength="9" size="9"></td>
-      <td class="column-hp"><input type="number" value="${data.hp}" data-id="${id}" data-key="hp" size="5"></td>
-      <td><input type="text" value="${data.at}" data-id="${id}" data-key="at" size="10"></td>
-      <td><input type="text" value="${data.dmg}" data-id="${id}" data-key="dmg" size="10"></td>
-      <td><input type="text" value="${data.gear}" data-id="${id}" data-key="gear" size="12"></td>
-      <td class="column-image">
-        <input type="file" data-id="${id}" data-key="img" accept="image/png, image/jpeg">
-        <span id="file-name-${id}">${data.img ? "Image selected" : "No image selected"}</span>
-      </td>
-      <td><button class="delete-character" data-id="${id}">Delete</button></td>
-    `;
-    tbody.appendChild(row);
-  });
+    const updateStatsTable = () => {
+      const tbody = document.querySelector("#stats-table tbody");
+      tbody.innerHTML = '';
+      Object.keys(characters).forEach(id => {
+        const data = characters[id];
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="column-name"><input type="text" value="${data.name}" data-id="${id}" data-key="name" size="10"></td>
+          <td class="column-ac"><input type="text" value="${data.ac}" data-id="${id}" data-key="ac" maxlength="2" size="2"></td>
+          <td class="column-mv"><input type="text" value="${data.mv}" data-id="${id}" data-key="mv" maxlength="3" size="3"></td>
+          <td class="column-hd"><input type="text" value="${data.hd}" data-id="${id}" data-key="hd" maxlength="9" size="9"></td>
+          <td class="column-hp"><input type="number" value="${data.hp}" data-id="${id}" data-key="hp" size="5"></td>
+          <td><input type="text" value="${data.at}" data-id="${id}" data-key="at" size="10"></td>
+          <td><input type="text" value="${data.dmg}" data-id="${id}" data-key="dmg" size="10"></td>
+          <td><input type="text" value="${data.gear}" data-id="${id}" data-key="gear" size="12"></td>
+<td class="column-image">
+  <input type="file" data-id="${id}" data-key="img" accept="image/png, image/jpeg">
+</td>
+          <td>
+            <button class="copy-character" data-id="${id}">Copy</button>
+            <button class="delete-character" data-id="${id}">Delete</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+	  
+	  document.querySelectorAll('#stats-table input[type="file"]').forEach(input => {
+  input.addEventListener('change', e => {
+    const id = e.target.getAttribute('data-id');
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        characters[id].img = reader.result; // Save Base64 image
+        save();
 
-  // Add real-time event listeners for table inputs
-  document.querySelectorAll('#stats-table input[type="text"], input[type="number"]').forEach(input => {
-    input.addEventListener('input', e => {
-      const id = e.target.getAttribute('data-id');
-      const key = e.target.getAttribute('data-key');
-      const value = e.target.type === 'number' ? parseInt(e.target.value) : e.target.value;
-
-      characters[id][key] = value; // Update character data
-      if (key === 'name') {
-        const nameElement = document.querySelector(`#${id} h3`);
-        if (nameElement) {
-          nameElement.textContent = value; // Update name on the piece
+        // Update the piece with the new image
+        const imgElement = document.querySelector(`#${id} img`);
+        if (imgElement) {
+          imgElement.src = reader.result;
         }
-      }
-      save();
-    });
+      };
+      reader.readAsDataURL(file);
+    }
   });
+});
 
-  // Add event listeners for image upload
-  document.querySelectorAll('#stats-table input[type="file"]').forEach(input => {
-    input.addEventListener('change', e => {
-      const id = e.target.getAttribute('data-id');
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          characters[id].img = reader.result; // Save Base64 image
-          save();
 
-          // Update "Image selected" status
-          const fileNameElement = document.querySelector(`#file-name-${id}`);
-          if (fileNameElement) {
-            fileNameElement.textContent = "Image selected";
-          }
+      // Add event listeners for Copy buttons
+      document.querySelectorAll('.copy-character').forEach(button => {
+        button.addEventListener('click', e => {
+          const id = e.target.getAttribute('data-id');
+          copyCharacter(id);
+        });
+      });
 
-          // Update the piece with the new image
-          const imgElement = document.querySelector(`#${id} img`);
-          if (imgElement) {
-            imgElement.src = reader.result;
-          }
-        };
-        reader.readAsDataURL(file);
+      // Add event listeners for Delete buttons
+      document.querySelectorAll('.delete-character').forEach(button => {
+        button.addEventListener('click', e => {
+          const id = e.target.getAttribute('data-id');
+          deleteCharacter(id);
+        });
+      });
+    };
+
+    const copyCharacter = (id) => {
+      const originalCharacter = characters[id];
+      const newId = `character-${idCounter++}`;
+      saveIdCounter();
+
+      const newCharacter = { ...originalCharacter };
+
+      const namePattern = /(.+?)\s(\d+)$/;
+      const match = originalCharacter.name.match(namePattern);
+      if (match) {
+        const baseName = match[1];
+        const incrementedNumber = parseInt(match[2]) + 1;
+        newCharacter.name = `${baseName} ${incrementedNumber}`;
       } else {
-        // Reset to "No image selected" if no file is chosen
-        const fileNameElement = document.querySelector(`#file-name-${id}`);
-        if (fileNameElement) {
-          fileNameElement.textContent = "No image selected";
-        }
+        newCharacter.name = `${originalCharacter.name} 1`;
       }
-    });
-  });
 
-  // Attach event listeners for delete buttons
-  document.querySelectorAll('.delete-character').forEach(button => {
-    button.addEventListener('click', e => {
-      const id = e.target.getAttribute('data-id');
-      deleteCharacter(id);
-    });
-  });
-};
+      newCharacter.left = `${parseInt(newCharacter.left, 10) + 20}px`;
+      newCharacter.top = `${parseInt(newCharacter.top, 10) + 20}px`;
 
-// Utility function to extract the file name from the Base64 image
-const getFileName = (base64String) => {
-  return "Uploaded Image"; // Replace this with a more specific name if needed
-};
+      characters[newId] = newCharacter;
+
+      save();
+      addCharacter(newId, newCharacter);
+      updateStatsTable();
+    };
+
+    const deleteCharacter = id => {
+      const character = document.getElementById(id);
+      if (character) {
+        character.remove();
+        delete characters[id];
+        save();
+        updateStatsTable();
+      }
+    };
 
     const addCharacter = (id, data = { 
         name: 'Bugbear Shaman', 
@@ -231,7 +254,6 @@ const getFileName = (base64String) => {
         save();
       };
 
-      // Rotate button functionality
       c.querySelector(".rotate-button").addEventListener('click', () => {
         const currentRotation = characters[characterId].rotation || 0;
         const newRotation = (currentRotation + 60) % 360; // Rotate in 60-degree increments
@@ -242,16 +264,6 @@ const getFileName = (base64String) => {
 
       document.getElementById('board').appendChild(c); // Add the piece to the board
       updateStatsTable(); // Refresh the stats table
-    };
-
-    const deleteCharacter = id => {
-      const character = document.getElementById(id);
-      if (character) {
-        character.remove(); // Remove from board
-        delete characters[id]; // Remove from local storage
-        save();
-        updateStatsTable(); // Refresh the stats table
-      }
     };
 
     document.getElementById('add-character').addEventListener('click', () => addCharacter());
@@ -274,5 +286,7 @@ const getFileName = (base64String) => {
       document.getElementById('board').style.backgroundImage = `url(${mapImage})`;
     }
   </script>
+  Encounter: 
+  In the Bald Hill lair is a small stash of 84 gp, 120 ep, 330 sp. it is hidden behind a loose rock in the cave (treat as a concealed door). They have a second lair in the Xerbal Mountains, a small stone building (20' X 30’) with no windows but with two iron reinforced doors. Some treasure is in the half-ores' room in a chest trapped with a poison needle (save vs. Poison or die). Inside are 18 pp., 104gp, 134ep, 1,350 sp, and some gems: 4 x 100 gp, and 2 X 200 gp. There also is a short sword +1, a scroll of dimension door, and a potion of gaseous form.
 </body>
 </html>
