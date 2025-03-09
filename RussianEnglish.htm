@@ -9314,8 +9314,7 @@ const replsB=[
 {p1:/ (то-т)(о|.+) /gi,r1:"$1 that’s it, that’s right |s~$2 "},
 {p1:/ (то) /gi,r1:"$1 that; then |s~$2 "},
 {p1:/ (тр)(и|.+) /gi,r1:"$1 three |s~$2 "},
-{p1:/ (ты) /gi,r1:"$1 you(familiar) |s~$2 "},
-{p1:/ (ть) /gi,r1:"$1 verb suffix(infinitive;to do) "},
+{p1:/ (ты) /gi,r1:"$1 you(familiar) "},
 {p1:/ (уж |уже) /gi,r1:"$1 already; really |s~$2 "},
 {p1:/ (ум) /gi,r1:"$1 mind, intellect |s~$2 "},
 {p1:/ (ур)(а|.+) /gi,r1:"$1 hurrah, hurray |s~$2 "},
@@ -9493,21 +9492,28 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
         <div id="formattedEntries"></div>
     </div>
 
-    <script>
-        function formatDictionary() {
-            const entries = [];
-            for (let i = 1; i <= 4; i++) {
-                const russian = document.getElementById(`russian${i}`).value;
-                const english = document.getElementById(`english${i}`).value;
-                if (russian && english) {
-                    const [root, suffix] = russian.split(' ');
-                    if (root && suffix) {
+<script>
+    function formatDictionary() {
+        const entries = [];
+        for (let i = 1; i <= 4; i++) {
+            const russian = document.getElementById(`russian${i}`).value;
+            const english = document.getElementById(`english${i}`).value;
+            if (russian && english) {
+                const [root, suffix] = russian.split(' ');
+                if (root) {
+                    if (suffix) {
+                        // If a suffix exists, format with both root and suffix
                         entries.push(`{p1:/ (${root})(${suffix}|.+) /gi,r1:"$1 ${english} |s~$2 "},`);
+                    } else {
+                        // If no suffix exists, format only the root
+                        entries.push(`{p1:/ (${root}) /gi,r1:"$1 ${english} "},`);
                     }
                 }
             }
-            document.getElementById('formattedEntries').innerHTML = entries.join('<br>');
         }
-    </script>
+        document.getElementById('formattedEntries').innerHTML = entries.join('<br>');
+    }
+</script>
+
 </body>
 </html>
