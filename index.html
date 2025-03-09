@@ -2,9 +2,9 @@
 <html>
 <head>
 <meta
-  http-equiv="content-type"
-  content="text/html;
-  charset=UTF-8"
+ http-equiv="content-type"
+ content="text/html;
+ charset=UTF-8"
 >
 <title>The Japanese to English Parser</title>
 
@@ -12,140 +12,140 @@
 
 <style>
 body {
-  background-attachment: fixed;
-  background-color: #2b2b2b;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #d3c6aa;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 20px;
-  margin: 5%;
-  padding: 20px;
-  position: relative;
-  word-wrap: break-word;
+ background-attachment: fixed;
+ background-color: #2b2b2b;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ color: #d3c6aa;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 20px;
+ margin: 5%;
+ padding: 20px;
+ position: relative;
+ word-wrap: break-word;
 }
 
 body::before {
-  background: rgba(0,0,0,0.7);
-  content: "";
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
+ background: rgba(0,0,0,0.7);
+ content: "";
+ height: 100%;
+ position: absolute;
+ top: 0;
+ width: 100%;
+ z-index: -1;
 }
 
 /* Header Style */
 .HeaderStyle {
-  background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
-  border: 3px solid #6b5b4b;
-  border-bottom: 2px solid #867b74;
-  color: #b7a57a;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 25px;
-  text-shadow: 1px 1px 4px #6b5b4b;
+ background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
+ border: 3px solid #6b5b4b;
+ border-bottom: 2px solid #867b74;
+ color: #b7a57a;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 25px;
+ text-shadow: 1px 1px 4px #6b5b4b;
 }
 
 /* Japanese Kikkō (Tortoise Shell) Pattern for TheStripe */
 .TheStripe {
-  background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
-  border: 3px solid #6b5b4b;
-  text-align: center;
-  font-weight: bold;
-  font-size: 30px;
+ background: radial-gradient(circle,#2b2b2b 10%,#524e4d 50%,#2b2b2b 90%);
+ border: 3px solid #6b5b4b;
+ text-align: center;
+ font-weight: bold;
+ font-size: 30px;
 }
 
 /* Links */
 a:link,a:visited {
-  color: #a89984;
-  text-decoration: none;
+ color: #a89984;
+ text-decoration: none;
 }
 
 a:hover,a:active {
-  color: #f4bf75;
+ color: #f4bf75;
 }
 
 /* Inputs and Textareas with Japanese Kumiko-Inspired Borders */
 input,textarea {
-  background-color: #3a3a3a;
-  border: 3px solid transparent;
-  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.5);
-  border-image: linear-gradient(45deg,#6b5b4b,#867b74,#6b5b4b) 10;
-  color: inherit;
-  font-size: 20px;
-  max-height: 120px;
-  outline: none;
-  transition: all 0.4s ease-in-out;
-  width: 100%;
+ background-color: #3a3a3a;
+ border: 3px solid transparent;
+ box-shadow: inset 2px 2px 6px rgba(0,0,0,0.5);
+ border-image: linear-gradient(45deg,#6b5b4b,#867b74,#6b5b4b) 10;
+ color: inherit;
+ font-size: 20px;
+ max-height: 120px;
+ outline: none;
+ transition: all 0.4s ease-in-out;
+ width: 100%;
 }
 
 input:hover,textarea:hover {
-  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
+ box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
 }
 
 /* Output Container with Seigaiha (Wave) Pattern */
 #outputContainer {
-  background: radial-gradient(circle,#2b2b2b 10%,#3a3a3a 60%,#2b2b2b 90%);
-  border: 3px solid #6b5b4b;
-  color: #d3c6aa;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 20px;
-  white-space: pre-wrap;
-  width: 80%;
+ background: radial-gradient(circle,#2b2b2b 10%,#3a3a3a 60%,#2b2b2b 90%);
+ border: 3px solid #6b5b4b;
+ color: #d3c6aa;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 20px;
+ white-space: pre-wrap;
+ width: 80%;
 }
 
 /* Buttons */
 button {
-  background: linear-gradient(to bottom,#6b5b4b,#b7a57a);
-  border: 3px solid #6b5b4b;
-  color: #2b2b2b;
-  font-family: 'Noto Serif JP',serif;
-  font-size: 18px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-  border-radius: 10px;
+ background: linear-gradient(to bottom,#6b5b4b,#b7a57a);
+ border: 3px solid #6b5b4b;
+ color: #2b2b2b;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 18px;
+ padding: 10px 20px;
+ cursor: pointer;
+ transition: background 0.3s ease-in-out;
+ border-radius: 10px;
 }
 
 button:hover {
-  background: #b7a57a;
-  color: #2b2b2b;
-  transform: scale(1.05);
+ background: #b7a57a;
+ color: #2b2b2b;
+ transform: scale(1.05);
 }
 
 hr {
-  border: none;
-  height: 3px;
-  background: linear-gradient(to right,#6b5b4b,#b7a57a,#6b5b4b);
-  margin: 20px 0;
-  position: relative;
+ border: none;
+ height: 3px;
+ background: linear-gradient(to right,#6b5b4b,#b7a57a,#6b5b4b);
+ margin: 20px 0;
+ position: relative;
 }
 
 hr::after {
-  content: "✦";
-  display: block;
-  text-align: center;
-  color: #b7a57a;
-  font-size: 28px;
-  margin-top: -16px;
+ content: "✦";
+ display: block;
+ text-align: center;
+ color: #b7a57a;
+ font-size: 28px;
+ margin-top: -16px;
 }
 
 @media screen and (max-width: 768px) {
-  body {
-    font-size: 18px;
-    margin: 3%;
-  }
-  .HeaderStyle {
-    font-size: 10px;
-  }
-  input,textarea {
-    font-size: 18px;
-    width: 100%;
-  }
-  #outputContainer {
-    width: 100%;
-  }
+ body {
+ font-size: 18px;
+ margin: 3%;
+ }
+ .HeaderStyle {
+ font-size: 10px;
+ }
+ input,textarea {
+ font-size: 18px;
+ width: 100%;
+ }
+ #outputContainer {
+ width: 100%;
+ }
 }
 </style>
 
@@ -173,7 +173,7 @@ const replsB=[
 {p1:/(～)(?!X)/g,r1:'$1Xhyphen=from to,Punctuation'},
 {p1:/(\?)(?!X)/g,r1:'$1question mark;Punctuation'},
 {p1:/(\/)(?!X)/g,r1:'$1forward slash;Punctuation'},
-  
+ 
 {p1:/(せ)(?!X)(ざ)(?!X)(る)(?!X)(を)(?!X)(え)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xse$2Xza$3Xru$4Xo$5Xe$6Xna$7Xi=can t help but do;Noun'},
 {p1:/(あ)(?!X)(ち)(?!X)(ら)(?!X)(こ)(?!X)(ち)(?!X)(ら)(?!X)/g,r1:'$1Xa$2Xchi$3Xra$4Xko$5Xchi$6Xra=all over;Noun'},
 {p1:/(い)(?!X)(つ)(?!X)(の)(?!X)(ま)(?!X)(に)(?!X)(か)(?!X)/g,r1:'$1Xi$2Xtsu$3Xno$4Xma$5Xni$6Xka=before it is noticed;Noun'},
@@ -1781,15 +1781,15 @@ const replsB=[
 {p1:/(１|1)(?!X)(1|１)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xichi$3Xnichi=eleventh day of the month;Noun'},
 {p1:/(１|1)(?!X)(2|２)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xni$3Xnichi=twelfth day of the month;Noun'},
 {p1:/(１|1)(?!X)(4|４|4)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xyok$3Xka=fourteenth day of the month;Noun'},
-{p1:/(１|1)(?!X)(6)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xroku$3Xnichi=sixteenth  day of the month;Noun'},
-{p1:/(１|1)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xhachi$3Xnichi=eighteenth  day of the month;Noun'},
+{p1:/(１|1)(?!X)(6)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xroku$3Xnichi=sixteenth day of the month;Noun'},
+{p1:/(１|1)(?!X)(8|８)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xhachi$3Xnichi=eighteenth day of the month;Noun'},
 {p1:/(１|1)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1X$2X$3Xtouka=tenth day of the month;Noun'},
 {p1:/(１|1)(?!X)(０|0)(?!X)(月)(?!X)/g,r1:'$1Xjyuu$2X$3Xgatsu=October;Noun'},
 {p1:/(１|1)(?!X)(１|1)(?!X)(月)(?!X)/g,r1:'$1Xjyuu$2Xichi$3Xgatsu November=Noun'},
 {p1:/(１|1)(?!X)(２|2)(?!X)(月)(?!X)/g,r1:'$1Xjyuu$2Xni$3Xgatsu December=Noun'},
 {p1:/(１|1)(?!X)(３|3)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xsan$3Xnichi=thirteenth day of the month;Noun'},
 {p1:/(１|1)(?!X)(５|5)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xgo$3Xnichi=fifteenth day of the month;Noun'},
-{p1:/(１|1)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xshichi$3Xnichi=seventeenth  day of the month;Noun'},
+{p1:/(１|1)(?!X)(７|7)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xshichi$3Xnichi=seventeenth day of the month;Noun'},
 {p1:/(１|1)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1Xjyuu$2Xku$3Xnichi=nineteenth day of the month;Noun'},
 {p1:/(３|3)(?!X)(０|0)(?!X)(日)(?!X)/g,r1:'$1Xsan jyuu$2X$3Xnichi=thirtieth day of the month;Noun'},
 {p1:/(３|3)(?!X)(１|1)(?!X)(日)(?!X)/g,r1:'$1Xsan jyuu$2Xichi$3Xnichi=thirty,first day of the month;Noun'},
@@ -8663,8 +8663,8 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 
 }
 
-</script></head>
-
+</script>
+</head>
 <body>
 <div class="TheStripe">Studying Japanese Language</div>
 <br>
@@ -8697,40 +8697,38 @@ Say "tou" as you practice writing the "toe" Kanjis until you memorize them.
 </pre>
 <hr>
 If you download a copy of this index.html file,you can add your own entries in longest word to shortest word order. Otherwise,this workspace is for me.<br>
-     <input type="text" id="wordInput" placeholder="Enter the Japanese word">
-    <input type="text" id="pronunciationInput" placeholder="Enter spaced English pronunciation">
-    <input type="text" id="definitionInput" placeholder="Enter the English definition">
-    <button onclick="formatAndDisplay()">Format</button>
-    <div id="outputContainer">
-        <p id="output">Formatted output will appear here...</p>
-    </div>
+ <input type="text" id="wordInput" placeholder="Enter the Japanese word">
+ <input type="text" id="pronunciationInput" placeholder="Enter spaced English pronunciation">
+ <input type="text" id="definitionInput" placeholder="Enter the English definition">
+ <button onclick="formatAndDisplay()">Format</button>
+ <div id="outputContainer">
+ <p id="output">Formatted output will appear here...</p>
+ </div>
 
 <script>
-    function formatJapaneseRegex(word,pronunciation,definition) {
-        let regexPattern=word.split('').map(char=> `(${char})(?!X)`).join('');
-        let pronunciationParts=pronunciation.split(/\s+/);
-        let replacement=word.split('').map((_,i)=> `$${i + 1}X${pronunciationParts[i] || word[i]}`).join('');
-        return `{p1:/${regexPattern}/g,r1:'${replacement}\=${definition};Noun'},`;
-    }
+ function formatJapaneseRegex(word,pronunciation,definition) {
+ let regexPattern=word.split('').map(char=> `(${char})(?!X)`).join('');
+ let pronunciationParts=pronunciation.split(/\s+/);
+ let replacement=word.split('').map((_,i)=> `$${i + 1}X${pronunciationParts[i] || word[i]}`).join('');
+ return `{p1:/${regexPattern}/g,r1:'${replacement}\=${definition};Noun'},`;
+ }
 
-    function formatAndDisplay() {
-        const inputWord=document.getElementById("wordInput").value;
-        const inputPronunciation=document.getElementById("pronunciationInput").value;
-        const inputDefinition=document.getElementById("definitionInput").value;
-        const output=formatJapaneseRegex(inputWord,inputPronunciation,inputDefinition);
-        document.getElementById("output").innerText=output;
-    }
+ function formatAndDisplay() {
+ const inputWord=document.getElementById("wordInput").value;
+ const inputPronunciation=document.getElementById("pronunciationInput").value;
+ const inputDefinition=document.getElementById("definitionInput").value;
+ const output=formatJapaneseRegex(inputWord,inputPronunciation,inputDefinition);
+ document.getElementById("output").innerText=output;
+ }
 </script>
 
-<hr>    
-    <div class="HeaderStyle">Killing Time</div>
-    <p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022) Chapter 16</p>
-    <p>[VIEWING] <i>Northern Exposure</i>,S3E3 (1991)</p>
-
-    <div class="HeaderStyle">External Links</div>
-    <p><a href="https://x.com/JohnRenfro2016" target="_blank">My X Profile</a></p>
-    <p><a href="https://www.pinterest.jp/johnrenfro2016/" target="_blank">My Pinterest.Com Page</a></p>
-    <p><a href="https://archive.org/details/fav-johnrenfro?tab=collection" target="_blank">My Archive.Org Page</a></p>
-
+<hr>
+<div class="HeaderStyle">Killing Time</div>
+<p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022) Chapter 16</p>
+<p>[VIEWING] <i>Northern Exposure</i>,S3E3 (1991)</p>
+<div class="HeaderStyle">External Links</div>
+<p><a href="https://x.com/JohnRenfro2016" target="_blank">My X Profile</a></p>
+<p><a href="https://www.pinterest.jp/johnrenfro2016/" target="_blank">My Pinterest.Com Page</a></p>
+<p><a href="https://archive.org/details/fav-johnrenfro?tab=collection" target="_blank">My Archive.Org Page</a></p>
 </body>
 </html>
