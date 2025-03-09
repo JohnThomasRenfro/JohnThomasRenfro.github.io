@@ -6033,7 +6033,7 @@ const replsB=[
 {p1:/ (борец) /gi,r1:"$1 fighter; wrestler |s~$2 "},
 {p1:/ (бород)(а|.+) /gi,r1:"$1 beard |s~$2 "},
 {p1:/ (борьб)(а|.+) /gi,r1:"$1 struggle |s~$2 "},
-{p1:/ (закоп)(ать|.+) /gi,r1:"$1 to bury |s~$2 "}
+{p1:/ (закоп)(ать|.+) /gi,r1:"$1 to bury |s~$2 "},
 {p1:/ (бос)(ой|.+) /gi,r1:"$1 barefoot |s~$2 "},
 {p1:/ (боязн)(о|.+) /gi,r1:"$1 afraid(coll) |s~$2 "},
 {p1:/ (боязн)(ь|.+) /gi,r1:"$1 fear |s~$2 "},
@@ -9496,7 +9496,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
                 if (russian && english) {
                     const [root, suffix] = russian.split(' ');
                     if (root && suffix) {
-                        entries.push(`{p1:/ (${root})(${suffix}|.+) /gi,r1:"$1 ${english} |s~$2 "}`);
+                        entries.push(`{p1:/ (${root})(${suffix}|.+) /gi,r1:"$1 ${english} |s~$2 "},`);
                     }
                 }
             }
