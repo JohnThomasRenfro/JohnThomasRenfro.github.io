@@ -2553,9 +2553,6 @@ const replsB=[
 {p1:/(목)(?!X)(격)(?!X)(자)(?!X)/g,r1:"$1X$2X$3X=eyewitness"},
 {p1:/(목)(?!X)(걸)(?!X)(이)(?!X)/g,r1:"$1X$2X$3X=necklace, choker"},
 {p1:/(모)(?!X)(질)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to be harsh, hard, severe(neg. context)(way of speaking, a force being, persist through difficulties)(not that common)"},
-{p1:/(모)(?!X)(이)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=)(모)(?!X)(여)(?!X)(요)(?!X)("},
-{p1:/(모)(?!X)(으)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=)(모)(?!X)(아)(?!X)(요)(?!X)("},
-{p1:/(모)(?!X)(시)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=)(모)(?!X)(셔)(?!X)(요)(?!X)("},
 {p1:/(모)(?!X)(시)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=to accompany, take(smb to smth);treat;serve, live with(and help them)(formal)"},
 {p1:/(모)(?!X)(르)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X=)(몰)(?!X)(라)(?!X)(요)(?!X)("},
 {p1:/(몇)(?!X)(월)(?!X)/g,r1:"$1X$2X$3X=which month"},
@@ -6116,9 +6113,9 @@ const replsB=[
 
 {p1:/([가-힣\’\,\‘])X/g,r1:"<br>$1"},
 
+{p1:/([가-힣0-9０−９０-８\(\（\)\）「『」』\“\”\・、。【】．：＝]+)/g,r1:'<br>  $1 '},
+	
 {p1:/X/g,r1:''},
-
-{p1:/([一-龠ぁ-ゔァ-ヴー々〆〤0-9０−９０-８\(\（\)\）「『」』\“\”\・、。【】．：＝]+)/g,r1:'<br><font color=#f5eee7>$1</font>'},
 
 {p1:/-([a-zA-Z]+)/g,r1:'=<font color=#e8d9cd>$1</font>'},
 
