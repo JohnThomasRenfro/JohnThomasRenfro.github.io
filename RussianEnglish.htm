@@ -9358,10 +9358,12 @@ const replsB=[
 {p1:/ ()(я|.+) /gi,r1:"$1 I |s~$2 "},
 
 {p1:/s~(ует)/gi,r1:"$1 verb (imperfective, 3rd person, singular, present)"},
+{p1:/s~(ть)/gi,r1:"$1 verb (infinitive;to do)"},
 	
 {p1:/s~(ой)/gi,r1:"$1 nouns-feminine-singular-instrumental or adjectives-masculine-singular-instrumental or adjectives-feminine-singular-genitive"},
 {p1:/s~(ет)/gi,r1:"$1 verb (3rd person singular, present)"},
-
+{p1:/s~(ать)/gi,r1:"$1 verb (1st conjugation class; infinitive;to do)"},
+	
 {p1:/s~(я)/gi,r1:"$1 indeclinable-adverb-meaning-prohibition-or-impossibility"},
 {p1:/s~(е)/gi,r1:"$1 noun (dative/prepositional singular) or adjective (neuter singular, short form) or adverb (manner/comparative)"},
 
