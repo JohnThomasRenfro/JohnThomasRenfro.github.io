@@ -21,15 +21,6 @@ body {
  word-wrap: break-word;
 }
 
-body::before {
- background: rgba(0, 0, 0, 0.7);
- height: 100%;
- position: absolute;
- top: 0;
- width: 100%;
- z-index: -1;
-}
-
 button {
  background: linear-gradient(to bottom, #6b5b4b, #b7a57a);
  border: 3px solid #6b5b4b;
@@ -50,6 +41,8 @@ button:hover {
  border: 3px solid #6b5b4b;
  border-bottom: 2px solid #867b74;
  color: #b7a57a;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 20px;
  text-shadow: 1px 1px 4px #6b5b4b;
 }
 
@@ -59,9 +52,9 @@ input, textarea {
  border-image: linear-gradient(45deg, #6b5b4b, #867b74, #6b5b4b) 10;
  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
  color: inherit;
- max-height: 120px;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 20px;
  outline: none;
- transition: all 0.4s ease-in-out;
  width: 100%;
 }
 
@@ -83,7 +76,7 @@ a:hover, a:active {
  border: 3px solid #6b5b4b;
  color: #d3c6aa;
  white-space: pre-wrap;
- width: 80%;
+ width: 100%;
 }
 
 hr {
@@ -95,7 +88,6 @@ hr {
 
 hr::after {
  color: #b7a57a;
- content: "✦";
  display: block;
  text-align: center;
 }
@@ -8637,7 +8629,7 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 </li><li>Group them by similar elements.
 </li><li>Practice writing the same sound Kanjis until you can do it from memory using <a href="https://play.google.com/store/apps/details?id=com.craxic.akebifree&amp;hl=en&amp;gl=US" target="Xblank">Android Akebi</a>.
 </li></ul>
-<pre>
+<p>
 Here is your Android Akebi list for today.
 Say "tou" as you practice writing the "toe" Kanjis until you memorize them.
 
@@ -8646,8 +8638,6 @@ Say "tou" as you practice writing the "toe" Kanjis until you memorize them.
 とうふ (豆腐) - tofu
 とうばん (当番) - duty or duty roster
 とうじょう (登場) - boarding (an airplane, ship, etc.)
-
-</pre>
 <hr>
 If you download a copy of this index.html file,you can add your own entries in longest word to shortest word order. Otherwise,this workspace is for me.<br>
  <input type="text" id="wordInput" placeholder="Enter the Japanese word">
