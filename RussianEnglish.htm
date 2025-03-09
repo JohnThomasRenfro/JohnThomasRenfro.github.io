@@ -9469,41 +9469,6 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
     <title>Russian to English Dictionary Entry Formatter</title>
 </head>
 <body>
-    <h1>Russian to English Dictionary Entry Formatter</h1>
-    <div class="container">
-        <div class="entry-field">
-            <label for="russian">Russian Word:</label>
-            <input type="text" id="russian" name="russian" placeholder="e.g. закоп ать">
-            <label for="english">English Definition:</label>
-            <input type="text" id="english" name="english" placeholder="e.g. to bury">
-            <button onclick="formatDictionary()">Format Entry</button>
-        </div>
-    </div>
 
-    <div id="formattedEntries"></div>
-
-    <script>
-        function formatDictionary() {
-            const russian = document.getElementById('russian').value;
-            const english = document.getElementById('english').value;
-            const entries = [];
-
-            if (russian && english) {
-                const [root, suffix] = russian.split(' ');
-
-                if (root) {
-                    if (suffix) {
-                        // If there's a suffix, format with both root and suffix
-                        entries.push(`{p1:/ (${root})(${suffix}|.+) /gi,r1:"$1 ${english} |s~$2 "},`);
-                    } else {
-                        // If there's no suffix, format only the root
-                        entries.push(`{p1:/ (${root}) /gi,r1:"$1 ${english} "},`);
-                    }
-                }
-            }
-
-            document.getElementById('formattedEntries').innerHTML = entries.join('<br>');
-        }
-    </script>
 </body>
 </html>
