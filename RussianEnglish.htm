@@ -9461,32 +9461,49 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <br>
 <span id="translatedTextDisplay"></span>
 <hr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian to English Dictionary Entry Formatter</title>
+</head>
+<body>
     <h1>Russian to English Dictionary Entry Formatter</h1>
-	To use this, you need to download a copy of this web page and cut and paste your new entries in a text editor. Otherwise, this space is for me.
     <div class="container">
         <div class="entry-field">
-            <label for="russian1">Russian Word:</label>
-            <input type="text" id="russian1" name="russian1" placeholder="e.g. закоп ать">
-            <label for="english1">English Definition:</label>
-            <input type="text" id="english1" name="english1" placeholder="e.g. to bury">
+            <label for="russian">Russian Word:</label>
+            <input type="text" id="russian" name="russian" placeholder="e.g. закоп ать">
+            <label for="english">English Definition:</label>
+            <input type="text" id="english" name="english" placeholder="e.g. to bury">
+            <button onclick="formatDictionary()">Format Entry</button>
         </div>
+    </div>
+
+    <div id="formattedEntries"></div>
 
     <script>
         function formatDictionary() {
+            const russian = document.getElementById('russian').value;
+            const english = document.getElementById('english').value;
             const entries = [];
-            for (let i = 1; i <= 4; i++) {
-                const russian = document.getElementById(russian${i}).value;
-                const english = document.getElementById(english${i}).value;
-                if (russian && english) {
-                    const [root, suffix] = russian.split(' ');
-                    if (root && suffix) {
-                        entries.push({p1:/ (${root})(${suffix}|.+) /gi,r1:"$1 ${english} |s~$2 "},);
+
+            if (russian && english) {
+                const [root, suffix] = russian.split(' ');
+
+                if (root) {
+                    if (suffix) {
+                        // If there's a suffix, format with both root and suffix
+                        entries.push(`{p1:/ (${root})(${suffix}|.+) /gi,r1:"$1 ${english} |s~$2 "},`);
+                    } else {
+                        // If there's no suffix, format only the root
+                        entries.push(`{p1:/ (${root}) /gi,r1:"$1 ${english} "},`);
                     }
                 }
             }
+
             document.getElementById('formattedEntries').innerHTML = entries.join('<br>');
         }
     </script>
-
 </body>
 </html>
