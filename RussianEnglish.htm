@@ -9448,5 +9448,49 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 	<textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <br>
 <span id="translatedTextDisplay"></span>
+<hr>
+    <h1>Russian to English Parser</h1>
+    <div class="container">
+        <div class="entry-field">
+            <label for="russian1">Russian Word 1:</label>
+            <input type="text" id="russian1" name="russian1">
+            <label for="english1">English Definition 1:</label>
+            <input type="text" id="english1" name="english1">
+        </div>
+        <div class="entry-field">
+            <label for="russian2">Russian Word 2:</label>
+            <input type="text" id="russian2" name="russian2">
+            <label for="english2">English Definition 2:</label>
+            <input type="text" id="english2" name="english2">
+        </div>
+        <div class="entry-field">
+            <label for="russian3">Russian Word 3:</label>
+            <input type="text" id="russian3" name="russian3">
+            <label for="english3">English Definition 3:</label>
+            <input type="text" id="english3" name="english3">
+        </div>
+        <div class="entry-field">
+            <label for="russian4">Russian Word 4:</label>
+            <input type="text" id="russian4" name="russian4">
+            <label for="english4">English Definition 4:</label>
+            <input type="text" id="english4" name="english4">
+        </div>
+        <button onclick="formatDictionary()">Format Dictionary</button>
+        <div id="formattedEntries"></div>
+    </div>
+
+    <script>
+        function formatDictionary() {
+            const entries = [];
+            for (let i = 1; i <= 4; i++) {
+                const russian = document.getElementById(`russian${i}`).value;
+                const english = document.getElementById(`english${i}`).value;
+                if (russian && english) {
+                    entries.push(`{p1:/ (${russian})(ть|.+) /gi,r1:"$1 ${english} |s~$2 "}`);
+                }
+            }
+            document.getElementById('formattedEntries').innerHTML = entries.join('<br>');
+        }
+    </script>
 </body>
 </html>
