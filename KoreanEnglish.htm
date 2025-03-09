@@ -66,6 +66,101 @@ function translateB()
 const replsB=[
 
 {p1:/ /g,r1:"|<br>"},
+
+{p1:/(이)(?!X)(다)(?!X)/g,r1:"$1X$2X=subject marker for consonant-ending words"}
+{p1:/(가)(?!X)(다)(?!X)/g,r1:"$1X$2X=subject marker for vowel-ending words"}
+
+{p1:/(을)(?!X)(다)(?!X)/g,r1:"$1X$2X=object marker for consonant-ending words"}
+{p1:/(를)(?!X)(다)(?!X)/g,r1:"$1X$2X=object marker for vowel-ending words"}
+
+{p1:/(의)(?!X)(다)(?!X)/g,r1:"$1X$2X=possessive marker"}
+
+{p1:/(다)(?!X)/g,r1:"$1X=plain form of a verb"}
+{p1:/(요)(?!X)/g,r1:"$1X=polite ending"}
+{p1:/(습니다)(?!X)/g,r1:"$1X=formal ending"}
+
+{p1:/(시)(?!X)(다)(?!X)/g,r1:"$1X$2X=honorific marker"}
+
+{p1:/(에)(?!X)(다)(?!X)/g,r1:"$1X$2X=destination or time marker"}
+{p1:/(에서)(?!X)(다)(?!X)/g,r1:"$1X$2X=location action marker"}
+
+{p1:/(그리고)(?!X)(다)(?!X)/g,r1:"$1X$2X=conjunction 'and'"}
+{p1:/(하지만)(?!X)(다)(?!X)/g,r1:"$1X$2X=conjunction 'but'"}
+{p1:/(그러나)(?!X)(다)(?!X)/g,r1:"$1X$2X=conjunction 'however'"}
+
+{p1:/(안)(?!X)(다)(?!X)/g,r1:"$1X$2X=negation 'not'"}
+{p1:/(못)(?!X)(다)(?!X)/g,r1:"$1X$2X=negation 'cannot'"}
+{p1:/(지 않다)(?!X)/g,r1:"$1X=negation 'not do'"}
+
+{p1:/(고)(?!X)(다)(?!X)/g,r1:"$1X$2X=verb connection 'and'"}
+
+{p1:/(에서)(?!X)(다)(?!X)/g,r1:"$1X$2X=location from"}
+{p1:/(부터)(?!X)(다)(?!X)/g,r1:"$1X$2X=time from"}
+
+{p1:/(까?)(?!X)/g,r1:"$1X=question marker"}
+
+{p1:/(자)(?!X)/g,r1:"$1X=suggestion 'let's'"}
+{p1:/(ㄹ까요?)(?!X)/g,r1:"$1X=proposal or suggestion"}
+
+{p1:/(면)(?!X)(다)(?!X)/g,r1:"$1X$2X=conditional marker 'if'"}
+
+{p1:/(고 싶다)(?!X)/g,r1:"$1X=expressing desire"}
+
+{p1:/(이나)(?!X)(다)(?!X)/g,r1:"$1X$2X=or, alternative marker"}
+{p1:/(거나)(?!X)(다)(?!X)/g,r1:"$1X$2X=or, alternative marker (more commonly used in verbs)"}
+
+{p1:/(도)(?!X)(다)(?!X)/g,r1:"$1X$2X=also, too, even"}
+
+{p1:/(만)(?!X)(다)(?!X)/g,r1:"$1X$2X=only, just"}
+
+{p1:/(부터)(?!X)(다)(?!X)/g,r1:"$1X$2X=starting from (time)"}
+{p1:/(까지)(?!X)(다)(?!X)/g,r1:"$1X$2X=until (time)"}
+
+{p1:/(보다)(?!X)(다)(?!X)/g,r1:"$1X$2X=comparison marker 'than'"}
+{p1:/(처럼)(?!X)(다)(?!X)/g,r1:"$1X$2X=comparison marker 'like'/'as'"}
+
+{p1:/(지)(?!X)(다)(?!X)/g,r1:"$1X$2X=changing state, continuing state"}
+
+{p1:/(려고)(?!X)(다)(?!X)/g,r1:"$1X$2X=expressing purpose or intention"}
+{p1:/(려고 하다)(?!X)/g,r1:"$1X=to be about to do, plan to do"}
+
+{p1:/(고 있다)(?!X)/g,r1:"$1X=continuous action (progressive tense)"}
+{p1:/(았)(?!X)(다)(?!X)/g,r1:"$1X$2X=past tense"}
+{p1:/(었)(?!X)(다)(?!X)/g,r1:"$1X$2X=past tense"}
+{p1:/(ㄹ)(?!X)( 것이다)/g,r1:"$1X$2X=future tense (will do something)"}
+
+{p1:/(거나)(?!X)(다)(?!X)/g,r1:"$1X$2X=alternative, or"}
+
+{p1:/(만큼)(?!X)(다)(?!X)/g,r1:"$1X$2X=extent or degree marker 'as much as'"}
+
+{p1:/(것)(?!X)/g,r1:"$1X=thing, object"}
+
+{p1:/(거든)(?!X)/g,r1:"$1X=if, in case of (used for reasoning)"}
+{p1:/(는데)(?!X)/g,r1:"$1X=background or contrast marker"}
+
+{p1:/(거예요)(?!X)/g,r1:"$1X=polite form of 'thing'"}
+
+{p1:/(듯)(?!X)(다)(?!X)/g,r1:"$1X$2X=like, as if (used to express conjecture)"}
+
+{p1:/(다면서)(?!X)(다)(?!X)/g,r1:"$1X$2X=reported speech (he/she says)"}
+{p1:/(는데요)(?!X)(다)(?!X)/g,r1:"$1X$2X=softening, providing new information"}
+
+{p1:/(든)(?!X)(다)(?!X)/g,r1:"$1X$2X=whether... or..."}
+{p1:/(게)(?!X)(다)(?!X)/g,r1:"$1X$2X=adverbial suffix 'to do in a manner'"}
+
+{p1:/(중이다)(?!X)/g,r1:"$1X=to be in the middle of an action"}
+
+{p1:/(과)(?!X)(다)(?!X)/g,r1:"$1X$2X=and, with (used for connecting nouns)"}
+{p1:/(와)(?!X)(다)(?!X)/g,r1:"$1X$2X=and, with (used for connecting nouns with a vowel)"}
+
+{p1:/(자마자)(?!X)/g,r1:"$1X=as soon as"}
+{p1:/(동안)(?!X)/g,r1:"$1X=during, while"}
+
+{p1:/(려면)(?!X)(다)(?!X)/g,r1:"$1X$2X=if you want to do something"}
+{p1:/(대신)(?!X)(다)(?!X)/g,r1:"$1X$2X=in place of, instead of"}
+
+{p1:/(는)(?!X)(다)(?!X)/g,r1:"$1X$2X=present tense verb ending (general action)"}
+{p1:/(으니까)(?!X)(다)(?!X)/g,r1:"$1X$2X=because, reason marker"}
 	
 {p1:/(-)(에)(?!X)(관)(?!X)(련)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be related to, regarding, connected with"},
 {p1:/(흥)(?!X)(미)(?!X)(진)(?!X)(진)(?!X)(하)(?!X)(다)(?!X)/g,r1:"$1X$2X$3X$4X$5X$6X=to be exciting, interesting, absorbing"},
