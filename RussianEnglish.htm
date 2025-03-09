@@ -72,6 +72,17 @@ button:hover {
 textarea {
   resize: none; /* Prevent resizing */
 }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .entry-field {
+            margin-bottom: 20px;
+        }	  
   </style>
 </head>
 <body>
@@ -9453,27 +9464,27 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
     <div class="container">
         <div class="entry-field">
             <label for="russian1">Russian Word 1:</label>
-            <input type="text" id="russian1" name="russian1">
+            <input type="text" id="russian1" name="russian1" placeholder="e.g. закоп ать">
             <label for="english1">English Definition 1:</label>
-            <input type="text" id="english1" name="english1">
+            <input type="text" id="english1" name="english1" placeholder="e.g. to bury">
         </div>
         <div class="entry-field">
             <label for="russian2">Russian Word 2:</label>
-            <input type="text" id="russian2" name="russian2">
+            <input type="text" id="russian2" name="russian2" placeholder="e.g. достопримечательнос ть">
             <label for="english2">English Definition 2:</label>
-            <input type="text" id="english2" name="english2">
+            <input type="text" id="english2" name="english2" placeholder="e.g. sight, place worth seeing">
         </div>
         <div class="entry-field">
             <label for="russian3">Russian Word 3:</label>
-            <input type="text" id="russian3" name="russian3">
+            <input type="text" id="russian3" name="russian3" placeholder="e.g. сельскохозяйственн ый">
             <label for="english3">English Definition 3:</label>
-            <input type="text" id="english3" name="english3">
+            <input type="text" id="english3" name="english3" placeholder="e.g. agricultural">
         </div>
         <div class="entry-field">
             <label for="russian4">Russian Word 4:</label>
-            <input type="text" id="russian4" name="russian4">
+            <input type="text" id="russian4" name="russian4" placeholder="e.g. контрреволюционер">
             <label for="english4">English Definition 4:</label>
-            <input type="text" id="english4" name="english4">
+            <input type="text" id="english4" name="english4" placeholder="e.g. counter-revolutionary">
         </div>
         <button onclick="formatDictionary()">Format Dictionary</button>
         <div id="formattedEntries"></div>
@@ -9486,7 +9497,10 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
                 const russian = document.getElementById(`russian${i}`).value;
                 const english = document.getElementById(`english${i}`).value;
                 if (russian && english) {
-                    entries.push(`{p1:/ (${russian})(ть|.+) /gi,r1:"$1 ${english} |s~$2 "}`);
+                    const [root, suffix] = russian.split(' ');
+                    if (root && suffix) {
+                        entries.push(`{p1:/ (${root})(${suffix}|.+) /gi,r1:"$1 ${english} |s~$2 "}`);
+                    }
                 }
             }
             document.getElementById('formattedEntries').innerHTML = entries.join('<br>');
