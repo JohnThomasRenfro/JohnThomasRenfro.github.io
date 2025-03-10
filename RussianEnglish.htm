@@ -9979,7 +9979,7 @@ function processText() {
                 if (suffixResult) {
                     const { suffix, definition: suffixDefinition } = suffixResult;
 
-                    // Display the result
+                    // Display the result with suffix
                     outputDiv.innerHTML += `
                         <p><strong>Root Word:</strong> ${root}</p>
                         <p><strong>Root Definition:</strong> ${definition}</p>
@@ -9999,12 +9999,16 @@ function processText() {
             }
         }
 
-        // If no match was found, you could handle that here, for example:
+        // If no match was found, suggest the unmatched word in dictionary format
         if (!foundMatch) {
-            outputDiv.innerHTML += `<p><strong>Unmatched Word:</strong> ${word}</p><hr>`;
+            outputDiv.innerHTML += `
+                <p><strong>Unmatched Word:</strong> ${word}</p>
+                <p><strong>Suggested const dictionary entry:</strong> "${word}": "put the English definition here"</p><hr>
+            `;
         }
     });
 }
+
 </script>
 
 </body>
