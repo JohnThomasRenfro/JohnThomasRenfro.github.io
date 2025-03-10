@@ -9880,13 +9880,11 @@ const dictionary = {
 "а":"and, but (slight contrast)",
 };
 
-// Function to process the Russian text and match words
 function processText() {
     const inputText = document.getElementById("russianText").value;
     const outputDiv = document.getElementById("output");
-    outputDiv.innerHTML = "";  // Clear previous output
+    outputDiv.innerHTML = "";  
 
-    // Split the input text into words
     const words = inputText.split(/\s+/);
 
 const suffixes = [
@@ -9949,45 +9947,41 @@ const suffixes = [
     { suffix: "ич", definition: "masculine patronymic suffix" },
     { suffix: "ович", definition: "masculine patronymic suffix" },
 ];
-    
-    // Iterate through each word and process
+
     words.forEach(word => {
         let foundMatch = false;
 
-        // Try to find an exact match or the longest root word in the dictionary
+        // Try to match the root word in the dictionary
         for (const rootWord in dictionary) {
-            if (word === rootWord || word.startsWith(rootWord)) { // Check for exact match or prefix match
+            if (word.startsWith(rootWord)) {
                 const root = rootWord;
                 const definition = dictionary[rootWord];
 
-                // Display the root word and its definition
                 outputDiv.innerHTML += `
                     <p><strong>Root Word:</strong> ${root}</p>
                     <p><strong>Root Definition:</strong> ${definition}</p>
                 `;
 
-                // Try to get a suffix and its definition
+                // Check for suffixes
                 const suffixResult = getSuffix(word, root);
 
                 if (suffixResult) {
                     const { suffix, definition: suffixDefinition } = suffixResult;
 
-                    // Display the result with suffix
                     outputDiv.innerHTML += `
                         <p><strong>Suffix:</strong> ${suffix}</p>
                         <p><strong>Suffix Definition:</strong> ${suffixDefinition}</p><hr>
                     `;
                 } else {
-                    // If no suffix, just show the root word with no suffix
                     outputDiv.innerHTML += `<hr>`;
                 }
 
                 foundMatch = true;
-                break;  // No need to check other root words for this word
+                break; // Only break out of this loop when root word is found, but continue checking suffixes
             }
         }
 
-        // If no match was found in the dictionary, check for suffixes
+        // If no root match was found, check suffixes
         if (!foundMatch) {
             let suffixFound = false;
 
@@ -9999,7 +9993,7 @@ const suffixes = [
                         <p><strong>Suggested const Suffixes entry:</strong> "${suffix}": "${suffixObj.definition}"</p><hr>
                     `;
                     suffixFound = true;
-                    break; // No need to check other suffixes for this word
+                    break; // If we find a matching suffix, we don't need to process further suffixes
                 }
             }
 
