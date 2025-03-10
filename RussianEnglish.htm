@@ -9862,24 +9862,18 @@ It appears that the `findRootWords` function is missing from your HTML file. Her
         };
 
         function findRootWords() {
-            // Get the input text
             let inputText = document.getElementById("inputText").value;
-            
-            // Split the input text into words
-            let words = inputText.split(" ");
-            
+            let words = inputText.split(/\s+/);
             let output = "";
-            
-            // Find root words
+
             words.forEach(word => {
                 if (dictionary[word]) {
-                    output += dictionary[word] + "<br>";
+                    output += `${word}: ${dictionary[word]}<br>`;
                 } else {
-                    output += word + " (No root word found)<br>";
+                    output += `${word}: (No root word found)<br>`;
                 }
             });
-            
-            // Display the output
+
             document.getElementById("output").innerHTML = output;
         }
     </script>
