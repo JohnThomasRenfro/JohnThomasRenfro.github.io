@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Russian-English Translator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian Text Processor</title>
 </head>
 <body>
-  <textarea id="userInput" placeholder="Enter Russian text"></textarea>
-  <button id="inputButton">Translate</button>
-  <div id="output"></div>
-  <style>
-    textarea { width: 500px; height: 100px; }
-  </style>
-  <script>
-const dbString = `
+
+<h2>Paste Russian Text Here:</h2>
+<textarea id="russianText" rows="10" cols="50"></textarea><br><br>
+
+<button onclick="processText()">Process Text</button>
+
+<h3>Processed Output:</h3>
+<div id="output"></div>
+
+<script>
+// Define the dictionary of Russian words and their English definitions
+const dictionary = {
 "научноисследовательский":"scientific-research (adj)",
 "социалдемократический":"social-democratic",
 "достопримечательность":"sight, place worth seeing",
@@ -9872,15 +9876,48 @@ const dbString = `
 "и":"and",
 "в":"(+pr) in; (+a) into, to",
 "а":"and, but (slight contrast)",
-`;
+};
 
-    const db = dbString.split('\n').map(entry => entry.split(';;;'));
+// A simple function to process the Russian text and match words
+function processText() {
+    const inputText = document.getElementById("russianText").value;
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "";  // Clear previous output
 
-    document.getElementById('inputButton').onclick = () => {
-      const input = document.getElementById('userInput').value.trim().toLowerCase();
-      const result = db.find(entry => entry[0].trim().toLowerCase() === input);
-      document.getElementById('output').innerText = result ? result[1].trim() : 'No match found';
-    };
-  </script>
+    // Regex to split the input text into words
+    const words = inputText.split(/\s+/);
+    words.forEach(word => {
+        // Check if the word matches any root word in the dictionary
+        for (const rootWord in dictionary) {
+            if (word.startsWith(rootWord)) {
+                // Found a match, extract root word and suffix
+                const root = rootWord;
+                const definition = dictionary[rootWord];
+
+                const suffix = word.slice(root.length);  // The suffix part
+                let suffixDefinition = "";
+                
+                // Example suffix definitions, this can be expanded
+                if (suffix === "ский") {
+                    suffixDefinition = "adjective suffix, relating to";
+                } else if (suffix === "ный") {
+                    suffixDefinition = "adjective suffix, relating to";
+                } else if (suffix === "ость") {
+                    suffixDefinition = "noun suffix, quality or state of being";
+                }
+
+                // Display the result
+                outputDiv.innerHTML += `
+                    <p><strong>Root Word:</strong> ${root}</p>
+                    <p><strong>Root Definition:</strong> ${definition}</p>
+                    <p><strong>Suffix:</strong> ${suffix}</p>
+                    <p><strong>Suffix Definition:</strong> ${suffixDefinition}</p><hr>
+                `;
+            }
+        }
+    });
+}
+</script>
+
 </body>
 </html>
