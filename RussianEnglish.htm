@@ -1,3 +1,6 @@
+It appears that the `findRootWords` function is missing from your HTML file. Here is how you can define the `findRootWords` function in your `RussianEnglish.htm` file:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9859,17 +9862,25 @@
         };
 
         function findRootWords() {
-            const inputText = document.getElementById('inputText').value;
-            const words = inputText.split(/\s+/);
-            const output = words.map(word => {
-                for (let key in dictionary) {
-                    if (word.startsWith(key)) {
-                        return `${word}: ${key} - ${dictionary[key]}`;
-                    }
+            // Get the input text
+            let inputText = document.getElementById("inputText").value;
+            
+            // Split the input text into words
+            let words = inputText.split(" ");
+            
+            let output = "";
+            
+            // Find root words
+            words.forEach(word => {
+                if (dictionary[word]) {
+                    output += dictionary[word] + "<br>";
+                } else {
+                    output += word + " (No root word found)<br>";
                 }
-                return `${word}: root unmatched`;
             });
-            document.getElementById('output').innerHTML = output.join('<br>');
+            
+            // Display the output
+            document.getElementById("output").innerHTML = output;
         }
     </script>
 </body>
