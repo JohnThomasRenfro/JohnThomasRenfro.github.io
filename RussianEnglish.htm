@@ -9916,11 +9916,11 @@ function displayResult(input) {
   }
 }
 
-// Event listener for user input
-document.getElementById("inputButton").addEventListener("click", function() {
-  const userInput = document.getElementById("userInput").value;
-  displayResult(userInput);
-});
+document.getElementById('inputButton').onclick = () => {
+  const input = document.getElementById('userInput').value.trim().toLowerCase();
+  const result = db.find(entry => entry[0].trim().toLowerCase() === input);
+  document.getElementById('output').innerText = result ? result[1].trim() : 'No match found';
+};
     
   </script>
 </body>
