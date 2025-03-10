@@ -9858,27 +9858,28 @@
 "а":"and, but (slight contrast)",
         };
 
-        function findRootWords() {
+function findRootWords() {
             let inputText = document.getElementById("inputText").value.toLowerCase();
             let words = inputText.split(/\s+/);
             let output = "";
 
             words.forEach(word => {
                 let matched = false;
+                let longestMatch = "";
                 for (let dictWord in dictionary) {
-                    if (dictWord.toLowerCase().includes(word) || word.includes(dictWord.toLowerCase())) {
-                        output += `${word}: ${dictionary[dictWord]}<br>`;
-                        matched = true;
-                        break;
+                    if (word.startsWith(dictWord.toLowerCase()) && dictWord.length > longestMatch.length) {
+                        longestMatch = dictWord;
                     }
                 }
-                if (!matched) {
+                if (longestMatch) {
+                    output += `${word}: ${dictionary[longestMatch]}<br>`;
+                } else {
                     output += `${word}: (No root word found)<br>`;
                 }
             });
 
             document.getElementById("output").innerHTML = output;
-        }    
+        } 
 </script>
 </body>
 </html>
