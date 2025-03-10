@@ -2,13 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Russian Root Word Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian to English Parser</title>
+<style>
+/* Russian-Themed CSS */
+body {
+    background-color: #f3ebe1; /* Soft beige background */
+    font-family: 'Georgia', serif; /* Elegant serif font */
+    color: #2f1d0c; /* Rich dark brown text */
+    line-height: 1.6;
+    margin: 10px; /* Uniform margin */
+    padding: 10px; /* Uniform padding */
+}
+
+header {
+    background: linear-gradient(45deg, #8b0000, #ff6347); /* Deep red to warm orange gradient */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 5px solid #dbaf48; /* Gold accent */
+}
+
+.container {
+    max-width: 90%; /* Make container width flexible */
+    margin: 20px auto; /* Center content */
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.decorative-border {
+    border: 5px solid #dbaf48; /* Gold decorative border */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #8b0000; /* Deep red for the title */
+    text-align: center;
+}
+
+textarea {
+    width: 96%; /* Full width for responsiveness */
+    max-width: 96%; /* Prevents overflow */
+    font-size: 1.1em;
+    padding: 10px;
+    border: 1px solid #c88e2f; /* Gold border */
+    border-radius: 5px;
+    margin: 10px 0; /* Vertical spacing */
+    resize: vertical;
+}
+
+button {
+    background-color: #8b0000; /* Deep red button */
+    color: #fff;
+    font-size: 1.1em;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #ff6347; /* Warm orange hover effect */
+}
+
+#output {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #c88e2f; /* Gold border for results */
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+footer {
+    background-color: #2f1d0c; /* Dark brown */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto; /* Center the footer */
+    font-size: 0.9em;
+    border-top: 5px solid #dbaf48; /* Gold accent */
+}
+</style>
+
 </head>
 <body>
-    <h1>Russian Root Word Finder</h1>
-    <textarea id="inputText" rows="10" cols="50" placeholder="Enter Russian text here..."></textarea><br>
-    <button onclick="findRootWords()">Find Root Words</button>
-    <div id="output"></div>
+    <main class="container">
+        <h1 class="decorative-border">Russian to English Parser</h1>
+        <textarea id="inputText" rows="10" placeholder="Enter Russian text here..."></textarea><br>
+        <button onclick="findRootWords()">Find Root Words</button>
+        <div id="output" class="decorative-border"></div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Russian to English Parser. All rights reserved.</p>
 
     <script>
         const dictionary = {
@@ -9782,10 +9876,10 @@
 "вуз":"university, institute (higher education establishment)",
 "всё":"all; all the time",
 "вот":"here, there (pointing)",
+"вой":"to yell; to howl",
 "вор":"thief",
 "вон":"out, away; over there",
 "вол":"ox",
-"вой":"howl; wailing",
 "вне":"outside",
 "вид":"view, look; species",
 "вес":"weight",
@@ -9860,30 +9954,157 @@
 "и":"and",
 "в":"(+pr) in; (+a) into, to",
 "а":"and, but (slight contrast)",
+"с":"with, together with",
+
         };
+		
+const prepositions = [
+    "в", "на", "с", "к", "о", "у", "из", "за", "от", "по", 
+    "при", "об", "до", "через", "под", "над", "про", "для", 
+    "без", "между", "вместо"
+];
 
-        function findRootWords() {
-            let inputText = document.getElementById("inputText").value.toLowerCase();
-            let words = inputText.split(/\s+/);
-            let output = "";
+// Array of suffixes to check and remove
+const suffixes = [
+    "ик", "ник", "ищ", "ец", "ок", "ёнок", "чик", "ка", "ица", "чка", 
+    "ыш", "уш", "ён", "ар", "ур", "ист", "изм", "ость", "ств", "тель", 
+    "ота", "енка", "ёнок", "ёнка", "ок", "ик", "ечк", "ушк", "ышк", 
+    "ый", "ий", "ой", "лив", "овит", "оват", 
+    "аст", "уч", "ейш", "айш", "ше", "о", "е", "ым", "им", "я",
+    "ть", "ти", "чь", "ю", "ешь", "ет", "ем", "ут", "ите", "ил", 
+    "ала", "ел", "ет", "ся", "сь", "ия", "ом", "ем", 
+    "ы", "ее", "го", "ать", "тья", "йте", "о", "ья", "ая", "а"
+];
 
-            words.forEach(word => {
-                let matched = false;
-                let longestMatch = "";
-                for (let dictWord in dictionary) {
-                    if (word.startsWith(dictWord.toLowerCase()) && dictWord.length > longestMatch.length) {
-                        longestMatch = dictWord;
-                    }
-                }
-                if (longestMatch) {
-                    output += `${word}: ${dictionary[longestMatch]}<br>`;
-                } else {
-                    output += `${word}: (No root word found)<br>`;
-                }
-            });
+const suffixDefinitions = {
+    // Noun suffixes
+    "ик": "diminutive noun suffix",
+    "ник": "agent or profession suffix",
+    "ищ": "place suffix (denoting location)",
+    "ец": "masculine noun suffix",
+    "ок": "diminutive noun suffix",
+    "ёнок": "diminutive noun suffix (neuter gender)",
+    "чик": "diminutive noun suffix",
+    "ка": "feminine noun suffix",
+    "ица": "feminine noun suffix",
+    "ия": "feminine noun suffix (indicating abstract concepts or qualities, often nominative/accusative singular)",	
+    "чка": "diminutive feminine noun suffix",
+    "ость": "abstract noun suffix",
+    "ств": "suffix for forming abstract nouns",
+    "тель": "agent suffix (one who performs the action)",
 
-            document.getElementById("output").innerHTML = output;
+    // Adjective suffixes
+    "ый": "adjective suffix (masculine, nominative)",
+    "ий": "adjective suffix (masculine, nominative)",
+    "ой": "adjective suffix (masculine, nominative)",
+    "ая": "adjective suffix (feminine, nominative)",
+    "ое": "adjective suffix (neuter, nominative)",
+    "ые": "adjective suffix (plural, nominative)",
+    "ого": "adjective suffix (masculine/neuter, genitive)",
+    "ой": "adjective suffix (feminine, genitive/instrumental)",
+    "ых": "adjective suffix (plural, genitive)",
+    "ому": "adjective suffix (masculine/neuter, dative)",
+    "ым": "adjective suffix (masculine/neuter, instrumental)",
+    "ою": "adjective suffix (feminine, instrumental)",
+    "ее": "adjective suffix (neuter, nominative/accusative)",
+    "ейш": "adjective suffix for superlatives",
+
+    // Verb suffixes
+    "ть": "infinitive verb suffix",
+    "ти": "infinitive verb suffix",
+    "чь": "infinitive verb suffix",
+    "ся": "reflexive verb suffix",
+    "сь": "reflexive verb suffix",
+    "ешь": "2nd person singular suffix (present/future tense)",
+    "ет": "3rd person singular suffix (present/future tense)",
+    "ем": "1st person plural suffix (present/future tense)",
+    "ут": "3rd person plural suffix (present/future tense)",
+    "ю": "1st person singular suffix (present tense)",
+
+    // Adverb suffixes
+    "о": "adverbial suffix",
+    "е": "adverbial or adjectival suffix",
+
+    // Case-related suffixes
+    "ья": "feminine noun suffix (genitive/accusative case)",
+    "я": "feminine noun suffix (nominative singular)",
+"а": "feminine noun suffix (singular, nominative or accusative case)",
+    "ом": "masculine/neuter instrumental case suffix",
+    "ем": "masculine/neuter instrumental case suffix",
+    "ами": "plural instrumental case suffix",
+    "ями": "plural instrumental case suffix",
+    "ы": "plural suffix for masculine/feminine nouns",
+    "и": "plural or genitive case suffix",
+};
+
+// Object mapping root words to their translations
+
+// Main function to find root words and suffixes
+function findRootWords() {
+    let inputText = document.getElementById("inputText").value.toLowerCase();
+    let words = inputText.split(/\s+/);
+    let output = "";
+	
+words.forEach(word => {
+    // Remove punctuation
+    let cleanedWord = word.replace(/[.,!?;:]/g, "");
+
+    // Check if the word is a preposition
+    if (prepositions.includes(cleanedWord)) {
+        if (dictionary[cleanedWord]) {
+            output += `
+                Word: ${cleanedWord}<br>
+                Definition: ${dictionary[cleanedWord]}<br><br>
+            `;
+        } else {
+            output += `Word: ${cleanedWord} (preposition, skipped)<br><br>`;
         }
-</script>
+        return; // Skip suffix analysis for prepositions
+    }
+
+    let matchedRoot = "";
+    let ignoredSuffix = "";
+
+    let adjustedWord = cleanedWord; // Use cleaned word for processing
+    suffixes.forEach(suffix => {
+        if (cleanedWord.endsWith(suffix)) {
+            adjustedWord = cleanedWord.slice(0, -suffix.length);
+            ignoredSuffix = suffix; // Save the ignored suffix
+        }
+    });
+
+    for (let dictWord in dictionary) {
+        let adjustedDictWord = dictWord;
+        suffixes.forEach(suffix => {
+            if (dictWord.endsWith(suffix)) {
+                adjustedDictWord = dictWord.slice(0, -suffix.length);
+            }
+        });
+
+        if (adjustedWord.startsWith(adjustedDictWord.toLowerCase()) && adjustedDictWord.length > matchedRoot.length) {
+            matchedRoot = dictWord;
+        }
+    }
+
+    if (matchedRoot) {
+        output += `
+            Word: ${cleanedWord}<br>
+            Root: ${adjustedWord} Translation: ${dictionary[matchedRoot]}<br>
+        `;
+        if (ignoredSuffix) {
+            output += `Suffix: ${ignoredSuffix} Translation: (${suffixDefinitions[ignoredSuffix] || "unspecified or undefined"})<br>`;
+        }
+        output += `<br>`;
+    } else {
+        output += `Word: ${cleanedWord}: (No root word found)<br><br>`;
+    }
+});
+
+    // Display the final output
+    document.getElementById("output").innerHTML = output;
+}
+
+</script>		
+
 </body>
 </html>
