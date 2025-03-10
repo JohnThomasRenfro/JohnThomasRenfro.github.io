@@ -1,3 +1,5 @@
+// Assuming the database is a string with entries separated by new lines and fields separated by ';;;'
+const dbString = `
 научноисследовательский	;;;	scientific-research (adj)	
 социалдемократический	;;;	social-democratic	
 достопримечательность	;;;	sight, place worth seeing	
@@ -9856,3 +9858,52 @@
 и	;;;	and	
 в	;;;	(+pr) in; (+a) into, to	
 а	;;;	and, but (slight contrast)	
+`;
+
+// Function to parse the database string into an object
+function parseDb(dbString) {
+  const db = {};
+  const lines = dbString.trim().split('\n');
+  lines.forEach(line => {
+    const [russian, english] = line.split(';;;').map(s => s.trim());
+    db[russian] = english;
+  });
+  return db;
+}
+
+const db = parseDb(dbString);
+
+// Function to match the longest root word and identify the suffix
+function matchWord(input) {
+  let longestMatch = "";
+  let suffix = "";
+  for (const word in db) {
+    if (input.startsWith(word) && word.length > longestMatch.length) {
+      longestMatch = word;
+      suffix = input.slice(word.length);
+    }
+  }
+  return { root: longestMatch, suffix: suffix };
+}
+
+// Function to display the results
+function displayResult(input) {
+  const match = matchWord(input);
+  const rootDefinition = db[match.root] || "Unknown root word";
+  const suffixDefinition = "Some suffix definition"; // Define how to get suffix definition
+
+  if (match.root) {
+    document.getElementById("output").innerHTML = `
+      ${match.root}: ${rootDefinition}<br>
+      ${match.suffix}: ${suffixDefinition}<br>
+    `;
+  } else {
+    document.getElementById("output").innerHTML = "No match found";
+  }
+}
+
+// Event listener for user input
+document.getElementById("inputButton").addEventListener("click", function() {
+  const userInput = document.getElementById("userInput").value;
+  displayResult(userInput);
+});
