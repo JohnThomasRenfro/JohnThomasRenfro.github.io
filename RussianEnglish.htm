@@ -9880,6 +9880,28 @@ const dictionary = {
 "а":"and, but (slight contrast)",
 };
 
+// Function to get the suffix from the word (if exists)
+function getSuffix(word, root) {
+    for (let { suffix, definition } of suffixes) {
+        if (word.endsWith(suffix)) {
+            const remainingSuffix = word.slice(root.length);
+            if (remainingSuffix === suffix) {
+                return { suffix, definition };
+            }
+        }
+    }
+    return null;
+}
+
+// Function to process the Russian text and match words
+function processText() {
+    const inputText = document.getElementById("russianText").value;
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "";  // Clear previous output
+
+    // Split the input text into words
+    const words = inputText.split(/\s+/);
+
 const suffixes = [
     // Adjective suffixes
     { suffix: "ский", definition: "adjective suffix, relating to" },
@@ -9941,28 +9963,6 @@ const suffixes = [
     { suffix: "ович", definition: "masculine patronymic suffix" },
 ];
 
-// Function to get the suffix from the word (if exists)
-function getSuffix(word, root) {
-    for (let { suffix, definition } of suffixes) {
-        if (word.endsWith(suffix)) {
-            const remainingSuffix = word.slice(root.length);
-            if (remainingSuffix === suffix) {
-                return { suffix, definition };
-            }
-        }
-    }
-    return null;
-}
-
-// Function to process the Russian text and match words
-function processText() {
-    const inputText = document.getElementById("russianText").value;
-    const outputDiv = document.getElementById("output");
-    outputDiv.innerHTML = "";  // Clear previous output
-
-    // Split the input text into words
-    const words = inputText.split(/\s+/);
-    
     // Iterate through each word and process
     words.forEach(word => {
         let foundMatch = false;
@@ -9999,12 +9999,29 @@ function processText() {
             }
         }
 
-        // If no match was found, suggest the unmatched word in dictionary format
+        // If no match was found in the dictionary, check for suffixes
         if (!foundMatch) {
-            outputDiv.innerHTML += `
-                <p><strong>Unmatched Word:</strong> ${word}</p>
-                <p><strong>Suggested const dictionary entry:</strong> "${word}": "put the English definition here"</p><hr>
-            `;
+            let suffixFound = false;
+
+            for (const suffixObj of suffixes) {
+                const suffix = suffixObj.suffix;
+                if (word.endsWith(suffix)) {
+                    outputDiv.innerHTML += `
+                        <p><strong>Unmatched Suffix:</strong> ${suffix}</p>
+                        <p><strong>Suggested const Suffixes entry:</strong> "${suffix}": "${suffixObj.definition}"</p><hr>
+                    `;
+                    suffixFound = true;
+                    break; // No need to check other suffixes for this word
+                }
+            }
+
+            // If no suffix match, show the unmatched word
+            if (!suffixFound) {
+                outputDiv.innerHTML += `
+                    <p><strong>Unmatched Word:</strong> ${word}</p>
+                    <p><strong>Suggested const dictionary entry:</strong> "${word}": "put the English definition here"</p><hr>
+                `;
+            }
         }
     });
 }
