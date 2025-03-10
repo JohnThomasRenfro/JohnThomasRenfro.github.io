@@ -9967,9 +9967,9 @@ const suffixes = [
     words.forEach(word => {
         let foundMatch = false;
 
-        // Try to find the longest root word in the dictionary
+        // Try to find an exact match or the longest root word in the dictionary
         for (const rootWord in dictionary) {
-            if (word.startsWith(rootWord)) {
+            if (word === rootWord || word.startsWith(rootWord)) { // Check for exact match or prefix match
                 const root = rootWord;
                 const definition = dictionary[rootWord];
                 
