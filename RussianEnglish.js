@@ -9317,14 +9317,14 @@
 убежать	;;;	to run away
 убедиться	;;;	to convince oneself, become sure (of sth)
 убедить	;;;	to convince; persuade
-у-	;;;	to drown
-у-	;;;	to improve os; improve one’s knowledge (of)
-у-	;;;	to perfect, improve
-у-	;;;	to hear
-у-	;;;	to steal
-у-	;;;	to see one another, see each other
-у-	;;;	to see
-у-	;;;	to see (coll)
+у;;;	to drown
+у;;;	to improve os; improve one’s knowledge (of)
+у;;;	to perfect, improve
+у;;;	to hear
+у;;;	to steal
+у;;;	to see one another, see each other
+у;;;	to see
+у;;;	to see (coll)
 тронуться	;;;	to set off
 тронуть	;;;	to touch
 топнуть	;;;	to stamp (one’s feet); (coll) go (=идти)
@@ -9332,8 +9332,8 @@
 ткнуть	;;;	to prod, jab (sth into sth)
 сыграть	;;;	to play
 съехать	;;;	to drive down; (coll) slip
-съ-	;;;	to eat
-съ-	;;;	to travel there and back
+съ;;;	to eat
+съ;;;	to travel there and back
 сшибить	;;;	to knock down (coll)
 счесть	;;;	(+a +inst) consider (sth/s.o. to be sth) 
 схватиться	;;;	to seize; (c +inst) grapple with
@@ -9400,16 +9400,16 @@
 собрать	;;;	to gather, collect
 соблюсти	;;;	to keep to, adhere to
 соблазнить	;;;	to tempt; seduce
-со-	;;;	to screw up one’s eyes, narrow one’s eyes
-со-	;;;	to be kept
-со-	;;;	to create
-со-	;;;	to count
-со-	;;;	to lie, tell lies, tell a lie
-со-	;;;	to ripen, mature
-со-	;;;	to eat (very coll), gobble up
-со-	;;;	to tear; thrash; fleece (coll)
-со-	;;;	to bend
-со-	;;;	to tell lies; talk nonsense
+со;;;	to screw up one’s eyes, narrow one’s eyes
+со;;;	to be kept
+со;;;	to create
+со;;;	to count
+со;;;	to lie, tell lies, tell a lie
+со;;;	to ripen, mature
+со;;;	to eat (very coll), gobble up
+со;;;	to tear; thrash; fleece (coll)
+со;;;	to bend
+со;;;	to tell lies; talk nonsense
 сняться	;;;	to be taken off; move off; have one’s picture taken; come off; act in a film; be photographed
 снять	;;;	to take off; photograph; rent
 снизиться	;;;	to come down, fall, go down
@@ -9466,415 +9466,415 @@
 сбить	;;;	to knock down; confuse; whip, whisk; distract, beat
 сберечь	;;;	to save; protect
 сбежать	;;;	to run down, run away
-рас-	теряться	;;;	to get lost; panic
-рас-	таять	;;;	to melt
-при-	сниться	;;;	to appear in a dream, see in a dream
-рас-	смеяться	;;;	to burst out laughing
-про-	слыть	;;;	to have the reputation of, be considered
-про-	скрипеть	;;;	to squeak, creak, crunch
-рас-	сердиться	;;;	to be angry (with)
-вос-	пользоваться	;;;	to use, make use of
-воз-	ненавидеть	;;;	to hate
-ото-	мстить	;;;	to take revenge (on s.o. for sth)
-про-	молчать	;;;	to keep silent
+растеряться	;;;	to get lost; panic
+растаять	;;;	to melt
+присниться	;;;	to appear in a dream, see in a dream
+рассмеяться	;;;	to burst out laughing
+прослыть	;;;	to have the reputation of, be considered
+проскрипеть	;;;	to squeak, creak, crunch
+рассердиться	;;;	to be angry (with)
+воспользоваться	;;;	to use, make use of
+возненавидеть	;;;	to hate
+отомстить	;;;	to take revenge (on s.o. for sth)
+промолчать	;;;	to keep silent
 лечь	ложиться	;;;	to lie down
-про-	контролировать	;;;	to check
-рас-	каяться	;;;	to repent
-обо-	злиться	;;;	to be angry, get angry (with)
-про-	звучать	;;;	to sound
-про-	жевать	;;;	to chew
-про-	дрогнуть	;;;	to be chilled
-про-	диктовать	;;;	to dictate
-про-	демонстрировать	;;;	to demonstrate, show
-раз-	делиться	;;;	to be divided (into)
-раз-	делить	;;;	to divide, share
+проконтролировать	;;;	to check
+раскаяться	;;;	to repent
+обозлиться	;;;	to be angry, get angry (with)
+прозвучать	;;;	to sound
+прожевать	;;;	to chew
+продрогнуть	;;;	to be chilled
+продиктовать	;;;	to dictate
+продемонстрировать	;;;	to demonstrate, show
+разделиться	;;;	to be divided (into)
+разделить	;;;	to divide, share
 деть	девать	;;;	to put (coll)
 дать	давать	;;;	to give (sth to s.o.)
-раз-	громить	;;;	to rout; wreck
-при-	грозить	;;;	to threaten (s.o.)
-про-	греметь	;;;	to thunder, resound
-при-	готовить	;;;	to prepare; to cook
-раз-	горячиться	;;;	to get excited
-про-	голосовать	;;;	to vote (for/against)
-раз-	ветвиться	;;;	to branch
-раз-	веселить	;;;	to cheer up; amuse
-раз-	будить	;;;	to wake, rouse
-про-	будить	;;;	to awaken
-про-	бормотать	;;;	to mumble
-раз-	бомбить	;;;	to bomb
-при-	близиться	;;;	to draw near
-про-	анализировать	;;;	to analyse
-со-	щуриться	;;;	to screw up one’s eyes, narrow one’s eyes
-по-	щупать	;;;	to feel, touch (sth), probe
-по-	щекотать	;;;	to tickle
-по-	щадить	;;;	to spare
-по-	шутить	;;;	to joke
-за-	шуметь	;;;	to make a noise
-по-	шевелиться	;;;	to stir
-по-	шевелить	;;;	to stir, move
-по-	шарить	;;;	to grope, fumble
-за-	шагать	;;;	to stride out
-по-	чуять	;;;	to scent, smell; sense, feel
-по-	чудиться	;;;	to seem, imagine (coll)
-по-	чувствоваться	;;;	to be felt
-по-	чувствовать	;;;	to feel
-по-	чтить	;;;	to honour
-по-	чистить	;;;	to clean
-по-	чинить	;;;	to repair
-по-	чесать	;;;	to scratch
-на-	чертить	;;;	to draw, draw up
-по-	чернеть	;;;	to turn black
-за-	цепляться	;;;	to clutch (at); catch (on)
-по-	целоваться	;;;	to kiss (each other)
-по-	целовать	;;;	to kiss
-со-	храниться	;;;	to be kept
-за-	хохотать	;;;	to guffaw, laugh loudly
-за-	хотеться	;;;	to want, feel like; p: to start to want
-за-	хотеть	;;;	to want
-по-	хоронить	;;;	to bury
-по-	ходить	;;;	to walk about
-пo-	ходить	;;;	to walk around
-на-	хмуриться	;;;	to frown
-по-	хлопотать	;;;	to bustle about; make efforts
-по-	хлопать	;;;	to slap, clap
-по-	хвастаться	;;;	to boast (of)
-по-	хвалить	;;;	to praise
-на-	учиться	;;;	to learn (to do sth)
-на-	учить	;;;	to teach (s.o. sth)
-вы-	учить	;;;	to learn (sth)
-по-	ужинать	;;;	to have supper
+разгромить	;;;	to rout; wreck
+пригрозить	;;;	to threaten (s.o.)
+прогреметь	;;;	to thunder, resound
+приготовить	;;;	to prepare; to cook
+разгорячиться	;;;	to get excited
+проголосовать	;;;	to vote (for/against)
+разветвиться	;;;	to branch
+развеселить	;;;	to cheer up; amuse
+разбудить	;;;	to wake, rouse
+пробудить	;;;	to awaken
+пробормотать	;;;	to mumble
+разбомбить	;;;	to bomb
+приблизиться	;;;	to draw near
+проанализировать	;;;	to analyse
+сощуриться	;;;	to screw up one’s eyes, narrow one’s eyes
+пощупать	;;;	to feel, touch (sth), probe
+пощекотать	;;;	to tickle
+пощадить	;;;	to spare
+пошутить	;;;	to joke
+зашуметь	;;;	to make a noise
+пошевелиться	;;;	to stir
+пошевелить	;;;	to stir, move
+пошарить	;;;	to grope, fumble
+зашагать	;;;	to stride out
+почуять	;;;	to scent, smell; sense, feel
+почудиться	;;;	to seem, imagine (coll)
+почувствоваться	;;;	to be felt
+почувствовать	;;;	to feel
+почтить	;;;	to honour
+почистить	;;;	to clean
+починить	;;;	to repair
+почесать	;;;	to scratch
+начертить	;;;	to draw, draw up
+почернеть	;;;	to turn black
+зацепляться	;;;	to clutch (at); catch (on)
+поцеловаться	;;;	to kiss (each other)
+поцеловать	;;;	to kiss
+сохраниться	;;;	to be kept
+захохотать	;;;	to guffaw, laugh loudly
+захотеться	;;;	to want, feel like; p: to start to want
+захотеть	;;;	to want
+похоронить	;;;	to bury
+походить	;;;	to walk about
+пoходить	;;;	to walk around
+нахмуриться	;;;	to frown
+похлопотать	;;;	to bustle about; make efforts
+похлопать	;;;	to slap, clap
+похвастаться	;;;	to boast (of)
+похвалить	;;;	to praise
+научиться	;;;	to learn (to do sth)
+научить	;;;	to teach (s.o. sth)
+выучить	;;;	to learn (sth)
+поужинать	;;;	to have supper
 уже	уж	;;;	already; really
-по-	тянуться	;;;	to stretch; stretch os
-по-	тянуть	;;;	to pull, drag
-по-	тушить	;;;	to extinguish; stew
-по-	трясти	;;;	to shake
-по-	трудиться	;;;	to labour
-по-	трепать	;;;	to rumple, tousle; pat; (coll) natter
-вс-	тревожиться	;;;	to worry
-по-	тревожить	;;;	to trouble
-вс-	тревожить	;;;	to alarm; disturb
-по-	требоваться	;;;	to be necessary, be needed
-по-	требовать	;;;	to demand
-по-	тратить	;;;	to spend
-по-	торопиться	;;;	to hurry, be in a hurry
-по-	торопить	;;;	to hurry (s.o.)
-за-	тормозить	;;;	to slow down, impede; brake
-по-	топить	;;;	to stoke; heat; (p) sink (sth), drown (s.o.)
-по-	тонуть	;;;	to sink; drown
-по-	толковать	;;;	to have a talk about sth with s.o. (coll)
-ис-	толковать	;;;	to interpret, explain
-по-	течь	;;;	to flow; begin to flow
-по-	теряться	;;;	to get lost; lose one’s head
-по-	терять	;;;	to lose
-по-	терпеть	;;;	to be patient; endure
-по-	тереть	;;;	to rub
-по-	темнеть	;;;	to get dark, go dark
-со-	творить	;;;	to create
-по-	тащить	;;;	to drag
-по-	таскать	;;;	to drag
-по-	танцевать	;;;	to dance
-по-	сыпать	;;;	to pour, strew
-со-	считать	;;;	to count
-вы-	сушить	;;;	to dry (sth)
-по-	сулить	;;;	to promise (sth)
-за-	суетиться	;;;	to run around, fuss about
-по-	стыдиться	;;;	to be ashamed of
-по-	стучать	;;;	to knock (at)
-по-	строиться	;;;	to be built
-по-	строить	;;;	to build
-по-	страдать	;;;	to suffer
-по-	стоять	;;;	to stand; p: to stand for a while
-вы-	стирать	;;;	to wash (clothes); rub off
-по-	стесняться	;;;	to be shy
-по-	стареть	;;;	to grow old
-по-	стараться	;;;	to try
-пo-	ставиться	;;;	to be placed
-по-	ставить	;;;	to place, put (in a standing position)
-по-	ссориться	;;;	to quarrel (with s.o.)
-по-	спорить	;;;	to argue
-по-	спешить	;;;	to hurry
-по-	спать	;;;	to sleep
-по-	советоваться	;;;	to consult (s.o.)
-по-	советовать	;;;	to advise (s.o.)
-по-	смотреть	;;;	to watch; (на +a) look (at)
-по-	смеяться	;;;	to laugh
-за-	смеяться	;;;	to laugh (at)
-по-	сметь	;;;	to dare
-по-	слышаться	;;;	to be heard
-по-	слушаться	;;;	to obey
-по-	слушать	;;;	to listen to
-по-	служить	;;;	to serve
-по-	следовать	;;;	to follow (+d); to be required
-по-	слать	;;;	to send
-по-	скакать	;;;	to skip; gallop
-по-	сидеть	;;;	to sit (p: sit for a while)
-по-	сеять	;;;	to sow
-по-	сетовать	;;;	to lament, complain (about)
-за-	рычать	;;;	to growl
-по-	рыться	;;;	to dig, rummage (in)
-об-	рушиться	;;;	to collapse
-по-	ругаться	;;;	to swear; (c +inst) (coll) have a row with
-вз-	ругать	;;;	to abuse, scold
-на-	рисовать	;;;	to draw
-по-	резать	;;;	to cut
-за-	резать	;;;	to kill
-за-	реветь	;;;	to roar, howl
-от-	реагировать	;;;	to react (to)
-по-	рваться	;;;	to tear, burst; want strongly (to do sth)
-по-	рвать	;;;	to tear
-из-	расходовать	;;;	to spend, use up
-вы-	растить	;;;	to grow, raise
-вы-	расти	;;;	to grow
-по-	радоваться	;;;	to be glad (at)
-об-	радоваться	;;;	to be glad (at), be pleased (about)
-по-	радовать	;;;	to gladden, please
-об-	радовать	;;;	to gladden, please
-по-	работать	;;;	to work, work for a while
-по-	пятиться	;;;	to back away, step back
-по-	пытаться	;;;	to attempt
-по-	путешествовать	;;;	to travel
-ис-	пугаться	;;;	to take fright (at)
-на-	пугать	;;;	to frighten
-ис-	пугать	;;;	to frighten
-по-	прощаться	;;;	to say goodbye (to)
-за-	протестовать	;;;	to protest (against)
-по-	проситься	;;;	to ask for
-по-	просить	;;;	to request, ask (s.o. to do sth)
-по-	пробовать	;;;	(+inf) to try; (+a) test; taste
-ис-	портить	;;;	to spoil, damage
-вс-	помнить	;;;	to remember
-по-	ползти	;;;	to crawl
-по-	ползать	;;;	to crawl about
-на-	поить	;;;	to give to drink
-по-	плыть	;;;	to sail; swim
-на-	плевать	;;;	to spit; not to give a damn about
-за-	платить	;;;	to pay (s.o. for sth)
-за-	планировать	;;;	to plan
-за-	плакать	;;;	to cry, weep, p: to begin to cry
-по-	плавать	;;;	to swim; sail
-по-	пить	;;;	to have a drink
-вы-	пить	;;;	to drink, have an alcoholic drink
-на-	питать	;;;	to feed
-на-	писать	;;;	to write
-ис-	печь	;;;	to bake
-от-	печатать	;;;	to print (off)
-на-	печатать	;;;	to print
-за-	орать	;;;	to start yelling
-по-	обещать	;;;	to promise (sth to s.o)
-по-	обедать	;;;	to dine, have a meal
-по-	нюхать	;;;	to smell, sniff (sth)
-по-	нравиться	;;;	to please (s. o.)
-за-	ночевать	;;;	to spend the night
-по-	нестись	;;;	to rush
-по-	нести	;;;	to carry
-по-	мыть	;;;	to wash
-по-	мчаться	;;;	to rush
-за-	мучить	;;;	to torment
-за-	мучаться	;;;	to be tormented; worry, torment os
-по-	молчать	;;;	to be silent for a while
-за-	молчать	;;;	to be silent; p: to fall silent
-по-	молиться	;;;	to pray
-по-	мириться	;;;	to be reconciled with
-по-	мириться	;;;	to make peace, be reconciled
-по-	мешать	;;;	to disturb, hinder, prevent; (+a) stir
-из-	мерить	;;;	to measure; try on (clothing)
-за-	мёрзнуть	;;;	to freeze
-по-	мерещиться	;;;	to seem (coll), imagine
-об-	меняться	;;;	to change; p: (+inst) exchange
-по-	менять	;;;	to change
-по-	медлить	;;;	to delay, hesitate
-по-	махать	;;;	to wave
-по-	махать	;;;	to wave (for a while)
-за-	маскировать	;;;	to disguise, camouflage
-по-	манить	;;;	to beckon, lure
-по-	любоваться	;;;	to admire
-по-	любить	;;;	to like, love; p: to fall in love with
-по-	льстить	;;;	to flatter
-по-	ломать	;;;	to break
-по-	литься	;;;	to pour
-вы-	лечить	;;;	to treat, cure
-по-	лететь	;;;	to fly
-по-	летать	;;;	to fly around
-вы-	лепить	;;;	to model, mould
-по-	лезть	;;;	to climb
-по-	лежать	;;;	to lie, (p) lie for a while
-со-	лгать	;;;	to lie, tell lies, tell a lie
-за-	лаять	;;;	to bark
-по-	лазить	;;;	to climb
-по-	ладить	;;;	to get on with (s.o.)
-по-	кушать	;;;	to eat (polite usage)
-по-	курить	;;;	to smoke
-ис-	купаться	;;;	to bathe
-по-	крыться	;;;	to lie (in), be concealed (in)
-по-	крыть	;;;	to cover
-за-	крутить	;;;	to twist
-за-	кружиться	;;;	to whirl, spin round; begin to spin
-за-	кричать	;;;	to shout
-по-	краснеть	;;;	to become red; blush, turn red
-по-	коситься	;;;	to become crooked; (на +a) look sideways at
-на-	кормить	;;;	to feed
-за-	колоть	;;;	to chop; stab
-по-	колотить	;;;	to batter
-по-	колебаться	;;;	to sway; hesitate
-по-	клясться	;;;	to swear, vow
-за-	кипеть	;;;	to boil
-вс-	кипеть	;;;	to boil, be boiling
-по-	катиться	;;;	to roll
-по-	катить	;;;	to roll (sth)
-по-	кататься	;;;	to roll around; take a trip
-по-	карать	;;;	to punish
-вс-	карабкаться	;;;	to clamber (coll)
-по-	казаться	;;;	to seem, to appear, to show oneself
-по-	искать	;;;	to search for, to look for
-за-	интересоваться	;;;	to be interested in
-за-	интересовать	;;;	to interest
-на-	именовать	;;;	to name
-со-	зреть	;;;	to ripen, mature
-по-	знакомиться	;;;	to become acquainted with; meet
-по-	знакомить	;;;	to introduce (s.o. to s.o. or sth)
-по-	зеленеть	;;;	to turn green, look green
-по-	здороваться	;;;	to greet
-по-	звонить	;;;	to ring, telephone (s.o.)
-за-	звенеть	;;;	to ring; (+inst) jingle
-по-	звать	;;;	to call (s.o.); summon
-по-	заимствовать	;;;	to borrow
-по-	завидовать	;;;	to envy
-по-	заботиться	;;;	to worry about, concern os with, look after; take care of
-со-	жрать	;;;	to eat (very coll), gobble up
-за-	жмуриться	;;;	to screw up one’s eyes; half-close one’s eyes
-по-	жить	;;;	to live; p: live for a while
-по-	жечь	;;;	to burn up
-по-	жертвовать	;;;	to donate; (+inst) sacrifice
-по-	желать	;;;	to want, wish (for)
-по-	жевать	;;;	to chew
-за-	жарить	;;;	to fry; roast
-по-	жаловаться	;;;	to complain (about)
-по-	жалеть	;;;	to pity, feel sorry for; (o +pr) regret
-по-	ехать	;;;	to go (by transport)
-съ-	есть	;;;	to eat
-по-	есть	;;;	to eat a little
-съ-	ездить	;;;	to travel there and back
-по-	ездить	;;;	to travel
-по-	дышать	;;;	to breathe
-за-	душить	;;;	to strangle, suffocate, stifle
-по-	дуть	;;;	to blow
-по-	думать	;;;	to think
-за-	дрожать	;;;	to shiver, start shaking
-по-	драться	;;;	to fight; have a fight with
-со-	драть	;;;	to tear; thrash; fleece (coll)
-по-	дохнуть	;;;	to die (of animals)
-по-	дивиться	;;;	to wonder, marvel (at) (coll)
-по-	делиться	;;;	to share (sth with s.o.)
-по-	действовать	;;;	to act, function, affect
-по-	дарить	;;;	to give, present (sth to s.o.)
-по-	гулять	;;;	to take a walk; (coll) take time off
-за-	гудеть	;;;	to start hooting/humming
-по-	губить	;;;	to destroy, ruin
-по-	грузиться	;;;	to get on board, embark
-по-	грузить	;;;	to load
-за-	грохотать	;;;	to thunder, rumble
-по-	грозиться	;;;	to threaten (coll)
-по-	греться	;;;	to warm os
-по-	греть	;;;	to heat
-за-	греметь	;;;	to roar, resound
-за-	гореть	;;;	to burn, be alight
-по-	гонять	;;;	to drive, make (s.o.) run
-по-	говорить	;;;	to speak; to have a talk, talk (to)
-со-	гнуть	;;;	to bend
-по-	гнать	;;;	to drive; hunt, persecute, chase
-по-	глядеть	;;;	to look (at)
-за-	глушить	;;;	to drown (a sound)
-за-	глохнуть	;;;	to die away; stall (engine); go to seed
-по-	гладить	;;;	to stroke; iron
-по-	гибнуть	;;;	to perish
-по-	гаснуть	;;;	to go out, be extinguished, fade
-по-	гасить	;;;	to put out, extinguish; cancel
-за-	выть	;;;	to howl
-по-	вредить	;;;	to harm, damage
-со-	врать	;;;	to tell lies; talk nonsense
-вз-	волноваться	;;;	to worry
-вз-	волновать	;;;	to worry, excite, disturb (s.o.)
-по-	возить	;;;	to transport (around/there and back)
-по-	водить	;;;	to lead, (p) to lead about
-по-	влиять	;;;	to influence
-об-	винить	;;;	to accuse (s.o. of sth)
-по-	видать	;;;	to see (coll)
-по-	вести	;;;	to lead
-по-	веселиться	;;;	to make merry
-по-	вертеть	;;;	to twirl
-по-	верить	;;;	to believe (+d) s.o. or sth, (в +a ) in s.o. or sth
-по-	везти	;;;	to transport; (+d) be lucky
-за-	варить	;;;	to boil, cook by boiling
-по-	валяться	;;;	to roll; lie about
-по-	валиться	;;;	to fall
-по-	быть	;;;	to stay for a while
-по-	бродить	;;;	to wander
-по-	бриться	;;;	to shave
-по-	брить	;;;	to shave
-по-	брести	;;;	to plod along
-по-	бояться	;;;	to be afraid, not dare to
-за-	бормотать	;;;	to mutter
-по-	болтать	;;;	to shake, stir; (coll) chatter
-по-	бледнеть	;;;	to turn pale
-по-	благодарить	;;;	to thank (s.o. for sth)
-по-	бить	;;;	to beat, hit
-по-	беседовать	;;;	to talk, converse (with); have a talk (with)
-по-	белеть	;;;	to grow white, be white
-по-	бежать	;;;	to run
-по-	бегать	;;;	to run around
-из-	баловать	;;;	to spoil (s.o.)
-за-	аплодировать	;;;	to applaud (s.o. or sth)
-с-	экономить	;;;	to save, economize
-с-	шить	;;;	to sew
-с-	ходить	;;;	to go there and back
-с-	формировать	;;;	to form
-с-	уметь	;;;	to know how to; be able to, manage to
-с-	трусить	;;;	to be cowardly
-у-	тонуть	;;;	to drown
-с-	темнеть	;;;	to get dark
-о-	стричь	;;;	to cut, clip
-у-	совершенствоваться	;;;	to improve os; improve one’s knowledge (of)
-у-	совершенствовать	;;;	to perfect, improve
-у-	слышать	;;;	to hear
-о-	слабеть	;;;	to become weak
-о-	робеть	;;;	to be timid
-с-	равняться	;;;	(на +a) to emulate; (+d) be equal to
-с-	путаться	;;;	to get mixed up
-с-	путать	;;;	to confuse, mix up
-о-	пустеть	;;;	to empty, become empty
-о-	публиковать	;;;	to publish
-с-	прятаться	;;;	to hide
-с-	прятать	;;;	to hide (sth)
-с-	плясать	;;;	to dance
-с-	петь	;;;	to sing
-с-	палить	;;;	to burn, scorch; singe
-с-	мять	;;;	to crumple, crush
-с-	мочь	;;;	to be able
-с-	мешать	;;;	to mix
-с-	маневрировать	;;;	to manoeuvre
-с-	ломаться	;;;	to break; (coll) put on airs; (coll) be awkward, make difficulties
-с-	ломать	;;;	to break, fracture
-с-	кушать	;;;	to eat
-о-	крепнуть	;;;	to get stronger, get stronger
-у-	красть	;;;	to steal
-о-	красить	;;;	to paint, colour; dye
-с-	косить	;;;	to mow; twist
-о-	злиться	;;;	to get angry (coll)
-с-	жечь	;;;	to burn
-с-	жать	;;;	to squeeze; to harvest
-с-	делаться	;;;	to become; be done
-с-	делать	;;;	to do, make
-о-	грабить	;;;	to rob, pillage
-с-	гнить	;;;	to rot
-с-	вязать	;;;	to tie; knit
-с-	воровать	;;;	to steal
-о-	владеть	;;;	to possess; have command of; to master
-с-	виться	;;;	to wind, twine, twist
-у-	видеться	;;;	to see one another, see each other
-у-	видеть	;;;	to see
-у-	видать	;;;	to see (coll)
-с-	валиться	;;;	to fall down
-с-	валить	;;;	to topple; heap up
-о-	беспокоиться	;;;	to worry, be worried (about)
-о-	беспокоить	;;;	to worry (s.o.)
-с-	бегать	;;;	to run there and back, run somewhere (and return)
+потянуться	;;;	to stretch; stretch os
+потянуть	;;;	to pull, drag
+потушить	;;;	to extinguish; stew
+потрясти	;;;	to shake
+потрудиться	;;;	to labour
+потрепать	;;;	to rumple, tousle; pat; (coll) natter
+встревожиться	;;;	to worry
+потревожить	;;;	to trouble
+встревожить	;;;	to alarm; disturb
+потребоваться	;;;	to be necessary, be needed
+потребовать	;;;	to demand
+потратить	;;;	to spend
+поторопиться	;;;	to hurry, be in a hurry
+поторопить	;;;	to hurry (s.o.)
+затормозить	;;;	to slow down, impede; brake
+потопить	;;;	to stoke; heat; (p) sink (sth), drown (s.o.)
+потонуть	;;;	to sink; drown
+потолковать	;;;	to have a talk about sth with s.o. (coll)
+истолковать	;;;	to interpret, explain
+потечь	;;;	to flow; begin to flow
+потеряться	;;;	to get lost; lose one’s head
+потерять	;;;	to lose
+потерпеть	;;;	to be patient; endure
+потереть	;;;	to rub
+потемнеть	;;;	to get dark, go dark
+сотворить	;;;	to create
+потащить	;;;	to drag
+потаскать	;;;	to drag
+потанцевать	;;;	to dance
+посыпать	;;;	to pour, strew
+сосчитать	;;;	to count
+высушить	;;;	to dry (sth)
+посулить	;;;	to promise (sth)
+засуетиться	;;;	to run around, fuss about
+постыдиться	;;;	to be ashamed of
+постучать	;;;	to knock (at)
+построиться	;;;	to be built
+построить	;;;	to build
+пострадать	;;;	to suffer
+постоять	;;;	to stand; p: to stand for a while
+выстирать	;;;	to wash (clothes); rub off
+постесняться	;;;	to be shy
+постареть	;;;	to grow old
+постараться	;;;	to try
+пoставиться	;;;	to be placed
+поставить	;;;	to place, put (in a standing position)
+поссориться	;;;	to quarrel (with s.o.)
+поспорить	;;;	to argue
+поспешить	;;;	to hurry
+поспать	;;;	to sleep
+посоветоваться	;;;	to consult (s.o.)
+посоветовать	;;;	to advise (s.o.)
+посмотреть	;;;	to watch; (на +a) look (at)
+посмеяться	;;;	to laugh
+засмеяться	;;;	to laugh (at)
+посметь	;;;	to dare
+послышаться	;;;	to be heard
+послушаться	;;;	to obey
+послушать	;;;	to listen to
+послужить	;;;	to serve
+последовать	;;;	to follow (+d); to be required
+послать	;;;	to send
+поскакать	;;;	to skip; gallop
+посидеть	;;;	to sit (p: sit for a while)
+посеять	;;;	to sow
+посетовать	;;;	to lament, complain (about)
+зарычать	;;;	to growl
+порыться	;;;	to dig, rummage (in)
+обрушиться	;;;	to collapse
+поругаться	;;;	to swear; (c +inst) (coll) have a row with
+взругать	;;;	to abuse, scold
+нарисовать	;;;	to draw
+порезать	;;;	to cut
+зарезать	;;;	to kill
+зареветь	;;;	to roar, howl
+отреагировать	;;;	to react (to)
+порваться	;;;	to tear, burst; want strongly (to do sth)
+порвать	;;;	to tear
+израсходовать	;;;	to spend, use up
+вырастить	;;;	to grow, raise
+вырасти	;;;	to grow
+порадоваться	;;;	to be glad (at)
+обрадоваться	;;;	to be glad (at), be pleased (about)
+порадовать	;;;	to gladden, please
+обрадовать	;;;	to gladden, please
+поработать	;;;	to work, work for a while
+попятиться	;;;	to back away, step back
+попытаться	;;;	to attempt
+попутешествовать	;;;	to travel
+испугаться	;;;	to take fright (at)
+напугать	;;;	to frighten
+испугать	;;;	to frighten
+попрощаться	;;;	to say goodbye (to)
+запротестовать	;;;	to protest (against)
+попроситься	;;;	to ask for
+попросить	;;;	to request, ask (s.o. to do sth)
+попробовать	;;;	(+inf) to try; (+a) test; taste
+испортить	;;;	to spoil, damage
+вспомнить	;;;	to remember
+поползти	;;;	to crawl
+поползать	;;;	to crawl about
+напоить	;;;	to give to drink
+поплыть	;;;	to sail; swim
+наплевать	;;;	to spit; not to give a damn about
+заплатить	;;;	to pay (s.o. for sth)
+запланировать	;;;	to plan
+заплакать	;;;	to cry, weep, p: to begin to cry
+поплавать	;;;	to swim; sail
+попить	;;;	to have a drink
+выпить	;;;	to drink, have an alcoholic drink
+напитать	;;;	to feed
+написать	;;;	to write
+испечь	;;;	to bake
+отпечатать	;;;	to print (off)
+напечатать	;;;	to print
+заорать	;;;	to start yelling
+пообещать	;;;	to promise (sth to s.o)
+пообедать	;;;	to dine, have a meal
+понюхать	;;;	to smell, sniff (sth)
+понравиться	;;;	to please (s. o.)
+заночевать	;;;	to spend the night
+понестись	;;;	to rush
+понести	;;;	to carry
+помыть	;;;	to wash
+помчаться	;;;	to rush
+замучить	;;;	to torment
+замучаться	;;;	to be tormented; worry, torment os
+помолчать	;;;	to be silent for a while
+замолчать	;;;	to be silent; p: to fall silent
+помолиться	;;;	to pray
+помириться	;;;	to be reconciled with
+помириться	;;;	to make peace, be reconciled
+помешать	;;;	to disturb, hinder, prevent; (+a) stir
+измерить	;;;	to measure; try on (clothing)
+замёрзнуть	;;;	to freeze
+померещиться	;;;	to seem (coll), imagine
+обменяться	;;;	to change; p: (+inst) exchange
+поменять	;;;	to change
+помедлить	;;;	to delay, hesitate
+помахать	;;;	to wave
+помахать	;;;	to wave (for a while)
+замаскировать	;;;	to disguise, camouflage
+поманить	;;;	to beckon, lure
+полюбоваться	;;;	to admire
+полюбить	;;;	to like, love; p: to fall in love with
+польстить	;;;	to flatter
+поломать	;;;	to break
+политься	;;;	to pour
+вылечить	;;;	to treat, cure
+полететь	;;;	to fly
+полетать	;;;	to fly around
+вылепить	;;;	to model, mould
+полезть	;;;	to climb
+полежать	;;;	to lie, (p) lie for a while
+солгать	;;;	to lie, tell lies, tell a lie
+залаять	;;;	to bark
+полазить	;;;	to climb
+поладить	;;;	to get on with (s.o.)
+покушать	;;;	to eat (polite usage)
+покурить	;;;	to smoke
+искупаться	;;;	to bathe
+покрыться	;;;	to lie (in), be concealed (in)
+покрыть	;;;	to cover
+закрутить	;;;	to twist
+закружиться	;;;	to whirl, spin round; begin to spin
+закричать	;;;	to shout
+покраснеть	;;;	to become red; blush, turn red
+покоситься	;;;	to become crooked; (на +a) look sideways at
+накормить	;;;	to feed
+заколоть	;;;	to chop; stab
+поколотить	;;;	to batter
+поколебаться	;;;	to sway; hesitate
+поклясться	;;;	to swear, vow
+закипеть	;;;	to boil
+вскипеть	;;;	to boil, be boiling
+покатиться	;;;	to roll
+покатить	;;;	to roll (sth)
+покататься	;;;	to roll around; take a trip
+покарать	;;;	to punish
+вскарабкаться	;;;	to clamber (coll)
+показаться	;;;	to seem, to appear, to show oneself
+поискать	;;;	to search for, to look for
+заинтересоваться	;;;	to be interested in
+заинтересовать	;;;	to interest
+наименовать	;;;	to name
+созреть	;;;	to ripen, mature
+познакомиться	;;;	to become acquainted with; meet
+познакомить	;;;	to introduce (s.o. to s.o. or sth)
+позеленеть	;;;	to turn green, look green
+поздороваться	;;;	to greet
+позвонить	;;;	to ring, telephone (s.o.)
+зазвенеть	;;;	to ring; (+inst) jingle
+позвать	;;;	to call (s.o.); summon
+позаимствовать	;;;	to borrow
+позавидовать	;;;	to envy
+позаботиться	;;;	to worry about, concern os with, look after; take care of
+сожрать	;;;	to eat (very coll), gobble up
+зажмуриться	;;;	to screw up one’s eyes; half-close one’s eyes
+пожить	;;;	to live; p: live for a while
+пожечь	;;;	to burn up
+пожертвовать	;;;	to donate; (+inst) sacrifice
+пожелать	;;;	to want, wish (for)
+пожевать	;;;	to chew
+зажарить	;;;	to fry; roast
+пожаловаться	;;;	to complain (about)
+пожалеть	;;;	to pity, feel sorry for; (o +pr) regret
+поехать	;;;	to go (by transport)
+съесть	;;;	to eat
+поесть	;;;	to eat a little
+съездить	;;;	to travel there and back
+поездить	;;;	to travel
+подышать	;;;	to breathe
+задушить	;;;	to strangle, suffocate, stifle
+подуть	;;;	to blow
+подумать	;;;	to think
+задрожать	;;;	to shiver, start shaking
+подраться	;;;	to fight; have a fight with
+содрать	;;;	to tear; thrash; fleece (coll)
+подохнуть	;;;	to die (of animals)
+подивиться	;;;	to wonder, marvel (at) (coll)
+поделиться	;;;	to share (sth with s.o.)
+подействовать	;;;	to act, function, affect
+подарить	;;;	to give, present (sth to s.o.)
+погулять	;;;	to take a walk; (coll) take time off
+загудеть	;;;	to start hooting/humming
+погубить	;;;	to destroy, ruin
+погрузиться	;;;	to get on board, embark
+погрузить	;;;	to load
+загрохотать	;;;	to thunder, rumble
+погрозиться	;;;	to threaten (coll)
+погреться	;;;	to warm os
+погреть	;;;	to heat
+загреметь	;;;	to roar, resound
+загореть	;;;	to burn, be alight
+погонять	;;;	to drive, make (s.o.) run
+поговорить	;;;	to speak; to have a talk, talk (to)
+согнуть	;;;	to bend
+погнать	;;;	to drive; hunt, persecute, chase
+поглядеть	;;;	to look (at)
+заглушить	;;;	to drown (a sound)
+заглохнуть	;;;	to die away; stall (engine); go to seed
+погладить	;;;	to stroke; iron
+погибнуть	;;;	to perish
+погаснуть	;;;	to go out, be extinguished, fade
+погасить	;;;	to put out, extinguish; cancel
+завыть	;;;	to howl
+повредить	;;;	to harm, damage
+соврать	;;;	to tell lies; talk nonsense
+взволноваться	;;;	to worry
+взволновать	;;;	to worry, excite, disturb (s.o.)
+повозить	;;;	to transport (around/there and back)
+поводить	;;;	to lead, (p) to lead about
+повлиять	;;;	to influence
+обвинить	;;;	to accuse (s.o. of sth)
+повидать	;;;	to see (coll)
+повести	;;;	to lead
+повеселиться	;;;	to make merry
+повертеть	;;;	to twirl
+поверить	;;;	to believe (+d) s.o. or sth, (в +a ) in s.o. or sth
+повезти	;;;	to transport; (+d) be lucky
+заварить	;;;	to boil, cook by boiling
+поваляться	;;;	to roll; lie about
+повалиться	;;;	to fall
+побыть	;;;	to stay for a while
+побродить	;;;	to wander
+побриться	;;;	to shave
+побрить	;;;	to shave
+побрести	;;;	to plod along
+побояться	;;;	to be afraid, not dare to
+забормотать	;;;	to mutter
+поболтать	;;;	to shake, stir; (coll) chatter
+побледнеть	;;;	to turn pale
+поблагодарить	;;;	to thank (s.o. for sth)
+побить	;;;	to beat, hit
+побеседовать	;;;	to talk, converse (with); have a talk (with)
+побелеть	;;;	to grow white, be white
+побежать	;;;	to run
+побегать	;;;	to run around
+избаловать	;;;	to spoil (s.o.)
+зааплодировать	;;;	to applaud (s.o. or sth)
+сэкономить	;;;	to save, economize
+сшить	;;;	to sew
+сходить	;;;	to go there and back
+сформировать	;;;	to form
+суметь	;;;	to know how to; be able to, manage to
+струсить	;;;	to be cowardly
+утонуть	;;;	to drown
+стемнеть	;;;	to get dark
+остричь	;;;	to cut, clip
+усовершенствоваться	;;;	to improve os; improve one’s knowledge (of)
+усовершенствовать	;;;	to perfect, improve
+услышать	;;;	to hear
+ослабеть	;;;	to become weak
+оробеть	;;;	to be timid
+сравняться	;;;	(на +a) to emulate; (+d) be equal to
+спутаться	;;;	to get mixed up
+спутать	;;;	to confuse, mix up
+опустеть	;;;	to empty, become empty
+опубликовать	;;;	to publish
+спрятаться	;;;	to hide
+спрятать	;;;	to hide (sth)
+сплясать	;;;	to dance
+спеть	;;;	to sing
+спалить	;;;	to burn, scorch; singe
+смять	;;;	to crumple, crush
+смочь	;;;	to be able
+смешать	;;;	to mix
+сманеврировать	;;;	to manoeuvre
+сломаться	;;;	to break; (coll) put on airs; (coll) be awkward, make difficulties
+сломать	;;;	to break, fracture
+скушать	;;;	to eat
+окрепнуть	;;;	to get stronger, get stronger
+украсть	;;;	to steal
+окрасить	;;;	to paint, colour; dye
+скосить	;;;	to mow; twist
+озлиться	;;;	to get angry (coll)
+сжечь	;;;	to burn
+сжать	;;;	to squeeze; to harvest
+сделаться	;;;	to become; be done
+сделать	;;;	to do, make
+ограбить	;;;	to rob, pillage
+сгнить	;;;	to rot
+связать	;;;	to tie; knit
+своровать	;;;	to steal
+овладеть	;;;	to possess; have command of; to master
+свиться	;;;	to wind, twine, twist
+увидеться	;;;	to see one another, see each other
+увидеть	;;;	to see
+увидать	;;;	to see (coll)
+свалиться	;;;	to fall down
+свалить	;;;	to topple; heap up
+обеспокоиться	;;;	to worry, be worried (about)
+обеспокоить	;;;	to worry (s.o.)
+сбегать	;;;	to run there and back, run somewhere (and return)
