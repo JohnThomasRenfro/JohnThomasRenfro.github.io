@@ -9881,73 +9881,57 @@ const dictionary = {
 };
 
 function processText() {
-    const inputText = document.getElementById("russianText").value;
-    const outputDiv = document.getElementById("output");
-    outputDiv.innerHTML = "";  
+    const inputText = document.getElementById("russianText").value;  // Get the text input
+    const outputDiv = document.getElementById("output");  // Where the output will be displayed
+    outputDiv.innerHTML = "";  // Clear previous output
 
-    const words = inputText.split(/\s+/);
+    const words = inputText.split(/\s+/);  // Split input into words
 
-const suffixes = [
-    // Adjective suffixes
-    { suffix: "ский", definition: "adjective suffix, relating to" },
-    { suffix: "ный", definition: "adjective suffix, indicating quality or state" },
-    { suffix: "ий", definition: "adjective suffix, indicating belonging or relation" },
-    { suffix: "овой", definition: "adjective suffix, indicating a material or substance" },
-    { suffix: "овой", definition: "adjective suffix, indicating location or place" },
-    { suffix: "ний", definition: "adjective suffix, indicating characteristic or trait" },
+    // Define suffixes for various parts of speech
+    const suffixes = [
+        { suffix: "ский", definition: "adjective suffix, relating to" },
+        { suffix: "ный", definition: "adjective suffix, indicating quality or state" },
+        { suffix: "ий", definition: "adjective suffix, indicating belonging or relation" },
+        { suffix: "овой", definition: "adjective suffix, indicating a material or substance" },
+        { suffix: "овой", definition: "adjective suffix, indicating location or place" },
+        { suffix: "ний", definition: "adjective suffix, indicating characteristic or trait" },
+        { suffix: "ость", definition: "noun suffix, indicating quality or state of being" },
+        { suffix: "чество", definition: "noun suffix, indicating a property or quality" },
+        { suffix: "ение", definition: "noun suffix, indicating action or process" },
+        { suffix: "ие", definition: "noun suffix, often forming nouns from verbs" },
+        { suffix: "ец", definition: "noun suffix, indicating a person (male)" },
+        { suffix: "ка", definition: "noun suffix, indicating a female or diminutive form" },
+        { suffix: "ник", definition: "noun suffix, indicating a person or thing performing an action" },
+        { suffix: "ство", definition: "noun suffix, indicating a state or condition" },
+        { suffix: "тель", definition: "noun suffix, indicating a person who performs an action" },
+        { suffix: "ар", definition: "noun suffix, indicating a profession or activity" },
+        { suffix: "ить", definition: "verb suffix, forming imperfective verbs" },
+        { suffix: "еть", definition: "verb suffix, forming imperfective verbs" },
+        { suffix: "ировать", definition: "verb suffix, indicating an action or process" },
+        { suffix: "нуть", definition: "verb suffix, indicating perfective aspect" },
+        { suffix: "чь", definition: "verb suffix, indicating reflexive action" },
+        { suffix: "ик", definition: "diminutive suffix, indicating a small version or endearment" },
+        { suffix: "ушка", definition: "diminutive suffix, indicating a small or affectionate form" },
+        { suffix: "очек", definition: "diminutive suffix, often used for small or affectionate objects or persons" },
+        { suffix: "ёнок", definition: "diminutive suffix, often used for animals or children" },
+        { suffix: "ёнка", definition: "diminutive suffix, often used for affectionate names of animals or children" },
+        { suffix: "о", definition: "adverb suffix, forming adverbs from adjectives" },
+        { suffix: "ски", definition: "adverb suffix, indicating manner or characteristic" },
+        { suffix: "ющий", definition: "present participle, indicating an ongoing action" },
+        { suffix: "вший", definition: "past participle, indicating a completed action" },
+        { suffix: "а", definition: "noun suffix, typically feminine, often forming abstract nouns" },
+        { suffix: "е", definition: "noun suffix, typically forming locative or abstract nouns" },
+        { suffix: "ин", definition: "suffix indicating origin or relation" },
+        { suffix: "анин", definition: "suffix, indicating descent or relation to family name" },
+        { suffix: "ик", definition: "informal diminutive, can be used for people or objects" },
+        { suffix: "чик", definition: "informal diminutive suffix, typically used for small objects or affectionate names" },
+        { suffix: "евна", definition: "feminine patronymic suffix" },
+        { suffix: "овна", definition: "feminine patronymic suffix" },
+        { suffix: "ич", definition: "masculine patronymic suffix" },
+        { suffix: "ович", definition: "masculine patronymic suffix" },
+    ];
 
-    // Noun suffixes
-    { suffix: "ость", definition: "noun suffix, indicating quality or state of being" },
-    { suffix: "чество", definition: "noun suffix, indicating a property or quality" },
-    { suffix: "ение", definition: "noun suffix, indicating action or process" },
-    { suffix: "ие", definition: "noun suffix, often forming nouns from verbs" },
-    { suffix: "ец", definition: "noun suffix, indicating a person (male)" },
-    { suffix: "ка", definition: "noun suffix, indicating a female or diminutive form" },
-    { suffix: "ник", definition: "noun suffix, indicating a person or thing performing an action" },
-    { suffix: "ство", definition: "noun suffix, indicating a state or condition" },
-    { suffix: "тель", definition: "noun suffix, indicating a person who performs an action" },
-    { suffix: "ка", definition: "noun suffix, indicating an instrument or tool" },
-    { suffix: "ар", definition: "noun suffix, indicating a profession or activity" },
-
-    // Verb suffixes
-    { suffix: "ить", definition: "verb suffix, forming imperfective verbs" },
-    { suffix: "еть", definition: "verb suffix, forming imperfective verbs" },
-    { suffix: "ировать", definition: "verb suffix, indicating an action or process" },
-    { suffix: "нуть", definition: "verb suffix, indicating perfective aspect" },
-    { suffix: "чь", definition: "verb suffix, indicating reflexive action" },
-
-    // Diminutive suffixes
-    { suffix: "ик", definition: "diminutive suffix, indicating a small version or endearment" },
-    { suffix: "ушка", definition: "diminutive suffix, indicating a small or affectionate form" },
-    { suffix: "очек", definition: "diminutive suffix, often used for small or affectionate objects or persons" },
-    { suffix: "ёнок", definition: "diminutive suffix, often used for animals or children" },
-    { suffix: "ёнка", definition: "diminutive suffix, often used for affectionate names of animals or children" },
-
-    // Adverb suffixes
-    { suffix: "о", definition: "adverb suffix, forming adverbs from adjectives" },
-    { suffix: "ски", definition: "adverb suffix, indicating manner or characteristic" },
-
-    // Participles
-    { suffix: "ющий", definition: "present participle, indicating an ongoing action" },
-    { suffix: "вший", definition: "past participle, indicating a completed action" },
-
-    // Other
-    { suffix: "а", definition: "noun suffix, typically feminine, often forming abstract nouns" },
-    { suffix: "е", definition: "noun suffix, typically forming locative or abstract nouns" },
-    { suffix: "ин", definition: "suffix indicating origin or relation" },
-    { suffix: "анин", definition: "suffix, indicating descent or relation to family name" },
-
-    // Informal/dialectical suffixes
-    { suffix: "ик", definition: "informal diminutive, can be used for people or objects" },
-    { suffix: "чик", definition: "informal diminutive suffix, typically used for small objects or affectionate names" },
-
-    // Gender-specific suffixes
-    { suffix: "евна", definition: "feminine patronymic suffix" },
-    { suffix: "овна", definition: "feminine patronymic suffix" },
-    { suffix: "ич", definition: "masculine patronymic suffix" },
-    { suffix: "ович", definition: "masculine patronymic suffix" },
-];
-
+    // Process each word
     words.forEach(word => {
         let foundMatch = false;
 
@@ -9957,17 +9941,19 @@ const suffixes = [
                 const root = rootWord;
                 const definition = dictionary[rootWord];
 
+                // Display the root word and its definition
                 outputDiv.innerHTML += `
                     <p><strong>Root Word:</strong> ${root}</p>
                     <p><strong>Root Definition:</strong> ${definition}</p>
                 `;
 
-                // Check for suffixes
+                // Check for suffixes attached to the root word
                 const suffixResult = getSuffix(word, root);
 
                 if (suffixResult) {
                     const { suffix, definition: suffixDefinition } = suffixResult;
 
+                    // Display the suffix and its definition
                     outputDiv.innerHTML += `
                         <p><strong>Suffix:</strong> ${suffix}</p>
                         <p><strong>Suffix Definition:</strong> ${suffixDefinition}</p><hr>
@@ -9985,19 +9971,21 @@ const suffixes = [
         if (!foundMatch) {
             let suffixFound = false;
 
+            // Check if the word ends with any suffix
             for (const suffixObj of suffixes) {
                 const suffix = suffixObj.suffix;
                 if (word.endsWith(suffix)) {
+                    // If a matching suffix is found, display it
                     outputDiv.innerHTML += `
                         <p><strong>Unmatched Suffix:</strong> ${suffix}</p>
                         <p><strong>Suggested const Suffixes entry:</strong> "${suffix}": "${suffixObj.definition}"</p><hr>
                     `;
                     suffixFound = true;
-                    break; // If we find a matching suffix, we don't need to process further suffixes
+                    break; // If we find a matching suffix, stop checking further suffixes
                 }
             }
 
-            // If no suffix match, show the unmatched word
+            // If no suffix match, show the unmatched word with a suggestion for dictionary entry
             if (!suffixFound) {
                 outputDiv.innerHTML += `
                     <p><strong>Unmatched Word:</strong> ${word}</p>
