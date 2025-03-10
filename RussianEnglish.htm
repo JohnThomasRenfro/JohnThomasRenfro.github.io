@@ -9878,42 +9878,77 @@ const dictionary = {
 "а":"and, but (slight contrast)",
 };
 
-// A simple function to process the Russian text and match words
+// Common Russian suffixes and a default definition for them
+const suffixes = [
+    { suffix: "ский", definition: "adjective suffix, relating to" },
+    { suffix: "ный", definition: "adjective suffix, relating to" },
+    { suffix: "ость", definition: "noun suffix, quality or state of being" },
+    { suffix: "чество", definition: "noun suffix, indicating a property or quality" },
+    { suffix: "ение", definition: "noun suffix, indicating an action or process" }
+    // Add more common suffixes here if needed
+];
+
+// Function to get the suffix from the word (if exists)
+function getSuffix(word, root) {
+    for (let { suffix, definition } of suffixes) {
+        if (word.endsWith(suffix)) {
+            const remainingSuffix = word.slice(root.length);
+            if (remainingSuffix === suffix) {
+                return { suffix, definition };
+            }
+        }
+    }
+    return null;
+}
+
+// Function to process the Russian text and match words
 function processText() {
     const inputText = document.getElementById("russianText").value;
     const outputDiv = document.getElementById("output");
     outputDiv.innerHTML = "";  // Clear previous output
 
-    // Regex to split the input text into words
+    // Split the input text into words
     const words = inputText.split(/\s+/);
+    
+    // Iterate through each word and process
     words.forEach(word => {
-        // Check if the word matches any root word in the dictionary
+        let foundMatch = false;
+
+        // Try to find the longest root word in the dictionary
         for (const rootWord in dictionary) {
             if (word.startsWith(rootWord)) {
-                // Found a match, extract root word and suffix
                 const root = rootWord;
                 const definition = dictionary[rootWord];
-
-                const suffix = word.slice(root.length);  // The suffix part
-                let suffixDefinition = "";
                 
-                // Example suffix definitions, this can be expanded
-                if (suffix === "ский") {
-                    suffixDefinition = "adjective suffix, relating to";
-                } else if (suffix === "ный") {
-                    suffixDefinition = "adjective suffix, relating to";
-                } else if (suffix === "ость") {
-                    suffixDefinition = "noun suffix, quality|state of being";
+                // Try to get a suffix and its definition
+                const suffixResult = getSuffix(word, root);
+
+                if (suffixResult) {
+                    const { suffix, definition: suffixDefinition } = suffixResult;
+
+                    // Display the result
+                    outputDiv.innerHTML += `
+                        <p><strong>Root Word:</strong> ${root}</p>
+                        <p><strong>Root Definition:</strong> ${definition}</p>
+                        <p><strong>Suffix:</strong> ${suffix}</p>
+                        <p><strong>Suffix Definition:</strong> ${suffixDefinition}</p><hr>
+                    `;
+                } else {
+                    // If no suffix, just show the root word
+                    outputDiv.innerHTML += `
+                        <p><strong>Root Word:</strong> ${root}</p>
+                        <p><strong>Root Definition:</strong> ${definition}</p><hr>
+                    `;
                 }
 
-                // Display the result
-                outputDiv.innerHTML += `
-                    <p><strong>Root Word:</strong> ${root}</p>
-                    <p><strong>Root Definition:</strong> ${definition}</p>
-                    <p><strong>Suffix:</strong> ${suffix}</p>
-                    <p><strong>Suffix Definition:</strong> ${suffixDefinition}</p><hr>
-                `;
+                foundMatch = true;
+                break;  // No need to check other root words for this word
             }
+        }
+
+        // If no match was found, you could handle that here, for example:
+        if (!foundMatch) {
+            outputDiv.innerHTML += `<p><strong>Unmatched Word:</strong> ${word}</p><hr>`;
         }
     });
 }
@@ -9921,3 +9956,4 @@ function processText() {
 
 </body>
 </html>
+
