@@ -9858,14 +9858,16 @@
 "а":"and, but (slight contrast)",
         };
 
+
         function findRootWords() {
             let inputText = document.getElementById("inputText").value;
             let words = inputText.split(/\s+/);
             let output = "";
 
             words.forEach(word => {
-                if (dictionary[word]) {
-                    output += `${word}: ${dictionary[word]}<br>`;
+                let rootWord = removeSuffix(word);
+                if (dictionary[rootWord]) {
+                    output += `${word}: ${dictionary[rootWord]}<br>`;
                 } else {
                     output += `${word}: (No root word found)<br>`;
                 }
