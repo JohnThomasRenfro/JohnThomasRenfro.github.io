@@ -9857,18 +9857,22 @@
 "в":"(+pr) in; (+a) into, to",
 "а":"and, but (slight contrast)",
         };
-
-
+        
         function findRootWords() {
             let inputText = document.getElementById("inputText").value;
             let words = inputText.split(/\s+/);
             let output = "";
 
             words.forEach(word => {
-                let rootWord = removeSuffix(word);
-                if (dictionary[rootWord]) {
-                    output += `${word}: ${dictionary[rootWord]}<br>`;
-                } else {
+                let matched = false;
+                for (let dictWord in dictionary) {
+                    if (dictWord.startsWith(word) || word.startsWith(dictWord)) {
+                        output += `${word}: ${dictionary[dictWord]}<br>`;
+                        matched = true;
+                        break;
+                    }
+                }
+                if (!matched) {
                     output += `${word}: (No root word found)<br>`;
                 }
             });
