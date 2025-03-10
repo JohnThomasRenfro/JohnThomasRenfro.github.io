@@ -9931,7 +9931,10 @@ function processText() {
         { suffix: "ович", definition: "masculine patronymic suffix" },
     ];
 
-    // Process each word
+Here is the fixed function based on what you pasted:
+
+```javascript
+function processWords(words, dictionary, suffixes, outputDiv) {
     words.forEach(word => {
         let foundMatch = false;
 
@@ -9995,9 +9998,7 @@ function processText() {
         }
     });
 }
-
 </script>
-
 </body>
 </html>
 
