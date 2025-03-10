@@ -9857,15 +9857,16 @@
 "в":"(+pr) in; (+a) into, to",
 "а":"and, but (slight contrast)",
         };
+
         function findRootWords() {
-            let inputText = document.getElementById("inputText").value;
+            let inputText = document.getElementById("inputText").value.toLowerCase();
             let words = inputText.split(/\s+/);
             let output = "";
 
             words.forEach(word => {
                 let matched = false;
                 for (let dictWord in dictionary) {
-                    if (dictWord.includes(word) || word.includes(dictWord)) {
+                    if (dictWord.toLowerCase().includes(word) || word.includes(dictWord.toLowerCase())) {
                         output += `${word}: ${dictionary[dictWord]}<br>`;
                         matched = true;
                         break;
@@ -9877,7 +9878,7 @@
             });
 
             document.getElementById("output").innerHTML = output;
-        }        
+        }    
 </script>
 </body>
 </html>
