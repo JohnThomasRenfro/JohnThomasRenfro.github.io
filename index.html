@@ -550,7 +550,6 @@ const replsB=[
 {p1:/(あ)(?!X)(ち)(?!X)(こ)(?!X)(ち)(?!X)/g,r1:'$1X$2Xac$3Xh$4Xiko=chi,all over;Noun'},
 {p1:/(あ)(?!X)(さ)(?!X)(っ)(?!X)(て)(?!X)/g,r1:'$1Xa$2Xsa$3Xt$4Xte=the day after tomorrow;Noun'},
 {p1:/(あ)(?!X)(い)(?!X)(づ)(?!X)(ち)(?!X)/g,r1:'$1X$2Xai$3Xz$4Xuchi=responsive sounds,chi,ming in;Noun'},
-{p1:/(\d)(?!X)(\d)(?!X)(\d)(?!X)(\d)(?!X)/g,r1:'$1X+sen=thousands place;Noun$2X$3$4'},
 {p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xkyuu sen=nine thousand;Noun$2$3$4'},
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xhas sen=eight thousand;Noun$2$3$4'},
 {p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1Xnana sen=seven thousand;Noun$2$3$4'},
@@ -4016,6 +4015,7 @@ const replsB=[
 {p1:/(無)(?!X)(用)(?!X)/g,r1:'$1Xmu$2Xyou=useless,unnecessary;Noun'},
 {p1:/(無)(?!X)(理)(?!X)/g,r1:'$1Xmu$2Xri=impossibility;Noun'},
 {p1:/(無)(?!X)(料)(?!X)/g,r1:'$1Xmu$2Xryou=no charge;Noun'},
+{p1:/(鎮)(?!X)(魂)(?!X)/g,r1:'$1Xchin$2Xkon=repose of a soul;Noun'},
 {p1:/(無)(?!X)(数)(?!X)/g,r1:'$1Xmu$2Xsuu=countless,innumerable;Noun'},
 {p1:/(無)(?!X)(念)(?!X)/g,r1:'$1Xmu$2Xnen=regret,chagrin;Noun'},
 {p1:/(無)(?!X)(害)(?!X)/g,r1:'$1Xmu$2Xgai=harmless;Noun'},
@@ -7467,6 +7467,7 @@ const replsB=[
 {p1:/(削)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkezu=grind down,trim,scale back$2X;RuVerb'},
 {p1:/(剃)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xso=shave$2X;RuVerb'},
 {p1:/(刻)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xkiza=cut fine$2X;MuVerb'},
+{p1:/(悼)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xita=grieve over$2X;MuVerb'},
 {p1:/(刺)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xsa=stab$2X;SuVerb'},
 {p1:/(利)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xki=work,function$2X;KuVerb'},
 {p1:/(切)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xki=cut$2X;RuVerb'},
@@ -8622,7 +8623,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-東京電力福島第一原発事故の後、放射線量を下げるため、福島県内の各地では汚染された表土をはぎ取る除染が行われた。集められた大量の土は「除染土」と呼ばれ、原発周辺で保管されているが、法律により県外で最終処分されることが決まっている。環境省は処分量を減らすため、放射性物質が一定基準以下の土を東京・新宿御苑に持ち込んで花壇に使えるか試そうとした。だが、かつて原発の電気を使ってきた首都圏の人たちは、こうした動きをほとんど知らない。そんな新宿で、原発被災地と電力消費地の温度差を感じながら、一人の男性が生きている。
+戦後最悪の自然災害となった東日本大震災は11日、発生から14年を迎えた。災害関連死を含む死者・行方不明者は2万2228人。東京電力福島第1原発事故や津波に伴う避難者は、2月1日現在で2万7615人いる。発生時刻の午後2時46分には、各地で鎮魂の祈りがささげられ、犠牲者を悼んだ。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <br>
