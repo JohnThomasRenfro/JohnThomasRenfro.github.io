@@ -39,8 +39,17 @@
   <main class="container">
     <h1 class="decorative-border">The Russian to English Parser</h1>
     <b>Cut and paste this Russian text into the area below and press the "Find Root Words" button.</b>
-    <p>Путешествовать по Европе на поезде — это не только удобно, но и экологично. Из Парижа всего за несколько часов можно добраться до множества красивых городов, где вас ждут исторические достопримечательности, насыщенная культурная жизнь и кулинарные открытия.</p>
+    <p>Как за 5 секунд узнать настроение кошки
 
+1.Смотрим в глаза:
+
+    Расширенные зрачки днём → страх или возбуждение.
+
+    Суженные зрачки + медленное моргание → доверие. (Попробуйте моргнуть в ответ — кошка расслабится!)
+
+Читайте больше на https://www.pravda.ru/news/zoo/2190548-cat_body_language/
+
+<p>
     <textarea id="inputText" rows="10" placeholder="Enter Russian text here..."></textarea><br>
     <button onclick="findRootWords()">Find Root Words</button>
     <button onclick="findSuffixInWords()">Find Suffixes</button>
@@ -64,6 +73,7 @@
 "воспринимаются ":"to perceive ", 
 "роботах ":"robot",
 "автомобилях ":"car ",
+"секунд ":"second",
 "летающих ":"fly", 
 "новости ":"new, news ",
 "добавляет ":"to add ",
@@ -76,6 +86,7 @@
 "ястреб ":"hawk ",
 "ясный ":"clear ",
 "ясность ":"clarity ",
+"расслабится ":"relax ",
 "ясно ":"clearly; it is clear ",
 "ясли ":"creche ",
 "ярый ":"furious, raging; fervent, rabid ",
@@ -6014,6 +6025,7 @@
 "назло ":"out of spite; (+d) to spite (s.o.) ",
 "название ":"name; title (book) ",
 "назад ":"back, ago ",
+"расширенные ":"extended",
 "нажимать ":"to press ",
 "нажим ":"pressure; clamp ",
 "наживать ":"to gain, make (money) ",
@@ -6892,6 +6904,7 @@
 "конгресс ":"congress ",
 "конвой ":"escort ",
 "конверт ":"envelope ",
+"кошки ":"cat ",
 "конвейер ":"conveyor belt ",
 "компьютер ":"computer ",
 "композиция ":"composition ",
@@ -9942,6 +9955,11 @@
  "подтверждает ":"confirm",
  "конкуренцию ":"competition ",
  "жесткую ":"rigid ",
+ "зрачки ":"student ",
+ "суженные ":"adjudicate ",
+ "моргание ":"blinking ",
+ "попробуйте ":"try it ",
+ "поднят ":"catch up, find ",
  };
 
  
@@ -9993,14 +10011,18 @@ const suffixes = [
  "ёнка ",
  "ён ",
  "я ",
+ "ющих ",
  "ю ",
  "ья ", 
  "ышка ",
  "ыш ",
+ "ых ",
+ "ыми ",
  "ым ",
  "ый ",
+ "ые ",
+ "ы ", 
  "чик ",
-  "ть ",
  "ушка ",
  "ушка ",
  "уш ",
@@ -10022,6 +10044,7 @@ const suffixes = [
  "ка ",
  "ия ",
  "ица ",
+ "их ",
  "ист ",
  "им ",
  "ик ",
@@ -10036,22 +10059,18 @@ const suffixes = [
  "ение ", 
  "ейш ",
  "ее ",
+ "его ",
  "е ",
  "ая ",
+ "аться ",
  "ать ",
  "аст ",
  "ар ",
  "ало ", 
  "айш ",
-  "йте ",
  "а ",
- "его ",
- "ющих ",
- "ых ",
- "ыми ",
- "ы ", 
- "их ",
- "аться ",
+  "ть ",
+  "йте ",
 ];
 
 const suffixDefinitions = {
@@ -10129,7 +10148,7 @@ function findRootWords() {
  let output = "";
 
  words.forEach((word) => {
- let cleanedWord = word.replace(/[—".,!?;:]/g, "").trim(); // Clean word
+ let cleanedWord = word.replace(/[()—".,!?;:]/g, "").trim(); // Clean word
  if (prepositions.includes(cleanedWord)) {
  if (dictionary[cleanedWord]) {
  output += `
@@ -10166,12 +10185,12 @@ function findRootWords() {
  // Add to output
  if (matchedRoot) {
  output += `
- "${cleanedWord} ":" ",<br>
- "${matchedRoot} ":"${matchedDefinition}",<br>
+ Full Word; "${cleanedWord} ":" ",<br>
+ Possible Root; "${matchedRoot} ":"${matchedDefinition}",<br>
  `;
  } else {
  output += `
- "${cleanedWord} ":"(No root word found)",<br>
+ "${cleanedWord} ":" ",<br>
  `;
  }
  });
@@ -10184,13 +10203,15 @@ function findSuffixInWords() {
 
   // List of recognizable Russian prepositions
   const prepositions = [
-    "в", "во", "на", "не","но", "по","о", "с", "со", "к", "ко", "и", "о", "об", "обо",
+    "ые", "в", "во", "на", "не","но", "по","о", "с", "со", "к", "ко", "и", "о", "об", "обо",
     "за", "над", "под", "для", "до", "из", "из-за", "у", "при", "от",
     "через", "про", "без", "между", "вне"
   ];  
   
 const suffixesToDetect = new Map([
   // Infinitive and general verb roots
+["ые", "Adjective plural nominative case OR plural accusative case (used for describing plural nouns)"],
+
   ["ать", "Infinitive verb root (e.g., 'to do')"],
   ["ять", "Infinitive verb root"],
   ["ить", "Infinitive verb root (e.g., 'to do')"],
@@ -10275,7 +10296,8 @@ const suffixesToDetect = new Map([
   ["а", "Feminine singular nominative OR masculine singular genitive"],
   ["и", "Plural nominative case OR genitive singular"],
   ["ы", "Plural nominative case for feminine nouns OR genitive singular"],
-  ["е", "General case ending (neuter nominative OR prepositional OR dative)"],
+["ие", "Noun suffix, used to form abstract or collective nouns (e.g., 'mood', 'knowledge')"],
+ ["е", "General case ending (neuter nominative OR prepositional OR dative)"],
   ["у", "Dative singular for nouns OR accusative (masculine animate)"],
   ["ов", "Genitive plural for masculine nouns"],
   ["ей", "Genitive plural OR instrumental singular (feminine nouns)"],
@@ -10288,9 +10310,10 @@ const suffixesToDetect = new Map([
   ["ушк", "Diminutive or endearment suffix"],
   ["енк", "Diminutive suffix for nouns"],
   ["арн", "Suffix indicating place or profession"],
+
 ]);
 
-  let output = ""; // Initialize the output
+let output = ""; // Initialize the output
 
   // Split the input into individual words
   const words = inputText.match(/\S+/g); // Match words without trailing spaces
@@ -10300,21 +10323,27 @@ const suffixesToDetect = new Map([
     return;
   }
 
-  // Check each word for any suffix in the Map, skipping prepositions
+  // Process each word
   words.forEach((word) => {
     if (prepositions.includes(word)) {
       return; // Skip processing if the word is a preposition
     }
 
-    suffixesToDetect.forEach((definition, suffix) => {
+    // Sort suffixes by length in descending order
+    const sortedSuffixes = Array.from(suffixesToDetect.keys()).sort((a, b) => b.length - a.length);
+
+    // Check for the longest matching suffix
+    for (const suffix of sortedSuffixes) {
       if (word.endsWith(suffix)) {
+        const definition = suffixesToDetect.get(suffix);
         output += `
           "Word: ${word}",<br>
           "Suffix Found: ${suffix}",<br>
           "Definition: ${definition}",<br><br>
         `;
+        break; // Stop after the first (longest) match is found
       }
-    });
+    }
   });
 
   // Handle case where no suffixes are found
