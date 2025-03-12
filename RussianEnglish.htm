@@ -10278,13 +10278,33 @@ const suffixesToDetect = new Map([
 
 function highlightMatchingPropertiesInDefinitions() {
   const suffixOutputDiv = document.getElementById("suffixOutput").innerHTML; // Get current output
-  const propertyRegex = /(genitive|masculine|feminine|singular|plural|instrumental|nominative|prepositional|accusative|dative|past|present|future)/g;
+  const propertyRegex = /(genitive|masculine|feminine|singular|plural|instrumental|nominative|prepositional|accusative|dative|past|present|future|first-person|second-person|third-person)/g;
+
+  const colorMap = {
+    genitive: "yellow", // Cases
+    nominative: "yellow",
+    accusative: "yellow",
+    dative: "yellow",
+    instrumental: "yellow",
+    prepositional: "yellow",
+    singular: "orange", // Number
+    plural: "orange",
+    masculine: "red", // Gender
+    feminine: "red",
+    neuter: "red",
+    past: "purple", // Tense
+    present: "purple",
+    future: "purple",
+    "first-person": "indigo", // Person
+    "second-person": "indigo",
+    "third-person": "indigo"
+  };
 
   // Extract all matches for properties in the current output
   const matchedProperties = suffixOutputDiv.match(propertyRegex);
 
   if (!matchedProperties) {
-    console.log("No grammatical properties found to highlight.");
+    document.getElementById("suffixOutput").innerHTML += "<br>No grammatical properties found to highlight.";
     return; // Exit if there are no properties
   }
 
@@ -10303,10 +10323,13 @@ function highlightMatchingPropertiesInDefinitions() {
     }
   }
 
-  // Highlight only meaningful shared properties
+  // Highlight meaningful shared properties with appropriate colors
   let highlightedOutput = suffixOutputDiv.replace(propertyRegex, (match) => {
     if (filteredPropertyCounts[match]) {
-      return `<span style="background-color: yellow;">${match}</span>`;
+      const color = colorMap[match];
+      return `<span style="background-color: ${color}; color: ${
+        color === "yellow" || color === "orange" ? "black" : "white"
+      };">${match}</span>`;
     }
     return match;
   });
