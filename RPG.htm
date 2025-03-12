@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPG Sandbox</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #sandbox {
+      width: 1366px;
+      height: 768px;
+      border: 2px solid black;
+      position: relative;
+      margin-bottom: 20px;
+      background-size: cover;
+      background-position: center;
+    }
+    .draggable {
+      width: 50px;
+      height: 50px;
+      background-color: lightblue;
+      border: 1px solid #000;
+      position: absolute;
+      cursor: grab;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 10px;
+      font-weight: bold;
+      overflow: hidden;
+    }
+    .rotate-button {
+      width: 16px;
+      height: 10px;
+      padding: 0;
+      font-size: 8px;
+      line-height: 8px;
+      cursor: pointer;
+      margin-bottom: 2px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 5px;
+      text-align: center;
+    }
+    button {
+      margin: 5px;
+      padding: 5px 10px;
+    }
+    #diceRoller {
+      margin: 10px 0;
+    }
+    #diceResult {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+    #modifierInput {
+      width: 50px;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>RPG Sandbox</h1>
+  <button id="uploadBackground">Upload Background Map</button>
+  <input type="file" id="backgroundInput" accept="image/*" style="display: none;">
+  <div id="sandbox"></div>
+  <table id="statsTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Armor Class</th>
+        <th>Current HP</th>
+        <th>Max HP</th>
+        <th>Attacks</th>
+        <th>Damage Dice</th>
+        <th>Adventure Gear</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <button id="addPiece">Add Piece</button>
+  <div id="diceRoller">
+    <button onclick="rollDie(20)">d20</button>
+    <button onclick="rollDie(12)">d12</button>
+    <button onclick="rollDie(10)">d10</button>
+    <button onclick="rollDie(8)">d8</button>
+    <button onclick="rollDie(6)">d6</button>
+    <button onclick="rollDie(4)">d4</button>
+    + <input type="number" id="modifierInput" value="0" min="-20" max="20">
+    <span id="diceResult"></span>
+  </div>
+  <script>
+    // Generate Unique ID
+    function generateId() {
+      return 'piece-' + Date.now();
+    }
+
+    // Add a new piece
+    document.getElementById("addPiece").addEventListener("click", () => {
+      const id = generateId();
+      addPieceToSandbox(id, "Unnamed");
+      addPieceRow(id, "Unnamed");
+      saveGameState();
+    });
+
+    // Add a piece to the sandbox
+    function addPieceToSandbox(id, name) {
+      const piece = document.createElement("div");
+      piece.className = "draggable";
+      piece.id = id;
+      piece.style.top = "50px";
+      piece.style.left = "50px";
+      piece.style.transform = "rotate(0deg)";
+      piece.setAttribute("data-rotation", "0");
+
+      // Add rotation button
+      const rotateButton = document.createElement("button");
+      rotateButton.className = "rotate-button";
+      rotateButton.textContent = "↻";
+      rotateButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        let rotation = parseInt(piece.getAttribute("data-rotation")) || 0;
+        rotation = (rotation + 60) % 360;
+        piece.style.transform = `rotate(${rotation}deg)`;
+        piece.setAttribute("data-rotation", rotation);
+        saveGameState();
+      });
+      piece.appendChild(rotateButton);
+
+      // Display the unalterable name
+      const nameDisplay = document.createElement("span");
+      nameDisplay.textContent = name;
+      nameDisplay.style.pointerEvents = "none";
+      piece.appendChild(nameDisplay);
+
+      makeDraggable(piece);
+      document.getElementById("sandbox").appendChild(piece);
+    }
+
+    // Add a row to the stats table
+    function addPieceRow(id, name) {
+      const statsTable = document.getElementById("statsTable").querySelector("tbody");
+      const row = document.createElement("tr");
+      row.id = `row-${id}`;
+      row.innerHTML = `
+        <td contenteditable="true" oninput="updatePieceName('${id}', this.textContent)">${name}</td>
+        <td contenteditable="true" oninput="saveGameState()">10</td>
+        <td contenteditable="true" oninput="saveGameState()">10</td>
+        <td contenteditable="true" oninput="saveGameState()">10</td>
+        <td contenteditable="true" oninput="saveGameState()">1</td>
+        <td contenteditable="true" oninput="saveGameState()">1d6</td>
+        <td contenteditable="true" oninput="saveGameState()">None</td>
+        <td><input type="file" accept="image/*" onchange="uploadPieceImage('${id}', this)"></td>
+        <td><button onclick="clonePiece('${id}')">Clone</button></td>
+        <td><button onclick="deletePiece('${id}')">Delete</button></td>
+      `;
+      statsTable.appendChild(row);
+    }
+
+    // Update the name displayed on the piece
+    function updatePieceName(id, newName) {
+      const piece = document.getElementById(id);
+      if (piece) {
+        const nameDisplay = piece.querySelector("span");
+        nameDisplay.textContent = newName;
+        saveGameState();
+      }
+    }
+
+    // Make elements draggable
+    function makeDraggable(element) {
+      let isDragging = false;
+      let startX, startY, initialX, initialY;
+
+      element.addEventListener("mousedown", (e) => {
+        if (e.target.tagName !== "BUTTON") {
+          isDragging = true;
+          startX = e.clientX;
+          startY = e.clientY;
+          initialX = parseFloat(element.style.left) || 0;
+          initialY = parseFloat(element.style.top) || 0;
+          element.style.cursor = "grabbing";
+        }
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+          e.preventDefault();
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+          element.style.left = `${initialX + dx}px`;
+          element.style.top = `${initialY + dy}px`;
+          saveGameState();
+        }
+      });
+
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+        element.style.cursor = "grab";
+      });
+    }
+
+    // Upload background map
+    document.getElementById("uploadBackground").addEventListener("click", () => {
+      document.getElementById("backgroundInput").click();
+    });
+
+    document.getElementById("backgroundInput").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          document.getElementById("sandbox").style.backgroundImage = `url(${event.target.result})`;
+          saveGameState();
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Upload image for a piece
+    function uploadPieceImage(id, input) {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const piece = document.getElementById(id);
+          if (piece) {
+            piece.style.backgroundImage = `url(${event.target.result})`;
+            piece.style.backgroundSize = "cover";
+            saveGameState();
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Delete a piece
+    function deletePiece(id) {
+      const piece = document.getElementById(id);
+      const row = document.getElementById(`row-${id}`);
+      if (piece) piece.remove();
+      if (row) row.remove();
+      saveGameState();
+    }
+
+    // Clone a piece
+    function clonePiece(id) {
+      const originalPiece = document.getElementById(id);
+      const originalRow = document.getElementById(`row-${id}`);
+      if (!originalPiece || !originalRow) return;
+
+      // Get original stats
+      const stats = Array.from(originalRow.querySelectorAll("td")).slice(0, 7).map(td => td.textContent);
+      const baseName = stats[0].replace(/\s+\d+$/, ""); // Remove any existing number
+      const existingClones = Array.from(document.querySelectorAll(".draggable span"))
+        .map(span => span.textContent)
+        .filter(name => name.startsWith(baseName))
+        .map(name => parseInt(name.match(/\d+$/)?.[0]) || 0);
+      const nextNumber = existingClones.length ? Math.max(...existingClones) + 1 : 1;
+      const newName = `${baseName} ${nextNumber}`;
+
+      // Create new piece
+      const newId = generateId();
+      addPieceToSandbox(newId, newName);
+      const newPiece = document.getElementById(newId);
+      newPiece.style.backgroundImage = originalPiece.style.backgroundImage;
+      newPiece.style.backgroundSize = originalPiece.style.backgroundSize;
+      newPiece.style.left = `${parseFloat(originalPiece.style.left) + 10}px`; // Slight offset
+      newPiece.style.top = `${parseFloat(originalPiece.style.top) + 10}px`;
+
+      // Create new row with cloned stats
+      const statsTable = document.getElementById("statsTable").querySelector("tbody");
+      const newRow = document.createElement("tr");
+      newRow.id = `row-${newId}`;
+      newRow.innerHTML = `
+        <td contenteditable="true" oninput="updatePieceName('${newId}', this.textContent)">${newName}</td>
+        ${stats.slice(1).map(stat => `<td contenteditable="true" oninput="saveGameState()">${stat}</td>`).join("")}
+        <td><input type="file" accept="image/*" onchange="uploadPieceImage('${newId}', this)"></td>
+        <td><button onclick="clonePiece('${newId}')">Clone</button></td>
+        <td><button onclick="deletePiece('${newId}')">Delete</button></td>
+      `;
+      statsTable.appendChild(newRow);
+
+      saveGameState();
+    }
+
+    // Dice rolling function
+    function rollDie(sides) {
+      const roll = Math.floor(Math.random() * sides) + 1;
+      const modifier = parseInt(document.getElementById("modifierInput").value) || 0;
+      const total = roll + modifier;
+      const resultText = `d${sides}: ${roll} ${modifier >= 0 ? '+' : ''}${modifier} = ${total}`;
+      document.getElementById("diceResult").textContent = resultText;
+    }
+
+    // Save game state to localStorage
+    function saveGameState() {
+      const pieces = Array.from(document.getElementsByClassName("draggable")).map(piece => ({
+        id: piece.id,
+        position: {
+          top: piece.style.top,
+          left: piece.style.left
+        },
+        rotation: piece.getAttribute("data-rotation"),
+        background: piece.style.backgroundImage,
+        name: piece.querySelector("span").textContent
+      }));
+
+      const rows = Array.from(document.getElementById("statsTable").querySelectorAll("tbody tr")).map(row => ({
+        id: row.id,
+        stats: Array.from(row.querySelectorAll("td")).slice(0, 7).map(td => td.textContent)
+      }));
+
+      const background = document.getElementById("sandbox").style.backgroundImage;
+
+      localStorage.setItem("rpgState", JSON.stringify({ pieces, rows, background }));
+    }
+
+    // Load game state from localStorage
+    function loadGameState() {
+      const state = JSON.parse(localStorage.getItem("rpgState") || "{}");
+      if (state.background) {
+        document.getElementById("sandbox").style.backgroundImage = state.background;
+      }
+      if (state.pieces) {
+        state.pieces.forEach(pieceData => {
+          addPieceToSandbox(pieceData.id, pieceData.name);
+          const piece = document.getElementById(pieceData.id);
+          if (piece) {
+            piece.style.top = pieceData.position.top;
+            piece.style.left = pieceData.position.left;
+            piece.style.transform = `rotate(${pieceData.rotation}deg)`;
+            piece.setAttribute("data-rotation", pieceData.rotation);
+            if (pieceData.background) {
+              piece.style.backgroundImage = pieceData.background;
+              piece.style.backgroundSize = "cover";
+            }
+          }
+        });
+      }
+      if (state.rows) {
+        state.rows.forEach(rowData => {
+          const statsTable = document.getElementById("statsTable").querySelector("tbody");
+          const row = document.createElement("tr");
+          row.id = rowData.id;
+          const pieceId = rowData.id.replace("row-", "");
+          row.innerHTML = `
+            ${rowData.stats.map(stat => `<td contenteditable="true" oninput="saveGameState()">${stat}</td>`).join("")}
+            <td><input type="file" accept="image/*" onchange="uploadPieceImage('${pieceId}', this)"></td>
+            <td><button onclick="clonePiece('${pieceId}')">Clone</button></td>
+            <td><button onclick="deletePiece('${pieceId}')">Delete</button></td>
+          `;
+          statsTable.appendChild(row);
+        });
+      }
+    }
+
+    // Initialize game
+    window.onload = loadGameState;
+  </script>
+</body>
+</html>
