@@ -1648,6 +1648,7 @@ const replsB=[
 {p1:/(読)(?!X)(み)(?!X)(方)(?!X)/g,r1:'$1Xyo$2Xmi$3Xkata=way of reading,reading;Noun'},
 {p1:/(調)(?!X)(味)(?!X)(料)(?!X)/g,r1:'$1Xcyou$2Xmi$3Xryou=seasoning,flavoring;Noun'},
 {p1:/(論)(?!X)(理)(?!X)(的)(?!X)/g,r1:'$1Xron$2Xri$3Xteki=logical;Noun'},
+{p1:/(戦)(?!X)(没)(?!X)(者)(?!X)/g,r1:'$1Xsen$2Xbotsu$3Xsya=fallen soldiers;Noun'},
 {p1:/(警)(?!X)(務)(?!X)(隊)(?!X)/g,r1:'$1Xkei$2Xmu$3Xtai=military police;Noun'},
 {p1:/(警)(?!X)(察)(?!X)(官)(?!X)/g,r1:'$1Xkei$2Xsatsu$3Xkan=police;Noun'},
 {p1:/(財)(?!X)(務)(?!X)(相)(?!X)/g,r1:'$1Xzai$2Xmu$3Xsyou=Minister of Finance;Noun'},
@@ -1658,6 +1659,7 @@ const replsB=[
 {p1:/(賑)(?!X)(や)(?!X)(か)(?!X)/g,r1:'$1Xnig$2Xiy$3Xaka=lively,exciting;Noun'},
 {p1:/(贈)(?!X)(り)(?!X)(物)(?!X)/g,r1:'$1Xokuri$2Xmo$3Xno=present,gift;Noun'},
 {p1:/(赤)(?!X)(ん)(?!X)(坊)(?!X)/g,r1:'$1Xakan$2Xbo$3Xu=baby;Noun'},
+{p1:/(か)(?!X)(ね)(?!X)(て)(?!X)/g,r1:'$1Xka$2Xne$3Xte=previously;Noun'},
 {p1:/(赤)(?!X)(十)(?!X)(字)(?!X)/g,r1:'$1Xaka$2Xjyuu$3Xji=Red Cross;Noun'},
 {p1:/(足)(?!X)(し)(?!X)(算)(?!X)/g,r1:'$1Xta$2Xshi$3Xzan=addition;Noun'},
 {p1:/(身)(?!X)(な)(?!X)(り)(?!X)/g,r1:'$1Xmin$2Xar$3Xi=dress,your appearance;Noun'},
@@ -3474,6 +3476,7 @@ const replsB=[
 {p1:/(続)(?!X)(々)(?!X)/g,r1:'$1Xzoku$2Xzoku=in rapid succession,one after another;Noun'},
 {p1:/(継)(?!X)(続)(?!X)/g,r1:'$1Xkei$2Xzoku=continuation;Noun'},
 {p1:/(継)(?!X)(承)(?!X)/g,r1:'$1Xkei$2Xsyou=succession;Noun'},
+{p1:/(硫)(?!X)(黄)(?!X)/g,r1:'$1Xi$2Xou=sulfer;Noun'},
 {p1:/(絶)(?!X)(対)(?!X)/g,r1:'$1Xzet$2Xtai=absolutely;Noun'},
 {p1:/(絶)(?!X)(妙)(?!X)/g,r1:'$1Xzetsu$2Xmyou=exquisite;Noun'},
 {p1:/(絵)(?!X)(本)(?!X)/g,r1:'$1Xe$2Xhon=picture book;Noun'},
@@ -5988,6 +5991,7 @@ const replsB=[
 {p1:/(南)(?!X)(北)(?!X)/g,r1:'$1Xnan$2Xboku=north and south;Noun'},
 {p1:/(南)(?!X)(下)(?!X)/g,r1:'$1Xnan$2Xka=going south;Noun'},
 {p1:/(協)(?!X)(議)(?!X)/g,r1:'$1Xkyou$2Xgi=conference;Noun'},
+{p1:/(節)(?!X)(目)(?!X)/g,r1:'$1Xfushi$2Xme=turning point;Noun'},
 {p1:/(協)(?!X)(調)(?!X)/g,r1:'$1Xkyou$2Xcyou=coordinated;Noun'},
 {p1:/(協)(?!X)(業)(?!X)/g,r1:'$1Xkyou$2Xgyou=cooperative industry;Noun'},
 {p1:/(協)(?!X)(定)(?!X)/g,r1:'$1Xkyou$2Xtei=pact;Noun'},
@@ -8586,7 +8590,7 @@ const replsB=[
 
 {p1:/(Adverb)(く)(?!X)/g,r1:'$1 $2Xku=and;Postposition'},
 {p1:/(IAdjectiveと|NaAdjectiveと|Nounと)(?!X)/g,r1:'$1Xto=with the above,the person said;Postposition'},
-{p1:/(Adjectiveな)(?!X)/g,r1:'$1Xna=NaAdjective'},
+{p1:/(Adjectiveな|Nounな)(?!X)/g,r1:'$1Xna=NaAdjective'},
 {p1:/(Adverbな)(?!X)/g,r1:'$1Xna=Adverb'},
 {p1:/(Nounら|Noun等)(?!X)/g,r1:'$1Xra=plural;Postposition'},
 {p1:/(Punctuation|Postposition|Verb|Noun)(の)(?!X)/g,r1:'$1X$2no=of the above;Postposition'},
@@ -8623,7 +8627,7 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-戦後最悪の自然災害となった東日本大震災は11日、発生から14年を迎えた。災害関連死を含む死者・行方不明者は2万2228人。東京電力福島第1原発事故や津波に伴う避難者は、2月1日現在で2万7615人いる。発生時刻の午後2時46分には、各地で鎮魂の祈りがささげられ、犠牲者を悼んだ。
+石破茂首相は、太平洋戦争末期に激戦地となった硫黄島（東京都小笠原村）を29日に訪問する方向で調整に入った。同日に硫黄島で開かれる戦没者の日米合同慰霊式に出席する。政府関係者によると、日米合同慰霊式への首相出席は異例だ。首相はかねて、太平洋戦争の検証に取り組む必要性を主張。戦後80年の節目に強固な同盟関係を内外に示す狙いもある。複数の関係者が12日、明らかにした。
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <br>
