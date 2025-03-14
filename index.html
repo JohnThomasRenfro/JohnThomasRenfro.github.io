@@ -46,7 +46,7 @@ button:hover {
  text-shadow: 1px 1px 4px #6b5b4b;
 }
 
-input, textarea {
+textarea {
  background-color: #3a3a3a;
  border: 3px solid transparent;
  border-image: linear-gradient(45deg, #6b5b4b, #867b74, #6b5b4b) 10;
@@ -56,6 +56,17 @@ input, textarea {
  font-size: 20px;
  outline: none;
  width: 100%;
+}
+
+input {
+ background-color: #3a3a3a;
+ border: 3px solid transparent;
+ border-image: linear-gradient(45deg, #6b5b4b, #867b74, #6b5b4b) 10;
+ box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
+ color: inherit;
+ font-family: 'Noto Serif JP',serif;
+ font-size: 20px;
+ outline: none;
 }
 
 input:hover, textarea:hover {
@@ -90,6 +101,30 @@ hr::after {
  color: #b7a57a;
  display: block;
  text-align: center;
+}
+
+#typeSelector {
+    font-size: 16px; /* Adjust the font size */
+    padding: 8px 12px; /* Add some inner spacing */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 6px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background */
+    color: #333; /* Text color */
+    outline: none; /* Remove default focus outline */
+    transition: all 0.3s ease; /* Smooth hover effects */
+}
+
+/* Hover effect */
+#typeSelector:hover {
+    background-color: #e6f7e6; /* Light green on hover */
+    border-color: #3e8e41; /* Darker green border */
+}
+
+/* Focus effect */
+#typeSelector:focus {
+    background-color: #d9f2d9; /* Slightly darker green for focus */
+    border-color: #2e7d32; /* Even darker green border */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Soft shadow */
 }
 
 </style>
@@ -4212,7 +4247,7 @@ const replsB=[
 {p1:/(下)(?!X)(回)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xshita$2Xmawa,fall below$3X;RuVerb'},
 {p1:/(下)(?!X)(ろ)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xo$2Xro,bring down,take down,pull down$3X;SuVerb'},
 {p1:/(下)(?!X)(り)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xo$2Xri,go down,come down$3X;RuVerb'},
-{p1:/(下)(?!X)(さ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xku$2Xdasa,give,favor with$3X;RuVerb'},
+{p1: /(上)(?!X)(振)(?!X)([らりるれろっ])/g, r1: '$1Xure$2Xbu$3X,an economic upturn$3X;RuVerb'},{p1:/(下)(?!X)(さ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xku$2Xdasa,give,favor with$3X;RuVerb'},
 {p1:/(下)(?!X)(げ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xsag$2Xe,lower,turn down$3X;RuVerb'},
 {p1:/(下)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xsa$2Xga,go down$3X;RuVerb'},
 {p1:/(上)(?!X)(回)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xuwa$2Xmawa,exceed$3X;RuVerb'},
@@ -10626,6 +10661,117 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 
 }
 
+function toggleAdminSection() {
+    const adminSection = document.getElementById("adminSection");
+    const adminToggle = document.getElementById("adminToggle");
+
+    if (adminSection.style.display === "none") {
+        adminSection.style.display = "block";
+        adminToggle.textContent = "Hide Admin Section";
+    } else {
+        adminSection.style.display = "none";
+        adminToggle.textContent = "Admin use only";
+    }
+}
+
+function formatJapaneseRegex(word, pronunciation, definition, type) {
+    if (type === "RuVerb") {
+        // RuVerb-specific logic
+        let regexPattern = word.split('').map((char, index) => 
+            index === word.length - 1 
+                ? `([らりるれろっ])` 
+                : `(${char})(?!X)`
+        ).join('');
+        let replacement = word.split('').map((char, index) => 
+            index === word.length - 1 
+                ? `$${index + 1}X` 
+                : `$${index + 1}X${pronunciation.split(/\s+/)[index] || char}`
+        ).join('');
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$3X;RuVerb'},`;
+    } else if (type === "SuVerb") {
+        // SuVerb-specific logic
+        let regexPattern = word.split('').map((char, index) => 
+            index === word.length - 1 
+                ? `([さしすせそ])` 
+                : `(${char})(?!X)`
+        ).join('');
+        let replacement = word.split('').map((char, index) => 
+            index === word.length - 1 
+                ? `$${index + 1}X` 
+                : `$${index + 1}X${pronunciation.split(/\s+/)[index] || char}`
+        ).join('');
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$3X;SuVerb'},`;
+    } else if (type === "IAdjective") {
+        // IAdjective-specific logic
+        let regexPattern = word.split('').map((char, index) => 
+            index === word.length - 1 
+                ? `([いくかさ])` 
+                : `(${char})(?!X)`
+        ).join('');
+        let replacement = word.split('').map((char, index) => 
+            index === word.length - 1 
+                ? `$${index + 1}X` 
+                : `$${index + 1}X${pronunciation.split(/\s+/)[index] || char}`
+        ).join('');
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$3X;IAdjective'},`;
+    } else if (type === "KuVerb") {
+        // Fixed KuVerb-specific logic
+        let regexPattern = word.split('').map((char, index) => 
+            index === word.length - 1 
+                ? `([かきくけこい])` 
+                : `(${char})(?!X)`
+        ).join('');
+        let replacement = word.split('').map((char, index) => 
+            index === word.length - 1 
+                ? `$${index + 1}X` 
+                : `$${index + 1}X${pronunciation.split(/\s+/)[index] || char}`
+        ).join('');
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$3X;KuVerb'},`;
+    } else if (type === "BuVerb") {
+        // BuVerb-specific logic
+        return `{p1: /(${word})(?!X)([ばびぶべぼん])(?!X)/g, r1: '$1X${pronunciation},${definition}$2X;BuVerb'},`;
+    } else if (type === "MuVerb") {
+        // MuVerb-specific logic
+        return `{p1: /(${word[0]})(?!X)([まみむめもん])(?!X)/g, r1: '$1X${pronunciation},${definition}$2X;MuVerb'},`;
+    } else if (type === "NuVerb") {
+        // NuVerb-specific logic
+        return `{p1: /(${word})(?!X)(な|に|ぬ|ね|の|ん)(?!X)/g, r1: '$1X${pronunciation},${definition}$2X;NuVerb'},`;
+    } else if (type === "TsuVerb") {
+        // TsuVerb-specific logic
+        return `{p1: /(${word})(?!X)([たちつてとっ])(?!X)/g, r1: '$1X${pronunciation},${definition}$2X;TsuVerb'},`;
+    } else {
+        // Default Non-Verb logic
+        let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
+        let pronunciationParts = pronunciation.split(/\s+/);
+        let replacement = word.split('').map((_, i) => 
+            `$${i + 1}X${pronunciationParts[i] || word[i]}`
+        ).join('');
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition};Noun'},`;
+    }
+}
+
+function formatAndDisplay() {
+    const inputWord = document.getElementById("wordInput").value;
+    const inputPronunciation = document.getElementById("pronunciationInput").value;
+    const inputDefinition = document.getElementById("definitionInput").value;
+    const selectedType = document.getElementById("typeSelector").value; // Get the selected type
+    const output = formatJapaneseRegex(inputWord, inputPronunciation, inputDefinition, selectedType);
+    document.getElementById("output").innerText = output;
+}
+
+function copyToClipboard() {
+    const outputText = document.getElementById("output").innerText;
+    if (outputText) {
+        navigator.clipboard.writeText(outputText).then(() => {
+            alert("Output copied to clipboard!");
+        }).catch(err => {
+            console.error("Failed to copy text: ", err);
+        });
+    } else {
+        alert("Nothing to copy!");
+    }
+}
+
 </script></head>
 
 <body>
@@ -10633,18 +10779,31 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
+日銀は18～19日の金融政策決定会合で、政策金利の水準を0・5％程度で維持する方向だ。国内物価の上振れに加え、高水準の賃上げが期待できることから、市場の一部には追加利上げの前倒し観測も浮上する。一方、海外経済に目を向けると、トランプ米政権の関税政策を巡り不確実性が高く、日銀はリスクの見極めを優先する構えだ。
+<hr>
+<button id="adminToggle" onclick="toggleAdminSection()">Admin use only</button>
+<div id="adminSection" style="display: none;">
+    <input type="text" id="wordInput" placeholder="Enter Japanese word" />
+    <input type="text" id="pronunciationInput" placeholder="Enter romanized pronunciation" />
+    <input type="text" id="definitionInput" placeholder="Enter English definition" />
+    <select id="typeSelector">
+        <option value="Non-Verb" selected>Non-Verb</option>
+        <option value="RuVerb">RuVerb</option>
+        <option value="SuVerb">SuVerb</option>
+        <option value="IAdjective">IAdjective</option>
+        <option value="KuVerb">KuVerb</option>
+        <option value="BuVerb">BuVerb</option>
+        <option value="MuVerb">MuVerb</option>
+        <option value="NuVerb">NuVerb</option>
+        <option value="TsuVerb">TsuVerb</option>
+    </select>
+    <button onclick="formatAndDisplay()">Generate</button> <!-- Generate button added -->
+    <p id="output"></p>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+</div>
 
-財務省の近くで「NHKから国民を守る党」の立花孝志党首（57）がナタのようなもので切りつけられました。
-
-【画像】立花孝志党首襲撃で騒然としている財務省前
-
-午後5時過ぎ、東京・千代田区の財務省の近くで街宣活動中だった「NHKから国民を守る党」の立花孝志党首が男にナタのようなもので切りつけられました。
-
-立花党首は顔などにケガをして病院に搬送され手当を受けているということです。
-
-警視庁は切りつけた30代とみられる男を逮捕し、当時の状況を調べています。
-<p>
-<textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
+<hr>
+<textarea cols="35" rows="6" onchange="a=this.value;translateB()">Paste the Japanese text here.</textarea>
 <br>
 <span id="translatedTextDisplay"></span>
 <br>
@@ -10675,33 +10834,7 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
         <li><strong>Bunkan (分館)</strong> - Branch library or annex.</li>
     </ol>
 <hr>	
-This area is for my use only.<br>
- <input type="text" id="wordInput" placeholder="Enter the Japanese word">
- <input type="text" id="pronunciationInput" placeholder="Enter spaced English pronunciation">
- <input type="text" id="definitionInput" placeholder="Enter the English definition">
- <button onclick="formatAndDisplay()">Format</button>
- <div id="outputContainer">
- <p id="output">Formatted output will appear here...</p>
- </div>
 
-<script>
- function formatJapaneseRegex(word,pronunciation,definition) {
- let regexPattern=word.split('').map(char,> `(${char})(?!X)`).join('');
- let pronunciationParts=pronunciation.split(/\s+/);
- let replacement=word.split('').map((_,i),> `$${i + 1}X${pronunciationParts[i] || word[i]}`).join('');
- return `{p1:/${regexPattern}/g,r1:'${replacement}\,${definition};Noun'},`;
- }
-
- function formatAndDisplay() {
- const inputWord=document.getElementById("wordInput").value;
- const inputPronunciation=document.getElementById("pronunciationInput").value;
- const inputDefinition=document.getElementById("definitionInput").value;
- const output=formatJapaneseRegex(inputWord,inputPronunciation,inputDefinition);
- document.getElementById("output").innerText=output;
- }
-</script>
-
-<hr> 
  <div class="HeaderStyle">Killing Time</div>
  <p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022) Chapter 16</p>
  <p>[VIEWING] <i>Northern Exposure</i>,S3E3 (1991)</p>
