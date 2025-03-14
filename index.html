@@ -118,6 +118,11 @@ const replsB=[
 {p1:/([\)\）])(?!X)/g,r1:'$1Xclose parenthesis;Punctuation'},
 {p1:/([\(\（])(?!X)/g,r1:'$1Xopen parenthesis;Punctuation'},
 
+{p1:/(六本木)/g,r1:'$1<br>=Roppongi, Tokyo;Noun'},
+{p1:/(東京)/g,r1:'$1<br>=Tokyo,Eastern Capital,Japan;Noun'},
+{p1:/(加藤)/g,r1:'$1<br>=Katou,family name;Noun'},
+{p1:/(綾子)/g,r1:'$1<br>=Ayako,first name;Noun'},
+
 {p1:/(せ)(?!X)(ざ)(?!X)(る)(?!X)(を)(?!X)(え)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1Xse$2Xza$3Xru$4Xo$5Xe$6Xna$7Xi=can t help but do;Noun'},
  
 {p1:/(立)(?!X)(ち)(?!X)(入)(?!X)(り)(?!X)(禁)(?!X)(止)(?!X)/g,r1:'$1Xtachi$2Xiri$3Xkin$4Xshi$5Xno$6Xto=trespassing;Noun'},
@@ -1413,7 +1418,6 @@ const replsB=[
 {p1:/(本)(?!X)(格)(?!X)(化)(?!X)/g,r1:'$1Xhon$2Xkaku$3Xka=regularization;Noun'},
 {p1:/(本)(?!X)(格)(?!X)(的)(?!X)/g,r1:'$1Xhon$2Xkaku$3Xteki=full,scale;Noun'},
 {p1:/(来)(?!X)(園)(?!X)(者)(?!X)/g,r1:'$1Xrai$2Xen$3Xsya=park visitor;Noun'},
-{p1:/(東)(?!X)(京)(?!X)(都)(?!X)/g,r1:'$1Xtou$2Xkyou$3Xto=Tokyo metropolitan area;Noun'},
 {p1:/(東)(?!X)(海)(?!X)(道)(?!X)/g,r1:'$1Xtou$2Xkai$3Xdo=Highway Japan;Noun'},
 {p1:/(枠)(?!X)(組)(?!X)(み)(?!X)/g,r1:'$1Xwaku$2Xgu$3Xmi=framework;Noun'},
 {p1:/(柔)(?!X)(ら)(?!X)(か)(?!X)/g,r1:'$1Xyaw$2Xa$3Xraka=soft,tender,gentle;Noun'},
@@ -4444,7 +4448,6 @@ const replsB=[
 {p1:/(東)(?!X)(洋)(?!X)/g,r1:'$1Xtou$2Xyou=Orient;Noun'},
 {p1:/(東)(?!X)(南)(?!X)/g,r1:'$1Xtou$2Xnan=southeast;Noun'},
 {p1:/(東)(?!X)(北)(?!X)/g,r1:'$1Xtou$2Xhoku=northeast;Noun'},
-{p1:/(東)(?!X)(京)(?!X)/g,r1:'$1Xtou$2Xkyou=Eastern Capital,Japan;Noun'},
 {p1:/(来)(?!X)(週)(?!X)/g,r1:'$1Xrai$2Xsyuu=next week;Noun'},
 {p1:/(来)(?!X)(月)(?!X)/g,r1:'$1Xrai$2Xgetsu=next month;Noun'},
 {p1:/(来)(?!X)(春)(?!X)/g,r1:'$1Xrai$2Xsyun=next spring;Noun'},
@@ -8358,6 +8361,7 @@ const replsB=[
 {p1:/(口)(?!X)/g,r1:'$1Xkuchi,Guchi=mouth;Noun'},
 {p1:/(取)(?!X)/g,r1:'$1Xtori=take;Noun'},
 {p1:/(収)(?!X)/g,r1:'$1Xsyuu=accepting;Noun'},
+{p1:/(綾)(?!X)/g,r1:'$1Xaya=design;Noun'},
 {p1:/(友)(?!X)/g,r1:'$1Xtomo=friend,companion;Noun'},
 {p1:/(又)(?!X)/g,r1:'$1Xmata=again,also,or;Noun'},
 {p1:/(原)(?!X)/g,r1:'$1Xhara=bara,wara,plain;Noun'},
@@ -8627,7 +8631,9 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-石破茂首相は、太平洋戦争末期に激戦地となった硫黄島（東京都小笠原村）を29日に訪問する方向で調整に入った。同日に硫黄島で開かれる戦没者の日米合同慰霊式に出席する。政府関係者によると、日米合同慰霊式への首相出席は異例だ。首相はかねて、太平洋戦争の検証に取り組む必要性を主張。戦後80年の節目に強固な同盟関係を内外に示す狙いもある。複数の関係者が12日、明らかにした。
+
+テレビ東京が14日、東京・六本木の同局で4月編成説明会を開催。フリーアナウンサーの加藤綾子（39）が同局系バラエティー「ナゼそこ？」（木曜後9・0）の新MCに就任することを発表した。活動を一時休止後、初レギュラーとなる。
+
 <p>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <br>
@@ -8679,11 +8685,7 @@ If you download a copy of this index.html file,you can add your own entries in l
 
 <hr> 
  <div class="HeaderStyle">Killing Time</div>
- <p>The <a href="RussianEnglish.htm" target="_blank">Russian to English Parser</a></p>
- <p>The <a href="KoreanEnglish.htm" target="_blank">Korean to English Parser</a></p>
- <p>The <a href="RPG.htm" target="_blank">RPG encounter manager</a></p>
- 
-  <p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022) Chapter 16</p>
+ <p>[READING] <i>The Housemaid</i> - Frieda McFadden (2022) Chapter 16</p>
  <p>[VIEWING] <i>Northern Exposure</i>,S3E3 (1991)</p>
 
  <div class="HeaderStyle">External Links</div>
