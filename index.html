@@ -10788,8 +10788,8 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;TsuVerb'},`;    
     } else if (type === "NonVerb") {
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
-        let replacement = word.split('').map((char, i) => 
-            `$${i + 1}X${char}`
+        let replacement = word.split('').map((_, i) => 
+            `$${i + 1}X${pronunciationParts[i] || word[i]}`
         ).join('');
         console.log('NonVerb Regex:', regexPattern); // Debug statement
         console.log('NonVerb Replacement:', replacement); // Debug statement
