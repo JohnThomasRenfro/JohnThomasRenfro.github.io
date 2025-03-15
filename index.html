@@ -4,199 +4,197 @@
 <meta charset="UTF-8">
 <title>The Japanese to English Parser</title>
 <link rel="icon" href="reading.png" type="image/png">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>The Japanese to English Parser</title>
-    <link rel="icon" href="reading.png" type="image/png">
-    <style> 
-    body {
-        background-attachment: fixed;
-        background-color: #f5f5f5; /* Light gray for a neutral, soft background */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        color: #333333; /* Dark gray for readability */
-        font-family: 'Noto Serif JP', serif;
-        font-size: 20px;
-        margin: 20px;
-        padding: 20px;
-        position: relative;
-        word-wrap: break-word;
-    }
+<style>
+body {
+    background-attachment: fixed;
+    background-color: #2b2b2b;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #d3c6aa;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+    word-wrap: break-word;
+    box-shadow: inset 0 0 20px rgba(43, 43, 43, 0.8);
+}
 
-    button, select {
-        background: linear-gradient(to bottom, #e57373, #ef5350); /* Shades of red */
-        border: 3px solid #d32f2f; /* Dark red for border */
-        border-radius: 10px;
-        color: #ffffff; /* White text for readability */
-        cursor: pointer;
-        transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
-        padding: 8px 16px;
-        font-size: 18px;
-    }
+/* Enhanced Button Styling */
+button {
+    background: linear-gradient(135deg, #8a7a5b 0%, #b7a57a 50%, #6b5b4b 100%);
+    border: 3px solid #6b5b4b;
+    border-radius: 12px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+    color: #2b2b2b;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: all 0.3s ease-in-out;
+}
 
-    button:hover, select:hover {
-        background: #ef5350; /* Slightly darker red */
-        color: #ffffff; /* White text */
-        transform: scale(1.05);
-    }
+button:hover {
+    background: linear-gradient(135deg, #b7a57a 0%, #d3c6aa 50%, #8a7a5b 100%);
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+}
 
-    button:active, select:active {
-        background: #c62828; /* Darker red */
-        color: #ffffff; /* White text */
-        transform: scale(0.98);
-    }
+/* Header Styling */
+.HeaderStyle {
+    background: radial-gradient(circle at center, #3a3a3a 0%, #524e4d 50%, #2b2b2b 100%);
+    border: 4px double #6b5b4b;
+    border-radius: 8px;
+    color: #b7a57a;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    padding: 10px;
+    text-shadow: 2px 2px 6px rgba(107, 91, 75, 0.7);
+}
 
-    .HeaderStyle {
-        background: radial-gradient(circle, #f5f5f5 10%, #eeeeee 50%, #f5f5f5 90%); /* Light gray gradient */
-        border: 3px solid #d32f2f; /* Dark red border */
-        border-bottom: 2px solid #c62828; /* Darker red */
-        color: #d32f2f; /* Dark red text */
-        font-family: 'Noto Serif JP', serif;
-        font-size: 25px; /* Updated font size */
-        text-shadow: 1px 1px 4px #b71c1c; /* Dark red shadow */
-    }
+/* Enhanced Textarea and Input */
+textarea, input {
+    background: linear-gradient(to bottom, #3a3a3a 0%, #2f2f2f 100%);
+    border: 3px solid transparent;
+    border-image: linear-gradient(45deg, #6b5b4b, #867b74, #b7a57a) 10;
+    border-radius: 6px;
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.6), inset -2px -2px 6px rgba(255, 255, 255, 0.1);
+    color: #d3c6aa;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    outline: none;
+    padding: 8px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
 
-    textarea {
-        background-color: #eeeeee; /* Very light gray background */
-        border: 3px solid transparent;
-        border-image: linear-gradient(45deg, #d32f2f, #c62828, #d32f2f) 10; /* Gradient border */
-        box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
-        color: #333333; /* Dark gray text */
-        font-family: 'Noto Serif JP', serif;
-        font-size: 20px;
-        outline: none;
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
-    }
+textarea:hover, input:hover {
+    box-shadow: inset 4px 4px 12px rgba(0, 0, 0, 0.7), inset -3px -3px 8px rgba(255, 255, 255, 0.15);
+    border-image: linear-gradient(45deg, #b7a57a, #867b74, #6b5b4b) 10;
+}
 
-    input {
-        background-color: #eeeeee; /* Very light gray background */
-        border: 3px solid transparent;
-        border-image: linear-gradient(45deg, #d32f2f, #c62828, #d32f2f) 10; /* Gradient border */
-        box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
-        color: #333333; /* Dark gray text */
-        font-family: 'Noto Serif JP', serif;
-        font-size: 20px;
-        outline: none;
-        padding: 10px;
-        border-radius: 10px;
-    }
+/* Links */
+a:link, a:visited {
+    color: #a89984;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-    input:hover, textarea:hover {
-        box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.6);
-    }
+a:hover, a:active {
+    color: #f4bf75;
+    text-shadow: 0 0 5px rgba(244, 191, 117, 0.5);
+}
 
-    a:link, a:visited {
-        color: #d32f2f; /* Dark red link color */
-        text-decoration: none;
-        font-weight: bold; /* Bold font */
-        transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transition */
-    }
+/* Output Container */
+#outputContainer {
+    background: radial-gradient(circle at top left, #3a3a3a 0%, #2b2b2b 70%, #1f1f1f 100%);
+    border: 4px double #6b5b4b;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    color: #d3c6aa;
+    padding: 15px;
+    white-space: pre-wrap;
+    width: 100%;
+}
 
-    a:hover, a:active {
-        color: #ef5350; /* Slightly darker red */
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Text shadow for hover and active state */
-    }
+/* Fancy HR */
+hr {
+    background: linear-gradient(to right, transparent, #6b5b4b, #b7a57a, #6b5b4b, transparent);
+    border: none;
+    height: 4px;
+    position: relative;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 
-    #outputContainer {
-        background: radial-gradient(circle, #f5f5f5 10%, #eeeeee 60%, #f5f5f5 90%); /* Light gray gradient */
-        border: 3px solid #d32f2f; /* Dark red border */
-        color: #333333; /* Dark gray text */
-        white-space: pre-wrap;
-        width: 100%;
-        padding: 20px;
-        border-radius: 10px;
-    }
+hr::after {
+    content: "✤";
+    color: #b7a57a;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2b2b2b;
+    padding: 0 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
 
-    hr {
-        background: linear-gradient(to right, #d32f2f, #ef5350, #d32f2f); /* Gradient red */
-        border: none;
-        height: 3px;
-        position: relative;
-        margin: 20px 0;
-    }
+/* Enhanced Select Menu */
+#typeSelector {
+    background: linear-gradient(to bottom, #3a3a3a 0%, #2f2f2f 100%);
+    border: 3px solid transparent;
+    border-image: linear-gradient(45deg, #6b5b4b, #867b74, #b7a57a) 10;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5), inset -1px -1px 4px rgba(255, 255, 255, 0.1);
+    color: #d3c6aa;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    padding: 8px 24px 8px 12px; /* Extra padding on right for dropdown arrow */
+    transition: all 0.3s ease;
+    appearance: none; /* Remove default styling */
+    -webkit-appearance: none; /* Chrome */
+    -moz-appearance: none; /* Firefox */
+}
 
-    hr::after {
-        color: #d32f2f; /* Dark red color */
-        display: block;
-        text-align: center;
-    }
+/* Dropdown Arrow */
+#typeSelector {
+    position: relative;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23b7a57a" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
 
+#typeSelector:hover {
+    background: linear-gradient(to bottom, #454545 0%, #3a3a3a 100%);
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.6), inset -2px -2px 6px rgba(255, 255, 255, 0.15);
+}
+
+#typeSelector:focus {
+    border-image: linear-gradient(45deg, #b7a57a, #f4bf75, #6b5b4b) 10;
+    box-shadow: 0 0 8px rgba(183, 165, 122, 0.5);
+}
+
+/* Browser-Specific Enhancements */
+
+/* Chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
     #typeSelector {
-        font-size: 18px;
-        padding: 10px 16px;
-        border: 3px solid #d32f2f; /* Dark red border */
-        border-radius: 10px;
-        background: linear-gradient(to bottom, #e57373, #ef5350); /* Shades of red */
-        color: #ffffff; /* White text */
-        cursor: pointer;
-        transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        background-image: -webkit-linear-gradient(to bottom, #3a3a3a 0%, #2f2f2f 100%);
     }
+    button {
+        -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+    }
+    textarea, input {
+        -webkit-backdrop-filter: blur(2px);
+    }
+}
 
-    /* Hover effect */
-    #typeSelector:hover {
-        background: #ef5350; /* Slightly darker red */
-        color: #ffffff; /* White text */
-        border-color: #d32f2f; /* Dark red border */
-        box-shadow: 0 0 10px rgba(183, 165, 122, 0.5);
+/* Firefox */
+@-moz-document url-prefix() {
+    #typeSelector {
+        padding-right: 28px; /* Extra space for arrow in Firefox */
     }
+    textarea, input {
+        scrollbar-color: #6b5b4b #3a3a3a;
+        scrollbar-width: thin;
+    }
+    hr {
+        -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+}
 
-    /* Focus effect */
-    #typeSelector:focus {
-        background: #f5f5f5; /* Light gray */
-        border-color: #c62828; /* Darker red */
-        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+/* Edge */
+@supports (-ms-ime-align:auto) {
+    #typeSelector {
+        background: -ms-linear-gradient(to bottom, #3a3a3a 0%, #2f2f2f 100%);
     }
-
-    /* Style the select element */
-    select {
-        background: linear-gradient(to bottom, #ffffff, #eeeeee); /* Light gradient background */
-        border: 2px solid #d32f2f; /* Dark red border */
-        border-radius: 8px; /* Rounded corners */
-        color: #333333; /* Dark gray text color */
-        font-size: 18px;
-        padding: 10px 16px; /* Inner spacing */
-        cursor: pointer;
-        transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        outline: none; /* Remove default focus outline */
+    button {
+        -ms-transition: all 0.3s ease-in-out;
     }
-
-    /* Hover effect for select element */
-    select:hover {
-        background: #f5f5f5; /* Light gray on hover */
-        border-color: #c62828; /* Darker red border on hover */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    textarea, input {
+        -ms-overflow-style: -ms-autohiding-scrollbar;
     }
-
-    /* Focus effect for select element */
-    select:focus {
-        background: #ffffff; /* White background on focus */
-        border-color: #b71c1c; /* Darker red border on focus */
-        box-shadow: 0 0 10px rgba(211, 47, 47, 0.5); /* Red shadow effect */
-    }
-
-    /* Style the option elements */
-    select option {
-        background: #ffffff; /* White background */
-        color: #333333; /* Dark gray text color */
-        padding: 10px; /* Inner spacing for options */
-    }
-
-    /* Hover effect for option elements */
-    select option:hover {
-        background: #ef5350; /* Slightly darker red background on hover */
-        color: #ffffff; /* White text color on hover */
-    }
-    </style>
-</head>
-<body>
-    <!-- Your HTML content here -->
-</body>
-</html>
+}
+</style>
 
 <script>
 function translateB()
@@ -3066,7 +3064,6 @@ const replsB=[
 {p1:/(歯)(?!X)(磨)(?!X)(き)(?!X)/g,r1:'$1Xha$2Xmi$3Xgaki,toothpaste,brushing your teeth;Noun'},
 {p1:/(歯)(?!X)(医)(?!X)(者)(?!X)/g,r1:'$1Xhai$2Xsy$3Xa,dentist;Noun'},
 {p1:/(歩)(?!X)(行)(?!X)(者)(?!X)/g,r1:'$1Xho$2Xkou$3Xsya,pedestrian;Noun'},
-{p1: /(上)(?!X)(振)(?!X)(れ)(?!X)/g, r1: '$1Xue$2Xbu$3Xre,an economic upturn;Noun'}, 
 {p1:/(正)(?!X)(方)(?!X)(形)(?!X)/g,r1:'$1Xsei$2Xhou$3Xkei,square;Noun'},
 {p1:/(正)(?!X)(念)(?!X)(場)(?!X)/g,r1:'$1Xsyou$2Xnen$3Xba,critical moment;Noun'},
 {p1:/(正)(?!X)(当)(?!X)(化)(?!X)/g,r1:'$1Xsei$2Xtou$3Xka,justification;Noun'},
@@ -4317,7 +4314,7 @@ const replsB=[
 {p1:/(下)(?!X)(回)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xshita$2Xmawa,fall below$3X;RuVerb'},
 {p1:/(下)(?!X)(ろ)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xo$2Xro,bring down,take down,pull down$3X;SuVerb'},
 {p1:/(下)(?!X)(り)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xo$2Xri,go down,come down$3X;RuVerb'},
-{p1:/(下)(?!X)(さ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xku$2Xdasa,give,favor with$3X;RuVerb'},
+{p1: /(上)(?!X)(振)(?!X)([らりるれろっ])/g, r1: '$1Xure$2Xbu$3X,an economic upturn$3X;RuVerb'},{p1:/(下)(?!X)(さ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xku$2Xdasa,give,favor with$3X;RuVerb'},
 {p1:/(下)(?!X)(げ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xsag$2Xe,lower,turn down$3X;RuVerb'},
 {p1:/(下)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xsa$2Xga,go down$3X;RuVerb'},
 {p1:/(上)(?!X)(回)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xuwa$2Xmawa,exceed$3X;RuVerb'},
@@ -10732,99 +10729,96 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 }
 
 function toggleAdminSection() {
-     const adminSection = document.getElementById("adminSection");
-     const adminToggle = document.getElementById("adminToggle");
- 
-     if (adminSection.style.display === "none") {
-         adminSection.style.display = "block";
-         adminToggle.textContent = "Hide the administrator section.";
-     } else {
-         adminSection.style.display = "none";
-         adminToggle.textContent = "This is for administrator use only.";
-     }
- }
- 
-function formatJapaneseRegex(word, pronunciation, definition, type) {
-    const pronunciationParts = pronunciation.split(/\s+/);
+    const adminSection = document.getElementById("adminSection");
+    const adminToggle = document.getElementById("adminToggle");
 
-    // Function to create a regex and replacement pattern for verb types
-    function generateVerbPattern(word, verbEndingChars) {
-        let regexPattern = word.split('').map((char, index) => 
-            index === word.length - 1 
-                ? `([${verbEndingChars}])` 
-                : `(${char})(?!X)`
-        ).join('');
-
-        let replacement = word.split('').map((char, index) => 
-            `$${index + 1}X${pronunciationParts[index] || char}`
-        ).join('');
-
-        return { regexPattern, replacement };
+    if (adminSection.style.display === "none") {
+        adminSection.style.display = "block";
+        adminToggle.textContent = "Hide Admin Section";
+    } else {
+        adminSection.style.display = "none";
+        adminToggle.textContent = "Admin use only";
     }
-
-    if (type === "RuVerb") {
-        const { regexPattern, replacement } = generateVerbPattern(word, 'らりるれろっ');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;RuVerb'},`;
-    } else if (type === "SuVerb") {
-        const { regexPattern, replacement } = generateVerbPattern(word, 'さしすせそ');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;SuVerb'},`;
-    } else if (type === "IAdjective") {
-        const { regexPattern, replacement } = generateVerbPattern(word, 'いくかさ');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;IAdjective'},`;
-    } else if (type === "KuVerb") {
-        const { regexPattern, replacement } = generateVerbPattern(word, 'かきくけこい');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;KuVerb'},`;
-    } else if (type === "BuVerb") {
-        const { regexPattern, replacement } = generateVerbPattern(word, 'ばびぶべぼん');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;BuVerb'},`;
-    } else if (type === "MuVerb") {
-        const { regexPattern, replacement } = generateVerbPattern(word, 'まみむめもん');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;MuVerb'},`;
-    } else if (type === "NuVerb") {
-        const { regexPattern, replacement } = generateVerbPattern(word, 'なにぬねのん');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;NuVerb'},`;
-    } else if (type === "TsuVerb") {
-        const { regexPattern, replacement } = generateVerbPattern(word, 'たちつてとっ');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;TsuVerb'},`;    
-    } else if (type === "NonVerb") {
-        let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
-        let replacement = word.split('').map((_, i) => 
-            `$${i + 1}X${pronunciationParts[i] || word[i]}`
-        ).join('');
-        console.log('NonVerb Regex:', regexPattern); // Debug statement
-        console.log('NonVerb Replacement:', replacement); // Debug statement
-        return `{p1: /${regexPattern}/g, r1: '${replacement}|${definition};Noun'},`;
-    } else if (type === "IchidanVerb") {
-        // IchidanVerb logic (similar to Noun logic)
-        let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
-        let replacement = word.split('').map((_, i) => 
-            `$${i + 1}X${pronunciationParts[i] || word[i]}`
-        ).join('');
-        return `{p1: /${regexPattern}/g, r1: '${replacement}|${definition};IchidanVerb'},`;
-    } 
 }
 
- function formatAndDisplay() {
-     const inputWord = document.getElementById("wordInput").value;
-     const inputPronunciation = document.getElementById("pronunciationInput").value;
-     const inputDefinition = document.getElementById("definitionInput").value;
-     const selectedType = document.getElementById("typeSelector").value; // Get the selected type
-     const output = formatJapaneseRegex(inputWord, inputPronunciation, inputDefinition, selectedType);
-     document.getElementById("output").innerText = output;
- }
- 
- function copyToClipboard() {
-     const outputText = document.getElementById("output").innerText;
-     if (outputText) {
-         navigator.clipboard.writeText(outputText).then(() => {
-             alert("Output copied to clipboard!");
-         }).catch(err => {
-             console.error("Failed to copy text: ", err);
-         });
-     } else {
-         alert("Nothing to copy!");
-     }
- }
+function formatJapaneseRegex(word, pronunciation, definition, type) {
+    // Helper function to split word and handle base pattern
+    const getBasePattern = (word, endingPattern = '') => {
+        return word.split('').map(char => `(${char})(?!X)`).join('') + endingPattern;
+    };
+
+    // Helper function for pronunciation splitting
+    const getPronunciationParts = (word, pronunciation) => {
+        const pronParts = pronunciation.split(/\s+/);
+        return word.split('').map((char, i) => `$${i + 1}X${pronParts[i] || char}`);
+    };
+
+    if (type === "RuVerb") {
+        let regexPattern = getBasePattern(word, `([らりるれろっ])(?!X)`);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;RuVerb`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    } else if (type === "SuVerb") {
+        let regexPattern = getBasePattern(word, `([さしすせそ])(?!X)`);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;SuVerb`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    } else if (type === "IAdjective") {
+        let regexPattern = getBasePattern(word, `([いくかさ])(?!X)`);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;IAdjective`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    } else if (type === "KuVerb") {
+        let regexPattern = getBasePattern(word, `([かきくけこい])(?!X)`);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;KuVerb`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    } else if (type === "BuVerb") {
+        let regexPattern = getBasePattern(word, `([ばびぶべぼん])(?!X)`);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;BuVerb`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    } else if (type === "MuVerb") {
+        let regexPattern = getBasePattern(word, `([まみむめもん])(?!X)`);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;MuVerb`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    } else if (type === "NuVerb") {
+        let regexPattern = getBasePattern(word, `([なにぬねのん])(?!X)`);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;NuVerb`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    } else if (type === "TsuVerb") {
+        let regexPattern = getBasePattern(word, `([たちつてとっ])(?!X)`);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;TsuVerb`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    } else if (type === "IchidanVerb") {
+        // Assuming this is what you meant by IchidanVerbs
+        let regexPattern = getBasePattern(word);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition};IchidanVerb`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    } else {
+        // Non-Verb case
+        let regexPattern = getBasePattern(word);
+        let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition};Noun`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+    }
+}
+
+function formatAndDisplay() {
+    const inputWord = document.getElementById("wordInput").value;
+    const inputPronunciation = document.getElementById("pronunciationInput").value;
+    const inputDefinition = document.getElementById("definitionInput").value;
+    const selectedType = document.getElementById("typeSelector").value; // Get the selected type
+    const output = formatJapaneseRegex(inputWord, inputPronunciation, inputDefinition, selectedType);
+    document.getElementById("output").innerText = output;
+}
+
+function copyToClipboard() {
+    const outputText = document.getElementById("output").innerText;
+    if (outputText) {
+        navigator.clipboard.writeText(outputText).then(() => {
+            alert("Output copied to clipboard!");
+        }).catch(err => {
+            console.error("Failed to copy text: ", err);
+        });
+    } else {
+        alert("Nothing to copy!");
+    }
+}
 
 </script></head>
 
@@ -10833,17 +10827,17 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-１９９５年３月２０日。幸子は３１歳だった。都外のスーパーで働き、東京近郊の自宅からバスで通っていた。しかし、あの日はたまたま、都内で予定されていた研修に参加するため、営団地下鉄（現・東京メトロ）丸ノ内線に乗った。その丸ノ内線で、オウム真理教幹部が猛毒ガス・サリンをまいたのだった。
+日銀は18～19日の金融政策決定会合で、政策金利の水準を0・5％程度で維持する方向だ。国内物価の上振れに加え、高水準の賃上げが期待できることから、市場の一部には追加利上げの前倒し観測も浮上する。一方、海外経済に目を向けると、トランプ米政権の関税政策を巡り不確実性が高く、日銀はリスクの見極めを優先する構えだ。
 <hr>
-<button id="adminToggle" onclick="toggleAdminSection()">This is for administrator use only.</button>
+<button id="adminToggle" onclick="toggleAdminSection()">Admin use only</button>
 <div id="adminSection" style="display: none;">
-    <input type="text" id="wordInput" placeholder="Enter the Japanese word." /><br>
-    <input type="text" id="pronunciationInput" placeholder="Enter the spaced English pronunciation." /><br>
-    <input type="text" id="definitionInput" placeholder="Enter the English definition." /><br>What type of word is this?
+    <input type="text" id="wordInput" placeholder="Enter Japanese word" />
+    <input type="text" id="pronunciationInput" placeholder="Enter romanized pronunciation" />
+    <input type="text" id="definitionInput" placeholder="Enter English definition" />
     <select id="typeSelector">
-        <option value="Noun" selected>NonVerb</option>
-        <option value="IAdjective">IAdjective</option>     
-        <option value="IchidanVerb">IchidanVerb</option>     
+        <option value="Non-Verb" selected>Non-Verb</option>
+        <option value="IAdjective">IAdjective</option>	
+        <option value="IchidanVerb">IchidanVerb</option>		
         <option value="RuVerb">RuVerb</option>
         <option value="SuVerb">SuVerb</option>
         <option value="KuVerb">KuVerb</option>
@@ -10851,10 +10845,10 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
         <option value="MuVerb">MuVerb</option>
         <option value="NuVerb">NuVerb</option>
         <option value="TsuVerb">TsuVerb</option>
-    </select><br>
-    <button onclick="formatAndDisplay()">Format the dictionary entry.</button> 
+    </select>
+    <button onclick="formatAndDisplay()">Generate</button> <!-- Generate button added -->
     <p id="output"></p>
-    <button onclick="copyToClipboard()">Copy the entry to the clipboard.</button>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
 </div>
 
 <hr>
