@@ -10694,29 +10694,29 @@ function toggleAdminSection() {
             }
 
             if (type === "RuVerb") {
-                const { regexPattern, replacement } = generateVerbPattern(word, 'らりるれろっ)(?!X)');
-                return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;RuVerb'},`;
+                const { regexPattern, replacement } = generateVerbPattern(word, 'らりるれろっ');
+                return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;RuVerb'},`;
             } else if (type === "SuVerb") {
-                const { regexPattern, replacement } = generateVerbPattern(word, 'さしすせそ)(?!X)');
-                return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;SuVerb'},`;
+                const { regexPattern, replacement } = generateVerbPattern(word, 'さしすせそ');
+                return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;SuVerb'},`;
             } else if (type === "IAdjective") {
-                const { regexPattern, replacement } = generateVerbPattern(word, 'いくかさ)(?!X)');
-                return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;IAdjective'},`;
+                const { regexPattern, replacement } = generateVerbPattern(word, 'いくかさ');
+                return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;IAdjective'},`;
             } else if (type === "KuVerb") {
-                const { regexPattern, replacement } = generateVerbPattern(word, 'かきくけこい)(?!X)');
-                return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;KuVerb'},`;
+                const { regexPattern, replacement } = generateVerbPattern(word, 'かきくけこい');
+                return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;KuVerb'},`;
             } else if (type === "BuVerb") {
-                const { regexPattern, replacement } = generateVerbPattern(word, 'ばびぶべぼん)(?!X)');
-                return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;BuVerb'},`;
+                const { regexPattern, replacement } = generateVerbPattern(word, 'ばびぶべぼん');
+                return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;BuVerb'},`;
             } else if (type === "MuVerb") {
-                const { regexPattern, replacement } = generateVerbPattern(word, 'まみむめもん)(?!X)');
-                return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;MuVerb'},`;
+                const { regexPattern, replacement } = generateVerbPattern(word, 'まみむめもん');
+                return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;MuVerb'},`;
             } else if (type === "NuVerb") {
-                const { regexPattern, replacement } = generateVerbPattern(word, 'なにぬねのん)(?!X)');
-                return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;NuVerb'},`;
+                const { regexPattern, replacement } = generateVerbPattern(word, 'なにぬねのん');
+                return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;NuVerb'},`;
             } else if (type === "TsuVerb") {
-                const { regexPattern, replacement } = generateVerbPattern(word, 'たちつてとっ)(?!X)');
-                return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;TsuVerb'},`;    
+                const { regexPattern, replacement } = generateVerbPattern(word, 'たちつてとっ');
+                return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;TsuVerb'},`;    
             } else if (type === "NonVerb") {
                 let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
                 let replacement = word.split('').map((_, i) => 
