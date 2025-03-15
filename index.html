@@ -10791,11 +10791,8 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         let replacement = word.split('').map((_, i) => 
             `$${i + 1}X${pronunciationParts[i] || word[i]}`
         ).join('');
-        console.log('NonVerb Regex:', regexPattern); // Debug statement
-        console.log('NonVerb Replacement:', replacement); // Debug statement
         return `{p1: /${regexPattern}/g, r1: '${replacement}|${definition};Noun'},`;
     } else if (type === "IchidanVerb") {
-        // IchidanVerb logic (similar to Noun logic)
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let replacement = word.split('').map((_, i) => 
             `$${i + 1}X${pronunciationParts[i] || word[i]}`
