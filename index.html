@@ -4,148 +4,199 @@
 <meta charset="UTF-8">
 <title>The Japanese to English Parser</title>
 <link rel="icon" href="reading.png" type="image/png">
-<style>
-body {
-    background-attachment: fixed;
-    background-color: #f5f5f5; /* Light gray for a neutral, soft background */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #333333; /* Dark gray for readability */
-    font-family: 'Noto Serif JP', serif;
-    font-size: 20px;
-    margin: 20px;
-    padding: 20px;
-    position: relative;
-    word-wrap: break-word;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Japanese to English Parser</title>
+    <link rel="icon" href="reading.png" type="image/png">
+    <style> 
+    body {
+        background-attachment: fixed;
+        background-color: #f5f5f5; /* Light gray for a neutral, soft background */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #333333; /* Dark gray for readability */
+        font-family: 'Noto Serif JP', serif;
+        font-size: 20px;
+        margin: 20px;
+        padding: 20px;
+        position: relative;
+        word-wrap: break-word;
+    }
 
-button, select {
-    background: linear-gradient(to bottom, #e57373, #ef5350); /* Shades of red */
-    border: 3px solid #d32f2f; /* Dark red for border */
-    border-radius: 10px;
-    color: #000000;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
-    padding: 8px 16px;
-    font-size: 18px;
-}
+    button, select {
+        background: linear-gradient(to bottom, #e57373, #ef5350); /* Shades of red */
+        border: 3px solid #d32f2f; /* Dark red for border */
+        border-radius: 10px;
+        color: #ffffff; /* White text for readability */
+        cursor: pointer;
+        transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+        padding: 8px 16px;
+        font-size: 18px;
+    }
 
-button:hover, select:hover {
-    background: #ef5350; /* Slightly darker red */
-    color: #ffffff; /* White text */
-    transform: scale(1.05);
-}
+    button:hover, select:hover {
+        background: #ef5350; /* Slightly darker red */
+        color: #ffffff; /* White text */
+        transform: scale(1.05);
+    }
 
-button:active, select:active {
-    background: #c62828; /* Darker red */
-    color: #ffffff; /* White text */
-    transform: scale(0.98);
-}
+    button:active, select:active {
+        background: #c62828; /* Darker red */
+        color: #ffffff; /* White text */
+        transform: scale(0.98);
+    }
 
-.HeaderStyle {
-    background: radial-gradient(circle, #f5f5f5 10%, #eeeeee 50%, #f5f5f5 90%); /* Light gray gradient */
-    border: 3px solid #d32f2f; /* Dark red border */
-    border-bottom: 2px solid #c62828; /* Darker red */
-    color: #d32f2f; /* Dark red text */
-    font-family: 'Noto Serif JP', serif;
-    font-size: 25px; /* Updated font size */
-    text-shadow: 1px 1px 4px #b71c1c; /* Dark red shadow */
-}
+    .HeaderStyle {
+        background: radial-gradient(circle, #f5f5f5 10%, #eeeeee 50%, #f5f5f5 90%); /* Light gray gradient */
+        border: 3px solid #d32f2f; /* Dark red border */
+        border-bottom: 2px solid #c62828; /* Darker red */
+        color: #d32f2f; /* Dark red text */
+        font-family: 'Noto Serif JP', serif;
+        font-size: 25px; /* Updated font size */
+        text-shadow: 1px 1px 4px #b71c1c; /* Dark red shadow */
+    }
 
-textarea {
-    background-color: #eeeeee; /* Very light gray background */
-    border: 3px solid transparent;
-    border-image: linear-gradient(45deg, #d32f2f, #c62828, #d32f2f) 10; /* Gradient border */
-    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
-    color: #333333; /* Dark gray text */
-    font-family: 'Noto Serif JP', serif;
-    font-size: 20px;
-    outline: none;
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-}
+    textarea {
+        background-color: #eeeeee; /* Very light gray background */
+        border: 3px solid transparent;
+        border-image: linear-gradient(45deg, #d32f2f, #c62828, #d32f2f) 10; /* Gradient border */
+        box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
+        color: #333333; /* Dark gray text */
+        font-family: 'Noto Serif JP', serif;
+        font-size: 20px;
+        outline: none;
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+    }
 
-input {
-    background-color: #eeeeee; /* Very light gray background */
-    border: 3px solid transparent;
-    border-image: linear-gradient(45deg, #d32f2f, #c62828, #d32f2f) 10; /* Gradient border */
-    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
-    color: #333333; /* Dark gray text */
-    font-family: 'Noto Serif JP', serif;
-    font-size: 20px;
-    outline: none;
-    padding: 10px;
-    border-radius: 10px;
-}
+    input {
+        background-color: #eeeeee; /* Very light gray background */
+        border: 3px solid transparent;
+        border-image: linear-gradient(45deg, #d32f2f, #c62828, #d32f2f) 10; /* Gradient border */
+        box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
+        color: #333333; /* Dark gray text */
+        font-family: 'Noto Serif JP', serif;
+        font-size: 20px;
+        outline: none;
+        padding: 10px;
+        border-radius: 10px;
+    }
 
-input:hover, textarea:hover {
-    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.6);
-}
+    input:hover, textarea:hover {
+        box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.6);
+    }
 
-a:link, a:visited {
-    color: #d32f2f; /* Dark red link color */
-    text-decoration: none;
-    font-weight: bold; /* Bold font */
-    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transition */
-}
+    a:link, a:visited {
+        color: #d32f2f; /* Dark red link color */
+        text-decoration: none;
+        font-weight: bold; /* Bold font */
+        transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transition */
+    }
 
-a:hover, a:active {
-    color: #ef5350; /* Slightly darker red */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Text shadow for hover and active state */
-}
+    a:hover, a:active {
+        color: #ef5350; /* Slightly darker red */
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Text shadow for hover and active state */
+    }
 
-#outputContainer {
-    background: radial-gradient(circle, #f5f5f5 10%, #eeeeee 60%, #f5f5f5 90%); /* Light gray gradient */
-    border: 3px solid #d32f2f; /* Dark red border */
-    color: #333333; /* Dark gray text */
-    white-space: pre-wrap;
-    width: 100%;
-    padding: 20px;
-    border-radius: 10px;
-}
+    #outputContainer {
+        background: radial-gradient(circle, #f5f5f5 10%, #eeeeee 60%, #f5f5f5 90%); /* Light gray gradient */
+        border: 3px solid #d32f2f; /* Dark red border */
+        color: #333333; /* Dark gray text */
+        white-space: pre-wrap;
+        width: 100%;
+        padding: 20px;
+        border-radius: 10px;
+    }
 
-hr {
-    background: linear-gradient(to right, #d32f2f, #ef5350, #d32f2f); /* Gradient red */
-    border: none;
-    height: 3px;
-    position: relative;
-    margin: 20px 0;
-}
+    hr {
+        background: linear-gradient(to right, #d32f2f, #ef5350, #d32f2f); /* Gradient red */
+        border: none;
+        height: 3px;
+        position: relative;
+        margin: 20px 0;
+    }
 
-hr::after {
-    color: #d32f2f; /* Dark red color */
-    display: block;
-    text-align: center;
-}
+    hr::after {
+        color: #d32f2f; /* Dark red color */
+        display: block;
+        text-align: center;
+    }
 
-#typeSelector {
-    font-size: 18px;
-    padding: 10px 16px;
-    border: 3px solid #d32f2f; /* Dark red border */
-    border-radius: 10px;
-    background: linear-gradient(to bottom, #e57373, #ef5350); /* Shades of red */
-    color: #ffffff; /* White text */
-    cursor: pointer;
-    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
+    #typeSelector {
+        font-size: 18px;
+        padding: 10px 16px;
+        border: 3px solid #d32f2f; /* Dark red border */
+        border-radius: 10px;
+        background: linear-gradient(to bottom, #e57373, #ef5350); /* Shades of red */
+        color: #ffffff; /* White text */
+        cursor: pointer;
+        transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
 
-/* Hover effect */
-#typeSelector:hover {
-    background: #ef5350; /* Slightly darker red */
-    color: #ffffff; /* White text */
-    border-color: #d32f2f; /* Dark red border */
-    box-shadow: 0 0 10px rgba(183, 165, 122, 0.5);
-}
+    /* Hover effect */
+    #typeSelector:hover {
+        background: #ef5350; /* Slightly darker red */
+        color: #ffffff; /* White text */
+        border-color: #d32f2f; /* Dark red border */
+        box-shadow: 0 0 10px rgba(183, 165, 122, 0.5);
+    }
 
-/* Focus effect */
-#typeSelector:focus {
-    background: #f5f5f5; /* Light gray */
-    border-color: #c62828; /* Darker red */
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-}
-</style>
+    /* Focus effect */
+    #typeSelector:focus {
+        background: #f5f5f5; /* Light gray */
+        border-color: #c62828; /* Darker red */
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    }
+
+    /* Style the select element */
+    select {
+        background: linear-gradient(to bottom, #ffffff, #eeeeee); /* Light gradient background */
+        border: 2px solid #d32f2f; /* Dark red border */
+        border-radius: 8px; /* Rounded corners */
+        color: #333333; /* Dark gray text color */
+        font-size: 18px;
+        padding: 10px 16px; /* Inner spacing */
+        cursor: pointer;
+        transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        outline: none; /* Remove default focus outline */
+    }
+
+    /* Hover effect for select element */
+    select:hover {
+        background: #f5f5f5; /* Light gray on hover */
+        border-color: #c62828; /* Darker red border on hover */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    }
+
+    /* Focus effect for select element */
+    select:focus {
+        background: #ffffff; /* White background on focus */
+        border-color: #b71c1c; /* Darker red border on focus */
+        box-shadow: 0 0 10px rgba(211, 47, 47, 0.5); /* Red shadow effect */
+    }
+
+    /* Style the option elements */
+    select option {
+        background: #ffffff; /* White background */
+        color: #333333; /* Dark gray text color */
+        padding: 10px; /* Inner spacing for options */
+    }
+
+    /* Hover effect for option elements */
+    select option:hover {
+        background: #ef5350; /* Slightly darker red background on hover */
+        color: #ffffff; /* White text color on hover */
+    }
+    </style>
+</head>
+<body>
+    <!-- Your HTML content here -->
+</body>
+</html>
 
 <script>
 function translateB()
