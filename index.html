@@ -10661,6 +10661,19 @@ document.getElementById("translatedTextDisplay").innerHTML=a;
 
 }
 
+function toggleAdminSection() {
+     const adminSection = document.getElementById("adminSection");
+     const adminToggle = document.getElementById("adminToggle");
+ 
+     if (adminSection.style.display === "none") {
+         adminSection.style.display = "block";
+         adminToggle.textContent = "Hide Admin Section";
+     } else {
+         adminSection.style.display = "none";
+         adminToggle.textContent = "Admin use only";
+     }
+ }
+ 
 function formatJapaneseRegex(word, pronunciation, definition, type) {
     if (type === "RuVerb") {
         // RuVerb-specific logic
@@ -10671,7 +10684,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         ).join('');
         let replacement = word.split('').map((char, index) => 
             index === word.length - 1 
-                ? `$${index + 1}X`
+                ? `$${index + 1}X` 
                 : `$${index + 1}X${pronunciation.split(/\s+/)[index] || char}`
         ).join('');
         return `{p1: /${regexPattern}/g, r1: '${replacement}$${word.length + 1}Xre,${definition}$${word.length + 2}X;RuVerb'},`;
@@ -10684,7 +10697,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         ).join('');
         let replacement = word.split('').map((char, index) => 
             index === word.length - 1 
-                ? `$${index + 1}X`
+                ? `$${index + 1}X` 
                 : `$${index + 1}X${pronunciation.split(/\s+/)[index] || char}`
         ).join('');
         return `{p1: /${regexPattern}/g, r1: '${replacement}$${word.length + 1}Xre,${definition}$${word.length + 2}X;SuVerb'},`;
@@ -10697,7 +10710,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         ).join('');
         let replacement = word.split('').map((char, index) => 
             index === word.length - 1 
-                ? `$${index + 1}X`
+                ? `$${index + 1}X` 
                 : `$${index + 1}X${pronunciation.split(/\s+/)[index] || char}`
         ).join('');
         return `{p1: /${regexPattern}/g, r1: '${replacement}$${word.length + 1}Xre,${definition}$${word.length + 2}X;IAdjective'},`;
@@ -10710,7 +10723,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         ).join('');
         let replacement = word.split('').map((char, index) => 
             index === word.length - 1 
-                ? `$${index + 1}X`
+                ? `$${index + 1}X` 
                 : `$${index + 1}X${pronunciation.split(/\s+/)[index] || char}`
         ).join('');
         return `{p1: /${regexPattern}/g, r1: '${replacement}$${word.length + 1}Xre,${definition}$${word.length + 2}X;KuVerb'},`;
@@ -10736,28 +10749,28 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         return `{p1: /${regexPattern}/g, r1: '${replacement},${definition};Noun'},`;
     }
 }
-
-function formatAndDisplay() {
-    const inputWord = document.getElementById("wordInput").value;
-    const inputPronunciation = document.getElementById("pronunciationInput").value;
-    const inputDefinition = document.getElementById("definitionInput").value;
-    const selectedType = document.getElementById("typeSelector").value; // Get the selected type
-    const output = formatJapaneseRegex(inputWord, inputPronunciation, inputDefinition, selectedType);
-    document.getElementById("output").innerText = output;
-}
-
-function copyToClipboard() {
-    const outputText = document.getElementById("output").innerText;
-    if (outputText) {
-        navigator.clipboard.writeText(outputText).then(() => {
-            alert("Output copied to clipboard!");
-        }).catch(err => {
-            console.error("Failed to copy text: ", err);
-        });
-    } else {
-        alert("Nothing to copy!");
-    }
-}
+ 
+ function formatAndDisplay() {
+     const inputWord = document.getElementById("wordInput").value;
+     const inputPronunciation = document.getElementById("pronunciationInput").value;
+     const inputDefinition = document.getElementById("definitionInput").value;
+     const selectedType = document.getElementById("typeSelector").value; // Get the selected type
+     const output = formatJapaneseRegex(inputWord, inputPronunciation, inputDefinition, selectedType);
+     document.getElementById("output").innerText = output;
+ }
+ 
+ function copyToClipboard() {
+     const outputText = document.getElementById("output").innerText;
+     if (outputText) {
+         navigator.clipboard.writeText(outputText).then(() => {
+             alert("Output copied to clipboard!");
+         }).catch(err => {
+             console.error("Failed to copy text: ", err);
+         });
+     } else {
+         alert("Nothing to copy!");
+     }
+ }
 
 </script></head>
 
