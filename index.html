@@ -10676,7 +10676,6 @@ function toggleAdminSection() {
  
 function formatJapaneseRegex(word, pronunciation, definition, type) {
     const pronunciationParts = pronunciation.split(/\s+/);
-    const romanizedLength = pronunciationParts.length;
 
     if (type === "RuVerb") {
         // RuVerb-specific logic
@@ -10685,12 +10684,14 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
                 ? `([らりるれろっ])` 
                 : `(${char})(?!X)`
         ).join('');
+
         let replacement = word.split('').map((char, index) => 
             index === word.length - 1 
                 ? `$${index + 1}X`
                 : `$${index + 1}X${pronunciationParts[index] || char}`
-        ).join('') + `$${word.length + 1}Xre`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${word.length + 2}X;RuVerb'},`;
+        ).join('') + `re`;
+
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;RuVerb'},`;
     } else if (type === "SuVerb") {
         // SuVerb-specific logic
         let regexPattern = word.split('').map((char, index) => 
@@ -10698,12 +10699,14 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
                 ? `([さしすせそ])` 
                 : `(${char})(?!X)`
         ).join('');
+
         let replacement = word.split('').map((char, index) => 
             index === word.length - 1 
                 ? `$${index + 1}X`
                 : `$${index + 1}X${pronunciationParts[index] || char}`
-        ).join('') + `$${word.length + 1}Xre`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${word.length + 2}X;SuVerb'},`;
+        ).join('') + `re`;
+
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;SuVerb'},`;
     } else if (type === "IAdjective") {
         // IAdjective-specific logic
         let regexPattern = word.split('').map((char, index) => 
@@ -10711,12 +10714,14 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
                 ? `([いくかさ])` 
                 : `(${char})(?!X)`
         ).join('');
+
         let replacement = word.split('').map((char, index) => 
             index === word.length - 1 
                 ? `$${index + 1}X`
                 : `$${index + 1}X${pronunciationParts[index] || char}`
-        ).join('') + `$${word.length + 1}Xre`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${word.length + 2}X;IAdjective'},`;
+        ).join('') + `re`;
+
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;IAdjective'},`;
     } else if (type === "KuVerb") {
         // KuVerb-specific logic
         let regexPattern = word.split('').map((char, index) => 
@@ -10724,30 +10729,33 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
                 ? `([かきくけこい])` 
                 : `(${char})(?!X)`
         ).join('');
+
         let replacement = word.split('').map((char, index) => 
             index === word.length - 1 
                 ? `$${index + 1}X`
                 : `$${index + 1}X${pronunciationParts[index] || char}`
-        ).join('') + `$${word.length + 1}Xre`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${word.length + 2}X;KuVerb'},`;
+        ).join('') + `re`;
+
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;KuVerb'},`;
     } else if (type === "BuVerb") {
         // BuVerb-specific logic
-        return `{p1: /(${word})(?!X)([ばびぶべぼん])(?!X)/g, r1: '$1X${pronunciation}$2Xre,${definition}$${romanizedLength + 2}X;BuVerb'},`;
+        return `{p1: /(${word})(?!X)([ばびぶべぼん])(?!X)/g, r1: '$1X${pronunciation}$2Xre,${definition}$${pronunciationParts.length + 2}X;BuVerb'},`;
     } else if (type === "MuVerb") {
         // MuVerb-specific logic
-        return `{p1: /(${word[0]})(?!X)([まみむめもん])(?!X)/g, r1: '$1X${pronunciation}$2Xre,${definition}$${romanizedLength + 2}X;MuVerb'},`;
+        return `{p1: /(${word[0]})(?!X)([まみむめもん])(?!X)/g, r1: '$1X${pronunciation}$2Xre,${definition}$${pronunciationParts.length + 2}X;MuVerb'},`;
     } else if (type === "NuVerb") {
         // NuVerb-specific logic
-        return `{p1: /(${word})(?!X)([なにぬねのん])(?!X)/g, r1: '$1X${pronunciation}$2Xre,${definition}$${romanizedLength + 2}X;NuVerb'},`;
+        return `{p1: /(${word})(?!X)([なにぬねのん])(?!X)/g, r1: '$1X${pronunciation}$2Xre,${definition}$${pronunciationParts.length + 2}X;NuVerb'},`;
     } else if (type === "TsuVerb") {
         // TsuVerb-specific logic
-        return `{p1: /(${word})(?!X)([たちつてとっ])(?!X)/g, r1: '$1X${pronunciation}$2Xre,${definition}$${romanizedLength + 2}X;TsuVerb'},`;
+        return `{p1: /(${word})(?!X)([たちつてとっ])(?!X)/g, r1: '$1X${pronunciation}$2Xre,${definition}$${pronunciationParts.length + 2}X;TsuVerb'},`;
     } else {
         // Default Non-Verb logic
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let replacement = word.split('').map((_, i) => 
             `$${i + 1}X${pronunciationParts[i] || word[i]}`
         ).join('');
+
         return `{p1: /${regexPattern}/g, r1: '${replacement},${definition};Noun'},`;
     }
 }
