@@ -10762,7 +10762,6 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         return { regexPattern, replacement };
     }
 
-    // Determine the type and construct the regex pattern and replacement string accordingly
     if (type === "RuVerb") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'らりるれろっ');
         return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;RuVerb'},`;
@@ -10788,7 +10787,6 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         const { regexPattern, replacement } = generateVerbPattern(word, 'たちつてとっ');
         return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;TsuVerb'},`;    
     } else if (type === "NonVerb") {
-        // Handle the NonVerb case separately
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let replacement = word.split('').map((char, i) => 
             `$${i + 1}X${char}`
@@ -10803,15 +10801,8 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
             `$${i + 1}X${pronunciationParts[i] || word[i]}`
         ).join('');
         return `{p1: /${regexPattern}/g, r1: '${replacement}|${definition};IchidanVerb'},`;
-    } else {
-        // Handle other types if needed
-        return '';
-    }
+    } 
 }
-
-// Example usage for IAdjective
-const result = formatJapaneseRegex('内いくか', 'うち い く か', 'inner, within', 'IAdjective');
-console.log(result);
 
  function formatAndDisplay() {
      const inputWord = document.getElementById("wordInput").value;
