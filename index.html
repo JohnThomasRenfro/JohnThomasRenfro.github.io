@@ -10717,7 +10717,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
     } else if (type === "TsuVerb") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'たちつてとっ');
         return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;TsuVerb'},`;    
-    } else {
+    } else if {
         // Non-Verb logic (works as expected)
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let replacement = word.split('').map((_, i) => 
