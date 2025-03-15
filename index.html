@@ -10767,25 +10767,25 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;RuVerb'},`;
     } else if (type === "SuVerb") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'さしすせそ');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;SuVerb'},`;
+        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;SuVerb'},`;
     } else if (type === "IAdjective") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'いくかさ');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;IAdjective'},`;
+        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;IAdjective'},`;
     } else if (type === "KuVerb") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'かきくけこい');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;KuVerb'},`;
+        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;KuVerb'},`;
     } else if (type === "BuVerb") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'ばびぶべぼん');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;BuVerb'},`;
+        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;BuVerb'},`;
     } else if (type === "MuVerb") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'まみむめもん');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;MuVerb'},`;
+        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;MuVerb'},`;
     } else if (type === "NuVerb") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'なにぬねのん');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;NuVerb'},`;
+        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;NuVerb'},`;
     } else if (type === "TsuVerb") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'たちつてとっ');
-        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;TsuVerb'},`;    
+        return `{p1: /${regexPattern}(?!X)/g, r1: '${replacement},${definition}|$${pronunciationParts.length + 1}X;TsuVerb'},`;    
     } else if (type === "NonVerb") {
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let replacement = word.split('').map((_, i) => 
@@ -10793,18 +10793,15 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         ).join('');
         console.log('NonVerb Regex:', regexPattern); // Debug statement
         console.log('NonVerb Replacement:', replacement); // Debug statement
-        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition};Noun'},`;
+        return `{p1: /${regexPattern}/g, r1: '${replacement}|${definition};Noun'},`;
     } else if (type === "IchidanVerb") {
         // IchidanVerb logic (similar to Noun logic)
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let replacement = word.split('').map((_, i) => 
             `$${i + 1}X${pronunciationParts[i] || word[i]}`
         ).join('');
-        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition};IchidanVerb'},`;
-    } else {
-        // Handle other types if needed
-        return '';
-    }
+        return `{p1: /${regexPattern}/g, r1: '${replacement}|${definition};IchidanVerb'},`;
+    } 
 }
 
  function formatAndDisplay() {
