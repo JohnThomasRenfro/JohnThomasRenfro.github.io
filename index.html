@@ -10668,10 +10668,10 @@ function toggleAdminSection() {
  
      if (adminSection.style.display === "none") {
          adminSection.style.display = "block";
-         adminToggle.textContent = "Hide Admin Section";
+         adminToggle.textContent = "Hide the administrator section.";
      } else {
          adminSection.style.display = "none";
-         adminToggle.textContent = "Admin use only";
+         adminToggle.textContent = "This is for administrator use only.";
      }
  }
  
@@ -10766,9 +10766,9 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <hr>
 <button id="adminToggle" onclick="toggleAdminSection()">Admin use only</button>
 <div id="adminSection" style="display: none;">
-    <input type="text" id="wordInput" placeholder="Enter Japanese word" />
-    <input type="text" id="pronunciationInput" placeholder="Enter spaced English pronunciation" />
-    <input type="text" id="definitionInput" placeholder="Enter English definition" />
+    <input type="text" id="wordInput" placeholder="Enter the Japanese word." /><br>
+    <input type="text" id="pronunciationInput" placeholder="Enter the spaced English pronunciation." /><br>
+    <input type="text" id="definitionInput" placeholder="Enter the English definition" /><br>
     <select id="typeSelector">
         <option value="NonVerb" selected>NonVerb</option>
         <option value="IchidanVerb">IchidanVerb</option>     
