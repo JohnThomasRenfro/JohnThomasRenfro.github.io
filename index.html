@@ -10717,7 +10717,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         const { regexPattern, replacement } = generateVerbPattern(word, type, 'たちつてとっ');
         return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 2}X;TsuVerb'},`;    
     } else {
-        // Default Non-Verb logic
+        // Non-Verb logic (works as expected)
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let replacement = word.split('').map((_, i) => 
             `$${i + 1}X${pronunciationParts[i] || word[i]}`
@@ -10725,7 +10725,6 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         return `{p1: /${regexPattern}/g, r1: '${replacement},${definition};Noun'},`;
     }
 }
-
  
  function formatAndDisplay() {
      const inputWord = document.getElementById("wordInput").value;
