@@ -10809,6 +10809,10 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
     }
 }
 
+// Example usage for IAdjective
+const result = formatJapaneseRegex('内いくか', 'うち い く か', 'inner, within', 'IAdjective');
+console.log(result);
+
  function formatAndDisplay() {
      const inputWord = document.getElementById("wordInput").value;
      const inputPronunciation = document.getElementById("pronunciationInput").value;
