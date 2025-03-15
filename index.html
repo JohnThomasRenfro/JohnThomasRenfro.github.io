@@ -10717,14 +10717,14 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
     } else if (type === "TsuVerb") {
         const { regexPattern, replacement } = generateVerbPattern(word, 'たちつてとっ');
         return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;TsuVerb'},`;    
-    } else if {
-        // Non-Verb logic (works as expected)
+    } else if (type === "Noun") {
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let replacement = word.split('').map((_, i) => 
             `$${i + 1}X${pronunciationParts[i] || word[i]}`
         ).join('');
         return `{p1: /${regexPattern}/g, r1: '${replacement},${definition};Noun'},`;
     } else {
+        // IchidanVerb logic (similar to Noun logic)
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
         let replacement = word.split('').map((_, i) => 
             `$${i + 1}X${pronunciationParts[i] || word[i]}`
