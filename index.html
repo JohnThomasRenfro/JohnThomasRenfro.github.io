@@ -7,11 +7,11 @@
 <style> 
 body {
     background-attachment: fixed;
-    background-color: #2b2b2b;
+    background-color: #fce4ec; /* Light pink for sakura blossom */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    color: #d3c6aa;
+    color: #000000; /* Black for readability */
     font-family: 'Noto Serif JP', serif;
     font-size: 20px;
     margin: 20px;
@@ -21,10 +21,10 @@ body {
 }
 
 button, select {
-    background: linear-gradient(to bottom, #6b5b4b, #b7a57a);
-    border: 3px solid #6b5b4b;
+    background: linear-gradient(to bottom, #f48fb1, #f06292); /* Shades of pink */
+    border: 3px solid #e91e63; /* Red for Japan flag */
     border-radius: 10px;
-    color: #2b2b2b;
+    color: #ffffff; /* White text for readability */
     cursor: pointer;
     transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
     padding: 8px 16px;
@@ -32,33 +32,33 @@ button, select {
 }
 
 button:hover, select:hover {
-    background: #b7a57a;
-    color: #2b2b2b;
+    background: #f06292; /* Darker pink */
+    color: #ffffff; /* White text */
     transform: scale(1.05);
 }
 
 button:active, select:active {
-    background: #6b5b4b;
-    color: #d3c6aa;
+    background: #c2185b; /* Dark red */
+    color: #ffffff; /* White text */
     transform: scale(0.98);
 }
 
 .HeaderStyle {
-    background: radial-gradient(circle, #2b2b2b 10%, #524e4d 50%, #2b2b2b 90%);
-    border: 3px solid #6b5b4b;
-    border-bottom: 2px solid #867b74;
-    color: #b7a57a;
+    background: radial-gradient(circle, #fce4ec 10%, #f8bbd0 50%, #fce4ec 90%); /* Light pink gradient */
+    border: 3px solid #e91e63; /* Red border */
+    border-bottom: 2px solid #d81b60; /* Darker red */
+    color: #e91e63; /* Red text */
     font-family: 'Noto Serif JP', serif;
     font-size: 20px;
-    text-shadow: 1px 1px 4px #6b5b4b;
+    text-shadow: 1px 1px 4px #c2185b; /* Dark red shadow */
 }
 
 textarea {
-    background-color: #3a3a3a;
+    background-color: #f8bbd0; /* Light pink background */
     border: 3px solid transparent;
-    border-image: linear-gradient(45deg, #6b5b4b, #867b74, #6b5b4b) 10;
+    border-image: linear-gradient(45deg, #e91e63, #d81b60, #e91e63) 10; /* Gradient border */
     box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
-    color: inherit;
+    color: #000000; /* Black text */
     font-family: 'Noto Serif JP', serif;
     font-size: 20px;
     outline: none;
@@ -68,11 +68,11 @@ textarea {
 }
 
 input {
-    background-color: #3a3a3a;
+    background-color: #f8bbd0; /* Light pink background */
     border: 3px solid transparent;
-    border-image: linear-gradient(45deg, #6b5b4b, #867b74, #6b5b4b) 10;
+    border-image: linear-gradient(45deg, #e91e63, #d81b60, #e91e63) 10; /* Gradient border */
     box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
-    color: inherit;
+    color: #000000; /* Black text */
     font-family: 'Noto Serif JP', serif;
     font-size: 20px;
     outline: none;
@@ -85,18 +85,18 @@ input:hover, textarea:hover {
 }
 
 a:link, a:visited {
-    color: #a89984;
+    color: #e91e63; /* Red link color */
     text-decoration: none;
 }
 
 a:hover, a:active {
-    color: #f4bf75;
+    color: #f06292; /* Darker pink */
 }
 
 #outputContainer {
-    background: radial-gradient(circle, #2b2b2b 10%, #3a3a3a 60%, #2b2b2b 90%);
-    border: 3px solid #6b5b4b;
-    color: #d3c6aa;
+    background: radial-gradient(circle, #fce4ec 10%, #f8bbd0 60%, #fce4ec 90%); /* Light pink gradient */
+    border: 3px solid #e91e63; /* Red border */
+    color: #000000; /* Black text */
     white-space: pre-wrap;
     width: 100%;
     padding: 20px;
@@ -104,7 +104,7 @@ a:hover, a:active {
 }
 
 hr {
-    background: linear-gradient(to right, #6b5b4b, #b7a57a, #6b5b4b);
+    background: linear-gradient(to right, #e91e63, #f06292, #e91e63); /* Gradient red and pink */
     border: none;
     height: 3px;
     position: relative;
@@ -112,7 +112,7 @@ hr {
 }
 
 hr::after {
-    color: #b7a57a;
+    color: #e91e63; /* Red color */
     display: block;
     text-align: center;
 }
@@ -120,25 +120,25 @@ hr::after {
 #typeSelector {
     font-size: 18px;
     padding: 10px 16px;
-    border: 3px solid #6b5b4b;
+    border: 3px solid #e91e63; /* Red border */
     border-radius: 10px;
-    background: linear-gradient(to bottom, #6b5b4b, #b7a57a);
-    color: #2b2b2b;
+    background: linear-gradient(to bottom, #f48fb1, #f06292); /* Shades of pink */
+    color: #ffffff; /* White text */
     cursor: pointer;
     transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 /* Hover effect */
 #typeSelector:hover {
-    background: #b7a57a;
-    color: #2b2b2b;
-    border-color: #6b5b4b;
+    background: #f06292; /* Darker pink */
+    color: #ffffff; /* White text */
+    border-color: #e91e63; /* Red border */
     box-shadow: 0 0 10px rgba(183, 165, 122, 0.5);
 }
 
 /* Focus effect */
 #typeSelector:focus {
-    background: #d9f2d9;
+    background: #d9f2d9; /* Slightly darker pink */
     border-color: #2e7d32;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
