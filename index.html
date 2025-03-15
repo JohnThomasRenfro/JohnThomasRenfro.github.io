@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>The Japanese to English Parser</title>
 <link rel="icon" href="reading.png" type="image/png">
-<style> 
+<style>
 body {
     background-attachment: fixed;
     background-color: #f5f5f5; /* Light gray for a neutral, soft background */
@@ -49,7 +49,7 @@ button:active, select:active {
     border-bottom: 2px solid #c62828; /* Darker red */
     color: #d32f2f; /* Dark red text */
     font-family: 'Noto Serif JP', serif;
-    font-size: 25px;
+    font-size: 25px; /* Updated font size */
     text-shadow: 1px 1px 4px #b71c1c; /* Dark red shadow */
 }
 
@@ -87,10 +87,13 @@ input:hover, textarea:hover {
 a:link, a:visited {
     color: #d32f2f; /* Dark red link color */
     text-decoration: none;
+    font-weight: bold; /* Bold font */
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transition */
 }
 
 a:hover, a:active {
     color: #ef5350; /* Slightly darker red */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Text shadow for hover and active state */
 }
 
 #outputContainer {
