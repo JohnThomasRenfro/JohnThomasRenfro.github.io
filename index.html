@@ -5,128 +5,143 @@
 <title>The Japanese to English Parser</title>
 <link rel="icon" href="reading.png" type="image/png">
 <style> 
-
 body {
- background-attachment: fixed;
- background-color: #2b2b2b;
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
- color: #d3c6aa;
- font-family: 'Noto Serif JP',serif;
- font-size: 20px;
- margin: 20px;
- padding: 20px;
- position: relative;
- word-wrap: break-word;
+    background-attachment: fixed;
+    background-color: #2b2b2b;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #d3c6aa;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+    word-wrap: break-word;
 }
 
 button, select {
- background: linear-gradient(to bottom, #6b5b4b, #b7a57a);
- border: 3px solid #6b5b4b;
- border-radius: 10px;
- color: #2b2b2b;
- cursor: pointer;
- transition: background 0.3s ease-in-out;
+    background: linear-gradient(to bottom, #6b5b4b, #b7a57a);
+    border: 3px solid #6b5b4b;
+    border-radius: 10px;
+    color: #2b2b2b;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 8px 16px;
+    font-size: 18px;
 }
 
 button:hover, select:hover {
- background: #b7a57a;
- color: #2b2b2b;
- transform: scale(1.05);
+    background: #b7a57a;
+    color: #2b2b2b;
+    transform: scale(1.05);
+}
+
+button:active, select:active {
+    background: #6b5b4b;
+    color: #d3c6aa;
+    transform: scale(0.98);
 }
 
 .HeaderStyle {
- background: radial-gradient(circle, #2b2b2b 10%, #524e4d 50%, #2b2b2b 90%);
- border: 3px solid #6b5b4b;
- border-bottom: 2px solid #867b74;
- color: #b7a57a;
- font-family: 'Noto Serif JP',serif;
- font-size: 20px;
- text-shadow: 1px 1px 4px #6b5b4b;
+    background: radial-gradient(circle, #2b2b2b 10%, #524e4d 50%, #2b2b2b 90%);
+    border: 3px solid #6b5b4b;
+    border-bottom: 2px solid #867b74;
+    color: #b7a57a;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    text-shadow: 1px 1px 4px #6b5b4b;
 }
 
 textarea {
- background-color: #3a3a3a;
- border: 3px solid transparent;
- border-image: linear-gradient(45deg, #6b5b4b, #867b74, #6b5b4b) 10;
- box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
- color: inherit;
- font-family: 'Noto Serif JP',serif;
- font-size: 20px;
- outline: none;
- width: 100%;
+    background-color: #3a3a3a;
+    border: 3px solid transparent;
+    border-image: linear-gradient(45deg, #6b5b4b, #867b74, #6b5b4b) 10;
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
+    color: inherit;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 input {
- background-color: #3a3a3a;
- border: 3px solid transparent;
- border-image: linear-gradient(45deg, #6b5b4b, #867b74, #6b5b4b) 10;
- box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
- color: inherit;
- font-family: 'Noto Serif JP',serif;
- font-size: 20px;
- outline: none;
+    background-color: #3a3a3a;
+    border: 3px solid transparent;
+    border-image: linear-gradient(45deg, #6b5b4b, #867b74, #6b5b4b) 10;
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5);
+    color: inherit;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 input:hover, textarea:hover {
- box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 a:link, a:visited {
- color: #a89984;
- text-decoration: none;
+    color: #a89984;
+    text-decoration: none;
 }
 
 a:hover, a:active {
- color: #f4bf75;
+    color: #f4bf75;
 }
 
 #outputContainer {
- background: radial-gradient(circle, #2b2b2b 10%, #3a3a3a 60%, #2b2b2b 90%);
- border: 3px solid #6b5b4b;
- color: #d3c6aa;
- white-space: pre-wrap;
- width: 100%;
+    background: radial-gradient(circle, #2b2b2b 10%, #3a3a3a 60%, #2b2b2b 90%);
+    border: 3px solid #6b5b4b;
+    color: #d3c6aa;
+    white-space: pre-wrap;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 hr {
- background: linear-gradient(to right, #6b5b4b, #b7a57a, #6b5b4b);
- border: none;
- height: 3px;
- position: relative;
+    background: linear-gradient(to right, #6b5b4b, #b7a57a, #6b5b4b);
+    border: none;
+    height: 3px;
+    position: relative;
+    margin: 20px 0;
 }
 
 hr::after {
- color: #b7a57a;
- display: block;
- text-align: center;
+    color: #b7a57a;
+    display: block;
+    text-align: center;
 }
 
 #typeSelector {
-    font-size: 16px; /* Adjust the font size */
-    padding: 8px 12px; /* Add some inner spacing */
-    border: 2px solid #4CAF50; /* Green border */
-    border-radius: 6px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light background */
-    color: #333; /* Text color */
-    outline: none; /* Remove default focus outline */
-    transition: all 0.3s ease; /* Smooth hover effects */
+    font-size: 18px;
+    padding: 10px 16px;
+    border: 3px solid #6b5b4b;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #6b5b4b, #b7a57a);
+    color: #2b2b2b;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 /* Hover effect */
 #typeSelector:hover {
-    background-color: #e6f7e6; /* Light green on hover */
-    border-color: #3e8e41; /* Darker green border */
+    background: #b7a57a;
+    color: #2b2b2b;
+    border-color: #6b5b4b;
+    box-shadow: 0 0 10px rgba(183, 165, 122, 0.5);
 }
 
 /* Focus effect */
 #typeSelector:focus {
-    background-color: #d9f2d9; /* Slightly darker green for focus */
-    border-color: #2e7d32; /* Even darker green border */
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Soft shadow */
+    background: #d9f2d9;
+    border-color: #2e7d32;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
-
 </style>
 
 <script>
@@ -10770,11 +10785,11 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
     <input type="text" id="pronunciationInput" placeholder="Enter the spaced English pronunciation." /><br>
     <input type="text" id="definitionInput" placeholder="Enter the English definition." /><br>What type of word is this?
     <select id="typeSelector">
-        <option value="NonVerb" selected>NonVerb</option>
+        <option value="Noun" selected>NonVerb</option>
+        <option value="IAdjective">IAdjective</option>     
         <option value="IchidanVerb">IchidanVerb</option>     
         <option value="RuVerb">RuVerb</option>
         <option value="SuVerb">SuVerb</option>
-        <option value="IAdjective">IAdjective</option>
         <option value="KuVerb">KuVerb</option>
         <option value="BuVerb">BuVerb</option>
         <option value="MuVerb">MuVerb</option>
