@@ -456,6 +456,7 @@ const replsB=[
 {p1:/(秋田市?)/g,r1:'$1<br>,possible place name; Akita ;Noun'},
 {p1:/(大館市?)/g,r1:'$1<br>,possible place name; Ōdate ;Noun'},
 {p1:/(鹿角市?)/g,r1:'$1<br>,possible place name; Kazuno ;Noun'},
+{p1:/(道府県?)/g,r1:'$1<br>,possible place name; DouFu ;Noun'},
 {p1:/(大仙市?)/g,r1:'$1<br>,possible place name; Daisen ;Noun'},
 {p1:/(潟上市?)/g,r1:'$1<br>,possible place name; Katagami ;Noun'},
 {p1:/(男鹿市?)/g,r1:'$1<br>,possible place name; Oga ;Noun'},
@@ -2926,6 +2927,7 @@ const replsB=[
 {p1:/(耳)(?!X)(鼻)(?!X)(科)(?!X)/g,r1:'$1Xji$2Xbi$3Xka,otorhinology,ENT;Noun'},
 {p1:/(耐)(?!X)(久)(?!X)(性)(?!X)/g,r1:'$1Xtai$2Xkyuu$3Xsei,durability;Noun'},
 {p1:/(老)(?!X)(朽)(?!X)(化)(?!X)/g,r1:'$1Xrou$2Xkyuu$3Xka,deterioration;Noun'},
+{p1:/(市)(?!X)(町)(?!X)(村)(?!X)/g,r1:'$1Xshi$2Xcyou$3Xson,municipalities;Noun'},
 {p1:/(美)(?!X)(術)(?!X)(館)(?!X)/g,r1:'$1Xbi$2Xjyutsu$3Xkan,art museum;Noun'},
 {p1:/(美)(?!X)(容)(?!X)(院)(?!X)/g,r1:'$1Xbi$2Xyou$3Xin,beauty shop;Noun'},
 {p1:/(繁)(?!X)(華)(?!X)(街)(?!X)/g,r1:'$1Xhan$2Xka$3Xgai,shopping district;Noun'},
@@ -4314,7 +4316,7 @@ const replsB=[
 {p1:/(下)(?!X)(回)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xshita$2Xmawa,fall below$3X;RuVerb'},
 {p1:/(下)(?!X)(ろ)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xo$2Xro,bring down,take down,pull down$3X;SuVerb'},
 {p1:/(下)(?!X)(り)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xo$2Xri,go down,come down$3X;RuVerb'},
-{p1: /(上)(?!X)(振)(?!X)([らりるれろっ])/g, r1: '$1Xure$2Xbu$3X,an economic upturn$3X;RuVerb'},{p1:/(下)(?!X)(さ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xku$2Xdasa,give,favor with$3X;RuVerb'},
+{p1:/(上)(?!X)(振)(?!X)([らりるれろっ])/g,r1:'$1Xure$2Xbu$3X,an economic upturn$3X;RuVerb'},{p1:/(下)(?!X)(さ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xku$2Xdasa,give,favor with$3X;RuVerb'},
 {p1:/(下)(?!X)(げ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xsag$2Xe,lower,turn down$3X;RuVerb'},
 {p1:/(下)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xsa$2Xga,go down$3X;RuVerb'},
 {p1:/(上)(?!X)(回)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xuwa$2Xmawa,exceed$3X;RuVerb'},
@@ -5354,8 +5356,10 @@ const replsB=[
 {p1:/(薬)(?!X)(指)(?!X)/g,r1:'$1Xku$2Xsuriyubi,third finger,ring finger;Noun'},
 {p1:/(薬)(?!X)(局)(?!X)/g,r1:'$1Xyak$2Xkyoku,pharmacy;Noun'},
 {p1:/(薬)(?!X)(品)(?!X)/g,r1:'$1Xyaku$2Xhin,medicine product;Noun'},
+{p1:/(伴)(?!X)(走)(?!X)/g, r1: '$1Xban$2Xsou,accompanying,pace setting;Noun'},
 {p1:/(薬)(?!X)(剤)(?!X)/g,r1:'$1Xyaku$2Xzai,pill;Noun'},
 {p1:/(薦)(?!X)(め)(?!X)/g,r1:'$1Xsusu$2Xme,recommend;IchidanVerb'},
+{p1:/(創)(?!X)(生)(?!X)/g,r1:'$1Xsou$2Xsei,creation,birth,formation;Noun'},
 {p1:/(薄)(?!X)(着)(?!X)/g,r1:'$1Xusu$2Xgi,light clothing;Noun'},
 {p1:/(蓄)(?!X)(積)(?!X)/g,r1:'$1Xchiku$2Xseki,accumulation;Noun'},
 {p1:/(蒸)(?!X)(気)(?!X)/g,r1:'$1Xjyou$2Xki,vapor;Noun'},
@@ -10756,45 +10760,45 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
     if (type === "RuVerb") {
         let regexPattern = getBasePattern(word, `([らりるれろっ])(?!X)`);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;RuVerb`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     } else if (type === "SuVerb") {
         let regexPattern = getBasePattern(word, `([さしすせそ])(?!X)`);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;SuVerb`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     } else if (type === "IAdjective") {
         let regexPattern = getBasePattern(word, `([いくかさ])(?!X)`);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;IAdjective`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     } else if (type === "KuVerb") {
         let regexPattern = getBasePattern(word, `([かきくけこい])(?!X)`);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;KuVerb`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     } else if (type === "BuVerb") {
         let regexPattern = getBasePattern(word, `([ばびぶべぼん])(?!X)`);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;BuVerb`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     } else if (type === "MuVerb") {
         let regexPattern = getBasePattern(word, `([まみむめもん])(?!X)`);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;MuVerb`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     } else if (type === "NuVerb") {
         let regexPattern = getBasePattern(word, `([なにぬねのん])(?!X)`);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;NuVerb`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     } else if (type === "TsuVerb") {
         let regexPattern = getBasePattern(word, `([たちつてとっ])(?!X)`);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition}$${word.length + 1}X;TsuVerb`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     } else if (type === "IchidanVerb") {
         // Assuming this is what you meant by IchidanVerbs
         let regexPattern = getBasePattern(word);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition};IchidanVerb`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     } else {
         // Non-Verb case
         let regexPattern = getBasePattern(word);
         let replacement = getPronunciationParts(word, pronunciation).join('') + `,${definition};Noun`;
-        return `{p1: /${regexPattern}/g, r1: '${replacement}'},`;
+        return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
     }
 }
 
@@ -10811,7 +10815,6 @@ function copyToClipboard() {
     const outputText = document.getElementById("output").innerText;
     if (outputText) {
         navigator.clipboard.writeText(outputText).then(() => {
-            alert("Output copied to clipboard!");
         }).catch(err => {
             console.error("Failed to copy text: ", err);
         });
@@ -10827,7 +10830,7 @@ function copyToClipboard() {
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-日銀は18～19日の金融政策決定会合で、政策金利の水準を0・5％程度で維持する方向だ。国内物価の上振れに加え、高水準の賃上げが期待できることから、市場の一部には追加利上げの前倒し観測も浮上する。一方、海外経済に目を向けると、トランプ米政権の関税政策を巡り不確実性が高く、日銀はリスクの見極めを優先する構えだ。
+石破茂首相は15日、国家公務員のチームと市町村をマッチングし、地域の課題解決を助ける「地方創生伴走支援制度」について、38道府県の60市町村を対象に選んだと明らかにした。視察先の長野県宮田村で記者団に述べた。
 <hr>
 <button id="adminToggle" onclick="toggleAdminSection()">Admin use only</button>
 <div id="adminSection" style="display: none;">
