@@ -37,8 +37,9 @@ button:hover, select:hover {
 }
 
         select:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+ background: #b7a57a;
+ color: #2b2b2b;
+ transform: scale(1.05);
         } 
 
 .HeaderStyle {
@@ -10722,7 +10723,7 @@ function toggleAdminSection() {
             } else if (type === "TsuVerb") {
                 const { regexPattern, replacement } = generateVerbPattern(word, 'たちつてとっ');
                 return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}$${pronunciationParts.length + 1}X;TsuVerb'},`;    
-            } else if (type === "Non-Verb) {
+            } else if (type === "NonVerb) {
                 let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
                 let replacement = word.split('').map((_, i) => 
                     `$${i + 1}X${pronunciationParts[i] || word[i]}`
@@ -10775,7 +10776,7 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
     <input type="text" id="pronunciationInput" placeholder="Enter spaced English pronunciation" />
     <input type="text" id="definitionInput" placeholder="Enter English definition" />
     <select id="typeSelector">
-        <option value="Non-Verb" selected>Non-Verb</option>
+        <option value="NonVerb" selected>NonVerb</option>
         <option value="IchidanVerb">IchidanVerb</option>     
         <option value="RuVerb">RuVerb</option>
         <option value="SuVerb">SuVerb</option>
