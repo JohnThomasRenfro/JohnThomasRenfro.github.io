@@ -10724,6 +10724,12 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
             `$${i + 1}X${pronunciationParts[i] || word[i]}`
         ).join('');
         return `{p1: /${regexPattern}/g, r1: '${replacement},${definition};Noun'},`;
+    } else {
+        let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
+        let replacement = word.split('').map((_, i) => 
+            `$${i + 1}X${pronunciationParts[i] || word[i]}`
+        ).join('');
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition};IchidanVerb'},`;
     }
 }
  
@@ -10765,6 +10771,7 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
     <input type="text" id="definitionInput" placeholder="Enter English definition" />
     <select id="typeSelector">
         <option value="Non-Verb" selected>Non-Verb</option>
+        <option value="IchidanVerb" selected>IchidanVerb</option>     
         <option value="RuVerb">RuVerb</option>
         <option value="SuVerb">SuVerb</option>
         <option value="IAdjective">IAdjective</option>
