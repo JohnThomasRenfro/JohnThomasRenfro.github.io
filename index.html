@@ -10764,11 +10764,11 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 １９９５年３月２０日。幸子は３１歳だった。都外のスーパーで働き、東京近郊の自宅からバスで通っていた。しかし、あの日はたまたま、都内で予定されていた研修に参加するため、営団地下鉄（現・東京メトロ）丸ノ内線に乗った。その丸ノ内線で、オウム真理教幹部が猛毒ガス・サリンをまいたのだった。
 <hr>
-<button id="adminToggle" onclick="toggleAdminSection()">Admin use only</button>
+<button id="adminToggle" onclick="toggleAdminSection()">This is for administrator use only.</button>
 <div id="adminSection" style="display: none;">
     <input type="text" id="wordInput" placeholder="Enter the Japanese word." /><br>
     <input type="text" id="pronunciationInput" placeholder="Enter the spaced English pronunciation." /><br>
-    <input type="text" id="definitionInput" placeholder="Enter the English definition" /><br>
+    <input type="text" id="definitionInput" placeholder="Enter the English definition." /><br>What type of word is this?
     <select id="typeSelector">
         <option value="NonVerb" selected>NonVerb</option>
         <option value="IchidanVerb">IchidanVerb</option>     
@@ -10780,10 +10780,10 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
         <option value="MuVerb">MuVerb</option>
         <option value="NuVerb">NuVerb</option>
         <option value="TsuVerb">TsuVerb</option>
-    </select>
-    <button onclick="formatAndDisplay()">Generate</button> <!-- Generate button added -->
+    </select><br>
+    <button onclick="formatAndDisplay()">Format the dictionary entry.</button> 
     <p id="output"></p>
-    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <button onclick="copyToClipboard()">Copy the entry to the clipboard.</button>
 </div>
 
 <hr>
