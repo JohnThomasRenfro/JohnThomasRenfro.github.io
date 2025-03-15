@@ -10771,7 +10771,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
         let replacement = word.split('').map((char, index) => 
             `$${index + 1}X${pronunciationParts[index] || char}`
         ).join('');
-        return `{p1: /${regexPattern}/g, r1: '${replacement}${pronunciationParts.length + 2}${definition}$;TsuVerb'},`;    
+        return `{p1: /${regexPattern}/g, r1: '${replacement},${definition}${pronunciationParts.length + 2};TsuVerb'},`;    
     } else {
         // Default Non-Verb logic
         let regexPattern = word.split('').map(char => `(${char})(?!X)`).join('');
