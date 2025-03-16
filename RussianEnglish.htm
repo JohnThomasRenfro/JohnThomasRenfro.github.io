@@ -11272,7 +11272,8 @@ function runMatcher() {
           outputDiv.innerHTML += `<p>${prefixInfo}<br>
           <span class="word">(${word})</span>: ROOT:(${root})=${dictionary[root]}</p>`;
           matched = true;
-          break;
+        } else {
+          prefixInfo = `PREFIX:(${prefix})=${prefixes[prefix]}`;
         }
       }
     }
@@ -11287,7 +11288,8 @@ function runMatcher() {
             outputDiv.innerHTML += `<p>${suffixInfo}<br>
             <span class="word">${word}</span>: (${root}) - ${dictionary[root]}</p>`;
             matched = true;
-            break;
+          } else {
+            suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
           }
         }
       }
