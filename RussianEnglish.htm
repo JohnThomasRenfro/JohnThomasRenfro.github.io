@@ -11298,10 +11298,10 @@ function runMatcher() {
     let baseWord = word.toLowerCase();
     let matched = false;
 
-    // Check for prefix match
+    // Check for prefix match with spaces
     for (let prefix in prefixes) {
-      if (baseWord.startsWith(prefix)) {
-        let root = baseWord.slice(prefix.length);
+      if (baseWord.startsWith(prefix) && (baseWord.indexOf(prefix) === 0 || baseWord.indexOf(' ' + prefix) === 0)) {
+        let root = baseWord.slice(prefix.length).trim();
         if (dictionary[root]) {
           outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
           PREFIX: ${prefix} - ${prefixes[prefix]}</p>`;
