@@ -11212,17 +11212,6 @@ const suffixes = {
 "ават":"denotes frequentative verbs",
 "а":"denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
-
-    // Function to extract suffix information
-    function getSuffixInfo(word) {
-        for (const [suffix, meaning] of Object.entries(suffixes)) {
-            if (word.endsWith(suffix)) {
-                return { suffix, meaning };
-            }
-        }
-        return { suffix: null, meaning:"No suffix information found" };
-    }
-
 // Function to extract suffix information
 function getSuffixInfo(word) {
     for (const [suffix, meaning] of Object.entries(suffixes)) {
@@ -11276,8 +11265,7 @@ function processText(inputText) {
     return results;
 }
 
-/*
-    // Function to process the input text and match root words
+    /*
     function processText(inputText) {
         const inputWords = inputText.split(/\s+/); // Split input text into words
         const results = [];
@@ -11309,8 +11297,7 @@ function processText(inputText) {
 
         return results;
     }
-/*
-
+*/
 function runMatcher() {
   let inputText = document.getElementById('inputText').value;
   let outputDiv = document.getElementById('output');
