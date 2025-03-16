@@ -11113,14 +11113,19 @@ function identifyParts(word) {
     }
   }
 
+  // Prevent over-splitting: if root is invalid or too short, revert to full word if in dictionary
+  if ((root.length < 3 || !dictionary[root]) && dictionary[word]) {
+    return { prefix: "", root: word, suffix: "" };
+  }
+
   return { prefix, root, suffix };
 }
 
 function matchDictionary(word) {
-  // First try exact match
+  // Exact match first
   if (dictionary[word]) return dictionary[word];
 
-  // Then try root word match
+  // Then try root match
   const { root } = identifyParts(word);
   return dictionary[root] || "No translation found";
 }
@@ -11130,7 +11135,7 @@ function processText(inputText) {
   const words = cleanedText.split(/\s+/).filter(word => word.length > 0);
   return words.map(word => {
     const { prefix, root, suffix } = identifyParts(word);
-    // Try exact match first, then root
+    // Prioritize exact match, then root
     const definition = dictionary[word] || dictionary[root] || "No translation found";
     return { 
       word, 
@@ -11162,6 +11167,7 @@ function runMatcher() {
   const results = processText(inputText);
   displayResults(results);
 }
+
   </script>
 </body>
 </html>
