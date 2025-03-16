@@ -11285,7 +11285,7 @@ function runMatcher() {
           let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
           if (dictionary[root]) {
             outputDiv.innerHTML += `<p>PREFIX:(${prefix})=${prefixes[prefix]}<br>
-            <span class="word">${word}</span>:ROOT:(${root})=${dictionary[root]}</p>`;
+            <span class="word">WHOLE WORD:=(${word})</span>:ROOT:(${root})=${dictionary[root]}</p>`;
             matched = true;
             prefixDetected = true;
             rootDetected = true;
