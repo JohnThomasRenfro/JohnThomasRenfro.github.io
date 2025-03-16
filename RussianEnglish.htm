@@ -11328,58 +11328,96 @@ function runMatcher() {
     // Split input text into words
     let words = inputText.split(/\s+/);
 
-    let prefixDetected = false;
-    let rootDetected = false;
+    let unmatchedWords = [];
+    let unmatchedPrefixes = [];
+    let unmatchedRoots = [];
+    let unmatchedSuffixes = [];
+
+    let matchedWholeWords = [];
+    let matchedPrefixes = [];
+    let matchedRoots = [];
+    let matchedSuffixes = [];
 
     // Process each word
     words.forEach(word => {
       let baseWord = word.toLowerCase();
       let matched = false;
 
-      // Check for prefix match with spaces
+      // Check for prefix match
       for (let prefix in prefixes) {
-        if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
-          let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
+        if (baseWord.startsWith(prefix)) {
+          let root = baseWord.slice(prefix.length).trim();
           if (dictionary[root]) {
-            outputDiv.innerHTML += `<p>PREFIX:(${prefix})=${prefixes[prefix]}<br>
-            <span class="word">(${word})</span>:ROOT:(${root})=${dictionary[root]}</p>`;
+            matchedPrefixes.push(`PREFIX:(${prefix})=${prefixes[prefix]}<br>
+              <span class="word">(${word})</span>:ROOT:(${root})=${dictionary[root]}`);
             matched = true;
-            prefixDetected = true;
-            rootDetected = true;
-            break;
+          } else {
+            unmatchedRoots.push(root);
           }
+        } else {
+          unmatchedPrefixes.push(prefix);
         }
       }
 
-      // If no prefix match, check for suffix match from longest to shortest
+      // If no prefix match, check for suffix match
       if (!matched) {
         for (let suffix in suffixes) {
           if (baseWord.endsWith(suffix)) {
             let root = baseWord.slice(0, -suffix.length);
             if (dictionary[root]) {
-              outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
-              SUFFIX:(${suffix})=${suffixes[suffix]}</p>`;
+              matchedSuffixes.push(`<span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
+                SUFFIX:(${suffix})=${suffixes[suffix]}`);
               matched = true;
-              rootDetected = true;
-              break;
+            } else {
+              unmatchedRoots.push(root);
             }
+          } else {
+            unmatchedSuffixes.push(suffix);
           }
         }
       }
 
       // If no prefix or suffix match, check the whole word
-      if (!matched && dictionary[baseWord]) {
-        outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
-        rootDetected = true;
+      if (!matched) {
+        if (dictionary[baseWord]) {
+          matchedWholeWords.push(`<span class="word">${word}</span>: ${dictionary[baseWord]}`);
+        } else {
+          unmatchedWords.push(word);
+        }
       }
     });
 
-    // Check if no prefixes or roots were detected
-    if (!prefixDetected) {
-      outputDiv.innerHTML += `<p>No prefixes were detected.</p>`;
+    // Output matched and unmatched results
+    if (matchedWholeWords.length > 0) {
+      outputDiv.innerHTML += `<p>Matched Whole Words:<br>${matchedWholeWords.join('<br>')}</p>`;
     }
-    if (!rootDetected) {
-      outputDiv.innerHTML += `${word} is not in the dictionary.</p>`;
+
+    if (matchedPrefixes.length > 0) {
+      outputDiv.innerHTML += `<p>Matched Prefixes:<br>${matchedPrefixes.join('<br>')}</p>`;
+    }
+
+    if (matchedRoots.length > 0) {
+      outputDiv.innerHTML += `<p>Matched Roots:<br>${matchedRoots.join('<br>')}</p>`;
+    }
+
+    if (matchedSuffixes.length > 0) {
+      outputDiv.innerHTML += `<p>Matched Suffixes:<br>${matchedSuffixes.join('<br>')}</p>`;
+    }
+
+    if (unmatchedWords.length > 0) {
+      outputDiv.innerHTML += `<p>Unmatched Whole Words:<br>${unmatchedWords.join(', ')}</p>`;
+    }
+
+    if (unmatchedPrefixes.length > 0) {
+      outputDiv.innerHTML += `<p>Unmatched Prefixes:<br>${unmatchedPrefixes.join(', ')}</p>`;
+    }
+
+    if (unmatchedRoots.length > 0) {
+      outputDiv.innerHTML += `<p>Unmatched Roots:<br>${unmatchedRoots.join(', ')}</p>`;
+    }
+
+    if (unmatchedSuffixes.length > 0) {
+      outputDiv.innerHTML += `<p>Unmatched Suffixes:<br>${unmatchedSuffixes.join(', ')}</p>`;
     }
   } catch (error) {
     errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
