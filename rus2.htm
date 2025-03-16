@@ -11122,7 +11122,6 @@ function processText(inputText) {
   const words = cleanedText.split(/\s+/).filter(word => word.length > 0);
   return words.map(word => {
     const { prefix, root, suffix } = identifyParts(word);
-    // Try exact match first, then root
     let definition;
     if (dictionary[word]) {
       definition = dictionary[word]; // Full word match
