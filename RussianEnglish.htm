@@ -11256,24 +11256,22 @@ function runMatcher() {
   // Split input text into words
   let words = inputText.split(/\s+/);
 
-  let prefixDetected = false;
-  let rootDetected = false;
-
   // Process each word
   words.forEach(word => {
     let baseWord = word.toLowerCase();
     let matched = false;
+    let prefixInfo = "No prefix detected";
+    let suffixInfo = "No suffix detected";
 
     // Check for prefix match with spaces
     for (let prefix in prefixes) {
       if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
         let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
         if (dictionary[root]) {
-          outputDiv.innerHTML += `<p>PREFIX:(${prefix})=${prefixes[prefix]}<br>
+          prefixInfo = `PREFIX:(${prefix})=${prefixes[prefix]}`;
+          outputDiv.innerHTML += `<p>${prefixInfo}<br>
           <span class="word">(${word})</span>: ROOT:(${root})=${dictionary[root]}</p>`;
           matched = true;
-          prefixDetected = true;
-          rootDetected = true;
           break;
         }
       }
@@ -11285,10 +11283,10 @@ function runMatcher() {
         if (baseWord.endsWith(suffix)) {
           let root = baseWord.slice(0, -suffix.length);
           if (dictionary[root]) {
-            outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
-            SUFFIX:(${suffix})=${suffixes[suffix]}</p>`;
+            suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
+            outputDiv.innerHTML += `<p>${suffixInfo}<br>
+            <span class="word">${word}</span>: (${root}) - ${dictionary[root]}</p>`;
             matched = true;
-            rootDetected = true;
             break;
           }
         }
@@ -11299,22 +11297,13 @@ function runMatcher() {
     if (!matched && dictionary[baseWord]) {
       outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
       matched = true;
-      rootDetected = true;
     }
 
     // If no match at all, display the word with a message
     if (!matched) {
-      outputDiv.innerHTML += `<p><span class="word">${word}</span>: Not found in dictionary.</p>`;
+      outputDiv.innerHTML += `<p><span class="word">${word}</span>: Not found in dictionary.<br>${prefixInfo}<br>${suffixInfo}</p>`;
     }
   });
-
-  // Display if no prefixes or suffixes were detected
-  if (!prefixDetected) {
-    outputDiv.innerHTML += `<p>No prefixes were detected.</p>`;
-  }
-  if (!rootDetected) {
-    outputDiv.innerHTML += `<p>No roots were detected.</p>`;
-  }
 }
     
 /*
