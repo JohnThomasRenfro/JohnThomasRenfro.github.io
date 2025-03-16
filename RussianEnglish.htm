@@ -11273,15 +11273,13 @@ function runMatcher() {
       }
     }
 
-    // Check for suffix match from longest to shortest, avoiding prepositions
-    if (!dictionary[baseWord]) {
-      for (let suffix in suffixes) {
-        if (baseWord.endsWith(suffix)) {
-          let root = baseWord.slice(0, -suffix.length);
-          suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
-          matched = true;
-          break;
-        }
+    // Check for suffix match from longest to shortest
+    for (let suffix in suffixes) {
+      if (baseWord.endsWith(suffix)) {
+        let root = baseWord.slice(0, -suffix.length);
+        suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
+        matched = true;
+        break;
       }
     }
 
