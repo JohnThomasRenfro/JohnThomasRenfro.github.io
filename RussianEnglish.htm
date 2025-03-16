@@ -11199,6 +11199,49 @@ const suffixes = {
 "а": "denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
 
+    /*
+    
+const prefixes = {
+  "без": "(+g) without",
+  "в": "(+a) in, into; (+p) in, at",
+  "вз": "(+a) up, upwards",
+  "вне": "(+g) outside of",
+  "во": "(variation of 'в')",
+  "воз": "(+a) up, upwards",
+  "вос": "(variation of 'воз')",
+  "вы": "(+a) out, out of",
+  "до": "(+g) up to, until",
+  "за": "(+a) behind, beyond; (+i) for, in exchange for",
+  "из": "(+g) out of, from",
+  "ис": "(variation of 'из')",
+  "на": "(+a) onto, to; (+p) on, at",
+  "над": "(+i) above, over",
+  "надо": "(variation of 'над')",
+  "не": "(negation prefix)",
+  "недо": "(insufficient, under-)",
+  "о": "(+a) about, concerning; (+p) around, approximately",
+  "об": "(variation of 'о')",
+  "обо": "(variation of 'о')",
+  "от": "(+g) from, away from",
+  "ото": "(variation of 'от')",
+  "пере": "(across, through, re-)",
+  "по": "(along; around; according to)",
+  "под": "(+a) under, beneath; (+i) near, towards",
+  "подо": "(variation of 'под')",
+  "пред": "(+i) in front of, before",
+  "перед": "(variation of 'пред')",
+  "пере": "(again, re-)",
+  "при": "(+a) to, towards; (+p) at, near",
+  "про": "(through, for, about)",
+  "раз": "(dis-, un-, re-)",
+  "рас": "(variation of 'раз')",
+  "с": "(+g) from, off; (+i) with, together with",
+  "со": "(variation of 'с')",
+  "у": "(+g) by, at; (+a) towards",
+  // Add other prefixes here as needed...
+}; 
+    */    
+
     // Function to extract suffix information
     function getSuffixInfo(word) {
         for (const [suffix, meaning] of Object.entries(suffixes)) {
@@ -11241,46 +11284,6 @@ const suffixes = {
 
         return results;
     }
-
-const prefixes = {
-  "без": "(+g) without",
-  "в": "(+a) in, into; (+p) in, at",
-  "вз": "(+a) up, upwards",
-  "вне": "(+g) outside of",
-  "во": "(variation of 'в')",
-  "воз": "(+a) up, upwards",
-  "вос": "(variation of 'воз')",
-  "вы": "(+a) out, out of",
-  "до": "(+g) up to, until",
-  "за": "(+a) behind, beyond; (+i) for, in exchange for",
-  "из": "(+g) out of, from",
-  "ис": "(variation of 'из')",
-  "на": "(+a) onto, to; (+p) on, at",
-  "над": "(+i) above, over",
-  "надо": "(variation of 'над')",
-  "не": "(negation prefix)",
-  "недо": "(insufficient, under-)",
-  "о": "(+a) about, concerning; (+p) around, approximately",
-  "об": "(variation of 'о')",
-  "обо": "(variation of 'о')",
-  "от": "(+g) from, away from",
-  "ото": "(variation of 'от')",
-  "пере": "(across, through, re-)",
-  "по": "(along; around; according to)",
-  "под": "(+a) under, beneath; (+i) near, towards",
-  "подо": "(variation of 'под')",
-  "пред": "(+i) in front of, before",
-  "перед": "(variation of 'пред')",
-  "пере": "(again, re-)",
-  "при": "(+a) to, towards; (+p) at, near",
-  "про": "(through, for, about)",
-  "раз": "(dis-, un-, re-)",
-  "рас": "(variation of 'раз')",
-  "с": "(+g) from, off; (+i) with, together with",
-  "со": "(variation of 'с')",
-  "у": "(+g) by, at; (+a) towards",
-  // Add other prefixes here as needed...
-};
 
     function runMatcher() {
         const inputText = document.getElementById("inputText").value;
