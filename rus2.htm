@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Russian to English Parser Test</title>
+  <style>
+    /* [Your existing styles remain unchanged] */
+  </style>
+</head>
+<body>
+  <h1>Russian To English Parser Test</h1>
+  <textarea id="inputText" rows="10" cols="50" placeholder="Paste Russian text here...">Локомотив принимал земляков из Динамо. Обозреватель медиахолдинга Pravda.Ru побывал на матче. Хозяевами были на стадионе.</textarea>
+  <br>
+  <button onclick="runMatcher()">Process this Russian text</button>
+  <h2>Results:</h2>
+  <div id="output"></div>
+  <script>
+    const dictionary = {
+      "локомотив": "locomotive, train",
+      "принимал": "was hosting, receiving",
+      "земляков": "countrymen, fellow countrymen",
+      "из": "from",
+      "динамо": "dynamo",
+      "обозреватель": "observer, reviewer",
+      "медиахолдинга": "media holding",
+      "побывал": "visited, attended",
+      "на": "at, on",
+      "матче": "match, game",
+      "хозяевами": "hosts",
+      "были": "were",
+      "стадионе": "stadium"
+    };
+
+    const prefixes = {
+      "при": "prefix meaning 'at' or 'near'",
+      "по": "prefix meaning 'after' or 'along'",
+      "обо": "prefix meaning 'about' or 'around'",
+      "медиа": "prefix meaning 'media'"
+    };
+
+    const suffixes = {
+      "ал": "past tense suffix",
+      "ков": "plural noun suffix",
+      "а": "feminine ending",
+      "е": "locative case ending",
+      "ами": "instrumental plural suffix",
+      "и": "plural suffix"
+    };
+
+    function removePunctuation(text) {
+      return text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    }
+
+    function identifyParts(word) {
+      let prefix = "";
+      let suffix = "";
+      let root = word;
+
+      // Check for prefixes
+      for (const p of Object.keys(prefixes).sort((a, b) => b.length - a.length)) {
+        if (word.startsWith(p) && word.length > p.length) {
+          prefix = p;
+          root = word.slice(p.length);
+          break;
+        }
+      }
+
+      // Check for suffixes
+      for (const s of Object.keys(suffixes).sort((a, b) => b.length - a.length)) {
+        if (root.endsWith(s) && root.length > s.length) {
+          suffix = s;
+          root = root.slice(0, -s.length);
+          break;
+        }
+      }
+
+      return { prefix, root, suffix };
+    }
+
+    function matchDictionary(word) {
+      // First try exact match
+      if (dictionary[word]) return dictionary[word];
+      
+      // Then try root word match
+      const { root } = identifyParts(word);
+      return dictionary[root] || "No translation found";
+    }
+
+    function processText(inputText) {
+      const cleanedText = removePunctuation(inputText);
+      const words = cleanedText.split(/\s+/).filter(word => word.length > 0);
+      return words.map(word => {
+        const { prefix, root, suffix } = identifyParts(word);
+        const definition = matchDictionary(word);
+        return { 
+          word, 
+          prefix: prefix ? prefixes[prefix] || prefix : "",
+          root, 
+          suffix: suffix ? suffixes[suffix] || suffix : "",
+          definition 
+        };
+      });
+    }
+
+    function displayResults(results) {
+      const outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = "";
+      results.forEach(({ word, prefix, root, suffix, definition }) => {
+        const wordDiv = document.createElement("div");
+        wordDiv.innerHTML = `
+          <span class="word">${word}</span>: 
+          ${prefix ? `<span class="prefix">(${prefix})</span>` : ''}<span class="root">${root}</span>
+          ${suffix ? `<span class="suffix">(${suffix})</span>` : ''} - 
+          <span class="definition">${definition}</span>
+        `;
+        outputDiv.appendChild(wordDiv);
+      });
+    }
+
+    function runMatcher() {
+      const inputText = document.getElementById("inputText").value;
+      const results = processText(inputText);
+      displayResults(results);
+    }
+  </script>
+</body>
+</html>
