@@ -11284,8 +11284,8 @@ function runMatcher() {
         if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
           let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
           if (dictionary[root]) {
-            outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
-            PREFIX: ${prefix} - ${prefixes[prefix]}</p>`;
+            outputDiv.innerHTML += `<p>PREFIX: ${prefix} - ${prefixes[prefix]}<br>
+            <span class="word">${word}</span>: (${root}) - ${dictionary[root]}</p>`;
             matched = true;
             prefixDetected = true;
             rootDetected = true;
@@ -11327,7 +11327,7 @@ function runMatcher() {
   } catch (error) {
     errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
   }
-}    
+}
 
    /* 
 function runMatcher() {
