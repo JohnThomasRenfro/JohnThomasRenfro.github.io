@@ -11260,7 +11260,14 @@ function runMatcher() {
   const prepositions = ["на", "к", "в", "по", "с", "о", "у"];
 
   // List of pronouns to avoid suffix and prefix matching
-  const pronouns = ["я", "ты", "он", "она", "оно", "мы", "вы", "они", "мой", "твой", "его", "её", "наш", "ваш", "их", "меня", "тебя", "его", "её", "нас", "вас", "их"];
+  const pronouns = [
+    "я", "ты", "он", "она", "оно", "мы", "вы", "они", "мой", "твой", "его", "её", "наш", "ваш", "их",
+    "меня", "тебя", "нас", "вас", "их", "мне", "тебе", "ему", "ей", "нам", "вам", "им", "мной", "тобой",
+    "ним", "ней", "нами", "вами", "ними", "себя", "себе", "собой", "кто", "что", "какой", "какая", "какое", 
+    "какие", "который", "которая", "которое", "которые", "которого", "которой", "которому", "которым", 
+    "которых", "этот", "эта", "это", "эти", "тот", "та", "то", "те", "весь", "вся", "всё", "все", "сам", 
+    "сама", "само", "сами", "такой", "такая", "такое", "такие", "свой", "своя", "своё", "свои"
+  ];
 
   // Process each word
   words.forEach(word => {
@@ -11288,16 +11295,16 @@ function runMatcher() {
           break;
         }
       }
+
+      // Check if the whole word (including suffix) or its root is in the dictionary
+      if (dictionary[baseWord] || dictionary[baseWord.slice(0, -suffix.length)]) {
+        outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord] || dictionary[baseWord.slice(0, -suffix.length)]}<br>${prefixInfo}<br>${suffixInfo}</p>`;
+        matched = true;
+      }
     } else {
       // If the word is a preposition or pronoun, set appropriate message
       prefixInfo = `No prefix detected (${prepositions.includes(baseWord) ? 'preposition' : 'pronoun'})`;
       suffixInfo = `No suffix detected (${prepositions.includes(baseWord) ? 'preposition' : 'pronoun'})`;
-    }
-
-    // Check if the whole word is in the dictionary
-    if (dictionary[baseWord]) {
-      outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}<br>${prefixInfo}<br>${suffixInfo}</p>`;
-      matched = true;
     }
 
     // If no match at all, display the word with a message
