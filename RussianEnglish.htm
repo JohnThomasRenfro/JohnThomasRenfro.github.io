@@ -11199,61 +11199,73 @@ const suffixes = {
 "а": "denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
 
-    // Function to extract suffix information
-    function getSuffixInfo(word) {
-        for (const [suffix, meaning] of Object.entries(suffixes)) {
-            if (word.endsWith(suffix)) {
-                return { suffix, meaning };
+// Function to extract suffix information
+function getSuffixInfo(word) {
+    for (const [suffix, meaning] of Object.entries(suffixes)) {
+        if (word.endsWith(suffix)) {
+            return { suffix, meaning };
+        }
+    }
+    return { suffix: null, meaning: "No suffix information found" };
+}
+
+// Function to process the input text and match root words
+function processText(inputText) {
+    const inputWords = inputText.split(/\s+/); // Split input text into words
+    const results = [];
+
+    inputWords.forEach((word) => {
+        let matchedRoot = null;
+        let longestMatch = 0;
+        let prefixMatch = null;
+
+        // Compare with dictionary root words
+        for (const [root, definition] of Object.entries(dictionary)) {
+            if (word.startsWith(root) && root.length > longestMatch) {
+                matchedRoot = { root, definition };
+                longestMatch = root.length;
             }
         }
-        return { suffix: null, meaning:"No suffix information found" };
-    }
 
-    // Function to process the input text and match root words
-    function processText(inputText) {
-        const inputWords = inputText.split(/\s+/); // Split input text into words
-        const results = [];
-
-        inputWords.forEach((word) => {
-            let matchedRoot = null;
-            let longestMatch = 0;
-
-            // Compare with dictionary root words
-            for (const [root, definition] of Object.entries(dictionary)) {
-                if (word.startsWith(root) && root.length > longestMatch) {
-                    matchedRoot = { root, definition };
-                    longestMatch = root.length;
-                }
+        // Check for prefix match
+        for (const [prefix, prefixMeaning] of Object.entries(prefixes)) {
+            if (word.startsWith(prefix)) {
+                prefixMatch = { prefix, prefixMeaning };
+                break;
             }
+        }
 
-            // Build the result
-            if (matchedRoot) {
-                const suffixInfo = getSuffixInfo(word); // Get suffix details
-                results.push({
-                    originalWord: word,
-                    root: matchedRoot.root,
-                    definition: matchedRoot.definition,
-                    suffix: suffixInfo.suffix,
-                    suffixMeaning: suffixInfo.meaning
-                });
-            }
+        // Get suffix details
+        const suffixInfo = getSuffixInfo(word);
+
+        // Build the result
+        results.push({
+            originalWord: word,
+            root: matchedRoot ? matchedRoot.root : null,
+            definition: matchedRoot ? matchedRoot.definition : "No root information found",
+            prefix: prefixMatch ? prefixMatch.prefix : "N/A",
+            prefixMeaning: prefixMatch ? prefixMatch.prefixMeaning : "No prefix information found",
+            suffix: suffixInfo.suffix || "N/A",
+            suffixMeaning: suffixInfo.meaning
         });
+    });
 
-        return results;
-    }
+    return results;
+}
 
-    // Example usage function triggered by the button
-    function runMatcher() {
-        const inputText = document.getElementById("inputText").value;
-        const matches = processText(inputText);
-        const outputArea = document.getElementById("output");
-        outputArea.innerHTML = matches
-            .map(match => `
-                <b>${match.originalWord}</b>: (${match.root}) - ${match.definition} <br>
-                <i>SUFFIX:</i> ${match.suffix ||"N/A"} - ${match.suffixMeaning}
-            `)
-            .join("<br><br>");
-    }
+// Example usage function triggered by the button
+function runMatcher() {
+    const inputText = document.getElementById("inputText").value;
+    const matches = processText(inputText);
+    const outputArea = document.getElementById("output");
+    outputArea.innerHTML = matches
+        .map(match => `
+            <b>${match.originalWord}</b>: PREFIX:(${match.prefix}) - ${match.prefixMeaning} <br>
+            ROOT:(${match.root || "N/A"}) - ${match.definition} <br>
+            SUFFIX:(${match.suffix}) - ${match.suffixMeaning}
+        `)
+        .join("<br><br>");
+}
 </script>
 
 </body>
