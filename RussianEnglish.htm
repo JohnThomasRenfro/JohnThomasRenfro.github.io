@@ -11282,13 +11282,6 @@ const suffixes = {
   // Add other prefixes here as needed...
 };
 
-const suffixes = {
-  "ов": "denotes a plural genitive case or a possessive form for masculine nouns",
-  "ал": "denotes a verb in past tense, masculine singular form",
-  "а": "denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive)"
-  // Add other suffixes here...
-};
-
 function runMatcher() {
   let inputText = document.getElementById('inputText').value;
   let outputDiv = document.getElementById('output');
@@ -11376,6 +11369,8 @@ function runMatcher() {
 */
 </script>
 
+<div id="errorOutput" style="color: red;"></div>
+  
 </body>
 </html>
 
