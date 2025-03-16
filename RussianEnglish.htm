@@ -169,6 +169,7 @@ const dictionary = {
 "ёмкость":"(f) capacity",
 "ёлка":"fir tree",
 "ёж":"hedgehog",
+"хозяевами":"host, boss, proprietor",
 "ящик":"box, crate",
 "ячейка":"cell",
 "ястреб":"hawk",
@@ -180,8 +181,10 @@ const dictionary = {
 "ярость":"(f) rage",
 "яростный":"furious, frenzied",
 "яростно":"furiously",
+"жаркая":"warm, hot, torrid",
 "ярмарка":"fair, trade fair",
 "яркость":"(f) brightness",
+"наблюдалась":"to be observed",
 "ярко":"brightly",
 "яркий":"bright",
 "японский":"Japanese (adj)",
@@ -211,14 +214,17 @@ const dictionary = {
 "явление":"phenomenon",
 "явиться":"to appear",
 "яблочко":"little apple",
+"медиахолдинга":"media holding",
 "яблоня":"apple-tree",
 "яблоко":"apple",
+"штанги":"barbell, rod, crossbar, weight",
 "я":"I",
 "юрист":"lawyer",
 "юридический":"legal, law (adj)",
 "юный":"young",
 "юношеский":"youthful",
 "юноша":"(a) youth",
+"Динамо":"dynamo",
 "юность":"(f) youth",
 "юмор":"humour",
 "южный":"southern",
@@ -5311,6 +5317,8 @@ const dictionary = {
 "паром":"ferry",
 "паровой":"steam (adj)",
 "паровоз":"locomotive, steam engine",
+"\"":"quote",
+"Локомотив":"locomotive",
 "парнишка":"(m) lad (coll)",
 "парламентский":"parliamentary",
 "парламент":"parliament",
@@ -10913,6 +10921,7 @@ const dictionary = {
 "базар":"bazaar, market",
 "база":"base; depot",
 "багровый":"crimson",
+"тайме":"secret",
 "багаж":"luggage",
 "бабушкин":"grandmother’s (possessive adj)",
 "бабушка":"grandmother",
@@ -11086,49 +11095,6 @@ const dictionary = {
 "Богородица":"the Virgin",
 };
 
-    function processText(inputText) {
-        const inputWords = inputText.split(/\s+/); // Split input text into words
-        const results = [];
-
-        inputWords.forEach((word) => {
-            let matchedRoot = null;
-            let longestMatch = 0;
-
-            // Compare with dictionary root words
-            for (const [root, definition] of Object.entries(dictionary)) {
-                if (word.startsWith(root) && root.length > longestMatch) {
-                    matchedRoot = { root, definition };
-                    longestMatch = root.length;
-                }
-            }
-
-            // Build the result
-            if (matchedRoot) {
-                const suffixInfo = getSuffixInfo(word); // Get suffix details
-                results.push({
-                    originalWord: word,
-                    root: matchedRoot.root,
-                    definition: matchedRoot.definition,
-                    suffix: suffixInfo.suffix,
-                    suffixMeaning: suffixInfo.meaning
-                });
-            }
-        });
-
-        return results;
-    }
-
-function runMatcher() {
-  let inputText = document.getElementById('inputText').value;
-  let outputDiv = document.getElementById('output');
-  outputDiv.innerHTML = '';
-
-  // Preprocess input text: remove punctuation
-  inputText = inputText.replace(/[.,!?]/g, '');
-
-  // Split input text into words
-  let words = inputText.split(/\s+/);
-
   // List of prepositions to avoid suffix and prefix matching
   const prepositions = ["на", "к", "в", "по", "с", "о", "у"];
 
@@ -11269,124 +11235,155 @@ const suffixes = {
 "а":"denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
 
-  // Process each word
-  words.forEach(word => {
-    let baseWord = word.toLowerCase();
-    let matched = false;
-    let prefixInfo = "No prefix detected";
-    let suffixInfo = "No suffix detected";
+function getSuffixInfo(word) {
+    let matchedSuffix = null;
+    let suffixMeaning = "No suffix detected";
 
-    // Check if the word is a preposition or pronoun
-    if (!prepositions.includes(baseWord) && !pronouns.includes(baseWord)) {
-      // Check for prefix match
-      for (let prefix in prefixes) {
-        if (baseWord.startsWith(prefix)) {
-          let root = baseWord.slice(prefix.length);
-          prefixInfo = `PREFIX:(${prefix})=${prefixes[prefix]}`;
-          break;
+    for (const [suffix, meaning] of Object.entries(suffixes)) {
+        // Check that the word ends with the suffix and there is no space before it
+        if (word.endsWith(suffix) && word[word.length - suffix.length - 1] !== ' ') {
+            matchedSuffix = suffix;
+            suffixMeaning = meaning;
+            break; // Exit loop once a match is found
         }
-      }
-
-      // Check for suffix match from longest to shortest
-      for (let suffix in suffixes) {
-        if (baseWord.endsWith(suffix)) {
-          let root = baseWord.slice(0, -suffix.length);
-          suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
-          break;
-        }
-      }
-
-      // Check if the whole word (including suffix) or its root is in the dictionary
-      if (dictionary[baseWord] || dictionary[baseWord.slice(0, -suffix.length)]) {
-        outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord] || dictionary[baseWord.slice(0, -suffix.length)]}<br>${prefixInfo}<br>${suffixInfo}</p>`;
-        matched = true;
-      }
-    } else {
-      // If the word is a preposition or pronoun, set appropriate message
-      prefixInfo = `No prefix detected (${prepositions.includes(baseWord) ? 'preposition' : 'pronoun'})`;
-      suffixInfo = `No suffix detected (${prepositions.includes(baseWord) ? 'preposition' : 'pronoun'})`;
     }
 
-    // If no match at all, display the word with a message
-    if (!matched) {
-      outputDiv.innerHTML += `<p><span class="word">${word}</span>: Not found in dictionary.<br>${prefixInfo}<br>${suffixInfo}</p>`;
-    }
-  });
+    return {
+        suffix: matchedSuffix,
+        meaning: suffixMeaning
+    };
 }
-    
-/*
-function runMatcher() {
-  let inputText = document.getElementById('inputText').value;
-  let outputDiv = document.getElementById('output');
-  let errorOutputDiv = document.getElementById('errorOutput');
-  outputDiv.innerHTML = '';
-  errorOutputDiv.innerHTML = '';
 
-  try {
-    // Preprocess input text: remove punctuation
-    inputText = inputText.replace(/[.,!?]/g, '');
 
-    // Split input text into words
-    let words = inputText.split(/\s+/);
+function getPrefixInfo(word) {
+    let longestPrefix = null;
+    let prefixMeaning = "No prefix detected";
 
-    let prefixDetected = false;
-    let rootDetected = false;
-
-    // Process each word
-    words.forEach(word => {
-      let baseWord = word.toLowerCase();
-      let matched = false;
-
-      // Check for prefix match with spaces
-      for (let prefix in prefixes) {
-        if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
-          let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
-          if (dictionary[root]) {
-            outputDiv.innerHTML += `<p>PREFIX:(${prefix})=${prefixes[prefix]}<br>
-            <span class="word">(${word})</span>:ROOT:(${root})=${dictionary[root]}</p>`;
-            matched = true;
-            prefixDetected = true;
-            rootDetected = true;
-            break;
-          }
-        }
-      }
-
-      // If no prefix match, check for suffix match from longest to shortest
-      if (!matched) {
-        for (let suffix in suffixes) {
-          if (baseWord.endsWith(suffix)) {
-            let root = baseWord.slice(0, -suffix.length);
-            if (dictionary[root]) {
-              outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
-              SUFFIX:(${suffix})=${suffixes[suffix]}</p>`;
-              matched = true;
-              rootDetected = true;
-              break;
+    // Iterate through all prefixes
+    for (const prefix in prefixes) {
+        if (word.startsWith(prefix)) {
+            // Check if current prefix is longer than the previously matched prefix
+            if (!longestPrefix || prefix.length > longestPrefix.length) {
+                longestPrefix = prefix;
+                prefixMeaning = prefixes[prefix];
             }
-          }
         }
-      }
+    }
 
-      // If no prefix or suffix match, check the whole word
-      if (!matched && dictionary[baseWord]) {
-        outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
-        rootDetected = true;
-      }
+    return {
+        prefix: longestPrefix,
+        meaning: prefixMeaning
+    };
+}
+
+
+// Utility function to add spaces around punctuation
+function addSpacesToPunctuation(text) {
+    return text.replace(/([".,!?])/g, ' $1 ').replace(/\s+/g, ' ').trim();
+}
+
+const particles = [
+    "не", // Negation particle
+    "ни", // Alternative negation particle
+    "же", // Emphasis particle
+    "ли", // Question particle
+    "бы"  // Conditional particle
+];
+
+
+function processText(inputText) {
+    const spacedText = addSpacesToPunctuation(inputText); // Add spaces around punctuation
+    const inputWords = spacedText.split(/\s+/); // Split transformed text into words
+    const results = [];
+
+    inputWords.forEach((word) => {
+        const normalizedWord = word.toLowerCase(); // Convert to lowercase
+        let matchedRoot = null;
+        let prefixInfo = { prefix: null, meaning: "No prefix detected" };
+        let suffixInfo = { suffix: null, meaning: "No suffix detected" };
+
+        // Handle prepositions and standalone particles
+        if (prepositions.includes(normalizedWord) || particles.includes(normalizedWord)) {
+            results.push({
+                originalWord: word,
+                root: null,
+                definition: dictionary[normalizedWord] || `${normalizedWord} is a ${prepositions.includes(normalizedWord) ? 'preposition' : 'particle'}`,
+                prefix: null,
+                prefixMeaning: `No prefix detected (${normalizedWord} is a ${prepositions.includes(normalizedWord) ? 'preposition' : 'particle'})`,
+                suffix: null,
+                suffixMeaning: `No suffix detected (${normalizedWord} is a ${prepositions.includes(normalizedWord) ? 'preposition' : 'particle'})`
+            });
+            return;
+        }
+
+        // Detect prefixes
+        prefixInfo = getPrefixInfo(normalizedWord);
+        const wordWithoutPrefix = prefixInfo.prefix
+            ? normalizedWord.slice(prefixInfo.prefix.length)
+            : normalizedWord;
+
+        // Verify if stripping the prefix results in a valid core
+        if (!dictionary[wordWithoutPrefix] && prefixInfo.prefix) {
+            prefixInfo = { prefix: null, meaning: "No prefix detected" }; // Reset prefix
+        }
+
+        // Detect suffixes
+        suffixInfo = getSuffixInfo(wordWithoutPrefix);
+        const wordWithoutSuffix = suffixInfo.suffix
+            ? wordWithoutPrefix.slice(0, -suffixInfo.suffix.length)
+            : wordWithoutPrefix;
+
+        // Match the root from the dictionary
+        for (const [root, definition] of Object.entries(dictionary)) {
+            if (wordWithoutSuffix === root || root.includes(wordWithoutSuffix)) {
+                matchedRoot = { root, definition };
+                break;
+            }
+        }
+
+        // If no root is found, fall back to the original word
+        if (!matchedRoot && dictionary[normalizedWord]) {
+            matchedRoot = { root: normalizedWord, definition: dictionary[normalizedWord] };
+        }
+
+        // Add the result
+        results.push({
+            originalWord: word,
+            root: matchedRoot ? matchedRoot.root : null,
+            definition: matchedRoot ? matchedRoot.definition : "No matching root found",
+            prefix: prefixInfo.prefix,
+            prefixMeaning: prefixInfo.meaning,
+            suffix: suffixInfo.suffix,
+            suffixMeaning: suffixInfo.meaning
+        });
     });
 
-    // Check if no prefixes or roots were detected
-    if (!prefixDetected) {
-      outputDiv.innerHTML += `<p>No prefixes were detected.</p>`;
-    }
-    if (!rootDetected) {
-      outputDiv.innerHTML += `${word} is not in the dictionary.</p>`;
-    }
-  } catch (error) {
-    errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
-  }
+    return results; // Return the results array
 }
-*/
+
+
+
+// Run matcher and display results
+function runMatcher() {
+  const inputText = document.getElementById('inputText').value.replace(/[.,!?]/g, ''); // Remove punctuation
+  const outputDiv = document.getElementById('output');
+  outputDiv.innerHTML = ''; // Clear previous output
+
+  const results = processText(inputText); // Process text
+
+  // Display results
+  results.forEach((result) => {
+    outputDiv.innerHTML += `
+      <p>
+        <span class="word">${result.originalWord}</span>: ${result.definition}<br>
+        Root: ${result.root || "None"}<br>
+        Prefix: ${result.prefix || "None"} (${result.prefixMeaning})<br>
+        Suffix: ${result.suffix || "None"} (${result.suffixMeaning})
+      </p>
+    `;
+  });
+}
+     
 </script>
 
 <div id="errorOutput" style="color: red;"></div>
