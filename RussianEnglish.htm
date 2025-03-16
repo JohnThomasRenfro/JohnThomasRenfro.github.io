@@ -11293,6 +11293,9 @@ function runMatcher() {
   // Split input text into words
   let words = inputText.split(/\s+/);
 
+  let prefixDetected = false;
+  let rootDetected = false;
+
   // Process each word
   words.forEach(word => {
     let baseWord = word.toLowerCase();
@@ -11306,6 +11309,8 @@ function runMatcher() {
           outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
           PREFIX: ${prefix} - ${prefixes[prefix]}</p>`;
           matched = true;
+          prefixDetected = true;
+          rootDetected = true;
           break;
         }
       }
@@ -11320,6 +11325,8 @@ function runMatcher() {
             outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
             SUFFIX: ${suffix} - ${suffixes[suffix]}</p>`;
             matched = true;
+            prefixDetected = true;
+            rootDetected = true;
             break;
           }
         }
@@ -11329,8 +11336,17 @@ function runMatcher() {
     // If no prefix or suffix match, check the whole word
     if (!matched && dictionary[baseWord]) {
       outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
+      rootDetected = true;
     }
   });
+
+  // Check if no prefixes or roots were detected
+  if (!prefixDetected) {
+    outputDiv.innerHTML += `<p>No prefixes were detected.</p>`;
+  }
+  if (!rootDetected) {
+    outputDiv.innerHTML += `<p>No roots were detected.</p>`;
+  }
 }
    
     /*
