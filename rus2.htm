@@ -11038,6 +11038,7 @@ const suffixes = {
 "овать":"denotes infinitive verbs",
 "овали":"denotes a verb in past tense, plural form, indicating an action completed by multiple subjects.",
 "ов":"denotes a plural genitive case or a possessive form for masculine nouns.",
+  "о":"put in definition later",
 "ну":"denotes perfective verbs with a sudden action",
 "нник":"denotes objects or tools",
 "ник":"denotes professions or roles",
@@ -11113,21 +11114,7 @@ function identifyParts(word) {
     }
   }
 
-  // Prevent over-splitting: if root is invalid or too short, revert to full word if in dictionary
-  if ((root.length < 3 || !dictionary[root]) && dictionary[word]) {
-    return { prefix: "", root: word, suffix: "" };
-  }
-
   return { prefix, root, suffix };
-}
-
-function matchDictionary(word) {
-  // Exact match first
-  if (dictionary[word]) return dictionary[word];
-
-  // Then try root match
-  const { root } = identifyParts(word);
-  return dictionary[root] || "No translation found";
 }
 
 function processText(inputText) {
@@ -11135,8 +11122,15 @@ function processText(inputText) {
   const words = cleanedText.split(/\s+/).filter(word => word.length > 0);
   return words.map(word => {
     const { prefix, root, suffix } = identifyParts(word);
-    // Prioritize exact match, then root
-    const definition = dictionary[word] || dictionary[root] || "No translation found";
+    // Try exact match first, then root
+    let definition;
+    if (dictionary[word]) {
+      definition = dictionary[word]; // Full word match
+    } else if (dictionary[root]) {
+      definition = dictionary[root] + " (derived form)"; // Root match
+    } else {
+      definition = "No translation found"; // No match
+    }
     return { 
       word, 
       prefix: prefix ? prefixes[prefix] || prefix : "",
