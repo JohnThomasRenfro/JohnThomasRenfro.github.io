@@ -11310,7 +11310,7 @@ function runMatcher() {
       outputDiv.innerHTML += `<p>No prefixes were detected.</p>`;
     }
     if (!rootDetected) {
-      outputDiv.innerHTML += `<p>No roots were detected.</p>`;
+      outputDiv.innerHTML += `${word} is not in the dictionary.</p>`;
     }
   } catch (error) {
     errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
