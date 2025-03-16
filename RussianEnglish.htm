@@ -11256,7 +11256,116 @@ const suffixes = {
 
         return results;
     }
+function runMatcher() {
+  let inputText = document.getElementById('inputText').value;
+  let outputDiv = document.getElementById('output');
+  let errorOutputDiv = document.getElementById('errorOutput');
+  outputDiv.innerHTML = '';
+  errorOutputDiv.innerHTML = '';
 
+  try {
+    // Preprocess input text: remove punctuation
+    inputText = inputText.replace(/[.,!?]/g, '');
+
+    // Split input text into words
+    let words = inputText.split(/\s+/);
+
+    let unmatchedWords = [];
+    let unmatchedPrefixes = [];
+    let unmatchedRoots = [];
+    let unmatchedSuffixes = [];
+
+    let matchedWholeWords = [];
+    let matchedPrefixes = [];
+    let matchedRoots = [];
+    let matchedSuffixes = [];
+
+    // Process each word
+    words.forEach(word => {
+      let baseWord = word.toLowerCase();
+      let matched = false;
+
+      // Check for prefix match
+      for (let prefix in prefixes) {
+        if (baseWord.startsWith(prefix)) {
+          let root = baseWord.slice(prefix.length).trim();
+          if (dictionary[root]) {
+            matchedPrefixes.push(`PREFIX:(${prefix})=${prefixes[prefix]}<br>
+              <span class="word">(${word})</span>:ROOT:(${root})=${dictionary[root]}`);
+            matched = true;
+          } else {
+            unmatchedRoots.push(root);
+          }
+        } else {
+          unmatchedPrefixes.push(prefix);
+        }
+      }
+
+      // If no prefix match, check for suffix match
+      if (!matched) {
+        for (let suffix in suffixes) {
+          if (baseWord.endsWith(suffix)) {
+            let root = baseWord.slice(0, -suffix.length);
+            if (dictionary[root]) {
+              matchedSuffixes.push(`<span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
+                SUFFIX:(${suffix})=${suffixes[suffix]}`);
+              matched = true;
+            } else {
+              unmatchedRoots.push(root);
+            }
+          } else {
+            unmatchedSuffixes.push(suffix);
+          }
+        }
+      }
+
+      // If no prefix or suffix match, check the whole word
+      if (!matched) {
+        if (dictionary[baseWord]) {
+          matchedWholeWords.push(`<span class="word">${word}</span>: ${dictionary[baseWord]}`);
+        } else {
+          unmatchedWords.push(word);
+        }
+      }
+    });
+
+    // Output matched and unmatched results
+    if (matchedWholeWords.length > 0) {
+      outputDiv.innerHTML += `<p>Matched Whole Words:<br>${matchedWholeWords.join('<br>')}</p>`;
+    }
+
+    if (matchedPrefixes.length > 0) {
+      outputDiv.innerHTML += `<p>Matched Prefixes:<br>${matchedPrefixes.join('<br>')}</p>`;
+    }
+
+    if (matchedRoots.length > 0) {
+      outputDiv.innerHTML += `<p>Matched Roots:<br>${matchedRoots.join('<br>')}</p>`;
+    }
+
+    if (matchedSuffixes.length > 0) {
+      outputDiv.innerHTML += `<p>Matched Suffixes:<br>${matchedSuffixes.join('<br>')}</p>`;
+    }
+
+    if (unmatchedWords.length > 0) {
+      outputDiv.innerHTML += `<p>Unmatched Whole Words:<br>${unmatchedWords.join(', ')}</p>`;
+    }
+
+    if (unmatchedPrefixes.length > 0) {
+      outputDiv.innerHTML += `<p>Unmatched Prefixes:<br>${unmatchedPrefixes.join(', ')}</p>`;
+    }
+
+    if (unmatchedRoots.length > 0) {
+      outputDiv.innerHTML += `<p>Unmatched Roots:<br>${unmatchedRoots.join(', ')}</p>`;
+    }
+
+    if (unmatchedSuffixes.length > 0) {
+      outputDiv.innerHTML += `<p>Unmatched Suffixes:<br>${unmatchedSuffixes.join(', ')}</p>`;
+    }
+  } catch (error) {
+    errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
+  }
+}    
+/*
 function runMatcher() {
   let inputText = document.getElementById('inputText').value;
   let outputDiv = document.getElementById('output');
@@ -11328,7 +11437,7 @@ function runMatcher() {
     errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
   }
 }
-
+*/
 </script>
 
 <div id="errorOutput" style="color: red;"></div>
