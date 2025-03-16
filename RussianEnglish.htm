@@ -11227,9 +11227,15 @@ function processText(inputText) {
         let prefixInfo = getPrefixInfo(word);
         let suffixInfo = getSuffixInfo(word);
 
+        // Remove suffix from the word before checking for root
+        let rootCandidate = word;
+        if (suffixInfo.suffix) {
+            rootCandidate = word.slice(0, -suffixInfo.suffix.length);
+        }
+
         // Compare with dictionary root words
         for (const [root, definition] of Object.entries(dictionary)) {
-            if (word.startsWith(root) && root.length > longestMatch) {
+            if (rootCandidate.startsWith(root) && root.length > longestMatch) {
                 matchedRoot = { root, definition };
                 longestMatch = root.length;
             }
