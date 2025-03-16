@@ -11273,7 +11273,6 @@ function runMatcher() {
         if (baseWord.startsWith(prefix)) {
           let root = baseWord.slice(prefix.length);
           prefixInfo = `PREFIX:(${prefix})=${prefixes[prefix]}`;
-          matched = true;
           break;
         }
       }
@@ -11283,7 +11282,6 @@ function runMatcher() {
         if (baseWord.endsWith(suffix)) {
           let root = baseWord.slice(0, -suffix.length);
           suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
-          matched = true;
           break;
         }
       }
