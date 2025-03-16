@@ -11303,8 +11303,8 @@ function runMatcher() {
 
     // Check for prefix match with spaces
     for (let prefix in prefixes) {
-      if (baseWord.startsWith(prefix) && (baseWord.indexOf(prefix) === 0 || baseWord.indexOf(' ' + prefix) === 0)) {
-        let root = baseWord.slice(prefix.length).trim();
+      if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
+        let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
         if (dictionary[root]) {
           outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
           PREFIX: ${prefix} - ${prefixes[prefix]}</p>`;
@@ -11325,7 +11325,6 @@ function runMatcher() {
             outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
             SUFFIX: ${suffix} - ${suffixes[suffix]}</p>`;
             matched = true;
-            prefixDetected = true;
             rootDetected = true;
             break;
           }
