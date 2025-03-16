@@ -11301,7 +11301,7 @@ function runMatcher() {
             let root = baseWord.slice(0, -suffix.length);
             if (dictionary[root]) {
               outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
-              SUFFIX: ${suffix} - ${suffixes[suffix]}</p>`;
+              SUFFIX:(${suffix})=${suffixes[suffix]}</p>`;
               matched = true;
               rootDetected = true;
               break;
