@@ -11242,6 +11242,126 @@ const suffixes = {
         return results;
     }
 
+    const prefixes = {
+  "без": "(+g) without",
+  "в": "(+a) in, into; (+p) in, at",
+  "вз": "(+a) up, upwards",
+  "вне": "(+g) outside of",
+  "во": "(variation of 'в')",
+  "воз": "(+a) up, upwards",
+  "вос": "(variation of 'воз')",
+  "вы": "(+a) out, out of",
+  "до": "(+g) up to, until",
+  "за": "(+a) behind, beyond; (+i) for, in exchange for",
+  "из": "(+g) out of, from",
+  "ис": "(variation of 'из')",
+  "на": "(+a) onto, to; (+p) on, at",
+  "над": "(+i) above, over",
+  "надо": "(variation of 'над')",
+  "не": "(negation prefix)",
+  "недо": "(insufficient, under-)",
+  "о": "(+a) about, concerning; (+p) around, approximately",
+  "об": "(variation of 'о')",
+  "обо": "(variation of 'о')",
+  "от": "(+g) from, away from",
+  "ото": "(variation of 'от')",
+  "пере": "(across, through, re-)",
+  "по": "(along; around; according to)",
+  "под": "(+a) under, beneath; (+i) near, towards",
+  "подо": "(variation of 'под')",
+  "пред": "(+i) in front of, before",
+  "перед": "(variation of 'пред')",
+  "пере": "(again, re-)",
+  "при": "(+a) to, towards; (+p) at, near",
+  "про": "(through, for, about)",
+  "раз": "(dis-, un-, re-)",
+  "рас": "(variation of 'раз')",
+  "с": "(+g) from, off; (+i) with, together with",
+  "со": "(variation of 'с')",
+  "у": "(+g) by, at; (+a) towards"
+  // Add other prefixes here as needed...
+};
+
+const suffixes = {
+  "ов": "denotes a plural genitive case or a possessive form for masculine nouns",
+  "ал": "denotes a verb in past tense, masculine singular form",
+  "а": "denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive)"
+  // Add other suffixes here...
+};
+
+function runMatcher() {
+  let inputText = document.getElementById('inputText').value;
+  let outputDiv = document.getElementById('output');
+  let errorOutputDiv = document.getElementById('errorOutput');
+  outputDiv.innerHTML = '';
+  errorOutputDiv.innerHTML = '';
+
+  try {
+    // Preprocess input text: remove punctuation
+    inputText = inputText.replace(/[.,!?]/g, '');
+
+    // Split input text into words
+    let words = inputText.split(/\s+/);
+
+    let prefixDetected = false;
+    let rootDetected = false;
+
+    // Process each word
+    words.forEach(word => {
+      let baseWord = word.toLowerCase();
+      let matched = false;
+
+      // Check for prefix match with spaces
+      for (let prefix in prefixes) {
+        if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
+          let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
+          if (dictionary[root]) {
+            outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
+            PREFIX: ${prefix} - ${prefixes[prefix]}</p>`;
+            matched = true;
+            prefixDetected = true;
+            rootDetected = true;
+            break;
+          }
+        }
+      }
+
+      // If no prefix match, check for suffix match from longest to shortest
+      if (!matched) {
+        for (let suffix in suffixes) {
+          if (baseWord.endsWith(suffix)) {
+            let root = baseWord.slice(0, -suffix.length);
+            if (dictionary[root]) {
+              outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
+              SUFFIX: ${suffix} - ${suffixes[suffix]}</p>`;
+              matched = true;
+              rootDetected = true;
+              break;
+            }
+          }
+        }
+      }
+
+      // If no prefix or suffix match, check the whole word
+      if (!matched && dictionary[baseWord]) {
+        outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
+        rootDetected = true;
+      }
+    });
+
+    // Check if no prefixes or roots were detected
+    if (!prefixDetected) {
+      outputDiv.innerHTML += `<p>No prefixes were detected.</p>`;
+    }
+    if (!rootDetected) {
+      outputDiv.innerHTML += `<p>No roots were detected.</p>`;
+    }
+  } catch (error) {
+    errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
+  }
+}
+    
+/*
     function runMatcher() {
         const inputText = document.getElementById("inputText").value;
         const matches = processText(inputText);
@@ -11253,7 +11373,7 @@ const suffixes = {
             `)
             .join("<br><br>");
     }
-
+*/
 </script>
 
 </body>
