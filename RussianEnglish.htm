@@ -11259,6 +11259,9 @@ function runMatcher() {
   // List of prepositions to avoid suffix and prefix matching
   const prepositions = ["на", "к", "в", "по", "с", "о", "у"];
 
+  // List of pronouns to avoid suffix and prefix matching
+  const pronouns = ["я", "ты", "он", "она", "оно", "мы", "вы", "они", "мой", "твой", "его", "её", "наш", "ваш", "их", "меня", "тебя", "его", "её", "нас", "вас", "их"];
+
   // Process each word
   words.forEach(word => {
     let baseWord = word.toLowerCase();
@@ -11266,8 +11269,8 @@ function runMatcher() {
     let prefixInfo = "No prefix detected";
     let suffixInfo = "No suffix detected";
 
-    // Check if the word is a preposition
-    if (!prepositions.includes(baseWord)) {
+    // Check if the word is a preposition or pronoun
+    if (!prepositions.includes(baseWord) && !pronouns.includes(baseWord)) {
       // Check for prefix match
       for (let prefix in prefixes) {
         if (baseWord.startsWith(prefix)) {
@@ -11286,9 +11289,9 @@ function runMatcher() {
         }
       }
     } else {
-      // If the word is a preposition, set appropriate message
-      prefixInfo = "No prefix detected (preposition)";
-      suffixInfo = "No suffix detected (preposition)";
+      // If the word is a preposition or pronoun, set appropriate message
+      prefixInfo = `No prefix detected (${prepositions.includes(baseWord) ? 'preposition' : 'pronoun'})`;
+      suffixInfo = `No suffix detected (${prepositions.includes(baseWord) ? 'preposition' : 'pronoun'})`;
     }
 
     // Check if the whole word is in the dictionary
