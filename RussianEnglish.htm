@@ -150,11 +150,14 @@
 </style>
 </head>
 <body>
-  <h1>Russian To English Parser SOURCE:Pravda.Ru</h1>
+  <h1>Russian To English Parser</h1>
   Cut and paste this Russian text into the text area below.<br>
-Сенсационное открытие, которое может изменить представления об эволюции человека, ведёт к испанской
-Читайте 
-  <hr>
+"Локомотив" принимал земляков из"Динамо". Обозреватель медиахолдинга Pravda.Ru побывал на матче.
+
+В первом тайме команды сначала облюбовали штанги. К середине первого тайма наблюдалась жаркая борьба, но голов зрители не увидели, несмотря на весьма хорошие скорости. И всё же первый гол был забит хозяевами на 38 минуте. После углового Дмитрий Воробьёв удачно подставил голову и мяч"отправился" в дальний угол.
+
+Читайте больше на https://www.pravda.ru/news/sport/2192867-lokomotiv-dinamo/
+<hr>
   <textarea id="inputText" rows="10" cols="50" placeholder="Paste Russian text here..."></textarea>
   <br>
   <button onclick="runMatcher()">Process this Russian text.</button>
@@ -4018,7 +4021,6 @@ const dictionary = {
 "прежний":"former",
 "прежде":"before",
 "предыдущий":"preceding",
-"сенсаци": "sensation",
 "предъявлять":"(+a +d) to show, present (sth to s.o.)",
 "предъявить":"(+a +d) to show, present (sth to s.o.)",
 "предшествовать":"(i) (+d) to precede",
@@ -10520,7 +10522,7 @@ const dictionary = {
 "бывать":"(i) to be (repeatedly)",
 "бывалый":"experienced",
 "бывало":"used to, would (repetition) (particle) (coll)",
-"бы":"would (conditional particle)",
+"бы":"we; would (conditional particle)",
 "бушевать":"(i) to rage",
 "бухта":"bay",
 "бухгалтер":"bookkeeper",
@@ -11085,28 +11087,43 @@ const dictionary = {
 };
 
 const prefixes = {
-    "по": "along; around; according to",
-    "за": "for; behind",
-    "на": "on; onto",
-    "под": "under; below",
-    "над": "above; over",
-    "от": "from; away from",
-    "до": "to; up to; until",
-    "пере": "across; over; re-",
-    "в": "in; into",
-    "вы": "out; outward",
-    "при": "to; toward",
-    "про": "through; past; about",
-    "без": "without",
-    "об": "around; about; against",
-    "раз": "apart; away",
-    "с": "with; from",
-    "у": "by; at",
-    "вз": "up; upward",
-    "воз": "up; upward (variant)",
-    "ис": "out of; fully",
-    "из": "out of; from",
-    "пред": "before; in front of"
+"без":"(+g) without",
+"в":"(+a) in, into; (+p) in, at",
+"вз":"(+a) up, upwards",
+"вне":"(+g) outside of",
+"во":"(variation of 'в')",
+"воз":"(+a) up, upwards",
+"вос":"(variation of 'воз')",
+"вы":"(+a) out, out of",
+"до":"(+g) up to, until",
+"за":"(+a) behind, beyond; (+i) for, in exchange for",
+"из":"(+g) out of, from",
+"ис":"(variation of 'из')",
+"на":"(+a) onto, to; (+p) on, at",
+"над":"(+i) above, over",
+"надо":"(variation of 'над')",
+"не":"(negation prefix)",
+"недо":"(insufficient, under-)",
+"о":"(+a) about, concerning; (+p) around, approximately",
+"об":"(variation of 'о')",
+"обо":"(variation of 'о')",
+"от":"(+g) from, away from",
+"ото":"(variation of 'от')",
+"пере":"(across, through, re-)",
+"по":"(along; around; according to)",
+"под":"(+a) under, beneath; (+i) near, towards",
+"подо":"(variation of 'под')",
+"пред":"(+i) in front of, before",
+"перед":"(variation of 'пред')",
+"пере":"(again, re-)",
+"при":"(+a) to, towards; (+p) at, near",
+"про":"(through, for, about)",
+"раз":"(dis-, un-, re-)",
+"рас":"(variation of 'раз')",
+"с":"(+g) from, off; (+i) with, together with",
+"со":"(variation of 'с')",
+"у":"(+g) by, at; (+a) towards"
+  // Add other prefixes here as needed...
 };
 
 const suffixes = {
@@ -11118,25 +11135,24 @@ const suffixes = {
 "ят":"denotes verbs or regional terms",
 "ян":"denotes proper names or derived nouns",
 "яет":"denotes a verb in 3rd person singular, present tense, imperfective aspect",
-"я": "denotes a participial ending in some forms or contributes to fixed expressions like 'несмотря,' functioning as part of the word's structure rather than indicating a grammatical suffix.",
+"я":"denotes a participial ending in some forms or contributes to fixed expressions like 'несмотря,' functioning as part of the word's structure rather than indicating a grammatical suffix.",
 "ющ":"denotes participles or adjectives with actions in process",
 "юр":"denotes diminutives or colloquial variations",
 "ыч":"denotes diminutives or regional forms",
 "ый":"denotes adjectives (e.g., masculine singular nominative)", 
-"ый":"denotes adjectives (e.g., masculine singular nominative)",
 "ые":"denotes plural adjectives (e.g., nominative case)",
 "ывать":"denotes imperfective frequentative verbs",
 "ы":"denotes feminine singular, genitive case for nouns",
 "щин":"denotes places or attributes",
 "шк":"denotes diminutives or affectionate terms",
-"чно": "denotes an adverbial ending, often describing the manner or quality of an action.",
+"чно":"denotes an adverbial ending, often describing the manner or quality of an action.",
 "чив":"denotes adjectives indicating qualities or tendencies",
 "ущ":"denotes augmentatives or adjectives with enhanced characteristics",
 "ушк":"denotes diminutives or affectionate terms",
 "ук":"denotes diminutives or softened nouns",
-"у": "denotes the feminine singular accusative case for nouns, often indicating the direct object of an action.",
+"у":"denotes the feminine singular accusative case for nouns, often indicating the direct object of an action.",
 "тель":"denotes agents (doers of an action)",
-"ся": "Reflexive particle, denoting that the action is performed by the subject upon itself or is impersonal in meaning.",
+"ся":"Reflexive particle, denoting that the action is performed by the subject upon itself or is impersonal in meaning.",
 "ств":"denotes abstract nouns",
 "очк":"denotes diminutives or terms of endearment",
 "ость":"denotes abstract nouns",
@@ -11147,8 +11163,8 @@ const suffixes = {
 "ое":"denotes adjectives (e.g., neuter singular nominative)",
 "ого":"denotes adjectives in masculine/neuter genitive case",
 "овать":"denotes infinitive verbs",
-"овали": "denotes a verb in past tense, plural form, indicating an action completed by multiple subjects.",
-"ов": "denotes a plural genitive case or a possessive form for masculine nouns.",
+"овали":"denotes a verb in past tense, plural form, indicating an action completed by multiple subjects.",
+"ов":"denotes a plural genitive case or a possessive form for masculine nouns.",
 "ну":"denotes perfective verbs with a sudden action",
 "нник":"denotes objects or tools",
 "ник":"denotes professions or roles",
@@ -11161,7 +11177,7 @@ const suffixes = {
 "ищ":"denotes places or tools",
 "иц":"denotes feminine forms or diminutives",
 "ить":"denotes infinitive verbs",
-"ит": "denotes a verb in the masculine singular, short-form passive participle, indicating a state or action completed.",
+"ит":"denotes a verb in the masculine singular, short-form passive participle, indicating a state or action completed.",
 "ист":"denotes a person associated with an activity or ideology",
 "илк":"denotes diminutives or softened forms",
 "ик":"denotes diminutives or persons associated with something",
@@ -11170,7 +11186,7 @@ const suffixes = {
 "ии":"denotes feminine plural, dative or prepositional case for nouns",
 "изн":"denotes abstract or collective nouns",
 "изм":"denotes abstract concepts or ideologies",
-"ие": "denotes an adjective in plural form, nominative or accusative case, agreeing with a plural noun.",
+"ие":"denotes an adjective in plural form, nominative or accusative case, agreeing with a plural noun.",
 "и":"denotes plural forms of possessive adjectives (e.g., nominative or accusative case)",  
 "ечк":"denotes diminutives",
 "еть":"denotes infinitive verbs",
@@ -11188,87 +11204,184 @@ const suffixes = {
 "арь":"denotes nouns for professions, roles, or specific objects",
 "ан":"denotes adjectives or regional nouns",
 "ам":"denotes plural dative nouns",
-"али": "denotes a verb in past tense, plural form.",
-"ала": "denotes an adverbial structure or can indicate a feminine singular past tense verb form in some contexts.",
-"ал": "denotes a verb in past tense, masculine singular form.",
+"али":"denotes a verb in past tense, plural form.",
+"ала":"denotes an adverbial structure or can indicate a feminine singular past tense verb form in some contexts.",
+"ал":"denotes a verb in past tense, masculine singular form.",
 "ай":"denotes imperatives, colloquial forms, or diminutives",
 "ает":"denotes a verb in 3rd person singular, present tense",
 "ават":"denotes frequentative verbs",
-"а": "denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
+"а":"denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
 
-const prefixes = {
-    // define your prefixes here
-};
+    function processText(inputText) {
+        const inputWords = inputText.split(/\s+/); // Split input text into words
+        const results = [];
 
-const suffixes = {
-    "ое": "denotes adjectives (e.g., neuter singular nominative)",
-    // other suffixes
-};
+        inputWords.forEach((word) => {
+            let matchedRoot = null;
+            let longestMatch = 0;
 
-const dictionary = {
-    "сенсаци": "sensation",
-    // other roots
-};
+            // Compare with dictionary root words
+            for (const [root, definition] of Object.entries(dictionary)) {
+                if (word.startsWith(root) && root.length > longestMatch) {
+                    matchedRoot = { root, definition };
+                    longestMatch = root.length;
+                }
+            }
 
-// Function to normalize word to lowercase for consistent matching
-function normalize(word) {
-    return word.toLowerCase();
-}
+            // Build the result
+            if (matchedRoot) {
+                const suffixInfo = getSuffixInfo(word); // Get suffix details
+                results.push({
+                    originalWord: word,
+                    root: matchedRoot.root,
+                    definition: matchedRoot.definition,
+                    suffix: suffixInfo.suffix,
+                    suffixMeaning: suffixInfo.meaning
+                });
+            }
+        });
 
-// Function to extract suffix information
-function getSuffixInfo(word) {
-    word = normalize(word);
-    for (const [suffix, meaning] of Object.entries(suffixes)) {
-        if (word.endsWith(suffix)) {
-            return { suffix, meaning };
+        return results;
+    }
+
+function runMatcher() {
+  let inputText = document.getElementById('inputText').value;
+  let outputDiv = document.getElementById('output');
+  outputDiv.innerHTML = '';
+
+  // Preprocess input text: remove punctuation
+  inputText = inputText.replace(/[.,!?]/g, '');
+
+  // Split input text into words
+  let words = inputText.split(/\s+/);
+
+  // Process each word
+  words.forEach(word => {
+    let baseWord = word.toLowerCase();
+    let matched = false;
+    let prefixInfo = "No prefix detected";
+    let suffixInfo = "No suffix detected";
+
+    // Check for prefix match with spaces
+    for (let prefix in prefixes) {
+      if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
+        let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
+        if (dictionary[root]) {
+          prefixInfo = `PREFIX:(${prefix})=${prefixes[prefix]}`;
+          outputDiv.innerHTML += `<p>${prefixInfo}<br>
+          <span class="word">(${word})</span>: ROOT:(${root})=${dictionary[root]}</p>`;
+          matched = true;
+          break;
         }
+      }
     }
-    return { suffix: null, meaning: "No suffix information found" };
-}
 
-// Function to extract prefix information
-function getPrefixInfo(word) {
-    word = normalize(word);
-    for (const [prefix, meaning] of Object.entries(prefixes)) {
-        if (word.startsWith(prefix)) {
-            return { prefix, meaning };
+    // If no prefix match, check for suffix match from longest to shortest
+    if (!matched) {
+      for (let suffix in suffixes) {
+        if (baseWord.endsWith(suffix)) {
+          let root = baseWord.slice(0, -suffix.length);
+          if (dictionary[root]) {
+            suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
+            outputDiv.innerHTML += `<p>${suffixInfo}<br>
+            <span class="word">${word}</span>: (${root}) - ${dictionary[root]}</p>`;
+            matched = true;
+            break;
+          }
         }
+      }
     }
-    return { prefix: null, meaning: "No prefix information found" };
+
+    // If no prefix or suffix match, check the whole word
+    if (!matched && dictionary[baseWord]) {
+      outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
+      matched = true;
+    }
+
+    // If no match at all, display the word with a message
+    if (!matched) {
+      outputDiv.innerHTML += `<p><span class="word">${word}</span>: Not found in dictionary.<br>${prefixInfo}<br>${suffixInfo}</p>`;
+    }
+  });
 }
+    
+/*
+function runMatcher() {
+  let inputText = document.getElementById('inputText').value;
+  let outputDiv = document.getElementById('output');
+  let errorOutputDiv = document.getElementById('errorOutput');
+  outputDiv.innerHTML = '';
+  errorOutputDiv.innerHTML = '';
 
-// Function to process a single word and find its components
-function analyzeWord(word) {
-    let prefixInfo = getPrefixInfo(word);
-    let suffixInfo = getSuffixInfo(word);
-    let root = word;
+  try {
+    // Preprocess input text: remove punctuation
+    inputText = inputText.replace(/[.,!?]/g, '');
 
-    // Remove prefix and suffix from the root
-    if (prefixInfo.prefix) {
-        root = root.slice(prefixInfo.prefix.length);
+    // Split input text into words
+    let words = inputText.split(/\s+/);
+
+    let prefixDetected = false;
+    let rootDetected = false;
+
+    // Process each word
+    words.forEach(word => {
+      let baseWord = word.toLowerCase();
+      let matched = false;
+
+      // Check for prefix match with spaces
+      for (let prefix in prefixes) {
+        if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
+          let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
+          if (dictionary[root]) {
+            outputDiv.innerHTML += `<p>PREFIX:(${prefix})=${prefixes[prefix]}<br>
+            <span class="word">(${word})</span>:ROOT:(${root})=${dictionary[root]}</p>`;
+            matched = true;
+            prefixDetected = true;
+            rootDetected = true;
+            break;
+          }
+        }
+      }
+
+      // If no prefix match, check for suffix match from longest to shortest
+      if (!matched) {
+        for (let suffix in suffixes) {
+          if (baseWord.endsWith(suffix)) {
+            let root = baseWord.slice(0, -suffix.length);
+            if (dictionary[root]) {
+              outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
+              SUFFIX:(${suffix})=${suffixes[suffix]}</p>`;
+              matched = true;
+              rootDetected = true;
+              break;
+            }
+          }
+        }
+      }
+
+      // If no prefix or suffix match, check the whole word
+      if (!matched && dictionary[baseWord]) {
+        outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
+        rootDetected = true;
+      }
+    });
+
+    // Check if no prefixes or roots were detected
+    if (!prefixDetected) {
+      outputDiv.innerHTML += `<p>No prefixes were detected.</p>`;
     }
-    if (suffixInfo.suffix) {
-        root = root.slice(0, -suffixInfo.suffix.length);
+    if (!rootDetected) {
+      outputDiv.innerHTML += `${word} is not in the dictionary.</p>`;
     }
-
-    // Normalize root for comparison
-    root = normalize(root);
-
-    // Check if the remaining part is a known root
-    let rootDefinition = dictionary[root] || "No root information found";
-
-    return {
-        originalWord: word,
-        prefix: prefixInfo.prefix || "N/A",
-        prefixMeaning: prefixInfo.meaning,
-        root: root || "N/A",
-        rootDefinition: rootDefinition,
-        suffix: suffixInfo.suffix || "N/A",
-        suffixMeaning: suffixInfo.meaning
-    };
+  } catch (error) {
+    errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
+  }
 }
+*/
 </script>
 
+<div id="errorOutput" style="color: red;"></div>
+  
 </body>
 </html>
