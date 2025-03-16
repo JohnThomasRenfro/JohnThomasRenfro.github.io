@@ -11086,6 +11086,62 @@ const dictionary = {
 "Богородица":"the Virgin",
 };
 
+    function processText(inputText) {
+        const inputWords = inputText.split(/\s+/); // Split input text into words
+        const results = [];
+
+        inputWords.forEach((word) => {
+            let matchedRoot = null;
+            let longestMatch = 0;
+
+            // Compare with dictionary root words
+            for (const [root, definition] of Object.entries(dictionary)) {
+                if (word.startsWith(root) && root.length > longestMatch) {
+                    matchedRoot = { root, definition };
+                    longestMatch = root.length;
+                }
+            }
+
+            // Build the result
+            if (matchedRoot) {
+                const suffixInfo = getSuffixInfo(word); // Get suffix details
+                results.push({
+                    originalWord: word,
+                    root: matchedRoot.root,
+                    definition: matchedRoot.definition,
+                    suffix: suffixInfo.suffix,
+                    suffixMeaning: suffixInfo.meaning
+                });
+            }
+        });
+
+        return results;
+    }
+
+function runMatcher() {
+  let inputText = document.getElementById('inputText').value;
+  let outputDiv = document.getElementById('output');
+  outputDiv.innerHTML = '';
+
+  // Preprocess input text: remove punctuation
+  inputText = inputText.replace(/[.,!?]/g, '');
+
+  // Split input text into words
+  let words = inputText.split(/\s+/);
+
+  // List of prepositions to avoid suffix and prefix matching
+  const prepositions = ["на", "к", "в", "по", "с", "о", "у"];
+
+  // List of pronouns to avoid suffix and prefix matching
+  const pronouns = [
+    "я", "ты", "он", "она", "оно", "мы", "вы", "они", "мой", "твой", "его", "её", "наш", "ваш", "их",
+    "меня", "тебя", "нас", "вас", "их", "мне", "тебе", "ему", "ей", "нам", "вам", "им", "мной", "тобой",
+    "ним", "ней", "нами", "вами", "ними", "себя", "себе", "собой", "кто", "что", "какой", "какая", "какое", 
+    "какие", "который", "которая", "которое", "которые", "которого", "которой", "которому", "которым", 
+    "которых", "этот", "эта", "это", "эти", "тот", "та", "то", "те", "весь", "вся", "всё", "все", "сам", 
+    "сама", "само", "сами", "такой", "такая", "такое", "такие", "свой", "своя", "своё", "свои"
+  ];
+
 const prefixes = {
 "без":"(+g) without",
 "в":"(+a) in, into; (+p) in, at",
@@ -11213,49 +11269,6 @@ const suffixes = {
 "а":"denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
 
-    function processText(inputText) {
-        const inputWords = inputText.split(/\s+/); // Split input text into words
-        const results = [];
-
-        inputWords.forEach((word) => {
-            let matchedRoot = null;
-            let longestMatch = 0;
-
-            // Compare with dictionary root words
-            for (const [root, definition] of Object.entries(dictionary)) {
-                if (word.startsWith(root) && root.length > longestMatch) {
-                    matchedRoot = { root, definition };
-                    longestMatch = root.length;
-                }
-            }
-
-            // Build the result
-            if (matchedRoot) {
-                const suffixInfo = getSuffixInfo(word); // Get suffix details
-                results.push({
-                    originalWord: word,
-                    root: matchedRoot.root,
-                    definition: matchedRoot.definition,
-                    suffix: suffixInfo.suffix,
-                    suffixMeaning: suffixInfo.meaning
-                });
-            }
-        });
-
-        return results;
-    }
-
-function runMatcher() {
-  let inputText = document.getElementById('inputText').value;
-  let outputDiv = document.getElementById('output');
-  outputDiv.innerHTML = '';
-
-  // Preprocess input text: remove punctuation
-  inputText = inputText.replace(/[.,!?]/g, '');
-
-  // Split input text into words
-  let words = inputText.split(/\s+/);
-
   // Process each word
   words.forEach(word => {
     let baseWord = word.toLowerCase();
@@ -11263,40 +11276,35 @@ function runMatcher() {
     let prefixInfo = "No prefix detected";
     let suffixInfo = "No suffix detected";
 
-    // Check for prefix match with spaces
-    for (let prefix in prefixes) {
-      if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
-        let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
-        if (dictionary[root]) {
+    // Check if the word is a preposition or pronoun
+    if (!prepositions.includes(baseWord) && !pronouns.includes(baseWord)) {
+      // Check for prefix match
+      for (let prefix in prefixes) {
+        if (baseWord.startsWith(prefix)) {
+          let root = baseWord.slice(prefix.length);
           prefixInfo = `PREFIX:(${prefix})=${prefixes[prefix]}`;
-          outputDiv.innerHTML += `<p>${prefixInfo}<br>
-          <span class="word">(${word})</span>: ROOT:(${root})=${dictionary[root]}</p>`;
-          matched = true;
           break;
         }
       }
-    }
 
-    // If no prefix match, check for suffix match from longest to shortest
-    if (!matched) {
+      // Check for suffix match from longest to shortest
       for (let suffix in suffixes) {
         if (baseWord.endsWith(suffix)) {
           let root = baseWord.slice(0, -suffix.length);
-          if (dictionary[root]) {
-            suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
-            outputDiv.innerHTML += `<p>${suffixInfo}<br>
-            <span class="word">${word}</span>: (${root}) - ${dictionary[root]}</p>`;
-            matched = true;
-            break;
-          }
+          suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
+          break;
         }
       }
-    }
 
-    // If no prefix or suffix match, check the whole word
-    if (!matched && dictionary[baseWord]) {
-      outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
-      matched = true;
+      // Check if the whole word (including suffix) or its root is in the dictionary
+      if (dictionary[baseWord] || dictionary[baseWord.slice(0, -suffix.length)]) {
+        outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord] || dictionary[baseWord.slice(0, -suffix.length)]}<br>${prefixInfo}<br>${suffixInfo}</p>`;
+        matched = true;
+      }
+    } else {
+      // If the word is a preposition or pronoun, set appropriate message
+      prefixInfo = `No prefix detected (${prepositions.includes(baseWord) ? 'preposition' : 'pronoun'})`;
+      suffixInfo = `No suffix detected (${prepositions.includes(baseWord) ? 'preposition' : 'pronoun'})`;
     }
 
     // If no match at all, display the word with a message
