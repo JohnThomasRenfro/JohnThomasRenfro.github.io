@@ -11197,8 +11197,14 @@ const suffixes = {
 "а": "denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
 
+// Function to normalize word to lowercase for consistent matching
+function normalize(word) {
+    return word.toLowerCase();
+}
+
 // Function to extract suffix information
 function getSuffixInfo(word) {
+    word = normalize(word);
     for (const [suffix, meaning] of Object.entries(suffixes)) {
         if (word.endsWith(suffix)) {
             return { suffix, meaning };
@@ -11209,6 +11215,7 @@ function getSuffixInfo(word) {
 
 // Function to extract prefix information
 function getPrefixInfo(word) {
+    word = normalize(word);
     for (const [prefix, meaning] of Object.entries(prefixes)) {
         if (word.startsWith(prefix)) {
             return { prefix, meaning };
@@ -11217,59 +11224,35 @@ function getPrefixInfo(word) {
     return { prefix: null, meaning: "No prefix information found" };
 }
 
-// Function to process the input text and match root words
-function processText(inputText) {
-    const inputWords = inputText.split(/\s+/); // Split input text into words
-    const results = [];
+// Function to process a single word and find its components
+function analyzeWord(word) {
+    let prefixInfo = getPrefixInfo(word);
+    let suffixInfo = getSuffixInfo(word);
+    let root = word;
 
-    inputWords.forEach((word) => {
-        let matchedRoot = null;
-        let longestMatch = 0;
-        let prefixInfo = getPrefixInfo(word);
-        let suffixInfo = getSuffixInfo(word);
+    // Remove prefix and suffix from the root
+    if (prefixInfo.prefix) {
+        root = root.slice(prefixInfo.prefix.length);
+    }
+    if (suffixInfo.suffix) {
+        root = root.slice(0, -suffixInfo.suffix.length);
+    }
 
-        // Remove suffix from the word before checking for root
-        let rootCandidate = word;
-        if (suffixInfo.suffix) {
-            rootCandidate = word.slice(0, -suffixInfo.suffix.length);
-        }
+    // Normalize root for comparison
+    root = normalize(root);
 
-        // Compare with dictionary root words
-        for (const [root, definition] of Object.entries(dictionary)) {
-            if (rootCandidate.startsWith(root) && root.length > longestMatch) {
-                matchedRoot = { root, definition };
-                longestMatch = root.length;
-            }
-        }
+    // Check if the remaining part is a known root
+    let rootDefinition = dictionary[root] || "No root information found";
 
-        // Build the result
-        results.push({
-            originalWord: word,
-            root: matchedRoot ? matchedRoot.root : "N/A",
-            definition: matchedRoot ? matchedRoot.definition : "No root information found",
-            prefix: prefixInfo.prefix || "N/A",
-            prefixMeaning: prefixInfo.meaning,
-            suffix: suffixInfo.suffix || "N/A",
-            suffixMeaning: suffixInfo.meaning
-        });
-    });
-
-    return results;
-}
-
-// Example usage function triggered by the button
-function runMatcher() {
-    const inputText = document.getElementById("inputText").value;
-    const matches = processText(inputText);
-    const outputArea = document.getElementById("output");
-    outputArea.innerHTML = matches
-        .map(match => `
-            <b>${match.originalWord}</b>:<br>
-            PREFIX: (${match.prefix}) - ${match.prefixMeaning} <br>
-            ROOT: (${match.root}) - ${match.definition} <br>
-            SUFFIX: (${match.suffix}) - ${match.suffixMeaning}
-        `)
-        .join("<br><br>");
+    return {
+        originalWord: word,
+        prefix: prefixInfo.prefix || "N/A",
+        prefixMeaning: prefixInfo.meaning,
+        root: root || "N/A",
+        rootDefinition: rootDefinition,
+        suffix: suffixInfo.suffix || "N/A",
+        suffixMeaning: suffixInfo.meaning
+    };
 }
 </script>
 
