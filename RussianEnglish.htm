@@ -11212,60 +11212,7 @@ const suffixes = {
 "ават":"denotes frequentative verbs",
 "а":"denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
-// Function to extract suffix information
-function getSuffixInfo(word) {
-    for (const [suffix, meaning] of Object.entries(suffixes)) {
-        if (word.endsWith(suffix)) {
-            return { suffix, meaning };
-        }
-    }
-    return { suffix: null, meaning: "No suffix information found" };
-}
 
-// Function to process the input text and match root words
-function processText(inputText) {
-    const inputWords = inputText.split(/\s+/); // Split input text into words
-    const results = [];
-    const unmatchedWords = []; // Array to keep track of unmatched words
-
-    inputWords.forEach((word) => {
-        let matchedRoot = null;
-        let longestMatch = 0;
-
-        // Compare with dictionary root words
-        for (const [root, definition] of Object.entries(dictionary)) {
-            if (word.startsWith(root) && root.length > longestMatch) {
-                matchedRoot = { root, definition };
-                longestMatch = root.length;
-            }
-        }
-
-        // Build the result
-        if (matchedRoot) {
-            const suffixInfo = getSuffixInfo(word); // Get suffix details
-            results.push({
-                originalWord: word,
-                root: matchedRoot.root,
-                definition: matchedRoot.definition,
-                suffix: suffixInfo.suffix,
-                suffixMeaning: suffixInfo.meaning
-            });
-        } else {
-            unmatchedWords.push(word); // Add unmatched word to the array
-        }
-    });
-
-    // Include unmatched words in the results
-    if (unmatchedWords.length > 0) {
-        results.push({
-            unmatchedWords: unmatchedWords
-        });
-    }
-
-    return results;
-}
-
-    /*
     function processText(inputText) {
         const inputWords = inputText.split(/\s+/); // Split input text into words
         const results = [];
@@ -11297,7 +11244,7 @@ function processText(inputText) {
 
         return results;
     }
-*/
+
 function runMatcher() {
   let inputText = document.getElementById('inputText').value;
   let outputDiv = document.getElementById('output');
