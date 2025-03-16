@@ -11263,14 +11263,13 @@ function runMatcher() {
     let prefixInfo = "No prefix detected";
     let suffixInfo = "No suffix detected";
 
-    // Check for prefix match with spaces
+    // Check for prefix match
     for (let prefix in prefixes) {
-      if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
-        let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
-        if (dictionary[root] || dictionary[baseWord]) {
-          prefixInfo = `PREFIX:(${prefix})=${prefixes[prefix]}`;
-          matched = true;
-        }
+      if (baseWord.startsWith(prefix)) {
+        let root = baseWord.slice(prefix.length);
+        prefixInfo = `PREFIX:(${prefix})=${prefixes[prefix]}`;
+        matched = true;
+        break;
       }
     }
 
@@ -11278,10 +11277,9 @@ function runMatcher() {
     for (let suffix in suffixes) {
       if (baseWord.endsWith(suffix)) {
         let root = baseWord.slice(0, -suffix.length);
-        if (dictionary[root] || dictionary[baseWord]) {
-          suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
-          matched = true;
-        }
+        suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
+        matched = true;
+        break;
       }
     }
 
