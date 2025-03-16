@@ -11317,68 +11317,6 @@ const suffixes = {
 function runMatcher() {
   let inputText = document.getElementById('inputText').value;
   let outputDiv = document.getElementById('output');
-  outputDiv.innerHTML = '';
-
-  // Preprocess input text: remove punctuation
-  inputText = inputText.replace(/[.,!?]/g, '');
-
-  // Split input text into words
-  let words = inputText.split(/\s+/);
-
-  // List of prepositions to avoid suffix and prefix matching
-  const prepositions = ["на", "к", "в", "по", "с", "о", "у"];
-
-  // Process each word
-  words.forEach(word => {
-    let baseWord = word.toLowerCase();
-    let matched = false;
-    let prefixInfo = "No prefix detected";
-    let suffixInfo = "No suffix detected";
-
-    // Check if the word is a preposition
-    if (!prepositions.includes(baseWord)) {
-      // Check for prefix match
-      for (let prefix in prefixes) {
-        if (baseWord.startsWith(prefix)) {
-          let root = baseWord.slice(prefix.length);
-          prefixInfo = `PREFIX:(${prefix})=${prefixes[prefix]}`;
-          matched = true;
-          break;
-        }
-      }
-
-      // Check for suffix match from longest to shortest
-      for (let suffix in suffixes) {
-        if (baseWord.endsWith(suffix)) {
-          let root = baseWord.slice(0, -suffix.length);
-          suffixInfo = `SUFFIX:(${suffix})=${suffixes[suffix]}`;
-          matched = true;
-          break;
-        }
-      }
-    } else {
-      // If the word is a preposition, set appropriate message
-      prefixInfo = "No prefix detected (preposition)";
-      suffixInfo = "No suffix detected (preposition)";
-    }
-
-    // Check if the whole word is in the dictionary
-    if (dictionary[baseWord]) {
-      outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}<br>${prefixInfo}<br>${suffixInfo}</p>`;
-      matched = true;
-    }
-
-    // If no match at all, display the word with a message
-    if (!matched) {
-      outputDiv.innerHTML += `<p><span class="word">${word}</span>: Not found in dictionary.<br>${prefixInfo}<br>${suffixInfo}</p>`;
-    }
-  });
-}
-    
-/*
-function runMatcher() {
-  let inputText = document.getElementById('inputText').value;
-  let outputDiv = document.getElementById('output');
   let errorOutputDiv = document.getElementById('errorOutput');
   outputDiv.innerHTML = '';
   errorOutputDiv.innerHTML = '';
@@ -11447,7 +11385,7 @@ function runMatcher() {
     errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
   }
 }
-*/
+
 </script>
 
 <div id="errorOutput" style="color: red;"></div>
