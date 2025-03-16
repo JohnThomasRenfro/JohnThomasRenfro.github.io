@@ -11270,134 +11270,23 @@ function runMatcher() {
     // Split input text into words
     let words = inputText.split(/\s+/);
 
-    let unmatchedWords = [];
-    let unmatchedPrefixes = [];
-    let unmatchedRoots = [];
-    let unmatchedSuffixes = [];
-
-    let matchedWholeWords = [];
-    let matchedPrefixes = [];
-    let matchedRoots = [];
-    let matchedSuffixes = [];
-
     // Process each word
     words.forEach(word => {
       let baseWord = word.toLowerCase();
       let matched = false;
-
-      // Check for prefix match
-      for (let prefix in prefixes) {
-        if (baseWord.startsWith(prefix)) {
-          let root = baseWord.slice(prefix.length).trim();
-          if (dictionary[root]) {
-            matchedPrefixes.push(`PREFIX:(${prefix})=${prefixes[prefix]}<br>
-              <span class="word">(${word})</span>:ROOT:(${root})=${dictionary[root]}`);
-            matched = true;
-          } else {
-            unmatchedRoots.push(root);
-          }
-        } else {
-          unmatchedPrefixes.push(prefix);
-        }
-      }
-
-      // If no prefix match, check for suffix match
-      if (!matched) {
-        for (let suffix in suffixes) {
-          if (baseWord.endsWith(suffix)) {
-            let root = baseWord.slice(0, -suffix.length);
-            if (dictionary[root]) {
-              matchedSuffixes.push(`<span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
-                SUFFIX:(${suffix})=${suffixes[suffix]}`);
-              matched = true;
-            } else {
-              unmatchedRoots.push(root);
-            }
-          } else {
-            unmatchedSuffixes.push(suffix);
-          }
-        }
-      }
-
-      // If no prefix or suffix match, check the whole word
-      if (!matched) {
-        if (dictionary[baseWord]) {
-          matchedWholeWords.push(`<span class="word">${word}</span>: ${dictionary[baseWord]}`);
-        } else {
-          unmatchedWords.push(word);
-        }
-      }
-    });
-
-    // Output matched and unmatched results
-    if (matchedWholeWords.length > 0) {
-      outputDiv.innerHTML += `<p>Matched Whole Words:<br>${matchedWholeWords.join('<br>')}</p>`;
-    }
-
-    if (matchedPrefixes.length > 0) {
-      outputDiv.innerHTML += `<p>Matched Prefixes:<br>${matchedPrefixes.join('<br>')}</p>`;
-    }
-
-    if (matchedRoots.length > 0) {
-      outputDiv.innerHTML += `<p>Matched Roots:<br>${matchedRoots.join('<br>')}</p>`;
-    }
-
-    if (matchedSuffixes.length > 0) {
-      outputDiv.innerHTML += `<p>Matched Suffixes:<br>${matchedSuffixes.join('<br>')}</p>`;
-    }
-
-    if (unmatchedWords.length > 0) {
-      outputDiv.innerHTML += `<p>Unmatched Whole Words:<br>${unmatchedWords.join(', ')}</p>`;
-    }
-
-    if (unmatchedPrefixes.length > 0) {
-      outputDiv.innerHTML += `<p>Unmatched Prefixes:<br>${unmatchedPrefixes.join(', ')}</p>`;
-    }
-
-    if (unmatchedRoots.length > 0) {
-      outputDiv.innerHTML += `<p>Unmatched Roots:<br>${unmatchedRoots.join(', ')}</p>`;
-    }
-
-    if (unmatchedSuffixes.length > 0) {
-      outputDiv.innerHTML += `<p>Unmatched Suffixes:<br>${unmatchedSuffixes.join(', ')}</p>`;
-    }
-  } catch (error) {
-    errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
-  }
-}    
-/*
-function runMatcher() {
-  let inputText = document.getElementById('inputText').value;
-  let outputDiv = document.getElementById('output');
-  let errorOutputDiv = document.getElementById('errorOutput');
-  outputDiv.innerHTML = '';
-  errorOutputDiv.innerHTML = '';
-
-  try {
-    // Preprocess input text: remove punctuation
-    inputText = inputText.replace(/[.,!?]/g, '');
-
-    // Split input text into words
-    let words = inputText.split(/\s+/);
-
-    let prefixDetected = false;
-    let rootDetected = false;
-
-    // Process each word
-    words.forEach(word => {
-      let baseWord = word.toLowerCase();
-      let matched = false;
+      let prefixMatch = false;
+      let suffixMatch = false;
+      let rootMatch = false;
 
       // Check for prefix match with spaces
       for (let prefix in prefixes) {
         if (baseWord.startsWith(prefix) || baseWord.startsWith(' ' + prefix)) {
+          prefixMatch = true;
           let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
           if (dictionary[root]) {
-            outputDiv.innerHTML += `<p>PREFIX:(${prefix})=${prefixes[prefix]}<br>
-            <span class="word">(${word})</span>:ROOT:(${root})=${dictionary[root]}</p>`;
+            outputDiv.innerHTML += `<p><span class="word">${word}</span>: PREFIX:(${prefix})=${prefixes[prefix]}, ROOT:(${root})=${dictionary[root]}</p>`;
             matched = true;
-            prefixDetected = true;
-            rootDetected = true;
+            rootMatch = true;
             break;
           }
         }
@@ -11407,12 +11296,12 @@ function runMatcher() {
       if (!matched) {
         for (let suffix in suffixes) {
           if (baseWord.endsWith(suffix)) {
+            suffixMatch = true;
             let root = baseWord.slice(0, -suffix.length);
             if (dictionary[root]) {
-              outputDiv.innerHTML += `<p><span class="word">${word}</span>: (${root}) - ${dictionary[root]}<br>
-              SUFFIX:(${suffix})=${suffixes[suffix]}</p>`;
+              outputDiv.innerHTML += `<p><span class="word">${word}</span>: ROOT:(${root})=${dictionary[root]}, SUFFIX:(${suffix})=${suffixes[suffix]}</p>`;
               matched = true;
-              rootDetected = true;
+              rootMatch = true;
               break;
             }
           }
@@ -11422,22 +11311,29 @@ function runMatcher() {
       // If no prefix or suffix match, check the whole word
       if (!matched && dictionary[baseWord]) {
         outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
-        rootDetected = true;
+        matched = true;
+        rootMatch = true;
+      }
+
+      // If no matches at all, log the unmatched word, prefix, root, and suffix
+      if (!matched) {
+        outputDiv.innerHTML += `<p><span class="word">${word}</span>: No matches found</p>`;
+      } else {
+        if (!prefixMatch) {
+          outputDiv.innerHTML += `<p>No prefix matched for: ${word}</p>`;
+        }
+        if (!rootMatch) {
+          outputDiv.innerHTML += `<p>No root matched for: ${word}</p>`;
+        }
+        if (!suffixMatch) {
+          outputDiv.innerHTML += `<p>No suffix matched for: ${word}</p>`;
+        }
       }
     });
-
-    // Check if no prefixes or roots were detected
-    if (!prefixDetected) {
-      outputDiv.innerHTML += `<p>No prefixes were detected.</p>`;
-    }
-    if (!rootDetected) {
-      outputDiv.innerHTML += `<p>No roots were detected.</p>`;
-    }
   } catch (error) {
     errorOutputDiv.innerHTML = `An error occurred: ${error.message}`;
   }
 }
-*/
 </script>
 
 <div id="errorOutput" style="color: red;"></div>
