@@ -11270,7 +11270,7 @@ function runMatcher() {
         let root = baseWord.startsWith(' ') ? baseWord.slice(prefix.length + 1).trim() : baseWord.slice(prefix.length).trim();
         if (dictionary[root]) {
           outputDiv.innerHTML += `<p>PREFIX:(${prefix})=${prefixes[prefix]}<br>
-          <span class="word">(${word})</span>:ROOT:(${root})=${dictionary[root]}</p>`;
+          <span class="word">(${word})</span>: ROOT:(${root})=${dictionary[root]}</p>`;
           matched = true;
           prefixDetected = true;
           rootDetected = true;
@@ -11298,6 +11298,7 @@ function runMatcher() {
     // If no prefix or suffix match, check the whole word
     if (!matched && dictionary[baseWord]) {
       outputDiv.innerHTML += `<p><span class="word">${word}</span>: ${dictionary[baseWord]}</p>`;
+      matched = true;
       rootDetected = true;
     }
 
@@ -11307,7 +11308,7 @@ function runMatcher() {
     }
   });
 
-  // Check if no prefixes or roots were detected
+  // Display if no prefixes or suffixes were detected
   if (!prefixDetected) {
     outputDiv.innerHTML += `<p>No prefixes were detected.</p>`;
   }
