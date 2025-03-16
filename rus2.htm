@@ -11086,81 +11086,82 @@ const suffixes = {
 "а":"denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
 
-    function removePunctuation(text) {
-      return text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+function removePunctuation(text) {
+  return text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+}
+
+function identifyParts(word) {
+  let prefix = "";
+  let suffix = "";
+  let root = word;
+
+  // Check for prefixes
+  for (const p of Object.keys(prefixes).sort((a, b) => b.length - a.length)) {
+    if (word.startsWith(p) && word.length > p.length) {
+      prefix = p;
+      root = word.slice(p.length);
+      break;
     }
+  }
 
-    function identifyParts(word) {
-      let prefix = "";
-      let suffix = "";
-      let root = word;
-
-      // Check for prefixes
-      for (const p of Object.keys(prefixes).sort((a, b) => b.length - a.length)) {
-        if (word.startsWith(p) && word.length > p.length) {
-          prefix = p;
-          root = word.slice(p.length);
-          break;
-        }
-      }
-
-      // Check for suffixes
-      for (const s of Object.keys(suffixes).sort((a, b) => b.length - a.length)) {
-        if (root.endsWith(s) && root.length > s.length) {
-          suffix = s;
-          root = root.slice(0, -s.length);
-          break;
-        }
-      }
-
-      return { prefix, root, suffix };
+  // Check for suffixes
+  for (const s of Object.keys(suffixes).sort((a, b) => b.length - a.length)) {
+    if (root.endsWith(s) && root.length > s.length) {
+      suffix = s;
+      root = root.slice(0, -s.length);
+      break;
     }
+  }
 
-    function matchDictionary(word) {
-      // First try exact match
-      if (dictionary[word]) return dictionary[word];
-      
-      // Then try root word match
-      const { root } = identifyParts(word);
-      return dictionary[root] || "No translation found";
-    }
+  return { prefix, root, suffix };
+}
 
-    function processText(inputText) {
-      const cleanedText = removePunctuation(inputText);
-      const words = cleanedText.split(/\s+/).filter(word => word.length > 0);
-      return words.map(word => {
-        const { prefix, root, suffix } = identifyParts(word);
-        const definition = matchDictionary(word);
-        return { 
-          word, 
-          prefix: prefix ? prefixes[prefix] || prefix : "",
-          root, 
-          suffix: suffix ? suffixes[suffix] || suffix : "",
-          definition 
-        };
-      });
-    }
+function matchDictionary(word) {
+  // First try exact match
+  if (dictionary[word]) return dictionary[word];
 
-    function displayResults(results) {
-      const outputDiv = document.getElementById("output");
-      outputDiv.innerHTML = "";
-      results.forEach(({ word, prefix, root, suffix, definition }) => {
-        const wordDiv = document.createElement("div");
-        wordDiv.innerHTML = `
-          <span class="word">${word}</span>: 
-          ${prefix ? `<span class="prefix">(${prefix})</span>` : ''}<span class="root">${root}</span>
-          ${suffix ? `<span class="suffix">(${suffix})</span>` : ''} - 
-          <span class="definition">${definition}</span>
-        `;
-        outputDiv.appendChild(wordDiv);
-      });
-    }
+  // Then try root word match
+  const { root } = identifyParts(word);
+  return dictionary[root] || "No translation found";
+}
 
-    function runMatcher() {
-      const inputText = document.getElementById("inputText").value;
-      const results = processText(inputText);
-      displayResults(results);
-    }
+function processText(inputText) {
+  const cleanedText = removePunctuation(inputText);
+  const words = cleanedText.split(/\s+/).filter(word => word.length > 0);
+  return words.map(word => {
+    const { prefix, root, suffix } = identifyParts(word);
+    // Try exact match first, then root
+    const definition = dictionary[word] || dictionary[root] || "No translation found";
+    return { 
+      word, 
+      prefix: prefix ? prefixes[prefix] || prefix : "",
+      root, 
+      suffix: suffix ? suffixes[suffix] || suffix : "",
+      definition 
+    };
+  });
+}
+
+function displayResults(results) {
+  const outputDiv = document.getElementById("output");
+  outputDiv.innerHTML = "";
+  results.forEach(({ word, prefix, root, suffix, definition }) => {
+    const wordDiv = document.createElement("div");
+    wordDiv.innerHTML = `
+      <span class="word">${word}</span>: 
+      ${prefix ? `<span class="prefix">(${prefix})</span>` : ''}<span class="root">${root}</span>
+      ${suffix ? `<span class="suffix">(${suffix})</span>` : ''} - 
+      <span class="definition">${definition}</span>
+    `;
+    outputDiv.appendChild(wordDiv);
+  });
+}
+
+function runMatcher() {
+  const inputText = document.getElementById("inputText").value;
+  const results = processText(inputText);
+  displayResults(results);
+}
   </script>
 </body>
 </html>
