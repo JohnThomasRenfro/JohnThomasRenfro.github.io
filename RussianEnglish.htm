@@ -35,25 +35,33 @@
             "ист", "чик", "ец", "ок", "ек", "ыш", "ик", "ать", "ить", "овать", "ующий", "ющий", "ящий", "ящийся"
         ]; // Expanded list of suffixes
         
+        function stripSuffix(word) {
+            for (let suffix of russianSuffixes) {
+                if (word.endsWith(suffix)) {
+                    return word.slice(0, -suffix.length);
+                }
+            }
+            return word;
+        }
+
         function processInput(input) {
             // Remove punctuation from input
-            let cleanedInput = input.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").toLowerCase();
+            let cleanedInput = input.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()"\']/g, "").toLowerCase();
 
             // Split input into words
             let words = cleanedInput.split(/\s+/);
 
             let results = words.map((word) => {
-                // Add spaces before and after the word for easier suffix identification
-                let spacedWord = ` ${word} `;
+                let strippedWord = stripSuffix(word);
 
                 // Find the best match from the dictionary
                 let bestMatch = null;
                 let bestMatchLength = 0;
 
                 for (let entry in dictionary) {
-                    let spacedEntry = ` ${entry} `;
+                    let strippedEntry = stripSuffix(entry);
 
-                    if (spacedWord.includes(spacedEntry)) {
+                    if (strippedWord === strippedEntry) {
                         let matchLength = entry.length;
                         if (matchLength > bestMatchLength) {
                             bestMatch = entry;
@@ -65,7 +73,7 @@
                 if (bestMatch) {
                     // Identify the first part of the word and the suffix
                     let firstPart = bestMatch;
-                    let suffix = word.replace(firstPart, "");
+                    let suffix = word.replace(stripSuffix(firstPart), "");
                     return `${word}: ${firstPart} + ${suffix} => ${dictionary[bestMatch]}`;
                 } else {
                     return `${word}: No match`;
