@@ -11124,11 +11124,11 @@ function processText(inputText) {
     const { prefix, root, suffix } = identifyParts(word);
     let definition;
     if (dictionary[word]) {
-      definition = dictionary[word]; // Full word match
+      definition = dictionary[word];
     } else if (dictionary[root]) {
-      definition = dictionary[root] + " (derived form)"; // Root match
+      definition = dictionary[root] + " (derived form)";
     } else {
-      definition = "No translation found"; // No match
+      definition = "No translation found";
     }
     return { 
       word, 
@@ -11143,7 +11143,7 @@ function processText(inputText) {
 function displayResults(results) {
   const outputDiv = document.getElementById("output");
   outputDiv.innerHTML = "";
-  results.forEach(({ word, prefix, root, suffix, definition }) => {
+  results.forEach(({ word, prefix, root, suffix, definition }, index) => {
     const wordDiv = document.createElement("div");
     wordDiv.innerHTML = `
       <span class="word">${word}</span>:<br>
@@ -11152,6 +11152,8 @@ function displayResults(results) {
       SUFFIX: <span class="suffix">${suffix}</span><br>
       <span class="definition">${definition}</span>
     `;
+    // Add spacing between word sets
+    if (index > 0) wordDiv.style.marginTop = "20px";
     outputDiv.appendChild(wordDiv);
   });
 }
