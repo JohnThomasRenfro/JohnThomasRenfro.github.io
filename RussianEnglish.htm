@@ -146,9 +146,9 @@
 </style>
 </head>
 <body>
-    <h1>Russian-English Dictionary</h1>
-Во время дождя и мокрого снега включение режима рециркуляции воздуха может значительно ухудшить видимость через стекла, создавая опасные условия для водителя.
-Читайте больше на https://www.pravda.ru/news/auto/2191921-air_recirculation_risk/<br>
+    <h1>Russian-English Dictionary Source:Pravda.Ru</h1>
+Повышенный уровень холестерина — одна из главных проблем здоровья взрослого населения. В Испании его диагностируют у 50% людей, причем многие даже не подозревают об этом. Это увеличивает риск сердечно-сосудистых заболеваний, которые являются
+<br>
     <textarea id="userInput" placeholder="Enter Russian words..."></textarea><br>
     <button onclick="displayResults()">Analyze</button><br>
     <div id="output"></div>
@@ -195,18 +195,80 @@ const russianPrefixes = [
     { prefix: "ре", meaning: "re-" },
     { prefix: "суб", meaning: "sub-" },
     { prefix: "транс", meaning: "trans-" },
-    { prefix: "экстра", meaning: "extra-" }
+    { prefix: "экстра", meaning: "extra-" },
+	{
+    prefix: "подо",
+    meaning: "A variation of 'под' (under, beneath) used before certain vowels or consonant clusters for phonetic ease; intensifies or modifies the root's meaning, e.g., подозревают = 'they suspect' ('to see under the surface or perceive beneath')."
+},
+
+{
+    prefix: "диа", 
+    meaning: "Greek origin (*dia-* = through, across); conveys the idea of 'thorough examination,' 'across boundaries,' or 'through a process'; commonly used in scientific or analytical contexts, e.g., диагностировать = 'to diagnose' (literally, 'to analyze through knowledge')"
+},
+	
 ];
 
 const russianSuffixes = [
-    { suffix: "ого", meaning: "adjective-masculine-singular-genitive(of this) -or- adjective-neutral-singular-genitive" },
+{
+    suffix: "ей",
+    meaning: "-->+ей(genitive plural ending for animate nouns; expresses possession, quantity, or absence; often used to describe groups of people or objects, e.g., люди → людей = 'of people', 'many people')"
+},
+
+{
+    suffix: "десят",
+    meaning: "-->+десят(forms compound numbers in Russian, based on the word 'десять' (ten); acts as a multiplier or base for numbers from 50 to 90, e.g., пятьдесят = 'fifty' ('five tens'), шестьдесят = 'sixty' ('six tens'))"
+},
+
+{
+    suffix: "ии",
+    meaning: "-->+и(linking vowel often used to smooth transitions between roots and suffixes)-->+и(noun ending for fem-sing-prep: 'in/on/about'; fem-sing-gen: 'of this'; noun-pl-gen: 'of these (plural)'; case-dependent; often found in abstract or action nouns of Latin origin; e.g., Испания → Испании = 'of Spain' or 'in Spain')"
+},
+{
+    suffix: "евают",
+    meaning: "-->+е(linking vowel, often used to smooth the transition between roots and suffixes)-->+ва(secondary verb-forming suffix; often used to create imperfective verbs and convey repeated or habitual actions)-->+ют(third person plural present tense ending for imperfective verbs; marks 'they [perform the action]' in the present tense; e.g., 'они подозревают' = 'they suspect')"
+},
+
+{
+    suffix: "ируют",
+    meaning: "-->+ир(verb-forming suffix, derived from foreign or Greek roots; indicates action or process, e.g., диагностировать = 'to diagnose')-->+уют(third person plural present tense ending for imperfective verbs; marks 'they [perform the action]' in the present tense; e.g., 'они диагностируют' = 'they diagnose')"
+},
+
+{
+    suffix: "ения", 
+    meaning: "-->+е(linking vowel often used to smooth transitions between roots and suffixes)-->+н(used to form abstract nouns from roots; links the root to conceptual or descriptive ideas)-->+ия(abstract noun ending forming feminine nouns; case-dependent: fem-sing-nom, fem-sing-gen, fem-sing-dat, fem-sing-acc, fem-sing-instr, fem-sing-prep; e.g., население → населения = 'of the population')"
+},
+{
+    suffix: "ого", 
+    meaning: "-->+ого(adjective ending for mas-sing-gen or mas-sing-acc (animate) or neu-sing-gen; shows possession, absence, or relationship; e.g., взрослый → взрослого = 'of the adult' or 'the adult (as an object)')"
+},
+
+{
+    suffix: "ния", 
+    meaning: "-->+н(used to form abstract nouns from roots; often links the root to a descriptive or conceptual idea)-->+ия(abstract noun ending forming feminine nouns; case-dependent: fem-sing-nom, fem-sing-gen, fem-sing-dat, fem-sing-acc, fem-sing-instr, fem-sing-prep; e.g., здоровье → здоровья = 'of health')"
+},
+
     { suffix: "ут", meaning: "3rd person plural present tense" },
     { suffix: "ия", meaning: "abstract noun ending" },
     { suffix: "ый", meaning: "masculine adjective ending" },
     { suffix: "ий", meaning: "masculine adjective ending (soft)" },
     { suffix: "ая", meaning: "feminine adjective ending" },
     { suffix: "ее", meaning: "neuter comparative adjective ending" },
-    { suffix: "нный", meaning: "past passive participle ending" },
+{
+    suffix: "ья",
+    meaning: "-->+ь(soft sign linking stem to ending, often found in abstract or descriptive nouns)-->+я(case-dependent noun ending: noun-mas-sing-gen; noun-fem-sing-nom; noun-fem-sing-gen; noun-mas-sing-acc; or noun-mas-sing-prep (rare/archaic); also used in adjectival nouns for stylization; e.g., здоровье → здоровья = 'of health')"
+},
+	
+{
+    suffix: "ных", 
+    meaning: "-->+н(used in adjectives, often derived from nouns or roots; links the root to the adjective's descriptive meaning)-->+ых(adjective ending for genitive plural or accusative plural for animate nouns; applies to all genders; e.g., главный → главных = 'of the main ones' or 'the main ones (as an object)')"
+},	
+{
+    suffix: "ный", 
+    meaning: "-->+н(used to create adjectives, often derived from nouns or roots)-->+ый(adjectival ending for mas-sin, aligns with gender, number, and case; forms descriptive qualities or states, e.g., зелёный = 'green')"
+},
+	
+{suffix:"ина",meaning: "ин+-->(derivational root construction; forms abstract meanings such as state or quality)-->+а(genitive singular ending for noun-mas-sin)used to indicate possession, absence, or relationship')"},
+{suffix:"нный", meaning: "-->+нн(has been done)past passive participle ending for mas-sin-nom or fem-sin-nom or neu-sin-nom or plu-nom-->+ый adjectival ending for mas-sin or fem-sin or neu-sin or plu" },
     { suffix: "ный", meaning: "adjective ending" },
     { suffix: "ливый", meaning: "inclined to, full of" },
     { suffix: "истый", meaning: "full of, characterized by" },
@@ -235,6 +297,23 @@ const russianSuffixes = [
   "meaning": "nominalizing suffix used to form abstract nouns or action nouns from verbs (e.g., включать → включение = inclusion)"
 },
 {
+    suffix: "ия", 
+    meaning: "-->+и(abstract noun-forming suffix derived from roots; creates feminine nouns representing concepts, states, or actions)-->+я(case-dependent noun ending for fem-sing-gen: 'of this'; fem-sing-dat: 'to this'; fem-sing-acc: 'this as an object'; fem-sing-instr: 'with/by this'; fem-sing-prep: 'about/in this'; e.g., население → населения = 'of the population')"
+},
+{
+    suffix: "чем",
+    meaning: "-->+чем(instrumental case of 'что'; denotes 'by what,' 'with what,' or 'whereby'; used in comparative or explanatory contexts, e.g., причем = 'moreover,' or 'whereby' depending on context)"
+},
+{
+    suffix: "ают",
+    meaning: "-->+ают(third person plural present tense ending for imperfective verbs; indicates ongoing or habitual action performed by 'they'; e.g., 'они подозревают' = 'they suspect')"
+},
+{
+    suffix: "ом",
+    meaning: "-->+ом(prepositional or instrumental singular case ending for masculine or neuter nouns/adjectives; used in contexts such as location or method, e.g., 'в этом' = 'in this')"
+},
+
+{
   "suffix": "а",
   "meaning": "noun-masculine-singular-genitive (used to indicate possession, absence, or relationship, e.g., воздух → воздуха = 'of air')"
 },
@@ -251,12 +330,25 @@ const russianSuffixes = [
   "meaning": "verb-third-person-singular-present tense (used for regular verbs in third-person singular form, e.g., он/она сушает = he/she dries)"
 },
 {
+    suffix: "ются",
+    meaning: "-->+ют(third person plural present tense ending for imperfective verbs; marks 'they [perform the action]' in the present tense)-->+ся(reflexive particle, indicating that the action is self-directed or passive, e.g., 'они являются' = 'they are')"
+},
+
+{
   "suffix": "ые",
   "meaning": "Adjective ending for plural nouns in nominative or accusative case (e.g., опасные люди = dangerous people)"
 },
 {
-  "suffix": "о",
-  "meaning": "Adverbial ending that converts an adjective or participle into an adverb. It indicates manner, degree, or extent (e.g., значительно = significantly, considerably)"
+    suffix: "о",
+    meaning: "-->+о(neutral singular ending for the demonstrative pronoun 'эт'; used to refer to a neuter subject or object in the nominative or accusative case, e.g., 'это красиво' = 'this is beautiful')"
+},
+{
+    suffix: "истых",
+    meaning: "-->+ист(adjectival suffix, denotes a characteristic or relation, e.g., 'vascular' in сердечнососудистый)-->+ых(genitive plural ending for adjectives, indicates possession or relation, e.g., 'сердечнососудистых заболеваний' = 'of cardiovascular diseases')"
+},
+{
+    suffix: "аний",
+    meaning: "-->+а(noun-forming suffix, denotes action or process, e.g., заболевание = 'disease')-->+н(deverbal noun-forming element)-->+ий(genitive plural ending, indicates possession or relation in the plural form, e.g., 'заболеваний' = 'of diseases')"
 },
 
 ];
@@ -275,7 +367,7 @@ function stripPrefix(word) {
 }
 
 function stripSuffix(word) {
-    let longestSuffix = { suffix: "", meaning: "" };
+    let longestSuffix = { suffix: "", meaning: "None" };
     for (let s of russianSuffixes) {
         if (word.endsWith(s.suffix) && s.suffix.length > longestSuffix.suffix.length) {
             longestSuffix = s;
@@ -1373,6 +1465,8 @@ const dictionary = {
 "задумываться":"to think deeply, become thoughtful (about)",
 "догадываться":"to guess; (+inf) have the sense to",
 "великолепный":"magnificent",
+"об":"about,concerning",
+"этом":"this",
 "показываться":"to show os, be shown",
 "традиционный":"traditional",
 "взволнованно":"anxiously",
@@ -1661,6 +1755,7 @@ const dictionary = {
 "откликаться":"to respond (to sth)",
 "подружиться":"to make friends with",
 "радикальный":"radical",
+"одна":"one",
 "разлетаться":"to fly apart; scatter, shatter",
 "разрешаться":"to be permitted; be resolved",
 "вооружаться":"to arm os",
@@ -1712,6 +1807,7 @@ const dictionary = {
 "возвращение":"return",
 "последствие":"consequence",
 "лаборатория":"laboratory",
+"здоровья":"health,soundness,heartiness",
 "пробираться":"to make one’s way through, force one’s way",
 "куда-нибудь":"anywhere",
 "наклоняться":"to bend down, stoop, bend over",
@@ -1819,6 +1915,8 @@ const dictionary = {
 "вздрагивать":"to start, flinch, shudder",
 "вынужденный":"forced",
 "исследовать":"to investigate",
+"холестерина":"cholesterol",
+"—":"punctuation;is this;equal to this",
 "холодильник":"refrigerator",
 "великолепно":"splendid(ly)",
 "комментарий":"commentary",
@@ -1864,6 +1962,7 @@ const dictionary = {
 "указываться":"to be indicated",
 "заокеанский":"transoceanic",
 "иллюстрация":"illustration",
+"главных":"main,major,chief,principal,primary",
 "истребление":"extermination",
 "непривычный":"unaccustomed, unusual",
 "несравненно":"incomparably",
@@ -2679,6 +2778,8 @@ const dictionary = {
 "определять":"to define, determine",
 "утверждать":"to affirm, maintain",
 "направлять":"to direct",
+"пятьдесят":"fifty",
+"50":"fifty",
 "инструмент":"instrument; tool",
 "абсолютный":"absolute",
 "устройство":"organization; mechanism",
@@ -2864,6 +2965,7 @@ const dictionary = {
 "перебивать":"to interrupt",
 "безусловно":"undoubtedly",
 "переговоры":"negotiations",
+"населения":"population",
 "какой-либо":"any",
 "удерживать":"to hold back, retain; hold onto; restrain",
 "российский":"Russian (of Russia)",
@@ -3392,6 +3494,7 @@ const dictionary = {
 "сокращать":"to shorten; reduce",
 "устранять":"to remove",
 "вертеться":"to rotate",
+"диагностируют":"to diagnose",
 "девяносто":"ninety",
 "крохотный":"tiny (coll)",
 "неизменно":"invariably",
