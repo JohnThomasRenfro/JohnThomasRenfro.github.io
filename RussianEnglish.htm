@@ -9401,8 +9401,9 @@ const replsB=[
 {p1:/(яр)/g,r1:"$1=furious, raging; fervent, rabid|"},
   ];
 
-replsB.forEach(replace=> {
- a=a.replace(replace.p1,replace.r1);
+replsB.sort((a, b) => b.p1.source.length - a.p1.source.length);
+replsB.forEach(replace => {
+  a = a.replace(replace.p1, replace.r1);
 });
 
 document.getElementById("translatedTextDisplay").innerHTML=a;
