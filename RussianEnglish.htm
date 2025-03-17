@@ -11314,16 +11314,22 @@ function processText(inputText) {
             return;
         }
 
-        // Detect prefixes
-        prefixInfo = getPrefixInfo(normalizedWord);
-        const wordWithoutPrefix = prefixInfo.prefix
-            ? normalizedWord.slice(prefixInfo.prefix.length)
-            : normalizedWord;
+// Detect prefixes
+prefixInfo = getPrefixInfo(normalizedWord);
 
-        // Verify if stripping the prefix results in a valid core
-        if (!dictionary[wordWithoutPrefix] && prefixInfo.prefix) {
-            prefixInfo = { prefix: null, meaning: "No prefix detected" }; // Reset prefix
-        }
+// Verify if the word with detected prefix matches any dictionary entry
+if (prefixInfo.prefix) {
+    const wordWithPrefix = normalizedWord;
+    const wordWithoutPrefix = normalizedWord.slice(prefixInfo.prefix.length);
+
+    if (dictionary[wordWithPrefix]) {
+        // If the word with the prefix exists in the dictionary
+        outputHTML += `<span class="word">${word}</span>: <span class="definition">${dictionary[wordWithPrefix]}</span><br>`;
+    } else if (!dictionary[wordWithoutPrefix]) {
+        // If stripping the prefix does not result in a valid core
+        prefixInfo = { prefix: null, meaning: "No prefix detected" }; // Reset prefix
+    }
+}
 
         // Detect suffixes
         suffixInfo = getSuffixInfo(wordWithoutPrefix);
