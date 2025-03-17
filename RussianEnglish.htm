@@ -11086,6 +11086,62 @@ const dictionary = {
 "Богородица":"the Virgin",
 };
 
+    function processText(inputText) {
+        const inputWords = inputText.split(/\s+/); // Split input text into words
+        const results = [];
+
+        inputWords.forEach((word) => {
+            let matchedRoot = null;
+            let longestMatch = 0;
+
+            // Compare with dictionary root words
+            for (const [root, definition] of Object.entries(dictionary)) {
+                if (word.startsWith(root) && root.length > longestMatch) {
+                    matchedRoot = { root, definition };
+                    longestMatch = root.length;
+                }
+            }
+
+            // Build the result
+            if (matchedRoot) {
+                const suffixInfo = getSuffixInfo(word); // Get suffix details
+                results.push({
+                    originalWord: word,
+                    root: matchedRoot.root,
+                    definition: matchedRoot.definition,
+                    suffix: suffixInfo.suffix,
+                    suffixMeaning: suffixInfo.meaning
+                });
+            }
+        });
+
+        return results;
+    }
+
+function runMatcher() {
+  let inputText = document.getElementById('inputText').value;
+  let outputDiv = document.getElementById('output');
+  outputDiv.innerHTML = '';
+
+  // Preprocess input text: remove punctuation
+  inputText = inputText.replace(/[.,!?]/g, '');
+
+  // Split input text into words
+  let words = inputText.split(/\s+/);
+
+  // List of prepositions to avoid suffix and prefix matching
+  const prepositions = ["на", "к", "в", "по", "с", "о", "у"];
+
+  // List of pronouns to avoid suffix and prefix matching
+  const pronouns = [
+    "я", "ты", "он", "она", "оно", "мы", "вы", "они", "мой", "твой", "его", "её", "наш", "ваш", "их",
+    "меня", "тебя", "нас", "вас", "их", "мне", "тебе", "ему", "ей", "нам", "вам", "им", "мной", "тобой",
+    "ним", "ней", "нами", "вами", "ними", "себя", "себе", "собой", "кто", "что", "какой", "какая", "какое", 
+    "какие", "который", "которая", "которое", "которые", "которого", "которой", "которому", "которым", 
+    "которых", "этот", "эта", "это", "эти", "тот", "та", "то", "те", "весь", "вся", "всё", "все", "сам", 
+    "сама", "само", "сами", "такой", "такая", "такое", "такие", "свой", "своя", "своё", "свои"
+  ];
+
 const prefixes = {
 "без":"(+g) without",
 "в":"(+a) in, into; (+p) in, at",
@@ -11212,62 +11268,6 @@ const suffixes = {
 "ават":"denotes frequentative verbs",
 "а":"denotes a feminine singular noun ending or can mark specific grammatical cases (e.g., accusative or genitive).",
 };
-
-    function processText(inputText) {
-        const inputWords = inputText.split(/\s+/); // Split input text into words
-        const results = [];
-
-        inputWords.forEach((word) => {
-            let matchedRoot = null;
-            let longestMatch = 0;
-
-            // Compare with dictionary root words
-            for (const [root, definition] of Object.entries(dictionary)) {
-                if (word.startsWith(root) && root.length > longestMatch) {
-                    matchedRoot = { root, definition };
-                    longestMatch = root.length;
-                }
-            }
-
-            // Build the result
-            if (matchedRoot) {
-                const suffixInfo = getSuffixInfo(word); // Get suffix details
-                results.push({
-                    originalWord: word,
-                    root: matchedRoot.root,
-                    definition: matchedRoot.definition,
-                    suffix: suffixInfo.suffix,
-                    suffixMeaning: suffixInfo.meaning
-                });
-            }
-        });
-
-        return results;
-    }
-
-function runMatcher() {
-  let inputText = document.getElementById('inputText').value;
-  let outputDiv = document.getElementById('output');
-  outputDiv.innerHTML = '';
-
-  // Preprocess input text: remove punctuation
-  inputText = inputText.replace(/[.,!?]/g, '');
-
-  // Split input text into words
-  let words = inputText.split(/\s+/);
-
-  // List of prepositions to avoid suffix and prefix matching
-  const prepositions = ["на", "к", "в", "по", "с", "о", "у"];
-
-  // List of pronouns to avoid suffix and prefix matching
-  const pronouns = [
-    "я", "ты", "он", "она", "оно", "мы", "вы", "они", "мой", "твой", "его", "её", "наш", "ваш", "их",
-    "меня", "тебя", "нас", "вас", "их", "мне", "тебе", "ему", "ей", "нам", "вам", "им", "мной", "тобой",
-    "ним", "ней", "нами", "вами", "ними", "себя", "себе", "собой", "кто", "что", "какой", "какая", "какое", 
-    "какие", "который", "которая", "которое", "которые", "которого", "которой", "которому", "которым", 
-    "которых", "этот", "эта", "это", "эти", "тот", "та", "то", "те", "весь", "вся", "всё", "все", "сам", 
-    "сама", "само", "сами", "такой", "такая", "такое", "такие", "свой", "своя", "своё", "свои"
-  ];
 
   // Process each word
   words.forEach(word => {
