@@ -11361,27 +11361,24 @@ function processText(inputText) {
     return results; // Return the results array
 }
 
-
-
-// Run matcher and display results
 function runMatcher() {
-  const inputText = document.getElementById('inputText').value.replace(/[.,!?]/g, ''); // Remove punctuation
+  const inputText = document.getElementById('inputText').value;
   const outputDiv = document.getElementById('output');
-  outputDiv.innerHTML = ''; // Clear previous output
+  const words = inputText.split(/[\s.,!?]+/); // Split text into words
+  let outputHTML = '';
 
-  const results = processText(inputText); // Process text
-
-  // Display results
-  results.forEach((result) => {
-    outputDiv.innerHTML += `
-      <p>
-        <span class="word">${result.originalWord}</span>: ${result.definition}<br>
-        Root: ${result.root || "None"}<br>
-        Prefix: ${result.prefix || "None"} (${result.prefixMeaning})<br>
-        Suffix: ${result.suffix || "None"} (${result.suffixMeaning})
-      </p>
-    `;
+  words.forEach(word => {
+    let lowerCaseWord = word.toLowerCase();
+    if (dictionary[lowerCaseWord]) {
+      // If the whole word is found in the dictionary
+      outputHTML += `<span class="word">${word}</span>: <span class="definition">${dictionary[lowerCaseWord]}</span><br>`;
+    } else {
+      // If the word is not found, display it as is
+      outputHTML += `<span class="word">${word}</span>: No matching root found<br>`;
+    }
   });
+
+  outputDiv.innerHTML = outputHTML;
 }
      
 </script>
