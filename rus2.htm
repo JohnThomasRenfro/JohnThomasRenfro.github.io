@@ -11114,8 +11114,8 @@ function identifyParts(word) {
     }
   }
 
-  // Validate root: if too short and full word exists, revert
-  if (root.length < 3 && dictionary[word] && !prefix && !suffix) {
+  // If full word is in dictionary and root is too short, use full word
+  if (dictionary[word] && root.length < 3 && !prefix && !suffix) {
     return { prefix: "", root: word, suffix: "" };
   }
 
@@ -11127,18 +11127,14 @@ function processText(inputText) {
   const words = cleanedText.split(/\s+/).filter(word => word.length > 0);
   return words.map(word => {
     const { prefix, root, suffix } = identifyParts(word);
-    let definition;
-    if (dictionary[word]) {
-      definition = dictionary[word];
-    } else if (dictionary[root]) {
-      definition = dictionary[root] + " (derived form)";
-    } else {
-      definition = "No translation found";
+    let definition = dictionary[word] || dictionary[root] || "No translation found";
+    if (dictionary[root] && !dictionary[word]) {
+      definition += " (derived form)";
     }
     return { 
       word, 
       prefix: prefix ? `${prefix}=${prefixes[prefix] || prefix}` : "None=",
-      root: `${root}=${dictionary[root] || "no definition"}`,
+      root: `${root}=${dictionary[root] || definition}`, // Definition with root
       suffix: suffix ? `${suffix}=${suffixes[suffix] || suffix}` : "None=",
       definition 
     };
