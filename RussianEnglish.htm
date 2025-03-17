@@ -9415,6 +9415,13 @@ function separateWordsAndPunctuation(input) {
                 .join('\n');
 }
 
+function translateB() {
+    const replsB = [
+        {p1: / (вол) /gi, r1: "$1=ox|ending~"},
+        {p1: / (шов) /gi, r1: "$1=seam|ending~"},
+        // Add all other replacement pairs here...
+    ];
+
     let a = document.getElementById("inputText").value;
 
     replsB.sort((a, b) => b.p1.source.length - a.p1.source.length);
@@ -9426,7 +9433,6 @@ function separateWordsAndPunctuation(input) {
 
     document.getElementById("translatedTextDisplay").innerHTML = a;
 }
-
 </script></head>
 
 <body>
