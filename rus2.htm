@@ -11132,9 +11132,9 @@ function processText(inputText) {
     }
     return { 
       word, 
-      prefix: prefix ? prefixes[prefix] || prefix : "",
-      root, 
-      suffix: suffix ? suffixes[suffix] || suffix : "",
+      prefix: prefix ? `${prefix}=${prefixes[prefix] || prefix}` : "None=",
+      root: `${root}=${dictionary[root] || "no definition"}`,
+      suffix: suffix ? `${suffix}=${suffixes[suffix] || suffix}` : "None=",
       definition 
     };
   });
@@ -11146,9 +11146,10 @@ function displayResults(results) {
   results.forEach(({ word, prefix, root, suffix, definition }) => {
     const wordDiv = document.createElement("div");
     wordDiv.innerHTML = `
-      <span class="word">${word}</span>: 
-      ${prefix ? `<span class="prefix">(${prefix})</span>` : ''}<span class="root">${root}</span>
-      ${suffix ? `<span class="suffix">(${suffix})</span>` : ''} - 
+      <span class="word">${word}</span>:<br>
+      PREFIX: <span class="prefix">${prefix}</span><br>
+      ROOT: <span class="root">${root}</span><br>
+      SUFFIX: <span class="suffix">${suffix}</span><br>
       <span class="definition">${definition}</span>
     `;
     outputDiv.appendChild(wordDiv);
