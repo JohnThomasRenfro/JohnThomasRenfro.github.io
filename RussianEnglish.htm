@@ -9407,14 +9407,26 @@ const replsB=[
    
   ];
 
-replsB.sort((a, b) => b.p1.source.length - a.p1.source.length);
-replsB.forEach(replace => {
-  a = a.replace(replace.p1, replace.r1);
-});
-
-document.getElementById("translatedTextDisplay").innerHTML=a;
-
+function separateWordsAndPunctuation(input) {
+    return input.replace(/([.,!?;:()])/g, ' $1 ')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .split(' ')
+                .join('\n');
 }
+
+    let a = document.getElementById("inputText").value;
+
+    replsB.sort((a, b) => b.p1.source.length - a.p1.source.length);
+    replsB.forEach(replace => {
+        a = a.replace(replace.p1, replace.r1);
+    });
+
+    a = separateWordsAndPunctuation(a);
+
+    document.getElementById("translatedTextDisplay").innerHTML = a;
+}
+
 </script></head>
 
 <body>
