@@ -11114,11 +11114,16 @@ function identifyParts(word) {
     }
   }
 
+  // Validate root: if too short and full word exists, revert
+  if (root.length < 3 && dictionary[word] && !prefix && !suffix) {
+    return { prefix: "", root: word, suffix: "" };
+  }
+
   return { prefix, root, suffix };
 }
 
 function processText(inputText) {
-  const cleanedText = removePunctuation(inputText);
+  const cleanedText = removePunctuation(text);
   const words = cleanedText.split(/\s+/).filter(word => word.length > 0);
   return words.map(word => {
     const { prefix, root, suffix } = identifyParts(word);
@@ -11152,7 +11157,6 @@ function displayResults(results) {
       SUFFIX: <span class="suffix">${suffix}</span><br>
       <span class="definition">${definition}</span>
     `;
-    // Add spacing between word sets
     if (index > 0) wordDiv.style.marginTop = "20px";
     outputDiv.appendChild(wordDiv);
   });
@@ -11163,7 +11167,6 @@ function runMatcher() {
   const results = processText(inputText);
   displayResults(results);
 }
-
   </script>
 </body>
 </html>
