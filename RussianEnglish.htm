@@ -6,7 +6,7 @@
     <title>Russian-English Dictionary</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; 
             margin: 20px;
         }
         textarea {
@@ -31,7 +31,7 @@
     <script>
 
         const russianSuffixes = [
-            "ии","ься","а", "ский", "ный", "ость", "енный", "ировать", "ающий", "ательный", "ировать", "ность", "ный",
+            "ии", "ься", "а", "ский", "ный", "ость", "енный", "ировать", "ающий", "ательный", "ировать", "ность", "ный",
             "ист", "чик", "ец", "ок", "ек", "ыш", "ик", "ать", "ить", "овать", "ующий", "ющий", "ящий", "ящийся"
         ]; // Expanded list of suffixes
         
@@ -58,14 +58,24 @@
                 let bestMatch = null;
                 let bestMatchLength = 0;
 
+                // Search through the dictionary for matching stems
                 for (let entry in dictionary) {
                     let strippedEntry = stripSuffix(entry);
 
+                    // Check for a stem match
                     if (strippedWord === strippedEntry) {
                         let matchLength = entry.length;
                         if (matchLength > bestMatchLength) {
                             bestMatch = entry;
                             bestMatchLength = matchLength;
+                        }
+                    } 
+                    // If no exact stem match, check for fuzzy suffix matches
+                    else {
+                        // Check if the stripped word starts with the same core as the dictionary entry
+                        if (strippedEntry.startsWith(strippedWord)) {
+                            bestMatch = entry;
+                            break;
                         }
                     }
                 }
@@ -88,7 +98,6 @@
             let output = processInput(userInput);
             document.getElementById("output").innerHTML = output;
         }
-
         const dictionary = {
 
 "научно-исследовательский":"scientific-research (adj)",
@@ -9290,5 +9299,5 @@
 "о":"about, concerning",
         };
     </script>   
-  </body>
+</body>
 </html>
