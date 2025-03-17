@@ -29,8 +29,12 @@
     <div id="output"></div>
 
     <script>
-        const russianSuffixes = ["а", "ский", "ный", "ость", "енный", "ировать", "ающий", "ательный", "ировать", "ность", "ный", "ист", "чик", "ец", "ок", "ек", "ыш", "ик"]; // Add more suffixes as required
 
+        const russianSuffixes = [
+            "а", "ский", "ный", "ость", "енный", "ировать", "ающий", "ательный", "ировать", "ность", "ный",
+            "ист", "чик", "ец", "ок", "ек", "ыш", "ик", "ать", "ить", "овать", "ующий", "ющий", "ящий", "ящийся"
+        ]; // Expanded list of suffixes
+        
         function processInput(input) {
             // Remove punctuation from input
             let cleanedInput = input.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").toLowerCase();
