@@ -11369,14 +11369,32 @@ function runMatcher() {
 
   words.forEach(word => {
     let lowerCaseWord = word.toLowerCase();
-    if (dictionary[lowerCaseWord]) {
+    if (dictionary[lowerCaseWord] !== undefined) {
       // If the whole word is found in the dictionary
       outputHTML += `<span class="word">${word}</span>: <span class="definition">${dictionary[lowerCaseWord]}</span><br>`;
     } else {
-      // If the word is not found, display it as is
-      outputHTML += `<span class="word">${word}</span>: No matching root found<br>`;
+      // Handle prefix and suffix logic here
+      let root = findRoot(lowerCaseWord);
+      if (root) {
+        outputHTML += `<span class="word">${word}</span>: Root: ${root.root}, Prefix: ${root.prefix || 'None'}, Suffix: ${root.suffix || 'None'}<br>`;
+      } else {
+        outputHTML += `<span class="word">${word}</span>: No matching root found<br>`;
+      }
     }
   });
+
+  outputDiv.innerHTML = outputHTML;
+}
+
+function findRoot(word) {
+  let possibleRoots = Object.keys(dictionary);
+  for (let root of possibleRoots) {
+    if (word.startsWith(root)) {
+      return { root: root, prefix: word.slice(0, word.indexOf(root)), suffix: word.slice(word.indexOf(root) + root.length) };
+    }
+  }
+  return null;
+}
 
   outputDiv.innerHTML = outputHTML;
 }
