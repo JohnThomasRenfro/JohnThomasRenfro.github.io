@@ -228,7 +228,30 @@ const russianSuffixes = [
     { suffix: "ить", meaning: "infinitive verb ending" },
     { suffix: "еть", meaning: "infinitive verb ending" },
     { suffix: "яться", meaning: "reflexive infinitive ending" },
-    { suffix: "вать", meaning: "imperfective verb suffix" }
+    { suffix: "вать", meaning: "imperfective verb suffix" },
+{ suffix: "я", meaning: "noun-masculine-singular-genitive (or) noun-feminine-singular-nominative (or) noun-feminine-singular-genitive (or) noun-masculine-singular-accusative (or) noun-masculine-singular-prepositional (rare/archaic) (or) adjectival noun (stylized)" },
+{
+  "suffix": "ие",
+  "meaning": "nominalizing suffix used to form abstract nouns or action nouns from verbs (e.g., включать → включение = inclusion)"
+},
+{
+  "suffix": "а",
+  "meaning": "noun-masculine-singular-genitive (used to indicate possession, absence, or relationship, e.g., воздух → воздуха = 'of air')"
+},
+{
+  "suffix": "ии",
+  "meaning": "noun-plural-genitive or noun-singular-prepositional (used in abstract or action nouns, often of Latin origin, e.g., циркуляция → циркуляции = 'of circulation' or 'in circulation')"
+},
+{
+  "suffix": "ию",
+  "meaning": "noun-feminine-singular-accusative (used to indicate the direct object of an action, e.g., рециркуляция → рециркуляцию = 'recirculation' as the object of a verb)"
+},
+{
+  "suffix": "ает",
+  "meaning": "verb-third-person-singular-present tense (used for regular verbs in third-person singular form, e.g., он/она сушает = he/she dries)"
+},
+
+
 ];
 
 function stripPrefix(word) {
@@ -262,10 +285,25 @@ function processInput(input) {
     let words = cleanedInput.split(/\s+/);
 
     let results = words.map((word) => {
-        // Step 1: Check for exact match first
-        if (dictionary[word]) {
-            return `<b>${word}</b>:<br>  Prefix: None<br>  Breakdown: ${word}<br>  Suffix: None<br>  Similar Dictionary Word: ${word}<br>  Translation: ${dictionary[word]}`;
-        }
+
+
+if (dictionary[word]) {
+    let prefixResult = stripPrefix(word);
+    let strippedPrefixWord = prefixResult.stripped;
+    let prefixObj = prefixResult.prefixObj;
+
+    let suffixResult = stripSuffix(strippedPrefixWord);
+    let strippedWord = suffixResult.stripped;
+    let suffixObj = suffixResult.suffixObj;
+
+    let breakdown = `${prefixObj.prefix ? prefixObj.prefix + "+" : ""}${strippedWord}${suffixObj.suffix ? "+" + suffixObj.suffix : ""}`;
+    let prefixInfo = prefixObj.prefix ? `${prefixObj.prefix} = ${prefixObj.meaning}` : "None";
+let suffixInfo = `${suffixObj.suffix} = ${suffixObj.meaning}`;
+
+    return `<b>${word}</b>:<br>  Prefix: ${prefixInfo}<br>  Breakdown: ${breakdown}<br>  Suffix: ${suffixInfo}<br>  Similar Dictionary Word: ${word}<br>  Translation: ${dictionary[word]}`;
+}
+
+
 
         // Step 2: Skip prefix/suffix analysis for short words (≤3 letters)
         if (word.length <= 3) {
@@ -277,9 +315,10 @@ function processInput(input) {
         let strippedPrefixWord = prefixResult.stripped;
         let prefixObj = prefixResult.prefixObj;
 
-        let suffixResult = stripSuffix(strippedPrefixWord);
-        let strippedWord = suffixResult.stripped;
-        let suffixObj = suffixResult.suffixObj;
+let suffixResult = stripSuffix(strippedPrefixWord);
+let strippedWord = suffixResult.stripped;
+let suffixObj = suffixResult.suffixObj || { suffix: "None", meaning: "None" }; // Ensure defaults if no suffix is found
+
 
         let bestMatch = null;
         let bestMatchScore = 0;
@@ -315,13 +354,13 @@ function processInput(input) {
             let strippedBestMatch = stripSuffix(stripPrefix(bestMatch).stripped).stripped;
             let isExact = strippedWord === strippedBestMatch;
             let breakdown = `${prefixObj.prefix ? prefixObj.prefix + "+" : ""}${root}${suffixObj.suffix ? "+" + suffixObj.suffix : ""}`;
-            let prefixInfo = prefixObj.prefix ? `<i>${prefixObj.prefix}</i> = ${prefixObj.meaning}` : "None";
-            let suffixInfo = suffixObj.suffix ? `<i>${suffixObj.suffix}</i> = ${suffixObj.meaning}` : "None";
+            let prefixInfo = prefixObj.prefix ? `${prefixObj.prefix} = ${prefixObj.meaning}` : "None";
+            let suffixInfo = suffixObj.suffix ? `${suffixObj.suffix} = ${suffixObj.meaning}` : "None";
             return `<b>${word}</b>:<br>  Prefix: ${prefixInfo}<br>  Breakdown: ${breakdown}<br>  Suffix: ${suffixInfo}<br>  Similar Dictionary Word: ${bestMatch}<br>  Translation: ${isExact ? "" : "~"}${dictionary[bestMatch]}${isExact ? "" : " (approx)"}`;
         } else {
             let breakdown = `${prefixObj.prefix ? prefixObj.prefix + "+" : ""}${strippedWord}${suffixObj.suffix ? "+" + suffixObj.suffix : ""}`;
-            let prefixInfo = prefixObj.prefix ? `<i>${prefixObj.prefix}</i> = ${prefixObj.meaning}` : "None";
-            let suffixInfo = suffixObj.suffix ? `<i>${suffixObj.suffix}</i> = ${suffixObj.meaning}` : "None";
+            let prefixInfo = prefixObj.prefix ? `${prefixObj.prefix} = ${prefixObj.meaning}` : "None";
+            let suffixInfo = suffixObj.suffix ? `${suffixObj.suffix} = ${suffixObj.meaning}` : "None";
             return `<b>${word}</b>:<br>  Prefix: ${prefixInfo}<br>  Breakdown: ${breakdown}<br>  Suffix: ${suffixInfo}<br>  Translation: No match`;
         }
     });
@@ -1728,6 +1767,7 @@ const dictionary = {
 "свойственно":"(it is) characteristic (of)",
 "тревожиться":"to worry",
 "достоверный":"reliable",
+"Во":"during, in the course of",
 "запаздывать":"to be late (with)",
 "исчерпывать":"to exhaust",
 "минимальный":"minimum (adj)",
@@ -3199,6 +3239,7 @@ const dictionary = {
 "поражение":"defeat",
 "нарушение":"violation, offence",
 "очевидный":"obvious",
+"осушает":"drain off",
 "прогонять":"to drive away; banish, throw out",
 "прочность":"stability, solidity, durability",
 "отечество":"fatherland",
