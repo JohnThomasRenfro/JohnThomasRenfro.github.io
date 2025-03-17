@@ -11373,10 +11373,10 @@ function runMatcher() {
       // If the whole word is found in the dictionary
       outputHTML += `<span class="word">${word}</span>: <span class="definition">${dictionary[lowerCaseWord]}</span><br>`;
     } else {
-      // Handle prefix and suffix logic here
-      let root = findRoot(lowerCaseWord);
-      if (root) {
-        outputHTML += `<span class="word">${word}</span>: Root: ${root.root}, Prefix: ${root.prefix || 'None'}, Suffix: ${root.suffix || 'None'}<br>`;
+      // If the whole word is not found, handle prefix and suffix logic
+      let matchResult = findRootWithAffixes(lowerCaseWord);
+      if (matchResult) {
+        outputHTML += `<span class="word">${word}</span>: Root: ${matchResult.root}, Prefix: ${matchResult.prefix}, Suffix: ${matchResult.suffix}<br>`;
       } else {
         outputHTML += `<span class="word">${word}</span>: No matching root found<br>`;
       }
@@ -11386,17 +11386,20 @@ function runMatcher() {
   outputDiv.innerHTML = outputHTML;
 }
 
-function findRoot(word) {
+function findRootWithAffixes(word) {
+  // List of possible roots
   let possibleRoots = Object.keys(dictionary);
   for (let root of possibleRoots) {
-    if (word.startsWith(root)) {
-      return { root: root, prefix: word.slice(0, word.indexOf(root)), suffix: word.slice(word.indexOf(root) + root.length) };
+    let rootIndex = word.indexOf(root);
+    if (rootIndex !== -1) {
+      return {
+        root: root,
+        prefix: word.slice(0, rootIndex) || 'None',
+        suffix: word.slice(rootIndex + root.length) || 'None'
+      };
     }
   }
   return null;
-}
-
-  outputDiv.innerHTML = outputHTML;
 }
      
 </script>
