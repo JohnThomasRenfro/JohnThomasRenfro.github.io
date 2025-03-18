@@ -6979,6 +6979,7 @@ const replsB=[
 {p1:/(持)(?!X)(参)(?!X)/g,r1:'$1Xji$2Xsan,carry;Noun'},
 {p1:/(拾)(?!X)(得)(?!X)/g,r1:'$1Xsyuu$2Xtoku,finding something lost;Noun'},
 {p1:/(拳)(?!X)(銃)(?!X)/g,r1:'$1Xken$2Xjyuu,pistol;Noun'},
+{p1:/(恒)(?!X)(久)(?!X)/g,r1:'$1Xkou$2Xkyuu,permanence;Noun'},
 {p1:/(拮)(?!X)(抗)(?!X)/g,r1:'$1Xkik$2Xkou,rivalry;Noun'},
 {p1:/(括)(?!X)(弧)(?!X)/g,r1:'$1Xkak$2Xko,parentheses,brackets;Noun'},
 {p1:/(拡)(?!X)(散)(?!X)/g,r1:'$1Xkaku$2Xsan,spread;Noun'},
@@ -10842,7 +10843,7 @@ function copyToClipboard() {
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-ベッツは体調不良のため１５日の巨人戦、１６日の阪神戦をともに欠場。１６日の試合前練習には参加し、大谷翔平投手（３０）らが主催したホテルでの食事会にも出席したが、この日の公式練習には姿を見せなかった。指揮官によると、チームより早く米国に戻ることも検討しているという。まずは体調回復に専念したい考えのようだ。
+ガザ地区をめぐっては、恒久的な停戦に向け交渉が行われていましたが、イスラエル首相府は18日、「ハマス側が人質の解放や全ての提案を拒んだため、軍に強固な行動をとるよう指示した」と発表しています。
 <p>
 <button id="adminToggle" onclick="toggleAdminSection()">Admin use only</button>
 <div id="adminSection" style="display: none;">
@@ -10867,7 +10868,7 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 </div>
 
 <hr>
-<textarea cols="35" rows="6" onchange="a=this.value;translateB()">Paste the Japanese text here.</textarea>
+<textarea cols="35" rows="6" onchange="a=this.value;translateB()"></textarea>
 <br>
 <span id="translatedTextDisplay"></span>
 <br>
