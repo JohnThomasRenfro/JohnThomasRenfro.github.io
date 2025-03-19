@@ -1907,6 +1907,7 @@ const replsB=[
 {p1:/(レ)(?!X)(ン)(?!X)(ジ)(?!X)(ャ)(?!X)(ー)(?!X)/g,r1:'$1Xre$2Xn$3Xj$4Xya$5Xa,ranger;Noun'},
 {p1:/(レ)(?!X)(ス)(?!X)(ト)(?!X)(ラ)(?!X)(ン)(?!X)/g,r1:'$1X$2X$3X$4X$5X restaurant '},
 {p1:/(リ)(?!X)(ク)(?!X)(エ)(?!X)(ス)(?!X)(ト)(?!X)/g,r1:'$1X$2X$3X$4X$5X request '},
+{p1:/(パ)(?!X)(ッ)(?!X)(ケ)(?!X)(ー)(?!X)(ジ)(?!X)/g,r1:'$1Xpa$2Xk$3Xke$4Xe$5Xji,package;Noun'},
 {p1:/(メ)(?!X)(ロ)(?!X)(デ)(?!X)(ィ)(?!X)(ー)(?!X)/g,r1:'$1X$2X$3X$4X$5X melody '},
 {p1:/(マ)(?!X)(ー)(?!X)(ケ)(?!X)(ッ)(?!X)(ト)(?!X)/g,r1:'$1X$2X$3X$4X$5X market '},
 {p1:/(マ)(?!X)(ン)(?!X)(シ)(?!X)(ョ)(?!X)(ン)(?!X)/g,r1:'$1X$2X$3X$4X$5X apartment, apartment block, condominium '},
@@ -2075,6 +2076,8 @@ const replsB=[
 {p1:/(社)(?!X)(会)(?!X)(科)(?!X)(学)(?!X)/g,r1:'$1X$2Xsy$3Xa$4Xkaika,gaku,social sciences;Noun'},
 {p1:/(短)(?!X)(期)(?!X)(大)(?!X)(学)(?!X)/g,r1:'$1Xtan$2Xki$3Xdai$4Xgaku,junior college;Noun'},
 {p1:/(真)(?!X)(っ)(?!X)(最)(?!X)(中)(?!X)/g,r1:'$1X$2Xma$3Xs$4Xsaichyuu,midst;Noun'},
+{p1:/(イ)(?!X)(ラ)(?!X)(っ)(?!X)(と)(?!X)/g,r1:'$1Xi$2Xra$3Xt$4Xto,becoming irritated;Noun'},
+{p1:/(ス)(?!X)(タ)(?!X)(ジ)(?!X)(オ)(?!X)/g,r1:'$1Xsu$2Xta$3Xji$4Xo,studio;Noun'},
 {p1:/(目)(?!X)(覚)(?!X)(ま)(?!X)(し)(?!X)/g,r1:'$1X$2Xme$3Xz$4Xama,shi,waking up;Noun'},
 {p1:/(目)(?!X)(茶)(?!X)(苦)(?!X)(茶)(?!X)/g,r1:'$1X$2Xme$3Xc$4Xhyakuchya,in a mess,terrible;Noun'},
 {p1:/(目)(?!X)(白)(?!X)(押)(?!X)(し)(?!X)/g,r1:'$1X$2Xme$3Xj$4Xiro o,shi,packed up to eyeballs;Noun'},
@@ -2449,7 +2452,7 @@ const replsB=[
 {p1:/(か)(?!X)(ど)(?!X)(う)(?!X)(か)(?!X)/g,r1:'$1Xka$2Xdo$3Xu$4Xka,whether or not;Noun'},
 {p1:/(か)(?!X)(ち)(?!X)(か)(?!X)(ち)(?!X)/g,r1:'$1X$2Xha$3Xr$4Xd,solid;Noun'},
 {p1:/(か)(?!X)(え)(?!X)(っ)(?!X)(て)(?!X)/g,r1:'$1X$2X$3X$4Xon contrary,rather;Noun'},
-{p1:/(お)(?!X)(父)(?!X)(さ)(?!X)(ん)(?!X)/g,r1:'$1X$2Xot$3Xo$4Xusan,father;Noun'},
+{p1:/(お)(?!X)(父)(?!X)(さ)(?!X)(ん)(?!X)/g,r1:'$1Xo$2Xtou$3Xsa$4Xn,father;Noun'},
 {p1:/(お)(?!X)(母)(?!X)(さ)(?!X)(ん)(?!X)/g,r1:'$1X$2Xok$3Xa$4Xasan,mother;Noun'},
 {p1:/(お)(?!X)(嬢)(?!X)(さ)(?!X)(ん)(?!X)/g,r1:'$1X$o2Xojyou$3Xsa$4Xn,young lady;Noun'},
 {p1:/(お)(?!X)(嬢)(?!X)(さ)(?!X)(ん)(?!X)/g,r1:'$1X$2Xoj$3Xy$4Xousan,young lady,your daughter;Noun'},
@@ -3691,7 +3694,7 @@ const replsB=[
 {p1:/(ま)(?!X)(と)(?!X)(め)(?!X)/g,r1:'$1Xma$2Xto$3Xme,summary;Noun'},
 {p1:/(ま)(?!X)(と)(?!X)(め)(?!X)/g,r1:'$1Xma$2Xto$3Xme,collect;IchidanVerb'},
 {p1:/(ま)(?!X)(し)(?!X)(て)(?!X)/g,r1:'$1Xma$2Xshi$3Xte,much more;Noun'},
-{p1:/(ま)(?!X)(さ)(?!X)(か)(?!X)/g,r1:'$1Xmas$2Xak$3Xa,never in a million years;Noun'},
+{p1:/(ま)(?!X)(さ)(?!X)(か)(?!X)/g,r1:'$1Xma$2Xsa$3Xka,no way;Noun'},
 {p1:/(ま)(?!X)(ぐ)(?!X)(ろ)(?!X)/g,r1:'$1Xmag$2Xur$3Xo,tuna;Noun'},
 {p1:/(ほ)(?!X)(こ)(?!X)(り)(?!X)/g,r1:'$1Xhok$2Xor$3Xi,dust;Noun'},
 {p1:/(ほ)(?!X)(こ)(?!X)(り)(?!X)/g,r1:'$1Xho$2Xkor$3Xi,dust;Noun'},
@@ -5750,7 +5753,7 @@ const replsB=[
 {p1:/(禁)(?!X)(止)(?!X)/g,r1:'$1Xkin$2Xshi,prohibition;Noun'},
 {p1:/(禁)(?!X)(じ)(?!X)/g,r1:'$1Xkin$2Xji,prohibit;IchidanVerb'},
 {p1:/(祭)(?!X)(日)(?!X)/g,r1:'$1Xsai$2Xjitsu,national holiday,festival day;Noun'},
-{p1:/(祭)(?!X)(り)(?!X)/g,r1:'$1Xmat$2Xsuri,festival;Noun'},
+{p1:/(祭)(?!X)(り)(?!X)/g,r1:'$1Xmatsu$2Xri,festival;Noun'},
 {p1:/(神)(?!X)(道)(?!X)/g,r1:'$1Xshin$2Xtou,shin,to;Noun'},
 {p1:/(神)(?!X)(経)(?!X)/g,r1:'$1Xshin$2Xkei,sensitivity,nerves;Noun'},
 {p1:/(神)(?!X)(社)(?!X)/g,r1:'$1Xjin$2Xjya,shin,to shrine;Noun'},
@@ -6875,6 +6878,7 @@ const replsB=[
 {p1:/(支)(?!X)(部)(?!X)/g,r1:'$1Xshi$2Xbu,administrative branch;Noun'},
 {p1:/(支)(?!X)(給)(?!X)/g,r1:'$1Xshi$2Xkyuu,financial assistance;Noun'},
 {p1:/(支)(?!X)(社)(?!X)/g,r1:'$1Xshi$2Xsya,branch office;Noun'},
+{p1:/(発)(?!X)(散)(?!X)/g,r1:'$1Xhas$2Xsan,emission;Noun'},
 {p1:/(支)(?!X)(援)(?!X)/g,r1:'$1Xshi$2Xen,aid;Noun'},
 {p1:/(支)(?!X)(持)(?!X)/g,r1:'$1Xshi$2Xji,support;Noun'},
 {p1:/(支)(?!X)(度)(?!X)/g,r1:'$1Xshi$2Xtaku,arrangement,preparation;Noun'},
@@ -8288,6 +8292,8 @@ const replsB=[
 {p1:/(出)(?!X)(発)(?!X)/g,r1:'$1Xsyup$2Xpatsu,departure;Noun'},
 {p1:/(出)(?!X)(産)(?!X)/g,r1:'$1Xsyus$2Xsan,birth;Noun'},
 {p1:/(出)(?!X)(生)(?!X)/g,r1:'$1Xsyus$2Xsyou,birth;Noun'},
+{p1:/(っ)(?!X)(て)(?!X)/g,r1:'$1Xt$2Xte,with that;Noun'},
+{p1:/(め)(?!X)(て)(?!X)/g,r1:'$1Xme$2Xte,do it!;Noun'},
 {p1:/(出)(?!X)(版)(?!X)/g,r1:'$1Xsyup$2Xpan,publishing,publication;Noun'},
 {p1:/(出)(?!X)(演)(?!X)/g,r1:'$1Xsyutsu$2Xen,performance;Noun'},
 {p1:/(出)(?!X)(張)(?!X)/g,r1:'$1Xsyuc$2Xcyou,business trip;Noun'},
@@ -9039,6 +9045,7 @@ const replsB=[
 {p1:/(ね)(?!X)(ぎ)(?!X)/g,r1:'$1Xneg$2Xi,Welsh onion,green onion;Noun'},
 {p1:/(な)(?!X)(に)(?!X)/g,r1:'$1Xnan$2Xi,what;Noun'},
 {p1:/(な)(?!X)(ぜ)(?!X)/g,r1:'$1Xna$2Xze,why;Noun'},
+{p1:/(水)(?!X)(曜)(?!X)/g,r1:'$1Xsui$2Xyou,Wednesday;Noun'},
 {p1:/(な)(?!X)(し)(?!X)/g,r1:'$1Xna$2Xshi,there is none;Noun'},
 {p1:/(な)(?!X)(く)(?!X)/g,r1:'$1Xna$2Xku,not there;Noun'},
 {p1:/(な)(?!X)(お)(?!X)/g,r1:'$1Xnao$2X,still,in addition;Noun'},
@@ -10843,7 +10850,11 @@ function copyToClipboard() {
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-ガザ地区をめぐっては、恒久的な停戦に向け交渉が行われていましたが、イスラエル首相府は18日、「ハマス側が人質の解放や全ての提案を拒んだため、軍に強固な行動をとるよう指示した」と発表しています。
+　日本テレビ「上田と女が吠える夜」（水曜後9・00）が19日に放送され、3人組グループ「m-flo」のLISA（50）が結婚したことを番組内で発表した。
+
+【写真あり】「56歳の彼氏ができた」まさかの告白にスタジオ衝撃
+
+　この日は「ストレス発散！春の愚痴祭り」と題して放送。「最近イラっとしたこと」という話題になり、LISAは「日本の伝統でお父さんにごあいさつをする、それとともにパッケージで怒鳴られるのがフルコースであるじゃないですか。それって凄くやめてほしいと思った」と語り出した。
 <p>
 <button id="adminToggle" onclick="toggleAdminSection()">Admin use only</button>
 <div id="adminSection" style="display: none;">
