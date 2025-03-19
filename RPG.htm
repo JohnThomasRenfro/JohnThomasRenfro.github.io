@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD&D Encounter Manager</title>
+    <style>
+        body {
+            font-family: "Fantasy", serif;
+            background-color: #111;
+            color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(to right, #4e1700, #a67c00);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 15px #000;
+        }
+
+        h1 {
+            margin: 0;
+            color: #ffeb3b;
+            font-size: 2.5em;
+            text-shadow: 3px 3px #000;
+        }
+
+        .controls {
+            padding: 15px;
+            background: #333;
+            text-align: center;
+        }
+
+        button, .upload-btn {
+            font-size: 1.2em;
+            padding: 10px 15px;
+            margin: 5px;
+            color: white;
+            background: #5c2400;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        button:hover, .upload-btn:hover {
+            background-color: #a0522d;
+        }
+
+        .sandbox {
+            width: 100%;
+            height: 600px;
+            background: url("default-map.jpg") center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #a67c00;
+        }
+
+.draggable {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    background: #800000; /* Red background */
+    color: white;
+    text-align: center;
+    line-height: unset; /* Removed to allow name positioning */
+    cursor: grab;
+    box-shadow: 2px 2px 10px #000;
+}
+
+        .rotate-symbol {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: #ffd700;
+            color: #000;
+            font-weight: bold;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        #statsEditor {
+            background: #222;
+            padding: 20px;
+            border-top: 2px solid #a67c00;
+        }
+
+        table {
+            width: 100%;
+            color: #f9f9f9;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        .delete-btn, .clone-btn {
+            background: #5c2400;
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .delete-btn:hover {
+            background: #b30000;
+        }
+
+        .clone-btn:hover {
+            background: #a0522d;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛡️ AD&D Encounter Manager 🐉</h1>
+    </div>
+
+    <div class="controls">
+        <button onclick="addPiece()">Add Character/Monster</button>
+        <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
+        <label for="mapInput" class="upload-btn">Upload Map</label>
+    </div>
+
+    <div class="sandbox" id="sandbox">
+        <!-- Draggable pieces dynamically generated here -->
+    </div>
+
+    <div id="statsEditor">
+        <h2>Stats Overview</h2>
+        <table id="statsTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>HP</th>
+                    <th>AC</th>
+                    <th>ATTKS</th>
+                    <th>GEAR</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let pieces = JSON.parse(localStorage.getItem("pieces")) || [];
+        let currentDraggingPiece = null; // Keeps track of the currently dragged piece
+
+        const directions = [0, 60, 120, 180, 240, 300]; // Six cardinal directions
+
+        function addPiece() {
+            const newPiece = {
+                id: Date.now(),
+                name: "Unnamed",
+                hp: 10,
+                ac: 10,
+                attks: 0,
+                gear: "armor, weapon, rations",
+                image: null,
+                x: 50,
+                y: 50,
+                rotation: 0 // Default rotation
+            };
+            pieces.push(newPiece);
+            saveToLocalStorage();
+            renderPieces();
+            renderStatsTable();
+        }
+
+        function clonePiece(id) {
+            const original = pieces.find(p => p.id === id);
+            const clone = { ...original, id: Date.now(), name: `${original.name} (Clone)` };
+            clone.x += 10; // Offset for clarity
+            clone.y += 10; // Offset for clarity
+            pieces.push(clone);
+            saveToLocalStorage();
+            renderPieces();
+            renderStatsTable();
+        }
+		
+		function renderPieces() {
+    const sandbox = document.getElementById("sandbox");
+    sandbox.innerHTML = "";
+
+    pieces.forEach((piece) => {
+        const el = document.createElement("div");
+        el.className = "draggable";
+        el.textContent = piece.name; // Name is displayed again
+        el.style.left = piece.x + "px";
+        el.style.top = piece.y + "px";
+        el.style.transform = `rotate(${piece.rotation}deg)`;
+        el.id = `piece-${piece.id}`;
+
+if (piece.image) {
+    const img = document.createElement("img");
+    img.src = piece.image;
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.objectFit = "cover"; // Ensures the image fills the square without distortion
+    el.appendChild(img);
+}
+
+                // Rotate symbol
+                const rotate = document.createElement("div");
+                rotate.className = "rotate-symbol";
+                rotate.textContent = "⟳";
+                rotate.onclick = () => rotatePiece(piece.id);
+                el.appendChild(rotate);
+
+                // Drag-and-drop behavior
+                el.onmousedown = (event) => startDrag(event, piece.id);
+
+                sandbox.appendChild(el);
+            });
+        }
+
+function rotatePiece(id) {
+    const piece = pieces.find(p => p.id === id);
+    const currentIndex = directions.indexOf(piece.rotation);
+    piece.rotation = directions[(currentIndex + 1) % directions.length]; // Rotate to the next direction
+    saveToLocalStorage();
+    renderPieces(); // Re-render the sandbox for immediate visual feedback
+}
+
+
+        function renderStatsTable() {
+            const statsTable = document.querySelector("#statsTable tbody");
+            statsTable.innerHTML = ""; // Clear existing rows
+
+            pieces.forEach((piece) => {
+                const row = document.createElement("tr");
+                row.id = `row-${piece.id}`;
+
+                // Name
+                const nameCell = document.createElement("td");
+                const nameInput = document.createElement("input");
+                nameInput.type = "text";
+                nameInput.value = piece.name;
+                nameInput.oninput = (event) => {
+                    piece.name = event.target.value;
+                    saveToLocalStorage();
+                    renderPieces();
+                };
+                nameCell.appendChild(nameInput);
+                row.appendChild(nameCell);
+
+                // HP
+                const hpCell = document.createElement("td");
+                const hpInput = document.createElement("input");
+                hpInput.type = "number";
+                hpInput.value = piece.hp;
+                hpInput.oninput = (event) => {
+                    piece.hp = event.target.value;
+                    saveToLocalStorage();
+                };
+                hpCell.appendChild(hpInput);
+                row.appendChild(hpCell);
+
+// AC Input
+const acCell = document.createElement("td");
+const acInput = document.createElement("input");
+acInput.type = "text"; // Use text type to avoid spinners
+acInput.inputMode = "numeric"; // Still allow numeric inputs
+acInput.value = piece.ac;
+acInput.oninput = (event) => {
+    piece.ac = event.target.value;
+    saveToLocalStorage();
+};
+acCell.appendChild(acInput);
+row.appendChild(acCell);
+
+// ATTKS Input
+const attksCell = document.createElement("td");
+const attksInput = document.createElement("input");
+attksInput.type = "text"; // Use text type to avoid spinners
+attksInput.inputMode = "numeric"; // Still allow numeric inputs
+attksInput.value = piece.attks;
+attksInput.oninput = (event) => {
+    piece.attks = event.target.value;
+    saveToLocalStorage();
+};
+attksCell.appendChild(attksInput);
+row.appendChild(attksCell);
+
+                // GEAR
+                const gearCell = document.createElement("td");
+                const gearInput = document.createElement("input");
+                gearInput.type = "text";
+                gearInput.value = piece.gear;
+                gearInput.oninput = (event) => {
+                    piece.gear = event.target.value;
+                    saveToLocalStorage();
+                };
+                gearCell.appendChild(gearInput);
+                row.appendChild(gearCell);
+
+                // Image Upload
+                const imageCell = document.createElement("td");
+                const imageInput = document.createElement("input");
+                imageInput.type = "file";
+                imageInput.accept = "image/*";
+                imageInput.onchange = (event) => {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            piece.image = e.target.result;
+                            saveToLocalStorage();
+                            renderPieces();
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                };
+                imageCell.appendChild(imageInput);
+                row.appendChild(imageCell);
+
+                // Actions (Clone and Delete Buttons)
+                const actionsCell = document.createElement("td");
+                const cloneBtn = document.createElement("button");
+                cloneBtn.className = "clone-btn";
+                cloneBtn.textContent = "Clone";
+                cloneBtn.onclick = () => {
+                    clonePiece(piece.id);
+                };
+                actionsCell.appendChild(cloneBtn);
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.className = "delete-btn";
+                deleteBtn.textContent = "Delete";
+                deleteBtn.onclick = () => {
+                    pieces = pieces.filter(p => p.id !== piece.id);
+                    saveToLocalStorage();
+                    renderPieces();
+                    renderStatsTable();
+                };
+                actionsCell.appendChild(deleteBtn);
+
+                row.appendChild(actionsCell);
+
+                statsTable.appendChild(row);
+            });
+        }
+
+        function startDrag(event, id) {
+            currentDraggingPiece = id;
+            const sandbox = document.getElementById("sandbox");
+
+            sandbox.onmousemove = (e) => drag(e);
+            sandbox.onmouseup = () => stopDrag();
+        }
+
+        function drag(event) {
+            if (!currentDraggingPiece) return;
+
+            const sandbox = document.getElementById("sandbox");
+            const rect = sandbox.getBoundingClientRect();
+
+            const piece = pieces.find(p => p.id === currentDraggingPiece);
+            piece.x = event.clientX - rect.left - 60; // Center the piece
+            piece.y = event.clientY - rect.top - 60;
+
+            saveToLocalStorage();
+            renderPieces();
+        }
+
+        function stopDrag() {
+            currentDraggingPiece = null;
+            const sandbox = document.getElementById("sandbox");
+            sandbox.onmousemove = null;
+            sandbox.onmouseup = null;
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem("pieces", JSON.stringify(pieces));
+        }
+
+function setMapBackground() {
+    const input = document.getElementById("mapInput");
+    const sandbox = document.getElementById("sandbox");
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const backgroundImage = e.target.result; // Convert the image to a base64 string
+            sandbox.style.backgroundImage = `url(${backgroundImage})`; // Set the sandbox background
+            localStorage.setItem("mapBackground", backgroundImage); // Store the base64 URL in localStorage
+        };
+        reader.readAsDataURL(input.files[0]); // Read the file as a base64 string
+    }
+}
+
+function loadMapBackground() {
+    const sandbox = document.getElementById("sandbox");
+    const savedBackground = localStorage.getItem("mapBackground");
+    
+    if (savedBackground) {
+        sandbox.style.backgroundImage = `url(${savedBackground})`; // Retrieve and apply the stored background
+    }
+}
+
+
+		// Initialize the sandbox, stats table, and background
+loadMapBackground();
+renderPieces();
+renderStatsTable();
+    </script>
+</body>
+</html>
