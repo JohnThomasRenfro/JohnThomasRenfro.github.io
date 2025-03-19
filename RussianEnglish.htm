@@ -147,8 +147,8 @@
 </head>
 <body>
     <h1>Russian-English Dictionary Source:Pravda.Ru</h1>
-Есть два типа людей: те, кто осознает магию улыбки, и те, кто считает её просто движением губ. Но правда в том, что улыбка — это настоящая суперсила, способная ломать барьеры, обезоруживать врагов и превращать обычный день в особенный. Она не просто украшает лицо, но и делает жизнь ярче. Как говорится, если улыбаться жизни, она обязательно улыбнется в ответ.
-Читайте больше на https://www.pravda.ru/news/beauty/2192975-power-of-smile/
+Глава министерства обороны Германии Борис Писториус заявил, что условия, выдвинутые Москвой для мирного урегулирования украинского кризиса, являются неприемлемыми.
+Читайте больше на https://military.pravda.ru/news/2194476-germanija-gotova-rastoptat-ukrainu-radi-deneg/
 <br>
     <textarea id="userInput" placeholder="Enter Russian words..."></textarea><br>
     <button onclick="displayResults()">Analyze</button><br>
@@ -293,6 +293,11 @@ const russianSuffixes = [
     { suffix: "яться", meaning: "reflexive infinitive ending" },
     { suffix: "вать", meaning: "imperfective verb suffix" },
 	    { suffix: "ки", meaning: "-к- - This is a diminutive or modifying element here that shapes the noun. Ending: -и - Marks the plural genitive case" },
+
+{
+  suffix: "ства",
+  meaning: "+ств=denotes a state, condition, or institution (commonly found in abstract nouns indicating collective or institutional functions)+а=noun-feminine-singular-nominative (subject of the sentence) -or- noun-feminine-singular-genitive (indicating possession, absence, or relationship) -or- noun-feminine-singular-dative (marking an indirect object) -or- it might appear in verb conjugations as part of certain verb endings"
+},
 	
 { suffix: "я", meaning: "noun-masculine-singular-genitive (or) noun-feminine-singular-nominative (or) noun-feminine-singular-genitive (or) noun-masculine-singular-accusative (or) noun-masculine-singular-prepositional (rare/archaic) (or) adjectival noun (stylized)" },
 {
@@ -322,7 +327,7 @@ const russianSuffixes = [
 
 {
   "suffix": "а",
-  "meaning": "noun-masculine-singular-genitive (used to indicate possession, absence, or relationship, e.g., воздух → воздуха = 'of air')"
+  "meaning": "noun-feminine-singular-nominative (subject of the sentence) -or- noun-feminine-singular-genitive (indicating possession, absence, or relationship) -or- noun-feminine-singular-dative (marking an indirect object) -or- it might appear in verb conjugations as part of certain verb endings"
 },
 {
   "suffix": "ии",
@@ -345,6 +350,8 @@ const russianSuffixes = [
   "suffix": "ые",
   "meaning": "Adjective ending for plural nouns in nominative or accusative case (e.g., опасные люди = dangerous people)"
 },
+{ suffix: "ны", meaning: "consists of +н, which acts as a linker or transition element commonly used in genitive or plural constructions, and +ы, which serves as a case marker indicating either noun-plural-nominative (subject in plural form) -or- noun-plural-genitive (indicating possession, absence, or relationship in plural form, e.g., книг = 'of books')" },
+
 {
     suffix: "о",
     meaning: "-->+о(neutral singular ending for the demonstrative pronoun 'эт'; used to refer to a neuter subject or object in the nominative or accusative case, e.g., 'это красиво' = 'this is beautiful')"
@@ -475,10 +482,39 @@ let suffixObj = suffixResult.suffixObj || { suffix: "None", meaning: "None" }; /
     return results.join("<br><br>");
 }
 
+function romanizeRussian(text) {
+    const transliterationMap = {
+    'А': 'ah', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D',
+    'Е': 'yeh', 'Ё': 'yoh', 'Ж': 'Zh', 'З': 'Z', 'И': 'ee',
+    'Й': 'y', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N',
+    'О': 'oe', 'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T',
+    'У': 'ue', 'Ф': 'F', 'Х': 'Kh', 'Ц': 'Ts', 'Ч': 'Ch',
+    'Ш': 'Sh', 'Щ': 'Shch', 'Ы': 'ih', 'Э': 'eh', 'Ю': 'yue', 'Я': 'yah',
+    'а': 'ah', 'б': 'B', 'в': 'V', 'г': 'G', 'д': 'D',
+    'е': 'yeh', 'ё': 'yoe', 'ж': 'Zh', 'з': 'Z', 'и': 'ee',
+    'й': 'y', 'к': 'K', 'л': 'L', 'м': 'M', 'н': 'N',
+    'о': 'oe', 'п': 'P', 'р': 'R', 'с': 'S', 'т': 'T',
+    'у': 'ue', 'ф': 'F', 'х': 'Kh', 'ц': 'Ts', 'ч': 'Ch',
+    'ш': 'Sh', 'щ': 'Shch', 'ы': 'ih', 'э': 'eh', 'ю': 'yue', 'я': 'yah',
+    'ь': '', 'ъ': ''
+    };
+
+    return text.split('').map(char => {
+        if (/[А-яЁё]/.test(char)) {
+            return transliterationMap[char] || char;
+        }
+        return char; // Leave non-Cyrillic characters as they are
+    }).join('');
+}
+
 function displayResults() {
-    let userInput = document.getElementById("userInput").value;
-    let output = processInput(userInput);
-    document.getElementById("output").innerHTML = output;
+    let userInput = document.getElementById("userInput").value; // Get user input
+    let processedInput = processInput(userInput); // Process input (clean and lowercase)
+    let romanizedInput = romanizeRussian(userInput); // Romanize the original input
+
+    // Display both the processed Russian text and its Romanization
+    document.getElementById("output").innerHTML = 
+        `${processedInput}<br>English Romanization: ${romanizedInput}`;
 }
 
 const dictionary = {
@@ -490,6 +526,7 @@ const dictionary = {
 "превосходительство":"excellency (title)",
 "высококачественный":"high-quality",
 "западноевропейский":"Western European",
+"обороны":"defense",
 "последовательность":"sequence; consistency",
 "специализированный":"specialized",
 "совершенствоваться":"to improve os; improve one’s knowledge (of)",
