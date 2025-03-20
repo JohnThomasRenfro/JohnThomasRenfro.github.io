@@ -109,15 +109,73 @@
 </head>
 <body>
     <h1>Korean-English Dictionary Parser</h1>
-더불어민주당 지도부가 마은혁 헌법재판관 후보자를 임명하지 않는 최상목 대통령 권한대행 부총리 겸 기획재정부 장관에 대한 탄핵을 추진하기로 했다. donga.com
-	<br>
+한국인은 일주일에 타인과 저녁 식사를 하는 횟수가 평균 1.6회에 불과한 것으로 나타났다. 또 한국인 스스로가 전반적인 삶의 질을 평가해 매긴 ‘주관적 행복 점수’에서도 전 세계 147개국 중 58위에 그쳤다. 지난해보다 6계단 떨어진 수치다.	<br>
     <textarea id="userInput" placeholder="Enter Korean text..."></textarea><br>
     <button onclick="displayResults()">Analyze</button><br>
     <div id="output"></div>
   <div id="unmatchedOutput"></div>
+    <label for="koreanWord">Korean Word:</label><br>
+    <input type="text" id="koreanWord" placeholder="Enter Korean Word"><br>
+
+    <label for="englishMeaning">English Meaning:</label><br>
+    <input type="text" id="englishMeaning" placeholder="Enter English Meaning"><br>
+
+    <button onclick="formatOutput()">Format</button>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+
+    <div id="output1"></div>
 
     <script>
-        // Updated Korean dictionary structure
+function formatOutput() {
+    // Ensure the elements exist before accessing them
+    const koreanWordElement = document.getElementById("koreanWord");
+    const englishMeaningElement = document.getElementById("englishMeaning");
+    const outputElement = document.getElementById("output1");
+
+    if (!koreanWordElement || !englishMeaningElement || !outputElement) {
+        console.error("One or more required elements are missing.");
+        return;
+    }
+
+    // Get user input
+    const koreanWord = koreanWordElement.value;
+    const englishMeaning = englishMeaningElement.value;
+
+    // Format the output as plain text
+    const output = `{word:"${koreanWord}",meaning:"${englishMeaning}"},`;
+
+    // Display the plain text output in the innerHTML of output1
+    outputElement.textContent = output;
+}
+
+function copyToClipboard() {
+    const outputElement = document.getElementById("output1");
+
+    if (!outputElement) {
+        console.error("Output element is missing.");
+        return;
+    }
+
+    // Get the plain text output
+    const outputText = outputElement.textContent;
+
+    // Create a temporary input element
+    const tempInput = document.createElement("textarea");
+    tempInput.value = outputText;
+    document.body.appendChild(tempInput);
+
+    // Select and copy the text
+    tempInput.select();
+    document.execCommand("copy");
+
+    // Remove the temporary input to avoid clutter
+    document.body.removeChild(tempInput);
+
+    // Show confirmation in the output element
+    outputElement.textContent = `Copied to clipboard: ${outputText}`;
+}
+
+
         const koreanDictionary = [
 {word:"했다",meaning:"did"},
 {word:"추진하",meaning:"promotion"},
@@ -1582,7 +1640,7 @@
 {word:"적당하다",meaning:"to be appropriate, suitable, moderate, proper, adequate (size, volume, height, weight, temp)"},
 {word:"적다",meaning:"to write down"},
 {word:"적극적",meaning:"(being) positive, active, aggressive, enthusiastic"},
-{word:"적",meaning:"enemy, opponent, rival"},
+{word:"적",meaning:"+al,+ic,+-like;enemy, opponent, rival"},
 {word:"저희",meaning:"we, our; they, their, them"},
 {word:"저항",meaning:"resistance, defiance"},
 {word:"저축하다",meaning:"to save up, deposit (money, by spending frugally)"},
@@ -2099,6 +2157,13 @@
 {word:"월",meaning:"month"},
 {word:"월 말",meaning:"end of the month"},
 {word:"원한",meaning:"grudge, resentment"},
+{word:"한국",meaning:"Korea"},
+{word:"타인과",meaning:"others"},
+{word:"불과한",meaning:"only"},
+{word:"것으로",meaning:"with"},
+{word:"났다",meaning:"past tense -ed"},
+{word:"전반",meaning:"all"},
+{word:"나타",meaning:"to appear"},
 {word:"원하다",meaning:"to want, would like to, wish, hope; (formal) desire, long for"},
 {word:"원피스",meaning:"dress"},
 {word:"원칙",meaning:"general principle, general rule (that are widely accepted)"},
