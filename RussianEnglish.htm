@@ -3,166 +3,301 @@
 <head>
  <meta charset="UTF-8">
  <title>Russian to English Parser</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soviet Era Russian-English Dictionary</title>
 <style>
- /* Entire page (html and body) */
- html{
-height: 100%;
-  margin: 0;
-  padding: 0;
- }
+        /* General Page Style */
+        body {
+            font-family: 'Courier New', monospace;
+            background: #262626; /* Dark industrial gray */
+            color: #e5e5e5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the left */
+            padding: 20px;
+        }
 
- body{
-font-family: 'Georgia',serif;
-  background: linear-gradient(to bottom,#e0ffff,#b0c4de);
-  color: #333;
-  margin: 0;
-  padding: 20px;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-  width: 700px;
- }
+        h1 {
+            color: #cc0000; /* Bold Soviet red */
+            font-size: 2em;
+            text-align: left;
+            text-transform: uppercase;
+            border-bottom: 3px solid #990000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
- /* Textarea */
- textarea#userInput{
+        textarea, input {
+            font-family: 'Courier New', monospace;
+            background: #330000; /* Dark red background */
+            color: #fff; /* White text */
+            border: 2px solid #660000; /* Darker red border */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 0; /* No rounded corners */
+            width: calc(100% - 50px); /* Flexibly fit container width */
+            max-width: 600px;
+        }
 
-  height: 100px;
-  padding: 15px;
-  font-size: 1.1em;
-  font-family: 'Courier New',monospace;
-  background: #fffacd;
-  border: 3px solid #ffa500;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(255,165,0,0.3);
-  resize: vertical;
-  transition: all 0.3s ease;
-  margin: 0 20px; /* 20px margins on left and right */
-	  width: 600px;
+        textarea#userInput {
+            height: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            background: #990000; /* Soviet red button background */
+            border: 2px solid #660000;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin: 10px 10px 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #cc0000; /* Brighter red on hover */
+        }
+
+        #output, #output1, #suffixOutput {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a; /* Darker industrial gray */
+            color: #e5e5e5;
+            padding: 20px;
+            border: 2px solid #990000;
+            margin-top: 20px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Pravda Box */
+        .pravda-box {
+            background: #330000; /* Dark red */
+            border: 3px solid #660000; /* Red border */
+            padding: 15px;
+            margin-bottom: 20px;
+            width: calc(100% - 50px);
+            max-width: 600px;
+        }
+
+        .pravda-box h2 {
+            color: #ffcc00; /* Yellow-gold instruction text */
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .pravda-box p {
+            color: #e5e5e5;
+            font-size: 0.9em;
+            text-align: justify; /* Align text for readability */
+        }
+
+        label {
+            font-family: 'Courier New', monospace;
+            color: #ffcc00; /* Yellow-gold label text */
+            font-weight: bold;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0;
+            width: calc(100% - 50px);
+            max-width: 600px;
+        }
+/* Pravda Box */
+.pravda-box {
+    background: #4d0000; /* Deep maroon for contrast with the rest of the page */
+    border: 3px solid #990000; /* Classic Soviet red border for continuity */
+    padding: 15px;
+    margin-bottom: 20px;
+    width: calc(100% - 50px);
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
+}
+
+/* Instructions Heading */
+.pravda-box h2 {
+    color: #ffd700; /* Soviet gold for clear emphasis */
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* Pravda Content */
+.pravda-box p {
+    color: #f0e0d6; /* Light beige for a slightly aged paper look */
+    font-size: 0.9em;
+    text-align: justify; /* Align text for readability */
+    line-height: 1.6; /* Spacing for easier reading */
+}
+
+/* Pravda Links */
+.pravda-box a {
+    color: #ffa07a; /* Salmon red for links to make them pop */
+    text-decoration: none; /* Remove default underline for a clean look */
+}
+
+.pravda-box a:hover {
+    color: #ffcc00; /* Bright gold on hover for engagement */
+    text-decoration: underline; /* Add underline on hover */
+}
 		
- }
-
- textarea#userInput:focus{
-border-color: #ff4500;
-  box-shadow: 0 0 10px rgba(255,69,0,0.5);
-  background: #ffffe0;
-  outline: none;
- }
-
- /* Button */
- button{
-padding: 12px 25px;
-  font-size: 1.2em;
-  font-family: 'Georgia',serif;
-  color: #fff;
-  background: linear-gradient(45deg,#4682b4,#00ced1); /* New color: Steel Blue to Turquoise */
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(70,130,180,0.4);
-  cursor: pointer;
-  margin: 10px 0;
-  transition: all 0.3s ease;
- }
-
- button:hover{
-background: linear-gradient(45deg,#00ced1,#4682b4); /* Reverse gradient on hover */
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(70,130,180,0.6);
- }
-
- button:active{
-transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(70,130,180,0.3);
- }
-
- /* Output container */
- #output{
-font-family: 'Georgia',serif;
-  background: linear-gradient(to bottom right,#f0f8ff,#e6e6fa);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  max-width: 800px;
-  width: 100%;
-  margin: 20px 0;
- }
-
- /* Bold tags (the word itself) */
- b{
-color: #2e0854;
-  font-size: 1.5em;
-  text-shadow: 1px 1px 2px #9370db;
-  border-bottom: 2px solid #ff69b4;
-  padding-bottom: 2px;
-  display: inline-block;
- }
-
- /* Italics (prefix/suffix names) */
- i{
-color: #006400;
-  font-style: italic;
-  background-color: #f0fff0;
-  padding: 2px 6px;
-  border-radius: 5px;
-  box-shadow: inset 0 1px 3px rgba(0,100,0,0.1);
- }
-
- /* Line breaks (spacing) */
- br{
-line-height: 1.8;
- }
-
- /* Style the text lines */
- #output > *{
-color: #333;
-  margin: 5px 0;
- }
-
- /* Pseudo-elements for flair */
- b::before{
-content:"✦ ";
-  color: #ff4500;
-  font-size: 0.8em;
- }
-
- b::after{
-content:" ✦";
-  color: #ff4500;
-  font-size: 0.8em;
- }
-
- /* Hover effects */
- b:hover{
-color: #ff1493;
-  transform: scale(1.05);
-  transition: all 0.3s ease;
- }
-
- i:hover{
-background-color: #98fb98;
-  transition: background-color 0.3s ease;
- }
-</style>
+    </style>
 </head>
 <body>
- <h1>Russian-English Dictionary Source:Pravda.Ru</h1>
-<br>
- <textarea id="userInput" placeholder="Enter Russian words..."></textarea><br>
- <button onclick="displayResults()">Analyze</button><br>
- <div id="output"></div>
-<div>
-    <p><strong>Мама:</strong> Антон, посмотри на свою комнату! Письменный стол завален книгами и тетрадями, носки под стулом, а из шкафа одежда выпадает.</p>
-    <p><strong>Антон:</strong> Мам, я уберу всё — сложу книги на полки, уберу носки в корзину для белья и закрою шкаф.</p>
-    <p><strong>Мама:</strong> И не забудь застелить кровать, пропылесосить ковёр и вытереть пыль с полок.</p>
-    <p><strong>Антон:</strong> Хорошо, но можно потом поиграть на компьютере?</p>
-    <p><strong>Мама:</strong> Только после уборки!</p>
-</div>
+    <!-- Header -->
+    <h1>Russian-English Dictionary Source: Pravda.Ru</h1>
+
+    <!-- Pravda Box placed directly above the textarea -->
+    <div class="pravda-box">
+        <h2>Cut and paste this Russian text into the text area below:</h2>
+        <p>
+            Хотя насекомые встречаются на экстремальных высотах, учёные до сих пор не до конца понимают, как именно они адаптируются к таким условиям. Исследования продолжаются, и жизнь этих существ в заоблачных высях остаётся одной из больших загадок биологии.
+        </p>
+        <p>
+            Читайте больше на <a href="https://www.pravda.ru/news/zoo/2195056-insect_flight_altitude/" style="color: #ffcc00; text-decoration: none;">https://www.pravda.ru</a>
+        </p>
+    </div>
+
+    <!-- Main User Input Section -->
+    <div class="input-group">
+        <textarea id="userInput" placeholder="Enter Russian words..."></textarea>
+        <button onclick="displayResults()">Analyze</button>
+    </div>
+
+    <!-- Output Section -->
+    <div id="output"></div>
+    <h2>For Admin Use Only</h2>
+    <!-- Dictionary Entry Section -->
+    <div class="input-group">
+        <label for="russianInput">Russian Word:</label>
+        <input type="text" id="russianInput" placeholder="Enter Russian word">
+
+        <label for="englishInput">English Definition:</label>
+        <input type="text" id="englishInput" placeholder="Enter English definition">
+
+        <button onclick="createDictionaryEntry()">Create Dictionary Entry</button>
+        <button onclick="copyToClipboard()">Copy Entry to Clipboard</button>
+    </div>
+    <div id="output1"></div>
+
+    <!-- Suffix Entry Section -->
+    <div class="input-group">
+        <label for="suffixInput">Suffix:</label>
+        <input type="text" id="suffixInput" placeholder="Enter suffix (e.g., тель)">
+
+        <label for="meaningInput">Meaning:</label>
+        <input type="text" id="meaningInput" placeholder="Enter meaning (e.g., agent noun suffix)">
+
+        <button onclick="createSuffixEntry()">Create Suffix Entry</button>
+        <button onclick="copySuffixToClipboard()">Copy Entry to Clipboard</button>
+    </div>
+    <div id="suffixOutput"></div>
 
  <script>
+ 
+let lastTranslation = ""; // Store the last translation for clipboard copy
+
+function createDictionaryEntry() {
+    // Get the values of the Russian word and English definition
+    const russianWord = document.getElementById("russianInput").value.trim();
+    const englishDefinition = document.getElementById("englishInput").value.trim();
+
+    // Ensure both fields are filled before updating
+    if (russianWord && englishDefinition) {
+        // Format the translation pair
+        const translation = `"${russianWord}":"${englishDefinition}",`;
+
+        // Find the target element to update
+        const outputElement = document.getElementById("output1");
+
+        // Append the translation pair to the innerHTML
+        outputElement.innerHTML += translation + "<br>";
+
+        // Store the last translation for copying
+        lastTranslation = translation;
+    } else {
+        // Notify the user to fill in the fields
+        document.getElementById("output1").innerHTML += "Please fill both fields.<br>";
+    }
+}
+
+function copyToClipboard() {
+    if (lastTranslation) {
+        // Copy the last translation to the clipboard
+        navigator.clipboard.writeText(lastTranslation)
+            .then(() => {
+                // Notify the user that the copy was successful
+                document.getElementById("output1").innerHTML += "Copied to clipboard!<br>";
+            })
+            .catch(err => {
+                // Notify the user if there's an error
+                document.getElementById("output1").innerHTML += `Error copying to clipboard: ${err}<br>`;
+            });
+    } else {
+        // Notify the user if there's nothing to copy
+        document.getElementById("output1").innerHTML += "Nothing to copy. Create an entry first.<br>";
+    }
+}
+
+let lastSuffixEntry = ""; // Store the last suffix entry for clipboard copy
+
+function createSuffixEntry() {
+    // Get the values of the suffix and its meaning
+    const suffix = document.getElementById("suffixInput").value.trim();
+    const meaning = document.getElementById("meaningInput").value.trim();
+
+    // Ensure both fields are filled before updating
+    if (suffix && meaning) {
+        // Format the suffix entry
+        const suffixEntry = `{suffix:"${suffix}",meaning:"${meaning}"},`;
+
+        // Find the target element to update
+        const outputElement = document.getElementById("suffixOutput");
+
+        // Append the suffix entry to the innerHTML
+        outputElement.innerHTML += suffixEntry + "<br>";
+
+        // Store the last suffix entry for copying
+        lastSuffixEntry = suffixEntry;
+    } else {
+        // Notify the user to fill in the fields
+        document.getElementById("suffixOutput").innerHTML += "Please fill both fields.<br>";
+    }
+}
+
+function copySuffixToClipboard() {
+    if (lastSuffixEntry) {
+        // Copy the last suffix entry to the clipboard
+        navigator.clipboard.writeText(lastSuffixEntry)
+            .then(() => {
+                // Notify the user that the copy was successful
+                document.getElementById("suffixOutput").innerHTML += "Copied to clipboard!<br>";
+            })
+            .catch(err => {
+                // Notify the user if there's an error
+                document.getElementById("suffixOutput").innerHTML += `Error copying to clipboard: ${err}<br>`;
+            });
+    } else {
+        // Notify the user if there's nothing to copy
+        document.getElementById("suffixOutput").innerHTML += "Nothing to copy. Create an entry first.<br>";
+    }
+}
+
+
+
 const russianPrefixes = [
 {prefix:"экстра",meaning:"extra-"},
 {prefix:"у",meaning:"at,by"},
+
 {prefix:"транс",meaning:"trans-"},
 {prefix:"суб",meaning:"sub-"},
 {prefix:"со",meaning:"with,co- (before certain consonants)"},
@@ -207,6 +342,7 @@ const russianPrefixes = [
 ];
 
 const russianSuffixes = [
+{suffix:"ётся",meaning:"-ёт-: A grammatical marker for the verb's tense and person (present tense, third person singular).  -ся: Reflexive particle indicating the verb is reflexive."},
 {suffix:"аюсь",meaning:"+а=marks the verb as being in a standard тематический (thematic) conjugation group+ю=First-person singular, future tense+сь=showing that the action relates back to the subject (in this case, the speaker)"},
 {suffix:"ящийся",meaning:"present reflexive participle"},
 {suffix:"ящий",meaning:"present active participle"},
@@ -236,7 +372,7 @@ const russianSuffixes = [
 {suffix:"ами",meaning:"the instrumental plural ending for feminine nouns in this context. It denotes the means or instrument by which an action is performed or with which something is associated."},
 {suffix:"ный",meaning:"-->+н(used to create adjectives,often derived from nouns or roots)-->+ый(adjectival ending for mas-sin,aligns with gender,number,and case; forms descriptive qualities or states,e.g.,зелёный = 'green')"},
 {suffix:"ны",meaning:"consists of +н,which acts as a linker or transition element commonly used in genitive or plural constructions,and +ы,which serves as a case marker indicating either noun-plural-nominative (subject in plural form) -or- noun-plural-genitive (indicating possession,absence,or relationship in plural form,e.g.,книг = 'of books')"},
-{suffix:"ной",meaning:"adjective ending"},
+{suffix:"ной",meaning:"+н=helps connect the root to the adjective ending+ой=adjective-feminine-singular-nominative or dative or instrumental"},
 {suffix:"нный",meaning:"-->+нн(has been done)past passive participle ending for mas-sin-nom or fem-sin-nom or neu-sin-nom or plu-nom-->+ый adjectival ending for mas-sin or fem-sin or neu-sin or plu"},
 {suffix:"ния",meaning:"-->+н(used to form abstract nouns from roots; often links the root to a descriptive or conceptual idea)-->+ия(abstract noun ending forming feminine nouns; case-dependent: fem-sing-nom,fem-sing-gen,fem-sing-dat,fem-sing-acc,fem-sing-instr,fem-sing-prep; e.g.,здоровье → здоровья = 'of health')"},
 {suffix:"ник",meaning:"agent noun suffix"},
@@ -273,7 +409,10 @@ const russianSuffixes = [
 {suffix:"л",meaning:"verb-past-masculine"},
 {suffix:"ла",meaning:"verb-past-feminine"},
 {suffix:"ло",meaning:"verb-past-neuter"},
+{suffix:"ы",meaning:"noun-feminine-plural-nominative"},
 {suffix:"ли",meaning:"verb-past-plural"},
+{suffix:"иям",meaning:"signifies the dative plural case, meaning to/for conditions"},
+{suffix:"им",meaning:"instrumental case for masculine or neuter gender"},
 {suffix:"аний",meaning:"-->+а(noun-forming suffix,denotes action or process,e.g.,заболевание = 'disease')-->+н(deverbal noun-forming element)-->+ий(genitive plural ending,indicates possession or relation in the plural form,e.g.,'заболеваний' = 'of diseases')"},
 {suffix:"ает",meaning:"verb-third-person-singular-present tense (used for regular verbs in third-person singular form,e.g.,он/она сушает = he/she dries)"},
 {suffix:"а",meaning:"noun-feminine-singular-nominative (subject of the sentence) -or- noun-feminine-singular-genitive (indicating possession,absence,or relationship) -or- noun-feminine-singular-dative (marking an indirect object) -or- it might appear in verb conjugations as part of certain verb endings"},  
@@ -305,127 +444,133 @@ stripped: longestSuffix.suffix ? word.slice(0,-longestSuffix.suffix.length) : wo
  };
 }
 
-function processInput(input){
-let cleanedInput = input.replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()"\']/g,"").toLowerCase();
- let words = cleanedInput.split(/\s+/);
+function processInput(input) {
+    let cleanedInput = input.replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()"\']/g, "").toLowerCase();
+    let words = cleanedInput.split(/\s+/);
 
- let results = words.map((word) =>{
+    let results = words.map((word) => {
+        if (dictionary[word]) {
+            let prefixResult = stripPrefix(word);
+            let strippedPrefixWord = prefixResult.stripped;
+            let prefixObj = prefixResult.prefixObj;
 
+            let suffixResult = stripSuffix(strippedPrefixWord);
+            let strippedWord = suffixResult.stripped;
+            let suffixObj = suffixResult.suffixObj;
 
-if (dictionary[word]){
-let prefixResult = stripPrefix(word);
- let strippedPrefixWord = prefixResult.stripped;
- let prefixObj = prefixResult.prefixObj;
+            let breakdown = `${prefixObj.prefix ? prefixObj.prefix + "+" : ""}${strippedWord}${suffixObj.suffix ? "+" + suffixObj.suffix : ""}`;
+            let prefixInfo = prefixObj.prefix ? `${prefixObj.prefix} = ${prefixObj.meaning}` : "None";
+            let suffixInfo = `${suffixObj.suffix} = ${suffixObj.meaning}`;
+            let romanized = romanizeRussian(word);
 
- let suffixResult = stripSuffix(strippedPrefixWord);
- let strippedWord = suffixResult.stripped;
- let suffixObj = suffixResult.suffixObj;
+            return `<b>${word}</b>:<br>  Prefix: ${prefixInfo}<br>  Breakdown: ${breakdown}<br>  Suffix: ${suffixInfo}<br>  Similar Dictionary Word: ${word}<br>  Translation: ${dictionary[word]}<br>  English Romanization: ${romanized}`;
+        }
 
- let breakdown = `${prefixObj.prefix ? prefixObj.prefix + "+" :""}${strippedWord}${suffixObj.suffix ? "+" + suffixObj.suffix :""}`;
- let prefixInfo = prefixObj.prefix ? `${prefixObj.prefix} = ${prefixObj.meaning}` :"None";
-let suffixInfo = `${suffixObj.suffix} = ${suffixObj.meaning}`;
+        if (word.length <= 3) {
+            let romanized = romanizeRussian(word);
+            return `<b>${word}</b>:<br>  Prefix: None<br>  Breakdown: ${word}<br>  Suffix: None<br>  Translation: No match<br>  English Romanization: ${romanized}`;
+        }
 
- return `<b>${word}</b>:<br>  Prefix: ${prefixInfo}<br>  Breakdown: ${breakdown}<br>  Suffix: ${suffixInfo}<br>  Similar Dictionary Word: ${word}<br>  Translation: ${dictionary[word]}`;
+        let prefixResult = stripPrefix(word);
+        let strippedPrefixWord = prefixResult.stripped;
+        let prefixObj = prefixResult.prefixObj;
+
+        let suffixResult = stripSuffix(strippedPrefixWord);
+        let strippedWord = suffixResult.stripped;
+        let suffixObj = suffixResult.suffixObj || { suffix: "None", meaning: "None" };
+
+        let bestMatch = null;
+        let bestMatchScore = 0;
+
+        for (let entry in dictionary) {
+            let entryPrefixResult = stripPrefix(entry);
+            let strippedEntryPrefix = entryPrefixResult.stripped;
+            let entrySuffixResult = stripSuffix(strippedEntryPrefix);
+            let strippedEntry = entrySuffixResult.stripped;
+
+            if (strippedWord === strippedEntry) {
+                let score = entry.length * 2;
+                if (score > bestMatchScore) {
+                    bestMatch = entry;
+                    bestMatchScore = score;
+                }
+            } else if ((strippedEntry.includes(strippedWord) || strippedWord.includes(strippedEntry)) &&
+                Math.min(strippedWord.length, strippedEntry.length) >= 3) {
+                let overlap = Math.min(strippedWord.length, strippedEntry.length);
+                let score = overlap;
+                if (score > bestMatchScore) {
+                    bestMatch = entry;
+                    bestMatchScore = score;
+                }
+            }
+        }
+
+        if (bestMatch) {
+            let root = strippedWord;
+            let strippedBestMatch = stripSuffix(stripPrefix(bestMatch).stripped).stripped;
+            let isExact = strippedWord === strippedBestMatch;
+            let breakdown = `${prefixObj.prefix ? prefixObj.prefix + "+" : ""}${root}${suffixObj.suffix ? "+" + suffixObj.suffix : ""}`;
+            let prefixInfo = prefixObj.prefix ? `${prefixObj.prefix} = ${prefixObj.meaning}` : "None";
+            let suffixInfo = suffixObj.suffix ? `${suffixObj.suffix} = ${suffixObj.meaning}` : "None";
+            let romanized = romanizeRussian(word);
+
+            return `<b>${word}</b>:<br>  Prefix: ${prefixInfo}<br>  Breakdown: ${breakdown}<br>  Suffix: ${suffixInfo}<br>  Similar Dictionary Word: ${bestMatch}<br>  Translation: ${isExact ? "" : "~"}${dictionary[bestMatch]}${isExact ? "" : " (approx)"}<br>  English Romanization: ${romanized}`;
+        } else {
+            let breakdown = `${prefixObj.prefix ? prefixObj.prefix + "+" : ""}${strippedWord}${suffixObj.suffix ? "+" + suffixObj.suffix : ""}`;
+            let prefixInfo = prefixObj.prefix ? `${prefixObj.prefix} = ${prefixObj.meaning}` : "None";
+            let suffixInfo = suffixObj.suffix ? `${suffixObj.suffix} = ${suffixObj.meaning}` : "None";
+            let romanized = romanizeRussian(word);
+
+            return `<b>${word}</b>:<br>  Prefix: ${prefixInfo}<br>  Breakdown: ${breakdown}<br>  Suffix: ${suffixInfo}<br>  Translation: No match<br>  English Romanization: ${romanized}`;
+        }
+    });
+
+    return results.join("<br><br>");
 }
 
+function romanizeRussian(text, stressPositions = []) {
+    const transliterationMap = {
+        'А': 'ah', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D',
+        'Е': 'yeh', 'Ё': 'yoe', 'Ж': 'Zh', 'З': 'Z', 'И': 'ih',
+        'Й': 'y', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N',
+        'О': 'oe', 'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T',
+        'У': 'ue', 'Ф': 'F', 'Х': 'kh', 'Ц': 'Ts', 'Ч': 'Ch',
+        'Ш': 'Sh', 'Щ': 'Shch', 'Ы': 'ih', 'Э': 'eh', 'Ю': 'yue', 'Я': 'yah',
+        'а': 'ah', 'б': 'B', 'в': 'V', 'г': 'G', 'д': 'D',
+        'е': 'yeh', 'ё': 'yoe', 'ж': 'Zh', 'з': 'Z', 'и': 'ih',
+        'й': 'y', 'к': 'K', 'л': 'L', 'м': 'M', 'н': 'N',
+        'о': 'oe', 'п': 'P', 'р': 'R', 'с': 'S', 'т': 'T',
+        'у': 'ue', 'ф': 'F', 'х': 'kh', 'ц': 'Ts', 'ч': 'Ch',
+        'ш': 'Sh', 'щ': 'Shch', 'ы': 'ih', 'э': 'eh', 'ю': 'yue', 'я': 'yah',
+        'ь': '', 'ъ': ''
+    };
 
+    // Step 1: Convert text to Romanized form
+    const romanizedArray = text.split('').map((char, index) => {
+        if (/[А-яЁё]/.test(char)) {
+            return transliterationMap[char] || char; // Convert Cyrillic to Romanized
+        }
+        return char; // Leave non-Cyrillic characters as they are
+    });
 
-  // Step 2: Skip prefix/suffix analysis for short words (≤3 letters)
-  if (word.length <= 3){
-return `<b>${word}</b>:<br>  Prefix: None<br>  Breakdown: ${word}<br>  Suffix: None<br>  Translation: No match`;
-  }
+    // Step 2: Apply stress markers using Unicode combining accents
+    stressPositions.forEach((stressIndex) => {
+        if (stressIndex >= 0 && stressIndex < romanizedArray.length) {
+            // Add combining acute accent (\u0301) to the vowel at the stressIndex
+            romanizedArray[stressIndex] = romanizedArray[stressIndex].replace(/([aeiouy])/i, '$1\u0301');
+        }
+    });
 
-  // Step 3: Strip prefix and suffix for longer words
-  let prefixResult = stripPrefix(word);
-  let strippedPrefixWord = prefixResult.stripped;
-  let prefixObj = prefixResult.prefixObj;
-
-let suffixResult = stripSuffix(strippedPrefixWord);
-let strippedWord = suffixResult.stripped;
-let suffixObj = suffixResult.suffixObj ||{suffix:"None",meaning:"None"}; // Ensure defaults if no suffix is found
-
-
-  let bestMatch = null;
-  let bestMatchScore = 0;
-
-  for (let entry in dictionary){
-let entryPrefixResult = stripPrefix(entry);
-   let strippedEntryPrefix = entryPrefixResult.stripped;
-   let entrySuffixResult = stripSuffix(strippedEntryPrefix);
-   let strippedEntry = entrySuffixResult.stripped;
-
-   // Exact root match
-   if (strippedWord === strippedEntry){
-let score = entry.length * 2;
- if (score > bestMatchScore){
-bestMatch = entry;
-  bestMatchScore = score;
- }
-   }
-   // Approximate match (substring) with stricter conditions
-   else if ((strippedEntry.includes(strippedWord) || strippedWord.includes(strippedEntry)) && 
-   Math.min(strippedWord.length,strippedEntry.length) >= 3){
-let overlap = Math.min(strippedWord.length,strippedEntry.length);
- let score = overlap;
- if (score > bestMatchScore){
-bestMatch = entry;
-  bestMatchScore = score;
- }
-   }
-  }
-
-  if (bestMatch){
-let root = strippedWord;
-   let strippedBestMatch = stripSuffix(stripPrefix(bestMatch).stripped).stripped;
-   let isExact = strippedWord === strippedBestMatch;
-   let breakdown = `${prefixObj.prefix ? prefixObj.prefix + "+" :""}${root}${suffixObj.suffix ? "+" + suffixObj.suffix :""}`;
-   let prefixInfo = prefixObj.prefix ? `${prefixObj.prefix} = ${prefixObj.meaning}` :"None";
-   let suffixInfo = suffixObj.suffix ? `${suffixObj.suffix} = ${suffixObj.meaning}` :"None";
-   return `<b>${word}</b>:<br>  Prefix: ${prefixInfo}<br>  Breakdown: ${breakdown}<br>  Suffix: ${suffixInfo}<br>  Similar Dictionary Word: ${bestMatch}<br>  Translation: ${isExact ? "" :"~"}${dictionary[bestMatch]}${isExact ? "" :" (approx)"}`;
-  } else{
-let breakdown = `${prefixObj.prefix ? prefixObj.prefix + "+" :""}${strippedWord}${suffixObj.suffix ? "+" + suffixObj.suffix :""}`;
-   let prefixInfo = prefixObj.prefix ? `${prefixObj.prefix} = ${prefixObj.meaning}` :"None";
-   let suffixInfo = suffixObj.suffix ? `${suffixObj.suffix} = ${suffixObj.meaning}` :"None";
-   return `<b>${word}</b>:<br>  Prefix: ${prefixInfo}<br>  Breakdown: ${breakdown}<br>  Suffix: ${suffixInfo}<br>  Translation: No match`;
-  }
- });
-
- return results.join("<br><br>");
+    // Step 3: Join Romanized text back into a single string
+    return romanizedArray.join('');
 }
 
-function romanizeRussian(text){
-const transliterationMap ={
-'А': 'ah','Б': 'B','В': 'V','Г': 'G','Д': 'D',
- 'Е': 'yeh','Ё': 'yoh','Ж': 'Zh','З': 'Z','И': 'ee',
- 'Й': 'y','К': 'K','Л': 'L','М': 'M','Н': 'N',
- 'О': 'oe','П': 'P','Р': 'R','С': 'S','Т': 'T',
- 'У': 'ue','Ф': 'F','Х': 'Kh','Ц': 'Ts','Ч': 'Ch',
- 'Ш': 'Sh','Щ': 'Shch','Ы': 'ih','Э': 'eh','Ю': 'yue','Я': 'yah',
- 'а': 'ah','б': 'B','в': 'V','г': 'G','д': 'D',
- 'е': 'yeh','ё': 'yoe','ж': 'Zh','з': 'Z','и': 'ee',
- 'й': 'y','к': 'K','л': 'L','м': 'M','н': 'N',
- 'о': 'oe','п': 'P','р': 'R','с': 'S','т': 'T',
- 'у': 'ue','ф': 'F','х': 'Kh','ц': 'Ts','ч': 'Ch',
- 'ш': 'Sh','щ': 'Shch','ы': 'ih','э': 'eh','ю': 'yue','я': 'yah',
- 'ь': '','ъ': ''
- };
+function displayResults() {
+    let userInput = document.getElementById("userInput").value; // Get user input
+    let processedInput = processInput(userInput); // Process input (clean and lowercase)
 
- return text.split('').map(char =>{
-if (/[А-яЁё]/.test(char)){
-return transliterationMap[char] || char;
-  }
-  return char; // Leave non-Cyrillic characters as they are
- }).join('');
-}
-
-function displayResults(){
-let userInput = document.getElementById("userInput").value; // Get user input
- let processedInput = processInput(userInput); // Process input (clean and lowercase)
- let romanizedInput = romanizeRussian(userInput); // Romanize the original input
-
- // Display both the processed Russian text and its Romanization
- document.getElementById("output").innerHTML = 
-  `${processedInput}<br>English Romanization: ${romanizedInput}`;
+    // Display only the processed Russian text
+    document.getElementById("output").innerHTML = `${processedInput}`;
 }
 
 const dictionary ={
@@ -459,6 +604,7 @@ const dictionary ={
 "якобы":"allegedly",
 "яйцо":"egg",
 "яичница":"fried eggs",
+"экстремальных":"extreme",
 "языковой":"linguistic",
 "язык":"language; tongue",
 "ядро":"nucleus; ball",
@@ -885,6 +1031,8 @@ const dictionary ={
 "хриплый":"hoarse",
 "хрипло":"hoarsely",
 "хрипеть":"to wheeze",
+"обсуждает":"debate",
+"сообщество":"community",
 "хребет":"spine; ridge; mountain range",
 "храниться":"to be kept",
 "хранить":"to keep,store",
@@ -2170,6 +2318,7 @@ const dictionary ={
 "сомнительный":"doubtful,dubious",
 "сомнение":"doubt",
 "сомневаться":"to doubt",
+"остаётся":"remain",
 "солёный":"salted",
 "соль":"salt",
 "соломенный":"straw (adj)",
@@ -4482,7 +4631,9 @@ const dictionary ={
 "переходить":"to cross,go over",
 "переход":"crossing,transition",
 "перехватывать":"to intercept",
-"перехватывать":"to intercept",
+"этих":"these",
+"загадок":"mystery",
+"одной":"one",
 "переулок":"lane",
 "переть":"to shove,barge,push (coll)",
 "переступать":"to step over",
@@ -5658,8 +5809,14 @@ const dictionary ={
 "научный":"scientific,scholarly",
 "научно-технический":"scientific and technical",
 "научно-исследовательский":"scientific-research (adj)",
+"учёные":"scientific",
 "научно":"scientifically",
+"конца":"ending",
+"понимают":"understand",
+"адаптируются":"specialize",
 "наука":"science; scholarship",
+"сих":"these",
+"пор":"time,pore,season",
 "наугад":"at random",
 "натягивать":"to pull tight; pull on",
 "натыкаться":"to run into,stumble upon,meet unexpectedly",
