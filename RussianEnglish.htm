@@ -160,7 +160,8 @@
     <div class="pravda-box">
         <h2>Cut and paste this Russian text into the text area below:</h2>
         <p>
-            Хотя насекомые встречаются на экстремальных высотах, учёные до сих пор не до конца понимают, как именно они адаптируются к таким условиям. Исследования продолжаются, и жизнь этих существ в заоблачных высях остаётся одной из больших загадок биологии.
+Маркелов также подчеркнул, что технологии украинских АЭС отличаются от американских, и это создает дополнительные сложности. Он видит в этом предложении американцев больше попытку удовлетворить политические амбиции, чем реальное решение проблем. Все это, по его мнению, часть "политики пропаганды".
+Читайте больше на https://www.pravda.ru/news/economics/2195578-us-npp-proposal/
         </p>
         <p>
             Читайте больше на <a href="https://www.pravda.ru/news/zoo/2195056-insect_flight_altitude/" style="color: #ffcc00; text-decoration: none;">https://www.pravda.ru</a>
@@ -342,12 +343,14 @@ const russianPrefixes = [
 ];
 
 const russianSuffixes = [
+{suffix:"их",meaning:"adjective-masculine/neutral-plural-genitive/prepositional"},
 {suffix:"ётся",meaning:"-ёт-: A grammatical marker for the verb's tense and person (present tense, third person singular).  -ся: Reflexive particle indicating the verb is reflexive."},
 {suffix:"аюсь",meaning:"+а=marks the verb as being in a standard тематический (thematic) conjugation group+ю=First-person singular, future tense+сь=showing that the action relates back to the subject (in this case, the speaker)"},
 {suffix:"ящийся",meaning:"present reflexive participle"},
 {suffix:"ящий",meaning:"present active participle"},
 {suffix:"яться",meaning:"reflexive infinitive ending"},
 {suffix:"я",meaning:"noun-masculine-singular-genitive (or) noun-feminine-singular-nominative (or) noun-feminine-singular-genitive (or) noun-masculine-singular-accusative (or) noun-masculine-singular-prepositional (rare/archaic) (or) adjectival noun (stylized)"},
+{suffix:"ит",meaning:"verb-3rd person-present"},
 {suffix:"ются",meaning:"-->+ют(third person plural present tense ending for imperfective verbs; marks 'they [perform the action]' in the present tense)-->+ся(reflexive particle,indicating that the action is self-directed or passive,e.g.,'они являются' = 'they are')"},
 {suffix:"ья",meaning:"-->+ь(soft sign linking stem to ending,often found in abstract or descriptive nouns)-->+я(case-dependent noun ending: noun-mas-sing-gen; noun-fem-sing-nom; noun-fem-sing-gen; noun-mas-sing-acc; or noun-mas-sing-prep (rare/archaic); also used in adjectival nouns for stylization; e.g.,здоровье → здоровья = 'of health')"},
 {suffix:"ю",meaning:"verb-first-person-singular-future(I will do)"},
@@ -362,6 +365,7 @@ const russianSuffixes = [
 {suffix:"ства",meaning:"+ств=denotes a state,condition,or institution (commonly found in abstract nouns indicating collective or institutional functions)+а=noun-feminine-singular-nominative (subject of the sentence) -or- noun-feminine-singular-genitive (indicating possession,absence,or relationship) -or- noun-feminine-singular-dative (marking an indirect object) -or- it might appear in verb conjugations as part of certain verb endings"},
 {suffix:"ский",meaning:"adjective suffix (relational)"},
 {suffix:"ость",meaning:"abstract noun suffix (quality)"},
+{suffix:"ку",meaning:"+к = Often part of the root in this structure but helps form the noun's complete base+у =feminine-singular-accusative"},
 {suffix:"ом",meaning:"-->+ом(prepositional or instrumental singular case ending for masculine or neuter nouns/adjectives; used in contexts such as location or method,e.g.,'в этом' = 'in this')"},
 {suffix:"ой",meaning:"feminine/neuter genitive ending or used to form this demonstrative adjective;such, this kind of, so"},
 {suffix:"ого",meaning:"-->+ого(adjective ending for mas-sing-gen or mas-sing-acc (animate) or neu-sing-gen; shows possession,absence,or relationship; e.g.,взрослый → взрослого = 'of the adult' or 'the adult (as an object)')"},
@@ -395,6 +399,7 @@ const russianSuffixes = [
 {suffix:"ь",meaning:"softens the preceding sound;marks feminine gender nouns or infinitive verbs or imperative verbs(do it!)"},
 {suffix:"ешний",meaning:"former,previous"},
 {suffix:"еть",meaning:"infinitive verb ending"},
+{suffix:"ое",meaning:"+о = A connector that helps bind the word's structure into an adjective form. +е=adjective-neutral-singular-prepositional(about)"},
 {suffix:"ения",meaning:"-->+е(linking vowel often used to smooth transitions between roots and suffixes)-->+н(used to form abstract nouns from roots; links the root to conceptual or descriptive ideas)-->+ия(abstract noun ending forming feminine nouns; case-dependent: fem-sing-nom,fem-sing-gen,fem-sing-dat,fem-sing-acc,fem-sing-instr,fem-sing-prep; e.g.,население → населения = 'of the population')"},
 {suffix:"ением",meaning:"-ени- - This is a noun-forming suffix often found in abstract nouns related to actions or processes.-ем - This indicates the instrumental case singular,used when the noun expresses the means or tool by which an action is performed (e.g.,by/with the movement).)"},
 {suffix:"ей",meaning:"-->+ей(genitive plural ending for animate nouns; expresses possession,quantity,or absence; often used to describe groups of people or objects,e.g.,люди → людей = 'of people','many people')"},
@@ -412,6 +417,7 @@ const russianSuffixes = [
 {suffix:"ы",meaning:"noun-feminine-plural-nominative"},
 {suffix:"ли",meaning:"verb-past-plural"},
 {suffix:"иям",meaning:"signifies the dative plural case, meaning to/for conditions"},
+{suffix:"ности",meaning:"+н=adjective-like or descriptive noun form+ости=feminine-singular-genitive(of) or feminine-singular-dative(for/to) or feminine-singular-prepositional(about) or feminine-plural-genitive(of)"},
 {suffix:"им",meaning:"instrumental case for masculine or neuter gender"},
 {suffix:"аний",meaning:"-->+а(noun-forming suffix,denotes action or process,e.g.,заболевание = 'disease')-->+н(deverbal noun-forming element)-->+ий(genitive plural ending,indicates possession or relation in the plural form,e.g.,'заболеваний' = 'of diseases')"},
 {suffix:"ает",meaning:"verb-third-person-singular-present tense (used for regular verbs in third-person singular form,e.g.,он/она сушает = he/she dries)"},
@@ -1532,7 +1538,9 @@ const dictionary ={
 "убедительно":"convincingly,earnestly",
 "убегать":"to run away",
 "у":"in,at,on,by; at (used in ‘have’ construction)",
+"аэс":"nuclear power plant",
 "тёща":"mother-in-law (wife’s mother)",
+"создает":"establish,produce",
 "тётя":"aunt",
 "тётушка":"auntie; (old) lady",
 "тётка":"aunt; (coll) woman",
@@ -2142,11 +2150,14 @@ const dictionary ={
 "ссора":"quarrel",
 "срываться":"to break away; (coll) fail,go wrong",
 "срывать":"to tear off; wreck",
+"подчеркнул":"emphasize",
+"попытку":"attempt",
 "срочный":"urgent",
 "срочно":"urgently",
 "срок":"period (of time); (last) date,deadline",
 "срезать":"to cut down,cut off; shut s.o. up",
 "срез":"cut; cut edge",
+"видит":"witness",
 "средство":"means; (pl) resources",
 "средний":"middle; average",
 "средневековый":"medieval",
@@ -2182,6 +2193,7 @@ const dictionary ={
 "спотыкаться":"to trip,stumble",
 "способствовать":"to promote,further (sth)",
 "способный":"able,capable",
+"амбиции":"ambition",
 "способность":"ability",
 "способ":"way,method",
 "спортсмен":"sportsman",
@@ -4754,6 +4766,7 @@ const dictionary ={
 "пассажир":"passenger",
 "паспорт":"passport",
 "пасмурный":"cloudy,overcast; gloomy",
+"все":"all,every",
 "паршивый":"mangy; shabby,nasty",
 "парус":"sail",
 "партнёр":"partner",
