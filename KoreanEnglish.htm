@@ -176,32 +176,20 @@ function copyToClipboard() {
 }
 
 
-        const koreanDictionary = [
-{word:"했다",meaning:"did"},
-{word:"추진하",meaning:"promotion"},
-{word:"정부",meaning:"department, ministry"},
-{word:"헌법",meaning:"constitution"},
-{word:"권한",meaning:"authority,power"},
-{word:"재판관",meaning:"judge"},
-{word:"기",meaning:"This is a nominalizer, turning the verb into a noun-like form, roughly meaning the act of promoting."},
-{word:"탄핵",meaning:"impeachment"},
-{word:"민주당",meaning:"democrat"},
-{word:"더불어",meaning:"unified political party"},
+const koreanDictionary = [
+{word:"진",meaning:"makes adjectives; makes passive verbs"},
+{word:"떨어",meaning:"to drop"},
+{word:"지난",meaning:"last,past"},
+{word:"위에",meaning:"place"},
+{word:"중",meaning:"medium"},		
+{word:"개국",meaning:"nation"},
+{word:"주관적",meaning:"subjective"},
+{word:"행복",meaning:"happiness,wealth"},
+{word:"매긴",meaning:"tired"},
 {word:"힘들다",meaning:"to be difficult, tiring, painful"},
-{word:"지도부가 ",meaning:"leadership"},
 {word:"힘내다",meaning:"to gather heart, gather strength, cheer up (similar to 화이팅 but for someone who is depressed/sad)"},
 {word:"힘",meaning:"force, strength, energy; authority, power, influence, effort"},
-{word:"발효",meaning:"fermentation;enforcement"},
-{word:"지정",meaning:"designation, specification, appointment"},
 {word:"흰색",meaning:"(noun) white"},
-{word:"위원회",meaning:"commision"},
-{word:"전",meaning:"before, prior to"},
-{word:"철회",meaning:"withdrawal, revocation, cancellation"},
-{word:"불투명",meaning:"opacity, lack of transparency, uncertainty"},
-{word:"해제",meaning:"cancellation"},
-{word:"권익",meaning:"civil rights"},
-{word:"절차도",meaning:"implementation"},
-{word:"깜깜",meaning:"in the dark"},
 {word:"희한하다",meaning:"to be strange, odd, unusual, rare (not common)"},
 {word:"희생하다",meaning:"to sacrifice"},
 {word:"희미하다",meaning:"to be dim, faint, vague"},
@@ -415,6 +403,7 @@ function copyToClipboard() {
 {word:"헛소리",meaning:"nonsense, silly talk, gibberish, garbage"},
 {word:"험하다",meaning:"to be rugged, rough; threatening; tough, difficult"},
 {word:"헐다",meaning:"to tear down, pull down, demolish,open; break, cancel; be inflamed, sore; wear out"},
+{word:"헌법",meaning:"constitution"},
 {word:"헌",meaning:"old, shabby, used"},
 {word:"허탈하다",meaning:"to be dejected, dispirited"},
 {word:"허전하다",meaning:"to feel empty, lonesome, hungry"},
@@ -437,6 +426,7 @@ function copyToClipboard() {
 {word:"행복하다",meaning:"to be happy, happiness (continuous state of happiness/deeper meaning than 즐겁다) expressing the emotion of happiness"},
 {word:"행방",meaning:"one's whereabouts"},
 {word:"행동",meaning:"behavior, action (moving your body to do an action/general behavior); conduct oneself, behave"},
+{word:"했다",meaning:"did"},
 {word:"햇살",meaning:"sunlight, sunshine, sunbeam, heat of the sun (less common)"},
 {word:"햇빛",meaning:"sunlight, sunshine, sun; see the light"},
 {word:"햇볕",meaning:"sunbeam, sunlight (in the context of getting sun and its effects)"},
@@ -445,6 +435,7 @@ function copyToClipboard() {
 {word:"핸드폰",meaning:"cell phone"},
 {word:"핸드백",meaning:"handbag, purse"},
 {word:"해치다",meaning:"to injure, harm, damage, hurt"},
+{word:"해제",meaning:"cancellation"},
 {word:"해외",meaning:"foreign country, abroad, overseas"},
 {word:"해양",meaning:"the ocean, marine"},
 {word:"해안",meaning:"coast, seaside, seashore"},
@@ -512,6 +503,7 @@ function copyToClipboard() {
 {word:"한꺼번에",meaning:"all at once, all together, at the same time"},
 {word:"한글",meaning:"Korean alphabet"},
 {word:"한국말",meaning:"korean language"},
+{word:"한국",meaning:"Korea"},
 {word:"한국 음식",meaning:"korean food"},
 {word:"한계",meaning:"limit, boundary (that cannot be overcome easily/maybe impossible to surpass)"},
 {word:"한강",meaning:"Han River"},
@@ -555,12 +547,8 @@ function copyToClipboard() {
 {word:"하늘",meaning:"the sky, the heavens"},
 {word:"하는 일",meaning:"job (2), work that you do"},
 {word:"하나씩",meaning:"one by one, one at a time"},
-{word:"대", meaning:"counter for vehicles or machines; against, opposition; large, big; table"},
 {word:"하나도",meaning:"not one, not at all"},
 {word:"하고", meaning:"and, with (used to connect actions or states)"},
-{word:"있다", meaning:"to exist; to have; to be present"},
-{word:"중징계", meaning:"severe disciplinary action, heavy punishment"},
-{word:"추진", meaning:"propulsion, promotion, pushing forward (of plans or efforts)"},
 {word:"핑크",meaning:"pink (more common)"},
 {word:"핑계",meaning:"excuse, pretext (for doing something bad)"},
 {word:"필통",meaning:"pencil case"},
@@ -568,6 +556,7 @@ function copyToClipboard() {
 {word:"필수",meaning:"essential, required, requirements, necessities"},
 {word:"필독",meaning:"required reading, must read"},
 {word:"필기하다",meaning:"to take notes, write down (sino)"},
+{word:"핀란드", meaning:"Finland"},
 {word:"피해자",meaning:"victim, sufferer (harm or damage)"},
 {word:"피해",meaning:"damage, harm (physical, reputation, property, money)"},
 {word:"피하다",meaning:"to avoid, dodge, sidestep; escape, leave, hide"},
@@ -695,6 +684,7 @@ function copyToClipboard() {
 {word:"파업",meaning:"strike, walkout"},
 {word:"파악하다",meaning:"to figure out, grasp, understand, comprehend, identify"},
 {word:"파스",meaning:"pain relief patch, anti-inflammatory patch"},
+{word:"파면해",meaning:"dismiss"},
 {word:"파마하다",meaning:"to get a perm"},
 {word:"파리",meaning:"fly (bug); paris"},
 {word:"파랗다",meaning:"to be blue"},
@@ -802,12 +792,14 @@ function copyToClipboard() {
 {word:"탈의실",meaning:"dressing room, changing room, locker room"},
 {word:"탈락하다",meaning:"to drop out, be eliminated, fail, be excluded (from a range)"},
 {word:"탈",meaning:"mask, disguise; sickness; snag, trouble; prefix meaning escaping"},
+{word:"탄핵",meaning:"impeachment"},
 {word:"탄탄하다",meaning:"to be solid, strong, robust, stable (structures or something visible to the eye/process or logic); an organization being in stable state"},
 {word:"탄생하다",meaning:"to be born, (literary) come into the world"},
 {word:"탁하다",meaning:"to be murky, muddy, stuffy, raspy; unclear, vague"},
 {word:"탁자",meaning:"(small) table"},
 {word:"탁구",meaning:"table tennis"},
 {word:"타자",meaning:"typing; batter, hitter"},
+{word:"타인과",meaning:"others"},
 {word:"타이밍",meaning:"timing"},
 {word:"타다",meaning:"타요"},
 {word:"타다",meaning:"to ride, get in; be burnt"},
@@ -964,6 +956,8 @@ function copyToClipboard() {
 {word:"추첨하다",meaning:"to draw lots"},
 {word:"추천서",meaning:"letter of recommendation"},
 {word:"추천",meaning:"recommend, recommendation"},
+{word:"추진하",meaning:"promotion"},
+{word:"추진", meaning:"propulsion, promotion, pushing forward (of plans or efforts)"},
 {word:"추위",meaning:"cold air, cold weather"},
 {word:"추워지다",meaning:"추워져요"},
 {word:"추워지다",meaning:"to become cold, cool down"},
@@ -1051,6 +1045,7 @@ function copyToClipboard() {
 {word:"첫날",meaning:"the first day, opening day"},
 {word:"첩",meaning:"concubine (lives with a married man without being his wife); book, album; pack of herbal medicine"},
 {word:"첨부하다",meaning:"to attach (file or related document)"},
+{word:"철회",meaning:"withdrawal, revocation, cancellation"},
 {word:"철학",meaning:"philosophy"},
 {word:"철저히",meaning:"thoroughly, completely, exhaustively (because you were careful)"},
 {word:"철새",meaning:"migratory bird"},
@@ -1203,6 +1198,7 @@ function copyToClipboard() {
 {word:"질문",meaning:"question, query"},
 {word:"질리다",meaning:"to get tired of, sick of"},
 {word:"질기다",meaning:"to be tough, durable, persistent, tenacious"},
+{word:"질",meaning:"quality"},
 {word:"진행하다",meaning:"to progress, proceed"},
 {word:"진행자",meaning:"presenter, host, MC"},
 {word:"진행",meaning:"progress, in the process of doing, proceed (moving forward)"},
@@ -1251,6 +1247,7 @@ function copyToClipboard() {
 {word:"지지하다",meaning:"to support, back up, advocate (for); be slow, lagging; trivial, poor, worthless"},
 {word:"지지리",meaning:"extremely, awfully, terribly, excruciatingly (not sure about this one)"},
 {word:"지지난",meaning:"the day, week, month, etc. before last"},
+{word:"지정",meaning:"designation, specification, appointment"},
 {word:"지점",meaning:"spot, point, place; branch office"},
 {word:"지적하다",meaning:"to point out, indicate; criticize, comment (on something that needs to be fixed)"},
 {word:"지저분하다",meaning:"to be dirty (messy), disordered, untidy; dirty (lewd)"},
@@ -1279,6 +1276,7 @@ function copyToClipboard() {
 {word:"지령",meaning:"order, instruction, directive (not common)"},
 {word:"지독하다",meaning:"to be viscious, spiteful; awful, terrible, severe, overpowering; persistent"},
 {word:"지도하다",meaning:"to guide, direct, coach, instruct (bigger purpose or goal)"},
+{word:"지도부가 ",meaning:"leadership"},
 {word:"지도",meaning:"map, chart; plan, guidance (on)"},
 {word:"지다",meaning:"to lose, be defeated; be under an obligation; sink, go down; carry; take responsibility (for); be wrinkled"},
 {word:"지니다",meaning:"to keep, carry, have"},
@@ -1315,7 +1313,9 @@ function copyToClipboard() {
 {word:"쥐",meaning:"rat, mouse; cramp, (muscle) spasm"},
 {word:"중학생",meaning:"middle school student"},
 {word:"중학교",meaning:"middle school"},
+{word:"중징계", meaning:"severe disciplinary action, heavy punishment"},
 {word:"중지하다",meaning:"to discontinue, stop, suspend (in the middle of something ongoing without finishing)"},
+{word:"중인",meaning:"in,on(preposition)"},
 {word:"중요하다",meaning:"to be important, significant"},
 {word:"중요시하다",meaning:"to put a high value (on), regard as important, emphasize"},
 {word:"중요성",meaning:"importance, significance"},
@@ -1472,6 +1472,7 @@ function copyToClipboard() {
 {word:"조건",meaning:"condition (for), terms (of)"},
 {word:"조개",meaning:"clam, shellfish"},
 {word:"조각",meaning:"piece, slice; sculpture"},
+{word:"젤렌스키",meaning:"Zelenski"},
 {word:"제한",meaning:"limit (artificial), restriction, constraint"},
 {word:"제품",meaning:"product, manufactured goods"},
 {word:"제출하다",meaning:"to submit, hand in, present"},
@@ -1527,6 +1528,7 @@ function copyToClipboard() {
 {word:"정상",meaning:"normality, normalcy, normal; top, summit, peak; head, leader; cirumstances"},
 {word:"정비사",meaning:"mechanic, technician"},
 {word:"정부",meaning:"government"},
+{word:"정부",meaning:"department, ministry"},
 {word:"정보",meaning:"information, report, data; intelligence"},
 {word:"정밀",meaning:"detailed, precise, exact"},
 {word:"정문",meaning:"the front gate, main entrance (big)"},
@@ -1565,6 +1567,7 @@ function copyToClipboard() {
 {word:"점",meaning:"dot, point; viewpoint; fortune-telling; thing (specific aspect among many)"},
 {word:"젊은이",meaning:"the youth, young person, young adult"},
 {word:"젊다",meaning:"to be young (general), young (adult), youthful"},
+{word:"절차도",meaning:"implementation"},
 {word:"절약하다",meaning:"to save (control consumption), conserve, use ast little as possible (sino/but still really common)"},
 {word:"절반",meaning:"half (dividing something in half)"},
 {word:"절박하다",meaning:"to be urgent, desperate"},
@@ -1612,6 +1615,7 @@ function copyToClipboard() {
 {word:"전부",meaning:"(noun/adv) the whole, everything; all, in total, in all (the sum of all parts without exception/all of more than one thing)(sino)"},
 {word:"전봇대",meaning:"telephone pole"},
 {word:"전보",meaning:"telegram"},
+{word:"전반",meaning:"all"},
 {word:"전문적",meaning:"being specialized, professional"},
 {word:"전문가",meaning:"expert, specialist, professional"},
 {word:"전문",meaning:"specialty, specialize; the whole text"},
@@ -1621,13 +1625,12 @@ function copyToClipboard() {
 {word:"전달하다",meaning:"to deliver (or have something delivered), convey, send, forward"},
 {word:"전날",meaning:"the day before (baseline day), the previous day, previously"},
 {word:"전기밥솥",meaning:"electric rice cooker"},
-{word:"중인",meaning:"in,on(preposition)"},
-{word:"젤렌스키",meaning:"Zelenski"},
 {word:"전기",meaning:"electricity, electric power; the former part of, early years; turning point; biography"},
 {word:"전국",meaning:"the whole country, nationwide"},
 {word:"전공하다",meaning:"to major in, specialize in"},
 {word:"전골",meaning:"beef with vegetables cooked in a casserole"},
 {word:"전경",meaning:"foreground, panorama; the front view (that unfolds before your eyes); riot police"},
+{word:"전",meaning:"before, prior to"},
 {word:"전 남자친구",meaning:"ex-boyfriend"},
 {word:"적히다",meaning:"to be written down, listed; blacklisted"},
 {word:"적중하다",meaning:"to hit the mark (target); come true, be right"},
@@ -1668,6 +1671,7 @@ function copyToClipboard() {
 {word:"재활용품",meaning:"recyclable materials"},
 {word:"재활용",meaning:"recycling, reuse"},
 {word:"재혼하다",meaning:"to remarry, marry again"},
+{word:"재판관",meaning:"judge"},
 {word:"재판",meaning:"trial; second edition; repetition, mirror image"},
 {word:"재킷",meaning:"jacket (lighter/might be closer to high fashion styles)"},
 {word:"재충전하다",meaning:"to recharge (a battery or oneself)"},
@@ -1846,6 +1850,7 @@ function copyToClipboard() {
 {word:"잊다",meaning:"to forget (formal); be unaware of"},
 {word:"있다",meaning:"있어요"},
 {word:"있다",meaning:"to be, exist, have"},
+{word:"있다", meaning:"to exist; to have; to be present"},
 {word:"잇다",meaning:"to connect, link; continue, follow, inherit"},
 {word:"입히다",meaning:"to dress someone, put on; cover, coat (the surface of something); cause damage (to), inflict"},
 {word:"입학하다",meaning:"to enter a school, be admitted into a school"},
@@ -2071,15 +2076,9 @@ function copyToClipboard() {
 {word:"은퇴하다",meaning:"to retire"},
 {word:"은은하다",meaning:"to be vague, faint, distant; indistinct"},
 {word:"은신처",meaning:"hideout, hiding place"},
-{word:"로이터",meaning:"Reuters"},
-{word:"등에",meaning:"etcetera"},
 {word:"은근히",meaning:"quietly, inwardly, confidentially, in a round about way; constantly, slowly; politely, courteously"},
 {word:"은",meaning:"(topic marker, used after a noun ending in a consonant);silver"},
 {word:"윶놀이",meaning:"yut (game 4 sticks)"},
-{word:"\,",meaning:"comma"},
-{word:"\‘",meaning:"open single quote"},
-{word:"\’",meaning:"close single quote"},
-{word:"민감",meaning:"sensitive"},
 {word:"육지",meaning:"land, shroe, dry land"},
 {word:"육아",meaning:"childcare, care of infants"},
 {word:"육박하다",meaning:"to approach, draw near, close in"},
@@ -2138,6 +2137,7 @@ function copyToClipboard() {
 {word:"위층",meaning:"upstairs, upper floor"},
 {word:"위축되다",meaning:"to be daunted, intimidated; subside, wither, shrink"},
 {word:"위인",meaning:"great person (judged by their character/people in history); nature, disposition"},
+{word:"위원회",meaning:"commision"},
 {word:"위엄",meaning:"dignity, majesty, stateliness (old fashioned)"},
 {word:"위선",meaning:"hypocrisy"},
 {word:"위반하다",meaning:"to violate, break, go against, infringe"},
@@ -2157,13 +2157,6 @@ function copyToClipboard() {
 {word:"월",meaning:"month"},
 {word:"월 말",meaning:"end of the month"},
 {word:"원한",meaning:"grudge, resentment"},
-{word:"한국",meaning:"Korea"},
-{word:"타인과",meaning:"others"},
-{word:"불과한",meaning:"only"},
-{word:"것으로",meaning:"with"},
-{word:"났다",meaning:"past tense -ed"},
-{word:"전반",meaning:"all"},
-{word:"나타",meaning:"to appear"},
 {word:"원하다",meaning:"to want, would like to, wish, hope; (formal) desire, long for"},
 {word:"원피스",meaning:"dress"},
 {word:"원칙",meaning:"general principle, general rule (that are widely accepted)"},
@@ -2541,6 +2534,7 @@ function copyToClipboard() {
 {word:"에어컨",meaning:"air conditioner"},
 {word:"에서",meaning:"Location (at, in, from)"},
 {word:"에너지",meaning:"energy, power"},
+{word:"에", meaning:"(particle) used to indicate a location, time, or direction"},
 {word:"엎드리다",meaning:"to lie face down (one one's belly); bend down"},
 {word:"엎다",meaning:"to turn upside down, turn over, turn down; spill, knock over; overrule, overthrow"},
 {word:"엊그제",meaning:"couple days ago"},
@@ -3325,6 +3319,7 @@ function copyToClipboard() {
 {word:"선호하다",meaning:"to prefer"},
 {word:"선하다",meaning:"to be vivid, fresh (recalling something); nice, good (not common)"},
 {word:"선풍기",meaning:"electric fan"},
+{word:"선포",meaning:"declaration"},
 {word:"선택하다",meaning:"to choose, select (when there are limited options)"},
 {word:"선택권",meaning:"option, choice"},
 {word:"선택",meaning:"choice, selection, select"},
@@ -3535,7 +3530,6 @@ function copyToClipboard() {
 {word:"사이다",meaning:"lemon-lime soda, sprite, seven-up"},
 {word:"사이",meaning:"relationship; distance apart"},
 {word:"사은품",meaning:"free gift, freebie"},
-{word:"계엄",meaning:"martial law"},
 {word:"사위",meaning:"son-in-law"},
 {word:"사원",meaning:"employee, member of the staff; temple, mosque"},
 {word:"사용하다",meaning:"to use, make use of (a tool)"},
@@ -3547,7 +3541,6 @@ function copyToClipboard() {
 {word:"사양",meaning:"specification; rejection, declining"},
 {word:"사실은",meaning:"in fact, the truth is, actually"},
 {word:"사실",meaning:"fact, truth; actually, in fact, to be honest"},
-{word:"선포",meaning:"declaration"},
 {word:"사슴",meaning:"deer"},
 {word:"사소하다",meaning:"to be trivial, insignificant, minor (something is small so you don't need to worry about it)"},
 {word:"사생활",meaning:"privacy, private life"},
@@ -3642,6 +3635,7 @@ function copyToClipboard() {
 {word:"비행기",meaning:"airplane, plane"},
 {word:"비하다",meaning:"to compare (with/to); be compared to (less common)"},
 {word:"비판하다",meaning:"to criticize, pass judgment (using facts and logic e.g. constructive criticism)"},
+{word:"비판",meaning:"criticism"},
 {word:"비틀다",meaning:"to twist, wring"},
 {word:"비타민",meaning:"vitamin"},
 {word:"비키다",meaning:"to get out of the way, step aside/back; excuse oneself, leave someone alone"},
@@ -3693,6 +3687,7 @@ function copyToClipboard() {
 {word:"불행하다",meaning:"to be unhappy, unfortunate, not happy"},
 {word:"불평",meaning:"complaint, grievance; whine"},
 {word:"불편하다",meaning:"to be inconvenient; uncomfortable, discomfort, uneasy, awkward"},
+{word:"불투명",meaning:"opacity, lack of transparency, uncertainty"},
 {word:"불타다",meaning:"to burn, be in flames (more specific/less variation in meaning)"},
 {word:"불쾌하다",meaning:"to be unpleasant, disagreeable,uncomfortable, displeasing"},
 {word:"불우하다",meaning:"to be underpriviledge, disadvantaged, deprived"},
@@ -3717,6 +3712,7 @@ function copyToClipboard() {
 {word:"불국사",meaning:"Bul Guk temple"},
 {word:"불구하다",meaning:"to disregard (despite x), not be bothered by something"},
 {word:"불교",meaning:"Buddhism"},
+{word:"불과한",meaning:"only"},
 {word:"불과하다",meaning:"to be nothing more than, only, merely"},
 {word:"불고기",meaning:"bulgogi"},
 {word:"불결하다",meaning:"to be unsanitary, filthy, unclean, untouchable, dirty"},
@@ -4020,6 +4016,7 @@ function copyToClipboard() {
 {word:"밝히다",meaning:"to brighten (up), lighten, turn on a light; clarify, disclose, reveal; stay up; be crazy for; give hope"},
 {word:"밝다",meaning:"to be bright (focus on the amount of light), light; be promising; sharp, keen"},
 {word:"발휘하다",meaning:"to demonstrate, show, exhibit (one's talent/capacity), (successfully do something/exercise a skill that demonstrates your prowess)"},
+{word:"발효",meaning:"fermentation;enforcement"},
 {word:"발행",meaning:"publication (of a text), issue (official documents/currency)"},
 {word:"발표회",meaning:"recital, performance, conference, exhibition, meeting"},
 {word:"발표",meaning:"announcement, statement, presentation, publish, release"},
@@ -4121,10 +4118,12 @@ function copyToClipboard() {
 {word:"믿다",meaning:"믿어요"},
 {word:"믿다",meaning:"to believe, trust"},
 {word:"민주주의",meaning:"democracy"},
+{word:"민주당",meaning:"democrat"},
 {word:"민족",meaning:"people, ethnic group, race"},
 {word:"민속촌",meaning:"Folk village"},
 {word:"민생",meaning:"public welfare, people's livelihood (not common)"},
 {word:"민망하다",meaning:"to be embarassed, ashamed (not common)"},
+{word:"민감",meaning:"sensitive"},
 {word:"미화하다",meaning:"to glorify, glamorize, romanticize"},
 {word:"미혼",meaning:"single, unmarried"},
 {word:"미터",meaning:"meter"},
@@ -4528,10 +4527,13 @@ function copyToClipboard() {
 {word:"리필하다",meaning:"to refill"},
 {word:"리본",meaning:"ribbon"},
 {word:"리모콘",meaning:"remote control"},
+{word:"를", meaning:"(object marker, used when the preceding noun ends with a vowel; marks the direct object of the sentence)"},
 {word:"룸메이트",meaning:"roommate"},
+{word:"로이터",meaning:"Reuters"},
 {word:"로션",meaning:"lotion"},
 {word:"로봇",meaning:"robot"},
 {word:"로맨스",meaning:"romance, love story"},
+{word:"로", meaning:"(particle) used to indicate direction, means, or cause"},
 {word:"레이더",meaning:"radar"},
 {word:"레슨",meaning:"lesson, private lesson"},
 {word:"레슨",meaning:"lesson, private lesson (not school subjects; instruments etc)"},
@@ -4605,6 +4607,7 @@ function copyToClipboard() {
 {word:"따스하다",meaning:"to be warm, kind (less common/sentimental feeling)"},
 {word:"따르다",meaning:"따라요"},
 {word:"따르다",meaning:"to follow, go after; be fond of, love; to pour, fill"},
+{word:"따르", meaning:"(verb stem) to follow; according to"},
 {word:"따로따로",meaning:"separately, individually"},
 {word:"따로",meaning:"separately (not with other things); privately; specifically; in addition"},
 {word:"따라하다",meaning:"to imitate, repeat (after), copy, follow"},
@@ -4621,6 +4624,7 @@ function copyToClipboard() {
 {word:"디자인",meaning:"design"},
 {word:"디자이너",meaning:"designer"},
 {word:"등장하다",meaning:"to appear, make an appearance"},
+{word:"등에",meaning:"etcetera"},
 {word:"등신",meaning:"fool, idiot, deformed person (not common)"},
 {word:"등산화",meaning:"hiking boots"},
 {word:"등산",meaning:"hiking, mountain climbing"},
@@ -4820,6 +4824,7 @@ function copyToClipboard() {
 {word:"더하다",meaning:"to add (up), sum up; get worse, increase, intensify (closer to the math version/increasing)"},
 {word:"더위",meaning:"the heat"},
 {word:"더욱",meaning:"more, increasingly, more and more, further"},
+{word:"더불어",meaning:"unified political party"},
 {word:"더럽다",meaning:"더러워요"},
 {word:"더럽다",meaning:"to be dirty, filthy; mean; awful, terrible"},
 {word:"더듬이",meaning:"feelers, antenna"},
@@ -4886,6 +4891,7 @@ function copyToClipboard() {
 {word:"대걸레",meaning:"mop (wet rag on a stick) (not common)"},
 {word:"대개",meaning:"mostly, generally, usually, for the most part, in most cases, by and large (less common than 보통/주로)"},
 {word:"대가족",meaning:"large family, extended family (mulitple generation and includes families of siblings etc)"},
+{word:"대", meaning:"counter for vehicles or machines; against, opposition; large, big; table"},
 {word:"닿다",meaning:"to touch, reach, brush; reach arrive (at, in), get to; be in touch (with), attach"},
 {word:"당황스럽다",meaning:"to be flustered, disconcerted (not composed), confused, embarrassed"},
 {word:"당하다",meaning:"to experience, encounter, suffer, undergo, receive (something bad)"},
@@ -5195,6 +5201,7 @@ function copyToClipboard() {
 {word:"낭만적",meaning:"romantic"},
 {word:"낭만",meaning:"romance"},
 {word:"낭독하다",meaning:"to read aloud, recite"},
+{word:"났다",meaning:"past tense -ed"},
 {word:"낫다",meaning:"나아요"},
 {word:"낫다",meaning:"to heal, recover; better (than)"},
 {word:"납치하다",meaning:"to kidnap"},
@@ -5248,6 +5255,7 @@ function copyToClipboard() {
 {word:"나흘",meaning:"four days"},
 {word:"나타내다",meaning:"to express, display; show, turn up, appear; show, reveal; represent, stand for"},
 {word:"나타나다",meaning:"to appear (something that was hidden); turn up, show up (a sign that something will or has occured); be revealed; be expressed, displayed"},
+{word:"나타",meaning:"to appear"},
 {word:"나중에",meaning:"later"},
 {word:"나이",meaning:"age"},
 {word:"나오다",meaning:"to come out"},
@@ -5348,6 +5356,7 @@ function copyToClipboard() {
 {word:"깨",meaning:"sesame"},
 {word:"깜짝",meaning:"startling, surprising, all of a sudden"},
 {word:"깜빡하다",meaning:"to forget (very short term, seconds), slip one's mind; blink; flicker"},
+{word:"깜깜",meaning:"in the dark"},
 {word:"깔끔하다",meaning:"to be neat, tidy, not dirty, sharp (broader usage)"},
 {word:"깎다",meaning:"깎아요"},
 {word:"깎다",meaning:"to peel, trim, cut, shave; discount (cut the price); humiliate"},
@@ -5444,6 +5453,7 @@ function copyToClipboard() {
 {word:"기관",meaning:"engine; institute, school; organ"},
 {word:"기계",meaning:"machine, machinery, robot; being machine-like"},
 {word:"기간",meaning:"period (of time), term; backbone"},
+{word:"기",meaning:"This is a nominalizer, turning the verb into a noun-like form, roughly meaning the act of promoting."},
 {word:"긍정적",meaning:"positive, affirmative (something is correct); being positive, optimistic"},
 {word:"긋다",meaning:"to draw a line; buy on credit; limit, restrict; rain stops temporarily"},
 {word:"급히",meaning:"hastily, in a hurry, quickly (state of needing to do something very quickly)"},
@@ -5542,9 +5552,11 @@ function copyToClipboard() {
 {word:"귀",meaning:"ear; corner; handle"},
 {word:"궤도",meaning:"track (designated path), orbit"},
 {word:"권한",meaning:"rights, authority, power"},
+{word:"권한",meaning:"authority,power"},
 {word:"권하다",meaning:"to advise, recommend (stronger, speaker wants you to do it); offer"},
 {word:"권투",meaning:"boxing"},
 {word:"권총",meaning:"pistol, hand gun"},
+{word:"권익",meaning:"civil rights"},
 {word:"권유하다",meaning:"to advise, suggest, recommend"},
 {word:"권력",meaning:"power, authority (used to control others)"},
 {word:"궁전",meaning:"palace"},
@@ -5793,6 +5805,7 @@ function copyToClipboard() {
 {word:"계집아이",meaning:"girl (child) (talking about your child to others)"},
 {word:"계좌",meaning:"bank account"},
 {word:"계절",meaning:"season, high season, peak"},
+{word:"계엄",meaning:"martial law"},
 {word:"계약직",meaning:"contract worker"},
 {word:"계약",meaning:"contract (with/between), agreement"},
 {word:"계시다",meaning:"to exist (honorific); be present, stay"},
@@ -5873,6 +5886,7 @@ function copyToClipboard() {
 {word:"게다가",meaning:"in addition, besides, on top of that, furthermore, additionally"},
 {word:"게",meaning:"crab; pronoun used to indicate a place close to the listener"},
 {word:"겉",meaning:"the outside, exterior (of something), surface"},
+{word:"것으로",meaning:"with"},
 {word:"겁쟁이",meaning:"coward, scaredy cat, chicken"},
 {word:"겁",meaning:"fear, scared, dread, terror"},
 {word:"검토하다",meaning:"to examine, review, study (information in depth)"},
@@ -6011,15 +6025,6 @@ function copyToClipboard() {
 {word:"감소하다",meaning:"to decline, decrease, drop (formal)"},
 {word:"감상하다",meaning:"to enjoy, appreciate (art, music, etc)"},
 {word:"감미롭다",meaning:"to be sweet, mellow"},
-{word:"비판",meaning:"criticism"},
-{word:"파면해",meaning:"dismiss"},
-    {word:"하며", meaning:"(conjunctive) while doing, and (connects actions or states)"},
-    {word:"윤", meaning:"gloss, luster (rare standalone; possibly a name fragment)"},
-    {word:"을", meaning:"(object marker) indicates the direct object of a verb when preceded by a consonant"},
-    {word:"야", meaning:"(auxiliary) must, should (indicates necessity or obligation)"},
-    {word:"한", meaning:"(auxiliary) did, has done (part of verb conjugation, e.g., with 다)"},
-    {word:"고", meaning:"(quotative) that, saying (indicates reported speech or thought)"},
-    {word:"다", meaning:"(auxiliary) does, is (assertive ending for verbs or statements)"}, 
 {word:"감동하다",meaning:"to be impressed, moved, touched (emotionally)"},
 {word:"감동적",meaning:"(noun) be moving, touching, impressive"},
 {word:"감동시키다",meaning:"to impress, move (someone)"},
@@ -6077,8 +6082,6 @@ function copyToClipboard() {
 {word:"가장",meaning:"(adv) the most, best; head of house (native Korean)"},
 {word:"가입하다",meaning:"to join, subscribe, sign up , become a member (of) (for more officla organizations/groups)"},
 {word:"가을",meaning:"fall, autumn"},
-{word:"핀란드", meaning:"Finland"},
-{word:"를", meaning:"(object marker, used when the preceding noun ends with a vowel; marks the direct object of the sentence)"},
 {word:"가위바위보",meaning:"rock-paper-scissors"},
 {word:"가위",meaning:"scissors"},
 {word:"가운데",meaning:"center, middle, among, between; be in the process of doing something"},
@@ -6088,9 +6091,6 @@ function copyToClipboard() {
 {word:"가습기",meaning:"humidifier"},
 {word:"가슴",meaning:"chest, breasts, heart; front"},
 {word:"가스",meaning:"gas"},
-{word:"로", meaning:"(particle) used to indicate direction, means, or cause"},
-{word:"에", meaning:"(particle) used to indicate a location, time, or direction"},
-{word:"따르", meaning:"(verb stem) to follow; according to"},
 {word:"가수",meaning:"singer"},
 {word:"가사",meaning:"lyrics; housework, chores"},
 {word:"가불하다",meaning:"to (be) pay in advance"},
@@ -6118,9 +6118,7 @@ function copyToClipboard() {
 {word:"가능성",meaning:"possibility, likelihood, probability, chance; potential"},
 {word:"가늘다",meaning:"to be thin, slender; small, weak, slight (something of length/abstract)"},
 {word:"가난하다",meaning:"to be poor (money)"},
- {word:"가", meaning:"(postposition) to, toward (indicating direction or target, e.g., toward Yoon Seok-yeol)"},
 {word:"가끔",meaning:"sometimes, occasionally"},
- {word:"의", meaning:"(possessive particle) of (indicating possession, e.g., the president’s declaration)"},
 {word:"가꾸다",meaning:"to grow, cultivate (plants); take care of, tend; decorate, make oneself look good"},
 {word:"가깝다",meaning:"to be close, nearby"},
 {word:"가까이",meaning:"near, close (to); nearly around, almost, about"},
@@ -6129,6 +6127,9 @@ function copyToClipboard() {
 {word:"가곡",meaning:"traditional song, classical song (old)"},
 {word:"가격",meaning:"price; hitting, striking"},
 {word:"가게",meaning:"shop, store"},
+{word:"\’",meaning:"close single quote"},
+{word:"\‘",meaning:"open single quote"},
+{word:"\,",meaning:"comma"},
 {word:"1일 2일 ... 15일 ... 29 일 30일",meaning:"individual days"},
 {word:"-에 대해",meaning:"about"},
 {word:"-에 관하다",meaning:"to take care of; refer to, related to, be about; affect, have (something) to do with, have influence on, involve, concern"},
@@ -6147,6 +6148,15 @@ function copyToClipboard() {
 {word:"(11) 십일월",meaning:"November"},
 {word:"(10) 십월",meaning:"October"},
 {word:"(1) 일월",meaning:"January"},
+ {word:"의", meaning:"(possessive particle) of (indicating possession, e.g., the president’s declaration)"},
+ {word:"가", meaning:"(postposition) to, toward (indicating direction or target, e.g., toward Yoon Seok-yeol)"},
+    {word:"한", meaning:"(auxiliary) did, has done (part of verb conjugation, e.g., with 다)"},
+    {word:"하며", meaning:"(conjunctive) while doing, and (connects actions or states)"},
+    {word:"을", meaning:"(object marker) indicates the direct object of a verb when preceded by a consonant"},
+    {word:"윤", meaning:"gloss, luster (rare standalone; possibly a name fragment)"},
+    {word:"야", meaning:"(auxiliary) must, should (indicates necessity or obligation)"},
+    {word:"다", meaning:"(auxiliary) does, is (assertive ending for verbs or statements)"}, 
+    {word:"고", meaning:"(quotative) that, saying (indicates reported speech or thought)"},
         ];
         function breakIntoRomanizedJamo(hangul) {
             const initialConsonants = [
@@ -6236,35 +6246,38 @@ function copyToClipboard() {
             return results;
        }
 
-        // Function to display results with mixed matched/unmatched, no "Unmatched:" for spaces
-        function displayResults() {
-            const rawInput = document.getElementById("userInput").value.trim();
-            const outputDiv = document.getElementById("output");
+function displayResults() {
+    const rawInput = document.getElementById("userInput").value.trim();
+    const outputDiv = document.getElementById("output");
 
-            outputDiv.innerHTML = ""; // Clear previous output
+    outputDiv.innerHTML = ""; // Clear previous output
 
-            if (!rawInput) {
-                outputDiv.innerHTML = "<p><i>Please enter some Korean text.</i></p>";
-                return;
-           }
+    if (!rawInput) {
+        outputDiv.innerHTML = "<p><i>Please enter some Korean text.</i></p>";
+        return;
+    }
 
-            const cleanedInput = removePunctuation(rawInput);
-            const results = matchInputToDictionary(cleanedInput, koreanDictionary);
+    const cleanedInput = removePunctuation(rawInput);
+    const results = matchInputToDictionary(cleanedInput, koreanDictionary);
 
-            if (results.length === 0) {
-                outputDiv.innerHTML = "<p><i>No matches found in dictionary.</i></p>";
-                return;
-           }
+    if (results.length === 0) {
+        outputDiv.innerHTML = "<p><i>No matches found in dictionary.</i></p>";
+        return;
+    }
 
-            // Display interleaved results, skipping "Unmatched:" for spaces
-            outputDiv.innerHTML = results.map(item => 
-                item.meaning 
-                    ? `<p class="matched"><b>${item.word} ${item.romanized}</b>:${item.meaning}</p>`
-                    :(item.isSpace 
-                        ? `<p>${item.word}</p>` // Just the space, no label
-                        :`<p class="unmatched">Unmatched:${item.word}</p>`)
-            ).join("");
-       }
+    // NEW: Display words split by spaces
+    const splitWords = cleanedInput.split(/\s+/);
+    outputDiv.innerHTML += `<p><b>Split Words:</b> ${splitWords.join(" | ")}</p>`;
+
+    // Display interleaved results, skipping "Unmatched:" for spaces
+    outputDiv.innerHTML += results.map(item => 
+        item.meaning 
+            ? `<p class="matched"><b>${item.word} ${item.romanized}</b>:${item.meaning}</p>`
+            : (item.isSpace 
+                ? `<p>${item.word}</p>` // Just the space, no label
+                : `<p class="unmatched">Unmatched:${item.word}</p>`)
+    ).join("");
+}
     </script>
 </body>
 </html>
