@@ -202,23 +202,23 @@ function translateB()
 
 const replsB=[
 
-{p1:/(～)(?!X)/g,r1:'$1Xhyphen,from to;Par<hr>'},
-{p1:/(＝)(?!X)/g,r1:'$1Xequals;Par<hr>'},
-{p1:/(：)(?!X)/g,r1:'$1Xcolon;Par<hr>'},
-{p1:/(．)(?!X)/g,r1:'$1Xten,dot,decimal point;Par<hr>'},
-{p1:/(】)(?!X)/g,r1:'$1Xclose bracket;Par<hr>'},
-{p1:/(【)(?!X)/g,r1:'$1Xopen bracket;Par<hr>'},
-{p1:/(。)(?!X)/g,r1:'$1Xperiod;Par<hr>'},
-{p1:/(、)(?!X)/g,r1:'$1Xcomma;Par<hr>'},
-{p1:/(\・)(?!X)/g,r1:'$1Xword separator;Par<hr>'},
-{p1:/(\”)(?!X)/g,r1:'$1Xclose quote;Par<hr>'},
-{p1:/(\“)(?!X)/g,r1:'$1Xopen quote;Par<hr>'},
-{p1:/(\?)(?!X)/g,r1:'$1question mark;Par<hr>'},
-{p1:/(\/)(?!X)/g,r1:'$1forward slash;Par<hr>'},
-{p1:/([」』])(?!X)/g,r1:'$1Xclose quote;Par<hr>'},
-{p1:/([「『])(?!X)/g,r1:'$1Xopen quote;Par<hr>'},
-{p1:/([\)\）])(?!X)/g,r1:'$1Xclose parenthesis;Par<hr>'},
-{p1:/([\(\（])(?!X)/g,r1:'$1Xopen parenthesis;Par<hr>'},
+{p1:/(～)(?!X)/g,r1:'$1Xhyphen,from to;Par<br>-----;Punctuation-----<br>'},
+{p1:/(＝)(?!X)/g,r1:'$1Xequals;Par<br>-----;Punctuation-----<br>'},
+{p1:/(：)(?!X)/g,r1:'$1Xcolon;Par<br>-----;Punctuation-----<br>'},
+{p1:/(．)(?!X)/g,r1:'$1Xten,dot,decimal point;Par<br>-----;Punctuation-----<br>'},
+{p1:/(】)(?!X)/g,r1:'$1Xclose bracket;Par<br>-----;Punctuation-----<br>'},
+{p1:/(【)(?!X)/g,r1:'$1Xopen bracket;Par<br>-----;Punctuation-----<br>'},
+{p1:/(。)(?!X)/g,r1:'$1Xperiod;Par<br>-----;Punctuation-----<br>'},
+{p1:/(、)(?!X)/g,r1:'$1Xcomma;Par<br>-----;Punctuation-----<br>'},
+{p1:/(\・)(?!X)/g,r1:'$1Xword separator;Par<br>-----;Punctuation-----<br>'},
+{p1:/(\”)(?!X)/g,r1:'$1Xclose quote;Par<br>-----;Punctuation-----<br>'},
+{p1:/(\“)(?!X)/g,r1:'$1Xopen quote;Par<br>-----;Punctuation-----<br>'},
+{p1:/(\?)(?!X)/g,r1:'$1question mark;Par<br>-----;Punctuation-----<br>'},
+{p1:/(\/)(?!X)/g,r1:'$1forward slash;Par<br>-----;Punctuation-----<br>'},
+{p1:/([」』])(?!X)/g,r1:'$1Xclose quote;Par<br>-----;Punctuation-----<br>'},
+{p1:/([「『])(?!X)/g,r1:'$1Xopen quote;Par<br>-----;Punctuation-----<br>'},
+{p1:/([\)\）])(?!X)/g,r1:'$1Xclose parenthesis;Par<br>-----;Punctuation-----<br>'},
+{p1:/([\(\（])(?!X)/g,r1:'$1Xopen parenthesis;Par<br>-----;Punctuation-----<br>'},
 
 {p1:/(六本木)/g,r1:'$1<br>,Roppongi, Tokyo;Par'},
 {p1:/(東京)/g,r1:'$1<br>,Tokyo,Eastern Capital,Japan;Par'},
@@ -2499,6 +2499,7 @@ const replsB=[
 {p1:/(見)(?!X)(落)(?!X)(と)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xmio$2Xto$3X,miss,fail to notice$4X;SuVerb'},
 {p1:/(見)(?!X)(比)(?!X)(べ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmik$2Xu$3Xrabe,look from one to another,compare$4X;RuVerb'},
 {p1:/(見)(?!X)(合)(?!X)(わ)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xmi$2Xa$3Xwa,exchange glances,postpone,contrast$4X;SuVerb'},
+{p1:/(書)(?!X)(き)(?!X)(残)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xka$2Xki$3Xnoko,leave a note behind$4X;SuVerb'},
 {p1:/(見)(?!X)(下)(?!X)(ろ)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xmio$2Xro$3X,look down,overlook$4X;SuVerb'},
 {p1:/(見)(?!X)(上)(?!X)(げ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmi$2Xa$3Xge,look up$4X;RuVerb'},
 {p1:/(見)(?!X)(つ)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xmit$2Xsu$3Xme,stare$4X;RuVerb'},
@@ -2615,6 +2616,7 @@ const replsB=[
 {p1:/(可)(?!X)(愛)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xkaw$2Xai$3Xga,love,cherish$4X;RuVerb'},
 {p1:/(受)(?!X)(け)(?!X)(持)(?!X)([たちつてとっ])(?!X)/g,r1:'$1Xuke$2Xmo$3X,have charge of$4X;TsuVerb'},
 {p1:/(受)(?!X)(け)(?!X)(取)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xu$2Xke$3Xto,to receive,$4XRuVerb'},
+{p1:/(走)(?!X)(り)(?!X)(書)(?!X)([かきくけこい])(?!X)/g,r1:'$1Xhashi$2Xri$3Xka,scrawled quickly$4X;KuVerb'},
 {p1:/(受)(?!X)(け)(?!X)(取)(?!X)([らりるれろっ])(?!X)/g,r1:'$1Xu$2Xke$3Xto,accept$4X;RuVerb'},
 {p1:/(取)(?!X)(り)(?!X)(返)(?!X)([さしすせそ])(?!X)/g,r1:'$1Xtor$2Xik$3Xae,take back,regain$4X;SuVerb'},
 {p1:/(取)(?!X)(り)(?!X)(組)(?!X)([まみむめもん])(?!X)/g,r1:'$1Xto$2Xri$3Xku,grapple$4X;MuVerb'},
@@ -7357,6 +7359,7 @@ const replsB=[
 {p1:/(工)(?!X)(夫)(?!X)/g,r1:'$1Xku$2Xfuu,contrivance,scheme;Par'},
 {p1:/(工)(?!X)(場)(?!X)/g,r1:'$1Xkou$2Xjyou,factory;Par'},
 {p1:/(工)(?!X)(作)(?!X)/g,r1:'$1Xkou$2Xsaki,handicraft;Par'},
+{p1:/(遺)(?!X)(書)(?!X)/g,r1:'$1Xi$2Xsyo,posthumous work;Par'},
 {p1:/(工)(?!X)(事)(?!X)/g,r1:'$1Xkou$2Xji,construction;Par'},
 {p1:/(巡)(?!X)(視)(?!X)/g,r1:'$1Xjyun$2Xshi,inspection tour;Par'},
 {p1:/(巡)(?!X)(航)(?!X)/g,r1:'$1Xjyun$2Xkou,cruise;Par'},
@@ -10674,23 +10677,23 @@ const replsB=[
 {p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1Xma$2Xde,up to;Par'},
 {p1:/(等|な)(?!X)(ど)(?!X)/g,r1:'$1Xna$2Xdo,etcetera,Conjunction'},
 
-{p1:/(か)(?!X)/g,r1:'$1Xka,indicates a question above;Par<hr>'},
-{p1:/(が)(?!X)/g,r1:'$1Xga,the subject above acts;Par<hr>'},
-{p1:/(で)(?!X)/g,r1:'$1Xde,at,with the above;Par<hr>'},
-{p1:/(に)(?!X)/g,r1:'$1Xni,at,in,on the above;Par<hr>'},
-{p1:/(は)(?!X)/g,r1:'$1Xwa,as for the subject above;Par<hr>'},
-{p1:/(へ)(?!X)/g,r1:'$1Xe,towards the above;Par<hr>'},
-{p1:/(も)(?!X)/g,r1:'$1Xmo,the above too;Par<hr>'},
-{p1:/(や)(?!X)/g,r1:'$1Xya,and,comma;Par<hr>'},
+{p1:/(か)(?!X)/g,r1:'$1Xka,indicates a question above;Par<br>-----;Postposition-----<br>'},
+{p1:/(が)(?!X)/g,r1:'$1Xga,the subject above acts;Par<br>-----;Postposition-----<br>'},
+{p1:/(で)(?!X)/g,r1:'$1Xde,at,with the above;Par<br>-----;Postposition-----<br>'},
+{p1:/(に)(?!X)/g,r1:'$1Xni,at,in,on the above;Par<br>-----;Postposition-----<br>'},
+{p1:/(は)(?!X)/g,r1:'$1Xwa,as for the subject above;Par<br>-----;Postposition-----<br>'},
+{p1:/(へ)(?!X)/g,r1:'$1Xe,towards the above;Par<br>-----;Postposition-----<br>'},
+{p1:/(も)(?!X)/g,r1:'$1Xmo,the above too;Par<br>-----;Postposition-----<br>'},
+{p1:/(や)(?!X)/g,r1:'$1Xya,and,comma;Par<br>-----;Postposition-----<br>'},
 {p1:/(を)(?!X)/g,r1:'$1Xoo,direct object above is acted on;Par'},
 
 {p1:/(Adverb)(く)(?!X)/g,r1:'$1 $2Xku,and;Par'},
-{p1:/(IAdjectiveと|NaAdjectiveと|;Parと)(?!X)/g,r1:'$1Xto,with the above,the person said;Par'},
+{p1:/(;Parと)(?!X)/g,r1:'$1Xto,with the above,the person said;Par'},
 {p1:/(Adjectiveな|;Parな)(?!X)/g,r1:'$1Xna,NaAdjective'},
 {p1:/(Adverbな)(?!X)/g,r1:'$1Xna,Adverb'},
 {p1:/(;Par等)(?!X)/g,r1:'$1Xra,plural;Par'},
 {p1:/(;Par)(の)(?!X)/g,r1:'$1X$2no,of the above;Par'},
-{p1:/(Verb|Punctuation)(と)(?!X)/g,r1:'$1 $2Xto,by way of the above;Par'},
+{p1:/(Verb)(と)(?!X)/g,r1:'$1 $2Xto,by way of the above;Par'},
 
 {p1:/(KuVerb|UVerb|MuVerb|RuVerb|TsuVerb|SuVerb|BuVerb)/g,r1:'$1 '},
 
@@ -10813,11 +10816,7 @@ function copyToClipboard() {
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-【エルサレム時事】イスラエルのカッツ国防相は21日、声明を出し、パレスチナ自治区ガザへの地上侵攻について、「さらに支配地域を拡大するよう軍に指示した」と明らかにした。
-
-【写真特集】ガザ衝突～「最悪の虐殺」～
-
-　また、イスラム組織ハマスが人質を解放しない限り、占領地域を「恒久的に支配する」として、作戦を継続する方針を表明。イスラエル軍は最南部ラファや北部などで作戦地域を拡大し、ハマスへの圧力を強化している。
+オウム真理教幹部として地下鉄サリンなど主要事件に関与した中川智正元死刑囚＝執行時（55）＝が2018年7月の執行直前に書き残した遺書や手紙が見つかった。共同通信が22日までに、中川元死刑囚に近い関係者からコピーの提供を受けた。執行日朝の遺書には「みなありがとう」「お別れです」と走り書きしていた。
 <p>
 <button id="adminToggle" onclick="toggleAdminSection()">Admin use only</button>
 <div id="adminSection" style="display: none;">
