@@ -299,6 +299,44 @@ if (piece.image) {
                 sandbox.appendChild(el);
             });
         }
+document.addEventListener("DOMContentLoaded", function () {
+    let draggedElement = null;
+    let offsetX = 0, offsetY = 0;
+
+    function startDrag(e) {
+        draggedElement = e.target;
+        let touch = e.touches ? e.touches[0] : e;
+        offsetX = touch.clientX - draggedElement.getBoundingClientRect().left;
+        offsetY = touch.clientY - draggedElement.getBoundingClientRect().top;
+        e.preventDefault();
+    }
+
+    function doDrag(e) {
+        if (!draggedElement) return;
+        let touch = e.touches ? e.touches[0] : e;
+        draggedElement.style.position = "absolute";
+        draggedElement.style.left = (touch.clientX - offsetX) + "px";
+        draggedElement.style.top = (touch.clientY - offsetY) + "px";
+        e.preventDefault();
+    }
+
+    function stopDrag() {
+        draggedElement = null;
+    }
+
+    // Add event listeners for both mouse and touch
+    document.querySelectorAll(".draggable").forEach(elem => {
+        elem.addEventListener("mousedown", startDrag);
+        elem.addEventListener("touchstart", startDrag, { passive: false });
+    });
+
+    document.addEventListener("mousemove", doDrag);
+    document.addEventListener("touchmove", doDrag, { passive: false });
+
+    document.addEventListener("mouseup", stopDrag);
+    document.addEventListener("touchend", stopDrag);
+});
+	    
 
 function rotatePiece(id) {
     const piece = pieces.find(p => p.id === id);
