@@ -312,6 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
         offsetX = touch.clientX - rect.left;
         offsetY = touch.clientY - rect.top;
         
+        // Prevent default behavior to avoid issues with scrolling or other touch actions
         e.preventDefault();
     }
 
@@ -319,10 +320,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!draggedElement) return;
         let touch = e.touches ? e.touches[0] : e;
 
+        // Move the element based on the touch position
         draggedElement.style.position = "absolute";
         draggedElement.style.left = (touch.clientX - offsetX) + "px";
         draggedElement.style.top = (touch.clientY - offsetY) + "px";
         
+        // Prevent default behavior for touchmove
         e.preventDefault();
     }
 
@@ -337,11 +340,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function rotateElement(e) {
-        e.preventDefault();
+        e.preventDefault();  // Prevent any drag behavior from interfering
+        e.stopPropagation(); // Ensure the rotate button works and does not trigger drag
+
         let parent = e.target.closest(".draggable");
         if (!parent) return;
 
-        let currentRotation = parent.style.transform.match(/rotate(\d+)deg/);
+        // Get current rotation angle and increment it by 15 degrees
+        let currentRotation = parent.style.transform.match(/rotate\((\d+)deg\)/);
         let newAngle = currentRotation ? (parseInt(currentRotation[1]) + 15) % 360 : 15;
 
         parent.style.transform = `rotate(${newAngle}deg)`;
@@ -359,7 +365,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("mouseup", stopDrag);
     document.addEventListener("touchend", stopDrag);
 });
-	    
 
 function rotatePiece(id) {
     const piece = pieces.find(p => p.id === id);
