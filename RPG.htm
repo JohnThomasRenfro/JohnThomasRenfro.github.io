@@ -304,19 +304,25 @@ document.addEventListener("DOMContentLoaded", function () {
     let offsetX = 0, offsetY = 0;
 
     function startDrag(e) {
-        draggedElement = e.target;
         let touch = e.touches ? e.touches[0] : e;
-        offsetX = touch.clientX - draggedElement.getBoundingClientRect().left;
-        offsetY = touch.clientY - draggedElement.getBoundingClientRect().top;
+        draggedElement = e.target.closest(".draggable"); // Ensure only draggable elements move
+        if (!draggedElement) return;
+
+        let rect = draggedElement.getBoundingClientRect();
+        offsetX = touch.clientX - rect.left;
+        offsetY = touch.clientY - rect.top;
+        
         e.preventDefault();
     }
 
     function doDrag(e) {
         if (!draggedElement) return;
         let touch = e.touches ? e.touches[0] : e;
+
         draggedElement.style.position = "absolute";
         draggedElement.style.left = (touch.clientX - offsetX) + "px";
         draggedElement.style.top = (touch.clientY - offsetY) + "px";
+        
         e.preventDefault();
     }
 
@@ -324,7 +330,24 @@ document.addEventListener("DOMContentLoaded", function () {
         draggedElement = null;
     }
 
-    // Add event listeners for both mouse and touch
+    // Rotate button handling
+    document.querySelectorAll(".rotate-button").forEach(btn => {
+        btn.addEventListener("mousedown", rotateElement);
+        btn.addEventListener("touchstart", rotateElement, { passive: false });
+    });
+
+    function rotateElement(e) {
+        e.preventDefault();
+        let parent = e.target.closest(".draggable");
+        if (!parent) return;
+
+        let currentRotation = parent.style.transform.match(/rotate(\d+)deg/);
+        let newAngle = currentRotation ? (parseInt(currentRotation[1]) + 15) % 360 : 15;
+
+        parent.style.transform = `rotate(${newAngle}deg)`;
+    }
+
+    // Apply drag functionality
     document.querySelectorAll(".draggable").forEach(elem => {
         elem.addEventListener("mousedown", startDrag);
         elem.addEventListener("touchstart", startDrag, { passive: false });
