@@ -1,355 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AD&D Encounter Manager</title>
-    <style>
-        body {
-            font-family: "Fantasy", serif;
-            background-color: #111;
-            color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>AD&D Encounter Manager</title>
+ <style>
+ body {
+ font-family: "Fantasy", serif;
+ background-color: #111;
+ color: #f9f9f9;
+ margin: 0;
+ padding: 0;
+ }
 
-        .header {
-            background: linear-gradient(to right, #4e1700, #a67c00);
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 15px #000;
-        }
+ .header {
+ background: linear-gradient(to right, #4e1700, #a67c00);
+ padding: 20px;
+ text-align: center;
+ box-shadow: 0 2px 15px #000;
+ }
 
-        h1 {
-            margin: 0;
-            color: #ffeb3b;
-            font-size: 2.5em;
-            text-shadow: 3px 3px #000;
-        }
+ h1 {
+ margin: 0;
+ color: #ffeb3b;
+ font-size: 2.5em;
+ text-shadow: 3px 3px #000;
+ }
 
-        .controls {
-            padding: 15px;
-            background: #333;
-            text-align: center;
-        }
+ .controls {
+ padding: 15px;
+ background: #333;
+ text-align: center;
+ }
 
-        button, .upload-btn {
-            font-size: 1.2em;
-            padding: 10px 15px;
-            margin: 5px;
-            color: white;
-            background: #5c2400;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-        }
+ button, .upload-btn {
+ font-size: 1.2em;
+ padding: 10px 15px;
+ margin: 5px;
+ color: white;
+ background: #5c2400;
+ border: none;
+ cursor: pointer;
+ border-radius: 8px;
+ }
 
-        button:hover, .upload-btn:hover {
-            background-color: #a0522d;
-        }
+ button:hover, .upload-btn:hover {
+ background-color: #a0522d;
+ }
 
-        .sandbox {
-            width: 100%;
-            height: 3000px;
-            background: url("default-map.jpg") center/cover no-repeat;
-            position: relative;
-            overflow: hidden;
-            border: 5px solid #a67c00;
-        }
+ .sandbox {
+ width: 100%;
+ height: 3000px;
+ background: url("default-map.jpg") center/cover no-repeat;
+ position: relative;
+ overflow: hidden;
+ border: 5px solid #a67c00;
+ }
 
 .draggable {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    background: #800000; /* Red background */
-    color: white;
-    text-align: center;
-    line-height: unset; /* Removed to allow name positioning */
-    cursor: grab;
-    box-shadow: 2px 2px 10px #000;
+ width: 50px;
+ height: 50px;
+ position: absolute;
+ background: #800000; /* Red background */
+ color: white;
+ text-align: center;
+ line-height: unset; /* Removed to allow name positioning */
+ cursor: grab;
+ box-shadow: 2px 2px 10px #000;
 }
 
-        .rotate-symbol {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 20px;
-            height: 20px;
-            background-color: #ffd700;
-            color: #000;
-            font-weight: bold;
-            text-align: center;
-            line-height: 20px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
+ .rotate-symbol {
+ position: absolute;
+ top: -10px;
+ right: -10px;
+ width: 20px;
+ height: 20px;
+ background-color: #ffd700;
+ color: #000;
+ font-weight: bold;
+ text-align: center;
+ line-height: 20px;
+ border-radius: 50%;
+ cursor: pointer;
+ }
 
-        img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-        }
+ img {
+ width: 100%;
+ height: 100%;
+ border-radius: 50%;
+ }
 
-        #statsEditor {
-            background: #222;
-            padding: 20px;
-            border-top: 2px solid #a67c00;
-        }
+ #statsEditor {
+ background: #222;
+ padding: 20px;
+ border-top: 2px solid #a67c00;
+ }
 
-        table {
-            width: 100%;
-            color: #f9f9f9;
-            border-collapse: collapse;
-        }
+ table {
+ width: 100%;
+ color: #f9f9f9;
+ border-collapse: collapse;
+ }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #444;
-        }
+ th, td {
+ padding: 10px;
+ text-align: left;
+ border-bottom: 1px solid #444;
+ }
 
-        input {
-            background: #5c2400;
-            border: none;
-            color: #fff;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;		
-        }	    
+ input {
+ background: #5c2400;
+ border: none;
+ color: #fff;
+ padding: 5px 10px;
+ cursor: pointer;
+ border-radius: 5px;		
+ }	 
 
-        .delete-btn, .clone-btn {
-            background: #5c2400;
-            border: none;
-            color: #fff;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+ .delete-btn, .clone-btn {
+ background: #5c2400;
+ border: none;
+ color: #fff;
+ padding: 5px 10px;
+ cursor: pointer;
+ border-radius: 5px;
+ }
 
-        .delete-btn:hover {
-            background: #b30000;
-        }
+ .delete-btn:hover {
+ background: #b30000;
+ }
 
-        .clone-btn:hover {
-            background: #a0522d;
-        }
+ .clone-btn:hover {
+ background: #a0522d;
+ }
 
-        input[type="number"]::-webkit-inner-spin-button, 
-        input[type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-    </style>
+ input[type="number"]::-webkit-inner-spin-button, 
+ input[type="number"]::-webkit-outer-spin-button {
+ -webkit-appearance: none;
+ margin: 0;
+ }
+ </style>
 </head>
 <body>
 <a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target=_blank>Module</a>|
 <a href="https://archive.org/details/dungeon-masters-screen/mode/1up" target=_blank>DM Screen</a>|
-    <div class="header">
-        <h1>🛡️ AD&D Encounter Manager 🐉</h1>
-    </div>
+ <div class="header">
+ <h1>🛡️ AD&D Encounter Manager 🐉</h1>
+ </div>
 	
-    <label for="d100">D100: </label>
-    <input type="text" id="d100" value="1d100+0"
+ <label for="d100">D100: </label>
+ <input type="text" id="d100" value="1d100+0"
 
-    <label for="d20">D20: </label>
-    <input type="text" id="d20" value="1d20+0">
+ <label for="d20">D20: </label>
+ <input type="text" id="d20" value="1d20+0">
 
-    <label for="d12">D12: </label>
-    <input type="text" id="d12" value="1d12+0">
+ <label for="d12">D12: </label>
+ <input type="text" id="d12" value="1d12+0">
 
-    <label for="d10">D10: </label>
-    <input type="text" id="d10" value="1d10+0">
+ <label for="d10">D10: </label>
+ <input type="text" id="d10" value="1d10+0">
 
-    <label for="d8">D8: </label>
-    <input type="text" id="d8" value="1d8+0">
+ <label for="d8">D8: </label>
+ <input type="text" id="d8" value="1d8+0">
 
-    <label for="d6">D6: </label>
-    <input type="text" id="d6" value="1d6+0">
+ <label for="d6">D6: </label>
+ <input type="text" id="d6" value="1d6+0">
 
-    <label for="d4">D4: </label>
-    <input type="text" id="d4" value="1d4+0">
+ <label for="d4">D4: </label>
+ <input type="text" id="d4" value="1d4+0">
 
-    <button onclick="rollAllDice()">Roll</button>
-    Results:
-    <p id="results"></p>
-
-
-
-    <div class="controls">
-        <button onclick="addPiece()">Add Character/Monster</button>
+ <button onclick="rollAllDice()">Roll</button>
+ Results:
+ <p id="results"></p>
 
 
-    <div id="statsEditor">
-        <h2>Stats Overview</h2>
-        <table id="statsTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>AC</th>			
-                    <th>HP</th>
-                    <th>ATTKS</th>
-                    <th>GEAR</th>
-                    <th>Image</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Rows dynamically added here -->
-            </tbody>
-        </table>
-    </div>
-        <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
-        <label for="mapInput" class="upload-btn">Upload Map</label>
-    </div>
 
-    <div class="sandbox" id="sandbox">
-        <!-- Draggable pieces dynamically generated here -->
-    </div>	
+ <div class="controls">
+ <button onclick="addPiece()">Add Character/Monster</button>
 
-    <script>
-        let pieces = JSON.parse(localStorage.getItem("pieces")) || [];
-        let currentDraggingPiece = null; // Keeps track of the currently dragged piece
+
+ <div id="statsEditor">
+ <h2>Stats Overview</h2>
+ <table id="statsTable">
+ <thead>
+ <tr>
+ <th>Name</th>
+ <th>AC</th>			
+ <th>HP</th>
+ <th>ATTKS</th>
+ <th>GEAR</th>
+ <th>Image</th>
+ <th>Actions</th>
+ </tr>
+ </thead>
+ <tbody>
+ <!-- Rows dynamically added here -->
+ </tbody>
+ </table>
+ </div>
+ <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
+ <label for="mapInput" class="upload-btn">Upload Map</label>
+ </div>
+
+ <div class="sandbox" id="sandbox">
+ <!-- Draggable pieces dynamically generated here -->
+ </div>	
+
+ <script>
+ let pieces = JSON.parse(localStorage.getItem("pieces")) || [];
+ let currentDraggingPiece = null; // Keeps track of the currently dragged piece
 
 const directions = [0, 45, 90, 135, 180, 225, 270, 315]; // Eight cardinal directions
 
-        function rollDice(diceNotation) {
-            const [countAndSides, modifier] = diceNotation.split('+').map((part) => part.trim());
-            const [count, sides] = countAndSides.split('d').map(Number);
-            const modifierValue = Number(modifier) || 0;
+ function rollDice(diceNotation) {
+ const [countAndSides, modifier] = diceNotation.split('+').map((part) => part.trim());
+ const [count, sides] = countAndSides.split('d').map(Number);
+ const modifierValue = Number(modifier) || 0;
 
-            let total = 0;
-            for (let i = 0; i < count; i++) {
-                total += Math.floor(Math.random() * sides) + 1; // Random roll
-            }
+ let total = 0;
+ for (let i = 0; i < count; i++) {
+ total += Math.floor(Math.random() * sides) + 1; // Random roll
+ }
 
-            return total + modifierValue;
-        }
+ return total + modifierValue;
+ }
 
-        function rollAllDice() {
-            const diceTypes = ['d100', 'd20', 'd12', 'd10', 'd8', 'd6', 'd4'];
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = ''; // Clear previous results
+ function rollAllDice() {
+ const diceTypes = ['d100', 'd20', 'd12', 'd10', 'd8', 'd6', 'd4'];
+ const resultsDiv = document.getElementById('results');
+ resultsDiv.innerHTML = ''; // Clear previous results
 
-            diceTypes.forEach((type) => {
-                const input = document.getElementById(type);
-                const diceNotation = input.value.trim();
+ diceTypes.forEach((type) => {
+ const input = document.getElementById(type);
+ const diceNotation = input.value.trim();
 
-                if (diceNotation) {
-                    const result = rollDice(diceNotation);
-                    const resultText = `|${type.toUpperCase()} result: ${result}`;
-                    resultsDiv.innerHTML += resultText; // Append result to the results div
-                }
-            });
-        }
+ if (diceNotation) {
+ const result = rollDice(diceNotation);
+ const resultText = `|${type.toUpperCase()} result: ${result}`;
+ resultsDiv.innerHTML += resultText; // Append result to the results div
+ }
+ });
+ }
 
 
-        function addPiece() {
-            const newPiece = {
-                id: Date.now(),
-                name: "Unnamed",
-                hp: 10,
-                ac: 10,
-                attks: 0,
-                gear: "armor, weapon, rations",
-                image: null,
-                x: 50,
-                y: 50,
-                rotation: 0 // Default rotation
-            };
-            pieces.push(newPiece);
-            saveToLocalStorage();
-            renderPieces();
-            renderStatsTable();
-        }
+ function addPiece() {
+ const newPiece = {
+ id: Date.now(),
+ name: "Unnamed",
+ hp: 10,
+ ac: 10,
+ attks: 0,
+ gear: "armor, weapon, rations",
+ image: null,
+ x: 50,
+ y: 50,
+ rotation: 0 // Default rotation
+ };
+ pieces.push(newPiece);
+ saveToLocalStorage();
+ renderPieces();
+ renderStatsTable();
+ }
 
-        function clonePiece(id) {
-            const original = pieces.find(p => p.id === id);
-            const clone = { ...original, id: Date.now(), name: `${original.name} (Clone)` };
-            clone.x += 10; // Offset for clarity
-            clone.y += 10; // Offset for clarity
-            pieces.push(clone);
-            saveToLocalStorage();
-            renderPieces();
-            renderStatsTable();
-        }
+ function clonePiece(id) {
+ const original = pieces.find(p => p.id === id);
+ const clone = { ...original, id: Date.now(), name: `${original.name} (Clone)` };
+ clone.x += 10; // Offset for clarity
+ clone.y += 10; // Offset for clarity
+ pieces.push(clone);
+ saveToLocalStorage();
+ renderPieces();
+ renderStatsTable();
+ }
 		
 		function renderPieces() {
-    const sandbox = document.getElementById("sandbox");
-    sandbox.innerHTML = "";
+ const sandbox = document.getElementById("sandbox");
+ sandbox.innerHTML = "";
 
-    pieces.forEach((piece) => {
-        const el = document.createElement("div");
-        el.className = "draggable";
-        el.textContent = piece.name; // Name is displayed again
-        el.style.left = piece.x + "px";
-        el.style.top = piece.y + "px";
-        el.style.transform = `rotate(${piece.rotation}deg)`;
-        el.id = `piece-${piece.id}`;
+ pieces.forEach((piece) => {
+ const el = document.createElement("div");
+ el.className = "draggable";
+ el.textContent = piece.name; // Name is displayed again
+ el.style.left = piece.x + "px";
+ el.style.top = piece.y + "px";
+ el.style.transform = `rotate(${piece.rotation}deg)`;
+ el.id = `piece-${piece.id}`;
 
 if (piece.image) {
-    const img = document.createElement("img");
-    img.src = piece.image;
-    img.style.width = "100%";
-    img.style.height = "100%";
-    img.style.objectFit = "cover"; // Ensures the image fills the square without distortion
-    el.appendChild(img);
+ const img = document.createElement("img");
+ img.src = piece.image;
+ img.style.width = "100%";
+ img.style.height = "100%";
+ img.style.objectFit = "cover"; // Ensures the image fills the square without distortion
+ el.appendChild(img);
 }
 
-                // Rotate symbol
-                const rotate = document.createElement("div");
-                rotate.className = "rotate-symbol";
-                rotate.textContent = "⟳";
-                rotate.onclick = () => rotatePiece(piece.id);
-                el.appendChild(rotate);
+ // Rotate symbol
+ const rotate = document.createElement("div");
+ rotate.className = "rotate-symbol";
+ rotate.textContent = "⟳";
+ rotate.onclick = () => rotatePiece(piece.id);
+ el.appendChild(rotate);
 
-                // Drag-and-drop behavior
-                el.onmousedown = (event) => startDrag(event, piece.id);
+ // Drag-and-drop behavior
+ el.onmousedown = (event) => startDrag(event, piece.id);
 
-                sandbox.appendChild(el);
-            });
-        }
+ sandbox.appendChild(el);
+ });
+ }
 
 function rotatePiece(id) {
-    const piece = pieces.find(p => p.id === id);
-    const currentIndex = directions.indexOf(piece.rotation);
-    piece.rotation = directions[(currentIndex + 1) % directions.length]; // Rotate to the next direction
-    saveToLocalStorage();
-    renderPieces(); // Re-render the sandbox for immediate visual feedback
+ const piece = pieces.find(p => p.id === id);
+ const currentIndex = directions.indexOf(piece.rotation);
+ piece.rotation = directions[(currentIndex + 1) % directions.length]; // Rotate to the next direction
+ saveToLocalStorage();
+ renderPieces(); // Re-render the sandbox for immediate visual feedback
 }
 
 
-        function renderStatsTable() {
-            const statsTable = document.querySelector("#statsTable tbody");
-            statsTable.innerHTML = ""; // Clear existing rows
+ function renderStatsTable() {
+ const statsTable = document.querySelector("#statsTable tbody");
+ statsTable.innerHTML = ""; // Clear existing rows
 
-            pieces.forEach((piece) => {
-                const row = document.createElement("tr");
-                row.id = `row-${piece.id}`;
+ pieces.forEach((piece) => {
+ const row = document.createElement("tr");
+ row.id = `row-${piece.id}`;
 
-                // Name
-                const nameCell = document.createElement("td");
-                const nameInput = document.createElement("input");
-                nameInput.type = "text";
-                nameInput.value = piece.name;
-                nameInput.oninput = (event) => {
-                    piece.name = event.target.value;
-                    saveToLocalStorage();
-                    renderPieces();
-                };
-                nameCell.appendChild(nameInput);
-                row.appendChild(nameCell);
+ // Name
+ const nameCell = document.createElement("td");
+ const nameInput = document.createElement("input");
+ nameInput.type = "text";
+ nameInput.value = piece.name;
+ nameInput.oninput = (event) => {
+ piece.name = event.target.value;
+ saveToLocalStorage();
+ renderPieces();
+ };
+ nameCell.appendChild(nameInput);
+ row.appendChild(nameCell);
 
-                // HP
-                const hpCell = document.createElement("td");
-                const hpInput = document.createElement("input");
-                hpInput.type = "number";
-                hpInput.value = piece.hp;
-                hpInput.oninput = (event) => {
-                    piece.hp = event.target.value;
-                    saveToLocalStorage();
-                };
-                hpCell.appendChild(hpInput);
-                row.appendChild(hpCell);
+
 
 // AC Input
 const acCell = document.createElement("td");
@@ -358,13 +348,27 @@ acInput.type = "text";
 acInput.inputMode = "numeric"; 
 acInput.value = piece.ac;
 acInput.maxLength = 4;
-acInput.size = 4;		    
+acInput.size = 4;		 
 acInput.oninput = (event) => {
-    piece.ac = event.target.value;
-    saveToLocalStorage();
+ piece.ac = event.target.value;
+ saveToLocalStorage();
 };
 acCell.appendChild(acInput);
 row.appendChild(acCell);
+
+ // HP
+ const hpCell = document.createElement("td");
+ const hpInput = document.createElement("input");
+ hpInput.type = "number";
+ hpInput.value = piece.hp;
+hpInput.maxLength = 4;
+hpInput.size = 4;			 
+ hpInput.oninput = (event) => {
+ piece.hp = event.target.value;
+ saveToLocalStorage();
+ };
+ hpCell.appendChild(hpInput);
+ row.appendChild(hpCell);		 
 
 // ATTKS Input
 const attksCell = document.createElement("td");
@@ -373,126 +377,126 @@ attksInput.type = "text"; // Use text type to avoid spinners
 attksInput.inputMode = "numeric"; // Still allow numeric inputs
 attksInput.value = piece.attks;
 attksInput.oninput = (event) => {
-    piece.attks = event.target.value;
-    saveToLocalStorage();
+ piece.attks = event.target.value;
+ saveToLocalStorage();
 };
 attksCell.appendChild(attksInput);
 row.appendChild(attksCell);
 
-                // GEAR
-                const gearCell = document.createElement("td");
-                const gearInput = document.createElement("input");
-                gearInput.type = "text";
-                gearInput.value = piece.gear;
-                gearInput.oninput = (event) => {
-                    piece.gear = event.target.value;
-                    saveToLocalStorage();
-                };
-                gearCell.appendChild(gearInput);
-                row.appendChild(gearCell);
+ // GEAR
+ const gearCell = document.createElement("td");
+ const gearInput = document.createElement("input");
+ gearInput.type = "text";
+ gearInput.value = piece.gear;
+ gearInput.oninput = (event) => {
+ piece.gear = event.target.value;
+ saveToLocalStorage();
+ };
+ gearCell.appendChild(gearInput);
+ row.appendChild(gearCell);
 
-                // Image Upload
-                const imageCell = document.createElement("td");
-                const imageInput = document.createElement("input");
-                imageInput.type = "file";
-                imageInput.accept = "image/*";
-                imageInput.onchange = (event) => {
-                    const file = event.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            piece.image = e.target.result;
-                            saveToLocalStorage();
-                            renderPieces();
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                };
-                imageCell.appendChild(imageInput);
-                row.appendChild(imageCell);
+ // Image Upload
+ const imageCell = document.createElement("td");
+ const imageInput = document.createElement("input");
+ imageInput.type = "file";
+ imageInput.accept = "image/*";
+ imageInput.onchange = (event) => {
+ const file = event.target.files[0];
+ if (file) {
+ const reader = new FileReader();
+ reader.onload = (e) => {
+ piece.image = e.target.result;
+ saveToLocalStorage();
+ renderPieces();
+ };
+ reader.readAsDataURL(file);
+ }
+ };
+ imageCell.appendChild(imageInput);
+ row.appendChild(imageCell);
 
-                // Actions (Clone and Delete Buttons)
-                const actionsCell = document.createElement("td");
-                const cloneBtn = document.createElement("button");
-                cloneBtn.className = "clone-btn";
-                cloneBtn.textContent = "Clone";
-                cloneBtn.onclick = () => {
-                    clonePiece(piece.id);
-                };
-                actionsCell.appendChild(cloneBtn);
+ // Actions (Clone and Delete Buttons)
+ const actionsCell = document.createElement("td");
+ const cloneBtn = document.createElement("button");
+ cloneBtn.className = "clone-btn";
+ cloneBtn.textContent = "Clone";
+ cloneBtn.onclick = () => {
+ clonePiece(piece.id);
+ };
+ actionsCell.appendChild(cloneBtn);
 
-                const deleteBtn = document.createElement("button");
-                deleteBtn.className = "delete-btn";
-                deleteBtn.textContent = "Delete";
-                deleteBtn.onclick = () => {
-                    pieces = pieces.filter(p => p.id !== piece.id);
-                    saveToLocalStorage();
-                    renderPieces();
-                    renderStatsTable();
-                };
-                actionsCell.appendChild(deleteBtn);
+ const deleteBtn = document.createElement("button");
+ deleteBtn.className = "delete-btn";
+ deleteBtn.textContent = "Delete";
+ deleteBtn.onclick = () => {
+ pieces = pieces.filter(p => p.id !== piece.id);
+ saveToLocalStorage();
+ renderPieces();
+ renderStatsTable();
+ };
+ actionsCell.appendChild(deleteBtn);
 
-                row.appendChild(actionsCell);
+ row.appendChild(actionsCell);
 
-                statsTable.appendChild(row);
-            });
-        }
+ statsTable.appendChild(row);
+ });
+ }
 
-        function startDrag(event, id) {
-            currentDraggingPiece = id;
-            const sandbox = document.getElementById("sandbox");
+ function startDrag(event, id) {
+ currentDraggingPiece = id;
+ const sandbox = document.getElementById("sandbox");
 
-            sandbox.onmousemove = (e) => drag(e);
-            sandbox.onmouseup = () => stopDrag();
-        }
+ sandbox.onmousemove = (e) => drag(e);
+ sandbox.onmouseup = () => stopDrag();
+ }
 
-        function drag(event) {
-            if (!currentDraggingPiece) return;
+ function drag(event) {
+ if (!currentDraggingPiece) return;
 
-            const sandbox = document.getElementById("sandbox");
-            const rect = sandbox.getBoundingClientRect();
+ const sandbox = document.getElementById("sandbox");
+ const rect = sandbox.getBoundingClientRect();
 
-            const piece = pieces.find(p => p.id === currentDraggingPiece);
-            piece.x = event.clientX - rect.left - 60; // Center the piece
-            piece.y = event.clientY - rect.top - 60;
+ const piece = pieces.find(p => p.id === currentDraggingPiece);
+ piece.x = event.clientX - rect.left - 60; // Center the piece
+ piece.y = event.clientY - rect.top - 60;
 
-            saveToLocalStorage();
-            renderPieces();
-        }
+ saveToLocalStorage();
+ renderPieces();
+ }
 
-        function stopDrag() {
-            currentDraggingPiece = null;
-            const sandbox = document.getElementById("sandbox");
-            sandbox.onmousemove = null;
-            sandbox.onmouseup = null;
-        }
+ function stopDrag() {
+ currentDraggingPiece = null;
+ const sandbox = document.getElementById("sandbox");
+ sandbox.onmousemove = null;
+ sandbox.onmouseup = null;
+ }
 
-        function saveToLocalStorage() {
-            localStorage.setItem("pieces", JSON.stringify(pieces));
-        }
+ function saveToLocalStorage() {
+ localStorage.setItem("pieces", JSON.stringify(pieces));
+ }
 
 function setMapBackground() {
-    const input = document.getElementById("mapInput");
-    const sandbox = document.getElementById("sandbox");
-    
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const backgroundImage = e.target.result; // Convert the image to a base64 string
-            sandbox.style.backgroundImage = `url(${backgroundImage})`; // Set the sandbox background
-            localStorage.setItem("mapBackground", backgroundImage); // Store the base64 URL in localStorage
-        };
-        reader.readAsDataURL(input.files[0]); // Read the file as a base64 string
-    }
+ const input = document.getElementById("mapInput");
+ const sandbox = document.getElementById("sandbox");
+ 
+ if (input.files && input.files[0]) {
+ const reader = new FileReader();
+ reader.onload = (e) => {
+ const backgroundImage = e.target.result; // Convert the image to a base64 string
+ sandbox.style.backgroundImage = `url(${backgroundImage})`; // Set the sandbox background
+ localStorage.setItem("mapBackground", backgroundImage); // Store the base64 URL in localStorage
+ };
+ reader.readAsDataURL(input.files[0]); // Read the file as a base64 string
+ }
 }
 
 function loadMapBackground() {
-    const sandbox = document.getElementById("sandbox");
-    const savedBackground = localStorage.getItem("mapBackground");
-    
-    if (savedBackground) {
-        sandbox.style.backgroundImage = `url(${savedBackground})`; // Retrieve and apply the stored background
-    }
+ const sandbox = document.getElementById("sandbox");
+ const savedBackground = localStorage.getItem("mapBackground");
+ 
+ if (savedBackground) {
+ sandbox.style.backgroundImage = `url(${savedBackground})`; // Retrieve and apply the stored background
+ }
 }
 
 
@@ -500,6 +504,6 @@ function loadMapBackground() {
 loadMapBackground();
 renderPieces();
 renderStatsTable();
-    </script>
+ </script>
 </body>
 </html>
