@@ -295,9 +295,18 @@ function renderPieces() {
         rotate.onclick = () => rotatePiece(piece.id);
         el.appendChild(rotate);
 
-        // Drag-and-drop behavior
-        el.onmousedown = (event) => startDrag(event, piece.id);
-        el.ontouchstart = (event) => startDrag(event, piece.id); // Added touchstart event for mobile devices
+        // Draggable icon (a small part of the piece that will be used for dragging)
+        const dragIcon = document.createElement("div");
+        dragIcon.className = "drag-icon";
+        dragIcon.textContent = "☰"; // A simple hamburger icon for the draggable area
+        dragIcon.style.position = "absolute";
+        dragIcon.style.top = "10px"; // Position it at the top-left corner
+        dragIcon.style.left = "10px"; // Position it at the top-left corner
+        el.appendChild(dragIcon);
+
+        // Apply drag-and-drop behavior to the drag icon only
+        dragIcon.addEventListener("mousedown", (event) => startDrag(event, piece.id));
+        dragIcon.addEventListener("touchstart", (event) => startDrag(event, piece.id), { passive: false }); // Touch support for mobile
 
         sandbox.appendChild(el);
     });
@@ -305,9 +314,9 @@ function renderPieces() {
 
 // Start dragging function
 function startDrag(e, pieceId) {
-    e.preventDefault(); // Prevent any unwanted default behavior (like text selection)
+    e.preventDefault(); // Prevent any unwanted default behavior (like text selection or scrolling)
 
-    let touch = e.touches ? e.touches[0] : e;
+    let touch = e.touches ? e.touches[0] : e; // Use touch or mouse event based on the device
     let draggedElement = document.getElementById(`piece-${pieceId}`);
 
     // Ensure dragging starts only if the element is properly selected
@@ -318,12 +327,9 @@ function startDrag(e, pieceId) {
     let offsetX = touch.clientX - rect.left;
     let offsetY = touch.clientY - rect.top;
 
-    // Store drag start position for later use
-    document.ondragstart = () => false; // Disable text selection during drag
-
     // Handle dragging
     const doDrag = (e) => {
-        let touch = e.touches ? e.touches[0] : e;
+        let touch = e.touches ? e.touches[0] : e; // Use touch or mouse event based on the device
         draggedElement.style.position = "absolute"; // Ensure the element is positioned absolutely
         draggedElement.style.left = touch.clientX - offsetX + "px"; // Update position based on touch
         draggedElement.style.top = touch.clientY - offsetY + "px";
@@ -348,7 +354,7 @@ function startDrag(e, pieceId) {
 
     // Attach event listeners for dragging
     document.addEventListener("mousemove", doDrag);
-    document.addEventListener("touchmove", doDrag);
+    document.addEventListener("touchmove", doDrag, { passive: false }); // Ensure passive is false for touchmove
     document.addEventListener("mouseup", stopDrag);
     document.addEventListener("touchend", stopDrag);
 }
@@ -376,6 +382,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     renderPieces(); // Render pieces after loading
 });
+
 
         function renderStatsTable() {
             const statsTable = document.querySelector("#statsTable tbody");
