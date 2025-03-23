@@ -7,14 +7,14 @@
 <style>
     body {
         font-family: "Cinzel", serif;  /* Fantasy-style font for main content */
-        background-color: #1d1d1d;  /* Deep stone gray for a dungeon feel */
+        background-color: #1d1d1d;  /* Dark stone gray for a dungeon feel */
         color: #e6e6e6;  /* Light gray text for readability */
         margin: 0;
         padding: 0;
     }
 
     .header {
-        background: linear-gradient(to right, #2f1a00, #5a2d0c);  /* Deep brown to rusty red gradient */
+        background: linear-gradient(to right, #3b4c91, #5f2a8c);  /* Purple to indigo gradient */
         padding: 20px;
         text-align: center;
         box-shadow: 0 2px 15px #000;  /* Shadows for depth */
@@ -22,7 +22,7 @@
 
     h1 {
         margin: 0;
-        color: #b58a3d;  /* Copper gold for title text */
+        color: #fbc02d;  /* Golden yellow for title text */
         font-size: 2.5em;
         text-shadow: 3px 3px #000;  /* Shadow effect for readability */
     }
@@ -38,14 +38,14 @@
         padding: 10px 15px;
         margin: 5px;
         color: white;
-        background: #6f4f28;  /* Copper brown for buttons */
+        background: #006e8e;  /* China Blue for buttons */
         border: none;
         cursor: pointer;
         border-radius: 8px;
     }
 
     button:hover, .upload-btn:hover {
-        background-color: #a05d3c;  /* A slightly lighter brown, more orange-tinged */
+        background-color: #1976d2;  /* Lighter blue for hover */
     }
 
     .sandbox {
@@ -54,28 +54,30 @@
         background: url("dungeon-map.jpg") center/cover no-repeat;  /* Subterranean map imagery */
         position: relative;
         overflow: hidden;
-        border: 5px solid #6f4f28;  /* Copper/brown border for the dungeon-like feel */
+        border: 5px solid #006e8e;  /* China Blue border for the sandbox */
     }
 
+    /* Fixing draggable dice layout */
     .draggable {
         width: 50px;
         height: 50px;
         position: absolute;
-        background: #8b0000;  /* Dark red for dangerous items or enemies */
+        background: #5f2a8c;  /* Purple for dice or draggable elements */
         color: white;
         text-align: center;
-        line-height: unset; /* Removed to allow name positioning */
+        line-height: 50px;  /* Centering text inside the dice */
         cursor: grab;
         box-shadow: 2px 2px 10px #000;  /* Shadow for 3D effect */
     }
 
+    /* Styling for rotation symbols on the dice */
     .rotate-symbol {
         position: absolute;
         top: -10px;
         right: -10px;
         width: 20px;
         height: 20px;
-        background-color: #d4af37;  /* Glowing gold for symbol interaction */
+        background-color: #fbc02d;  /* Golden yellow for rotation symbol */
         color: #000;
         font-weight: bold;
         text-align: center;
@@ -93,12 +95,12 @@
     #statsEditor {
         background: #222;  /* Dark stone gray for a more immersive editor */
         padding: 20px;
-        border-top: 2px solid #6f4f28;  /* Copper-brown border */
+        border-top: 2px solid #006e8e;  /* China Blue border */
     }
 
     table {
         width: 100%;
-        color: #e6e6e6;  /* Light gray text to contrast against dark backgrounds */
+        color: #e6e6e6;  /* Light gray text for table content */
         border-collapse: collapse;
     }
 
@@ -109,7 +111,7 @@
     }
 
     .delete-btn, .clone-btn {
-        background: #6f4f28;  /* Copper brown for buttons */
+        background: #006e8e;  /* China Blue for buttons */
         border: none;
         color: #fff;
         padding: 5px 10px;
@@ -118,18 +120,18 @@
     }
 
     .delete-btn:hover {
-        background: #9e1a1a;  /* Blood-red hover for delete button */
+        background: #fbc02d;  /* Yellow hover for delete button */
     }
 
     .clone-btn:hover {
-        background: #a05d3c;  /* Muted brown-orange for clone button */
+        background: #1976d2;  /* Blue hover for clone button */
     }
 
     /* Input Fields */
     input[type="text"], input[type="number"], input[type="password"], textarea {
-        background-color: #2c2c2c;  /* Dark, stone-like background for inputs */
-        color: #e6e6e6;  /* Light text for readability */
-        border: 2px solid #6f4f28;  /* Copper-brown border to match the dungeon theme */
+        background-color: #2c2c2c;  /* Dark background for inputs */
+        color: #e6e6e6;  /* Light text */
+        border: 2px solid #006e8e;  /* China Blue border */
         padding: 10px;
         border-radius: 5px;
         width: 100%;
@@ -138,29 +140,29 @@
     }
 
     input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus, textarea:focus {
-        border-color: #d4af37;  /* Gold border when focused */
+        border-color: #fbc02d;  /* Golden yellow border on focus */
         outline: none;
     }
 
     /* Links */
     a {
-        color: #d4af37;  /* Gold color for links, resembling glowing items in a dungeon */
+        color: #fbc02d;  /* Golden yellow for links */
         text-decoration: none;
         font-weight: bold;
     }
 
     a:hover {
-        color: #e6e6e6;  /* Lighter gray when hovering over links */
-        text-decoration: underline;  /* Underline effect for hover */
+        color: #e6e6e6;  /* Light gray on hover */
+        text-decoration: underline;
     }
 
     /* Additional Colors: Blue, Purple, Green, Yellow, etc. */
     .china-blue {
-        color: #006e8e;  /* China Blue - soft blue for highlights */
+        color: #006e8e;  /* China Blue for highlights */
     }
 
     .purple {
-        color: #5f2a8c;  /* Deep purple for magical elements */
+        color: #5f2a8c;  /* Purple for magical elements */
     }
 
     .indigo {
@@ -168,15 +170,15 @@
     }
 
     .blue-shades {
-        color: #1976d2;  /* Blue shade for vibrant accents */
+        color: #1976d2;  /* Blue shade for accents */
     }
 
     .green-shades {
-        color: #388e3c;  /* Green shade for magical or nature-related elements */
+        color: #388e3c;  /* Green for magical or nature-related elements */
     }
 
     .yellow-shades {
-        color: #fbc02d;  /* Golden yellow for treasure, magic, or highlights */
+        color: #fbc02d;  /* Golden yellow for treasure or highlights */
     }
 
     .white {
@@ -185,6 +187,18 @@
 
     .black {
         color: #000000;  /* Pure black for dark text or backgrounds */
+    }
+
+    /* Fix the alignment of dice (draggable elements) */
+    .draggable-container {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .draggable {
+        flex: 0 0 60px;  /* Size of each draggable element */
     }
 
     input[type="number"]::-webkit-inner-spin-button, 
