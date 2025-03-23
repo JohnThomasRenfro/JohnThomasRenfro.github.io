@@ -1,210 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>AD&D Encounter Manager</title>
- <style>
- body {
- font-family: "Fantasy", serif;
- background-color: #111;
- color: #f9f9f9;
- margin: 0;
- padding: 0;
- }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD&D Encounter Manager</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
- .header {
- background: linear-gradient(to right, #4e1700, #a67c00);
- padding: 20px;
- text-align: center;
- box-shadow: 0 2px 15px #000;
- }
+        .sandbox {
+            flex: 0 0 70%; /* Set the left side to 70% */
+            background-color: #f0f0f0; /* Light background for visibility */
+            overflow: auto; /* Makes the sandbox scrollable if content overflows */
+            border-right: 2px solid #ccc; /* Optional: Add a border for separation */
+            padding: 10px; /* Add some padding */
+        }
 
- h1 {
- margin: 0;
- color: #ffeb3b;
- font-size: 2.5em;
- text-shadow: 3px 3px #000;
- }
+        .controls {
+            flex: 0 0 30%; /* Set the right side to 30% */
+            background-color: #ffffff; /* White background for controls */
+            padding: 10px; /* Add some padding */
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow */
+        }
 
- .controls {
- padding: 15px;
- background: #333;
- text-align: center;
- }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
- button, .upload-btn {
- font-size: 1.2em;
- padding: 10px 15px;
- margin: 5px;
- color: white;
- background: #5c2400;
- border: none;
- cursor: pointer;
- border-radius: 8px;
- }
+        label {
+            display: block; /* Stack labels and inputs */
+            margin: 10px 0 5px; /* Spacing around labels */
+        }
 
- button:hover, .upload-btn:hover {
- background-color: #a0522d;
- }
+        input[type="text"], input[type="file"] {
+            width: 100%; /* Make inputs full width */
+            padding: 5px; /* Add some padding */
+            box-sizing: border-box; /* Include padding in width */
+        }
 
- .sandbox {
- width: 100%;
- height: 3000px;
- background: url("default-map.jpg") center/cover no-repeat;
- position: relative;
- overflow: hidden;
- border: 5px solid #a67c00;
- }
+        .upload-btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
 
-.draggable {
- width: 50px;
- height: 50px;
- position: absolute;
- background: #800000; /* Red background */
- color: white;
- text-align: center;
- line-height: unset; /* Removed to allow name positioning */
- cursor: grab;
- box-shadow: 2px 2px 10px #000;
-}
-
- .rotate-symbol {
- position: absolute;
- top: -10px;
- right: -10px;
- width: 20px;
- height: 20px;
- background-color: #ffd700;
- color: #000;
- font-weight: bold;
- text-align: center;
- line-height: 20px;
- border-radius: 50%;
- cursor: pointer;
- }
-
- img {
- width: 100%;
- height: 100%;
- border-radius: 50%;
- }
-
- #statsEditor {
- background: #222;
- padding: 20px;
- border-top: 2px solid #a67c00;
- }
-
- table {
- width: 100%;
- color: #f9f9f9;
- border-collapse: collapse;
- }
-
- th, td {
- padding: 10px;
- text-align: left;
- border-bottom: 1px solid #444;
- }
-
- input {
- background: #5c2400;
- border: none;
- color: #fff;
- padding: 5px 10px;
- cursor: pointer;
- border-radius: 5px;		
- }	 
-
- .delete-btn, .clone-btn {
- background: #5c2400;
- border: none;
- color: #fff;
- padding: 5px 10px;
- cursor: pointer;
- border-radius: 5px;
- }
-
- .delete-btn:hover {
- background: #b30000;
- }
-
- .clone-btn:hover {
- background: #a0522d;
- }
-
- input[type="number"]::-webkit-inner-spin-button, 
- input[type="number"]::-webkit-outer-spin-button {
- -webkit-appearance: none;
- margin: 0;
- }
- </style>
+        .upload-btn:hover {
+            background-color: #0056b3; /* Darken the button on hover */
+        }
+    </style>
 </head>
 <body>
-<a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target=_blank>Module</a>|
-<a href="https://archive.org/details/dungeon-masters-screen/mode/1up" target=_blank>DM Screen</a>|
- <div class="header">
- <h1>🛡️ AD&D Encounter Manager 🐉</h1>
- </div>
-	
- <label for="d100">D100: </label>
- <input type="text" id="d100" value="1d100+0"
 
- <label for="d20">D20: </label>
- <input type="text" id="d20" value="1d20+0">
+    <div class="sandbox" id="sandbox">
+        <!-- Draggable pieces dynamically generated here -->
+    </div>
 
- <label for="d12">D12: </label>
- <input type="text" id="d12" value="1d12+0">
+    <div class="controls">
+        <div class="header">
+            <h1>🛡️ AD&D Encounter Manager 🐉</h1>
+        </div>
 
- <label for="d10">D10: </label>
- <input type="text" id="d10" value="1d10+0">
+        <a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target="_blank">Module</a> |
+        <a href="https://archive.org/details/dungeon-masters-screen/mode/1up" target="_blank">DM Screen</a>
 
- <label for="d8">D8: </label>
- <input type="text" id="d8" value="1d8+0">
+        <label for="d100">D100:</label>
+        <input type="text" id="d100" value="1d100+0">
 
- <label for="d6">D6: </label>
- <input type="text" id="d6" value="1d6+0">
+        <label for="d20">D20:</label>
+        <input type="text" id="d20" value="1d20+0">
 
- <label for="d4">D4: </label>
- <input type="text" id="d4" value="1d4+0">
+        <label for="d12">D12:</label>
+        <input type="text" id="d12" value="1d12+0">
 
- <button onclick="rollAllDice()">Roll</button>
- Results:
- <p id="results"></p>
+        <label for="d10">D10:</label>
+        <input type="text" id="d10" value="1d10+0">
 
+        <label for="d8">D8:</label>
+        <input type="text" id="d8" value="1d8+0">
 
+        <label for="d6">D6:</label>
+        <input type="text" id="d6" value="1d6+0">
 
- <div class="controls">
- <button onclick="addPiece()">Add Character/Monster</button>
+        <label for="d4">D4:</label>
+        <input type="text" id="d4" value="1d4+0">
 
+        <button onclick="rollAllDice()">Roll</button>
+        <p>Results:</p>
+        <p id="results"></p>
 
- <div id="statsEditor">
- <h2>Stats Overview</h2>
- <table id="statsTable">
- <thead>
- <tr>
- <th>Name</th>
- <th>AC</th>			
- <th>HP</th>
- <th>ATTKS</th>
- <th>GEAR</th>
- <th>Image</th>
- <th>Actions</th>
- </tr>
- </thead>
- <tbody>
- <!-- Rows dynamically added here -->
- </tbody>
- </table>
- </div>
- <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
- <label for="mapInput" class="upload-btn">Upload Map</label>
- </div>
+        <div>
+            <button onclick="addPiece()">Add Character/Monster</button>
+        </div>
 
- <div class="sandbox" id="sandbox">
- <!-- Draggable pieces dynamically generated here -->
- </div>	
+        <div id="statsEditor">
+            <h2>Stats Overview</h2>
+            <table id="statsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>AC</th>			
+                        <th>HP</th>
+                        <th>ATTKS</th>
+                        <th>GEAR</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+
+        <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
+        <label for="mapInput" class="upload-btn">Upload Map</label>
+    </div>
 
  <script>
  let pieces = JSON.parse(localStorage.getItem("pieces")) || [];
