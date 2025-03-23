@@ -58,6 +58,24 @@
         .upload-btn:hover {
             background-color: #0056b3; /* Darken the button on hover */
         }
+
+        /* Draggable CSS */
+        .draggable {
+            background-color: #d9edf7;
+            border: 1px solid #31708f;
+            border-radius: 5px;
+            cursor: move; /* Cursor change to indicate draggable */
+            padding: 10px;
+            margin: 5px;
+            width: 80%; /* Width for draggable pieces */
+            position: relative; /* Required for absolute positioning (if needed) */
+        }
+
+        /* Optional additional styling for draggable pieces */
+        .draggable img {
+            max-width: 100%; /* Responsive images within draggable */
+            display: block; /* Make sure image is displayed properly */
+        }
     </style>
 </head>
 <body>
