@@ -339,19 +339,25 @@ function rotatePiece(id) {
  nameCell.appendChild(nameInput);
  row.appendChild(nameCell);
 
-
-
 // AC Input
 const acCell = document.createElement("td");
 const acInput = document.createElement("input");
 acInput.type = "text"; 
 acInput.inputMode = "numeric"; 
 acInput.value = piece.ac;
-acInput.maxLength = 4;
-acInput.size = 4;		 
+acInput.maxLength = 4; 
+acInput.size = 4; 
+
 acInput.oninput = (event) => {
- piece.ac = event.target.value;
- saveToLocalStorage();
+ const inputValue = event.target.value;
+ const validInputPattern = /^-?\d{0,4}$/;
+ if (validInputPattern.test(inputValue)) {
+ piece.ac = inputValue; 
+ saveToLocalStorage(); 
+ } else {
+ // If input is invalid, revert to previous valid value
+ event.target.value = piece.ac; 
+ }
 };
 acCell.appendChild(acInput);
 row.appendChild(acCell);
