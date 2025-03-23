@@ -162,6 +162,50 @@ input[type="range"] {
 input[type="range"]:focus {
     outline: none;
 }
+		/* Style the links */
+.decorated-link {
+    color: #ffeb3b;  /* Gold color for visibility */
+    font-size: 1.2em;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #5c2400;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.decorated-link:hover {
+    background-color: #a0522d;  /* Lighter brown on hover */
+    color: #fff;  /* White text on hover */
+}
+
+/* Style for the file input */
+.file-upload {
+    display: none;  /* Hide the default file input */
+}
+
+/* Style the file upload label button */
+.upload-btn {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin: 10px 0;
+    color: white;
+    background-color: #5c2400;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #a0522d;  /* Lighter brown on hover */
+}
+
+/* Add focus styles for file input in case of accessibility */
+.upload-btn:focus {
+    outline: 2px solid #ffeb3b;
+    outline-offset: 4px;
+}
 		</style>
 </head>
 <body>
