@@ -4,205 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AD&D Encounter Manager</title>
-<style>
-    body {
-        font-family: "Cinzel", serif;  /* Fantasy-style font for main content */
-        background-color: #1d1d1d;  /* Dark stone gray for a dungeon feel */
-        color: #e6e6e6;  /* Light gray text for readability */
-        margin: 0;
-        padding: 0;
-    }
+    <style>
+        body {
+            font-family: "Fantasy", serif;
+            background-color: #111;
+            color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
 
-    .header {
-        background: linear-gradient(to right, #3b4c91, #5f2a8c);  /* Purple to indigo gradient */
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 2px 15px #000;  /* Shadows for depth */
-    }
+        .header {
+            background: linear-gradient(to right, #4e1700, #a67c00);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 15px #000;
+        }
 
-    h1 {
-        margin: 0;
-        color: #fbc02d;  /* Golden yellow for title text */
-        font-size: 2.5em;
-        text-shadow: 3px 3px #000;  /* Shadow effect for readability */
-    }
+        h1 {
+            margin: 0;
+            color: #ffeb3b;
+            font-size: 2.5em;
+            text-shadow: 3px 3px #000;
+        }
 
-    .controls {
-        padding: 15px;
-        background: #333;  /* Dark gray background for control areas */
-        text-align: center;
-    }
+        .controls {
+            padding: 15px;
+            background: #333;
+            text-align: center;
+        }
 
-    button, .upload-btn {
-        font-size: 1.2em;
-        padding: 10px 15px;
-        margin: 5px;
-        color: white;
-        background: #006e8e;  /* China Blue for buttons */
-        border: none;
-        cursor: pointer;
-        border-radius: 8px;
-    }
+        button, .upload-btn {
+            font-size: 1.2em;
+            padding: 10px 15px;
+            margin: 5px;
+            color: white;
+            background: #5c2400;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
 
-    button:hover, .upload-btn:hover {
-        background-color: #1976d2;  /* Lighter blue for hover */
-    }
+        button:hover, .upload-btn:hover {
+            background-color: #a0522d;
+        }
 
-    .sandbox {
-        width: 100%;
-        height: 3000px;
-        background: url("dnd/dungeon-map.jpg") center/cover no-repeat;  /* Subterranean map imagery */
-        position: relative;
-        overflow: hidden;
-        border: 5px solid #006e8e;  /* China Blue border for the sandbox */
-    }
+        .sandbox {
+            width: 100%;
+            height: 3000px;
+            background: url("default-map.jpg") center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #a67c00;
+        }
 
-    /* Fixing draggable dice layout */
-    .draggable-container {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;  /* Allow the elements to wrap in rows */
-        gap: 10px;  /* Space between draggable elements */
-        justify-content: flex-start;  /* Align items to the left */
-    }
+.draggable {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: #800000; /* Red background */
+    color: white;
+    text-align: center;
+    line-height: unset; /* Removed to allow name positioning */
+    cursor: grab;
+    box-shadow: 2px 2px 10px #000;
+}
 
-    .draggable {
-        width: 50px;
-        height: 50px;
-        background: #5f2a8c;  /* Purple for dice or draggable elements */
-        color: white;
-        text-align: center;
-        line-height: 50px;  /* Centering text inside the dice */
-        cursor: grab;
-        box-shadow: 2px 2px 10px #000;  /* Shadow for 3D effect */
-    }
+        .rotate-symbol {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: #ffd700;
+            color: #000;
+            font-weight: bold;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
 
-    /* Styling for rotation symbols on the dice */
-    .rotate-symbol {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        width: 20px;
-        height: 20px;
-        background-color: #fbc02d;  /* Golden yellow for rotation symbol */
-        color: #000;
-        font-weight: bold;
-        text-align: center;
-        line-height: 20px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
 
-    img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-    }
+        #statsEditor {
+            background: #222;
+            padding: 20px;
+            border-top: 2px solid #a67c00;
+        }
 
-    #statsEditor {
-        background: #222;  /* Dark stone gray for a more immersive editor */
-        padding: 20px;
-        border-top: 2px solid #006e8e;  /* China Blue border */
-    }
+        table {
+            width: 100%;
+            color: #f9f9f9;
+            border-collapse: collapse;
+        }
 
-    table {
-        width: 100%;
-        color: #e6e6e6;  /* Light gray text for table content */
-        border-collapse: collapse;
-    }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
 
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #444;  /* Stone gray borders between table cells */
-    }
+        .delete-btn, .clone-btn {
+            background: #5c2400;
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 
-    .delete-btn, .clone-btn {
-        background: #006e8e;  /* China Blue for buttons */
-        border: none;
-        color: #fff;
-        padding: 5px 10px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+        .delete-btn:hover {
+            background: #b30000;
+        }
 
-    .delete-btn:hover {
-        background: #fbc02d;  /* Yellow hover for delete button */
-    }
+        .clone-btn:hover {
+            background: #a0522d;
+        }
 
-    .clone-btn:hover {
-        background: #1976d2;  /* Blue hover for clone button */
-    }
-
-    /* Input Fields */
-    input[type="text"], input[type="number"], input[type="password"], textarea {
-        background-color: #2c2c2c;  /* Dark background for inputs */
-        color: #e6e6e6;  /* Light text */
-        border: 2px solid #006e8e;  /* China Blue border */
-        padding: 10px;
-        border-radius: 5px;
-        font-family: "Cinzel", serif;  /* Match font family */
-        font-size: 1em;
-    }
-
-    input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus, textarea:focus {
-        border-color: #fbc02d;  /* Golden yellow border on focus */
-        outline: none;
-    }
-
-    /* Links */
-    a {
-        color: #fbc02d;  /* Golden yellow for links */
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    a:hover {
-        color: #e6e6e6;  /* Light gray on hover */
-        text-decoration: underline;
-    }
-
-    /* Additional Colors: Blue, Purple, Green, Yellow, etc. */
-    .china-blue {
-        color: #006e8e;  /* China Blue for highlights */
-    }
-
-    .purple {
-        color: #5f2a8c;  /* Purple for magical elements */
-    }
-
-    .indigo {
-        color: #3f51b5;  /* Indigo color for titles or highlighted elements */
-    }
-
-    .blue-shades {
-        color: #1976d2;  /* Blue shade for accents */
-    }
-
-    .green-shades {
-        color: #388e3c;  /* Green for magical or nature-related elements */
-    }
-
-    .yellow-shades {
-        color: #fbc02d;  /* Golden yellow for treasure or highlights */
-    }
-
-    .white {
-        color: #ffffff;  /* Pure white for contrast */
-    }
-
-    .black {
-        color: #000000;  /* Pure black for dark text or backgrounds */
-    }
-
-    input[type="number"]::-webkit-inner-spin-button, 
-    input[type="number"]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-</style>
-
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
 <a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target=_blank>Module</a>|
