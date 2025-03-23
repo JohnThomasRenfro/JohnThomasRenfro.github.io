@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>D&D Gold Box Sandbox</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 10px 0;
+            background: #000;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #controls {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+        #dice-result {
+            margin-left: 10px;
+            color: #FFD700;
+        }
+        #gameContainer {
+            display: flex;
+            width: 100vw;
+            height: calc(100vh - 20px);
+            box-sizing: border-box;
+        }
+        #gameBoard {
+            width: 70vw;
+            height: 100%;
+            border: 4px solid #FFD700;
+            position: relative;
+            background: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 0 10px #FFD700;
+        }
+        #statsPanel {
+            width: 30vw;
+            height: 100%;
+            padding: 10px;
+            border: 4px solid #FFD700;
+            margin-left: 10px;
+            overflow-x: auto;
+            overflow-y: auto;
+            background: #1A1A1A;
+            box-shadow: 0 0 10px #FFD700;
+            white-space: nowrap;
+        }
+        .piece {
+            position: absolute;
+            cursor: grab;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
+            width: 50px;
+            height: 70px;
+        }
+        .piece:active {
+            cursor: grabbing;
+        }
+        .piece.selected {
+            outline: 2px solid #FF0000;
+            outline-offset: 2px;
+        }
+        .piece-name {
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 50px;
+            color: #FFD700;
+        }
+        .rotate-btn {
+            cursor: pointer;
+            font-size: 12px;
+            color: #FFD700;
+        }
+        .stat-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #FFD700;
+            padding: 5px 0;
+        }
+        .stat-row > * {
+            margin-right: 5px;
+        }
+        .stat-row span {
+            color: #FFD700;
+        }
+        .stat-row input {
+            background: #333;
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .stat-row.selected {
+            background: #FFD700;
+            color: #000;
+        }
+        .stat-row.selected span {
+            color: #000;
+        }
+        .stat-row.selected input {
+            background: #FFF;
+            color: #000;
+        }
+        .action-btn {
+            cursor: pointer;
+            margin-left: 5px;
+            color: #FFD700;
+            font-size: 16px;
+        }
+        .action-btn:hover {
+            color: #FF0000;
+        }
+        button, input[type="file"] {
+            background: #FFD700;
+            color: #000;
+            border: 2px solid #FFD700;
+            padding: 5px 10px;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover, input[type="file"]:hover {
+            background: #FF0000;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <button onclick="addPiece()">Add Character/Monster</button>
+        <input type="file" accept="image/*" onchange="uploadMap(this)">
+        <button onclick="rollDice(20, 0)">1d20</button>
+        <button onclick="rollDice(12, 0)">1d12</button>
+        <button onclick="rollDice(10, 0)">1d10</button>
+        <button onclick="rollDice(8, 0)">1d8</button>
+        <button onclick="rollDice(6, 0)">1d6</button>
+        <button onclick="rollDice(4, 0)">1d4</button>
+        <span id="dice-result"></span>
+    </div>
+    <div id="gameContainer">
+        <div id="gameBoard"></div>
+        <div id="statsPanel"></div>
+    </div>
+
+    <script>
+        let pieces = JSON.parse(localStorage.getItem('gamePieces')) || [];
+        let pieceId = pieces.length > 0 ? Math.max(...pieces.map(p => p.id)) + 1 : 0;
+        let selectedPieceId = null;
+        let mapImage = localStorage.getItem('mapImage') || '/DND/Maps/Map1.png'; // Default map
+
+        if (!localStorage.getItem('mapImage')) {
+            localStorage.setItem('mapImage', mapImage);
+        }
+        document.getElementById('gameBoard').style.backgroundImage = `url(${mapImage})`;
+
+        function saveToLocalStorage() {
+            localStorage.setItem('gamePieces', JSON.stringify(pieces));
+        }
+
+        function rollDice(sides, modifier) {
+            const roll = Math.floor(Math.random() * sides) + 1;
+            const total = roll + modifier;
+            document.getElementById('dice-result').textContent = `Rolled 1d${sides}${modifier >= 0 ? '+' : ''}${modifier}: ${roll} + ${modifier} = ${total}`;
+        }
+
+        function createPieceElement(piece) {
+            const div = document.createElement('div');
+            div.className = 'piece';
+            div.id = `piece-${piece.id}`;
+            div.style.left = `${piece.x}px`;
+            div.style.top = `${piece.y}px`;
+            div.style.transform = `rotate(${piece.rotation * 45}deg)`;
+
+            const img = document.createElement('img');
+            img.id = `img-${piece.id}`;
+            img.src = piece.image || '/DND/Miniatures/Miniature1.png'; // Default miniature
+            img.width = 50;
+            img.height = 50;
+
+            const name = document.createElement('div');
+            name.id = `name-display-${piece.id}`;
+            name.className = 'piece-name';
+            name.textContent = piece.name;
+
+            const rotateBtn = document.createElement('span');
+            rotateBtn.className = 'rotate-btn';
+            rotateBtn.textContent = '↻';
+            rotateBtn.onclick = (e) => { e.stopPropagation(); rotatePiece(piece.id); };
+
+            div.appendChild(img);
+            div.appendChild(name);
+            div.appendChild(rotateBtn);
+
+            makeDraggable(div);
+            div.addEventListener('click', (e) => {
+                if (e.target === div || e.target === img || e.target === name) {
+                    selectPiece(piece.id);
+                }
+            });
+
+            return div;
+        }
+
+        function updateStatsPanel() {
+            const panel = document.getElementById('statsPanel');
+            panel.innerHTML = pieces.map(piece => `
+                <div class="stat-row ${selectedPieceId === piece.id ? 'selected' : ''}" id="row-${piece.id}">
+                    <input type="text" id="name-${piece.id}" value="${piece.name}" onchange="updateStat(${piece.id}, 'name', this.value)" style="width: 80px">
+                    <span>Name:</span>
+                    <input type="number" id="ac-${piece.id}" value="${piece.ac}" onchange="updateStat(${piece.id}, 'ac', this.value)" style="width: 40px">
+                    <span>AC:</span>
+                    <input type="number" id="hp-${piece.id}" value="${piece.hp}" onchange="updateStat(${piece.id}, 'hp', this.value)" style="width: 40px">
+                    <span>HP:</span>
+                    <input type="text" id="attacks-${piece.id}" value="${piece.attacks}" onchange="updateStat(${piece.id}, 'attacks', this.value)" style="width: 50px">
+                    <span>ATTKS:</span>
+                    <input type="text" id="gear-${piece.id}" value="${piece.gear}" onchange="updateStat(${piece.id}, 'gear', this.value)" style="width: 80px">
+                    <span>Equipment:</span>
+                    <span class="action-btn" onclick="copyPiece(${piece.id})">📋</span>
+                    <span class="action-btn" onclick="deletePiece(${piece.id})">🗑️</span>
+					                        MV: <input type="number" id="mv-${piece.id}" value="${piece.mv}" onchange="updateStat(${piece.id}, 'mv', this.value)" style="width: 40px">
+                        <input type="file" id="file-${piece.id}" accept="image/*" onchange="uploadImage(${piece.id}, this)">
+                </div>
+            `).join('');
+        }
+
+        function addPiece() {
+            const newPiece = {
+                id: pieceId++,
+                x: 0,
+                y: 0,
+                rotation: 0,
+                name: 'New Character',
+                ac: 10,
+                hp: 10,
+                mv: 6,
+                attacks: '1d6',
+                gear: '',
+                str: 10,
+                dex: 10,
+                con: 10,
+                int: 10,
+                wis: 10,
+                cha: 10,
+                image: '/DND/Miniatures/Miniature1.png' // Default miniature
+            };
+            pieces.push(newPiece);
+            const element = createPieceElement(newPiece);
+            document.getElementById('gameBoard').appendChild(element);
+            saveToLocalStorage();
+            updateStatsPanel();
+        }
+
+        function selectPiece(id) {
+            if (selectedPieceId !== null) {
+                document.getElementById(`piece-${selectedPieceId}`).classList.remove('selected');
+                document.getElementById(`row-${selectedPieceId}`).classList.remove('selected');
+            }
+            selectedPieceId = id;
+            document.getElementById(`piece-${id}`).classList.add('selected');
+            document.getElementById(`row-${id}`).classList.add('selected');
+        }
+
+        function updateStat(id, key, value) {
+            const piece = pieces.find(p => p.id === id);
+            if (piece) {
+                piece[key] = value;
+                if (key === 'name') {
+                    document.getElementById(`name-display-${id}`).textContent = value;
+                }
+                saveToLocalStorage();
+                updateStatsPanel();
+            }
+        }
+
+        function uploadImage(id, input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const piece = pieces.find(p => p.id === id);
+                    piece.image = e.target.result;
+                    document.getElementById(`img-${id}`).src = piece.image;
+                    saveToLocalStorage();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function uploadMap(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    mapImage = e.target.result;
+                    localStorage.setItem('mapImage', mapImage);
+                    document.getElementById('gameBoard').style.backgroundImage = `url(${mapImage})`;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function rotatePiece(id) {
+            const piece = pieces.find(p => p.id === id);
+            piece.rotation = (piece.rotation + 1) % 8;
+            document.getElementById(`piece-${id}`).style.transform = `rotate(${piece.rotation * 45}deg)`;
+            saveToLocalStorage();
+        }
+
+        function copyPiece(id) {
+            const piece = pieces.find(p => p.id === id);
+            const newPiece = { ...piece, id: pieceId++, x: piece.x + 50, y: piece.y };
+            pieces.push(newPiece);
+            const element = createPieceElement(newPiece);
+            document.getElementById('gameBoard').appendChild(element);
+            saveToLocalStorage();
+            updateStatsPanel();
+        }
+
+        function deletePiece(id) {
+            pieces = pieces.filter(p => p.id !== id);
+            const element = document.getElementById(`piece-${id}`);
+            if (element) element.remove();
+            if (selectedPieceId === id) selectedPieceId = null;
+            saveToLocalStorage();
+            updateStatsPanel();
+        }
+
+        function makeDraggable(element) {
+            let isDragging = false;
+            let posX = 0, posY = 0, startX = 0, startY = 0;
+
+            element.addEventListener('mousedown', startDragging);
+            element.addEventListener('touchstart', startDragging, { passive: false });
+
+            function startDragging(e) {
+                if (e.target.className === 'rotate-btn') return;
+
+                e.preventDefault();
+                isDragging = true;
+
+                if (e.type === 'touchstart') {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                } else {
+                    startX = e.clientX;
+                    startY = e.clientY;
+                }
+
+                posX = element.offsetLeft;
+                posY = element.offsetTop;
+
+                document.addEventListener('mousemove', dragElement);
+                document.addEventListener('mouseup', stopDragging);
+                document.addEventListener('touchmove', dragElement, { passive: false });
+                document.addEventListener('touchend', stopDragging);
+            }
+
+            function dragElement(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+
+                let clientX, clientY;
+                if (e.type === 'touchmove') {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                } else {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                }
+
+                let newX = posX + (clientX - startX);
+                let newY = posY + (clientY - startY);
+
+                newX = Math.round(newX / 50) * 50;
+                newY = Math.round(newY / 50) * 50;
+
+                newX = Math.max(0, Math.min(newX, Math.floor(window.innerWidth * 0.7) - 50));
+                newY = Math.max(0, Math.min(newY, Math.floor(window.innerHeight) - 70 - 20));
+
+                element.style.left = `${newX}px`;
+                element.style.top = `${newY}px`;
+
+                const id = parseInt(element.id.split('-')[1]);
+                const piece = pieces.find(p => p.id === id);
+                piece.x = newX;
+                piece.y = newY;
+            }
+
+            function stopDragging() {
+                if (isDragging) {
+                    isDragging = false;
+                    saveToLocalStorage();
+                }
+                document.removeEventListener('mousemove', dragElement);
+                document.removeEventListener('mouseup', stopDragging);
+                document.removeEventListener('touchmove', dragElement);
+                document.removeEventListener('touchend', stopDragging);
+            }
+        }
+
+        // Load existing pieces
+        pieces.forEach(piece => {
+            const element = createPieceElement(piece);
+            document.getElementById('gameBoard').appendChild(element);
+        });
+        updateStatsPanel();
+    </script>
+</body>
+</html>
