@@ -58,16 +58,24 @@
     }
 
     /* Fixing draggable dice layout */
+    .draggable-container {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;  /* Allow the elements to wrap in rows */
+        gap: 10px;  /* Space between draggable elements */
+        justify-content: flex-start;  /* Align items to the left */
+    }
+
     .draggable {
         width: 50px;
         height: 50px;
-        position: absolute;
         background: #5f2a8c;  /* Purple for dice or draggable elements */
         color: white;
         text-align: center;
         line-height: 50px;  /* Centering text inside the dice */
         cursor: grab;
         box-shadow: 2px 2px 10px #000;  /* Shadow for 3D effect */
+        flex-shrink: 0;  /* Prevent the dice from shrinking */
     }
 
     /* Styling for rotation symbols on the dice */
@@ -189,18 +197,6 @@
         color: #000000;  /* Pure black for dark text or backgrounds */
     }
 
-    /* Fix the alignment of dice (draggable elements) */
-    .draggable-container {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .draggable {
-        flex: 0 0 60px;  /* Size of each draggable element */
-    }
-
     input[type="number"]::-webkit-inner-spin-button, 
     input[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
@@ -208,6 +204,7 @@
     }
 
 </style>
+
 </head>
 <body>
 <a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target=_blank>Module</a>|
