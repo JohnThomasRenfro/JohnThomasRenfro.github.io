@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystic Realms: The Forgotten Adventure</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #223;
+    color: #fff;
+    text-align: center;
+}
+
+#game-container {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    border: 2px solid #fff;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#game-output {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+}  
+</style>
+<script>
+class Character {
+    constructor(name, characterClass) {
+        this.name = name;
+        this.characterClass = characterClass;
+        this.hp = 100;  // Basic health points
+        this.level = 1;
+        this.xp = 0;
+    }
+
+    levelUp() {
+        this.level++;
+        this.hp += 10; // Increase HP by level
+    }
+}
+
+let party = [];
+let currentLocation = "town";
+
+function startGame() {
+    displayMessage("Welcome to Mystic Realms!");
+    createCharacter("Hero", "Warrior");
+}
+
+function createCharacter(name, characterClass) {
+    const hero = new Character(name, characterClass);
+    party.push(hero);
+    displayMessage(`${name} the ${characterClass} has joined your party!`);
+}
+
+function displayMessage(message) {
+    const gameOutput = document.getElementById("game-output");
+    gameOutput.innerHTML += `<p>${message}</p>`;
+    gameOutput.scrollTop = gameOutput.scrollHeight; // Auto-scroll down
+}
+
+document.getElementById("submit-btn").addEventListener("click", function() {
+    const userInput = document.getElementById("user-input").value;
+    document.getElementById("user-input").value = ""; // Clear input field
+    processInput(userInput);
+});
+
+function processInput(input) {
+    input = input.toLowerCase();
+
+    switch(input) {
+        case 'explore':
+            displayMessage("You step into the unknown...");
+            // Expand exploration logic
+            break;
+        case 'view party':
+            displayMessage("Your party: " + party.map(member => member.name).join(", "));
+            break;
+        default:
+            displayMessage("I don't understand that command.");
+    }
+}
+
+// Start the game on page load
+window.onload = startGame;  
+</script>  
+</head>
+<body>
+    <div id="game-container">
+        <h1>Mystic Realms: The Forgotten Adventure</h1>
+        <div id="game-output"></div>
+        <input type="text" id="user-input" placeholder="Enter your command">
+        <button id="submit-btn">Submit</button>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
