@@ -295,18 +295,9 @@ function renderPieces() {
         rotate.onclick = () => rotatePiece(piece.id);
         el.appendChild(rotate);
 
-        // Draggable icon (a small part of the piece that will be used for dragging)
-        const dragIcon = document.createElement("div");
-        dragIcon.className = "drag-icon";
-        dragIcon.textContent = "☰"; // A simple hamburger icon for the draggable area
-        dragIcon.style.position = "absolute";
-        dragIcon.style.top = "10px"; // Position it at the top-left corner
-        dragIcon.style.left = "10px"; // Position it at the top-left corner
-        el.appendChild(dragIcon);
-
-        // Apply drag-and-drop behavior to the drag icon only
-        dragIcon.addEventListener("mousedown", (event) => startDrag(event, piece.id));
-        dragIcon.addEventListener("touchstart", (event) => startDrag(event, piece.id), { passive: false }); // Touch support for mobile
+        // Apply drag-and-drop behavior to the entire piece
+        el.addEventListener("mousedown", (event) => startDrag(event, piece.id));
+        el.addEventListener("touchstart", (event) => startDrag(event, piece.id), { passive: false }); // Added touchstart for mobile
 
         sandbox.appendChild(el);
     });
@@ -359,11 +350,22 @@ function startDrag(e, pieceId) {
     document.addEventListener("touchend", stopDrag);
 }
 
-// Rotate piece function
+// Rotate piece function to only rotate in 45 degree increments (cardinal directions)
 function rotatePiece(id) {
     const piece = pieces.find(p => p.id === id);
-    const currentRotation = piece.rotation || 0;
-    piece.rotation = (currentRotation + 15) % 360; // Increment the rotation by 15 degrees
+    
+    // Define the 8 cardinal rotation angles: 0, 45, 90, 135, 180, 225, 270, 315
+    const cardinalDirections = [0, 45, 90, 135, 180, 225, 270, 315];
+    
+    // Get current rotation angle (default to 0 if it's not defined yet)
+    let currentRotation = piece.rotation || 0;
+
+    // Find the next rotation in the cardinalDirections array
+    let currentIndex = cardinalDirections.indexOf(currentRotation);
+    let nextIndex = (currentIndex + 1) % cardinalDirections.length;
+
+    // Update the piece's rotation to the next cardinal direction
+    piece.rotation = cardinalDirections[nextIndex];
 
     saveToLocalStorage(); // Save the state
     renderPieces(); // Re-render the sandbox for immediate visual feedback
@@ -382,7 +384,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     renderPieces(); // Render pieces after loading
 });
-
 
         function renderStatsTable() {
             const statsTable = document.querySelector("#statsTable tbody");
