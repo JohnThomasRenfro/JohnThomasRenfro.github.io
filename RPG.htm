@@ -1,137 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AD&D Encounter Manager</title>
-    <style>
-        body {
-            display: flex;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>AD&D Encounter Manager</title>
+ <style>
+ body {
+ display: flex;
+ height: 100vh;
+ margin: 0;
+ font-family: Arial, sans-serif;
+ }
 
-        .sandbox {
-            flex: 0 0 70%; /* Set the left side to 70% */
-            background-color: #f0f0f0; /* Light background for visibility */
-            overflow: auto; /* Makes the sandbox scrollable if content overflows */
-            border-right: 2px solid #ccc; /* Optional: Add a border for separation */
-            padding: 10px; /* Add some padding */
-        }
+ .sandbox {
+ flex: 0 0 70%; /* Set the left side to 70% */
+ background-color: #f0f0f0; /* Light background for visibility */
+ overflow: auto; /* Makes the sandbox scrollable if content overflows */
+ border-right: 2px solid #ccc; /* Optional: Add a border for separation */
+ padding: 10px; /* Add some padding */
+ }
 
-        .controls {
-            flex: 0 0 30%; /* Set the right side to 30% */
-            background-color: #ffffff; /* White background for controls */
-            padding: 10px; /* Add some padding */
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow */
-        }
+ .controls {
+ flex: 0 0 30%; /* Set the right side to 30% */
+ background-color: #ffffff; /* White background for controls */
+ padding: 10px; /* Add some padding */
+ box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow */
+ }
 
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+ .header {
+ text-align: center;
+ margin-bottom: 20px;
+ }
 
-        label {
-            display: block; /* Stack labels and inputs */
-            margin: 10px 0 5px; /* Spacing around labels */
-        }
+ label {
+ display: block; /* Stack labels and inputs */
+ margin: 10px 0 5px; /* Spacing around labels */
+ }
 
-        input[type="text"], input[type="file"] { 
-            padding: 5px; /* Add some padding */
-            box-sizing: border-box; /* Include padding in width */
-        }
+ input[type="text"], input[type="file"] { 
+ padding: 5px; /* Add some padding */
+ box-sizing: border-box; /* Include padding in width */
+ }
 
-        .upload-btn {
-            display: inline-block;
-            padding: 8px 12px;
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
+ .upload-btn {
+ display: inline-block;
+ padding: 8px 12px;
+ background-color: #007bff;
+ color: white;
+ text-align: center;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+ text-decoration: none;
+ }
 
-        .upload-btn:hover {
-            background-color: #0056b3; /* Darken the button on hover */
-        }
+ .upload-btn:hover {
+ background-color: #0056b3; /* Darken the button on hover */
+ }
 
-        /* Draggable CSS */
-        .draggable {
-            background-color: #d9edf7;
-            border: 1px solid #31708f;
-            border-radius: 5px;
-            cursor: move; /* Cursor change to indicate draggable */
-            padding: 10px;
+ /* Draggable CSS */
+ .draggable {
+ background-color: #d9edf7;
+ border: 1px solid #31708f;
+ border-radius: 5px;
+ cursor: move; /* Cursor change to indicate draggable */
+ padding: 10px;
 		height: 100px; 
-            margin: 5px;
-            width: 100px; 
-            position: relative; /* Required for absolute positioning (if needed) */
-        }
+ margin: 5px;
+ width: 100px; 
+ position: relative; /* Required for absolute positioning (if needed) */
+ }
 
-        /* Optional additional styling for draggable pieces */
-        .draggable img {
-            max-width: 100%; /* Responsive images within draggable */
-            display: block; /* Make sure image is displayed properly */
-        }
-    </style>
+ /* Optional additional styling for draggable pieces */
+ .draggable img {
+ max-width: 100%; /* Responsive images within draggable */
+ display: block; /* Make sure image is displayed properly */
+ }
+ </style>
 </head>
 <body>
 
-    <div class="sandbox" id="sandbox">
-        <!-- Draggable pieces dynamically generated here -->
-    </div>
+ <div class="sandbox" id="sandbox">
+ <!-- Draggable pieces dynamically generated here -->
+ </div>
 
-    <div class="controls">
+ <div class="controls">
 
-Name:
-AC:			
+        <div id="statsEditor">
+            <h2>Stats Overview</h2>
+            <table id="statsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>AC</th>			
                         <th>HP</th>
                         <th>ATTKS</th>
                         <th>GEAR</th>
                         <th>Image</th>
                         <th>Actions</th>
-    
-
-        <a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target="_blank">Module</a> |
-        <a href="https://archive.org/details/dungeon-masters-screen/mode/1up" target="_blank">DM Screen</a>
-
-        <label for="d100">D100:</label>
-        <input type="text" id="d100" value="1d100+0">
-
-        <label for="d20">D20:</label>
-        <input type="text" id="d20" value="1d20+0">
-
-        <label for="d12">D12:</label>
-        <input type="text" id="d12" value="1d12+0">
-
-        <label for="d10">D10:</label>
-        <input type="text" id="d10" value="1d10+0">
-
-        <label for="d8">D8:</label>
-        <input type="text" id="d8" value="1d8+0">
-
-        <label for="d6">D6:</label>
-        <input type="text" id="d6" value="1d6+0">
-
-        <label for="d4">D4:</label>
-        <input type="text" id="d4" value="1d4+0">
-
-        <button onclick="rollAllDice()">Roll</button>
-        <p>Results:</p>
-        <p id="results"></p>
-
-        <div>
-            <button onclick="addPiece()">Add Character/Monster</button>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows dynamically added here -->
+                </tbody>
+            </table>
         </div>
+ 
+
+ <a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target="_blank">Module</a> |
+ <a href="https://archive.org/details/dungeon-masters-screen/mode/1up" target="_blank">DM Screen</a>
+
+ <label for="d100">D100:</label>
+ <input type="text" id="d100" value="1d100+0">
+
+ <label for="d20">D20:</label>
+ <input type="text" id="d20" value="1d20+0">
+
+ <label for="d12">D12:</label>
+ <input type="text" id="d12" value="1d12+0">
+
+ <label for="d10">D10:</label>
+ <input type="text" id="d10" value="1d10+0">
+
+ <label for="d8">D8:</label>
+ <input type="text" id="d8" value="1d8+0">
+
+ <label for="d6">D6:</label>
+ <input type="text" id="d6" value="1d6+0">
+
+ <label for="d4">D4:</label>
+ <input type="text" id="d4" value="1d4+0">
+
+ <button onclick="rollAllDice()">Roll</button>
+ <p>Results:</p>
+ <p id="results"></p>
+
+ <div>
+ <button onclick="addPiece()">Add Character/Monster</button>
+ </div>
 
 
 
-        <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
-        <label for="mapInput" class="upload-btn">Upload Map</label>
-    </div>
+ <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
+ <label for="mapInput" class="upload-btn">Upload Map</label>
+ </div>
 
  <script>
  let pieces = JSON.parse(localStorage.getItem("pieces")) || [];
