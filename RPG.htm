@@ -85,9 +85,23 @@
     </div>
 
     <div class="controls">
-        <div class="header">
-            <h1>🛡️ AD&D Encounter Manager 🐉</h1>
-        </div>
+
+            <table id="statsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>AC</th>			
+                        <th>HP</th>
+                        <th>ATTKS</th>
+                        <th>GEAR</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows dynamically added here -->
+                </tbody>
+            </table>	    
 
         <a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target="_blank">Module</a> |
         <a href="https://archive.org/details/dungeon-masters-screen/mode/1up" target="_blank">DM Screen</a>
@@ -121,25 +135,7 @@
             <button onclick="addPiece()">Add Character/Monster</button>
         </div>
 
-        <div id="statsEditor">
-            <h2>Stats Overview</h2>
-            <table id="statsTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>AC</th>			
-                        <th>HP</th>
-                        <th>ATTKS</th>
-                        <th>GEAR</th>
-                        <th>Image</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Rows dynamically added here -->
-                </tbody>
-            </table>
-        </div>
+
 
         <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
         <label for="mapInput" class="upload-btn">Upload Map</label>
