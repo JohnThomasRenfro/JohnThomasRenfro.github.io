@@ -176,8 +176,8 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>AC</th>			
                     <th>HP</th>
-                    <th>AC</th>
                     <th>ATTKS</th>
                     <th>GEAR</th>
                     <th>Image</th>
@@ -345,9 +345,10 @@ function rotatePiece(id) {
 // AC Input
 const acCell = document.createElement("td");
 const acInput = document.createElement("input");
-acInput.type = "text"; // Use text type to avoid spinners
-acInput.inputMode = "numeric"; // Still allow numeric inputs
+acInput.type = "text"; 
+acInput.inputMode = "numeric"; 
 acInput.value = piece.ac;
+acInput.maxLength = 4;		    
 acInput.oninput = (event) => {
     piece.ac = event.target.value;
     saveToLocalStorage();
