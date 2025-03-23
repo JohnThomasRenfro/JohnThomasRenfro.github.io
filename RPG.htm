@@ -163,14 +163,15 @@ input[type="range"]:focus {
 }
 </head>
 <body>
-<a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target=_blank>Module</a>|
-<a href="https://archive.org/details/dungeon-masters-screen/mode/1up" target=_blank>DM Screen</a>|
+    <a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target="_blank">Module</a>|
+    <a href="https://archive.org/details/dungeon-masters-screen/mode/1up" target="_blank">DM Screen</a>|
+    
     <div class="header">
         <h1>🛡️ AD&D Encounter Manager 🐉</h1>
     </div>
-	
+
     <label for="d100">D100: </label>
-    <input type="text" id="d100" value="1d100+0"
+    <input type="text" id="d100" value="1d100+0">
 
     <label for="d20">D20: </label>
     <input type="text" id="d20" value="1d20+0">
@@ -194,11 +195,9 @@ input[type="range"]:focus {
     Results:
     <p id="results"></p>
 
-
-
     <div class="controls">
         <button onclick="addPiece()">Add Character/Monster</button>
-
+    </div>
 
     <div id="statsEditor">
         <h2>Stats Overview</h2>
@@ -219,13 +218,15 @@ input[type="range"]:focus {
             </tbody>
         </table>
     </div>
-        <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
-        <label for="mapInput" class="upload-btn">Upload Map</label>
-    </div>
+    
+    <input type="file" id="mapInput" accept="image/*" onchange="setMapBackground()" />
+    <label for="mapInput" class="upload-btn">Upload Map</label>
 
     <div class="sandbox" id="sandbox">
         <!-- Draggable pieces dynamically generated here -->
-    </div>	
+    </div>
+</body>
+	
 
     <script>
         let pieces = JSON.parse(localStorage.getItem("pieces")) || [];
@@ -595,5 +596,4 @@ loadMapBackground();
 renderPieces();
 renderStatsTable();
     </script>
-</body>
 </html>
