@@ -264,116 +264,118 @@ const directions = [0, 45, 90, 135, 180, 225, 270, 315]; // Eight cardinal direc
             renderStatsTable();
         }
 		
-		function renderPieces() {
+// Render pieces function
+function renderPieces() {
     const sandbox = document.getElementById("sandbox");
-    sandbox.innerHTML = "";
+    sandbox.innerHTML = ""; // Clear the sandbox before re-rendering the pieces
 
     pieces.forEach((piece) => {
         const el = document.createElement("div");
         el.className = "draggable";
-        el.textContent = piece.name; // Name is displayed again
+        el.textContent = piece.name; // Display the name on the piece
         el.style.left = piece.x + "px";
         el.style.top = piece.y + "px";
         el.style.transform = `rotate(${piece.rotation}deg)`;
         el.id = `piece-${piece.id}`;
 
-if (piece.image) {
-    const img = document.createElement("img");
-    img.src = piece.image;
-    img.style.width = "100%";
-    img.style.height = "100%";
-    img.style.objectFit = "cover"; // Ensures the image fills the square without distortion
-    el.appendChild(img);
+        // Add image if available
+        if (piece.image) {
+            const img = document.createElement("img");
+            img.src = piece.image;
+            img.style.width = "100%";
+            img.style.height = "100%";
+            img.style.objectFit = "cover"; // Ensures the image fills the square without distortion
+            el.appendChild(img);
+        }
+
+        // Rotate symbol
+        const rotate = document.createElement("div");
+        rotate.className = "rotate-symbol";
+        rotate.textContent = "⟳";
+        rotate.onclick = () => rotatePiece(piece.id);
+        el.appendChild(rotate);
+
+        // Drag-and-drop behavior
+        el.onmousedown = (event) => startDrag(event, piece.id);
+        el.ontouchstart = (event) => startDrag(event, piece.id); // Added touchstart event for mobile devices
+
+        sandbox.appendChild(el);
+    });
 }
 
-                // Rotate symbol
-                const rotate = document.createElement("div");
-                rotate.className = "rotate-symbol";
-                rotate.textContent = "⟳";
-                rotate.onclick = () => rotatePiece(piece.id);
-                el.appendChild(rotate);
+// Start dragging function
+function startDrag(e, pieceId) {
+    e.preventDefault(); // Prevent any unwanted default behavior (like text selection)
 
-                // Drag-and-drop behavior
-                el.onmousedown = (event) => startDrag(event, piece.id);
+    let touch = e.touches ? e.touches[0] : e;
+    let draggedElement = document.getElementById(`piece-${pieceId}`);
 
-                sandbox.appendChild(el);
-            });
-        }
-document.addEventListener("DOMContentLoaded", function () {
-    let draggedElement = null;
-    let offsetX = 0, offsetY = 0;
+    // Ensure dragging starts only if the element is properly selected
+    if (!draggedElement) return;
 
-    function startDrag(e) {
+    // Calculate initial offset (difference between the touch point and element's top-left corner)
+    let rect = draggedElement.getBoundingClientRect();
+    let offsetX = touch.clientX - rect.left;
+    let offsetY = touch.clientY - rect.top;
+
+    // Store drag start position for later use
+    document.ondragstart = () => false; // Disable text selection during drag
+
+    // Handle dragging
+    const doDrag = (e) => {
         let touch = e.touches ? e.touches[0] : e;
-        draggedElement = e.target.closest(".draggable"); // Ensure only draggable elements move
-        if (!draggedElement) return;
+        draggedElement.style.position = "absolute"; // Ensure the element is positioned absolutely
+        draggedElement.style.left = touch.clientX - offsetX + "px"; // Update position based on touch
+        draggedElement.style.top = touch.clientY - offsetY + "px";
 
-        let rect = draggedElement.getBoundingClientRect();
-        offsetX = touch.clientX - rect.left;
-        offsetY = touch.clientY - rect.top;
-        
-        // Prevent default behavior to avoid issues with scrolling or other touch actions
-        e.preventDefault();
-    }
+        e.preventDefault(); // Prevent any default scrolling or other behaviors
+    };
 
-    function doDrag(e) {
-        if (!draggedElement) return;
-        let touch = e.touches ? e.touches[0] : e;
+    // Stop dragging function
+    const stopDrag = () => {
+        // Update the piece's position in the array
+        const piece = pieces.find((p) => p.id === pieceId);
+        const rect = draggedElement.getBoundingClientRect();
+        piece.x = rect.left;
+        piece.y = rect.top;
 
-        // Move the element based on the touch position
-        draggedElement.style.position = "absolute";
-        draggedElement.style.left = (touch.clientX - offsetX) + "px";
-        draggedElement.style.top = (touch.clientY - offsetY) + "px";
-        
-        // Prevent default behavior for touchmove
-        e.preventDefault();
-    }
+        // Clear drag listeners
+        document.removeEventListener("mousemove", doDrag);
+        document.removeEventListener("touchmove", doDrag);
+        document.removeEventListener("mouseup", stopDrag);
+        document.removeEventListener("touchend", stopDrag);
+    };
 
-    function stopDrag() {
-        draggedElement = null;
-    }
-
-    // Rotate button handling
-    document.querySelectorAll(".rotate-button").forEach(btn => {
-        btn.addEventListener("mousedown", rotateElement);
-        btn.addEventListener("touchstart", rotateElement, { passive: false });
-    });
-
-    function rotateElement(e) {
-        e.preventDefault();  // Prevent any drag behavior from interfering
-        e.stopPropagation(); // Ensure the rotate button works and does not trigger drag
-
-        let parent = e.target.closest(".draggable");
-        if (!parent) return;
-
-        // Get current rotation angle and increment it by 15 degrees
-        let currentRotation = parent.style.transform.match(/rotate\((\d+)deg\)/);
-        let newAngle = currentRotation ? (parseInt(currentRotation[1]) + 15) % 360 : 15;
-
-        parent.style.transform = `rotate(${newAngle}deg)`;
-    }
-
-    // Apply drag functionality
-    document.querySelectorAll(".draggable").forEach(elem => {
-        elem.addEventListener("mousedown", startDrag);
-        elem.addEventListener("touchstart", startDrag, { passive: false });
-    });
-
+    // Attach event listeners for dragging
     document.addEventListener("mousemove", doDrag);
-    document.addEventListener("touchmove", doDrag, { passive: false });
-
+    document.addEventListener("touchmove", doDrag);
     document.addEventListener("mouseup", stopDrag);
     document.addEventListener("touchend", stopDrag);
-});
+}
 
+// Rotate piece function
 function rotatePiece(id) {
     const piece = pieces.find(p => p.id === id);
-    const currentIndex = directions.indexOf(piece.rotation);
-    piece.rotation = directions[(currentIndex + 1) % directions.length]; // Rotate to the next direction
-    saveToLocalStorage();
+    const currentRotation = piece.rotation || 0;
+    piece.rotation = (currentRotation + 15) % 360; // Increment the rotation by 15 degrees
+
+    saveToLocalStorage(); // Save the state
     renderPieces(); // Re-render the sandbox for immediate visual feedback
 }
 
+// Function to save to localStorage
+function saveToLocalStorage() {
+    localStorage.setItem('pieces', JSON.stringify(pieces)); // Save pieces array to localStorage
+}
+
+// Initialize pieces on page load (retrieving from localStorage)
+document.addEventListener("DOMContentLoaded", function () {
+    const storedPieces = JSON.parse(localStorage.getItem("pieces"));
+    if (storedPieces) {
+        pieces = storedPieces;
+    }
+    renderPieces(); // Render pieces after loading
+});
 
         function renderStatsTable() {
             const statsTable = document.querySelector("#statsTable tbody");
