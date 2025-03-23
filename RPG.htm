@@ -7,8 +7,8 @@
 <style>
     body {
         font-family: "Cinzel", serif;  /* Fantasy-style font for main content */
-        background-color: #1d1d1d;  /* Deep stone gray, almost black */
-        color: #e6e6e6;  /* Off-white to stand out against dark background */
+        background-color: #1d1d1d;  /* Deep stone gray for a dungeon feel */
+        color: #e6e6e6;  /* Light gray text for readability */
         margin: 0;
         padding: 0;
     }
@@ -22,7 +22,7 @@
 
     h1 {
         margin: 0;
-        color: #b58a3d;  /* Copper gold for the title text */
+        color: #b58a3d;  /* Copper gold for title text */
         font-size: 2.5em;
         text-shadow: 3px 3px #000;  /* Shadow effect for readability */
     }
@@ -125,13 +125,75 @@
         background: #a05d3c;  /* Muted brown-orange for clone button */
     }
 
+    /* Input Fields */
+    input[type="text"], input[type="number"], input[type="password"], textarea {
+        background-color: #2c2c2c;  /* Dark, stone-like background for inputs */
+        color: #e6e6e6;  /* Light text for readability */
+        border: 2px solid #6f4f28;  /* Copper-brown border to match the dungeon theme */
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        font-family: "Cinzel", serif;  /* Match font family */
+        font-size: 1em;
+    }
+
+    input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus, textarea:focus {
+        border-color: #d4af37;  /* Gold border when focused */
+        outline: none;
+    }
+
+    /* Links */
+    a {
+        color: #d4af37;  /* Gold color for links, resembling glowing items in a dungeon */
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #e6e6e6;  /* Lighter gray when hovering over links */
+        text-decoration: underline;  /* Underline effect for hover */
+    }
+
+    /* Additional Colors: Blue, Purple, Green, Yellow, etc. */
+    .china-blue {
+        color: #006e8e;  /* China Blue - soft blue for highlights */
+    }
+
+    .purple {
+        color: #5f2a8c;  /* Deep purple for magical elements */
+    }
+
+    .indigo {
+        color: #3f51b5;  /* Indigo color for titles or highlighted elements */
+    }
+
+    .blue-shades {
+        color: #1976d2;  /* Blue shade for vibrant accents */
+    }
+
+    .green-shades {
+        color: #388e3c;  /* Green shade for magical or nature-related elements */
+    }
+
+    .yellow-shades {
+        color: #fbc02d;  /* Golden yellow for treasure, magic, or highlights */
+    }
+
+    .white {
+        color: #ffffff;  /* Pure white for contrast */
+    }
+
+    .black {
+        color: #000000;  /* Pure black for dark text or backgrounds */
+    }
+
     input[type="number"]::-webkit-inner-spin-button, 
     input[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
-</style>
 
+</style>
 </head>
 <body>
 <a href="https://archive.org/details/tsr09059d12descentintothedepthsoftheearth/page/n4/mode/1up" target=_blank>Module</a>|
