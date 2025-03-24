@@ -6256,20 +6256,6 @@ const koreanDictionary = [
 {word:"(이)랑",meaning:"and, with"},
 {word:"(으)ㄹ 수 있",meaning:"can"},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         ];
         function breakIntoRomanizedJamo(hangul) {
             const initialConsonants = [
@@ -6300,111 +6286,81 @@ const koreanDictionary = [
             return result.join("");
        }
 
-        // Helper function to remove punctuation while preserving spaces
-        function removePunctuation(input) {
-            return input.replace(/[^\w\s가-힣]/g, ""); // Remove non-word, non-Hangul, non-space chars
-       }
+function matchInputToDictionary(userInput, dictionary) {
+    const results = [];
+    let buffer = "";
 
-        // Function to process input and interleave matched/unmatched sections
-        function matchInputToDictionary(userInput, dictionary) {
-            const results = [];
-            let buffer = "";
+    const segments = userInput.split(/(\s+)/).filter(Boolean); // Split by whitespace, keep spaces
 
-            const segments = userInput.split(/(\s+)/).filter(Boolean); // Split by whitespace, keep spaces
-
-            for (const segment of segments) {
-                if (/\s/.test(segment)) {
-                    if (buffer) {
-                        results.push({word:buffer, meaning:null}); // Flush non-space buffer
-                        buffer = "";
-                   }
-                    results.push({word:segment, meaning:null, isSpace:true}); // Mark as space
-                    continue;
-               }
-
-                let remaining = segment;
-                while (remaining.length > 0) {
-                    let longestMatch = null;
-
-                    for (const entry of dictionary) {
-                        if (remaining.startsWith(entry.word) && 
-                            (!longestMatch || entry.word.length > longestMatch.word.length)) {
-                            longestMatch = entry;
-                       }
-                   }
-
-                    if (longestMatch) {
-                        if (buffer) {
-                            results.push({word:buffer, meaning:null}); // Unmatched buffer
-                            buffer = "";
-                       }
-                        const romanizedJamo = breakIntoRomanizedJamo(longestMatch.word);
-                        results.push({
-                            word:longestMatch.word, 
-                            romanized:romanizedJamo, 
-                            meaning:longestMatch.meaning 
-                       });
-                        remaining = remaining.substring(longestMatch.word.length);
-                   } else {
-                        buffer += remaining[0];
-                        remaining = remaining.substring(1);
-                   }
-               }
-           }
-
+    for (const segment of segments) {
+        if (/\s/.test(segment)) {
             if (buffer) {
-                results.push({word:buffer, meaning:null}); // Flush any remaining buffer
-           }
-
-            return results;
-       }
-
-function displayResults() {
-    const rawInput = document.getElementById("userInput").value.trim();
-    const outputDiv = document.getElementById("output");
-
-    outputDiv.innerHTML = ""; // Clear previous output
-
-    if (!rawInput) {
-        outputDiv.innerHTML = "<p><i>Please enter some Korean text.</i></p>";
-        return;
-    }
-
-    const cleanedInput = removePunctuation(rawInput);
-    const results = matchInputToDictionary(cleanedInput, koreanDictionary);
-
-    if (results.length === 0) {
-        outputDiv.innerHTML = "<p><i>No matches found in dictionary.</i></p>";
-        return;
-    }
-
-    // Process results and group by original split words
-    const splitWords = cleanedInput.split(/\s+/);
-    let wordIndex = 0;
-    let currentWord = splitWords[wordIndex] || "";
-    let accumulatedOutput = "";
-
-    for (const item of results) {
-        if (item.isSpace) {
-            // When encountering a space, move to the next word
-            accumulatedOutput += `<p>${item.word}</p>`; // Just the space
-            wordIndex++;
-            currentWord = splitWords[wordIndex] || "";
+                results.push({ word: buffer, meaning: null }); // Flush non-space buffer
+                buffer = "";
+            }
+            results.push({ word: segment, meaning: null, isSpace: true }); // Mark as space
             continue;
         }
 
-        // Display the current split word before its first associated result
-        if (currentWord && accumulatedOutput.indexOf(`<b>Word: ${currentWord}</b>`) === -1) {
-            accumulatedOutput += `<p><b>Word: ${currentWord}</b></p>`;
-        }
+        let remaining = segment;
+        while (remaining.length > 0) {
+            let longestMatch = null;
 
-        // Append the result for this segment
-        accumulatedOutput += item.meaning 
-            ? `<p class="matched">&nbsp;&nbsp;<b>${item.word} ${item.romanized}</b>: ${item.meaning}</p>`
-            : `<p class="unmatched">&nbsp;&nbsp;Unmatched: ${item.word}</p>`;
+            // Check for exact matches in the dictionary
+            for (const entry of dictionary) {
+                if (remaining.startsWith(entry.word) &&
+                    (!longestMatch || entry.word.length > longestMatch.word.length)) {
+                    longestMatch = entry;
+                }
+            }
+
+            // If no longer match, check for 1, 2, or 3 character translations
+            if (!longestMatch) {
+                const len = Math.min(3, remaining.length);
+                for (let i = 1; i <= len; i++) {
+                    const shortSegment = remaining.substring(0, i);
+                    for (const entry of dictionary) {
+                        if (entry.word === shortSegment) {
+                            // Add a match for the shorter segment if found
+                            results.push({
+                                word: shortSegment,
+                                meaning: entry.meaning || null, // Use null if no meaning is found
+                                romanized: breakIntoRomanizedJamo(shortSegment)
+                            });
+                            break; // Exit the inner loop for shorter segment matches
+                        }
+                    }
+                }
+                // If we add a shorter segment, break out of the loop to continue with remaining input
+                break;
+            }
+
+            // If a longest match was found, process it
+            if (longestMatch) {
+                if (buffer) {
+                    results.push({ word: buffer, meaning: null }); // Flush unmatched buffer
+                    buffer = "";
+                }
+                const romanizedJamo = breakIntoRomanizedJamo(longestMatch.word);
+                results.push({
+                    word: longestMatch.word,
+                    romanized: romanizedJamo,
+                    meaning: longestMatch.meaning
+                });
+                remaining = remaining.substring(longestMatch.word.length);
+            } else {
+                buffer += remaining[0]; // Buffer up any unmatched characters
+                remaining = remaining.substring(1);
+            }
+        }
     }
 
-    outputDiv.innerHTML = accumulatedOutput;
+    // Flush any remaining buffer
+    if (buffer) {
+        results.push({ word: buffer, meaning: null });
+    }
+
+    return results;
 }
     </script>
 </body>
