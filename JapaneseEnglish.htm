@@ -10693,7 +10693,7 @@ const replsB=[
 {p1:/(Adjectiveな|;Parな)(?!X)/g,r1:'$1Xna,NaAdjective'},
 {p1:/(Adverbな)(?!X)/g,r1:'$1Xna,Adverb'},
 {p1:/(;Par等)(?!X)/g,r1:'$1Xra,plural;Par'},
-{p1:/(;Par)(の)(?!X)/g,r1:'$1X$2no,of the above;Par'},
+{p1:/(<br>|;Par)(の)(?!X)/g,r1:'$1X$2no,of the above;Par'},
 {p1:/(Verb)(と)(?!X)/g,r1:'$1 $2Xto,by way of the above;Par'},
 
 {p1:/(KuVerb|UVerb|MuVerb|RuVerb|TsuVerb|SuVerb|BuVerb)/g,r1:'$1 '},
