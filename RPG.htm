@@ -31,15 +31,15 @@
             background: #f0f0f0;
         }
         #statsPanel {
-            background: inherit;
-            color: white;    
-            width: 30vw;
+            width: 30vw; /* Explicitly set to 30% of viewport width */
             height: 100%;
             padding: 10px;
             margin-left: 10px;
             overflow-x: auto;
             overflow-y: auto;
             white-space: nowrap;
+            background: inherit;
+            color: white;
         }
         .piece {
             position: absolute;
@@ -163,29 +163,14 @@
 <div id="controls">
 <button onclick="addPiece()">Add Character/Monster</button>
 <input type="file" accept="image/*" onchange="uploadMap(this)">
-<button onclick="rollDice(20, parseInt(document.getElementById('mod20').value))">1d20</button>
-<input type="number" id="mod20" value="0" style="width: 50px;">
-
-<button onclick="rollDice(12, parseInt(document.getElementById('mod12').value))">1d12</button>
-<input type="number" id="mod12" value="0" style="width: 50px;">
-
-<button onclick="rollDice(10, parseInt(document.getElementById('mod10').value))">1d10</button>
-<input type="number" id="mod10" value="0" style="width: 50px;">
-
-<button onclick="rollDice(8, parseInt(document.getElementById('mod8').value))">1d8</button>
-<input type="number" id="mod8" value="0" style="width: 50px;">
-
-<button onclick="rollDice(6, parseInt(document.getElementById('mod6').value))">1d6</button>
-<input type="number" id="mod6" value="0" style="width: 50px;">
-
-<button onclick="rollDice(4, parseInt(document.getElementById('mod4').value))">1d4</button>
-<input type="number" id="mod4" value="0" style="width: 50px;">
-
-<span id="dice-result"></span> <a href='https://archive.org/details/tsr02011advanceddungeonsdragonsadd1steddungeonmastersguide/page/n74/mode/1up' target='_blank'>Combat Tables</a>
-||
-<span id="dice-result"></span> <a href='https://archive.org/details/tsr09045addthesecretofbonehill/page/n30/mode/1up' target='_blank'>The Secret of Bone Hill</a>
-
-</div>
+        <input type="text" id="diceFormula1" placeholder="e.g., 2d4-2 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula1', 'dice-result1')">
+        <span id="dice-result1"></span>
+        <input type="text" id="diceFormula2" placeholder="e.g., 1d3+0 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula2', 'dice-result2')">
+        <span id="dice-result2"></span>
+        <input type="text" id="diceFormula3" placeholder="e.g., 1d100-1 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula3', 'dice-result3')">
+        <span id="dice-result3"></span>
+        <input type="text" id="diceFormula4" placeholder="e.g., 1d2+0 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula4', 'dice-result4')">
+        <span id="dice-result4"></span>
 <div id="gameContainer">
 <div id="gameBoard"></div>
 <div id="statsPanel"></div>
@@ -206,11 +191,59 @@ function saveToLocalStorage() {
 localStorage.setItem('gamePieces', JSON.stringify(pieces));
 }
 
-function rollDice(sides, modifier) {
-    const roll = Math.floor(Math.random() * sides) + 1;
-    const total = roll + modifier;
-    document.getElementById('dice-result').textContent = `Rolled 1d${sides}${modifier >= 0 ? '+' : ''}${modifier}: ${roll} + ${modifier} = ${total}`;
-}
+        function rollDice(inputId, outputId) {
+            const inputElement = document.getElementById(inputId);
+            const outputElement = document.getElementById(outputId);
+            
+            if (!inputElement || !outputElement) {
+                console.error("Input or output element not found!");
+                return;
+            }
+
+            const input = inputElement.value.trim();
+            const regex = /^(\d+)d(\d+)([+-]\d+)?$/; // Matches 'XdY+Z' or 'XdY-Z'
+            const match = input.match(regex);
+
+            if (!match) {
+                outputElement.textContent = "Invalid format! Use 'XdY+Z' or 'XdY-Z' (e.g., 2d4-2 or 1d20+2)";
+                return;
+            }
+
+            const count = parseInt(match[1], 10);  // Number of dice
+            const sides = parseInt(match[2], 10);  // Sides per die
+            const modifier = match[3] ? parseInt(match[3], 10) : 0; // Modifier, defaults to 0
+
+            // Validate inputs
+            if (count <= 0 || sides <= 0) {
+                outputElement.textContent = "Number of dice and sides must be positive!";
+                return;
+            }
+            if (count > 100) {
+                outputElement.textContent = "Too many dice! Maximum is 100.";
+                return;
+            }
+
+            // Roll the dice
+            let rolls = [];
+            let total = 0;
+
+            for (let i = 0; i < count; i++) {
+                const roll = Math.floor(Math.random() * sides) + 1;
+                rolls.push(roll);
+                total += roll;
+            }
+
+            total += modifier;
+
+            // Format the output
+            const modifierStr = modifier >= 0 ? `+${modifier}` : `${modifier}`;
+            const rollsStr = rolls.join(' + ');
+            const output = modifier === 0 
+                ? `${count} ${sides}-sided dice: ${rollsStr} = ${total}`
+                : `${count} ${sides}-sided dice with ${modifierStr}: ${rollsStr} ${modifierStr} = ${total}`;
+
+            outputElement.textContent = output;
+        }
 
 function createPieceElement(piece) {
 const div = document.createElement('div');
@@ -266,11 +299,12 @@ panel.innerHTML = pieces.map(piece => `
 <input type="text" id="attacks-${piece.id}" value="${piece.attacks}" onchange="updateStat(${piece.id}, 'attacks', this.value)" style="width: 50px">
 <span>MV:</span>
 <input type="text" id="mv-${piece.id}" value="${piece.mv}" onchange="updateStat(${piece.id}, 'mv', this.value)" style="width: 40px">
-<span class="action-btn" onclick="copyPiece(${piece.id})">📋</span>
-<span class="action-btn" onclick="deletePiece(${piece.id})">🗑️</span>
 <span>Equipment:</span>
 <input type="text" id="gear-${piece.id}" value="${piece.gear}" onchange="updateStat(${piece.id}, 'gear', this.value)" style="width: 80px">
 <input type="file" id="file-${piece.id}" accept="image/*" onchange="uploadImage(${piece.id}, this)">
+<span class="action-btn" onclick="copyPiece(${piece.id})">📋</span>
+<span class="action-btn" onclick="deletePiece(${piece.id})">🗑️</span>
+</div>
 </div>
 `).join('');
 }
