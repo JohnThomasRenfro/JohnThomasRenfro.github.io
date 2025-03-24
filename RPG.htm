@@ -3,180 +3,160 @@
 <head>
 <title>Ye Old Role-Playing Board Game</title>
 <style>
-body {
-background: black;    
-border: none;
-box-shadow: none;
-color: #00FF00;    
-margin: 5px;
-outline: none;    
-padding: 5px;
-}
-#controls {
-margin-bottom: 10px;
-padding-left: 10px;
-}
-#dice-result {
-margin-left: 10px;
-color: #FFD700;
-}
-#gameContainer {
-display: flex;
-width: 100vw;
-height: calc(100vh - 20px);
-box-sizing: border-box;
-}
-#gameBoard {
-width: 70vw;
-height: 100%;
-position: relative;
-background: #f0f0f0;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-}
-#statsPanel {
-background: inherit;
-color: white;    
-width: 30vw;
-height: 100%;
-padding: 10px;
-margin-left: 10px;
-overflow-x: auto;
-overflow-y: auto;
-white-space: nowrap;
-}
-.piece {
-position: absolute;
-cursor: grab;
-user-select: none;
--moz-user-select: none;
--webkit-user-select: none;
-touch-action: none;
-width: 50px;
-height: 70px;
-}
-.piece:active {
-cursor: grabbing;
-}
-.piece.selected {
-outline: 2px solid #FF0000;
-outline-offset: 2px;
-}
-.piece-name {
-font-size: 12px;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-max-width: 50px;
-color: #FFD700;
-}
-.rotate-btn {
-cursor: pointer;
-font-size: 12px;
-color: #FFD700;
-}
-.stat-row {
-display: flex;
-align-items: center;
-margin-bottom: 5px;
-padding: 5px 0;
-}
-.stat-row > * {
-margin-right: 5px;
-}
-.stat-row span {
-color: white;
-}
-.stat-row input {
-background: black;
-color: #00FF00;
-font-family: 'Courier New', Courier, monospace;
-}
-.stat-row.selected {
-background: cyan;
-color: black;
-}
-.stat-row.selected span {
-color: black;
-}
-.stat-row.selected input {
-background: cyan;
-color: black;
-}
-.action-btn {
-cursor: pointer;
-margin-left: 5px;
-color: white;
-font-size: 16px;
-}
-.action-btn:hover {
-color: #FF0000;
-}
-button, input[type="file"] {
-background: #FFD700;
-color: #000;
-padding: 5px 10px;
-font-family: 'Courier New', Courier, monospace;
-cursor: pointer;
-margin-left: 10px;
-}
-button:hover, input[type="file"]:hover {
-background: #FF0000;
-color: #FFF;
-a {
-    text-decoration: none; /* Remove default underline */
-    color: #1e90ff; /* Bright blue */
-    font-family: Arial, sans-serif;
-    font-weight: 500; /* Medium bold */
-    position: relative; /* For the underline effect */
-    transition: color 0.3s ease; /* Smooth color change */
-    padding-bottom: 2px; /* Space for underline */
-}
-
-/* General link style */
-a {
-    text-decoration: none; /* No default underline */
-    color: #FFD700; /* Gold to match your theme */
-    font-family: 'Courier New', Courier, monospace; /* Matches your font */
-    font-weight: normal; /* Normal weight to fit the terminal vibe */
-    position: relative; /* For the underline effect */
-    transition: color 0.3s ease; /* Smooth color transition */
-    padding: 2px 4px; /* Slight padding for clickability */
-}
-
-/* Animated underline effect */
-a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px; /* Thinner underline for subtlety */
-    bottom: 0;
-    left: 0; /* Start from left */
-    background: #FF0000; /* Red to match your hover states */
-    transition: width 0.3s ease; /* Smooth expansion */
-}
-
-/* Hover state */
-a:hover {
-    color: #FF0000; /* Red to tie into your hover theme */
-}
-
-a:hover::after {
-    width: 100%; /* Full width underline */
-}
-
-/* Active state (when clicked) */
-a:active {
-    opacity: 0.6; /* Slightly more pronounced fade */
-    color: #FF0000; /* Stays red when clicked */
-}
-
-/* Visited state */
-a:visited {
-    color: #FFD700; /* Stays gold after visiting */
-    opacity: 0.8; /* Slightly faded to differentiate */
-}
+        body {
+            background: black;    
+            color: #00FF00;    
+            margin: 5px;
+            padding: 5px;
+            font-family: 'Courier New', Courier, monospace; /* Standardized font for body */
+        }
+        #controls {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+        #dice-result {
+            margin-left: 10px;
+            color: #FFD700;
+        }
+        #gameContainer {
+            display: flex;
+            width: 100vw;
+            height: calc(100vh - 20px);
+            box-sizing: border-box;
+        }
+        #gameBoard {
+            width: 70vw;
+            height: 100%;
+            position: relative;
+            background: #f0f0f0;
+        }
+        #statsPanel {
+            background: inherit;
+            color: white;    
+            width: 30vw;
+            height: 100%;
+            padding: 10px;
+            margin-left: 10px;
+            overflow-x: auto;
+            overflow-y: auto;
+            white-space: nowrap;
+        }
+        .piece {
+            position: absolute;
+            cursor: grab;
+            user-select: none;
+            width: 50px;
+            height: 70px;
+        }
+        .piece:active {
+            cursor: grabbing;
+        }
+        .piece.selected {
+            outline: 2px solid #FF0000;
+            outline-offset: 2px;
+        }
+        .piece-name {
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 50px;
+            color: #FFD700;
+        }
+        .rotate-btn {
+            cursor: pointer;
+            font-size: 12px;
+            color: #FFD700;
+        }
+        .stat-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            padding: 5px 0;
+        }
+        .stat-row > * {
+            margin-right: 5px;
+        }
+        .stat-row span {
+            color: white;
+        }
+        .stat-row input {
+            background: black;
+            color: #00FF00;
+            border: none; /* Remove border */
+            box-shadow: none; /* Ensure no shadow */
+            font-family: 'Courier New', Courier, monospace; /* Use consistent font */
+        }
+        .stat-row.selected {
+            background: cyan;
+            color: black;
+        }
+        .stat-row.selected span {
+            color: black;
+        }
+        .stat-row.selected input {
+            background: cyan;
+            color: black;
+        }
+        .action-btn {
+            cursor: pointer;
+            margin-left: 5px;
+            color: white;
+            font-size: 16px;
+        }
+        .action-btn:hover {
+            color: #FF0000;
+        }
+        button, input[type="file"] {
+            background: #FFD700;
+            color: #000;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 10px;
+            border: none; /* Remove border */
+            box-shadow: none; /* Ensure no shadow */
+        }
+        button:hover, input[type="file"]:hover {
+            background: #FF0000;
+            color: #FFF;
+        }
+        /* General link style */
+        a {
+            text-decoration: none; /* No default underline */
+            color: #FFD700; /* Gold to match your theme */
+            font-weight: normal; /* Normal weight to fit the terminal vibe */
+            position: relative; /* For the underline effect */
+            transition: color 0.3s ease; /* Smooth color transition */
+            padding: 2px 4px; /* Slight padding for clickability */
+        }
+        /* Animated underline effect */
+        a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px; /* Thinner underline for subtlety */
+            bottom: 0;
+            left: 0; /* Start from left */
+            background: #FF0000; /* Red to match your hover states */
+            transition: width 0.3s ease; /* Smooth expansion */
+        }
+        /* Hover state */
+        a:hover {
+            color: #FF0000; /* Red to tie into your hover theme */
+        }
+        a:hover::after {
+            width: 100%; /* Full width underline */
+        }
+        /* Active state (when clicked) */
+        a:active {
+            opacity: 0.6; /* Slightly more pronounced fade */
+            color: #FF0000; /* Stays red when clicked */
+        }
+        /* Visited state */
+        a:visited {
+            color: #FFD700; /* Stays gold after visiting */
+            opacity: 0.8; /* Slightly faded to differentiate */
+        }
 </style>
 </head>
 <body>
