@@ -10822,27 +10822,44 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 東京地裁で旧統一教会の解散を命じる決定が出されたことについて、世界平和統一家庭連合、いわゆる“統一教会”はコメントを発表し、東京高裁への即時抗告を検討する考えを示しました。全文は以下の通りです。
 <p>
-<button id="adminToggle" onclick="toggleAdminSection()">Admin use only</button>
-<div id="adminSection" style="display: none;">
-    <input type="text" id="wordInput" placeholder="Enter Japanese word" />
-    <input type="text" id="pronunciationInput" placeholder="Enter romanized pronunciation" />
-    <input type="text" id="definitionInput" placeholder="Enter English definition" />
-    <select id="typeSelector">
-        <option value="Non-Verb" selected>Non-Verb</option>
-        <option value="IAdjective">IAdjective</option>	
-        <option value="IchidanVerb">IchidanVerb</option>		
-        <option value="RuVerb">RuVerb</option>
-        <option value="SuVerb">SuVerb</option>
-        <option value="KuVerb">KuVerb</option>
-        <option value="BuVerb">BuVerb</option>
-        <option value="MuVerb">MuVerb</option>
-        <option value="NuVerb">NuVerb</option>
-        <option value="TsuVerb">TsuVerb</option>
-    </select>
-    <button onclick="formatAndDisplay()">Generate</button> <!-- Generate button added -->
-    <p id="output"></p>
-    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+<!-- Toggle Button -->
+<button id="adminToggle" onclick="toggleAdminSection()" style="position: fixed; top: 10px; right: 10px; z-index: 1000; background-color: #0078d4; color: white; border: none; padding: 5px 10px; font-size: 12px; border-radius: 3px; cursor: pointer;">
+  Admin Use Only
+</button>
+
+<!-- Floating Panel -->
+<div id="adminSection" style="position: fixed; top: 50px; right: 10px; width: 320px; height: auto; max-height: 500px; overflow-y: auto; padding: 10px; background-color: #ffffff; border: 1px solid #cccccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-size: 12px; display: none; z-index: 999; border-radius: 5px;">
+  <h2 style="margin: 5px 0; font-size: 14px; color: #333333;">Admin Use Only</h2>
+
+  <!-- Input Fields -->
+  <input type="text" id="wordInput" placeholder="Enter Japanese word" style="width: 100%; margin-bottom: 5px; font-size: 12px; padding: 3px; border: 1px solid #cccccc; border-radius: 3px;">
+  <input type="text" id="pronunciationInput" placeholder="Enter romanized pronunciation" style="width: 100%; margin-bottom: 5px; font-size: 12px; padding: 3px; border: 1px solid #cccccc; border-radius: 3px;">
+  <input type="text" id="definitionInput" placeholder="Enter English definition" style="width: 100%; margin-bottom: 5px; font-size: 12px; padding: 3px; border: 1px solid #cccccc; border-radius: 3px;">
+
+  <!-- Select Input -->
+  <select id="typeSelector" style="width: 100%; margin-bottom: 10px; font-size: 12px; padding: 3px; border: 1px solid #cccccc; border-radius: 3px;">
+    <option value="Non-Verb" selected>Non-Verb</option>
+    <option value="IAdjective">IAdjective</option>
+    <option value="IchidanVerb">IchidanVerb</option>
+    <option value="RuVerb">RuVerb</option>
+    <option value="SuVerb">SuVerb</option>
+    <option value="KuVerb">KuVerb</option>
+    <option value="BuVerb">BuVerb</option>
+    <option value="MuVerb">MuVerb</option>
+    <option value="NuVerb">NuVerb</option>
+    <option value="TsuVerb">TsuVerb</option>
+  </select>
+
+  <!-- Buttons -->
+  <button onclick="formatAndDisplay()" style="width: 100%; margin-bottom: 5px; font-size: 12px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">
+    Generate
+  </button>
+  <button onclick="copyToClipboard()" style="width: 100%; font-size: 12px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">
+    Copy to Clipboard
+  </button>
+  <p id="output" style="margin-top: 10px; font-size: 12px; color: #333333;"></p>
 </div>
+
 
 <hr>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()" placeholder='Put the Japanese text here.'></textarea>
