@@ -41,6 +41,16 @@
             background: inherit;
             color: white;
         }
+		
+		        .stat-row {
+            margin-bottom: 5px;
+        }
+        .stat-row.selected {
+            background-color: #444; /* Highlight selected row */
+        }
+        .hp-zero {
+            color: red; /* Red color for name when HP <= 0 */
+        }
         .piece {
             position: absolute;
             cursor: grab;
@@ -171,6 +181,8 @@
         <span id="dice-result3"></span>
         <input type="text" id="diceFormula4" placeholder="e.g., 1d2+0 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula4', 'dice-result4')">
         <span id="dice-result4"></span>
+<br><a href="https://archive.org/details/tsr02011advanceddungeonsdragonsadd1steddungeonmastersguide/page/n75/mode/1up" target=_blank>Combat Tables</a>(..the attacker's HD versus the target's AC. There are character class tables and a monster table.)	
+<br><a href="https://archive.org/details/tsr09045addthesecretofbonehill/page/n46/mode/1up" target=_blank>The Secret of Bone Hill Adventure Module</a>	
 <div id="gameContainer">
 <div id="gameBoard"></div>
 <div id="statsPanel"></div>
@@ -288,7 +300,9 @@ const panel = document.getElementById('statsPanel');
 panel.innerHTML = pieces.map(piece => `
 <div class="stat-row ${selectedPieceId === piece.id ? 'selected' : ''}" id="row-${piece.id}">
 <span>Name:</span>
-<input type="text" id="name-${piece.id}" value="${piece.name}" onchange="updateStat(${piece.id}, 'name', this.value)" style="width: 80px">
+<input type="text" id="name-${piece.id}" value="${piece.name}"                            onchange="updateStat(${piece.id}, 'name', this.value)" 
+                           style="width: 80px; ${piece.hp <= 0 ? 'color: red;' : ''}"
+                           class="${piece.hp <= 0 ? 'hp-zero' : ''}">
 <span>HD:</span>
 <input type="text" id="hd-${piece.id}" value="${piece.hd}" onchange="updateStat(${piece.id}, 'hd', this.value)" style="width: 40px">
 <span>HP:</span>
@@ -308,6 +322,21 @@ panel.innerHTML = pieces.map(piece => `
 </div>
 `).join('');
 }
+
+        function updateStat(id, key, value) {
+            const piece = pieces.find(p => p.id === id);
+            if (piece) {
+                if (key === 'hp') {
+                    piece[key] = parseInt(value, 10) || 0; // Ensure HP is a number
+                } else {
+                    piece[key] = value;
+                }
+                updateStatsPanel(); // Re-render to reflect changes, including HP color
+            }
+        }
+
+        // Initial render
+        updateStatsPanel();
 
 function addPiece() {
 const newPiece = {
