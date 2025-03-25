@@ -172,32 +172,38 @@
 
     <!-- Output Section -->
     <div id="output"></div>
-    <h2>For Admin Use Only</h2>
-    <!-- Dictionary Entry Section -->
-    <div class="input-group">
-        <label for="russianInput">Russian Word:</label>
-        <input type="text" id="russianInput" placeholder="Enter Russian word">
+<!-- Toggle Button -->
+<button onclick="toggleParser()" style="position: fixed; top: 10px; right: 10px; z-index: 1000; background-color: #0078d4; color: white; border: none; padding: 5px 10px; font-size: 12px; border-radius: 3px; cursor: pointer;">
+  Toggle Parser
+</button>
 
-        <label for="englishInput">English Definition:</label>
-        <input type="text" id="englishInput" placeholder="Enter English definition">
+<!-- Floating Parser -->
+<div id="floatingParser" style="position: fixed; top: 50px; right: 10px; width: 280px; height: 400px; overflow-y: auto; padding: 10px; background-color: #ffffff; border: 1px solid #cccccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-size: 11px; display: none; z-index: 999; border-radius: 5px;">
+  <h2 style="margin: 5px 0; font-size: 14px; color: #333333;">For Admin Use Only</h2>
 
-        <button onclick="createDictionaryEntry()">Create Dictionary Entry</button>
-        <button onclick="copyToClipboard()">Copy Entry to Clipboard</button>
-    </div>
-    <div id="output1"></div>
+  <!-- Dictionary Entry Section -->
+  <label for="russianInput" style="font-size: 11px; color: #555555;">Russian Word:</label>
+  <input type="text" id="russianInput" placeholder="Enter Russian word" style="width: 100%; margin-bottom: 5px; font-size: 11px; padding: 3px; border: 1px solid #cccccc; border-radius: 3px;"><br>
 
-    <!-- Suffix Entry Section -->
-    <div class="input-group">
-        <label for="suffixInput">Suffix:</label>
-        <input type="text" id="suffixInput" placeholder="Enter suffix (e.g., тель)">
+  <label for="englishInput" style="font-size: 11px; color: #555555;">English Definition:</label>
+  <input type="text" id="englishInput" placeholder="Enter English definition" style="width: 100%; margin-bottom: 10px; font-size: 11px; padding: 3px; border: 1px solid #cccccc; border-radius: 3px;"><br>
 
-        <label for="meaningInput">Meaning:</label>
-        <input type="text" id="meaningInput" placeholder="Enter meaning (e.g., agent noun suffix)">
+  <button onclick="createDictionaryEntry()" style="width: 100%; margin-bottom: 5px; font-size: 11px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">Create Dictionary Entry</button>
+  <button onclick="copyToClipboard()" style="width: 100%; margin-bottom: 10px; font-size: 11px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">Copy Entry to Clipboard</button>
+  <div id="output1" style="font-size: 11px; color: #333333;"></div>
 
-        <button onclick="createSuffixEntry()">Create Suffix Entry</button>
-        <button onclick="copySuffixToClipboard()">Copy Entry to Clipboard</button>
-    </div>
-    <div id="suffixOutput"></div>
+  <!-- Suffix Entry Section -->
+  <label for="suffixInput" style="font-size: 11px; color: #555555;">Suffix:</label>
+  <input type="text" id="suffixInput" placeholder="Enter suffix (e.g., тель)" style="width: 100%; margin-bottom: 5px; font-size: 11px; padding: 3px; border: 1px solid #cccccc; border-radius: 3px;"><br>
+
+  <label for="meaningInput" style="font-size: 11px; color: #555555;">Meaning:</label>
+  <input type="text" id="meaningInput" placeholder="Enter meaning (e.g., agent noun suffix)" style="width: 100%; margin-bottom: 10px; font-size: 11px; padding: 3px; border: 1px solid #cccccc; border-radius: 3px;"><br>
+
+  <button onclick="createSuffixEntry()" style="width: 100%; margin-bottom: 5px; font-size: 11px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">Create Suffix Entry</button>
+  <button onclick="copySuffixToClipboard()" style="width: 100%; font-size: 11px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">Copy Entry to Clipboard</button>
+  <div id="suffixOutput" style="font-size: 11px; color: #333333;"></div>
+</div>
+
 
  <script>
  
@@ -289,7 +295,11 @@ function copySuffixToClipboard() {
     }
 }
 
-
+  // Toggle function to show/hide the parser
+  function toggleParser() {
+    const parser = document.getElementById('floatingParser');
+    parser.style.display = parser.style.display === 'none' ? 'block' : 'none';
+  }
 
 const russianPrefixes = [
 {prefix:"экстра",meaning:"extra-"},
