@@ -149,24 +149,27 @@
 </style>
 </head>
 <body>
-    <h1>Korean-English Dictionary Parser</h1>
-24일 오전 11시경 경북 의성군 안평면 신월리에서 만난 이상달 씨(69)는 검게 그을린 채 엿가락처럼 
+    <h1>Korean-English Parser</h1>
+25일 소방당국에 따르면 오토바이 운전자 박 모 씨(33·남)는 이날 오전 11시 22분경 싱크홀 중심에서 고덕동 방향 50m 지점에서 심정지 상태로 발견됐다.
     <br>
     <textarea id="userInput" placeholder="Enter Korean text..."></textarea><br>
     <button onclick="displayResults()">Analyze</button><br>
     <div id="output"></div>
   <div id="unmatchedOutput"></div>
-  <h3>Admin Use Only</h3>
-    <label for="koreanWord">Korean Word:</label><br>
-    <input type="text" id="koreanWord" placeholder="Enter Korean Word"><br>
-
-    <label for="englishMeaning">English Meaning:</label><br>
-    <input type="text" id="englishMeaning" placeholder="Enter English Meaning"><br>
-
-    <button onclick="formatOutput()">Format</button>
-    <button onclick="copyToClipboard()">Copy to Clipboard</button>
-
-    <div id="output1"></div>
+<div style="position: fixed; top: 10px; right: 10px; width: 250px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ccc; font-size: 12px;">
+  <h3 style="margin: 5px 0;">Admin Use Only</h3>
+  
+  <label for="koreanWord" style="font-size: 12px;">Korean Word:</label><br>
+  <input type="text" id="koreanWord" placeholder="Enter Korean Word" style="width: 100%; margin-bottom: 5px; font-size: 12px;"><br>
+  
+  <label for="englishMeaning" style="font-size: 12px;">English Meaning:</label><br>
+  <input type="text" id="englishMeaning" placeholder="Enter English Meaning" style="width: 100%; margin-bottom: 10px; font-size: 12px;"><br>
+  
+  <button onclick="formatOutput()" style="width: 100%; margin-bottom: 5px; font-size: 12px;">Format</button>
+  <button onclick="copyToClipboard()" style="width: 100%; font-size: 12px;">Copy to Clipboard</button>
+  
+  <div id="output1" style="margin-top: 10px; font-size: 12px;"></div>
+</div>
 
     <script>
 function formatOutput() {
@@ -1344,13 +1347,16 @@ const koreanDictionary = [
 {word:"지난 해",meaning:"last year"},
 {word:"지나치",meaning:"to be extreme, excessive, go too far, be too much; pass by, go past; neglect"},
 {word:"지나가",meaning:"to go through, pass by, go by; tolerate"},
-{word:"지나",meaning:"지나요"},
+{word:"지나",meaning:"after"},
 {word:"지나",meaning:"to pass, go by"},
 {word:"지급",meaning:"to provide, pay (fixed/set amount), give something to somebody"},
 {word:"지금",meaning:"now (at this moment)"},
 {word:"지극히",meaning:"very, extremely (something is very natural/normal)"},
 {word:"지구",meaning:"Earth, globe; district, zone, area"},
 {word:"지겹",meaning:"to be tedious, boring, dull, sick of"},
+{word:"시신",meaning:"corpse"},
+{word:"됐",meaning:"be discovered"},
+{word:"으로",meaning:"A particle indicating transformation or change, in this case referring to the state the person was found in"},
 {word:"지갑",meaning:"wallet"},
 {word:"지각",meaning:"to be late"},
 {word:"지",meaning:"to lose, be defeated; be under an obligation; sink, go down; carry; take responsibility (for); be wrinkled"},
@@ -1909,6 +1915,11 @@ const koreanDictionary = [
 {word:"자금",meaning:"money, capital, funds"},
 {word:"자극",meaning:"to stimulate, arouse, excite, irritate, provoke"},
 {word:"자격증",meaning:"certificate, license"},
+{word:"소방",meaning:"firefighting"},
+{word:"따르면",meaning:"after"},
+{word:"모",meaning:"someone"},
+{word:"남아요",meaning:"remain"},
+{word:"당국",meaning:"authorities"},
 {word:"자격",meaning:"qualificiation, right (to do); capacity"},
 {word:"자가용",meaning:"one's own car, private/personal car"},
 {word:"자",meaning:"to sleep"},
@@ -2588,6 +2599,11 @@ const koreanDictionary = [
 {word:"여전",meaning:"to be unchanged, be as usual, as it was before"},
 {word:"여자친구",meaning:"girlfriend"},
 {word:"여자",meaning:"woman, female"},
+{word:"강동구",meaning:"Gangdong-gu District"},
+{word:"한복판",meaning:"middle;center"},
+{word:"꺼짐",meaning:"sinking"},
+{word:"매몰",meaning:"buried;trapped"},
+{word:"된",meaning:"A verb suffix that turns this into a descriptive verb modifying the following noun"},
 {word:"여의도",meaning:"Yeouido (finance/banking district on an island on the Han River)"},
 {word:"여유롭",meaning:"to be leisurley"},
 {word:"여유",meaning:"time/money to spare; composure, easygoing, carefreeness"},
@@ -2756,8 +2772,7 @@ const koreanDictionary = [
 {word:"약도",meaning:"rough map, sketch map"},
 {word:"약국",meaning:"pharmacy"},
 {word:"약간",meaning:"a little, slightly, somewhat; (filler) like..."},
-{word:"약",meaning:"to be weak, infirm, light, gentle, weak-willed; bad, poor"},
-{word:"약",meaning:"drug, medicine; approximately"},
+{word:"약",meaning:"about"},
 {word:"야채",meaning:"vegetable (wild)"},
 {word:"야유회",meaning:"picnic, outing (of a company)"},
 {word:"야외",meaning:"outside, open air, the outdoors"},
@@ -3126,11 +3141,13 @@ const koreanDictionary = [
 {word:"시간표",meaning:"schedule (hourly)"},
 {word:"시간",meaning:"time/hour"},
 {word:"시각",meaning:"time, moment; view, standpoint; sight, vision"},
-{word:"시",meaning:"to be sour; feeling a twinge (of pain)"},
 {word:"시",meaning:"poem; time, hour; o'clock; city"},
 {word:"승패",meaning:"victory and/or defeat"},
 {word:"승진",meaning:"promotion (at a job), advancement"},
 {word:"승자",meaning:"winner"},
+{word:"분경",meaning:"minutes"},
+{word:"싱크홀",meaning:"sinkhole"},
+{word:"심정지",meaning:"cardiac arrest"},
 {word:"승인",meaning:"approval, acknowledgement"},
 {word:"승용차",meaning:"passenger car, sedan"},
 {word:"승무원",meaning:"crewman, stewardess"},
@@ -5354,7 +5371,7 @@ const koreanDictionary = [
 {word:"날마",meaning:"every day, each day, day in and day out (long term daily routine/not that common)"},
 {word:"날달걀",meaning:"raw egg"},
 {word:"날개",meaning:"wings"},
-{word:"날",meaning:"날아요"},
+{word:"날",meaning:"day"},
 {word:"날",meaning:"to fly; move fast, run away"},
 {word:"날",meaning:"day, date; edge"},
 {word:"난방",meaning:"heating, heating system"},
@@ -6275,20 +6292,6 @@ const koreanDictionary = [
 {word:"-에 관",meaning:"to take care of; refer to, related to, be about; affect, have (something) to do with, have influence on, involve, concern"},
 {word:"(이)랑",meaning:"and, with"},
 {word:"(으)ㄹ 수 있",meaning:"can"},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         ];
         function breakIntoRomanizedJamo(hangul) {
