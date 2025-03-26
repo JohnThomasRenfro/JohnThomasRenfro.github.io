@@ -146,11 +146,20 @@
         box-shadow: inset 0 1px 3px rgba(56, 102, 65, 0.15);
         border: 1px dashed #c23b3b; /* Dashed red border */
     }
+	
+	    #adminPanel {
+      display: none; /* Set the initial state to hidden */
+      border: 1px solid black;
+      padding: 10px;
+      width: 200px;
+      background-color: #f3f3f3;
+    }
+
 </style>
 </head>
 <body>
     <h1>Korean-English Parser</h1>
-중앙선거관리위원회(선관위)가 전국 각지에 216곳의 주거용 관사를 운영하고, 여기에 들어가 있는 전세보증금 총액이 54억여 원에 달하는 것으로 파악됐다. 선관위 관사 배정 과정에서 특혜가 발생할 수 있는 만큼 투명성을 제고해야 한다는 지적이 나온다.
+도널드 트럼프 미국 대통령이 26일(현지 시간) “미국에서 생산되지 않은 모든 자동차에 대해 25%의 관세를 부과할 것”이라고 밝혔다. 앞서 24일 “며칠 안에 자동차에 관한 추가 관세를 발표할 것”이라고 발표하더니 이틀 만에 전격적으로 실제 조치에 나선 것. 트럼프 대통령은 이번 자동차 관세 부과에 대
     <br>
     <textarea id="userInput" placeholder="Enter Korean text..."></textarea><br>
     <button onclick="displayResults()">Analyze</button><br>
@@ -433,7 +442,7 @@ const koreanDictionary = [
 {word:"협박",meaning:"to threaten (with a purpose), intimidate, blackmail"},
 {word:"혈액",meaning:"blood (sino?)"},
 {word:"혈압",meaning:"blood pressure"},
-{word:"현지",meaning:"local, current location of an object or thing"},
+{word:"현지",meaning:"local"},
 {word:"현재",meaning:"the present, right now"},
 {word:"현재",meaning:"present tense"},
 {word:"현재 진행형",meaning:"present progressive"},
@@ -1035,7 +1044,7 @@ const koreanDictionary = [
 {word:"추석",meaning:"Korean harvest festival (thanksgiving day)"},
 {word:"추리",meaning:"to deduce, reason, infer (mostly detective/mystery related?)"},
 {word:"추리 소설",meaning:"mystery/detective novel"},
-{word:"추가",meaning:"to add (on to something), supplement (additional)"},
+{word:"추가",meaning:"additional"},
 {word:"추",meaning:"to dance"},
 {word:"최초",meaning:"the very first, first (formal)"},
 {word:"최종",meaning:"the last, final, end result (sino)"},
@@ -1697,11 +1706,21 @@ const koreanDictionary = [
 {word:"전철",meaning:"subway (train) (electric)"},
 {word:"전처",meaning:"one's former wife, ex-wife"},
 {word:"전채",meaning:"appetizer"},
+{word:"되지",meaning:"happen"},
+{word:"도널드",meaning:"Donald"},
+{word:"트럼프",meaning:"Trump"},
+{word:"만에",meaning:"at the end of"},
 {word:"전차",meaning:"tram; tank"},
 {word:"전지레인지",meaning:"microwave oven"},
+{word:"안에",meaning:"in"},
+{word:"관한",meaning:"relevant"},
 {word:"전주",meaning:"last week; Jeonju; investor"},
 {word:"전쟁터",meaning:"battlefield"},
+{word:"혔",meaning:"did"},
+{word:"부과",meaning:"to levy"},
+{word:"관세",meaning:"tariffs"},
 {word:"전쟁",meaning:"war;hell"},
+{word:"대해",meaning:"about"},
 {word:"전자의",meaning:"electronic"},
 {word:"전원",meaning:"electricity supply, socket; countryside, rural areas; all members, everyone"},
 {word:"전에",meaning:"past, earlier time, before; ago (an act occurred before the preceding statement)(전에 is not a word but an expression)"},
@@ -1727,6 +1746,7 @@ const koreanDictionary = [
 {word:"전기",meaning:"electricity, electric power; the former part of, early years; turning point; biography"},
 {word:"전국",meaning:"the whole country, nationwide"},
 {word:"전공",meaning:"to major in, specialize in"},
+{word:"않은",meaning:"not"},
 {word:"전골",meaning:"beef with vegetables cooked in a casserole"},
 {word:"전경",meaning:"foreground, panorama; the front view (that unfolds before your eyes); riot police"},
 {word:"전",meaning:"to convey, communicate, tell, deliver, report; teach, introduce; hand down, remain, pass on"},
@@ -2138,7 +2158,7 @@ const koreanDictionary = [
 {word:"각하",meaning:"dismissal"},
 {word:"이기",meaning:"to win, defeat; overcome, control, suppress; endure, survive"},
 {word:"이것저것",meaning:"this and that"},
-{word:"이",meaning:"this (close to speaker)"},
+{word:"이",meaning:"The"},
 {word:"이",meaning:"is, to be, am, are"},
 {word:"의학",meaning:"medicine, medical science"},
 {word:"의지",meaning:"will, volition; leaning, support; reliance, dependence"},
@@ -2656,7 +2676,7 @@ const koreanDictionary = [
 {word:"엑스레이",meaning:"x-ray"},
 {word:"에펠탑",meaning:"Eiffel Tower"},
 {word:"에어컨",meaning:"air conditioner"},
-{word:"에서",meaning:"Location (at, in, from)"},
+{word:"에서",meaning:"in"},
 {word:"에너지",meaning:"energy, power"},
 {word:"에", meaning:"at the time,to a place"},
 {word:"엎드리",meaning:"to lie face down (one one's belly); bend down"},
@@ -2835,7 +2855,7 @@ const koreanDictionary = [
 {word:"앞줄",meaning:"front row"},
 {word:"앞일",meaning:"future, things to come, ahead (not common)"},
 {word:"앞으로",meaning:"from now on; forward"},
-{word:"앞서",meaning:"to go before, precede, get ahead of, take the lead"},
+{word:"앞서",meaning:"before"},
 {word:"앞서",meaning:"ahead (of other people/things), before, earlier"},
 {word:"앞면",meaning:"the front side"},
 {word:"앞머리",meaning:"bangs, front hair; forehead; introduction, prologue"},
@@ -3166,7 +3186,7 @@ const koreanDictionary = [
 {word:"시골",meaning:"countryside, rural area; one's home (town)"},
 {word:"시계",meaning:"clock, watch; visibility"},
 {word:"시간표",meaning:"schedule (hourly)"},
-{word:"시간",meaning:"time/hour"},
+{word:"시간",meaning:"time"},
 {word:"시각",meaning:"time, moment; view, standpoint; sight, vision"},
 {word:"시",meaning:"poem; time, hour; o'clock; city"},
 {word:"승패",meaning:"victory and/or defeat"},
@@ -3525,7 +3545,7 @@ const koreanDictionary = [
 {word:"생선회",meaning:"sashimi, sliced raw fish"},
 {word:"생선",meaning:"fish (for eating)"},
 {word:"생생",meaning:"to be vivid, graphic"},
-{word:"생산",meaning:"to produce, make, manufacture (product, resource, etc)"},
+{word:"생산",meaning:"produce"},
 {word:"생방송",meaning:"live broadcast"},
 {word:"생물학",meaning:"biology"},
 {word:"생물",meaning:"living thing, creature; biology"},
@@ -3999,7 +4019,7 @@ const koreanDictionary = [
 {word:"보물",meaning:"treasure (precious and valuable thing)"},
 {word:"보리",meaning:"barley"},
 {word:"보름달",meaning:"full moon"},
-{word:"보류",meaning:"to postpone, put off, defer, hold off (not do something immediately)"},
+{word:"보류",meaning:"to postpone, put off, defer, hold off (not something immediately)"},
 {word:"보람 있",meaning:"to be worthwhile, rewarding, fruitful"},
 {word:"보라색",meaning:"violet, purple"},
 {word:"보따리",meaning:"bundle, pack, bunch; cloth-wrapped package"},
@@ -4163,12 +4183,12 @@ const koreanDictionary = [
 {word:"기게",meaning:"+ly"},
 {word:"밟",meaning:"to step on, trample; trail after, shadow, follow, track (down); go through, undergo"},
 {word:"밝히",meaning:"to brighten (up), lighten, turn on a light; clarify, disclose, reveal; stay up; be crazy for; give hope"},
-{word:"밝",meaning:"to be bright (focus on the amount of light), light; be promising; sharp, keen"},
+{word:"밝",meaning:"reveal"},
 {word:"발휘",meaning:"to demonstrate, show, exhibit (one's talent/capacity), (successfully do something/exercise a skill that demonstrates your prowess)"},
 {word:"발효",meaning:"fermentation;enforcement"},
 {word:"발행",meaning:"publication (of a text), issue (official documents/currency)"},
 {word:"발표회",meaning:"recital, performance, conference, exhibition, meeting"},
-{word:"발표",meaning:"announcement, statement, presentation, publish, release"},
+{word:"발표",meaning:"announcement"},
 {word:"발전",meaning:"development, growth, progress, develop, advance(ment) (process of developing); electricity generation"},
 {word:"발자국",meaning:"footstep, footprint, tracks; step (measure of distance)"},
 {word:"발음",meaning:"pronunciation"},
@@ -4304,7 +4324,7 @@ const koreanDictionary = [
 {word:"미끈미끈",meaning:"to be all slippery, very smooth"},
 {word:"미끄럽",meaning:"to be slippery, greasy, slick"},
 {word:"미끄럼",meaning:"slide, sliding, slipping"},
-{word:"미국",meaning:"the United States"},
+{word:"미국",meaning:"United States"},
 {word:"뮤지컬",meaning:"musical"},
 {word:"뭔가",meaning:"something"},
 {word:"뭐",meaning:"What"},
@@ -4464,7 +4484,7 @@ const koreanDictionary = [
 {word:"모르",meaning:"to not know"},
 {word:"모레",meaning:"the day after tomorrow"},
 {word:"모래",meaning:"sand"},
-{word:"모든",meaning:"(adj) every, all, whole, entire (used before a noun)"},
+{word:"모든",meaning:"all"},
 {word:"모두",meaning:"(adv) all (as an ADV it's slightly less formal than 전부); (noun) all, everyone, everybody"},
 {word:"모델",meaning:"model (both meanings)"},
 {word:"모기",meaning:"mosquito"},
@@ -4607,7 +4627,7 @@ const koreanDictionary = [
 {word:"말끔",meaning:"(adv) all, completely, neatly, without leaving any (not common/you'll hear 말금히 more)"},
 {word:"말고",meaning:"not...but...; instead of; except, but;"},
 {word:"말",meaning:"to speak"},
-{word:"말",meaning:"to roll up; quit doing, not do (an action), stop doing (an action that you want to stop)(see 지마세요)"},
+{word:"말",meaning:"to roll up; quit doing, not (an action), stop doing (an action that you want to stop)(see 지마세요)"},
 {word:"말",meaning:"speech, words, language; horse"},
 {word:"맏아들",meaning:"the eldest son (among other sons)"},
 {word:"많이",meaning:"many"},
