@@ -160,8 +160,8 @@
     <div class="pravda-box">
         <h2>Cut and paste this Russian text into the text area below:</h2>
         <p>
-Начало весны — тот самый квест, когда утром холодно, днем мокро, а вечером опять ветер. И всё это время ваши ноги в заложниках: в ботинках жарко, в кроссовках холодно, а сапоги уже не по сезону. Решение? Универсальная демисезонная обувь!
-Читайте больше на https://www.pravda.ru/news/beauty/2195470-spring-shoes-guide/
+В 2024 году Россия заняла третье место среди стран G20 по темпам экономического роста, обогнав Бразилию и Турцию. На первом месте оказалась Индия с ростом ВВП на 6,7%, а Китай и Индонезия поделили вторую строчку с показателем 5%. Российская экономика выросла на 4,1%.
+Читайте больше на https://www.pravda.ru/news/economics/2197526-economic-growth-shift/
     </div>
 
     <!-- Main User Input Section -->
@@ -190,7 +190,7 @@
 
   <button onclick="createDictionaryEntry()" style="width: 100%; margin-bottom: 5px; font-size: 11px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">Create Dictionary Entry</button>
   <button onclick="copyToClipboard()" style="width: 100%; margin-bottom: 10px; font-size: 11px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">Copy Entry to Clipboard</button>
-  <div id="output1" style="font-size: 11px; color: #333333;"></div>
+  <div id="output1" style="font-size: 11px; color: white;"></div>
 
   <!-- Suffix Entry Section -->
   <label for="suffixInput" style="font-size: 11px; color: #555555;">Suffix:</label>
@@ -201,7 +201,7 @@
 
   <button onclick="createSuffixEntry()" style="width: 100%; margin-bottom: 5px; font-size: 11px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">Create Suffix Entry</button>
   <button onclick="copySuffixToClipboard()" style="width: 100%; font-size: 11px; padding: 5px; background-color: #0078d4; color: white; border: none; border-radius: 3px; cursor: pointer;">Copy Entry to Clipboard</button>
-  <div id="suffixOutput" style="font-size: 11px; color: #333333;"></div>
+  <div id="suffixOutput" style="font-size: 11px; color: white;"></div>
 </div>
 
 
@@ -352,6 +352,7 @@ const russianSuffixes = [
 {suffix:"ётся",meaning:"-ёт-: A grammatical marker for the verb's tense and person (present tense, third person singular).  -ся: Reflexive particle indicating the verb is reflexive."},
 {suffix:"ящийся",meaning:"present reflexive participle"},
 {suffix:"ящий",meaning:"present active participle"},
+{suffix:"ье",meaning:"adjective-neutral"},
 {suffix:"яться",meaning:"reflexive infinitive ending"},
 {suffix:"ями",meaning:"noun-feminine-plural-instrumental(with/by means of things)"},
 {suffix:"я",meaning:"noun-masculine-singular-genitive (or) noun-feminine-singular-nominative (or) noun-feminine-singular-genitive (or) noun-masculine-singular-accusative (or) noun-masculine-singular-prepositional (rare/archaic) (or) adjectival noun (stylized)"},
@@ -376,7 +377,7 @@ const russianSuffixes = [
 {suffix:"ого",meaning:"-->+ого(adjective ending for mas-sing-gen or mas-sing-acc (animate) or neu-sing-gen; shows possession,absence,or relationship; e.g.,взрослый → взрослого = 'of the adult' or 'the adult (as an object)')"},
 {suffix:"ова",meaning:"feminine noun ending"},
 {suffix:"ов",meaning:"possessive or plural genitive ending"},
-{suffix:"о",meaning:"-->+о(neutral singular ending for the demonstrative pronoun 'эт'; used to refer to a neuter subject or object in the nominative or accusative case,e.g.,'это красиво' = 'this is beautiful')"},
+{suffix:"о",meaning:"-->+о demonstrative pronoun-neutral-singular (or) neutral-nominative (or) neutral-accusative"},
 {suffix:"ных",meaning:"-->+н(used in adjectives,often derived from nouns or roots; links the root to the adjective's descriptive meaning)-->+ых(adjective ending for genitive plural or accusative plural for animate nouns; applies to all genders; e.g.,главный → главных = 'of the main ones' or 'the main ones (as an object)')"},	
 {suffix:"ный",meaning:"-->+н(used to create adjectives,often derived from nouns or roots)-->+ый(adjectival ending for mas-sin,aligns with gender,number,and case; forms descriptive qualities or states,e.g.,зелёный = 'green')"},
 {suffix:"ны",meaning:"consists of +н,which acts as a linker or transition element commonly used in genitive or plural constructions,and +ы,which serves as a case marker indicating either noun-plural-nominative (subject in plural form) -or- noun-plural-genitive (indicating possession,absence,or relationship in plural form,e.g.,книг = 'of books')"},
@@ -546,39 +547,244 @@ function processInput(input) {
 }
 
 function romanizeRussian(text, stressPositions = []) {
-    const transliterationMap = {
-        'А': 'ah', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D',
-        'Е': 'yeh', 'Ё': 'yoe', 'Ж': 'Zh', 'З': 'Z', 'И': 'ih',
-        'Й': 'y', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N',
-        'О': 'oe', 'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T',
-        'У': 'ue', 'Ф': 'F', 'Х': 'kh', 'Ц': 'Ts', 'Ч': 'Ch',
-        'Ш': 'Sh', 'Щ': 'Shch', 'Ы': 'ih', 'Э': 'eh', 'Ю': 'yue', 'Я': 'yah',
-        'а': 'ah', 'б': 'B', 'в': 'V', 'г': 'G', 'д': 'D',
-        'е': 'yeh', 'ё': 'yoe', 'ж': 'Zh', 'з': 'Z', 'и': 'ih',
-        'й': 'y', 'к': 'K', 'л': 'L', 'м': 'M', 'н': 'N',
-        'о': 'oe', 'п': 'P', 'р': 'R', 'с': 'S', 'т': 'T',
-        'у': 'ue', 'ф': 'F', 'х': 'kh', 'ц': 'Ts', 'ч': 'Ch',
-        'ш': 'Sh', 'щ': 'Shch', 'ы': 'ih', 'э': 'eh', 'ю': 'yue', 'я': 'yah',
-        'ь': '', 'ъ': ''
+    // Define separate maps for stressed and unstressed vowels
+    const stressedVowels = {
+        'А': 'A(PET)', 'Е': 'Ye(PET)', 'Ё': 'Yo(POT)', 'И': 'I(BIT)', 
+        'О': 'O(POT)', 'У': 'U(PUT)', 'Ы': 'Y(BIT)', 'Э': 'E(PET)', 
+        'Ю': 'Yu(PUT)', 'Я': 'Ya(PET)',
+        'а': 'a(PET)', 'е': 'ye(PET)', 'ё': 'yo(POT)', 'и': 'i(BIT)', 
+        'о': 'o(POT)', 'у': 'u(PUT)', 'ы': 'y(BIT)', 'э': 'e(PET)', 
+        'ю': 'yu(PUT)', 'я': 'ya(PET)'
     };
 
-    // Step 1: Convert text to Romanized form
-    const romanizedArray = text.split('').map((char, index) => {
-        if (/[А-яЁё]/.test(char)) {
-            return transliterationMap[char] || char; // Convert Cyrillic to Romanized
-        }
-        return char; // Leave non-Cyrillic characters as they are
-    });
+    const unstressedVowels = {
+        'А': 'A(uh)', 'Е': 'Ye(uh)', 'Ё': 'Yo(uh)', 'И': 'I(bit)', 
+        'О': 'O(uh)', 'У': 'U(put)', 'Ы': 'Y(bit)', 'Э': 'E(uh)', 
+        'Ю': 'Yu(uh)', 'Я': 'Ya(uh)',
+        'а': 'a(uh)', 'е': 'ye(uh)', 'ё': 'yo(uh)', 'и': 'i(bit)', 
+        'о': 'o(uh)', 'у': 'u(put)', 'ы': 'y(bit)', 'э': 'e(uh)', 
+        'ю': 'yu(uh)', 'я': 'ya(uh)'
+    };
 
-    // Step 2: Apply stress markers using Unicode combining accents
+    const transliterationMap = {
+        // Consonants (unchanged by stress)
+        'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Ж': 'Zh', 'З': 'Z', 
+        'Й': 'y', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N', 'П': 'P', 
+        'Р': 'R', 'С': 'S', 'Т': 'T', 'Ф': 'F', 'Х': 'Kh', 'Ц': 'Ts', 
+        'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Shch', 'ь': '', 'ъ': '',
+        'б': 'B', 'в': 'V', 'г': 'G', 'д': 'D', 'ж': 'Zh', 'з': 'Z', 
+        'й': 'y', 'к': 'K', 'л': 'L', 'м': 'M', 'н': 'N', 'п': 'P', 
+        'р': 'R', 'с': 'S', 'т': 'T', 'ф': 'F', 'х': 'Kh', 'ц': 'Ts', 
+        'ч': 'Ch', 'ш': 'Sh', 'щ': 'Shch',
+
+        // Vowel + Vowel combinations (stressed versions; unstressed adjusted later)
+        'АА': 'Aa(PET)', 'аа': 'aa(PET)', 'АЕ': 'Aye(PAY)', 'ае': 'aye(PAY)',
+        'АИ': 'Ai(PIE)', 'аи': 'ai(PIE)', 'АЙ': 'Ay(PIE)', 'ай': 'ay(PIE)',
+        'АО': 'Ao(POT)', 'ао': 'ao(POT)', 'АУ': 'Au(COW)', 'ау': 'au(COW)',
+        'АЭ': 'Ae(PET)', 'аэ': 'ae(PET)', 'АЮ': 'Ayu(PUT)', 'аю': 'ayu(PUT)',
+        'АЯ': 'Aya(PET)', 'ая': 'aya(PET)',
+        'ЕА': 'Yea(PET)', 'еа': 'yea(PET)', 'ЕЕ': 'Yeye(PAY)', 'ее': 'yeye(PAY)',
+        'ЕИ': 'Yei(PIE)', 'еи': 'yei(PIE)', 'ЕЙ': 'Yey(PAY)', 'ей': 'yey(PAY)',
+        'ЕО': 'Yeo(POT)', 'ео': 'yeo(POT)', 'ЕУ': 'Yeu(YOU)', 'еу': 'yeu(YOU)',
+        'ЕЭ': 'Yee(PET)', 'еэ': 'yee(PET)', 'ЕЮ': 'Yeyu(PUT)', 'ею': 'yeyu(PUT)',
+        'ЕЯ': 'Yeya(PET)', 'ея': 'yeya(PET)',
+        'ИЕ': 'Iye(PAY)', 'ие': 'iye(PAY)', 'ИИ': 'Ii(BEE)', 'ии': 'ii(BEE)',
+        'ИЙ': 'Iy(BEE)', 'ий': 'iy(BEE)', 'ИО': 'Io(POT)', 'ио': 'io(POT)',
+        'ИУ': 'Iu(YOU)', 'иу': 'iu(YOU)', 'ИЭ': 'Ie(PET)', 'иэ': 'ie(PET)',
+        'ИЯ': 'Iya(PET)', 'ия': 'iya(PET)',
+        'ОА': 'Oa(PET)', 'оа': 'oa(PET)', 'ОЕ': 'Oye(PAY)', 'ое': 'oye(PAY)',
+        'ОИ': 'Oi(BOY)', 'ои': 'oi(BOY)', 'ОЙ': 'Oy(BOY)', 'ой': 'oy(BOY)',
+        'ОО': 'Oo(POT)', 'оо': 'oo(POT)', 'ОУ': 'Ou(OWE)', 'оу': 'ou(OWE)',
+        'ОЭ': 'Oe(PET)', 'оэ': 'oe(PET)', 'ОЮ': 'Oyu(PUT)', 'ою': 'oyu(PUT)',
+        'ОЯ': 'Oya(PET)', 'оя': 'oya(PET)',
+        'УА': 'Ua(WAS)', 'уа': 'ua(WAS)', 'УЕ': 'Uye(PAY)', 'уе': 'uye(PAY)',
+        'УИ': 'Ui(PUT)', 'уи': 'ui(PUT)', 'УЙ': 'Uy(PUT)', 'уй': 'uy(PUT)',
+        'УО': 'Uo(POT)', 'уо': 'uo(POT)', 'УУ': 'Uu(PUT)', 'уу': 'uu(PUT)',
+        'УЭ': 'Ue(PET)', 'уэ': 'ue(PET)', 'УЮ': 'Uyu(PUT)', 'ую': 'uyu(PUT)',
+        'УЯ': 'Uya(PET)', 'уя': 'uya(PET)',
+        'ЫЕ': 'Yye(PAY)', 'ые': 'yye(PAY)', 'ЫИ': 'Yi(BIT)', 'ыи': 'yi(BIT)',
+        'ЫЙ': 'Yy(BIT)', 'ый': 'yy(BIT)', 'ЫО': 'Yo(POT)', 'ыо': 'yo(POT)',
+        'ЭА': 'Ea(PET)', 'эа': 'ea(PET)', 'ЭЕ': 'Eye(PAY)', 'эе': 'eye(PAY)',
+        'ЭИ': 'Ei(PIE)', 'эи': 'ei(PIE)', 'ЭЙ': 'Ey(PAY)', 'эй': 'ey(PAY)',
+        'ЭО': 'Eo(POT)', 'эо': 'eo(POT)', 'ЭУ': 'Eu(YOU)', 'эу': 'eu(YOU)',
+        'ЭЭ': 'Ee(PET)', 'ээ': 'ee(PET)', 'ЭЮ': 'Eyu(PUT)', 'эю': 'eyu(PUT)',
+        'ЭЯ': 'Eya(PET)', 'эя': 'eya(PET)',
+        'ЮА': 'Yua(WAS)', 'юа': 'yua(WAS)', 'ЮЕ': 'Yuye(PAY)', 'юе': 'yuye(PAY)',
+        'ЮИ': 'Yui(PUT)', 'юи': 'yui(PUT)', 'ЮЙ': 'Yuy(PUT)', 'юй': 'yuy(PUT)',
+        'ЮО': 'Yuo(POT)', 'юо': 'yuo(POT)', 'ЮУ': 'Yuu(PUT)', 'юу': 'yuu(PUT)',
+        'ЮЭ': 'Yue(PET)', 'юэ': 'yue(PET)', 'ЮЮ': 'Yuyu(PUT)', 'юю': 'yuyu(PUT)',
+        'ЮЯ': 'Yuya(PET)', 'юя': 'yuya(PET)',
+        'ЯА': 'Yaa(PET)', 'яа': 'yaa(PET)', 'ЯЕ': 'Yaye(PAY)', 'яе': 'yaye(PAY)',
+        'ЯИ': 'Yai(PIE)', 'яи': 'yai(PIE)', 'ЯЙ': 'Yay(PAY)', 'яй': 'yay(PAY)',
+        'ЯО': 'Yao(POT)', 'яо': 'yao(POT)', 'ЯУ': 'Yau(COW)', 'яу': 'yau(COW)',
+        'ЯЭ': 'Yae(PET)', 'яэ': 'yae(PET)', 'ЯЮ': 'Yayu(PUT)', 'яю': 'yayu(PUT)',
+        'ЯЯ': 'Yaya(PET)', 'яя': 'yaya(PET)',
+
+        // Consonant + Vowel combinations (stressed versions; unstressed adjusted later)
+        'БА': 'Ba(PET)', 'ба': 'ba(PET)', 'БЕ': 'Be(PET)', 'бе': 'be(PET)',
+        'БИ': 'Bi(BIT)', 'би': 'bi(BIT)', 'БО': 'Bo(POT)', 'бо': 'bo(POT)',
+        'БУ': 'Bu(PUT)', 'бу': 'bu(PUT)', 'БЫ': 'By(BIT)', 'бы': 'by(BIT)',
+        'БЭ': 'Be(PET)', 'бэ': 'be(PET)', 'БЮ': 'Byu(PUT)', 'бю': 'byu(PUT)',
+        'БЯ': 'Bya(PET)', 'бя': 'bya(PET)',
+        'ВА': 'Va(PET)', 'ва': 'va(PET)', 'ВЕ': 'Ve(PET)', 'ве': 've(PET)',
+        'ВИ': 'Vi(BIT)', 'ви': 'vi(BIT)', 'ВО': 'Vo(POT)', 'во': 'vo(POT)',
+        'ВУ': 'Vu(PUT)', 'ву': 'vu(PUT)', 'ВЫ': 'Vy(BIT)', 'вы': 'vy(BIT)',
+        'ВЭ': 'Ve(PET)', 'вэ': 've(PET)', 'ВЮ': 'Vyu(PUT)', 'вю': 'vyu(PUT)',
+        'ВЯ': 'Vya(PET)', 'вя': 'vya(PET)',
+        'ГА': 'Ga(PET)', 'га': 'ga(PET)', 'ГЕ': 'Ge(PET)', 'ге': 'ge(PET)',
+        'ГИ': 'Gi(BIT)', 'ги': 'gi(BIT)', 'ГО': 'Go(POT)', 'го': 'go(POT)',
+        'ГУ': 'Gu(PUT)', 'гу': 'gu(PUT)', 'ГЫ': 'Gy(BIT)', 'гы': 'gy(BIT)',
+        'ГЭ': 'Ge(PET)', 'гэ': 'ge(PET)', 'ГЮ': 'Gyu(PUT)', 'гю': 'gyu(PUT)',
+        'ГЯ': 'Gya(PET)', 'гя': 'gya(PET)',
+        'ДА': 'Da(PET)', 'да': 'da(PET)', 'ДЕ': 'De(PET)', 'де': 'de(PET)',
+        'ДИ': 'Di(BIT)', 'ди': 'di(BIT)', 'ДО': 'Do(POT)', 'до': 'do(POT)',
+        'ДУ': 'Du(PUT)', 'ду': 'du(PUT)', 'ДЫ': 'Dy(BIT)', 'ды': 'dy(BIT)',
+        'ДЭ': 'De(PET)', 'дэ': 'de(PET)', 'ДЮ': 'Dyu(PUT)', 'дю': 'dyu(PUT)',
+        'ДЯ': 'Dya(PET)', 'дя': 'dya(PET)',
+        'ЖА': 'Zha(PET)', 'жа': 'zha(PET)', 'ЖЕ': 'Zhe(PET)', 'же': 'zhe(PET)',
+        'ЖИ': 'Zhi(BIT)', 'жи': 'zhi(BIT)', 'ЖО': 'Zho(POT)', 'жо': 'zho(POT)',
+        'ЖУ': 'Zhu(PUT)', 'жу': 'zhu(PUT)', 'ЖЫ': 'Zhy(BIT)', 'жы': 'zhy(BIT)',
+        'ЖЭ': 'Zhe(PET)', 'жэ': 'zhe(PET)', 'ЖЮ': 'Zhyu(PUT)', 'жю': 'zhyu(PUT)',
+        'ЖЯ': 'Zhya(PET)', 'жя': 'zhya(PET)',
+        'ЗА': 'Za(PET)', 'за': 'za(PET)', 'ЗЕ': 'Ze(PET)', 'зе': 'ze(PET)',
+        'ЗИ': 'Zi(BIT)', 'зи': 'zi(BIT)', 'ЗО': 'Zo(POT)', 'зо': 'zo(POT)',
+        'ЗУ': 'Zu(PUT)', 'зу': 'zu(PUT)', 'ЗЫ': 'Zy(BIT)', 'зы': 'zy(BIT)',
+        'ЗЭ': 'Ze(PET)', 'зэ': 'ze(PET)', 'ЗЮ': 'Zyu(PUT)', 'зю': 'zyu(PUT)',
+        'ЗЯ': 'Zya(PET)', 'зя': 'zya(PET)',
+        'КА': 'Ka(PET)', 'ка': 'ka(PET)', 'КЕ': 'Ke(PET)', 'ке': 'ke(PET)',
+        'КИ': 'Ki(BIT)', 'ки': 'ki(BIT)', 'КО': 'Ko(POT)', 'ко': 'ko(POT)',
+        'КУ': 'Ku(PUT)', 'ку': 'ku(PUT)', 'КЫ': 'Ky(BIT)', 'кы': 'ky(BIT)',
+        'КЭ': 'Ke(PET)', 'кэ': 'ke(PET)', 'КЮ': 'Kyu(PUT)', 'кю': 'kyu(PUT)',
+        'КЯ': 'Kya(PET)', 'кя': 'kya(PET)',
+        'ЛА': 'La(PET)', 'ла': 'la(PET)', 'ЛЕ': 'Le(PET)', 'ле': 'le(PET)',
+        'ЛИ': 'Li(BIT)', 'ли': 'li(BIT)', 'ЛО': 'Lo(POT)', 'ло': 'lo(POT)',
+        'ЛУ': 'Lu(PUT)', 'лу': 'lu(PUT)', 'ЛЫ': 'Ly(BIT)', 'лы': 'ly(BIT)',
+        'ЛЭ': 'Le(PET)', 'лэ': 'le(PET)', 'ЛЮ': 'Lyu(PUT)', 'лю': 'lyu(PUT)',
+        'ЛЯ': 'Lya(PET)', 'ля': 'lya(PET)',
+        'МА': 'Ma(PET)', 'ма': 'ma(PET)', 'МЕ': 'Me(PET)', 'ме': 'me(PET)',
+        'МИ': 'Mi(BIT)', 'ми': 'mi(BIT)', 'МО': 'Mo(POT)', 'мо': 'mo(POT)',
+        'МУ': 'Mu(PUT)', 'му': 'mu(PUT)', 'МЫ': 'My(BIT)', 'мы': 'my(BIT)',
+        'МЭ': 'Me(PET)', 'мэ': 'me(PET)', 'МЮ': 'Myu(PUT)', 'мю': 'myu(PUT)',
+        'МЯ': 'Mya(PET)', 'мя': 'mya(PET)',
+        'НА': 'Na(PET)', 'на': 'na(PET)', 'НЕ': 'Ne(PET)', 'не': 'ne(PET)',
+        'НИ': 'Ni(BIT)', 'ни': 'ni(BIT)', 'НО': 'No(POT)', 'но': 'no(POT)',
+        'НУ': 'Nu(PUT)', 'ну': 'nu(PUT)', 'НЫ': 'Ny(BIT)', 'ны': 'ny(BIT)',
+        'НЭ': 'Ne(PET)', 'нэ': 'ne(PET)', 'НЮ': 'Nyu(PUT)', 'ню': 'nyu(PUT)',
+        'НЯ': 'Nya(PET)', 'ня': 'nya(PET)',
+        'ПА': 'Pa(PET)', 'па': 'pa(PET)', 'ПЕ': 'Pe(PET)', 'пе': 'pe(PET)',
+        'ПИ': 'Pi(BIT)', 'пи': 'pi(BIT)', 'ПО': 'Po(POT)', 'по': 'po(POT)',
+        'ПУ': 'Pu(PUT)', 'пу': 'pu(PUT)', 'ПЫ': 'Py(BIT)', 'пы': 'py(BIT)',
+        'ПЭ': 'Pe(PET)', 'пэ': 'pe(PET)', 'ПЮ': 'Pyu(PUT)', 'пю': 'pyu(PUT)',
+        'ПЯ': 'Pya(PET)', 'пя': 'pya(PET)',
+        'РА': 'Ra(PET)', 'ра': 'ra(PET)', 'РЕ': 'Re(PET)', 'ре': 're(PET)',
+        'РИ': 'Ri(BIT)', 'ри': 'ri(BIT)', 'РО': 'Ro(POT)', 'ро': 'ro(POT)',
+        'РУ': 'Ru(PUT)', 'ру': 'ru(PUT)', 'РЫ': 'Ry(BIT)', 'ры': 'ry(BIT)',
+        'РЭ': 'Re(PET)', 'рэ': 're(PET)', 'РЮ': 'Ryu(PUT)', 'рю': 'ryu(PUT)',
+        'РЯ': 'Rya(PET)', 'ря': 'rya(PET)',
+        'СА': 'Sa(PET)', 'са': 'sa(PET)', 'СЕ': 'Se(PET)', 'се': 'se(PET)',
+        'СИ': 'Si(BIT)', 'си': 'si(BIT)', 'СО': 'So(POT)', 'со': 'so(POT)',
+        'СУ': 'Su(PUT)', 'су': 'su(PUT)', 'СЫ': 'Sy(BIT)', 'сы': 'sy(BIT)',
+        'СЭ': 'Se(PET)', 'сэ': 'se(PET)', 'СЮ': 'Syu(PUT)', 'сю': 'syu(PUT)',
+        'СЯ': 'Sya(PET)', 'ся': 'sya(PET)',
+        'ТА': 'Ta(PET)', 'та': 'ta(PET)', 'ТЕ': 'Te(PET)', 'те': 'te(PET)',
+        'ТИ': 'Ti(BIT)', 'ти': 'ti(BIT)', 'ТО': 'To(POT)', 'то': 'to(POT)',
+        'ТУ': 'Tu(PUT)', 'ту': 'tu(PUT)', 'ТЫ': 'Ty(BIT)', 'ты': 'ty(BIT)',
+        'ТЭ': 'Te(PET)', 'тэ': 'te(PET)', 'ТЮ': 'Tyu(PUT)', 'тю': 'tyu(PUT)',
+        'ТЯ': 'Tya(PET)', 'тя': 'tya(PET)',
+        'ФА': 'Fa(PET)', 'фа': 'fa(PET)', 'ФЕ': 'Fe(PET)', 'фе': 'fe(PET)',
+        'ФИ': 'Fi(BIT)', 'фи': 'fi(BIT)', 'ФО': 'Fo(POT)', 'фо': 'fo(POT)',
+        'ФУ': 'Fu(PUT)', 'фу': 'fu(PUT)', 'ФЫ': 'Fy(BIT)', 'фы': 'fy(BIT)',
+        'ФЭ': 'Fe(PET)', 'фэ': 'fe(PET)', 'ФЮ': 'Fyu(PUT)', 'фю': 'fyu(PUT)',
+        'ФЯ': 'Fya(PET)', 'фя': 'fya(PET)',
+        'ХА': 'Kha(PET)', 'ха': 'kha(PET)', 'ХЕ': 'Khe(PET)', 'хе': 'khe(PET)',
+        'ХИ': 'Khi(BIT)', 'хи': 'khi(BIT)', 'ХО': 'Kho(POT)', 'хо': 'kho(POT)',
+        'ХУ': 'Khu(PUT)', 'ху': 'khu(PUT)', 'ХЫ': 'Khy(BIT)', 'хы': 'khy(BIT)',
+        'ХЭ': 'Khe(PET)', 'хэ': 'khe(PET)', 'ХЮ': 'Khyu(PUT)', 'хю': 'khyu(PUT)',
+        'ХЯ': 'Khya(PET)', 'хя': 'khya(PET)',
+        'ЦА': 'Tsa(PET)', 'ца': 'tsa(PET)', 'ЦЕ': 'Tse(PET)', 'це': 'tse(PET)',
+        'ЦИ': 'Tsi(BIT)', 'ци': 'tsi(BIT)', 'ЦО': 'Tso(POT)', 'цо': 'tso(POT)',
+        'ЦУ': 'Tsu(PUT)', 'цу': 'tsu(PUT)', 'ЦЫ': 'Tsy(BIT)', 'цы': 'tsy(BIT)',
+        'ЦЭ': 'Tse(PET)', 'цэ': 'tse(PET)', 'ЦЮ': 'Tsyu(PUT)', 'цю': 'tsyu(PUT)',
+        'ЦЯ': 'Tsya(PET)', 'ця': 'tsya(PET)',
+        'ЧА': 'Cha(PET)', 'ча': 'cha(PET)', 'ЧЕ': 'Che(PET)', 'че': 'che(PET)',
+        'ЧИ': 'Chi(BIT)', 'чи': 'chi(BIT)', 'ЧО': 'Cho(POT)', 'чо': 'cho(POT)',
+        'ЧУ': 'Chu(PUT)', 'чу': 'chu(PUT)', 'ЧЫ': 'Chy(BIT)', 'чы': 'chy(BIT)',
+        'ЧЭ': 'Che(PET)', 'чэ': 'che(PET)', 'ЧЮ': 'Chyu(PUT)', 'чю': 'chyu(PUT)',
+        'ЧЯ': 'Chya(PET)', 'чя': 'chya(PET)',
+        'ША': 'Sha(PET)', 'ша': 'sha(PET)', 'ШЕ': 'She(PET)', 'ше': 'she(PET)',
+        'ШИ': 'Shi(BIT)', 'ши': 'shi(BIT)', 'ШО': 'Sho(POT)', 'шо': 'sho(POT)',
+        'ШУ': 'Shu(PUT)', 'шу': 'shu(PUT)', 'ШЫ': 'Shy(BIT)', 'шы': 'shy(BIT)',
+        'ШЭ': 'She(PET)', 'шэ': 'she(PET)', 'ШЮ': 'Shyu(PUT)', 'шю': 'shyu(PUT)',
+        'ШЯ': 'Shya(PET)', 'шя': 'shya(PET)',
+        'ЩА': 'Shcha(PET)', 'ща': 'shcha(PET)', 'ЩЕ': 'Shche(PET)', 'ще': 'shche(PET)',
+        'ЩИ': 'Shchi(BIT)', 'щи': 'shchi(BIT)', 'ЩО': 'Shcho(POT)', 'що': 'shcho(POT)',
+        'ЩУ': 'Shchu(PUT)', 'щу': 'shchu(PUT)', 'ЩЫ': 'Shchy(BIT)', 'щы': 'shchy(BIT)',
+        'ЩЭ': 'Shche(PET)', 'щэ': 'shche(PET)', 'ЩЮ': 'Shchyu(PUT)', 'щю': 'shchyu(PUT)',
+        'ЩЯ': 'Shchya(PET)', 'щя': 'shchya(PET)'
+    };
+
+    // Step 1: Identify vowel positions and apply initial mapping
+    let result = '';
+    let i = 0;
+    const vowelIndices = []; // Track positions of vowels in the original text
+
+    while (i < text.length) {
+        const twoChars = i + 1 < text.length ? text.slice(i, i + 2) : null;
+        if (twoChars && transliterationMap[twoChars]) {
+            result += transliterationMap[twoChars];
+            if (/[АЕЁИОУЫЭЮЯаеёиоуыэюя]/.test(twoChars[0]) || /[АЕЁИОУЫЭЮЯаеёиоуыэюя]/.test(twoChars[1])) {
+                vowelIndices.push(result.length - transliterationMap[twoChars].length);
+            }
+            i += 2;
+        } else {
+            const singleChar = text[i];
+            if (stressedVowels[singleChar] || unstressedVowels[singleChar]) {
+                vowelIndices.push(result.length);
+            }
+            result += transliterationMap[singleChar] || singleChar;
+            i++;
+        }
+    }
+
+    // Step 2: Adjust vowels based on stressPositions
+    let adjustedResult = '';
+    let vowelCount = 0;
+
+    for (let j = 0; j < text.length;) {
+        const twoChars = j + 1 < text.length ? text.slice(j, j + 2) : null;
+        if (twoChars && transliterationMap[twoChars]) {
+            const isStressed = stressPositions.includes(vowelCount);
+            const baseRoman = transliterationMap[twoChars];
+            const vowelChar = twoChars.match(/[АЕЁИОУЫЭЮЯаеёиоуыэюя]/)[0];
+            const vowelMap = isStressed ? stressedVowels[vowelChar] : unstressedVowels[vowelChar];
+            const consonantPart = baseRoman.match(/^[^aeiouyAEIOUY]+/)[0];
+            adjustedResult += consonantPart + vowelMap;
+            vowelCount++;
+            j += 2;
+        } else {
+            const singleChar = text[j];
+            if (stressedVowels[singleChar]) {
+                adjustedResult += stressPositions.includes(vowelCount) ? stressedVowels[singleChar] : unstressedVowels[singleChar];
+                vowelCount++;
+            } else {
+                adjustedResult += transliterationMap[singleChar] || singleChar;
+            }
+            j++;
+        }
+    }
+
+    // Step 3: Convert to array for stress marker application
+    const romanizedArray = adjustedResult.split('');
+
+    // Step 4: Apply stress markers using Unicode combining accents
     stressPositions.forEach((stressIndex) => {
-        if (stressIndex >= 0 && stressIndex < romanizedArray.length) {
-            // Add combining acute accent (\u0301) to the vowel at the stressIndex
-            romanizedArray[stressIndex] = romanizedArray[stressIndex].replace(/([aeiouy])/i, '$1\u0301');
+        const targetIndex = vowelIndices[stressIndex];
+        if (targetIndex >= 0 && targetIndex < romanizedArray.length) {
+            romanizedArray[targetIndex] = romanizedArray[targetIndex].replace(/([aeiouyAEIOUY])/, '$1\u0301');
         }
     });
 
-    // Step 3: Join Romanized text back into a single string
+    // Step 5: Join back into a single string
     return romanizedArray.join('');
 }
 
@@ -614,6 +820,7 @@ const dictionary ={
 "ярый":"furious,raging; fervent,rabid",
 "ярость":"rage",
 "яростный":"furious,frenzied",
+"обогнав":"overtake",
 "яростно":"furiously",
 "ярмарка":"fair,trade fair",
 "яркость":"brightness",
@@ -2593,6 +2800,14 @@ const dictionary ={
 "слева":"on the left",
 "слать":"to send",
 "сладко":"sweetly",
+"бразилию":"Brazil",
+"турцию":"Turkey",
+"ввп":"GDP",
+"индонезия":"Indonesia",
+"поделили":"divide",
+"вторую":"second",
+"выросла":"grown",
+"показателем":"index",
 "сладкий":"sweet",
 "славянский":"Slavonic",
 "славный":"glorious",
@@ -2736,6 +2951,7 @@ const dictionary ={
 "сентябрь":"September",
 "сенсация":"sensation",
 "сено":"hay",
+"стран":"nation",
 "сени":"entrance hall (of peasant hut)",
 "сенатор":"senator",
 "семя":"seed",
@@ -3158,6 +3374,7 @@ const dictionary ={
 "рассматриваться":"to be considered",
 "рассматривать":"to examine; make out",
 "расслышать":"to catch (sth said)",
+"году":"year",
 "рассказывать":"to tell,talk (about)",
 "рассказ":"story",
 "рассеянный":"absent-minded",
@@ -4494,6 +4711,8 @@ const dictionary ={
 "повозка":"cart,carriage",
 "поводить":"to move,twitch",
 "повод":"cause,grounds",
+"россия":"Russia",
+"заняла":"occupied",
 "повисать":"to hang,dangle; droop,sag",
 "повиноваться":"to obey",
 "повидать":"to see (coll)",
