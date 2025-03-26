@@ -156,7 +156,7 @@
     <button onclick="displayResults()">Analyze</button><br>
     <div id="output"></div>
   <div id="unmatchedOutput"></div>
-<div style="position: fixed; top: 10px; right: 10px; width: 250px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ccc; font-size: 12px;">
+<div id="adminPanel" style="position: fixed; top: 10px; right: 10px; width: 250px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ccc; font-size: 12px;">
   <h3 style="margin: 5px 0;">Admin Use Only</h3>
   
   <label for="koreanWord" style="font-size: 12px;">Korean Word:</label><br>
@@ -171,7 +171,19 @@
   <div id="output1" style="margin-top: 10px; font-size: 12px;"></div>
 </div>
 
+<button id="toggleButton" onclick="toggleAdminPanel()" style="position: fixed; top: 10px; left: 10px;">Toggle Admin Panel</button>
+
     <script>
+	
+	  function toggleAdminPanel() {
+    const adminPanel = document.getElementById('adminPanel');
+    if (adminPanel.style.display === 'none') {
+      adminPanel.style.display = 'block';
+    } else {
+      adminPanel.style.display = 'none';
+    }
+  }
+
 function formatOutput() {
     // Ensure the elements exist before accessing them
     const koreanWordElement = document.getElementById("koreanWord");
@@ -1636,13 +1648,26 @@ const koreanDictionary = [
 {word:"점원",meaning:"salesperson, clerk, shop assistant"},
 {word:"점심",meaning:"lunch, midday meal"},
 {word:"재판소",meaning:"court"},
+{word:"청송",meaning:"place name;Blue-Green Pines"},
 {word:"점수",meaning:"score, mark, grade; the number of items"},
 {word:"점검",meaning:"to inspect, check (examine each and every element for safety or some type of improvement)"},
 {word:"점",meaning:"dot, point; viewpoint; fortune-telling; thing (specific aspect among many)"},
+{word:"경위를",meaning:"inspecition"},
+{word:"추정",meaning:"estimation"},
+{word:"대피",meaning:"evacuation"},
+{word:"위해",meaning:"harm"},
+{word:"피하기",meaning:"avoidance"},
+{word:"거나",meaning:"wether or not"},
+{word:"질식",meaning:"choke"},
+{word:"뿜어져",meaning:"spout"},
+{word:"산불",meaning:"forest fire"},
+{word:"사망",meaning:"corpse"},
+{word:"자가",meaning:"self"},
 {word:"젊은이",meaning:"the youth, young person, young adult"},
 {word:"젊",meaning:"to be young (general), young (adult), youthful"},
 {word:"절차도",meaning:"implementation"},
 {word:"절약",meaning:"to save (control consumption), conserve, use ast little as possible (sino/but still really common)"},
+{word:"영덕",meaning:"Eternal Virtue; Korean place famous for its blue crabs"},
 {word:"절반",meaning:"half (dividing something in half)"},
 {word:"절박",meaning:"to be urgent, desperate"},
 {word:"절망",meaning:"despair, hopelessness"},
@@ -1762,7 +1787,6 @@ const koreanDictionary = [
 {word:"재산",meaning:"property, fortune, wealth, asset"},
 {word:"재벌",meaning:"conglomerate, extremely wealthy group"},
 {word:"재방송",meaning:"rerun, repeat (tv show etc)"},
-{word:"재미있어요",meaning:"interesting"},
 {word:"재미",meaning:"fun"},
 {word:"재물",meaning:"wealth, riches"},
 {word:"재료",meaning:"material, raw material, ingredient"},
@@ -1929,7 +1953,7 @@ const koreanDictionary = [
 {word:"잊",meaning:"잊어요"},
 {word:"잊",meaning:"to forget (formal); be unaware of"},
 {word:"있는",meaning:"present"},
-{word:"있",meaning:"있어요"},
+{word:"있",meaning:"to have"},
 {word:"있",meaning:"to be, exist, have"},
 {word:"있", meaning:"to exist; to have; to be present"},
 {word:"잇",meaning:"to connect, link; continue, follow, inherit"},
