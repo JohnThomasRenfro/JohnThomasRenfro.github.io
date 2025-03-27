@@ -105,7 +105,7 @@
             color: white;
         }
         .stat-row.selected span {
-            color: gray;
+            color: green;
         }
         .stat-row.selected input {
             background: cyan;
@@ -176,14 +176,18 @@
 <div id="controls">
 <button onclick="addPiece()">Add Character/Monster</button>
 <input type="file" accept="image/*" onchange="uploadMap(this)">
-        <input type="text" id="diceFormula1" placeholder="e.g., 2d4-2 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula1', 'dice-result1')">
-        <span id="dice-result1"></span>
-        <input type="text" id="diceFormula2" placeholder="e.g., 1d3+0 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula2', 'dice-result2')">
-        <span id="dice-result2"></span>
-        <input type="text" id="diceFormula3" placeholder="e.g., 1d100-1 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula3', 'dice-result3')">
-        <span id="dice-result3"></span>
-        <input type="text" id="diceFormula4" placeholder="e.g., 1d2+0 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula4', 'dice-result4')">
-        <span id="dice-result4"></span>
+<input type="text" id="diceFormula1" placeholder="e.g., 2d4-2 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula1', 'dice-result1')">
+<span id="dice-result1"></span>
+<input type="text" id="diceFormula2" placeholder="e.g., 1d3+0 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula2', 'dice-result2')">
+<span id="dice-result2"></span>
+<input type="text" id="diceFormula3" placeholder="e.g., 1d100-1 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula3', 'dice-result3')">
+<span id="dice-result3"></span>
+<input type="text" id="diceFormula4" placeholder="e.g., 1d2+0 or 1d20+2" style="width: 150px;" onfocus="this.select()" onblur="rollDice('diceFormula4', 'dice-result4')">
+<span id="dice-result4"></span>
+<button onclick="rollInitiative()">Roll Initiative</button> <!-- Added button -->
+<br><a href="https://archive.org/details/tsr02011advanceddungeonsdragonsadd1steddungeonmastersguide/page/n75/mode/1up" target=_blank>Combat Tables</a>(..the attacker's HD versus the target's AC. There[...]
+<br><a href="https://archive.org/details/tsr09045addthesecretofbonehill/page/n46/mode/1up" target=_blank>The Secret of Bone Hill Adventure Module</a>	
+</div>
 <br><a href="https://archive.org/details/tsr02011advanceddungeonsdragonsadd1steddungeonmastersguide/page/n75/mode/1up" target=_blank>Combat Tables</a>(..the attacker's HD versus the target's AC. There are character class tables and a monster table.)	
 <br><a href="https://archive.org/details/tsr09045addthesecretofbonehill/page/n46/mode/1up" target=_blank>The Secret of Bone Hill Adventure Module</a>	
 <div id="gameContainer">
@@ -192,6 +196,16 @@
 </div>
 
 <script>
+
+function rollInitiative() {
+    pieces.forEach(piece => {
+        piece.initiative = Math.floor(Math.random() * 6) + 1; // Roll 1d6
+    });
+
+    pieces.sort((a, b) => b.initiative - a.initiative); // Sort by initiative (highest first)
+    updateStatsPanel(); // Update the stats panel to show the new order
+}
+
 let pieces = JSON.parse(localStorage.getItem('gamePieces')) || [];
 let pieceId = pieces.length > 0 ? Math.max(...pieces.map(p => p.id)) + 1 : 0;
 let selectedPieceId = null;
