@@ -24,12 +24,15 @@
             height: calc(100vh - 20px);
             box-sizing: border-box;
         }
-        #gameBoard {
-            width: 70vw;
-            height: 100%;
-            position: relative;
-            background: #f0f0f0;
-        }
+#gameBoard {
+    width: 70vw;
+    height: 100%;
+    position: relative;
+    background: black; 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-position: left
+}
         #statsPanel {
             width: 30vw; /* Explicitly set to 30% of viewport width */
             height: 100%;
@@ -55,8 +58,8 @@
             position: absolute;
             cursor: grab;
             user-select: none;
-            width: 50px;
-            height: 70px;
+            width: 100px;
+            height: 100px;
         }
         .piece:active {
             cursor: grabbing;
@@ -99,14 +102,14 @@
         }
         .stat-row.selected {
             background: cyan;
-            color: black;
+            color: white;
         }
         .stat-row.selected span {
-            color: black;
+            color: gray;
         }
         .stat-row.selected input {
             background: cyan;
-            color: black;
+            color: Green;
         }
         .action-btn {
             cursor: pointer;
@@ -192,7 +195,7 @@
 let pieces = JSON.parse(localStorage.getItem('gamePieces')) || [];
 let pieceId = pieces.length > 0 ? Math.max(...pieces.map(p => p.id)) + 1 : 0;
 let selectedPieceId = null;
-let mapImage = localStorage.getItem('mapImage') || 'DND/Maps/Map1.png'; // Default map
+let mapImage = localStorage.getItem('mapImage') || 'DND/Maps/Map1.jpg'; // Default map
 
 if (!localStorage.getItem('mapImage')) {
 localStorage.setItem('mapImage', mapImage);
@@ -268,8 +271,8 @@ div.style.transform = `rotate(${piece.rotation * 45}deg)`;
 const img = document.createElement('img');
 img.id = `img-${piece.id}`;
 img.src = piece.image || '/DND/Miniatures/Miniature1.png'; // Default miniature
-img.width = 50;
-img.height = 50;
+img.width = 100;
+img.height = 100;
 
 const name = document.createElement('div');
 name.id = `name-display-${piece.id}`;
@@ -351,7 +354,7 @@ ac: 10,
 mv: 6,
 attacks: '1d6+0',
 gear: 'weapon, armor',
-image: 'DND/Miniatures/Miniature1.png' // Default miniature
+image: 'DND/Miniatures/Miniature1.jpg' // Default miniature
 };
 pieces.push(newPiece);
 const element = createPieceElement(newPiece);
