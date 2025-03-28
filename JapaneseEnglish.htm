@@ -2682,7 +2682,8 @@ const replsB=[
 {p1:/(つ)(?!X)(か)(?!X)(ま)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(tsu)$2X(ka)$3X(ma)grab$4X;RuVerb'},
 {p1:/(ち)(?!X)(ぎ)(?!X)(れ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(chi)$2X(gi)$3X(re)be torn off,come off$4X;RuVerb'},
 {p1:/(だ)(?!X)(ら)(?!X)(し)(?!X)(な)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2X(da)$3X(r)$4X(ashina)slovenly,untidy$5X;IAdjective'},
-{p1:/(だ)(?!X)(ぶ)(?!X)(だ)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1X(dab)$2X(ud)$3X(a)baggy,too big$4X;BuVerb'},
+{p1:/(だ)(?!X)(ぶ)(?!X)(だ)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1X(da)$2X(bu)$3X(da)baggy,too big$4X;BuVerb'},
+{p1:/(も)(?!X)(の)(?!X)(で)(?!X)([さしすせそ])(?!X)/g,r1:'$1X(mo)$2X(no)$3X(de) reason for $4X;BeVerb'},
 {p1:/(た)(?!X)(ま)(?!X)(ら)(?!X)(な)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2X(ta)$3X(m)$4X(arana)can t stand,can t put up with$5X;IAdjective'},
 {p1:/(ぞ)(?!X)(ん)(?!X)(ざ)(?!X)([いくかさ])(?!X)/g,r1:'$1X$2X(zo)$3Xんza,rough,rude$4X;IAdjective'},
 {p1:/(そ)(?!X)(び)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(sob)$2X(ie)$3X,tower$4X;RuVerb'},
@@ -3649,7 +3650,6 @@ const replsB=[
 {p1:/(や)(?!X)(か)(?!X)(ん)(?!X)/g,r1:'$1X(ya)$2X(ka)$3X(n)kettle;Par'},
 {p1:/(も)(?!X)(は)(?!X)(や)(?!X)/g,r1:'$1X(mo)$2X(ha)$3X(ya)already,no longer;Par'},
 {p1:/(も)(?!X)(の)(?!X)(の)(?!X)/g,r1:'$1X(mo)$2X(no)$3X(no)despite the fact that;Par'},
-{p1:/(も)(?!X)(の)(?!X)(で)(?!X)/g,r1:'$1X(mo)$2X(no)$3X(de)reason for;Par'},
 {p1:/(も)(?!X)(っ)(?!X)(と)(?!X)/g,r1:'$1X(mot)$2X(to)$3X,more;Par'},
 {p1:/(も)(?!X)(し)(?!X)(も)(?!X)/g,r1:'$1X(mo)$2X(shi)$3X(mo)if,if ever;Par'},
 {p1:/(も)(?!X)(う)(?!X)(け)(?!X)/g,r1:'$1X(mou)$2X(ke)$3X,earnings;Par'},
@@ -3800,7 +3800,7 @@ const replsB=[
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1X(hap pyaku,eight hundred;Par$2$3'},
 {p1:/(7|７)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1X(nana hyaku,seven,hundred;Par$2$3'},
 {p1:/(6|６)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1X(rop pyaku,six,hundred;Par$2$3'},
-{p1:/(5|５)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1X(go hyaku,five,hundred;Par$2$3'},
+{p1:/(5|５)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1X(go hyaku)five hundred;Par$2$3'},
 {p1:/(4|４)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1X(yon hyaku,four hundred;Par$2$3'},
 {p1:/(3|３)(?!X)([0-9]|[０-９])(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1X(san byaku,three hundred;Par$2$3'},
 {p1:/(2|２)(?!X)(９|9)(?!X)(日)(?!X)/g,r1:'$1X(ni jyuu)$2X(ku)$3X(nichi)twenty nineth day of the month;Par'},
@@ -7403,6 +7403,8 @@ const replsB=[
 {p1:/(居)(?!X)(間)(?!X)/g,r1:'$1X(ima $2X;living room;Par'},
 {p1:/(就)(?!X)(職)(?!X)/g,r1:'$1X(syuu)$2X(syoku)finding employment;Par'},
 {p1:/(就)(?!X)(任)(?!X)/g,r1:'$1X(syuu)$2X(nin)inauguration;Par'},
+{p1:/(飽)(?!X)(浦)(?!X)/g,r1:'$1X(ai)$2X(ra)Aira, Japan;Par'},
+{p1:/(地)(?!X)(内)(?!X)/g,r1:'$1X(ji)$2X(nai)grounds;Par'},
 {p1:/(少)(?!X)(額)(?!X)/g,r1:'$1X(syou)$2X(gaku)small amount of money;Par'},
 {p1:/(少)(?!X)(量)(?!X)/g,r1:'$1X(syou)$2X(ryou)small quantity;Par'},
 {p1:/(少)(?!X)(数)(?!X)/g,r1:'$1X(syou)$2X(suu)minority;Par'},
@@ -10230,7 +10232,7 @@ const replsB=[
 {p1:/(村)(?!X)/g,r1:'$1X(mura)village;Par'},
 {p1:/(杉)(?!X)/g,r1:'$1X(sugi)cedar;Par'},
 {p1:/(札)(?!X)/g,r1:'$1X(fuda)satsu,sap,billboard,paper bill;Par'},
-{p1:/(本)(?!X)/g,r1:'$1X(hon=hon=book;Moto=home;bon,hon,long object counter;Par'},
+{p1:/(本)(?!X)/g,r1:'$1X(hon)book;Moto=home;bon,hon,long object counter;Par'},
 {p1:/(末)(?!X)/g,r1:'$1X(matsu)last part;Par'},
 {p1:/(未)(?!X)/g,r1:'$1X(mi)south,sixth lunar month;Par'},
 {p1:/(木)(?!X)/g,r1:'$1X(ki)gi,boku=tree,wood;moku,Thursday;Par'},
@@ -10707,7 +10709,7 @@ const replsB=[
 {p1:/(の)(?!X)(は)(?!X)/g,r1:'$1X(no)$2X(wa)as for this in noun form;Par'},
 {p1:/(べ)(?!X)(き)(?!X)/g,r1:'$1X(be)$2X(ki)should;Par'},
 {p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1X(ma)$2X(de)up to;Par'},
-{p1:/(等|な)(?!X)(ど)(?!X)/g,r1:'$1X(na)$2X(do)etcetera,Conjunction'},
+{p1:/(等|な)(?!X)(ど)(?!X)/g,r1:'$1X(na)$2X(do)etcetera;Par'},
 
 {p1:/(か)(?!X)/g,r1:'$1X(ka)indicates a question above;Par-----;Postposition-----'},
 {p1:/(が)(?!X)/g,r1:'$1X(ga)the subject above acts;Par-----;Postposition-----'},
@@ -10720,11 +10722,11 @@ const replsB=[
 {p1:/(を)(?!X)/g,r1:'$1X(oo)direct object above is acted on;Par-----;Postposition-----'},
 
 {p1:/(Adverb)(く)(?!X)/g,r1:'$1)$2X(ku)and;Par'},
-{p1:/(;Parと)(?!X)/g,r1:'$1X(to)with the above,the person said;Par'},
+{p1:/(;Par|;Ending)(と)(?!X)/g,r1:'$2X(to)with the above,the person said;Par'},
 {p1:/(Adjectiveな|;Parな)(?!X)/g,r1:'$1X(na)NaAdjective'},
 {p1:/(Adverbな)(?!X)/g,r1:'$1X(na)Adverb'},
 {p1:/(;Par等|Verbら)(?!X)/g,r1:'$1X(ra)plural;Par'},
-{p1:/(Verb|;Par)(の)(?!X)/g,r1:'$1X$2(no)of the above;Par'},
+{p1:/(Verb|;Par|-----;Postposition-----)(の)(?!X)/g,r1:'$1X$2(no)of the above;Par'},
 {p1:/(Verb)(と)(?!X)/g,r1:'$1)$2X(to)by way of the above;Par'},
 
 {p1:/(IAdjective|IchidanVerb|KuVerb|UVerb|MuVerb|RuVerb|TsuVerb|SuVerb|BuVerb|BeVerb)/g,r1:'$1<br>'},
@@ -10872,7 +10874,7 @@ function copyToClipboard() {
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-岡山県南部の山林火災は、発生からきょう（27日）で5日目です。勢いは弱まりつつある中、現場付近では夜から雨が降り始めました。【写真を見る】【岡山・山林火災】発生から5日目　夜から降り出した激しい雨は「恵みの雨」となるか　消防団員「もうクタクタ。これで鎮圧状態になれば」【27日午後9時現在】
+岡山市南区などで発生している山火事について、岡山市は28日午後1時から災害対策本部会議を開き、火事が28日正午に「鎮圧」したと発表しました。【写真】消火活動の様子　28日午前11時半ごろこの山火事は、23日午後3時過ぎに岡山市南区飽浦地内で119番通報があったものです。延焼が拡大し、27日正午時点での延焼範囲は約565haと、記録が残る1965年以降で岡山県では最大の規模の山火事となりました。
 <p>
 <!-- Toggle Button -->
 <button id="adminToggle" onclick="toggleAdminSection()" style="position: fixed; top: 10px; right: 10px; z-index: 1000; background-color: #0078d4; color: white; border: none; padding: 5px 10px; font-size: 12px; border-radius: 3px; cursor: pointer;">
