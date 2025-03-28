@@ -159,9 +159,7 @@
 </head>
 <body>
     <h1>Korean to English Parser</h1>
-정부가 7일 서해 북방한계선(NLL) 이남으로 표류한 북한 주민 2명의 송환을 추진 중인 가운데 북한 당국이 일명 ‘핑크폰’으로 불리는 유엔군사령부와의 연락 채널 소통에도 응하지 않고 있는 것으로 알려졌다.
-
-남북 채널이 2023년 4월부터 단절돼 정부는 유엔사에 협조를 요청했으나 북측이 이마저도 사실상 응답을 거부하고 있어 송환이 장기화되고 있는 것이다.
+고르스키는 이미 기네스에 등재된 바 있다. 그는 2022년 5월 22일 만 50년간 하루 평균 빅맥 2개를 먹는 기록으로 기네스 기록을 세웠다. 고르스키는 한 때 하루에 빅맥을 9개씩 먹기도 했지만, 현재는 하루 2개 정도만 먹고 있다고 전했다.
     <br>
     <textarea id="userInput" placeholder="Enter Korean text..."></textarea><br>
     <button onclick="displayResults()">Analyze</button><br>
@@ -188,10 +186,10 @@
 	
 	  function toggleAdminPanel() {
     const adminPanel = document.getElementById('adminPanel');
-    if (adminPanel.style.display === 'none') {
-      adminPanel.style.display = 'block';
-    } else {
+    if (adminPanel.style.display === 'block') {
       adminPanel.style.display = 'none';
+    } else {
+      adminPanel.style.display = 'block';
     }
   }
 
@@ -440,7 +438,7 @@ const koreanDictionary = [
 {word:"혈액",meaning:"blood (sino?)"},
 {word:"혈압",meaning:"blood pressure"},
 {word:"현지",meaning:"local"},
-{word:"현재",meaning:"the present, right now"},
+{word:"현재",meaning:"currently"},
 {word:"현재",meaning:"present tense"},
 {word:"현재 진행형",meaning:"present progressive"},
 {word:"현장",meaning:"the actual spot, scene (of action), site; field"},
@@ -1070,7 +1068,7 @@ const koreanDictionary = [
 {word:"총장",meaning:"chancellor (of a university), secretary general"},
 {word:"총명",meaning:"to be intelligent, bright (able to remember something for a long time/generally smart)"},
 {word:"총동원",meaning:"to mobolize all the resources"},
-{word:"총",meaning:"gun; (determiner) total (number of something), overall, gross"},
+{word:"총",meaning:"gun;total"},
 {word:"촛불",meaning:"candlelight"},
 {word:"촌스럽",meaning:"to be old-fashioned, rustic, tacky, out-of-style, unsophisticated"},
 {word:"초콜릿",meaning:"chocolate"},
@@ -1240,6 +1238,7 @@ const koreanDictionary = [
 {word:"쫓아오",meaning:"to follow, chase, come after"},
 {word:"쫓아가",meaning:"to run after, pursue, keep up with (a trend or a person)"},
 {word:"쫓기",meaning:"to be chased, pursued; be pressed, driven (with work); be agitated, nervous"},
+{word:"세의",meaning:"years old"},
 {word:"쫓",meaning:"to chase, pursue"},
 {word:"쪽팔리",meaning:"to be embarassing, lose face because of humiliation (slang)"},
 {word:"쪽지",meaning:"note, message (small piece of paper)"},
@@ -1380,7 +1379,8 @@ const koreanDictionary = [
 {word:"지나",meaning:"to pass, go by"},
 {word:"지나",meaning:"after"},
 {word:"지급",meaning:"to provide, pay (fixed/set amount), give something to somebody"},
-{word:"지금",meaning:"now (at this moment)"},
+{word:"지금",meaning:"now"},
+{word:"까지",meaning:"up to"},
 {word:"지극히",meaning:"very, extremely (something is very natural/normal)"},
 {word:"지구",meaning:"Earth, globe; district, zone, area"},
 {word:"지겹",meaning:"to be tedious, boring, dull, sick of"},
@@ -1726,7 +1726,7 @@ const koreanDictionary = [
 {word:"전공",meaning:"to major in, specialize in"},
 {word:"전골",meaning:"beef with vegetables cooked in a casserole"},
 {word:"전경",meaning:"foreground, panorama; the front view (that unfolds before your eyes); riot police"},
-{word:"전",meaning:"to convey, communicate, tell, deliver, report; teach, introduce; hand down, remain, pass on"},
+{word:"전",meaning:"convey"},
 {word:"전",meaning:"before, prior to"},
 {word:"전 남자친구",meaning:"ex-boyfriend"},
 {word:"적히",meaning:"to be written down, listed; blacklisted"},
@@ -2011,7 +2011,7 @@ const koreanDictionary = [
 {word:"일과표",meaning:"daily schedule (timetable of activities)"},
 {word:"일과",meaning:"daily tasks, daily work"},
 {word:"일거리",meaning:"work (that enables you to earn money), things to do, task"},
-{word:"일",meaning:"days"},
+{word:"일",meaning:"day"},
 {word:"인형",meaning:"doll, puppet, figure"},
 {word:"인하",meaning:"reduction, cut, lowering of (price for goods/wages/fare etc)"},
 {word:"인턴",meaning:"intern"},
@@ -2128,7 +2128,7 @@ const koreanDictionary = [
 {word:"이기",meaning:"이겨요"},
 {word:"이기",meaning:"to win, defeat; overcome, control, suppress; endure, survive"},
 {word:"이것저것",meaning:"this and that"},
-{word:"이",meaning:"The;will be"},
+{word:"이",meaning:"the,this"},
 {word:"의학",meaning:"medicine, medical science"},
 {word:"의지",meaning:"will, volition; leaning, support; reliance, dependence"},
 {word:"의지",meaning:"to rely, depend, lean (on)"},
@@ -2179,7 +2179,7 @@ const koreanDictionary = [
 {word:"은신처",meaning:"hideout, hiding place"},
 {word:"은근히",meaning:"quietly, inwardly, confidentially, in a round about way; constantly, slowly; politely, courteously"},
 {word:"은",meaning:"(topic marker, used after a noun ending in a consonant);silver"},
-{word:"으로",meaning:"to"},
+{word:"으로",meaning:"as,to,by means of"},
 {word:"윶놀이",meaning:"yut (game 4 sticks)"},
 {word:"윤", meaning:"gloss, luster (rare standalone; possibly a name fragment)"},
 {word:"육지",meaning:"land, shroe, dry land"},
@@ -4240,6 +4240,8 @@ const koreanDictionary = [
 {word:"바위",meaning:"rock"},
 {word:"바쁘",meaning:"to be busy"},
 {word:"바비큐",meaning:"barbecue"},
+{word:"기네스에",meaning:"Guinness"},
+{word:"등재",meaning:"registered"},
 {word:"바보",meaning:"fool, stupid person, idiot; retard"},
 {word:"바르",meaning:"to apply, put on, cover, plaster, spread; straight, upright; correct, right; bone, debone"},
 {word:"바로",meaning:"straight, right now/after, immediately (not only in refererence to time/interchangeable with 즉시); directly; close(ly) right; very, exactly"},
@@ -4545,7 +4547,6 @@ const koreanDictionary = [
 {word:"먹이",meaning:"to feed, let someone eat; support; bribe, pay (off); scare, frighten"},
 {word:"먹이",meaning:"food, feed; prey"},
 {word:"먹방",meaning:"eating show"},
-{word:"먹",meaning:"먹어요"},
 {word:"먹",meaning:"to eat, drink"},
 {word:"머뭇거리",meaning:"to hesitate, hold back, waver"},
 {word:"머물",meaning:"to stay, remain (abrev.)"},
@@ -4568,7 +4569,7 @@ const koreanDictionary = [
 {word:"매체",meaning:"media; medium (the entity that delivers facts or ideas)"},
 {word:"매진",meaning:"sold out, sellout; striving"},
 {word:"매점",meaning:"snack stand, booth, cafeteria"},
-{word:"매일",meaning:"every day, daily (formal)"},
+{word:"매일",meaning:"daily"},
 {word:"매워요",meaning:"it's spicy"},
 {word:"매운탕",meaning:"spicy fish stew"},
 {word:"매운",meaning:"spicy"},
@@ -4657,6 +4658,8 @@ const koreanDictionary = [
 {word:"막",meaning:"to block, close, keep out; stop, prevent, defend; repay"},
 {word:"막",meaning:"just (about to), just now, just; severely, violently; carelessly, recklessly; curtain, tent; film (of), membrane"},
 {word:"마침내",meaning:"finally, eventually, at last, in the end, after all (pos/neg weren't expecting it)"},
+{word:"데일리",meaning:"daily"},
+{word:"메일",meaning:"mail"},
 {word:"마침",meaning:"coincidently, just, just in time, opportunely"},
 {word:"마치",meaning:"to finish, complete, end, wrap up (longer term commitments that can't be stopped)"},
 {word:"마치",meaning:"as though, as if, just like"},
@@ -4676,6 +4679,7 @@ const koreanDictionary = [
 {word:"마약",meaning:"drugs, narcotics"},
 {word:"마시",meaning:"마셔요"},
 {word:"마시",meaning:"to drink"},
+{word:"달성",meaning:"achieve"},
 {word:"마술사",meaning:"magician"},
 {word:"마술",meaning:"magic"},
 {word:"마사지",meaning:"massage"},
@@ -5129,8 +5133,6 @@ const koreanDictionary = [
 {word:"달구",meaning:"달궈요"},
 {word:"달구",meaning:"to heat (up)"},
 {word:"달걀",meaning:"egg (kr)"},
-{word:"달",meaning:"달아요"},
-{word:"달",meaning:"to be sweet, sugary, tasty; to put up, attach, hang up, install; heat up; be impatient; weight, measure; request, ask for"},
 {word:"달",meaning:"month; moon"},
 {word:"닫히",meaning:"to be closed, shut; shut up"},
 {word:"닫",meaning:"닫아요"},
@@ -5256,13 +5258,15 @@ const koreanDictionary = [
 {word:"높이",meaning:"to make something high; increase, turn up, raise, enhance, elevate (can be abstract)"},
 {word:"높이",meaning:"height, depth (object); high, highly"},
 {word:"높",meaning:"높아요"},
+{word:"만",meaning:"10,000;only"},
 {word:"높",meaning:"to be high; be noble"},
 {word:"농촌",meaning:"farm village, farming area, rural area"},
 {word:"농장",meaning:"farm, ranch, plantation"},
 {word:"농업",meaning:"agriculture, the farming industry"},
 {word:"농사",meaning:"farming, farm work, agriculture"},
 {word:"농부",meaning:"farmer, peasant (more common)"},
-{word:"농민",meaning:"farmer"},
+{word:"농민",meaning:"farmer"},{word:"사람",meaning:"person"},
+
 {word:"농담",meaning:"joke (words)"},
 {word:"농구",meaning:"basketball"},
 {word:"농가",meaning:"farmhouse, farming family"},
@@ -5590,7 +5594,7 @@ const koreanDictionary = [
 {word:"기초",meaning:"foundation, basis, base, basics, be based on, groundwork (can be physical in context)"},
 {word:"기차역",meaning:"train station"},
 {word:"기차",meaning:"train (like in train station)"},
-{word:"기준",meaning:"standard, criteria, basis"},
+{word:"기준",meaning:"standard"},
 {word:"기죽",meaning:"to be discouraged, down"},
 {word:"기절",meaning:"to faint, pass out"},
 {word:"기적",meaning:"miracle, wonder; steam whistle"},
@@ -6102,6 +6106,7 @@ const koreanDictionary = [
 {word:"검토",meaning:"to examine, review, study (information in depth)"},
 {word:"검찰",meaning:"the prosecution"},
 {word:"검정",meaning:"black (night sky, no light)"},
+{word:"고르스키",meaning:"Gorsky"},
 {word:"검은색",meaning:"black, a dark color"},
 {word:"검색어",meaning:"search term"},
 {word:"검색",meaning:"to search (internet/book), browse, look up; check, inspect"},
@@ -6196,7 +6201,7 @@ const koreanDictionary = [
 {word:"개구리",meaning:"frog"},
 {word:"개교",meaning:"to open a school"},
 {word:"개강",meaning:"beginning of semester"},
-{word:"개",meaning:"to clear up, become clear (weather); fold up (clothes); stop cease; mix something with water"},
+{word:"개",meaning:"items"},
 {word:"개",meaning:"dog; counter"},
 {word:"갚",meaning:"to pay back, repay; return; avenge, revenge"},
 {word:"같추",meaning:"to get ready, prepare (for); be equipped (with), be equipped to do something; have, possess, meet/satisfy"},
@@ -6256,6 +6261,7 @@ const koreanDictionary = [
 {word:"감",meaning:"to close one's eyes; wind, roll, coil, fast-foward/rewind, advance; wash; wash, bathe"},
 {word:"갈아타",meaning:"to change vehicles, transfer; change to a different brand, team, phone"},
 {word:"갈아입",meaning:"to change clothes"},
+{word:"간",meaning:"for"},
 {word:"갈색",meaning:"light brown"},
 {word:"갈비탕",meaning:"beef rib soup"},
 {word:"갈매기",meaning:"seagull"},
@@ -6352,6 +6358,8 @@ const koreanDictionary = [
 {word:"\‘",meaning:"open single quote"},
 {word:"\,",meaning:"comma"},
 {word:"9그월",meaning:"September"},
+{word:"세웠다",meaning:"established"},
+{word:"먹기",meaning:"eat"},
 {word:"8팔월",meaning:"August"},
 {word:"7칠월",meaning:"July"},
 {word:"6육월",meaning:"June"},
@@ -6359,13 +6367,33 @@ const koreanDictionary = [
 {word:"4사월",meaning:"April"},
 {word:"3삼월",meaning:"March"},
 {word:"2이월",meaning:"February"},
+{word:"빅맥",meaning:"Big Mac"},
 {word:"1일월",meaning:"January"},
 {word:"12십이월",meaning:"December"},
 {word:"11십일월",meaning:"November"},
 {word:"10십월",meaning:"October"},
 {word:"이랑",meaning:"and, with"},
 {word:"(으",meaning:"can"},
-
+    {word:"0",meaning:"(young)zero"},
+    {word:"10",meaning:"(ship)ten"},
+    {word:"20",meaning:"(ee ship)twenty"},
+    {word:"30",meaning:"(sam ship)thirty"},
+    {word:"40",meaning:"(sah ship)forty"},
+    {word:"50",meaning:"(oh ship)fifty"},
+    {word:"60",meaning:"(yook ship)sixty"},
+    {word:"70",meaning:"(chil ship)seventy"},
+    {word:"80",meaning:"(pahl ship)eighty"},
+    {word:"90",meaning:"(goo ship)ninety"},
+    {word:"1",meaning:"(eel)one"},
+    {word:"2",meaning:"(ee)two"},
+    {word:"3",meaning:"(sam)three"},
+    {word:"4",meaning:"(sah)four"},
+    {word:"5",meaning:"(oh)five"},
+    {word:"6",meaning:"(yook)six"},
+    {word:"7",meaning:"(chil)seven"},
+    {word:"8",meaning:"(pahl)eight"},
+    {word:"9",meaning:"(goo)nine"},
+    {word:"10",meaning:"(ship)ten"},
         ];
         function breakIntoRomanizedJamo(hangul) {
             const initialConsonants = [
@@ -6380,21 +6408,22 @@ const koreanDictionary = [
                 "m", "b", "bs", "s", "ss", "ng", "j", "ch", "k", "t", "p", "h"
             ];
 
-            let result = [];
-            for (const char of hangul) {
-                const code = char.charCodeAt(0);
-                if (code >= 0xAC00 && code <= 0xD7A3) {// Hangul syllable block range
-                    const syllableCode = code - 0xAC00;
-                    const initial = initialConsonants[Math.floor(syllableCode / 588)];
-                    const medial = medialVowels[Math.floor((syllableCode % 588) / 28)];
-                    const final = finalConsonants[syllableCode % 28];
-                    result.push(`(${initial} ${medial} ${final})`);
-               } else {
-                    result.push(char); // Non-Hangul chars preserved as-is
-               }
-           }
-            return result.join("");
-       }
+
+    let result = [];
+    for (const char of hangul) {
+        const code = char.charCodeAt(0);
+        if (code >= 0xAC00 && code <= 0xD7A3) { // Hangul syllable block range
+            const syllableCode = code - 0xAC00;
+            const initial = initialConsonants[Math.floor(syllableCode / 588)];
+            const medial = medialVowels[Math.floor((syllableCode % 588) / 28)];
+            const final = finalConsonants[syllableCode % 28];
+            result.push(`${char} (${initial} ${medial} ${final})`); // Add original Hangul char to output
+        } else {
+            result.push(char); // Non-Hangul chars preserved as-is
+        }
+    }
+    return result.join(""); // Output with original Hangul characters included
+}
 
         // Helper function to remove punctuation while preserving spaces
         function removePunctuation(input) {
@@ -6477,27 +6506,27 @@ function displayResults() {
     // Process results and group by original split words
     const splitWords = cleanedInput.split(/\s+/);
     let wordIndex = 0;
-    let currentWord = splitWords[wordIndex] || "";
-    let accumulatedOutput = "";
+    let currentWord = splitWords[wordIndex] || " ";
+    let accumulatedOutput = " ";
 
     for (const item of results) {
         if (item.isSpace) {
             // When encountering a space, move to the next word
-            accumulatedOutput += `<p>${item.word}</p>`; // Just the space
+            accumulatedOutput += `<p>${item.word}`; // Just the space
             wordIndex++;
-            currentWord = splitWords[wordIndex] || "";
+            currentWord = splitWords[wordIndex] || " ";
             continue;
         }
 
         // Display the current split word before its first associated result
-        if (currentWord && accumulatedOutput.indexOf(`<b>Word: ${currentWord}</b>`) === -1) {
-            accumulatedOutput += `<p><b>Word: ${currentWord}</b></p>`;
+        if (currentWord && accumulatedOutput.indexOf(`${currentWord}`) === -1) {
+            accumulatedOutput += `<font color=blue>phrase:${currentWord}</font><br>`;
         }
 
         // Append the result for this segment
         accumulatedOutput += item.meaning 
-            ? `<p class="matched">&nbsp;&nbsp;<b>${item.word} ${item.romanized}</b>: ${item.meaning}</p>`
-            : `<p class="unmatched">&nbsp;&nbsp;Unmatched: ${item.word}</p>`;
+            ? `word:${item.word}romanized:${item.romanized}meaning:${item.meaning}<br>`
+            : `|<font color=red>Unmatched:</font>${item.word}`;
     }
 
     outputDiv.innerHTML = accumulatedOutput;
