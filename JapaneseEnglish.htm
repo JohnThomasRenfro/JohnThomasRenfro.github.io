@@ -10932,6 +10932,34 @@ function copyToClipboard() {
     }
 }
 
+
+            let inputText = document.getElementById('inputText').value;
+            replsB.forEach(rep => {
+                inputText = inputText.replace(rep.p1, rep.r1);
+            });
+
+            // Get the scroll container and output container
+            const scrollContainer = document.getElementById('scrollContainer');
+            const outputContainer = document.getElementById('outputContainer');
+
+            // Display the scroll container with animation
+            scrollContainer.style.display = 'block';
+            scrollContainer.innerHTML = inputText;
+
+            // Optionally, hide the output container until the animation completes
+            outputContainer.style.display = 'none';
+
+            // Wait for the animation to complete before displaying the output container
+            setTimeout(() => {
+                outputContainer.style.display = 'block';
+                outputContainer.innerHTML = inputText;
+            }, 1000); // Match the animation duration (1s)
+
+            // Hide the scroll container after the animation
+            setTimeout(() => {
+                scrollContainer.style.display = 'none';
+            }, 2000); // Total time for animation and display (2s)
+        }
 </script></head>
 
 <body>
@@ -10981,43 +11009,12 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
   <p id="output" style="margin-top: 10px; font-size: 12px; color: #333333;"></p>
 </div>
 
-<hr>
+</head>
+<body>
     <div id="scrollContainer"></div>
     <div id="outputContainer"></div>
-    <textarea id="inputText"></textarea>
-    <span id="translatedTextDisplay"></span>
+    <textarea id="inputText" cols="35" rows="6" placeholder='Put the Japanese text here.'></textarea>
     <button onclick="translateB()">Translate</button>    
-    <textarea cols="35" rows="6" onchange="this.value;translateB()" placeholder='Put the Japanese text here.'></textarea>
-
-<br>
-<div class=HeaderStyle>Memorizing Kanji</div>
-<ul>
-<li>Use <a href="https://addons.mozilla.org/en-US/firefox/addon/10ten-ja-reader/" target="Xblank">10ten Japanese Reader</a> browser extension to read kanji on your desktop/laptop computer.
-</li><li>Group kanji by the same sound using <a href="https://www.wanikani.com/vocabulary/" target="Xblank">WaniKani</a>.
-</li><li>See if you can notice any similar elements in the kanjis.
-</li><li>Practice writing the same sound kanjis until you can do it from memory using <a href="https://play.google.com/store/apps/details?id=com.craxic.akebifree&amp;hl=en&amp;gl=US" target="Xblank">Android Akebi</a>.
-</li></ul>
-    <h1>Homework</h1>
-
-Practice in Akebi until you can memorize the 'Kyuu' Kanjis.<br>
-<ul>
-  <li>休日 (Kyuujitsu) - Meaning "holiday" or "day off."</li>
-  <li>緊急 (Kinkyuu) - Meaning "emergency" or "urgent."</li>
-  <li>旧友 (Kyuuyuu) - Meaning "old friend."</li>
-  <li>地球 (Chikyuu) - Meaning "Earth" or "planet Earth."</li>
-  <li>宮殿 (Kyuuden) - Meaning "palace."</li>
-</ul>
-
-Five words that imply "very"..<br>
-<ul>
-  <li>絶好 (Zekkou) - Meaning "perfect" or "ideal."</li>
-  <li>超満員 (Choumanin) - Meaning "super crowded."</li>
-  <li>最高 (Saikou) - Meaning "the best" or "fantastic."</li>
-  <li>真新しい (Maatarashii) - Meaning "brand new."</li>
-  <li>極寒 (Gokkan) - Meaning "bitterly cold."</li>
-</ul>
-
-<p> 
-<img src='PeterReft.png' alt='photo by Peter Reft' title='photo by Peter Reft'>
+    <span id="translatedTextDisplay"></span>
 </body>
 </html>
