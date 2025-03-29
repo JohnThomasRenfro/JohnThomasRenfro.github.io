@@ -6,6 +6,34 @@
 <link rel="icon" href="reading.png" type="image/png">
 <style>
 
+/* Scroll Animation Keyframes */
+@keyframes scrollOpen {
+    0% {
+        transform: translateY(-100%) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Scroll Container Styling */
+#scrollContainer {
+    display: none; /* Initially hidden */
+    background: url('scroll-background.jpg') no-repeat center center;
+    background-size: cover;
+    border: 2px solid #6b5b4b;
+    border-radius: 8px;
+    padding: 20px;
+    color: #d3c6aa;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    position: relative;
+    margin: 20px;
+    animation: scrollOpen 1s ease-out forwards;
+}    
+
 .magni{
     font color:#f5eee7;
     font-size:30px;
@@ -202,6 +230,33 @@ hr::after {
 </style>
 
 <script>
+    let inputText = document.getElementById('inputText').value;
+    replsB.forEach(rep => {
+        inputText = inputText.replace(rep.p1, rep.r1);
+    });
+
+    // Get the scroll container and output container
+    const scrollContainer = document.getElementById('scrollContainer');
+    const outputContainer = document.getElementById('outputContainer');
+
+    // Display the scroll container with animation
+    scrollContainer.style.display = 'block';
+    scrollContainer.innerHTML = inputText;
+
+    // Optionally, hide the output container until the animation completes
+    outputContainer.style.display = 'none';
+
+    // Wait for the animation to complete before displaying the output container
+    setTimeout(() => {
+        outputContainer.style.display = 'block';
+        outputContainer.innerHTML = inputText;
+    }, 1000); // Match the animation duration (1s)
+
+    // Hide the scroll container after the animation
+    setTimeout(() => {
+        scrollContainer.style.display = 'none';
+    }, 2000);
+    
 function translateB()
 {
 
