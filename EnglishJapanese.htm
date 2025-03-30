@@ -10583,8 +10583,8 @@ function translateEnglishToJapanese() {
     const inputText = document.getElementById('inputText').value;
     let outputText = inputText;
 
-    translations.forEach(({r1, p1}) => {
-        outputText = outputText.replace(r1, p1);
+    translations.forEach(({p1, r1}) => {
+        outputText = outputText.replace(p1, r1);
     });
 
     document.getElementById('outputText').innerText = outputText;
