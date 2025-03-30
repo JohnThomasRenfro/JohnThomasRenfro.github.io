@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>英語から日本語の翻訳プログラム</title>
+<link rel="icon" href="reading.png" type="image/png">
+<style>
+body {
+    background-color: #2b2b2b;
+    color: #d3c6aa;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    margin: 20px;
+    padding: 20px;
+}
+button, textarea, input {
+    font-size: 20px;
+    margin: 10px 0;
+}
+#outputText {
+    white-space: pre-wrap;
+}
+</style>
+</head>
+<body>
+<h1>英語から日本語の翻訳プログラム</h1>
+<textarea id="inputText" rows="10" cols="50" placeholder="ここに英語のテキストを入力してください..."></textarea>
+<br>
+<button onclick="translateEnglishToJapanese()">翻訳する</button>
+<br>
+<div id="outputText"></div>
+
+<script>
+function translateEnglishToJapanese() {
+    const translations = [
+        {r1: /Hello/g, p1: 'こんにちは'},
+        {r1: /Goodbye/g, p1: 'さようなら'},
+        {r1: /Thank you/g, p1: 'ありがとう'},
+        {r1: /Excuse me|I'm sorry/g, p1: 'すみません'},
+        {r1: /Yes/g, p1: 'はい'},
+        {r1: /No/g, p1: 'いいえ'},
+        {r1: /Good morning/g, p1: 'おはよう'},
+        {r1: /Good evening/g, p1: 'こんばんは'},
+        {r1: /Good night/g, p1: 'おやすみなさい'},
+    ];
+
+    const inputText = document.getElementById('inputText').value;
+    let outputText = inputText;
+
+    translations.forEach(({r1, p1}) => {
+        outputText = outputText.replace(r1, p1);
+    });
+
+    document.getElementById('outputText').innerText = outputText;
+}
+</script>
+</body>
+</html>
