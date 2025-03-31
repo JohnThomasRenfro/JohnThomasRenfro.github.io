@@ -206,7 +206,8 @@ function translateB()
 {
 
 const replsB=[
-
+{p1:/(\［)(?!X)/g,r1:'$1X open bracket-----;Punctuation-----;Par'}, 
+{p1:/(\］)(?!X)/g,r1:'$1X close bracket-----;Punctuation-----;Par'},    
 {p1:/(～)(?!X)/g,r1:'$1X hyphen)from to-----;Punctuation-----;Par'},
 {p1:/(＝)(?!X)/g,r1:'$1X equals-----;Punctuation-----;Par'},
 {p1:/(：)(?!X)/g,r1:'$1X colon-----;Punctuation-----;Par'},
