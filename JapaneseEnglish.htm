@@ -206,23 +206,23 @@ function translateB()
 {
 
 const replsB=[
-{p1:/(\［)(?!X)/g,r1:'$1X open bracket-----;Punctuation-----;Par'}, 
-{p1:/(\］)(?!X)/g,r1:'$1X close bracket-----;Punctuation-----;Par'},    
-{p1:/(～)(?!X)/g,r1:'$1X hyphen)from to-----;Punctuation-----;Par'},
-{p1:/(＝)(?!X)/g,r1:'$1X equals-----;Punctuation-----;Par'},
-{p1:/(：)(?!X)/g,r1:'$1X colon-----;Punctuation-----;Par'},
-{p1:/(．)(?!X)/g,r1:'$1X(ten)dot,decimal point-----;Punctuation-----;Par'},
-{p1:/(】)(?!X)/g,r1:'$1X close bracket-----;Punctuation-----;Par'},
-{p1:/(【)(?!X)/g,r1:'$1X open bracket-----;Punctuation-----;Par'},
-{p1:/(。)(?!X)/g,r1:'$1X period-----;Punctuation-----;Par'},
-{p1:/(、)(?!X)/g,r1:'$1X comma-----;Punctuation-----;Par'},
-{p1:/(\・)(?!X)/g,r1:'$1X word separator-----;Punctuation-----;Par'},
-{p1:/(\”)(?!X)/g,r1:'$1X close quote-----;Punctuation-----;Par'},
-{p1:/(\“)(?!X)/g,r1:'$1X open quote-----;Punctuation-----;Par'},
-{p1:/(\?)(?!X)/g,r1:'$1 question mark-----;Punctuation-----;Par'},
-{p1:/(\/)(?!X)/g,r1:'$1 forward slash-----;Punctuation-----;Par'},
-{p1:/([」』])(?!X)/g,r1:'$1X close quote-----;Punctuation-----;Par'},
-{p1:/([「『])(?!X)/g,r1:'$1X open quote-----;Punctuation-----;Par'},
+{p1:/(\［)(?!X)/g,r1:'$1X open bracket;punctuation;Par'}, 
+{p1:/(\］)(?!X)/g,r1:'$1X close bracket;punctuation;Par'},    
+{p1:/(～)(?!X)/g,r1:'$1X hyphen)from to;punctuation;Par'},
+{p1:/(＝)(?!X)/g,r1:'$1X equals;punctuation;Par'},
+{p1:/(：)(?!X)/g,r1:'$1X colon;punctuation;Par'},
+{p1:/(．)(?!X)/g,r1:'$1X(ten)dot,decimal point;punctuation;Par'},
+{p1:/(】)(?!X)/g,r1:'$1X close bracket;punctuation;Par'},
+{p1:/(【)(?!X)/g,r1:'$1X open bracket;punctuation;Par'},
+{p1:/(。)(?!X)/g,r1:'$1X period;punctuation;Par'},
+{p1:/(、)(?!X)/g,r1:'$1X comma;punctuation;Par'},
+{p1:/(\・)(?!X)/g,r1:'$1X word separator;punctuation;Par'},
+{p1:/(\”)(?!X)/g,r1:'$1X close quote;punctuation;Par'},
+{p1:/(\“)(?!X)/g,r1:'$1X open quote;punctuation;Par'},
+{p1:/(\?)(?!X)/g,r1:'$1 question mark;punctuation;Par'},
+{p1:/(\/)(?!X)/g,r1:'$1 forward slash;punctuation;Par'},
+{p1:/([」』])(?!X)/g,r1:'$1X close quote;punctuation;Par'},
+{p1:/([「『])(?!X)/g,r1:'$1X open quote;punctuation;Par'},
 {p1:/([\)\）])(?!X)/g,r1:''},
 {p1:/([\(\（])(?!X)/g,r1:''},
 
@@ -2276,6 +2276,7 @@ const replsB=[
 {p1:/(よ)(?!X)(う)(?!X)(こ)(?!X)(そ)(?!X)/g,r1:'$1X$2X(we)$3X(l)$4X(come)Noun'},
 {p1:/(ゆ)(?!X)(っ)(?!X)(た)(?!X)(り)(?!X)/g,r1:'$1X$2X(co)$3X(m)$4X(fortable)Noun'},
 {p1:/(ゆ)(?!X)(っ)(?!X)(く)(?!X)(り)(?!X)/g,r1:'$1X$2X(sl)$3X(o)$4X(wly)Noun'},
+{p1:/(イ)(?!X)(ン)(?!X)(フ)(?!X)(ラ)(?!X)/g,r1:'$1X(i)$2X(n)$3X(fu)$4X(ra)infrastructure;Par'},
 {p1:/(や)(?!X)(り)(?!X)(直)(?!X)(し)(?!X)/g,r1:'$1X$2X(ya)$3X(r)$4X(inao)shi,doing over,redoing;Par'},
 {p1:/(や)(?!X)(り)(?!X)(と)(?!X)(り)(?!X)/g,r1:'$1X(ya)$2X(ri)$3X(to)$4X(ri)give and take;Par'},
 {p1:/(や)(?!X)(っ)(?!X)(ぱ)(?!X)(り)(?!X)/g,r1:'$1X$2X(ya)$3X(p)$4X(pari)just as I thought,after all;Par'},
@@ -2666,11 +2667,12 @@ const replsB=[
 {p1:/(よ)(?!X)(う)(?!X)(や)(?!X)([かきくけこい])(?!X)/g,r1:'$1X(yo)$2X(u)$3X(ya)at last$4X;KuVerb'},
 {p1:/(や)(?!X)(り)(?!X)(直)(?!X)([さしすせそ])(?!X)/g,r1:'$1X(yar)$2X(in)$3X(ao)do over again$4X;SuVerb'},
 {p1:/(も)(?!X)(た)(?!X)(ら)(?!X)([さしすせそ])(?!X)/g,r1:'$1X(mo)$2X(ta)$3X(ra)bring about,lead to$4X;SuVerb'},
+{p1:/(押)(?!X)(し)(?!X)(広)(?!X)(げ)(?!X)/g,r1:'$1X(o)$2X(shi)$3X(hiro)$4X(ge)extend;IchidanVerb'},
 {p1:/(も)(?!X)(う)(?!X)(け)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(mou)$2X(ke)$3X,make a profit$4X;RuVerb'},
 {p1:/(も)(?!X)(う)(?!X)(か)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(mou)$2X(ka)$3X,make a profit,be profitable$4X;RuVerb'},
 {p1:/(ま)(?!X)(と)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(ma)$2X(to)$3X(me)put in order$4X;RuVerb'},
 {p1:/(ま)(?!X)(と)(?!X)(ま)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(ma)$2X(to)$3X(ma)be collected$4X;RuVerb'},
-{p1:/(ま)(?!X)(す)(?!X)(ま)(?!X)([さしすせそ])(?!X)/g,r1:'$1X(mas)$2X(um)$3X(a)increasingly$4X;SuVerb'},
+{p1:/(ま)(?!X)(す)(?!X)(ま)(?!X)([さしすせそ])(?!X)/g,r1:'$1X(ma)$2X(su)$3X(ma)increasingly$4X;SuVerb'},
 {p1:/(ほ)(?!X)(ほ)(?!X)(え)(?!X)([まみむめもん])(?!X)/g,r1:'$1X(ho)$2X(hoe)$3X,smile$4X;MuVerb'},
 {p1:/(ぶ)(?!X)(る)(?!X)(ぶ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(bur)$2X(ub)$3X(u)shiver$4X;RuVerb'},
 {p1:/(ぶ)(?!X)(つ)(?!X)(ぶ)(?!X)([たちつてとっ])(?!X)/g,r1:'$1X(but)$2X(su)$3X(bu)grumble$4X;TsuVerb'},
@@ -5944,6 +5946,7 @@ const replsB=[
 {p1:/(異)(?!X)(例)(?!X)/g,r1:'$1X(i)$2X(rei)unprecedented;Par'},
 {p1:/(番)(?!X)(組)(?!X)/g,r1:'$1X(ban)$2X(gumi)program;Par'},
 {p1:/(番)(?!X)(目)(?!X)/g,r1:'$1X(ban)$2X(me)sequence order;Par'},
+{p1:/(広)(?!X)(げ)(?!X)/g,r1:'$1X(hiro)$2X(ge)spread;IchidanVerb'},
 {p1:/(番)(?!X)(手)(?!X)/g,r1:'$1X(ban)$2X(te)position in a race;Par'},
 {p1:/(番)(?!X)(地)(?!X)/g,r1:'$1X(ban)$2X(chi)lot number,address;Par'},
 {p1:/(番)(?!X)(号)(?!X)/g,r1:'$1X(ban)$2X(gou)number,serial number;Par'},
@@ -6345,7 +6348,7 @@ const replsB=[
 {p1:/(気)(?!X)(分)(?!X)/g,r1:'$1X(ki)$2X(bun)feeling,mood;Par'},
 {p1:/(気)(?!X)(候)(?!X)/g,r1:'$1X(ki)$2X(kou)climate;Par'},
 {p1:/(気)(?!X)(体)(?!X)/g,r1:'$1X(ki)$2X(tai)gas,vapor;Par'},
-{p1:/(民)(?!X)(間)(?!X)/g,r1:'$1X(min)$2X(kan)civilians;Par'},
+{p1:/(民)(?!X)(間)(?!X)/g,r1:'$1X(min)$2X(kan)civilian;Par'},
 {p1:/(民)(?!X)(生)(?!X)/g,r1:'$1X(min)$2X(sei)public welfare;Par'},
 {p1:/(民)(?!X)(法)(?!X)/g,r1:'$1X(min)$2X(pou)civil law;Par'},
 {p1:/(民)(?!X)(族)(?!X)/g,r1:'$1X(min)$2X(zoku)race of people;Par'},
@@ -10732,31 +10735,30 @@ const replsB=[
 {p1:/(ま)(?!X)(で)(?!X)/g,r1:'$1X(ma)$2X(de)up to;Par'},
 {p1:/(等|な)(?!X)(ど)(?!X)/g,r1:'$1X(na)$2X(do)etcetera;Par'},
 
-{p1:/(か)(?!X)/g,r1:'$1X(ka)indicates a question above-----;Postposition-----;Par'},
-{p1:/(が)(?!X)/g,r1:'$1X(ga)the subject above acts-----;Postposition-----;Par'},
-{p1:/(で)(?!X)/g,r1:'$1X(de)at,with the above-----;Postposition-----;Par'},
-{p1:/(に)(?!X)/g,r1:'$1X(ni)at,in,on the above-----;Postposition-----;Par'},
-{p1:/(は)(?!X)/g,r1:'$1X(wa)as for the subject above-----;Postposition-----;Par'},
-{p1:/(へ)(?!X)/g,r1:'$1X(e)towards the above-----;Postposition-----;Par'},
-{p1:/(も)(?!X)/g,r1:'$1X(mo)the above too-----;Postposition-----;Par'},
-{p1:/(や)(?!X)/g,r1:'$1X(ya)and,comma-----;Postposition-----;Par'},
-{p1:/(を)(?!X)/g,r1:'$1X(oo)direct object above is acted on-----;Postposition-----;Par'},
+{p1:/(か)(?!X)/g,r1:'$1X(ka)indicates a question above;postposition;Par'},
+{p1:/(が)(?!X)/g,r1:'$1X(ga)the subject above acts;postposition;Par'},
+{p1:/(で)(?!X)/g,r1:'$1X(de)at,with the above;postposition;Par'},
+{p1:/(に)(?!X)/g,r1:'$1X(ni)at,in,on the above;postposition;Par'},
+{p1:/(は)(?!X)/g,r1:'$1X(wa)as for the subject above;postposition;Par'},
+{p1:/(へ)(?!X)/g,r1:'$1X(e)towards the above;postposition;Par'},
+{p1:/(も)(?!X)/g,r1:'$1X(mo)the above too;postposition;Par'},
+{p1:/(や)(?!X)/g,r1:'$1X(ya)and,comma;postposition;Par'},
+{p1:/(を)(?!X)/g,r1:'$1X(oo)direct object above is acted on;postposition;Par'},
 
 {p1:/(Adverb)(く)(?!X)/g,r1:'$1)$2X(ku)and;Par'},
 {p1:/(;Par|;Ending)(と)(?!X)/g,r1:'$2X(to)with the above,the person said;Par'},
 {p1:/(Adjectiveな|;Parな)(?!X)/g,r1:'$1X(na)NaAdjective'},
 {p1:/(Adverbな)(?!X)/g,r1:'$1X(na)Adverb'},
 {p1:/(;Par等|Verbら)(?!X)/g,r1:'$1X(ra)plural;Par'},
-{p1:/(Verb|;Par|-----;Postposition-----)(の)(?!X)/g,r1:'$1X$2(no)of the above;Par'},
-{p1:/(Verb)(と)(?!X)/g,r1:'$1)$2X(to)by way of the above;Par'},
+{p1:/(Verb|;Par|;postposition)(の)(?!X)/g,r1:'$1X$2(no)of the above;postposition;Par'},
+{p1:/(Verb)(と)(?!X)/g,r1:'$1)$2X(to)by way of the above;postposition;Par'},
 
-{p1:/(IAdjective|IchidanVerb|KuVerb|UVerb|MuVerb|RuVerb|TsuVerb|SuVerb|BuVerb|BeVerb)/g,r1:'$1<br>'},
+{p1:/;Par|(Ending|;postposition|;punctuation|IAdjective|IchidanVerb|KuVerb|UVerb|MuVerb|RuVerb|TsuVerb|SuVerb|BuVerb|BeVerb)/g,r1:'$1'},
 
 {p1:/(\.)/g,r1:'$1ten,decimal'},
 
 {p1:/X/g,r1:''},
-{p1:/;Par/g,r1:'<br>'},
-{p1:/(Ending|-----;Postposition-----|-----;Punctuation-----)/g,r1:'<font color=yellow>$1</font><p>'},
+{p1:/;Par/g,r1:''},
 
 {p1:/([一-龠ぁ-ゔァ-ヴー々〆〤0-9０−９０-８「『」』\“\”\・、。【】．：＝]+)/g,r1:'<span class=magni>$1</span>'},
 
@@ -10895,7 +10897,9 @@ function copyToClipboard() {
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-30日の日米防衛相会談では米側から日本の防衛費について具体的な増額要求は出ず、日本政府内に安堵（あんど）感が広がった。数字ありきの議論に陥れば、意見が食い違い、日米の安全保障分野での足並みが乱れかねないとの懸念があった。ただ、将来的に増額圧力がかかる可能性は残っている。
+米OpenAIは3月31日（現地時間）、史上最大規模の民間資金調達ラウンドを完了したと発表した。400億ドル調達し、評価額は3000億ドルに上る。
+
+　これにより「AI研究の限界をさらに押し広げ、コンピューティングインフラを拡張し、毎週ChatGPTを使用する5億人のユーザーにますます強力なツールを提供できるようになる」としている。
 <p>
 <!-- Toggle Button -->
 <button id="adminToggle" onclick="toggleAdminSection()" style="position: fixed; top: 10px; right: 10px; z-index: 1000; background-color: #0078d4; color: white; border: none; padding: 5px 10px; font-size: 12px; border-radius: 3px; cursor: pointer;">
