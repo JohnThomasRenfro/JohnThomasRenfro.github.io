@@ -1587,6 +1587,7 @@ const replsB=[
 {p1:/(旅)(?!X)(客)(?!X)(機)(?!X)/g,r1:'$1X(ryo)$2X(ka)$3X(kuki)passenger plane;Par'},
 {p1:/(新)(?!X)(聞)(?!X)(社)(?!X)/g,r1:'$1X(shin)$2X(bun)$3X(sya)news publisher;Par'},
 {p1:/(新)(?!X)(生)(?!X)(児)(?!X)/g,r1:'$1X(shin)$2X(sei)$3X(ji)newborn;Par'},
+{p1:/(浄)(?!X)(水)(?!X)(器)(?!X)/g,r1:'$1X(jyou)$2X(sui)$3X(ki)water filter;Par'},
 {p1:/(新)(?!X)(店)(?!X)(舗)(?!X)/g,r1:'$1X(shin)$2X(ten)$3X(po)new store;Par'},
 {p1:/(新)(?!X)(幹)(?!X)(線)(?!X)/g,r1:'$1X(shin)$2X(kan)$3X(sen)bullet train;Par'},
 {p1:/(新)(?!X)(学)(?!X)(期)(?!X)/g,r1:'$1X(shin)$2X(gak)$3X(ki)new term,new semester;Par'},
@@ -4907,6 +4908,7 @@ const replsB=[
 {p1:/(次)(?!X)(第)(?!X)/g,r1:'$1X(shi)$2X(dai)as soon as;Par'},
 {p1:/(次)(?!X)(男)(?!X)/g,r1:'$1X(jin)$2X(an)second eldest son;Par'},
 {p1:/(次)(?!X)(期)(?!X)/g,r1:'$1X(ji)$2X(ki)next;Par'},
+{p1:/(ド)(?!X)(ル)(?!X)/g,r1:'$1X(do)$2X(ru)dollar;Par'},
 {p1:/(次)(?!X)(官)(?!X)/g,r1:'$1X(ji)$2X(kan)undersecretary;Par'},
 {p1:/(次)(?!X)(女)(?!X)/g,r1:'$1X(ji)$2X(jyo)second eldest daughter;Par'},
 {p1:/(次)(?!X)(回)(?!X)/g,r1:'$1X(ji)$2X(kai)next time;Par'},
@@ -5732,6 +5734,7 @@ const replsB=[
 {p1:/(当)(?!X)(番)(?!X)/g,r1:'$1X(tou)$2X(ban)being on duty,person on duty;Par'},
 {p1:/(当)(?!X)(然)(?!X)/g,r1:'$1X(tou)$2X(zen)natural;Par'},
 {p1:/(当)(?!X)(時)(?!X)/g,r1:'$1X(tou)$2X(ji)at that time;Par'},
+{p1:/(防)(?!X)(水)(?!X)/g,r1:'$1X(bou)$2X(sui)waterproof;Par'},
 {p1:/(当)(?!X)(日)(?!X)/g,r1:'$1X(tou)$2X(jitsu)that day;Par'},
 {p1:/(当)(?!X)(局)(?!X)/g,r1:'$1X(tou)$2X(kyoku)those concerned;Par'},
 {p1:/(当)(?!X)(地)(?!X)/g,r1:'$1X(tou)$2X(chi)this place;Par'},
@@ -7485,7 +7488,6 @@ const replsB=[
 {p1:/(バ)(?!X)(ツ)(?!X)/g,r1:'$1X$2X cross, x-mark ;Par'},
 {p1:/(バ)(?!X)(ス)(?!X)/g,r1:'$1X$2X bus ;Par'},
 {p1:/(ハ)(?!X)(ム)(?!X)/g,r1:'$1X$2X ham ;Par'},
-{p1:/(ド)(?!X)(ル)(?!X)/g,r1:'$1X$2X dollar ;Par'},
 {p1:/(ド)(?!X)(ア)(?!X)/g,r1:'$1X$2X door ;Par'},
 {p1:/(デ)(?!X)(モ)(?!X)/g,r1:'$1X$2X demonstration ;Par'},
 {p1:/(ツ)(?!X)(ル)(?!X)/g,r1:'$1X$2X crane, stork ;Par'},
@@ -8776,7 +8778,10 @@ const replsB=[
 {p1:/(敗)(?!X)/g,r1:'$1X(hai)losses;Par'},
 {p1:/(敏)(?!X)/g,r1:'$1X(toshi)keen;Par'},
 {p1:/(損)(?!X)/g,r1:'$1X(son)loss,damage;Par'},
+{p1:/(葛)(?!X)/g,r1:'$1X(shika,katsu)kudzu vines;Par'},
 {p1:/(指)(?!X)/g,r1:'$1X(yubi)finger,toe;Par'},
+{p1:/(江)(?!X)/g,r1:'$1X(e)inlet,bay;Par'},
+{p1:/(飾)(?!X)/g,r1:'$1X(syoku,kazari)decoration;Par'},
 {p1:/(拓)(?!X)/g,r1:'$1X(taku)clear the land;Par'},
 {p1:/(手)(?!X)/g,r1:'$1X(te)hand;Par'},
 {p1:/(扉)(?!X)/g,r1:'$1X(tobira)door;Par'},
@@ -8996,6 +9001,7 @@ const replsB=[
 {p1:/(博)(?!X)/g,r1:'$1X(hiro)acclaimed;Par'},
 {p1:/(博)(?!X)/g,r1:'$1X(haka)haku,Hiro,fair;Par'},
 {p1:/(単)(?!X)/g,r1:'$1X(tan)simple;Par'},
+{p1:/(償)(?!X)/g,r1:'$1X(syou)reparation;Par'},
 {p1:/(南)(?!X)/g,r1:'$1X(minami)mina,nan,south;Par'},
 {p1:/(半)(?!X)/g,r1:'$1X(han)half;Par'},
 {p1:/(千)(?!X)/g,r1:'$1X(sen)chi,thousand;Par'},
@@ -9125,7 +9131,7 @@ const replsB=[
 {p1:/(;Par)(て)(?!X)(い)(?!X)/g,r1:'$1X$2X(te)$3X(i)is doing;ConjunctiveVerb;Par'},
 {p1:/(;Par)(で)(?!X)(い)(?!X)/g,r1:'$1X$2X(de)$3X(i)is doing;ConjunctiveVerb;Par'},
 {p1:/(Adjectiveら|Verbら)(?!X)(れ)(?!X)/g,r1:'$1X(ra)$2X(re)is done;ConjunctiveVerb;Par'},
-{p1:/(;Par)(て)(?!X)/g,r1:'$1X$2X(te)do and,ConjuctiveVerb;Par'},
+{p1:/(;Par|;IchidanVerb)(て)(?!X)/g,r1:'$1X$2X(te)do and,ConjuctiveVerb;Par'},
 {p1:/(;Par)(た)(?!X)(く)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1X$2X(ta)$2X(ku)$3X(na)$4X(i)does not want to;Verb;Par'},
 
 {p1:/(さ)(?!X)(れ)(?!X)(て)(?!X)(い)(?!X)/g,r1:'$1X$2X(sa)$3X(r)$4X(etei)had been doing;Verb;Par'},
@@ -9180,9 +9186,8 @@ const replsB=[
 {p1:/(っ)(?!X)(た)(?!X)/g,r1:'$1X(tta)$2X;did;InformalVerb;Ending;Par'},
 {p1:/(な)(?!X)(い)(?!X)/g,r1:'$1X(na)$2X(i)not do;InformalVerb;Ending;Par'},
 
-{p1:/(;Par)(だ)(?!X)/g,r1:'$1X$2X(da)is;InformalVerb;Ending;Par'},
-{p1:/(;Par)(た)(?!X)/g,r1:'$1X$2X(ta)did;InformalVerb;Ending;Par'},
-{p1:/(;Par)(だ)(?!X)/g,r1:'$1X$2X(da)did;InformalVerb;Ending;Par'},
+{p1:/(;Par|;IchidanVerb)(た)(?!X)/g,r1:'$1X$2X(ta)did;InformalVerb;Ending;Par'},
+{p1:/(;Par|;IchidanVerb)(だ)(?!X)/g,r1:'$1X$2X(da)did;InformalVerb;Ending;Par'},
 {p1:/(;Par)(る)(?!X)/g,r1:'$1X$2X(ru)do,will do;InformalVerb;Ending;Par'},
 {p1:/(;Par)(ね)(?!X)/g,r1:'$1X$2X(ne)isn t it\?;InformalVerb;Ending;Par'},
 {p1:/(IchidanVerbる)/g,r1:'るXru,to do,will do;IchidanVerb;InformalVerb;Ending;Par'},
@@ -9219,7 +9224,7 @@ const replsB=[
 
 {p1:/(Adverb)(く)(?!X)/g,r1:'$1)$2X(ku)and;Par'},
 {p1:/;Par(|;Ending)(と)(?!X)/g,r1:'$2X(to)with the above,the person said;Par'},
-{p1:/(Adjectiveな|(;Par)な)(?!X)/g,r1:'$1X$2X(na)NaAdjective;Par'},
+{p1:/(;Par)(な)(?!X)/g,r1:'$1X$2X(na)NaAdjective;Par'},
 {p1:/(Adverbな)(?!X)/g,r1:'$1X(na)Adverb;Par'},
 {p1:/(;Par)(等|Verbら)(?!X)/g,r1:'$1X$2X(ra)plural;Par'},
 {p1:/(;Par)(の)(?!X)/g,r1:'$1X$2X(no)of the above;postposition;Par'},
@@ -9366,7 +9371,7 @@ function copyToClipboard() {
 <br>
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
-2025年度予算が史上初の衆参両院での修正の末、成立した。石破茂首相は今国会最大と目されていた関門をクリアしたが、少数与党政権の行く手には選択的夫婦別姓制度など難題が山積する。「政治とカネ」に足を取られる政権に対し、野党が6月の東京都議選や夏の参院選に向けて攻勢を強めるのは必至。与党内にも首相への不満が渦巻き、政局は緊迫の度を増しつつある。 
+外務省は2日、大きな被害が出たミャンマー中部を震源とする大地震で、600万ドル（約9億円）規模の緊急無償資金協力を供与する方針を発表した。【写真で比較】ミャンマー被災地　地震前後の衛星写真 国際機関を通じて提供する考え。テントや防水シートなどは提供済みで、今後、水や浄水器なども支援する方針を示していた。【田所柳子】
 <p>
 <!-- Toggle Button -->
 <button id="adminToggle" onclick="toggleAdminSection()" style="position: fixed; top: 10px; right: 10px; z-index: 1000; background-color: #0078d4; color: white; border: none; padding: 5px 10px; font-size: 12px; border-radius: 3px; cursor: pointer;">
