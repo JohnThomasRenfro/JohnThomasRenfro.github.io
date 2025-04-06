@@ -202,8 +202,7 @@ hr::after {
 </style>
 
 <script>
-function translateB()
-{
+
 
 const replsB=[
 {p1:/(\［)(?!X)/g,r1:'$1X open bracket;punctuation;Par'}, 
@@ -9251,6 +9250,9 @@ const replsB=[
 
 ];
 
+function translateB()
+{
+
 replsB.forEach(replace=> {
  a=a.replace(replace.p1,replace.r1);
 });
@@ -9459,5 +9461,33 @@ Five words that imply "very"..<br>
 
 <p> 
 <img src='PeterReft.png' alt='photo by Peter Reft' title='photo by Peter Reft'>
+<p>
+
+<textarea id="inputText" rows="4" cols="50"></textarea>
+<br>
+<button onclick="translateC()">Translate English into Japanese.</button>
+<br>
+<div id="outputArea"></div>
+</p>
+
+<script>
+
+function translateC() {
+    let inputText = document.getElementById("inputText").value.trim();
+    let matches = [];
+
+    replsB.forEach(({ p1, r1 }) => {
+        if (r1.split(" ").some(word => inputText.includes(word))) {  
+            matches.push(`Pattern: ${p1} → Translation: ${r1}`);
+        }
+    });
+
+    document.getElementById("outputArea").innerHTML = matches.length > 0
+        ? `<strong>Matches Found:</strong><br>${matches.join('<br>')}`
+        : `<strong>No matches found.</strong>`;
+}
+
+</script>
+
 </body>
 </html>
