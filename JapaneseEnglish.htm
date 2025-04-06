@@ -9477,8 +9477,14 @@ function translateC() {
     let matches = [];
 
     replsB.forEach(({ p1, r1 }) => {
-        if (r1.split(" ").some(word => inputText.includes(word))) {  
-            matches.push(`Pattern: ${p1} → Translation: ${r1}`);
+        const englishWords = r1.split(/[\s,;]/).filter(word => word && !/^\(.*\)$/.test(word));
+        englishWords.sort((a, b) => b.length - a.length); // Sort by length, longest first
+
+        for (const word of englishWords) {
+            if (inputText.includes(word)) {
+                matches.push(`Pattern: ${p1} → Translation: ${r1}`);
+                break; // Stop after the first match for this replsB entry
+            }
         }
     });
 
