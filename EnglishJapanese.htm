@@ -16,15 +16,15 @@
       let matches = [];
       let matchDetails = [];
 
-      // Sort the translations array to prioritize the longest words
+      // Sort the translations by the length of the pattern to ensure longest match first
       translations.sort((a, b) => b.p1.source.length - a.p1.source.length);
 
-      // For each translation entry, find all matches
+      // Iterate through each translation entry
       translations.forEach(entry => {
         let foundMatches = [...inputText.matchAll(entry.p1)];
 
         foundMatches.forEach(match => {
-          // Only record the longest matching word for replacement
+          // Record each match's details
           matchDetails.push({
             match: match[0],
             startIndex: match.index,
@@ -34,20 +34,21 @@
         });
       });
 
-      // Sort matches by start index to maintain word order
+      // Sort the match details by the starting index to preserve the original order
       matchDetails.sort((a, b) => a.startIndex - b.startIndex);
 
-      // Loop through the matches and replace only the longest matching words
       let lastReplacedIndex = -1;
+
+      // Loop through the matches and apply replacements
       matchDetails.forEach(detail => {
-        // Ensure we don't overlap replacements
+        // Only replace if the match hasn't been replaced already
         if (detail.startIndex >= lastReplacedIndex) {
           matches.push(detail.replacement);
           lastReplacedIndex = detail.startIndex + detail.length;
         }
       });
 
-      // Output the result
+      // Join the result with line breaks, or return "No matches found"
       document.getElementById("output").innerHTML = matches.length > 0
         ? matches.join("<br>")
         : "No matches found.";
