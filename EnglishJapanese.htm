@@ -10,30 +10,43 @@
     <button id="translateBtn">Translate</button>
     <div id="output"></div>
 
-    <script>
+<script>
+    function translateText() {
+        let inputText = document.getElementById("input").value;
+        let matches = [];
+        let modifiedText = inputText;
+        let matchDetails = [];
 
-        function translateText() {
-            let inputText = document.getElementById("input").value;
-            let matches = [];
-            
-            translations.forEach(entry => {
-                let foundMatches = inputText.match(entry.p1);
-                if (foundMatches) {
-                    foundMatches.forEach(match => {
-                        matches.push(match.replace(entry.p1, entry.r1));
-                    });
-                }
+        translations.sort((a, b) => b.p1.source.length - a.p1.source.length);
+
+        translations.forEach(entry => {
+            let foundMatches = [...inputText.matchAll(entry.p1)];
+
+            foundMatches.forEach(match => {
+                matchDetails.push({
+                    match: match[0],
+                    startIndex: match.index,
+                    replacement: match[0].replace(entry.p1, entry.r1)
+                });
             });
-
-            document.getElementById("output").innerHTML = matches.length > 0 
-                ? matches.join("<br>") 
-                : "No matches found.";
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("translateBtn").addEventListener("click", translateText);
         });
-    </script>
+
+        matchDetails.sort((a, b) => a.startIndex - b.startIndex);
+
+        matchDetails.forEach(detail => {
+            matches.push(detail.replacement);
+        });
+
+        document.getElementById("output").innerHTML = matches.length > 0 
+            ? matches.join("<br>") 
+            : "No matches found.";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("translateBtn").addEventListener("click", translateText);
+    });
+</script>
+
 </body>
 </html>
 
