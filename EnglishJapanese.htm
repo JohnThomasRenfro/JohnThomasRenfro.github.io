@@ -11,51 +11,51 @@
  <div id="output"></div>
 
 <script>
-function translateText() {
-  let inputText = document.getElementById("input").value;
-  let matches = [];
-  let matchDetails = [];
+    function translateText() {
+      let inputText = document.getElementById("input").value;
+      let matches = [];
+      let matchDetails = [];
 
-  // Sort the translations array to prioritize the longest words
-  translations.sort((a, b) => b.p1.source.length - a.p1.source.length);
+      // Sort the translations array to prioritize the longest words
+      translations.sort((a, b) => b.p1.source.length - a.p1.source.length);
 
-  // For each translation entry, find all matches
-  translations.forEach(entry => {
-    let foundMatches = [...inputText.matchAll(entry.p1)];
+      // For each translation entry, find all matches
+      translations.forEach(entry => {
+        let foundMatches = [...inputText.matchAll(entry.p1)];
 
-    foundMatches.forEach(match => {
-      // Only record the longest matching word for replacement
-      matchDetails.push({
-        match: match[0],
-        startIndex: match.index,
-        replacement: match[0].replace(entry.p1, entry.r1),
-        length: match[0].length
+        foundMatches.forEach(match => {
+          // Only record the longest matching word for replacement
+          matchDetails.push({
+            match: match[0],
+            startIndex: match.index,
+            replacement: match[0].replace(entry.p1, entry.r1),
+            length: match[0].length
+          });
+        });
       });
-    });
-  });
 
-  // Sort matches by start index to maintain word order
-  matchDetails.sort((a, b) => a.startIndex - b.startIndex);
+      // Sort matches by start index to maintain word order
+      matchDetails.sort((a, b) => a.startIndex - b.startIndex);
 
-  // Loop through the matches and replace only the longest matching words
-  let lastReplacedIndex = -1;
-  matchDetails.forEach(detail => {
-    // Ensure we don't overlap replacements
-    if (detail.startIndex > lastReplacedIndex) {
-      matches.push(detail.replacement);
-      lastReplacedIndex = detail.startIndex + detail.length;
+      // Loop through the matches and replace only the longest matching words
+      let lastReplacedIndex = -1;
+      matchDetails.forEach(detail => {
+        // Ensure we don't overlap replacements
+        if (detail.startIndex >= lastReplacedIndex) {
+          matches.push(detail.replacement);
+          lastReplacedIndex = detail.startIndex + detail.length;
+        }
+      });
+
+      // Output the result
+      document.getElementById("output").innerHTML = matches.length > 0
+        ? matches.join("<br>")
+        : "No matches found.";
     }
-  });
 
-  // Output the result
-  document.getElementById("output").innerHTML = matches.length > 0
-    ? matches.join("<br>")
-    : "No matches found.";
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("translateBtn").addEventListener("click", translateText);
-});
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("translateBtn").addEventListener("click", translateText);
+    });
 
 </script>
 
