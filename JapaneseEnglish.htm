@@ -9474,23 +9474,39 @@ Five words that imply "very"..<br>
 
 function translateC() {
     let inputText = document.getElementById("inputText").value.trim();
-    let matches = [];
+    let longestMatchEntry = null;
+    let longestMatchLength = 0;
 
     replsB.forEach(({ p1, r1 }) => {
-        const englishWords = r1.split(/[\s,;]/).filter(word => word && !/^\(.*\)$/.test(word));
-        englishWords.sort((a, b) => b.length - a.length); // Sort by length, longest first
+        const englishWords = r1.split(/[\s,;]/)
+            .map(word => {
+                const match = word.match(/^([^()]+)$/); // Match whole word if not in parentheses
+                return match ? match[1].trim() : '';
+            })
+            .filter(word => word !== '');
 
-        for (const word of englishWords) {
-            if (inputText.includes(word)) {
-                matches.push(`Pattern: ${p1} → Translation: ${r1}`);
-                break; // Stop after the first match for this replsB entry
+        if (englishWords.length > 0) {
+            englishWords.sort((a, b) => b.length - a.length); // Sort by length (descending)
+
+            for (const word of englishWords) {
+                if (inputText.includes(word)) {
+                    if (word.length > longestMatchLength) {
+                        longestMatchLength = word.length;
+                        longestMatchEntry = `Pattern: ${p1} → Translation: ${r1}`;
+                    } else if (word.length === longestMatchLength && longestMatchEntry === null) {
+                        // If a word of the same longest length is found first
+                        longestMatchEntry = `Pattern: ${p1} → Translation: ${r1}`;
+                    }
+                    break; // Stop after the first match (which will be one of the longest)
+                }
             }
         }
     });
 
-    document.getElementById("outputArea").innerHTML = matches.length > 0
-        ? `<strong>Matches Found:</strong><br>${matches.join('<br>')}`
-        : `<strong>No matches found.</strong>`;
+    document.getElementById("outputArea").innerHTML = longestMatchEntry
+        ? `<strong>Longest Match Found:</strong><br>${longestMatchEntry}`
+        : `<strong>No matches found.</strong>
+        `;
 }
 
 </script>
