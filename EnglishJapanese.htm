@@ -16,7 +16,7 @@
       let matches = [];
       let matchDetails = [];
 
-      // Sort the translations by the length of the pattern to ensure longest match first
+      // Sort translations by the length of the regex pattern, longest first
       translations.sort((a, b) => b.p1.source.length - a.p1.source.length);
 
       // Iterate through each translation entry
@@ -48,7 +48,7 @@
         }
       });
 
-      // Join the result with line breaks, or return "No matches found"
+      // Output the result
       document.getElementById("output").innerHTML = matches.length > 0
         ? matches.join("<br>")
         : "No matches found.";
@@ -57,7 +57,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("translateBtn").addEventListener("click", translateText);
     });
-
 </script>
 
 </body>
