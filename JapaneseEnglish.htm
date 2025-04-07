@@ -9477,24 +9477,26 @@ Five words that imply "very"..<br>
             const inputText = document.getElementById('inputText').value;
             const words = inputText.split(/\s+/); // Split the paragraph into words
 
-            // Transliterate each word if necessary using replsB
             let transliteratedWords = words.map(word => {
+                let transliteratedWord = word;
+
+                // Check if the word matches any transliteration rule
                 for (const entry of replsB) {
-                    // Check if the word matches the pattern
                     const match = word.match(entry.p1);
                     if (match) {
-                        // Replace with the transliterated form and remove ;Par part
-                        return entry.r1.split(';')[0];
+                        // If there's a match, apply the transliteration
+                        transliteratedWord = entry.r1;
+                        break;  // We only need the first match
                     }
                 }
-                // If no transliteration is found, keep the word as is with placeholder
-                return `${word} (no transliteration found)`;
+
+                // Return the word with its transliteration or original if no match
+                return `${transliteratedWord} (no transliteration found)`;
             });
 
             // Display the result in the output1 div
             document.getElementById('output1').innerHTML = transliteratedWords.join(' ');
         }
-        
-    </script>
+        </script>
 </body>
 </html>
