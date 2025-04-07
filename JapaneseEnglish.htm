@@ -9474,44 +9474,6 @@ Five words that imply "very"..<br>
 
 function translateC() {
     let inputText = document.getElementById("inputText").value.trim();
-    let allMatches = []; // Store all matches
-
-    // Iterate through each entry in replsB (which should contain patterns and translations)
-    replsB.forEach(({ p1, r1 }) => {
-        // Remove romanization inside parentheses in both pattern and translation
-        const filteredR1 = r1.replace(/\([^\)]+\)/g, '').trim(); // Remove romanization in translation
-        const filteredP1 = p1.replace(/\([^\)]+\)/g, ''); // Remove romanization in pattern (optional)
-
-        // Split the filtered r1 translation by spaces, commas, or semicolons to get the English phrases/words
-        const englishPhrases = filteredR1.split(/[\s,;]+/) // Split by spaces, commas, or semicolons
-            .map(phrase => phrase.trim())
-            .filter(phrase => phrase !== ''); // Filter out empty phrases
-
-        if (englishPhrases.length > 0) {
-            // Sort by length (longest phrase first)
-            englishPhrases.sort((a, b) => b.length - a.length);
-
-            // Loop through each phrase and check if it exists in the input text
-            for (const phrase of englishPhrases) {
-                if (inputText.includes(phrase)) {
-                    // Add the match to the results array
-                    allMatches.push(`Pattern: ${filteredP1} → Translation: ${filteredR1}`);
-                    break; // Stop after the first match for this phrase (you can remove 'break' if you want all occurrences)
-                }
-            }
-        }
-    });
-
-    // Display all matches or a message saying no matches were found
-    document.getElementById("outputArea").innerHTML = allMatches.length > 0
-        ? `<strong>Matches Found:</strong><br>${allMatches.join('<br>')}`
-        : `<strong>No matches found.</strong>`;
-}
-
-    
-    /*
-function translateC() {
-    let inputText = document.getElementById("inputText").value.trim();
     let longestMatchEntry = null;
     let longestMatchLength = 0;
 
@@ -9533,7 +9495,7 @@ function translateC() {
                         longestMatchEntry = `Pattern: ${p1} → Translation: ${r1}`;
                     } else if (word.length === longestMatchLength && longestMatchEntry === null) {
                         // If a word of the same longest length is found first
-                        longestMatchEntry = `Pattern: ${p1} → Translation: ${r1}`;
+                        longestMatchEntry = `${p1} ${r1}`;
                     }
                     break; // Stop after the first match (which will be one of the longest)
                 }
@@ -9545,7 +9507,6 @@ function translateC() {
         ? `<strong>Longest Match Found:</strong><br>${longestMatchEntry}`
         : `<strong>No matches found.</strong>`;
 }
-*/
     
 </script>
 
