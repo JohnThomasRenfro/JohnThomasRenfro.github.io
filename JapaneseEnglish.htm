@@ -9484,14 +9484,18 @@ Five words that imply "very"..<br>
                 for (const entry of replsB) {
                     const match = word.match(entry.p1);
                     if (match) {
-                        // If there's a match, apply the transliteration
-                        transliteratedWord = entry.r1;
-                        break;  // We only need the first match
+                        // If there's a match, apply the transliteration and return it
+                        transliteratedWord = entry.r1.split(';')[0];  // Get the transliteration before the ';'
+                        break;  // Exit after the first match
                     }
                 }
 
-                // Return the word with its transliteration or original if no match
-                return `${transliteratedWord} (no transliteration found)`;
+                // If no transliteration found, leave word as is and show "no transliteration found"
+                if (transliteratedWord === word) {
+                    transliteratedWord = `${word} (no transliteration found)`;
+                }
+
+                return transliteratedWord;
             });
 
             // Display the result in the output1 div
