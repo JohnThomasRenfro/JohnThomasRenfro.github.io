@@ -9474,35 +9474,34 @@ Five words that imply "very"..<br>
 </html>
 
 <script>
-    document.getElementById('translateButton').onclick = function () {
+document.getElementById('translateButton').onclick = function () {
     const inputText = document.getElementById('inputText').value;
+    
+    // Split the input into words
+    const words = inputText.match(/\b\w+\b/g); // Match all words (including multi-word phrases)
+    if (!words) {
+        document.getElementById('result').innerText = 'No words found';
+        return;
+    }
 
-    // Find the longest words in the input English text
-    const words = inputText.match(/\w+/g); // Match all words
-    const longestWords = getLongestWords(words);
-
-    // Build the result string
-    const result = longestWords.map(word => {
-        // For each English word, you can just append " ;" for now as an example
-        // You would need to implement a translation mechanism if you have the mapping for words to Japanese.
-        const japaneseTranslation = getJapaneseTranslation(word);
-        return `${word}  : ${japaneseTranslation}`;
-
-    }).join('\n');
-
+    // Get translations for all words
+    const results = words.map(word => {
+        const japaneseTranslation = getJapaneseTranslation(word.toLowerCase()); // Use lower case to match
+        return `${word}: ${japaneseTranslation}`;
+    });
+  
     // Display the results in the result area
-    document.getElementById('result').innerText = result;
+    document.getElementById('result').innerText = results.join('\n');
 };
 
-function getLongestWords(words) {
-    if (!words) return [];
-    const maxLength = Math.max(...words.map(word => word.length));
-    return words.filter(word => word.length === maxLength);
-}
-
 function getJapaneseTranslation(word) {
-    // Here you would need to create a mapping of English words to their Japanese translations.
-    // The example does not include a mapping, so return a placeholder text for now.
-    return "Translation not available"; // This would be replaced with an actual mapping.
+    for (const entry of replsB) {
+        const match = word.match(entry.p1.source);
+        if (match) {
+            const translation = entry.r1.split(';')[0]; // Get the English translation if the entry matches
+            return translation; // Return the translation found
+        }
+    }
+    return "Translation not available"; // If no match is found
 }
 </script>
