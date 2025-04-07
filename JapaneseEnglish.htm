@@ -9477,40 +9477,6 @@ Five words that imply "very"..<br>
 
 function translateC() {
     let inputText = document.getElementById("inputText").value.trim();
-    let matches = []; // To store all matches
-
-    // Iterate over all patterns in replsB
-    replsB.forEach(({ p1, r1 }) => {
-        const englishWords = r1.split(/[\s,;]/)
-            .map(word => {
-                const match = word.match(/^([^()]+)$/); // Match whole word if not in parentheses
-                return match ? match[1].trim() : '';
-            })
-            .filter(word => word !== '');
-
-        if (englishWords.length > 0) {
-            // For each word in the sorted list, check if it's in the input text
-            englishWords.forEach(word => {
-                if (inputText.includes(word)) {
-                    // Replace the matched word with its translation, and store the result
-                    const translatedText = inputText.replace(new RegExp(word, 'g'), r1);
-                    matches.push(translatedText);
-                }
-            });
-        }
-    });
-
-    // Check if matches are found and display the results
-    if (matches.length > 0) {
-        document.getElementById("outputArea").innerHTML = `<strong>Matches Found:</strong><br>${matches.join('<br>')}`;
-    } else {
-        document.getElementById("outputArea").innerHTML = `<strong>No matches found.</strong>`;
-    }
-}
-    
-    /*
-function translateC() {
-    let inputText = document.getElementById("inputText").value.trim();
     let longestMatchEntry = null;
     let longestMatchLength = 0;
 
@@ -9544,7 +9510,6 @@ function translateC() {
         ? `<strong>Longest Match Found:</strong><br>${longestMatchEntry}`
         : `<strong>No matches found.</strong>`;
 }
-*/
   
 </script>
 
