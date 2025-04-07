@@ -9497,40 +9497,6 @@ function translateC() {
                         // If a word of the same longest length is found first
                         longestMatchEntry = `${p1} ${r1}`;
                     }
-                    // Removed break so it will continue to check all words
-                }
-            }
-        }
-    });
-}
-
-    
-    /*
-function translateC() {
-    let inputText = document.getElementById("inputText").value.trim();
-    let longestMatchEntry = null;
-    let longestMatchLength = 0;
-
-    replsB.forEach(({ p1, r1 }) => {
-        const englishWords = r1.split(/[\s,;]/)
-            .map(word => {
-                const match = word.match(/^([^()]+)$/); // Match whole word if not in parentheses
-                return match ? match[1].trim() : '';
-            })
-            .filter(word => word !== '');
-
-        if (englishWords.length > 0) {
-            englishWords.sort((a, b) => b.length - a.length); // Sort by length (descending)
-
-            for (const word of englishWords) {
-                if (inputText.includes(word)) {
-                    if (word.length > longestMatchLength) {
-                        longestMatchLength = word.length;
-                        longestMatchEntry = ` ${p1} ${r1}`;
-                    } else if (word.length === longestMatchLength && longestMatchEntry === null) {
-                        // If a word of the same longest length is found first
-                        longestMatchEntry = `${p1} ${r1}`;
-                    }
                     break; // Stop after the first match (which will be one of the longest)
                 }
             }
@@ -9541,7 +9507,7 @@ function translateC() {
         ? `<strong>Longest Match Found:</strong><br>${longestMatchEntry}`
         : `<strong>No matches found.</strong>`;
 }
-*/    
+  
 </script>
 
 </body>
