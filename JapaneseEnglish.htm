@@ -206,7 +206,7 @@ hr::after {
 
 const replsB=[
 
-{p1:/(メ)(?!X)(イ)(?!X)(ド)(?!X)/g,r1:'$1X(me)$2X(i)$3X(do) (a|the)? maid(s)? ;Par'},    
+{p1:/(メ)(?!X)(イ)(?!X)(ド)(?!X)/g,r1:'$1X(me)$2X(i)$3X(do)maid;Par'},    
     
 {p1:/(\［)(?!X)/g,r1:'$1X open bracket;punctuation;Par'}, 
 {p1:/(\］)(?!X)/g,r1:'$1X close bracket;punctuation;Par'},    
@@ -236,7 +236,7 @@ const replsB=[
 {p1:/(バ)(?!X)(ス)(?!X)(ケ)(?!X)(ッ)(?!X)(ト)(?!X)(ボ)(?!X)(ー)(?!X)(ル)(?!X)/g,r1:'$1X$2X$3X$4X$5X$6X$7X$8X basketball ;Par'},
 {p1:/(テ)(?!X)(ー)(?!X)(プ)(?!X)(レ)(?!X)(コ)(?!X)(ー)(?!X)(ダ)(?!X)(ー)(?!X)/g,r1:'$1X$2X$3X$4X$5X$6X$7X$8X tape recorder, cassette recorder ;Par'},
 {p1:/(シ)(?!X)(ャ)(?!X)(ー)(?!X)(プ)(?!X)(ペ)(?!X)(ン)(?!X)(シ)(?!X)(ル)(?!X)/g,r1:'$1X$2X$3X$4X$5X$6X$7X$8X mechanical pencil ;Par'},
-{p1:/(キ)(?!X)(ャ)(?!X)(ッ)(?!X)(シ)(?!X)(ュ)(?!X)(カ)(?!X)(ー)(?!X)(ド)(?!X)/g,r1:'$1X$2X$3X$4X$5X$6X$7X$8X cash card(s)? ;Par'},
+{p1:/(キ)(?!X)(ャ)(?!X)(ッ)(?!X)(シ)(?!X)(ュ)(?!X)(カ)(?!X)(ー)(?!X)(ド)(?!X)/g,r1:'$1X$2X$3X$4X$5X$6X$7X$8X cash card ;Par'},
 {p1:/(ガ)(?!X)(ソ)(?!X)(リ)(?!X)(ン)(?!X)(ス)(?!X)(タ)(?!X)(ン)(?!X)(ド)(?!X)/g,r1:'$1X$2X$3X$4X$5X$6X$7X$8X gas station ;Par'},
 {p1:/(イ)(?!X)(ン)(?!X)(フ)(?!X)(レ)(?!X)(ー)(?!X)(シ)(?!X)(ョ)(?!X)(ン)(?!X)/g,r1:'$1X$2X$3X$4X$5X$6X$7X$8X inflation ;Par'},
 {p1:/(イ)(?!X)(ン)(?!X)(ト)(?!X)(ネ)(?!X)(ー)(?!X)(シ)(?!X)(ョ)(?!X)(ン)(?!X)/g,r1:'$1X$2X$3X$4X$5X$6X$7X$8X intonation ;Par'},
@@ -9461,57 +9461,7 @@ Five words that imply "very"..<br>
   <li>真新しい (Maatarashii) - Meaning "brand new."</li>
   <li>極寒 (Gokkan) - Meaning "bitterly cold."</li>
 </ul>
-
 <p> 
 <img src='PeterReft.png' alt='photo by Peter Reft' title='photo by Peter Reft'>
-<p>
-
-<textarea id="inputText" rows="4" cols="50"></textarea>
-<br>
-<button onclick="translateC()">Translate English into Japanese.</button>
-<br>
-<div id="outputArea"></div>
-</p>
-
-<script>
-
-function translateC() {
-    let inputText = document.getElementById("inputText").value.trim();
-    let longestMatchEntry = null;
-    let longestMatchLength = 0;
-
-    replsB.forEach(({ p1, r1 }) => {
-        const englishWords = r1.split(/[\s,;]/)
-            .map(word => {
-                const match = word.match(/^([^()]+)$/); // Match whole word if not in parentheses
-                return match ? match[1].trim() : '';
-            })
-            .filter(word => word !== '');
-
-        if (englishWords.length > 0) {
-            englishWords.sort((a, b) => b.length - a.length); // Sort by length (descending)
-
-            for (const word of englishWords) {
-                if (inputText.includes(word)) {
-                    if (word.length > longestMatchLength) {
-                        longestMatchLength = word.length;
-                        longestMatchEntry = ` ${p1} ${r1}`;
-                    } else if (word.length === longestMatchLength && longestMatchEntry === null) {
-                        // If a word of the same longest length is found first
-                        longestMatchEntry = `${p1} ${r1}`;
-                    }
-//                    break; // Stop after the first match (which will be one of the longest)
-                }
-            }
-        }
-    });
-
-    document.getElementById("outputArea").innerHTML = longestMatchEntry
-        ? `<strong>Longest Match Found:</strong><br>${longestMatchEntry}`
-        : `<strong>No matches found.</strong>`;
-}
-  
-</script>
-
 </body>
 </html>
