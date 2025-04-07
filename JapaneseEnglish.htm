@@ -9492,10 +9492,10 @@ function translateC() {
                 if (inputText.includes(word)) {
                     if (word.length > longestMatchLength) {
                         longestMatchLength = word.length;
-                        longestMatchEntry = Pattern: ${p1} → Translation: ${r1};
+                        longestMatchEntry = `Pattern: ${p1} → Translation: ${r1}`;
                     } else if (word.length === longestMatchLength && longestMatchEntry === null) {
                         // If a word of the same longest length is found first
-                        longestMatchEntry = Pattern: ${p1} → Translation: ${r1};
+                        longestMatchEntry = `Pattern: ${p1} → Translation: ${r1}`;
                     }
                     break; // Stop after the first match (which will be one of the longest)
                 }
@@ -9504,9 +9504,8 @@ function translateC() {
     });
 
     document.getElementById("outputArea").innerHTML = longestMatchEntry
-        ? <strong>Longest Match Found:</strong><br>${longestMatchEntry}
-        : <strong>No matches found.</strong>
-        ;
+        ? `<strong>Longest Match Found:</strong><br>${longestMatchEntry}`
+        : `<strong>No matches found.</strong>`;
 }
 
 </script>
