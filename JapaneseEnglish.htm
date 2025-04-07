@@ -9464,44 +9464,5 @@ Five words that imply "very"..<br>
 </ul>
 <p> 
 <img src='PeterReft.png' alt='photo by Peter Reft' title='photo by Peter Reft'>
-<p>
-    <textarea id="inputText" rows="10" cols="50" placeholder="Type your English text here..."></textarea>
-    <br>
-    <button id="translateButton">Translate</button>
-    <pre id="result"></pre>    
-</p>
 </body>
 </html>
-
-<script>
-document.getElementById('translateButton').onclick = function () {
-    const inputText = document.getElementById('inputText').value;
-    
-    // Split the input into words
-    const words = inputText.match(/\b\w+\b/g); // Match all words (including multi-word phrases)
-    if (!words) {
-        document.getElementById('result').innerText = 'No words found';
-        return;
-    }
-
-    // Get translations for all words
-    const results = words.map(word => {
-        const japaneseTranslation = getJapaneseTranslation(word.toLowerCase()); // Use lower case to match
-        return `${word}: ${japaneseTranslation}`;
-    });
-  
-    // Display the results in the result area
-    document.getElementById('result').innerText = results.join('\n');
-};
-
-function getJapaneseTranslation(word) {
-    for (const entry of replsB) {
-        const match = word.match(entry.p1.source);
-        if (match) {
-            const translation = entry.r1.split(';')[0]; // Get the English translation if the entry matches
-            return translation; // Return the translation found
-        }
-    }
-    return "Translation not available"; // If no match is found
-}
-</script>
