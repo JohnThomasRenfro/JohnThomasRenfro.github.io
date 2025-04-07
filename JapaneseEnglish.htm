@@ -9492,7 +9492,7 @@ function translateC() {
                 if (inputText.includes(word)) {
                     if (word.length > longestMatchLength) {
                         longestMatchLength = word.length;
-                        longestMatchEntry = `Pattern: ${p1} → Translation: ${r1}`;
+                        longestMatchEntry = ` ${p1} ${r1}`;
                     } else if (word.length === longestMatchLength && longestMatchEntry === null) {
                         // If a word of the same longest length is found first
                         longestMatchEntry = `${p1} ${r1}`;
