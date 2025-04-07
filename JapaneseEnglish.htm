@@ -9479,6 +9479,7 @@ function translateC() {
     let inputText = document.getElementById("inputText").value.trim();
     let matches = []; // To store all matches
 
+    // Iterate over all patterns in replsB
     replsB.forEach(({ p1, r1 }) => {
         const englishWords = r1.split(/[\s,;]/)
             .map(word => {
@@ -9489,18 +9490,22 @@ function translateC() {
 
         if (englishWords.length > 0) {
             // For each word in the sorted list, check if it's in the input text
-            for (const word of englishWords) {
+            englishWords.forEach(word => {
                 if (inputText.includes(word)) {
-                    matches.push(` ${p1} ${r1}`); // Store the translation match
+                    // Replace the matched word with its translation, and store the result
+                    const translatedText = inputText.replace(new RegExp(word, 'g'), r1);
+                    matches.push(translatedText);
                 }
-            }
+            });
         }
     });
 
-    // Update the output area with all matches found
-    document.getElementById("outputArea").innerHTML = matches.length > 0
-        ? `<strong>Matches Found:</strong><br>${matches.join('<br>')}`
-        : `<strong>No matches found.</strong>`;
+    // Check if matches are found and display the results
+    if (matches.length > 0) {
+        document.getElementById("outputArea").innerHTML = `<strong>Matches Found:</strong><br>${matches.join('<br>')}`;
+    } else {
+        document.getElementById("outputArea").innerHTML = `<strong>No matches found.</strong>`;
+    }
 }
     
     /*
