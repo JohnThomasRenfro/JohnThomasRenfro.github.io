@@ -9474,8 +9474,7 @@ Five words that imply "very"..<br>
 
 function translateC() {
     let inputText = document.getElementById("inputText").value.trim();
-    let longestMatchEntry = null;
-    let longestMatchLength = 0;
+    let allMatches = []; // Store all matches
 
     // Iterate through each entry in replsB (which should contain patterns and translations)
     replsB.forEach(({ p1, r1 }) => {
@@ -9491,24 +9490,20 @@ function translateC() {
             // Loop through each phrase and check if it exists in the input text
             for (const phrase of englishPhrases) {
                 if (inputText.includes(phrase)) {
-                    if (phrase.length > longestMatchLength) {
-                        longestMatchLength = phrase.length;
-                        longestMatchEntry = `Pattern: ${p1} → Translation: ${r1}`;
-                    } else if (phrase.length === longestMatchLength && longestMatchEntry === null) {
-                        // If a phrase of the same longest length is found first
-                        longestMatchEntry = `Pattern: ${p1} → Translation: ${r1}`;
-                    }
-                    break; // Stop after the first match (which will be one of the longest)
+                    // Add the match to the results array
+                    allMatches.push(`Pattern: ${p1} → Translation: ${r1}`);
+                    break; // Stop after the first match for this phrase (you can remove 'break' if you want all occurrences)
                 }
             }
         }
     });
 
-    // Output the result to the output area
-    document.getElementById("outputArea").innerHTML = longestMatchEntry
-        ? `<strong>Longest Match Found:</strong><br>${longestMatchEntry}`
+    // Display all matches or a message saying no matches were found
+    document.getElementById("outputArea").innerHTML = allMatches.length > 0
+        ? `<strong>Matches Found:</strong><br>${allMatches.join('<br>')}`
         : `<strong>No matches found.</strong>`;
 }
+
     
     /*
 function translateC() {
