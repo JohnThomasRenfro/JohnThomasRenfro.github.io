@@ -205,6 +205,9 @@ hr::after {
 
 
 const replsB=[
+
+{p1:/(メ)(?!X)(イ)(?!X)(ド)(?!X)/g,r1:'$1X(me)$2X(i)$3X(do)(a|the)? maid(s)?;Par'},    
+    
 {p1:/(\［)(?!X)/g,r1:'$1X open bracket;punctuation;Par'}, 
 {p1:/(\］)(?!X)/g,r1:'$1X close bracket;punctuation;Par'},    
 {p1:/(～)(?!X)/g,r1:'$1X hyphen)from to;punctuation;Par'},
@@ -538,7 +541,7 @@ const replsB=[
 {p1:/(明)(?!X)(々)(?!X)(後)(?!X)(日)(?!X)/g,r1:'$1X$2X(shi)$3X(i)$4X(asatte)three days from today;Par'},
 {p1:/(日)(?!X)(当)(?!X)(た)(?!X)(り)(?!X)/g,r1:'$1X$2X(hi)$3X(a)$4X(tari)exposure to sun;Par'},
 {p1:/(日)(?!X)(の)(?!X)(入)(?!X)(り)(?!X)/g,r1:'$1X$2X(hi)$3X(n)$4X(oiri)sunset;Par'},
-{p1:/(振)(?!X)(り)(?!X)(仮)(?!X)(名)(?!X)/g,r1:'$1X$2X(fu)$3X(r)$4X(igana)reading aid in kana characters;Par'},
+{p1:/(振)(?!X)(り)(?!X)(仮)(?!X)(名)(?!X)/g,r1:'$1X$2X(fu)$3X(ri)$4X(gana)reading aid in kana characters;Par'},
 {p1:/(押)(?!X)(し)(?!X)(寄)(?!X)(せ)(?!X)/g,r1:'$1X(o)$2X(shi)$3X(yo)$4X(se)close in on;IchidanVerb'},
 {p1:/(押)(?!X)(し)(?!X)(入)(?!X)(れ)(?!X)/g,r1:'$1X$2X(os)$3X(h)$4X(iire)closet;Par'},
 {p1:/(押)(?!X)(し)(?!X)(付)(?!X)(け)(?!X)/g,r1:'$1X(o)$2X(shi)$3X(tsu)$4X(ke)to press against;IchidanVerb'},
