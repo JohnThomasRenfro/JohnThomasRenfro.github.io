@@ -9464,5 +9464,48 @@ Five words that imply "very"..<br>
 </ul>
 <p> 
 <img src='PeterReft.png' alt='photo by Peter Reft' title='photo by Peter Reft'>
+    <p>
+            <h1>Enter an English Paragraph</h1>
+    <textarea id="inputText" rows="6" cols="50"></textarea><br><br>
+    <button onclick="findLongestWords()">Submit</button>
+
+    <h2>Longest Words with Japanese Transliteration</h2>
+    <div id="output1"></div>
+    </p>
+    <script>
+        function findLongestWords() {
+            const inputText = document.getElementById('inputText').value;
+            const words = inputText.split(/\s+/); // Split the paragraph into words
+            let longestWords = [];
+
+            // Find the longest word(s)
+            let maxLength = 0;
+            words.forEach(word => {
+                if (word.length > maxLength) {
+                    maxLength = word.length;
+                    longestWords = [word];
+                } else if (word.length === maxLength) {
+                    longestWords.push(word);
+                }
+            });
+
+            // Transliterate the longest words if necessary using replsB
+            let transliteratedWords = longestWords.map(word => {
+                for (const entry of replsB) {
+                    // Check if the word matches the pattern
+                    const match = word.match(entry.p1);
+                    if (match) {
+                        // Replace with the transliterated form and remove ;Par part
+                        return entry.r1.split(';')[0];
+                    }
+                }
+                return word; // If no transliteration is found, return the original word
+            });
+
+            // Display the result in the output1 div
+            document.getElementById('output1').innerHTML = transliteratedWords.join(' ');
+        }
+        
+    </script>
 </body>
 </html>
