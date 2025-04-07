@@ -9473,24 +9473,12 @@ Five words that imply "very"..<br>
     <div id="output1"></div>
     </p>
     <script>
-        function findLongestWords() {
+        function findWordsWithTransliteration() {
             const inputText = document.getElementById('inputText').value;
             const words = inputText.split(/\s+/); // Split the paragraph into words
-            let longestWords = [];
 
-            // Find the longest word(s)
-            let maxLength = 0;
-            words.forEach(word => {
-                if (word.length > maxLength) {
-                    maxLength = word.length;
-                    longestWords = [word];
-                } else if (word.length === maxLength) {
-                    longestWords.push(word);
-                }
-            });
-
-            // Transliterate the longest words if necessary using replsB
-            let transliteratedWords = longestWords.map(word => {
+            // Transliterate each word if necessary using replsB
+            let transliteratedWords = words.map(word => {
                 for (const entry of replsB) {
                     // Check if the word matches the pattern
                     const match = word.match(entry.p1);
@@ -9499,7 +9487,8 @@ Five words that imply "very"..<br>
                         return entry.r1.split(';')[0];
                     }
                 }
-                return word; // If no transliteration is found, return the original word
+                // If no transliteration is found, keep the word as is with placeholder
+                return `${word} (no transliteration found)`;
             });
 
             // Display the result in the output1 div
