@@ -7612,8 +7612,8 @@ const replsB=[
 {p1:/(あ)(?!X)(す)(?!X)/g,r1:'$1X(asu $2X;morning;Par'},
 {p1:/(あ)(?!X)(あ)(?!X)/g,r1:'$1X$2X(aa)that kind of;Par'},
 {p1:/(\d{1}話)(?!X)/g,r1:'$1X(wa)counter for stories;Par'},
-{p1:/(\d{1})(?!X)(発)(?!X)/g,r1:'$1)$2X(patsu)counter for shots;Par'},
-{p1:/(\d{1})(?!X)(分)(?!X)/g,r1:'$1)$2X(pun)minutes;Par'},
+{p1:/(\d{1})(?!X)(発)(?!X)/g,r1:'$1$2X(patsu)counter for shots;Par'},
+{p1:/(\d{1})(?!X)(分)(?!X)/g,r1:'$1$2X(pun)minutes;Par'},
 {p1:/(9|９)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1X(kyuu jyuu)ninety $2;Par'},
 {p1:/(8|８)(?!X)(日)(?!X)/g,r1:'$1X(you)$2X(ka)eighth day of the month;Par'},
 {p1:/(8|８)(?!X)([0-9]|[０-９])(?!X)/g,r1:'$1X(hachi jyuu)eighty $2;Par'},
@@ -9130,7 +9130,7 @@ const replsB=[
 {p1:/(万)(?!X)/g,r1:'$1X(man)ten thousand;Par'},
 {p1:/(一|１|1)(?!X)/g,r1:'$1X(ichi)one;Par'},
 {p1:/(ロ)(?!X)/g,r1:'$1X(ro)Russia;Par'},
-{p1:/(\d{1})(?!X)(時)(?!X)/g,r1:'$1)$2X(ji)hour;Par'},
+{p1:/(\d{1})(?!X)(時)(?!X)/g,r1:'$1$2X(ji)hour;Par'},
 
 {p1:/(;Par)(か)(?!X)(っ)(?!X)(て)(?!X)/g,r1:'$1X$2X(ka)$2X(t)$3X(te)is doing;colloquial;ConjunctiveVerb;Par'},
 
@@ -9201,7 +9201,7 @@ const replsB=[
 {p1:/(;Par|;IchidanVerb)(だ)(?!X)/g,r1:'$1X$2X(da)did;InformalVerb;Ending;Par'},
 {p1:/(;Par)(る)(?!X)/g,r1:'$1X$2X(ru)do,will do;InformalVerb;Ending;Par'},
 {p1:/(;Par)(ね)(?!X)/g,r1:'$1X$2X(ne)isn t it\?;InformalVerb;Ending;Par'},
-{p1:/(IchidanVerbる)/g,r1:'るXru,to do,will do;IchidanVerb;InformalVerb;Ending;Par'},
+{p1:/(IchidanVerbる)/g,r1:'るX(ru)to do,will do;IchidanVerb;InformalVerb;Ending;Par'},
 {p1:/(;RuVerb)(る)/g,r1:'るXru,to do,will do;InformalVerb;Ending $2;Par'},
 
 {p1:/(に)(?!X)(お)(?!X)(い)(?!X)(て)(?!X)/g,r1:'$1X(ni)$2X(o)$3X(i)$4X(te)in;Par'},
@@ -9233,7 +9233,7 @@ const replsB=[
 {p1:/(や)(?!X)/g,r1:'$1X(ya)and,comma;postposition;Par'},
 {p1:/(を)(?!X)/g,r1:'$1X(oo)direct object above is acted on;postposition;Par'},
 
-{p1:/(Adverb)(く)(?!X)/g,r1:'$1)$2X(ku)and;Par'},
+{p1:/(Adverb)(く)(?!X)/g,r1:'$1$2X(ku)and;Par'},
 {p1:/;Par(|;Ending)(と)(?!X)/g,r1:'$2X(to)with the above,the person said;Par'},
 {p1:/(;Par)(な)(?!X)/g,r1:'$1X$2X(na)NaAdjective;Par'},
 {p1:/(Adverbな)(?!X)/g,r1:'$1X(na)Adverb;Par'},
