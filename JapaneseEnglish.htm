@@ -9464,5 +9464,45 @@ Five words that imply "very"..<br>
 </ul>
 <p> 
 <img src='PeterReft.png' alt='photo by Peter Reft' title='photo by Peter Reft'>
+<p>
+    <textarea id="inputText" rows="10" cols="50" placeholder="Type your English text here..."></textarea>
+    <br>
+    <button id="translateButton">Translate</button>
+    <pre id="result"></pre>    
+</p>
 </body>
 </html>
+
+<script>
+    document.getElementById('translateButton').onclick = function () {
+    const inputText = document.getElementById('inputText').value;
+
+    // Find the longest words in the input English text
+    const words = inputText.match(/\w+/g); // Match all words
+    const longestWords = getLongestWords(words);
+
+    // Build the result string
+    const result = longestWords.map(word => {
+        // For each English word, you can just append " ;" for now as an example
+        // You would need to implement a translation mechanism if you have the mapping for words to Japanese.
+        const japaneseTranslation = getJapaneseTranslation(word);
+        return `${word}  : ${japaneseTranslation}`;
+
+    }).join('\n');
+
+    // Display the results in the result area
+    document.getElementById('result').innerText = result;
+};
+
+function getLongestWords(words) {
+    if (!words) return [];
+    const maxLength = Math.max(...words.map(word => word.length));
+    return words.filter(word => word.length === maxLength);
+}
+
+function getJapaneseTranslation(word) {
+    // Here you would need to create a mapping of English words to their Japanese translations.
+    // The example does not include a mapping, so return a placeholder text for now.
+    return "Translation not available"; // This would be replaced with an actual mapping.
+}
+</script>
