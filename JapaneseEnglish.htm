@@ -9477,6 +9477,35 @@ Five words that imply "very"..<br>
 
 function translateC() {
     let inputText = document.getElementById("inputText").value.trim();
+    let matches = []; // To store all matches
+
+    replsB.forEach(({ p1, r1 }) => {
+        const englishWords = r1.split(/[\s,;]/)
+            .map(word => {
+                const match = word.match(/^([^()]+)$/); // Match whole word if not in parentheses
+                return match ? match[1].trim() : '';
+            })
+            .filter(word => word !== '');
+
+        if (englishWords.length > 0) {
+            // For each word in the sorted list, check if it's in the input text
+            for (const word of englishWords) {
+                if (inputText.includes(word)) {
+                    matches.push(` ${p1} ${r1}`); // Store the translation match
+                }
+            }
+        }
+    });
+
+    // Update the output area with all matches found
+    document.getElementById("outputArea").innerHTML = matches.length > 0
+        ? `<strong>Matches Found:</strong><br>${matches.join('<br>')}`
+        : `<strong>No matches found.</strong>`;
+}
+    
+    /*
+function translateC() {
+    let inputText = document.getElementById("inputText").value.trim();
     let longestMatchEntry = null;
     let longestMatchLength = 0;
 
@@ -9510,6 +9539,7 @@ function translateC() {
         ? `<strong>Longest Match Found:</strong><br>${longestMatchEntry}`
         : `<strong>No matches found.</strong>`;
 }
+*/
   
 </script>
 
