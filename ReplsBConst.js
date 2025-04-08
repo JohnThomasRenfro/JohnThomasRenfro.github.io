@@ -526,7 +526,7 @@ const replsB=[
 {p1:/(ア)(?!X)(イ)(?!X)(ロ)(?!X)(ン)(?!X)/g , r1:'$1X$2X$3X$4X iron ;Par'} , 
 {p1:/(ア)(?!X)(イ)(?!X)(ド)(?!X)(ル)(?!X)/g , r1:'$1X$2X$3X$4X idol , pop singer ;Par'} , 
 {p1:/(ア)(?!X)(イ)(?!X)(デ)(?!X)(ア)(?!X)/g , r1:'$1X$2X$3X$4X idea ;Par'} , 
-{p1:/(わ)(?!X)(れ)(?!X)(わ)(?!X)(れ)(?!X)/g , r1:'$1X(wa) $2X(re) $3X(wa) $4X(re) we , Formal ;Par'} , 
+{p1:/(わ)(?!X)(れ)(?!X)(わ)(?!X)(れ)(?!X)/g , r1:'$1X(wa) $2X(re) $3X(wa) $4X(re) we , ;FormalVerb ;Par'} , 
 {p1:/(わ)(?!X)(ざ)(?!X)(わ)(?!X)(ざ)(?!X)/g , r1:'$1X$2X$3X) $4X(go to a lot of trouble ;Par'} , 
 {p1:/(わ)(?!X)(が)(?!X)(ま)(?!X)(ま)(?!X)/g , r1:'$1X$2X(se) $3X(l) $4X(fishness) willfulness ;Par'} , 
 {p1:/(わ)(?!X)(い)(?!X)(せ)(?!X)(つ)(?!X)/g , r1:'$1X(wa) $2X(i) $3X(se) $4X(tsu) obscene ;Par'} , 
@@ -1408,7 +1408,7 @@ const replsB=[
 {p1:/(抽)(?!X)(象)(?!X)(的)(?!X)/g , r1:'$1X(cyuu) $2X(syou) $3X(teki) abstract ;Par'} , 
 {p1:/(投)(?!X)(開)(?!X)(票)(?!X)/g , r1:'$1X(tou) $2X(kai) $3X(hyou) casting and counting votes ;Par'} , 
 {p1:/(抑)(?!X)(止)(?!X)(力)(?!X)/g , r1:'$1X(yoku) $2X(shi) $3X(ryoku) deterrence ;Par'} , 
-{p1:/(手)(?!X)(続)(?!X)(き)(?!X)/g , r1:'$1X(te) $2X(tsuzu) $3X(ki) formal procedure ;Par'} , 
+{p1:/(手)(?!X)(続)(?!X)(き)(?!X)/g , r1:'$1X(te) $2X(tsuzu) $3X(ki) ;FormalVerb procedure ;Par'} , 
 {p1:/(手)(?!X)(立)(?!X)(て)(?!X)/g , r1:'$1X(te) $2X(da) $3X(te) by means of ;Par'} , 
 {p1:/(手)(?!X)(当)(?!X)(て)(?!X)/g , r1:'$1X(te) $2X(at) $3X(e) allowance , medical care ;Par'} , 
 {p1:/(手)(?!X)(引)(?!X)(き)(?!X)/g , r1:'$1X(te) $2X(hi) $3X(ki) guidance ;Par'} , 
@@ -1441,7 +1441,7 @@ const replsB=[
 {p1:/(後)(?!X)(戻)(?!X)(り)(?!X)/g , r1:'$1X(ato) $2X(mo) $3X(dori) turning back , retreat ;Par'} , 
 {p1:/(後)(?!X)(回)(?!X)(し)(?!X)/g , r1:'$1X(atomawa) $2X(shi) $3X(i) deferment , postponement ;Par'} , 
 {p1:/(待)(?!X)(合)(?!X)(室)(?!X)/g , r1:'$1X(mac) $2X(hi) $3X(aishitsu) waiting room ;Par'} , 
-{p1:/(形)(?!X)(式)(?!X)(的)(?!X)/g , r1:'$1X(kei) $2X(shiki) $3X(teki) formal ;Par'} , 
+{p1:/(形)(?!X)(式)(?!X)(的)(?!X)/g , r1:'$1X(kei) $2X(shiki) $3X(teki) ;FormalVerb ;Par'} , 
 {p1:/(形)(?!X)(容)(?!X)(詞)(?!X)/g , r1:'$1X(kei) $2X(you) $3X(shi) adjective ;Par'} , 
 {p1:/(当)(?!X)(た)(?!X)(り)(?!X)/g , r1:'$1X(a) $2X(ta) $3X(ri) direct hit ;Par'} , 
 {p1:/(引)(?!X)(当)(?!X)(金)(?!X)/g , r1:'$1X(hiki) $2X(ate) $3X(kin) provisions ;Par'} , 
@@ -4692,7 +4692,7 @@ const replsB=[
 {p1:/(正)(?!X)(月)(?!X)/g , r1:'$1X(syou) $2X(gatsu) New Year ;Par'} , 
 {p1:/(正)(?!X)(教)(?!X)/g , r1:'$1X(sei) $2X(kyou) orthodox ;Par'} , 
 {p1:/(正)(?!X)(当)(?!X)/g , r1:'$1X(sei) $2X(tou) legal ;Par'} , 
-{p1:/(正)(?!X)(式)(?!X)/g , r1:'$1X(sei) $2X(shiki) formal ;Par'} , 
+{p1:/(正)(?!X)(式)(?!X)/g , r1:'$1X(sei) $2X(shiki) ;FormalVerb ;Par'} , 
 {p1:/(正)(?!X)(座)(?!X)/g , r1:'$1X(sei) $2X(za) sitting upright with legs folded under one ;Par'} , 
 {p1:/(正)(?!X)(常)(?!X)/g , r1:'$1X(sei) $2X(jyou) normality ;Par'} , 
 {p1:/(正)(?!X)(午)(?!X)/g , r1:'$1X(syou) $2X(go) noon ;Par'} , 
@@ -6932,7 +6932,7 @@ const replsB=[
 {p1:/(会)(?!X)(長)(?!X)/g , r1:'$1X(kai) $2X(cyou) chairperson ;Par'} , 
 {p1:/(会)(?!X)(費)(?!X)/g , r1:'$1X(kai) $2X(hi) fee , membership fee ;Par'} , 
 {p1:/(会)(?!X)(議)(?!X)/g , r1:'$1X(kai) $2X(gi) conference ;Par'} , 
-{p1:/(会)(?!X)(談)(?!X)/g , r1:'$1X(kai) $2X(dan) formal talks ;Par'} , 
+{p1:/(会)(?!X)(談)(?!X)/g , r1:'$1X(kai) $2X(dan) ;FormalVerb talks ;Par'} , 
 {p1:/(会)(?!X)(話)(?!X)/g , r1:'$1X(kai) $2X(wa) conversation ;Par'} , 
 {p1:/(会)(?!X)(計)(?!X)/g , r1:'$1X(kai) $2X(kei) accounting ;Par'} , 
 {p1:/(会)(?!X)(見)(?!X)/g , r1:'$1X(kai) $2X(ken) press conference ;Par'} , 
@@ -7974,17 +7974,13 @@ const replsB=[
 {p1:/(あ)(?!X)([らりるれろっ])(?!X)/g , r1:'$1X(a) there is , inanimate ;RuVerb$2 ;Par'} , 
 {p1:/(?<!検) (出)(?!X)([さしすせそ])(?!X)/g , r1:'$1X(da) take out ;SuVerb$2 ;Par'} , 
 
-{p1:/(さ)(?!X)(れ)(?!X)/g , r1:'$1X(sa) $2X(re) is done ;SuruVerb ;Par'} , 
-{p1:/(し)(?!X)(て)(?!X)/g , r1:'$1X(shi) $2X(te) do and ;SuruVerb ;Par'} , 
-{p1:/(し)(?!X)(た)(?!X)/g , r1:'$1X(shi) $2X(ta) did ;InformalVerb ;SuruVerb ;Par'} ,
-
 {p1:/(%|％)(?!X)/g , r1:'$1X(paacento) percent ;Par'} , 
 {p1:/(2|２|二)(?!X)/g , r1:'$1X(ni) sei , two ;Par'} , 
 {p1:/(5|５|五)(?!X)/g , r1:'$1X(go) five ;Par'} , 
 {p1:/(7|７|七)(?!X)/g , r1:'$1X(nana) shichi , seven ;Par'} , 
 {p1:/(9|９|九)(?!X)/g , r1:'$1X(kyuu) nine ;Par'} , 
 {p1:/(?![ァ-ヾ]+) (カ) (?!X|[ァ-ヾ]+) /g , r1:') $2X(ka) counter for things ;Par'} , 
-{p1:/(お)(?!X)/g , r1:'$1X(o) a respectful and formal prefix ;Par'} , 
+{p1:/(お)(?!X)/g , r1:'$1X(o) a respectful and ;FormalVerb prefix ;Par'} , 
 
 {p1:/(;UVerb)(わ)/g , r1:'$1X$2X(wa)'} , 
 {p1:/(;UVerb)(っ)/g , r1:'$1X$2X(t)'} , 
@@ -8942,10 +8938,17 @@ const replsB=[
 
 {p1:/(さ)(?!X)(れ)(?!X)(て)(?!X)(い)(?!X)/g , r1:'$1X$2X(sa) $3X(r) $4X(etei) had been doing ;Verb ;Par'} , 
 {p1:/(な)(?!X)(け)(?!X)(れ)(?!X)(ば)(?!X)/g , r1:'$1X(na) $2X(ke) $3X(re) $4X(ba) must ;Par'} , 
-{p1:/(し)(?!X)(ま)(?!X)(し)(?!X)(た)(?!X)/g , r1:'$1X(shi) $2X(ma) $3X(shi) $4X(ta) did ;SuruVerb , Formal ;Ending ;Par'} , 
+{p1:/(し)(?!X)(ま)(?!X)(し)(?!X)(た)(?!X)/g , r1:'$1X(shi) $2X(ma) $3X(shi) $4X(ta) did ;SuruVerb , ;FormalVerb ;Ending ;Par'} , 
+
+{p1:/(さ)(?!X)(れ)(?!X)/g , r1:'$1X(sa) $2X(re) is done ;SuruVerb ;Par'} , 
+{p1:/(し)(?!X)(て)(?!X)/g , r1:'$1X(shi) $2X(te) do and ;SuruVerb ;Par'} , 
+{p1:/(し)(?!X)(た)(?!X)/g , r1:'$1X(shi) $2X(ta) did ;InformalVerb ;SuruVerb ;Par'} ,
 
 {p1:/(し)(?!X)(た)(?!X)(い)(?!X)/g , r1:'$1X(shi) $2X(ta) $3X(i) want to do ;SuruVerb ;Par'} , 
- 
+ {p1:/(;Par)(ま)(?!X)(し)(?!X)(た)(?!X)/g , r1:'$1X$2X(ma) $2X(shi) $3X(ta) did , ;FormalVerb ;Ending ;Par'} , 
+{p1:/(;Par)(ま)(?!X)(せ)(?!X)(ん)(?!X)/g , r1:'$1X$2X(ma) $2X(se) $3X(n) didn t , ;FormalVerb ;Ending ;Par'} , 
+{p1:/(;Par)(ま)(?!X)(す)(?!X)/g , r1:'$1X$2X(ma) $2X(su) to do , will do , ;FormalVerb ;Ending ;Par'} , 
+
 {p1:/(;Par)(れ|Nounれ)(?!X)(て)(?!X)(い)(?!X)/g , r1:'$1X$2X(is) $3X=doing , Verb ;Par'} , 
 
 {p1:/(;Par)(く)(?!X)(れ)(?!X)/g , r1:'$1X$2X(kur) $2X(e) do for me ;Verb ;Par'} , 
@@ -8971,13 +8974,11 @@ const replsB=[
 
 {p1:/(ご)(?!X)/g , r1:'$1X(go) honorable , makes words polite ;Par'} , 
 
-{p1:/(;Par)(ま)(?!X)(し)(?!X)(ょ)(?!X)(う)(?!X)/g , r1:'$1X$2X(ma) $2X(s) $3X(yo) $4X(u) let us do , Formal ;Ending ;Par'} , 
-{p1:/(;Par)(ま)(?!X)(し)(?!X)(た)(?!X)/g , r1:'$1X$2X(ma) $2X(shi) $3X(ta) did , Formal ;Ending ;Par'} , 
-{p1:/(;Par)(ま)(?!X)(せ)(?!X)(ん)(?!X)/g , r1:'$1X$2X(ma) $2X(se) $3X(n) didn t , Formal ;Ending ;Par'} , 
-{p1:/(;Par)(ま)(?!X)(す)(?!X)/g , r1:'$1X$2X(ma) $2X(su) to do , will do , Formal ;Ending ;Par'} , 
+{p1:/(;Par)(ま)(?!X)(し)(?!X)(ょ)(?!X)(う)(?!X)/g , r1:'$1X$2X(ma) $2X(s) $3X(yo) $4X(u) let us do , ;FormalVerb ;Ending ;Par'} , 
+
 {p1:/(;Par)(し)(?!X)/g , r1:'$1X$2X(shi) to do , will do ;SuruVerb ;Par'} , 
-{p1:/(;Par)(お)(?!X)/g , r1:'$1X$2X(o) respected , formal ;Par'} , 
-{p1:/(;Par)(ご)(?!X)/g , r1:'$1X$2X(go) respected , formal ;Par'} , 
+{p1:/(;Par)(お)(?!X)/g , r1:'$1X$2X(o) respected , ;FormalVerb ;Par'} , 
+{p1:/(;Par)(ご)(?!X)/g , r1:'$1X$2X(go) respected , ;FormalVerb ;Par'} , 
 
 {p1:/(;Par)(な)(?!X)(か)(?!X)(っ)(?!X)(た)(?!X)/g , r1:'$1X$2X(na) $2X(ka) $3X(t) $4X(ta) did not ;InformalVerb ;SuruVerb ;Par'} , 
 
