@@ -23,8 +23,8 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
             `$${index + 1}X(${pronunciation.split(/\s+/)[index] || ''})`
         ).join('');
         return requiresAdditionalX
-            ? `${baseReplacement}${definition};${typeSuffix}$${word.length + 1}` 
-            : `${baseReplacement}${definition};${typeSuffix}`; // Skip $X for exceptions
+            ? `${baseReplacement} ${definition} ;${typeSuffix}$${word.length + 1}` 
+            : `${baseReplacement} ${definition} ;${typeSuffix}`; // Skip $X for exceptions
     };
 
     let endingPattern;
@@ -88,7 +88,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
     const regexPattern = getBasePattern(word, endingPattern);
     const replacement = getReplacement(word, pronunciation, definition, typeSuffix, requiresAdditionalX);
 
-    return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
+    return `{p1:/${regexPattern}/g , r1:'${replacement} '},`;
 }
 
 function formatAndDisplay() {
