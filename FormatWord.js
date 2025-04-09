@@ -20,7 +20,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type) {
     // Updated helper function to generate the replacement string
     const getReplacement = (word, pronunciation, definition, typeSuffix, requiresAdditionalX) => {
         const baseReplacement = word.split('').map((char, index) => 
-            `$${index + 1}X(${pronunciation.split(/\s+/)[index] || ''})`
+            ` $${index + 1}X(${pronunciation.split(/\s+/)[index] || ''})`
         ).join('');
         return requiresAdditionalX
             ? `${baseReplacement} ${definition} ;${typeSuffix}$${word.length + 1}` 
