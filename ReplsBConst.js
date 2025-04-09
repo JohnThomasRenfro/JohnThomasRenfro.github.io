@@ -2303,7 +2303,8 @@ const replsB=[
 {p1:/(減)(?!X)(ら)(?!X)([さしすせそ])(?!X)/g , r1:' $1X(he) $2X(ra) decrease ;SuVerb$3 ;Par'}, 
 {p1:/(済)(?!X)(ま)(?!X)([さしすせそ])(?!X)/g , r1:' $1X(su) $2X(ma) settle , complete ;SuVerb$3 ;Par'}, 
 {p1:/(添)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(so) $2X(e) ;add to , attach to ;RuVerb$3 ;Par'}, 
-{p1:/(混)(?!X)(ぜ)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(ma) $2X(ze) blend , mix , by stirring ;RuVerb$3 ;Par'}, 
+{p1:/(混)(?!X)(ぜ)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(ma) $2X(ze) blend , mix , by stirring ;RuVerb$3 ;Par'},
+{p1:/(見)(?!X)(越)(?!X)([さしすせそ])(?!X)/g , r1:' $1X(mi) $2X(ko) anticipate ;SuVerb$3 ;Par'}, 
 {p1:/(混)(?!X)(じ)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(ma) $2X(ji) be blended , get mixed ;RuVerb$3 ;Par'}, 
 {p1:/(混)(?!X)(ざ)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(maz) $2X(a) be mixed , be stirred ;RuVerb$3 ;Par'}, 
 {p1:/(深)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(fu) $2X(kame) deepen ;RuVerb$3 ;Par'}, 
@@ -8994,7 +8995,7 @@ const replsB=[
 {p1:/(ま)(?!X)(で)(?!X)(も)(?!X)/g , r1:' $1X(ma) $2X(de) $3X(mo) to an extent , so far as to ;Par'}, 
 {p1:/(も)(?!X)(と)(?!X)(で)(?!X)/g , r1:' $1X(mo) $2X(to) $3X(de) under ;Par'}, 
 
-{p1:/(;Par)(べ)(?!X)(き)(?!X)/g , r1:' $1X$2X(be) $2X(ki) should ;Par'}, 
+{p1:/(;Par)(べ)(?!X)(き)(?!X)/g , r1:' $1X$2X(be) $3X(ki) should ;Par'}, 
 {p1:/(か)(?!X)(ら)(?!X)/g , r1:' $1X(ka) $2X(ra) from ;Postposition ;Par'}, 
 {p1:/(で)(?!X)(も)(?!X)/g , r1:' $1X(de) $2X(mo) but ;Postposition ;Par'}, 
 {p1:/(と)(?!X)(の)(?!X)/g , r1:' $1X(tou) $2X(no) about ;Postposition ;Par'}, 
