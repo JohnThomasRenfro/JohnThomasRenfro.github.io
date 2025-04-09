@@ -7969,7 +7969,7 @@ const replsB=[
 {p1:/(ひ)(?!X)([かきくけこい])(?!X)/g , r1:' $1X(hi) run over ;KuVerb$2 ;Par'}, 
 {p1:/(な)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(na) become ;RuVerb$2 ;Par'}, 
 {p1:/(と)(?!X)([さしすせそ])(?!X)/g , r1:' $1X(to) to try to do ;SuVerb$2 ;Par'}, 
-{p1:/(で)(?!X)([さしすせそ])(?!X)/g , r1:' $1X(de) to be , is $2X ;BeVerb ;Par'}, 
+{p1:/(で)(?!X)([さしすせそ])(?!X)/g , r1:' $1X(de) to be , is ;BeVerb$2 ;Par'}, 
 {p1:/(そ)(?!X)([わいうえおっ])(?!X)/g , r1:' $1X(so) appears to , in such a way ;UVerb$2 ;Par'}, 
 {p1:/(せ)(?!X)([いくかさ])(?!X)/g , r1:' $1X(se) cause , fault  ;IAdjective$2  ;Par'}, 
 {p1:/(こ)(?!X)([わいうえおっ])(?!X)/g , r1:' $1X(ko) this kind of ;UVerb$2 ;Par'}, 
@@ -8036,9 +8036,8 @@ const replsB=[
 {p1:/(;BuVerb)(ぶ)/g , r1:' $1X$2X(bu) , to do , will do'}, 
 {p1:/(;BuVerb)(び)/g , r1:' $1X$2X(bi)'}, 
 {p1:/(;BuVerb)(ば)/g , r1:' $1X$2X(ba)'}, 
-{p1:/(;BeVerb)(す)/g , r1:' $1X$2X(su)'}, 
-{p1:/(;BeVerb)(す)/g , r1:' $1X$2X(su) , to do , will do'}, 
-{p1:/(;BeVerb)(し)/g , r1:' $1X$2X(shi) , to be , BeVerb'}, 
+{p1:/(;BeVerb)(し)/g , r1:' $1X$2X(shi) , to be '}, 
+{p1:/(;BeVerb)(す)/g , r1:' $1X$2X(su) ;FormalVerb ;BeVerb ;Ending '}, 
 {p1:/(;AruVerb)(っ)/g , r1:' $1X$2X(t)'}, 
 
 {p1:/(て)/g , r1:' $1X(te)and ;Par'}, 
@@ -9034,7 +9033,7 @@ const replsB=[
 {p1:/(;RuVerb)(る) /g , r1:' るX(ru) to do , will do ;InformalVerb ;Ending ;Par'}, 
 {p1:/(;Par)(だ)(?!X)/g , r1:' $1X(da) did ;InformalVerb ;Ending ;Par'}, 
 {p1:/(;Par)(た)(?!X)/g , r1:' $1X(ta) did ;InformalVerb ;Ending ;Par'}, 
-{p1:/(;Par)(る)(?!X)/g , r1:' $1X(ru) do , will do ;InformalVerb ;Ending ;Par'}, 
+{p1:/(;Par)(る)(?!X)/g , r1:' $1X$2X(ru) do , will do ;InformalVerb ;Ending ;Par'}, 
 {p1:/(;Par)(ま)(?!X)(せ)(?!X)(ん)(?!X)/g , r1:' $1X(ma) $2X(se) $3X(n) didn t  ;FormalVerb ;Ending ;Par'}, 
 {p1:/(;Par)(ま)(?!X)(す)(?!X)/g , r1:'$1X$2X(ma) $3X(su) to do , will do  ;FormalVerb ;Ending ;Par'}, 
 {p1:/(;Par)(ね)(?!X)/g , r1:' $1X(ne) isn t it\? ;InformalVerb ;Ending ;Par'}, 
@@ -9048,7 +9047,7 @@ const replsB=[
 
 {p1:/-([a-zA-Z]+)/g , r1:' =<font color=#e8d9cd>$1</font>'}, 
 
-{p1:/(;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb)/g , r1:' <br>$1'},
+{p1:/(;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb|;BeVerb)/g , r1:' <br>$1'},
 {p1:/(;Par)/g , r1:' <br>'}, 
 
 ] ;
