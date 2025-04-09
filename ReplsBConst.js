@@ -2368,7 +2368,7 @@ const replsB=[
 {p1:/(攻)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(sem) $2X(e) attack , take offensive ;RuVerb$3 ;Par'}, 
 {p1:/(改)(?!X)(め)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(ara) $2X(tame) reform , change ;RuVerb$3 ;Par'}, 
 {p1:/(改)(?!X)(ま)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(ara) $2X(tama) be renewed , change ;RuVerb$3 ;Par'}, 
-{p1:/(支)(?!X)(払)(?!X)([わいうえおっ])(?!X)/g , r1:' $1X(shi) $2X(hara) pay) ;UVerb$3 ;Par'}, 
+{p1:/(支)(?!X)(払)(?!X)([わいうえおっ])(?!X)/g , r1:' $1X(shi) $2X(hara) pay ;UVerb$3 ;Par'}, 
 {p1:/(支)(?!X)(払)(?!X)([いくかさ])(?!X)/g , r1:' $1X(shi) $2X(hara) payment)  ;IAdjective$3  ;Par'}, 
 {p1:/(支)(?!X)(え)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(sas) $2X(ae) support , maintain ;RuVerb$3 ;Par'}, 
 {p1:/(撫)(?!X)(で)(?!X)([らりるれろっ])(?!X)/g , r1:' $1X(na) $2X(de) stroke , pat ;RuVerb$3 ;Par'}, 
@@ -4817,7 +4817,9 @@ const replsB=[
 {p1:/(東)(?!X)(北)(?!X)/g , r1:' $1X(tou) $2X(hoku) northeast ;Par'}, 
 {p1:/(来)(?!X)(週)(?!X)/g , r1:' $1X(rai) $2X(syuu) next week ;Par'}, 
 {p1:/(来)(?!X)(月)(?!X)/g , r1:' $1X(rai) $2X(getsu) next month ;Par'}, 
-{p1:/(来)(?!X)(春)(?!X)/g , r1:' $1X(rai) $2X(syun) next spring ;Par'}, 
+{p1:/(来)(?!X)(春)(?!X)/g , r1:' $1X(rai) $2X(syun) next spring ;Par'},
+{p1:/(収)(?!X)(受)(?!X)/g , r1:' $1X(syuu) $2X(jyu) receipt ;Par '}, 
+{p1:/(管)(?!X)(轄)(?!X)/g , r1:' $1X(kan) $2X(katsu) control ;Par '},
 {p1:/(来)(?!X)(日)(?!X)/g , r1:' $1X(rai) $2X(nichi) coming to Japan ;Par'}, 
 {p1:/(来)(?!X)(年)(?!X)/g , r1:' $1X(rai) $2X(nen) next year ;Par'}, 
 {p1:/(条)(?!X)(項)(?!X)/g , r1:' $1X(jyou) $2X(kou) rule stipulation ;Par'}, 
@@ -8041,7 +8043,7 @@ const replsB=[
 {p1:/(;BeVerb)(す)/g , r1:' $1X$2X(su) ;FormalVerb ;BeVerb ;Ending '}, 
 {p1:/(;AruVerb)(っ)/g , r1:' $1X$2X(t)'}, 
 
-{p1:/(て)/g , r1:' $1X(te)and ;Par'}, 
+{p1:/(て)/g , r1:' $1X(te) and ;Par'}, 
 
 {p1:/(８|8|八)(?!X)/g , r1:' $1X(hachi) yaku , ya , eight ;Par'}, 
 {p1:/(６|6|六)(?!X)/g , r1:' $1X(roku) six ;Par'}, 
