@@ -8035,12 +8035,13 @@ const replsB=[
 {p1:/(;BuVerb)(べ)/g , r1:' $1X$2X(be) , can do'}, 
 {p1:/(;BuVerb)(ぶ)/g , r1:' $1X$2X(bu) , to do , will do'}, 
 {p1:/(;BuVerb)(び)/g , r1:' $1X$2X(bi)'}, 
-{p1:/(;IchidanVerb)(て)/g , r1:' $1X$2X(te)and'}, 
 {p1:/(;BuVerb)(ば)/g , r1:' $1X$2X(ba)'}, 
 {p1:/(;BeVerb)(す)/g , r1:' $1X$2X(su)'}, 
 {p1:/(;BeVerb)(す)/g , r1:' $1X$2X(su) , to do , will do'}, 
 {p1:/(;BeVerb)(し)/g , r1:' $1X$2X(shi) , to be , BeVerb'}, 
 {p1:/(;AruVerb)(っ)/g , r1:' $1X$2X(t)'}, 
+
+{p1:/(て)/g , r1:' $1X(te)and ;Par'}, 
 
 {p1:/(８|8|八)(?!X)/g , r1:' $1X(hachi) yaku , ya , eight ;Par'}, 
 {p1:/(６|6|六)(?!X)/g , r1:' $1X(roku) six ;Par'}, 
@@ -8933,7 +8934,7 @@ const replsB=[
 
 {p1:/(;Par)(て)(?!X)(い)(?!X)(く)(?!X)/g , r1:' $1X$2X(te) $3X(i) $4X(ku) is doing and ;ConjunctiveVerb ;Par'}, 
 {p1:/(;Par)(て)(?!X)(い)(?!X)/g , r1:' $1X$2X(te) $3X(i) is doing ;ConjunctiveVerb ;Par'}, 
-{p1:/(;Par)(で)(?!X)(い)(?!X)/g , r1:' $1X$2X(de) $3X(i) is doing ;ConjunctiveVerb ;Par'}, 
+{p1:/(;Par)(で)(?!X)(い)(?!X)/g , r1:' $1X(de)$2X(i) is doing ;ConjunctiveVerb ;Par'}, 
 {p1:/(Adjectiveら|Verbら)(?!X)(れ)(?!X)/g , r1:' $1X(ra) $2X(re) is done ;ConjunctiveVerb ;Par'}, 
 {p1:/(;Par) (て)(?!X)/g , r1:' $1X$2X(te) do and , ConjuctiveVerb ;Par'}, 
 {p1:/(;Par)(た)(?!X)(く)(?!X)(な)(?!X)(い)(?!X)/g , r1:' $1X$2X(ta) $2X(ku) $3X(na) $4X(i) does not want to ;Verb ;Par'}, 
@@ -8947,9 +8948,9 @@ const replsB=[
 
 {p1:/(;Par)(れ|Nounれ)(?!X)(て)(?!X)(い)(?!X)/g , r1:' $1X$2X(is) $3X=doing , Verb ;Par'}, 
 
-{p1:/(;Par)(く)(?!X)(れ)(?!X)/g , r1:' $1X$2X(kur) $2X(e) do for me ;Verb ;Par'}, 
-{p1:/(;Par)(い)(?!X)(て)(?!X)/g , r1:' $1X(i) $2X(te) ;is doing ;ConjunctiveVerb ;Par'}, 
-{p1:/(;Par)(し)(?!X)(て)(?!X)/g , r1:' $1X$2X(shi) $2X(te) is doing ;ConjunctiveVerb ;Par'}, 
+{p1:/(;Par)(く)(?!X)(れ)(?!X)/g , r1:' $1X$2X(ku) $2X(re) do for me ;Verb ;Par'}, 
+{p1:/(;Par)(い)(?!X)(て)(?!X)/g , r1:' $1X$2X(i) $2X(te) ;is doing ;ConjunctiveVerb ;Par'}, 
+{p1:/(;Par)(し)(?!X)(て)(?!X)/g , r1:' $1X(shi) $2X(te) is doing ;ConjunctiveVerb ;Par'}, 
 
 {p1:/(;Par)(た)(?!X)(い)(?!X)/g , r1:' $1X$2X(ta) $2X(i) want to do ;Verb ;Par'}, 
 
@@ -8970,11 +8971,11 @@ const replsB=[
 
 {p1:/(ご)(?!X)/g , r1:' $1X(go) honorable , makes words polite ;Par'}, 
 
-{p1:/(;Par)(ま)(?!X)(し)(?!X)(ょ)(?!X)(う)(?!X)/g , r1:' $1X$2X(ma) $2X(s) $3X(yo) $4X(u) let us do  ;FormalVerb ;Ending ;Par'}, 
+{p1:/(;Par)(ま)(?!X)(し)(?!X)(ょ)(?!X)(う)(?!X)/g , r1:' $1X(ma) $2X(s) $3X(yo) $4X(u) let us do  ;FormalVerb ;Ending ;Par'}, 
 
-{p1:/(;Par)(し)(?!X)/g , r1:' $1X$2X(shi) to do , will do ;SuruVerb ;Par'}, 
-{p1:/(;Par)(お)(?!X)/g , r1:' $1X$2X(o) respected  ;FormalVerb ;Par'}, 
-{p1:/(;Par)(ご)(?!X)/g , r1:' $1X$2X(go) respected  ;FormalVerb ;Par'}, 
+{p1:/(;Par)(し)(?!X)/g , r1:' $1X(shi) to do , will do ;SuruVerb ;Par'}, 
+{p1:/(;Par)(お)(?!X)/g , r1:' $1X(o) respected  ;FormalVerb ;Par'}, 
+{p1:/(;Par)(ご)(?!X)/g , r1:' $1X(go) respected  ;FormalVerb ;Par'}, 
 
 {p1:/(;Par)(な)(?!X)(か)(?!X)(っ)(?!X)(た)(?!X)/g , r1:' $1X$2X(na) $2X(ka) $3X(t) $4X(ta) did not ;InformalVerb ;SuruVerb ;Par'}, 
 
@@ -9023,20 +9024,20 @@ const replsB=[
 {p1:/(Adverbな)(?!X)/g , r1:' $1X(na) Adverb ;Par'}, 
 {p1:/(;Par)(等|Verbら)(?!X)/g , r1:' $1X$2X(ra) plural ;Par'}, 
 {p1:/(;Par)(の)(?!X)/g , r1:' $1X$2X(no) of the above ;Postposition ;Par'}, 
-{p1:/(;Par)(と)(?!X)/g , r1:' $1X$2X(to) by way of the above ;Postposition ;Par'}, 
+{p1:/(;Par)(と)(?!X)/g , r1:' $1X(to) by way of the above ;Postposition ;Par'}, 
 
 {p1:/(す)(?!X)(る)(?!X)/g , r1:' $1X(su) $2X(ru) to do , will do ;InformalVerb ;SuruVerb ;Par'}, 
 
-{p1:/(ま)(?!X)(し)(?!X)(た)(?!X)/g , r1:' $1X$2X(ma) $2X(shi) $3X(ta) did ;FormalVerb ;Ending ;Par'}, 
+{p1:/(ま)(?!X)(し)(?!X)(た)(?!X)/g , r1:' $1X(ma) $2X(shi) $3X(ta) did ;FormalVerb ;Ending ;Par'}, 
 {p1:/(し)(?!X)(た)(?!X)(い)(?!X)/g , r1:' $1X(shi) $2X(ta) $3X(i) want to do ;SuruVerb ;Par'},
 {p1:/(し)(?!X)(た)(?!X)/g , r1:' $1X(shi) $2X(ta) did ;InformalVerb ;SuruVerb ;Par'}, 
 {p1:/(;RuVerb)(る) /g , r1:' るX(ru) to do , will do ;InformalVerb ;Ending ;Par'}, 
-{p1:/(;Par)(だ)(?!X)/g , r1:' $1X$2X(da) did ;InformalVerb ;Ending ;Par'}, 
-{p1:/(;Par)(た)(?!X)/g , r1:' $1X$2X(ta) did ;InformalVerb ;Ending ;Par'}, 
-{p1:/(;Par)(る)(?!X)/g , r1:' $1X$2X(ru) do , will do ;InformalVerb ;Ending ;Par'}, 
-{p1:/(;Par)(ま)(?!X)(せ)(?!X)(ん)(?!X)/g , r1:' $1X$2X(ma) $2X(se) $3X(n) didn t  ;FormalVerb ;Ending ;Par'}, 
-{p1:/(;Par)(ま)(?!X)(す)(?!X)/g , r1:' $1X$2X(ma) $2X(su) to do , will do  ;FormalVerb ;Ending ;Par'}, 
-{p1:/(;Par)(ね)(?!X)/g , r1:' $1X$2X(ne) isn t it\? ;InformalVerb ;Ending ;Par'}, 
+{p1:/(;Par)(だ)(?!X)/g , r1:' $1X(da) did ;InformalVerb ;Ending ;Par'}, 
+{p1:/(;Par)(た)(?!X)/g , r1:' $1X(ta) did ;InformalVerb ;Ending ;Par'}, 
+{p1:/(;Par)(る)(?!X)/g , r1:' $1X(ru) do , will do ;InformalVerb ;Ending ;Par'}, 
+{p1:/(;Par)(ま)(?!X)(せ)(?!X)(ん)(?!X)/g , r1:' $1X(ma) $2X(se) $3X(n) didn t  ;FormalVerb ;Ending ;Par'}, 
+{p1:/(;Par)(ま)(?!X)(す)(?!X)/g , r1:'$1X$2X(ma) $3X(su) to do , will do  ;FormalVerb ;Ending ;Par'}, 
+{p1:/(;Par)(ね)(?!X)/g , r1:' $1X(ne) isn t it\? ;InformalVerb ;Ending ;Par'}, 
 {p1:/(;IchidanVerbる) /g , r1:' るX(ru) to do , will do ;IchidanVerb ;InformalVerb ;Ending ;Par'}, 
 
 {p1:/(\.)/g , r1:' $1ten , decimal ;Par'}, 
@@ -9048,6 +9049,6 @@ const replsB=[
 {p1:/-([a-zA-Z]+)/g , r1:' =<font color=#e8d9cd>$1</font>'}, 
 
 {p1:/(;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb)/g , r1:' <br>$1'},
-{p1:/;Par/g , r1:' <br>'}, 
+{p1:/(;Par)/g , r1:' <br>'}, 
 
 ] ;
