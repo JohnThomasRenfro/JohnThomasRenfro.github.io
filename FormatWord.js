@@ -23,8 +23,8 @@ function formatJapaneseRegex(word, pronunciation, definition, type){
             `$${index + 1}X(${pronunciation.split(/\s+/)[index] ||''})`
         ).join('');
         return requiresAdditionalX
-            ? `${baseReplacement}${definition};${typeSuffix}$${word.length + 1}` 
-            : `${baseReplacement}${definition};${typeSuffix}`;// Skip$X for exceptions
+            ? `${baseReplacement}${definition}${typeSuffix}$${word.length + 1}` 
+            : `${baseReplacement}${definition}${typeSuffix}`;
     };
 
     let endingPattern;
@@ -34,52 +34,52 @@ function formatJapaneseRegex(word, pronunciation, definition, type){
     switch (type){
         case "RuVerb":
             endingPattern = `([らりるれろっ])(?!X)`;
-            typeSuffix = "RuVerb;Par";
+            typeSuffix = ";RuVerb";
             break;
         case "SuVerb":
             endingPattern = `([さしすせそ])(?!X)`;
-            typeSuffix = "SuVerb;Par";
+            typeSuffix = ";SuVerb";
             break;
         case "IAdjective":
             endingPattern = `([いくかさ])(?!X)`;
-            typeSuffix = "IAdjective;Par";
+            typeSuffix = ";IAdjective";
             break;
         case "KuVerb":
             endingPattern = `([かきくけこい])(?!X)`;
-            typeSuffix = "KuVerb;Par";
+            typeSuffix = ";KuVerb";
             break;
         case "GuVerb":
             endingPattern = `([がぎぐげごい])(?!X)`;
-            typeSuffix = "GuVerb;Par";
+            typeSuffix = ";GuVerb";
             break;			
         case "BuVerb":
             endingPattern = `([ばびぶべぼん])(?!X)`;
-            typeSuffix = "BuVerb;Par";
+            typeSuffix = ";BuVerb";
             break;
         case "MuVerb":
             endingPattern = `([まみむめもん])(?!X)`;
-            typeSuffix = "MuVerb;Par";
+            typeSuffix = ";MuVerb";
             break;
         case "NuVerb":
             endingPattern = `([なにぬねのん])(?!X)`;
-            typeSuffix = "NuVerb;Par";
+            typeSuffix = ";NuVerb";
             break;
         case "TsuVerb":
             endingPattern = `([たちつてとっ])(?!X)`;
-            typeSuffix = "TsuVerb;Par";
+            typeSuffix = ";TsuVerb";
             break;
         case "UVerb":
             endingPattern = `([わいうえおっ])(?!X)`;
-            typeSuffix = "UVerb;Par";
+            typeSuffix = ";UVerb";
             break;			
         case "IchidanVerb":
             endingPattern ='';// No specific ending for Ichidan verbs
-            typeSuffix = "IchidanVerb;Par";
+            typeSuffix = ";IchidanVerb";
             requiresAdditionalX = false;// Exception: No$X for Ichidan verbs
             break;
         default:
             endingPattern ='';// Non-verbs
-            typeSuffix = "Par";
+            typeSuffix = "";
             requiresAdditionalX = false;// Exception: No$X for Non-verbs
             break;
     }
@@ -88,7 +88,7 @@ function formatJapaneseRegex(word, pronunciation, definition, type){
     const regexPattern = getBasePattern(word, endingPattern);
     const replacement = getReplacement(word, pronunciation, definition, typeSuffix, requiresAdditionalX);
 
-    return `{p1:/${regexPattern}/g,r1:'${replacement}'},`;
+    return `{p1:/${regexPattern}/g,r1:'${replacement};Par'},`;
 }
 
 function formatAndDisplay(){
