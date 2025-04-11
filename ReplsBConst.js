@@ -8512,7 +8512,7 @@ const replsB=[
 {p1:/(;Par)(て)(?!X)(い)(?!X)/g,r1:'$1X$2X(te)$3X(i)is doing;ConjunctiveVerb;Par'},
 {p1:/(;Par)(で)(?!X)(い)(?!X)/g,r1:'$1X$2X(de)$3X(i)is doing;ConjunctiveVerb;Par'},
 {p1:/(Adjectiveら|Verbら)(?!X)(れ)(?!X)/g,r1:'$1X(ra)$2X(re)is done;ConjunctiveVerb;Par'},
-{p1:/(;Par)(て)(?!X)(き)(?!X)/g,r1:'$1X(te)$2X(k)come to do;Par'},
+{p1:/(;Par)(て)(?!X)(き)(?!X)/g,r1:'$1X(te)$2X(ki)come to do;Par'},
 {p1:/(;Par)(て)(?!X)/g,r1:'$1X$2X(te)do and,ConjuctiveVerb;Par'},
 {p1:/(;Par)(た)(?!X)(く)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1X$2X(ta)$2X(ku)$3X(na)$4X(i)does not want to;Verb;Par'},
 
