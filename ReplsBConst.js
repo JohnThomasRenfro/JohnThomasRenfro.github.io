@@ -29,6 +29,7 @@ const replsB=[
 {p1:/(も)(?!X)(う)(?!X)(い)(?!X)(い)(?!X)(か)(?!X)(い)(?!X)/g,r1:'$1X(mo)$2X(u)$3X(i)$4X(i)$5X(ka)$6X(i)one more time;Par'},
 {p1:/(ぴ)(?!X)(ょ)(?!X)(ん)(?!X)(ぴ)(?!X)(ょ)(?!X)(ん)(?!X)/g,r1:'$1X(pi)$2X(yo)$3X(n)$4X(pi)$5X(yo)$6X(n)pyon,jump,hop;Par'},
 {p1:/(び)(?!X)(し)(?!X)(ょ)(?!X)(び)(?!X)(し)(?!X)(ょ)(?!X)/g,r1:'$1X(bi)$2X(shi)$3X(yo)$4X(bi)$5X(shi)$6X(yo)bisyo,soaked;Par'},
+{p1:/(ど)(?!X)(う)(?!X)(し)(?!X)(た)(?!X)(ら)(?!X)/g,r1:'$1X(do)$2X(u)$3X(shi)$4X(ta)$5X(ra)in what way;Par'},
 {p1:/(と)(?!X)(う)(?!X)(も)(?!X)(ろ)(?!X)(こ)(?!X)(し)(?!X)/g,r1:'$1X(to)$2X(u)$3X(mo)$4X(ro)$5X(ko)$6X(shi)shi,corn,maize;Par'},
 {p1:/(じ)(?!X)(ゃ)(?!X)(ん)(?!X)(じ)(?!X)(ゃ)(?!X)(ん)(?!X)/g,r1:'$1X(j)$2X(ya)$3X(n)$4X(j)$5X(ya)$6X(n)many times,repeatedly;Par'},
 {p1:/(く)(?!X)(し)(?!X)(ゃ)(?!X)(く)(?!X)(し)(?!X)(ゃ)(?!X)/g,r1:'$1X(ku)$2X(s)$3X(ya)$4X(ku)$5X(s)$6X(ya)messy,scrunch;Par'},
@@ -7612,7 +7613,7 @@ const replsB=[
 {p1:/(;BuVerb)(び)/g,r1:'$1X$2X(bi)'},
 {p1:/(;BuVerb)(ば)/g,r1:'$1X$2X(ba)'},
 {p1:/(;BeVerb)(し)/g,r1:'$1X$2X(shi),to be '},
-{p1:/(;BeVerb)(す)/g,r1:'$1X$2X(su);FormalVerb;BeVerb;Ending '},
+{p1:/(;BeVerb)(す)/g,r1:'$1X$2X(su);FormalVerb;Ending '},
 {p1:/(;AruVerb)(っ)/g,r1:'$1X$2X(t)'},
 
 {p1:/(８|8|八)(?!X)/g,r1:'$1X(hachi)yaku,ya,eight;Par'},
@@ -7658,7 +7659,7 @@ const replsB=[
 {p1:/(領)(?!X)/g,r1:'$1X(eri)collar;Par'},
 {p1:/(順)(?!X)/g,r1:'$1X(jyun)order,sequence;Par'},
 {p1:/(頃)(?!X)/g,r1:'$1X(koro)goro,time;Par'},
-{p1:/(音)(?!X)/g,r1:'$1X(oto)sound,speech sound,chinese pronunciation of a character;Par'},
+{p1:/(音)(?!X)/g,r1:'$1X(oto)sound;Par'},
 {p1:/(音)(?!X)/g,r1:'$1X(oto)sound,noise;Par'},
 {p1:/(韓)(?!X)/g,r1:'$1X(kan)Korea;Par'},
 {p1:/(鞄)(?!X)/g,r1:'$1X(ka+ban,bag,handbag,briefcase;Par'},
@@ -7673,7 +7674,7 @@ const replsB=[
 {p1:/(霜)(?!X)/g,r1:'$1X(shimo)frost;Par'},
 {p1:/(雷)(?!X)/g,r1:'$1X(kaminari)thunder;Par'},
 {p1:/(零)(?!X)/g,r1:'$1X(rei)zero,naught;Par'},
-{p1:/(雲)(?!X)/g,r1:'$1X(kumo)Mo,cloud;Par'},
+{p1:/(雲)(?!X)/g,r1:'$1X(kumo)cloud;Par'},
 {p1:/(雪)(?!X)/g,r1:'$1X(yuki)snow;Par'},
 {p1:/(雨)(?!X)/g,r1:'$1X(ame)rain;Par'},
 {p1:/(難)(?!X)/g,r1:'$1X(nan)trouble;Par'},
@@ -7909,7 +7910,7 @@ const replsB=[
 {p1:/(章)(?!X)/g,r1:'$1X(syou)chapter;Par'},
 {p1:/(立)(?!X)/g,r1:'$1X(tachi)ta,ryuu,set up;Par'},
 {p1:/(窓)(?!X)/g,r1:'$1X(mado)window;Par'},
-{p1:/(空)(?!X)/g,r1:'$1X(sora)sky,weather;Par'},
+{p1:/(空)(?!X)/g,r1:'$1X(sora)sky;Par'},
 {p1:/(空)(?!X)/g,r1:'$1X(sora)sky,kara,emptiness,hollow;Par'},
 {p1:/(穴)(?!X)/g,r1:'$1X(ana)hole,cavity;Par'},
 {p1:/(稲)(?!X)/g,r1:'$1X(ine)rice plant;Par'},
@@ -8311,7 +8312,7 @@ const replsB=[
 {p1:/(塔)(?!X)/g,r1:'$1X(tou)tower,pagoda;Par'},
 {p1:/(塊)(?!X)/g,r1:'$1X(katamari)lump,ingot;Par'},
 {p1:/(塀)(?!X)/g,r1:'$1X(hei)fence,wall;Par'},
-{p1:/(場)(?!X)/g,r1:'$1X(jyou)ba,place;Par'},
+{p1:/(場)(?!X)/g,r1:'$1X(jyou,ba)place;Par'},
 {p1:/(報)(?!X)/g,r1:'$1X(hou)advisory;Par'},
 {p1:/(堂)(?!X)/g,r1:'$1X(dou)temple;Par'},
 {p1:/(埼)(?!X)/g,r1:'$1X(sai)peninsula;Par'},
@@ -8539,8 +8540,6 @@ const replsB=[
 {p1:/(;Par)(ば|Verbば)(?!X)/g,r1:'$1X$2X(ba)if;Par'},
 
 {p1:/(;Par)(よ)(?!X)/g,r1:'$1X$2X(yo)exclamation;Par'},
-
-{p1:/(;IAdjective)(く)(?!X)/g,r1:'$1X(ku)and;Par'},
 
 {p1:/(ご)(?!X)/g,r1:'$1X(go)honorable,makes words polite;Par'},
 
