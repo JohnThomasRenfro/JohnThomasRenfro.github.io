@@ -160,13 +160,13 @@ const replsB=[
 {p1:/(要)(?!X)(す)(?!X)(る)(?!X)(に)(?!X)/g,r1:'$1X$2X(yo)$3X(u)$4X(suruni)in a word,in short;Par'},
 {p1:/(落)(?!X)(と)(?!X)(し)(?!X)(物)(?!X)/g,r1:'$1X$2X(ot)$3X(o)$4X(shimono)lost property;Par'},
 {p1:/(落)(?!X)(ち)(?!X)(着)(?!X)(き)(?!X)/g,r1:'$1X$2X(oc)$3X(h)$4X(i)tsuki,composure;Par'},
-
 {p1:/(自)(?!X)(然)(?!X)(科)(?!X)(学)(?!X)/g,r1:'$1X$2X(shi)$3X(i)$4X(zenkaga)ku,natural science;Par'},
 {p1:/(自)(?!X)(作)(?!X)(自)(?!X)(演)(?!X)/g,r1:'$1X$2X$3X)$4X(ji)saku,ji,en,doing it all by yourself;Par'},
 {p1:/(耐)(?!X)(用)(?!X)(年)(?!X)(数)(?!X)/g,r1:'$1X(tai)$2X(you)$3X(nen)$4X(su)machine service life;Par'},
 {p1:/(置)(?!X)(き)(?!X)(換)(?!X)(え)(?!X)/g,r1:'$1X(o)$2X(ki)$3X(ka)$4X(e)change position;IchidanVerb;Par'},
 {p1:/(繰)(?!X)(り)(?!X)(広)(?!X)(げ)(?!X)/g,r1:'$1X(ku)$2X(ri)$3X(hiro)$4X(ge)unfold;IchidanVerb;Par'},
 {p1:/(締)(?!X)(め)(?!X)(切)(?!X)(り)(?!X)/g,r1:'$1X$2X(shi)$3X(i)$4X(mekiri)deadline,time limit;Par'},
+{p1:/(さ)(?!X)(き)(?!X)(ほ)(?!X)(ど)(?!X)/g,r1:'$1X(sa)$2X(ki)$3X(ho)$4X(do)a short while ago;Par'},
 {p1:/(総)(?!X)(理)(?!X)(大)(?!X)(臣)(?!X)/g,r1:'$1X(sou)$2X(ri)$3X(dai)$4X(jin)prime minister;Par'},
 {p1:/(筆)(?!X)(記)(?!X)(試)(?!X)(験)(?!X)/g,r1:'$1X$2X(hi)$3X(k$4X,ki,shi,ken,written examination;Par'},
 {p1:/(筆)(?!X)(記)(?!X)(用)(?!X)(具)(?!X)/g,r1:'$1X$2X(hi)$3X(k$4X,ki,you,gu,writing materials,pens and pencils;Par'},
@@ -176,7 +176,6 @@ const replsB=[
 {p1:/(社)(?!X)(会)(?!X)(科)(?!X)(学)(?!X)/g,r1:'$1X$2X(sy)$3X(a)$4X(kaika)gaku,social sciences;Par'},
 {p1:/(短)(?!X)(期)(?!X)(大)(?!X)(学)(?!X)/g,r1:'$1X(tan)$2X(ki)$3X(dai)$4X(gaku)junior college;Par'},
 {p1:/(真)(?!X)(っ)(?!X)(最)(?!X)(中)(?!X)/g,r1:'$1X$2X(ma)$3X(s)$4X(saichyuu)midst;Par'},
-
 {p1:/(目)(?!X)(覚)(?!X)(ま)(?!X)(し)(?!X)/g,r1:'$1X$2X(me)$3X(z)$4X(ama)shi,waking up;Par'},
 {p1:/(目)(?!X)(茶)(?!X)(苦)(?!X)(茶)(?!X)/g,r1:'$1X$2X(me)$3X(c)$4X(hyakuchya)in a mess,terrible;Par'},
 {p1:/(目)(?!X)(白)(?!X)(押)(?!X)(し)(?!X)/g,r1:'$1X$2X(me)$3X(j)$4X(iro o,shi,packed up to eyeballs;Par'},
@@ -186,7 +185,6 @@ const replsB=[
 {p1:/(生)(?!X)(年)(?!X)(月)(?!X)(日)(?!X)/g,r1:'$1X(sei)$2X(nen)$3X(gap)$4X(pi)date of birth;Par'},
 {p1:/(焼)(?!X)(き)(?!X)(そ)(?!X)(ば)(?!X)/g,r1:'$1X$2X(ya)$3X(k)$4X(isoba)pan,fried noodles;Par'},
 {p1:/(無)(?!X)(理)(?!X)(や)(?!X)(り)(?!X)/g,r1:'$1X$2X$3X)$4X(mu)riyari,by force,against your will;Par'},
-
 {p1:/(横)(?!X)(断)(?!X)(歩)(?!X)(道)(?!X)/g,r1:'$1X(ou)$2X(dan)$3X(ho)$4X(dou)pedestrian crossing;Par'},
 {p1:/(極)(?!X)(超)(?!X)(音)(?!X)(速)(?!X)/g,r1:'$1X(goku)$2X(cyou)$3X(on)$4X(soku)hypersonic speed;Par'},
 {p1:/(梅)(?!X)(雨)(?!X)(明)(?!X)(け)(?!X)/g,r1:'$1X(tsu)$2X(yu)$3X(a4Xke,end of the rainy season;Par'},
@@ -196,7 +194,6 @@ const replsB=[
 {p1:/(書)(?!X)(き)(?!X)(言)(?!X)(葉)(?!X)/g,r1:'$1X$2X(ka)$3X(k)$4X(ikotoba)written language;Par'},
 {p1:/(書)(?!X)(き)(?!X)(取)(?!X)(り)(?!X)/g,r1:'$1X$2X(ka)$3X(k)$4X(itori)dictation;Par'},
 {p1:/(曲)(?!X)(が)(?!X)(り)(?!X)(角)(?!X)/g,r1:'$1X$2X(ma)$3X(g)$4X(arika)do,corner;Par'},
-
 {p1:/(晩)(?!X)(さ)(?!X)(ん)(?!X)(会)(?!X)/g,r1:'$1X(ban)$2X(sa)$3X(n)$4X(kai)banquet;Par'},
 {p1:/(時)(?!X)(間)(?!X)(割)(?!X)(り)(?!X)/g,r1:'$1X$2X(ji)$3X(k)$4X(anwari)time table;Par'},
 {p1:/(春)(?!X)(夏)(?!X)(秋)(?!X)(冬)(?!X)/g,r1:'$1X$2X(shi)$3X(y)$4X(unkashyuutou)four seasons,all year round;Par'},
@@ -232,7 +229,6 @@ const replsB=[
 {p1:/(夜)(?!X)(更)(?!X)(か)(?!X)(し)(?!X)/g,r1:'$1X$2X(yo)$3X(fu)$4X(ka)shi,sitting up late at night;Par'},
 {p1:/(外)(?!X)(貨)(?!X)(建)(?!X)(て)(?!X)/g,r1:'$1X$2X(ga)$3X(i$4X,ka,date,foreign currency;Par'},
 {p1:/(売)(?!X)(り)(?!X)(切)(?!X)(れ)(?!X)/g,r1:'$1X$2X(ur)$3X(i)$4X(kire)sellout,sold out;Par'},
-
 {p1:/(土)(?!X)(砂)(?!X)(災)(?!X)(害)(?!X)/g,r1:'$1X(do)$2X(sya)$3X(sai)$4X(gai)landslide;Par'},
 {p1:/(国)(?!X)(務)(?!X)(長)(?!X)(官)(?!X)/g,r1:'$1X(koku)$2X(mu)$3X(cyou)$4X(kan)Secretary of State;Par'},
 {p1:/(向)(?!X)(こ)(?!X)(う)(?!X)(側)(?!X)/g,r1:'$1X$2X(mu)$3X(k)$4X(ougawa)other side;Par'},
@@ -1605,8 +1601,6 @@ const replsB=[
 {p1:/(ず)(?!X)(ら)(?!X)(り)(?!X)/g,r1:'$1X(zur)$2X(ar)$3X(i)line up neatly;Par'},
 {p1:/(ず)(?!X)(っ)(?!X)(と)(?!X)/g,r1:'$1X(zut)$2X(to)$3X,throughout;Par'},
 {p1:/(す)(?!X)(れ)(?!X)(ば)(?!X)/g,r1:'$1X(su)$2X(re)$3X(ba)if that is case then;Par'},
-{p1:/(す)(?!X)(る)(?!X)(と)(?!X)/g,r1:'$1X(su)$2X(ru)$3X(to)by way of;SuruVerb;Par'},
-{p1:/(し)(?!X)(た)(?!X)(と)(?!X)/g,r1:'$1X(shi)$2X(ta)$3X(to)happened by way of;SuruVerb;Par'},
 {p1:/(手)(?!X)(書)(?!X)(き)(?!X)/g,r1:'$1X(te)$2X(ka)$3X(ki)handwritten;Par'},
 {p1:/(す)(?!X)(べ)(?!X)(て)(?!X)/g,r1:'$1X(su)$2X(be)$3X(te)completely;Par'},
 {p1:/(す)(?!X)(べ)(?!X)(き)(?!X)/g,r1:'$1X(su)$2X(be)$3X(ki)should;Par'},
@@ -7583,6 +7577,7 @@ const replsB=[
 {p1:/(;SuVerb)(さ)/g,r1:'$1X$2X(sa)'},
 {p1:/(;IAdjective)(く)/g,r1:'$1X$2X(ku)'},
 {p1:/(;SuVerb)(す)/g,r1:'$1X$2X(su)to do,will do'},
+{p1:/(;NuVerb)(ん)/g,r1:'$1X$2X(n)continuous'},
 {p1:/(;RuVerb)(ろ)/g,r1:'$1X$2X(ro),let us do'},
 {p1:/(;RuVerb)(れ)/g,r1:'$1X$2X(re),can do'},
 {p1:/(;RuVerb)(る)/g,r1:'$1X$2X(ru),to do,will do;InformalVerb '},
@@ -8205,7 +8200,7 @@ const replsB=[
 {p1:/(庫)(?!X)/g,r1:'$1X(go)kura,warehouse;Par'},
 {p1:/(座|ざ)(?!X)/g,r1:'$1X(za)doing,there is,animate;IchidanVerb;Par'},
 {p1:/(度)(?!X)/g,r1:'$1X(do)times,degrees;Par'},
-{p1:/(府)(?!X)/g,r1:'$1X(fu)urban prefecture;Par'},
+{p1:/(府)(?!X)/g,r1:'$1X(fu)urban prefecture,the executive office of;Par'},
 {p1:/(店)(?!X)/g,r1:'$1X(mise)ten,shop;Par'},
 {p1:/(底)(?!X)/g,r1:'$1X(soko)bottom,depths;Par'},
 {p1:/(床)(?!X)/g,r1:'$1X(yuka)floor;Par'},
@@ -8228,7 +8223,7 @@ const replsB=[
 {p1:/(左)(?!X)/g,r1:'$1X(hidari)left;Par'},
 {p1:/(巣)(?!X)/g,r1:'$1X(su)nest,den;Par'},
 {p1:/(州)(?!X)/g,r1:'$1X(syuu)state;Par'},
-{p1:/(川|河)(?!X)/g,r1:'$1X(kawa)gawa,river;Par'},
+{p1:/(川|河)(?!X)/g,r1:'$1X(kawa,gawa)river;Par'},
 {p1:/(嵐)(?!X)/g,r1:'$1X(arashi)storm;Par'},
 {p1:/(崖)(?!X)/g,r1:'$1X(gake)cliff;Par'},
 {p1:/(崎)(?!X)/g,r1:'$1X(saki)zaki,peninsula;Par'},
@@ -8443,7 +8438,7 @@ const replsB=[
 {p1:/(傷)(?!X)/g,r1:'$1X(kizu)syou,wound;Par'},
 {p1:/(傘)(?!X)/g,r1:'$1X(kasa)umbrella;Par'},
 {p1:/(偽)(?!X)/g,r1:'$1X(itsuwa)fake;IchidanVerb;Par'},
-{p1:/(側)(?!X)/g,r1:'$1X(kawa)gawa,side;Par'},
+{p1:/(側)(?!X)/g,r1:'$1X(kawa,gawa)side;Par'},
 {p1:/(健)(?!X)/g,r1:'$1X(ken)health,strength;Par'},
 {p1:/(値)(?!X)/g,r1:'$1X(ne)atai,value;Par'},
 {p1:/(倍)(?!X)/g,r1:'$1X(bai)bei,double;Par'},
@@ -8477,7 +8472,7 @@ const replsB=[
 {p1:/(他)(?!X)/g,r1:'$1X(hoka)ta,others;Par'},
 {p1:/(仏)(?!X)/g,r1:'$1X(hotoke)buddha,Buddhist image;Par'},
 {p1:/(今)(?!X)/g,r1:'$1X(ima)kon,now;Par'},
-{p1:/(人)(?!X)/g,r1:'$1X(hito,nin,jin)jin,counter for people,person;Par'},
+{p1:/(人)(?!X)/g,r1:'$1X(hito,nin,jin)counter for people,person;Par'},
 {p1:/(亮)(?!X)/g,r1:'$1X(ke)helper;Par'},
 {p1:/(京)(?!X)/g,r1:'$1X(kyou)myako,capital;Par'},
 {p1:/(亜)(?!X)/g,r1:'$1X(a=Asia;Par'},
@@ -8513,7 +8508,7 @@ const replsB=[
 
 {p1:/(;Par)(て)(?!X)(い)(?!X)(く)(?!X)/g,r1:'$1X$2X(te)$3X(i)$4X(ku)is doing and;ConjunctiveVerb;Par'},
 {p1:/(;Par)(て)(?!X)(い)(?!X)/g,r1:'$1X$2X(te)$3X(i)is doing;ConjunctiveVerb;Par'},
-{p1:/(;Par)(で)(?!X)(い)(?!X)/g,r1:'$1X(de)$2X(i)is doing;ConjunctiveVerb;Par'},
+{p1:/(;Par)(で)(?!X)(い)(?!X)/g,r1:'$1X$2X(de)$3X(i)is doing;ConjunctiveVerb;Par'},
 {p1:/(Adjectiveら|Verbら)(?!X)(れ)(?!X)/g,r1:'$1X(ra)$2X(re)is done;ConjunctiveVerb;Par'},
 {p1:/(;Par)(て)(?!X)/g,r1:'$1X$2X(te)do and,ConjuctiveVerb;Par'},
 {p1:/(;Par)(た)(?!X)(く)(?!X)(な)(?!X)(い)(?!X)/g,r1:'$1X$2X(ta)$2X(ku)$3X(na)$4X(i)does not want to;Verb;Par'},
@@ -8596,12 +8591,10 @@ const replsB=[
 {p1:/(を)(?!X)/g,r1:'$1X(oo)direct object above is acted on;Postposition;Par'},
 
 {p1:/(Adverb)(く)(?!X)/g,r1:'$1$2X(ku)and;Par'},
-{p1:/(Verb|;Par|;Ending)(?!X)(と)(?!X)/g,r1:'$1X$2X(to)with the above,the person said;Par'},
 {p1:/(;Par)(な)(?!X)/g,r1:'$1X$2X(na)NaAdjective;Par'},
 {p1:/(Adverbな)(?!X)/g,r1:'$1X(na)Adverb;Par'},
 {p1:/(;Par)(等|Verbら)(?!X)/g,r1:'$1X$2X(ra)plural;Par'},
 {p1:/(;Par)(の)(?!X)/g,r1:'$1X$2X(no)of the above;Postposition;Par'},
-{p1:/(;Par)(と)(?!X)/g,r1:'$1X(to)by way of the above;Postposition;Par'},
 
 {p1:/(す)(?!X)(る)(?!X)/g,r1:'$1X(su)$2X(ru)to do,will do;InformalVerb;SuruVerb;Par'},
 
@@ -8616,6 +8609,9 @@ const replsB=[
 {p1:/(;Par)(ま)(?!X)(す)(?!X)/g,r1:'$1X$2X(ma)$3X(su)to do,will do;FormalVerb;Ending;Par'},
 {p1:/(;Par)(ね)(?!X)/g,r1:'$1X(ne)isn t it\?;InformalVerb;Ending;Par'},
 {p1:/(;IchidanVerbる)/g,r1:'るX(ru)to do,will do;IchidanVerb;InformalVerb;Ending;Par'},
+
+{p1:/(;Par)(と)(?!X)/g,r1:'$1X(to)by way of the above;Postposition;Par'},
+{p1:/(Verb|;Ending)(?!X)(と)(?!X)/g,r1:'$1X$2X(to)with the above,the person said;Par'},
 
 {p1:/(\.)/g,r1:'$1ten,decimal;Par'},
 
