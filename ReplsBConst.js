@@ -8534,6 +8534,7 @@ const replsB=[
 {p1:/(;Par)(た)(?!X)(い)(?!X)/g,r1:'$1X$2X(ta)$3X(i)want to do;Verb;Par'},
 
 {p1:/(な)(?!X)(く)(?!X)/g,r1:'$1X(na)$2X(ku)not and;ConjunctiveVerb;Par'},
+{p1:/(;Par)(ら)(?!X)(れ)(?!X)(て)(?!X)/g,r1:'$1X$2X(ra)$2X(re)$3X(te)has been doing;ConjunctiveVerb;Par'},
 {p1:/(;Par)(れ)(?!X)(て)(?!X)/g,r1:'$1X$2X(ret)$2X(e)has been doing;ConjunctiveVerb;Par'},
 {p1:/(;Par)(れ)(?!X)(ば)(?!X)/g,r1:'$1X$2X(re ba,if done;ConjunctiveVerb;Par'},
 
