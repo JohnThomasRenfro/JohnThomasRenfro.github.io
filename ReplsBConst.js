@@ -8562,7 +8562,7 @@ const replsB=[
 {p1:/(さ)(?!X)(れ)(?!X)(た)(?!X)/g,r1:'$1X(sa)$2X(re)$3X(ta)was done;InformalVerb;Ending;Par'},
 {p1:/(だ)(?!X)(っ)(?!X)(た)(?!X)/g,r1:'$1X(da)$2X(t)$3X(ta)was;InformalVerb;Ending,BeVerb;Par'},
 {p1:/(だ)(?!X)(ろ)(?!X)(う)(?!X)/g,r1:'$1X(da)$2X(ro)$3X(u)might be;InformalVerb;Ending,BeVerb;Par'},
-{p1:/(Adjectiveっ)(?!X)(た)(?!X)/g,r1:'$1X(tta)$2X;did;InformalVerb;Ending;Par'},
+{p1:/(っ)(?!X)(た)(?!X)/g,r1:'$1X(t)$2X(ta);did;InformalVerb;Ending;Par'},
 
 {p1:/(た)(?!X)(ら)(?!X)/g,r1:'$1X(ta)$2X(ra)if;InformalVerb;Ending;Par'},
 {p1:/(っ)(?!X)(た)(?!X)/g,r1:'$1X(tta)$2X;did;InformalVerb;Ending;Par'},
@@ -8617,7 +8617,7 @@ const replsB=[
 {p1:/(;Par)(ね)(?!X)/g,r1:'$1X(ne)isn t it\?;InformalVerb;Ending;Par'},
 {p1:/(;IchidanVerbる)/g,r1:'るX(ru)to do,will do;IchidanVerb;InformalVerb;Ending;Par'},
 
-{p1:/(;Par)(と)(?!X)/g,r1:'$1X(to)by way of the above;Postposition;Par'},
+{p1:/(;Par)(と)(?!X)/g,r1:'$1X$2X(to)by way of the above;Postposition;Par'},
 {p1:/(Verb|;Ending)(?!X)(と)(?!X)/g,r1:'$1X$2X(to)with the above,the person said;Par'},
 
 {p1:/(\.)/g,r1:'$1ten,decimal;Par'},
