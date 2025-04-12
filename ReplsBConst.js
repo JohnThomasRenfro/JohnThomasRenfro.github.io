@@ -6066,6 +6066,7 @@ const replsB=[
 {p1:/(動)(?!X)(機)(?!X)/g,r1:'$1X(dou)$2X(ki)motive;Par'},
 {p1:/(動)(?!X)(揺)(?!X)/g,r1:'$1X(dou)$2X(you)unrest;Par'},
 {p1:/(動)(?!X)(態)(?!X)/g,r1:'$1X(dou)$2X(tai)dynamic;Par'},
+{p1:/(指)(?!X)(南)(?!X)/g,r1:'$1X(shi)$2X(nan)instructions;Par'}, 
 {p1:/(動)(?!X)(員)(?!X)/g,r1:'$1X(dou)$2X(in)mobilization;Par'},
 {p1:/(動)(?!X)(向)(?!X)/g,r1:'$1X(dou)$2X(kou)trend,tendency;Par'},
 {p1:/(動)(?!X)(力)(?!X)/g,r1:'$1X(dou)$2X(ryoku)power;Par'},
