@@ -7412,7 +7412,7 @@ const replsB=[
 {p1:/(実)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(mino)bear fruit,ripen;RuVerb$2;Par'},
 {p1:/(安)(?!X)([いくかさ])(?!X)/g,r1:'$1X(yasu)inexpensive,cheap;IAdjective$2;Par'},
 {p1:/(守)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(mamo)protect;RuVerb$2;Par'},
-{p1:/(学)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1X(man)a,learn,study;BuVerb$2X;Par'},
+{p1:/(学)(?!X)([ばびぶべぼん])(?!X)/g,r1:'$1X(mana)learn;BuVerb$2X;Par'},
 {p1:/(嫌)(?!X)([わいうえおっ])(?!X)/g,r1:'$1X(kira)dislike;UVerb$2;Par'},
 {p1:/(嫌)(?!X)([いくかさ])(?!X)/g,r1:'$1X(kira)dislike;IAdjective$2;Par'},
 {p1:/(好)(?!X)([まみむめもん])(?!X)/g,r1:'$1X(kono)like,be fond of;MuVerb$2;Par'},
