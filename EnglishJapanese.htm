@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Grammar Analyzer</title>
+  <script src="https://unpkg.com/compromise@13.0.0/builds/compromise.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>English Grammar Analyzer</h1>
+  <p>Enter English text below to see it parsed into grammar tags:</p>
+
+  <textarea id="inputText" placeholder="Enter a sentence here..." rows="6"></textarea>
+  <button onclick="parseEnglish()">Analyze</button>
+
+  <h3>Parsed Output:</h3>
+  <pre id="output"></pre>
+
+  <script>
+    // Function to parse the text
+    function parseEnglish() {
+      const inputText = document.getElementById("inputText").value;
+
+      // Parse the sentence using Compromise
+      const doc = nlp(inputText);
+      
+      // Extract the terms and their tags
+      const terms = doc.terms().out("tags");
+      
+      // Map POS tags to custom format (can be adjusted based on your preference)
+      const posMap = {
+        "Determiner": "DET",
+        "Noun": "NOUN",
+        "Verb": "VERB",
+        "Adjective": "ADJ",
+        "Adverb": "ADV",
+        "Pronoun": "PRON",
+        "Preposition": "PREP",
+        "Conjunction": "CONJ",
+        "Infinitive Marker": "PARTICLE",
+        "PastTense": "VERB;Past"
+      };
+      
+      // Format output as per your existing system
+      let output = "";
+      doc.terms().forEach(term => {
+        const word = term.text;
+        const tag = posMap[term.tags[0]] || term.tags[0]; // Map POS tag to custom format or use default
+        output += `${word} → ${tag}\n`;
+      });
+      
+      // Display the formatted result
+      document.getElementById("output").textContent = output;
+    }
+  </script>
+
+</body>
+</html>
