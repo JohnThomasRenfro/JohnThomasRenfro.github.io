@@ -883,6 +883,7 @@ const replsB=[
 {p1:/(蛋)(?!X)(白)(?!X)(質)(?!X)/g,r1:'$1X(tan)$2X(pa)$3X(kushitsu)protein;Par'},
 {p1:/(著)(?!X)(名)(?!X)(人)(?!X)/g,r1:'$1X(cyo)$2X(mei)$3X(jin)celebrity;Par'},
 {p1:/(葉)(?!X)(っ)(?!X)(ぱ)(?!X)/g,r1:'$1X(hap)$2X(pa)$3X,leaf;Par'},
+{p1:/(文)(?!X)(科)(?!X)(省)(?!X)/g,r1:'$1X(bun)$2X(ka)$3X(syou)Ministry of Education;Par'},
 {p1:/(落)(?!X)(ち)(?!X)(葉)(?!X)/g,r1:'$1X(och)$2X(ib)$3X(a)fallen leaves;Par'},
 {p1:/(華)(?!X)(や)(?!X)(か)(?!X)/g,r1:'$1X(hana)$2X(ya)$3X(ka)gorgeous,colorful;Par'},
 {p1:/(茶)(?!X)(わ)(?!X)(ん)(?!X)/g,r1:'$1X(cya)$2X(wa)$3X(n)tea cup,rice bowl;Par'},
