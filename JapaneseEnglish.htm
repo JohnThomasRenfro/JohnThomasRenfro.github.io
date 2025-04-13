@@ -31,29 +31,37 @@ function translateB() {
 
 function translateC(inputText) {
   const results = [];
-  const wordSet = new Set((inputText.match(/\b[a-zA-Z]+\b/g) || []).map(w => w.toLowerCase()));
+  const loweredInput = inputText.toLowerCase();
 
   replsB.forEach(entry => {
-    // Skip entries that are just punctuation or irrelevant matches
     if (/Punctuation/i.test(entry.r1)) return;
 
-    // Clean up r1 by removing any parentheses and ensuring it's not a global wildcard match
-    const cleanedR1 = entry.r1.replace(/\([^()]*\)/g, '').trim();
+    const englishPartMatch = entry.r1.match(/(?:\$\dX\([^)]+\))+ (.+)/);
+    const englishText = englishPartMatch ? englishPartMatch[1] : entry.r1;
+    const basePhrases = englishText.split(/[,;]/).map(s => s.trim().toLowerCase()).filter(Boolean);
 
-    // Ensure we only match exact words and not substrings
-    const engWords = cleanedR1.split(/[,; ]/).map(s => s.trim().toLowerCase());
+    // Auto-extend each base phrase with optional 'a', 'the', plural
+    const expandedPhrases = new Set();
+    for (const phrase of basePhrases) {
+      expandedPhrases.add(phrase);
+      if (!/^(a|the)\s/.test(phrase)) {
+        expandedPhrases.add(`a ${phrase}`);
+        expandedPhrases.add(`the ${phrase}`);
+      }
+      if (!phrase.endsWith('s')) {
+        expandedPhrases.add(`${phrase}s`);
+      }
+    }
 
-    // Only match if the English word exactly matches
-    for (const word of engWords) {
-      if (wordSet.has(word)) {
-        // Extract the Kanji from the entry
+    for (const phrase of expandedPhrases) {
+      const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+      if (regex.test(loweredInput)) {
         const kanjiMatch = entry.p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
         let kanji = kanjiMatch ? kanjiMatch[1] : '?';
         kanji = kanji.replace(/\)\(\?!X\)/g, '').replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
 
-        // Add the result only if a valid Kanji is found
         if (kanji && kanji !== '?') {
-          results.push(`${word} → ${kanji}`);
+          results.push(`${phrase} → ${kanji}`);
         }
         break;
       }
