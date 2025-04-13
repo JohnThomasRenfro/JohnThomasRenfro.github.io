@@ -9,12 +9,58 @@
 <script src='FormatWord.js'></script>
 <script>
 
-function translateB() {
-replsB.forEach(replace => {
-a = a.replace(replace.p1, replace.r1);
-});
+let a = "";
 
-document.getElementById("translatedTextDisplay").innerHTML = a;
+function translateB() {
+  let workingText = a;
+
+  // Apply only Japanese replacements
+  replsB.forEach(replace => {
+    workingText = workingText.replace(replace.p1, replace.r1);
+  });
+
+  // Get English-to-Japanese matches
+  const engMatches = translateC(a);
+
+  // Display combined results
+  document.getElementById("translatedTextDisplay").innerHTML = `
+    <div><strong>Translated Text:</strong><br>${workingText}</div>
+    <hr>
+    <div><strong>Matched English Words in ReplsB:</strong><br>${engMatches}</div>`;
+}
+
+function translateC(inputText) {
+  const results = [];
+  const wordSet = new Set((inputText.match(/\b[a-zA-Z]+\b/g) || []).map(w => w.toLowerCase()));
+
+  replsB.forEach(entry => {
+    // Skip entries that are just punctuation or irrelevant matches
+    if (/Punctuation/i.test(entry.r1)) return;
+
+    // Clean up r1 by removing any parentheses and ensuring it's not a global wildcard match
+    const cleanedR1 = entry.r1.replace(/\([^()]*\)/g, '').trim();
+
+    // Ensure we only match exact words and not substrings
+    const engWords = cleanedR1.split(/[,; ]/).map(s => s.trim().toLowerCase());
+
+    // Only match if the English word exactly matches
+    for (const word of engWords) {
+      if (wordSet.has(word)) {
+        // Extract the Kanji from the entry
+        const kanjiMatch = entry.p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
+        let kanji = kanjiMatch ? kanjiMatch[1] : '?';
+        kanji = kanji.replace(/\)\(\?!X\)/g, '').replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
+
+        // Add the result only if a valid Kanji is found
+        if (kanji && kanji !== '?') {
+          results.push(`${word} → ${kanji}`);
+        }
+        break;
+      }
+    }
+  });
+
+  return results.length ? results.join("<br>") : "(no matching English words found)";
 }
 
 </script></head>
