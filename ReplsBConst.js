@@ -59,11 +59,11 @@ const replsB=[
 {p1:/(道)(?!X)(筋)(?!X)(を)(?!X)(付)(?!X)(け)(?!X)/g,r1:'$1X(su)$2X(ji)$3X(o)$4X(tsu)$5X(ke)pave way for;IchidanVerb;Par'},
 {p1:/(耳)(?!X)(鼻)(?!X)(咽)(?!X)(喉)(?!X)(科)(?!X)/g,r1:'$1X(ji)$2X(bi)$3X(in)$4X(kou)$5X(ka)Otolaryngology;Par'},
 {p1:/(攻)(?!X)(め)(?!X)(あ)(?!X)(ぐ)(?!X)(ね)(?!X)/g,r1:'$1X(se)$2X(me)$3X(a)$4X(gu)$5X(ne)be at a loss on how to continue;IchidanVerb;Par'},
-
 {p1:/(ま)(?!X)(た)(?!X)(し)(?!X)(て)(?!X)(も)(?!X)/g,r1:'$1X(ma)$2X(ta)$3X(shi)$4X(te)$5X(mo)once again;Par'},
 {p1:/(じ)(?!X)(ゃ)(?!X)(な)(?!X)(く)(?!X)(て)(?!X)/g,r1:'$1X(j)$2X(ya)$3X(na)$4X(ku)$5X(te)not;NegativeForm;InformalVerb;Ending;Par'},
 {p1:/(あ)(?!X)(り)(?!X)(が)(?!X)(と)(?!X)(う)(?!X)/g,r1:'$1X(a)$2X(ri)$3X(ga)$4X(to)$5X(u)thank you very much;Par'},
 
+{p1:/(歩)(?!X)(み)(?!X)(寄)(?!X)(り)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(ayu)$2X(mi)$3X(yo)$4X()compromise;RuVerb$5;Par'},
 {p1:/(申)(?!X)(し)(?!X)(訳)(?!X)(な)(?!X)([いくかさ])(?!X)/g,r1:'$1X(mou)$2X(shi)$3X(wake)$4X(na)inexcusable;IAdjective$5;Par'},
 {p1:/(飛)(?!X)(び)(?!X)(下)(?!X)(り)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2X(to)$3X(b)$4X(iori)jump off,jump down;RuVerb$5;Par'},
 {p1:/(飛)(?!X)(び)(?!X)(上)(?!X)(が)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X$2X(to)$3X(b)$4X(iaga)fly up,jump up;RuVerb$5;Par'},
@@ -8268,7 +8268,7 @@ const replsB=[
 {p1:/(小)(?!X)/g,r1:'$1X(syou)o,ko,small;Par'},
 {p1:/(将)(?!X)/g,r1:'$1X(masa)syou,hata,to lead;Par'},
 {p1:/(封)(?!X)/g,r1:'$1X(fuu)sealing;Par'},
-{p1:/(対)(?!X)/g,r1:'$1X(tai)versus,tsui,pair;Par'},
+{p1:/(対)(?!X)/g,r1:'$1X(tai)versus(tsui)pair;Par'},
 {p1:/(寺)(?!X)/g,r1:'$1X(tera)buddhist temple;Par'},
 {p1:/(寮)(?!X)/g,r1:'$1X(ryou)dormitory,lodge;Par'},
 {p1:/(寝)(?!X)/g,r1:'$1X(ne)sleep;IchidanVerb;Par'},
