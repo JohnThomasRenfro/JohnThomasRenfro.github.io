@@ -5870,6 +5870,7 @@ const replsB=[
 {p1:/(各)(?!X)(地)(?!X)/g,r1:'$1X(kaku)$2X(chi)every place;Par'},
 {p1:/(各)(?!X)(国)(?!X)/g,r1:'$1X(kak)$2X(koku)every country;Par'},
 {p1:/(通)(?!X)(商)(?!X)/g,r1:'$1X(tsu)$2X(syou)commerce,trade;Par '},
+{p1:/(自)(?!X)(称)(?!X)/g,r1:'$1X(ji)$2X(syou)self proclaimed;Par'},
 {p1:/(司)(?!X)(法)(?!X)/g,r1:'$1X(shi)$2X(hou)law enforcement;Par'},
 {p1:/(司)(?!X)(会)(?!X)/g,r1:'$1X(shi)$2X(kai)host;Par'},
 {p1:/(右)(?!X)(翼)(?!X)/g,r1:'$1X(u)$2X(yoku)right wing;Par'},
