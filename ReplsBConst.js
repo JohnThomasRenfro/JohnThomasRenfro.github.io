@@ -4440,6 +4440,7 @@ const replsB=[
 {p1:/(本)(?!X)(能)(?!X)/g,r1:'$1X(hon)$2X(nou)instinct;Par'},
 {p1:/(本)(?!X)(紙)(?!X)/g,r1:'$1X(hon)$2X(shi)this news publication;Par'},
 {p1:/(本)(?!X)(箱)(?!X)/g,r1:'$1X(hon)$2X(bako)bookcase;Par'},
+{p1:/(日)(?!X)(間)(?!X)/g,r1:'$1X(ka)$2X(kan)days time;Par'}, 
 {p1:/(本)(?!X)(社)(?!X)/g,r1:'$1X(hon)$2X(sya)head office;Par'},
 {p1:/(本)(?!X)(番)(?!X)/g,r1:'$1X(hon)$2X(ban)height of the season;;Par'},
 {p1:/(本)(?!X)(物)(?!X)/g,r1:'$1X(hon)$2X(mono)real thing,gen,uine article;Par'},
