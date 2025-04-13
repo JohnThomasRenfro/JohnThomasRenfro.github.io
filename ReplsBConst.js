@@ -796,7 +796,7 @@ const replsB=[
 {p1:/(防)(?!X)(御)(?!X)(率)(?!X)/g,r1:'$1X(bou)$2X(gyo)$3X(ritsu)earned run average;Par'},
 {p1:/(関)(?!X)(係)(?!X)(者)(?!X)/g,r1:'$1X(kan)$2X(kei)$3X(sya)insider source;Par'},
 {p1:/(長)(?!X)(距)(?!X)(離)(?!X)/g,r1:'$1X(cyou)$2X(kyo)$3X(ri)long range;Par'},
-{p1:/(長)(?!X)(続)(?!X)(き)(?!X)/g,r1:'$1X(na)$2X$3X(gatsuzuki)lasting for a long time;Par'},
+{p1:/(長)(?!X)(続)(?!X)(き)(?!X)/g,r1:'$1X(na)$2X(suzu)$3X(ki)lasting for a long time;Par'},
 {p1:/(長)(?!X)(生)(?!X)(き)(?!X)/g,r1:'$1X(naga)$2X(ik)$3X(i)long life,longevity;Par'},
 {p1:/(長)(?!X)(方)(?!X)(形)(?!X)/g,r1:'$1X(cyou)$2X(hou)$3X(kei)rectangle;Par'},
 {p1:/(長)(?!X)(持)(?!X)(ち)(?!X)/g,r1:'$1X(nagamo)$2X(ch)$3X(i)endurance,lasting long;Par'},
