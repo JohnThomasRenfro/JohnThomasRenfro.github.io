@@ -2644,6 +2644,7 @@ const replsB=[
 {p1:/(選)(?!X)(手)(?!X)/g,r1:'$1X(sen)$2X(syu)athlete;Par'},
 {p1:/(選)(?!X)(対)(?!X)/g,r1:'$1X(sen)$2X(tai)election campaign;Par'},
 {p1:/(選)(?!X)(出)(?!X)/g,r1:'$1X(sen)$2X(syutsu)election;Par'},
+{p1:/(あ)(?!X)(の)(?!X)/g,r1:'$1X(a)$2X(no)the;Par'},
 {p1:/(遮)(?!X)(断)(?!X)/g,r1:'$1X(sya)$2X(dan)isolation;Par'},
 {p1:/(遭)(?!X)(遇)(?!X)/g,r1:'$1X(sou)$2X(guu)encounter;Par'},
 {p1:/(適)(?!X)(用)(?!X)/g,r1:'$1X(teki)$2X(you)adoption of a plan,technology;Par'},
