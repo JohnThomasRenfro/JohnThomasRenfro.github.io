@@ -14,8 +14,21 @@ function translateB() {
         a = a.replace(replace.p1, replace.r1);
     });
 
+translateC(a);     
+
     document.getElementById("translatedTextDisplay").innerHTML = a;
 }
+
+        function translateC(inputText) {
+            let matchedEntries = [];
+
+            replsB.forEach(replace => {
+                // Loose match for r1 in the input text with word separators
+                const regex = new RegExp(`\\b${replace.r1.replace(/[\(\)\[\]\*\+\?\{\}\.\|\\^\\$]/g, '\\$&')}\\b`, 'g');
+                if (regex.test(inputText)) {
+                    matchedEntries.push({p1: replace.p1, r1: replace.r1});
+                }
+            });    
 
 </script></head>
 
