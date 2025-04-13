@@ -28,6 +28,11 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 高関税を武器に各国との貿易関係の改善を要求するトランプ米政権。各国がさまざまな対応をとる中、アフリカ南部ジンバブエは米国からの輸入品に対する関税を一時的にゼロにする方針を表明した。米国に歩み寄りの姿勢を示すことで事態の打開を図るとみられる。 
 
 <p>
+<hr>
+<textarea cols="35" rows="6" onchange="a=this.value;translateB()" placeholder='Put the Japanese text here.'></textarea>
+<br>
+<span id="translatedTextDisplay"></span>
+<p>    
 <button id="adminToggle" onclick="toggleAdminSection()" style="position: fixed; top: 10px; right: 10px; z-index: 1000; background-color: #0078d4; color: white; border: none; padding: 5px 10px; font-size: 12px; border-radius: 3px; cursor: pointer;">
  Admin Use Only
 </button>
@@ -64,11 +69,6 @@ Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
  </button>
  <p id="output" style="margin-top: 10px; font-size: 12px; color: #333333;"></p>
 </div>
-
-<hr>
-<textarea cols="35" rows="6" onchange="a=this.value;translateB()" placeholder='Put the Japanese text here.'></textarea>
-<br>
-<span id="translatedTextDisplay"></span>
 <br>
 <div class=HeaderStyle>Memorizing Kanji</div>
 <ul>
