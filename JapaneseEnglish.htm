@@ -14,22 +14,7 @@ function translateB() {
         a = a.replace(replace.p1, replace.r1);
     });
 
-//translateC(inputText, rules);    
-
     document.getElementById("translatedTextDisplay").innerHTML = a;
-}
-
-function translateC(inputText, rules) {
-    let output = inputText;
-
-    rules.forEach(rule => {
-        output = output.replace(rule.p1, (match, ...groups) => {
-            const r1Replaced = rule.r1.replace(/\$(\d)/g, (_, g) => groups[parseInt(g) - 1] || '');
-            return match + r1Replaced;
-        });
-    });
-
-    return output;
 }
 
 </script></head>
