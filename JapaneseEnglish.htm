@@ -22,13 +22,17 @@ translateC(a);
         function translateC(inputText) {
             let matchedEntries = [];
 
+            // For each entry in replsB, check if the word exists in inputText
             replsB.forEach(replace => {
-                // Loose match for r1 in the input text with word separators
-                const regex = new RegExp(`\\b${replace.r1.replace(/[\(\)\[\]\*\+\?\{\}\.\|\\^\\$]/g, '\\$&')}\\b`, 'g');
-                if (regex.test(inputText)) {
+                // Loose match for r1 in the input text (with word boundaries \b)
+                const regex = new RegExp(`\\b${replace.p1.source.replace(/[\(\)\[\]\*\+\?\{\}\.\|\\^\\$]/g, '\\$&')}\\b`, 'gi');
+                let matches = inputText.match(regex);
+                
+                if (matches) {
+                    // If a match is found, add the entire p1 and r1 to matchedEntries
                     matchedEntries.push({p1: replace.p1, r1: replace.r1});
                 }
-            });    
+            });
 
 </script></head>
 
