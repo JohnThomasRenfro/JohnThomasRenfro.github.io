@@ -31,7 +31,6 @@ function translateB() {
 
 function translateC(inputText) {
   const results = [];
-  const matchedEnglishWords = [];
   const loweredInput = inputText.toLowerCase();
 
   replsB.forEach(entry => {
@@ -56,15 +55,13 @@ function translateC(inputText) {
     for (const phrase of expandedPhrases) {
       const regexExact = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
       if (regexExact.test(loweredInput)) {
-        matchedEnglishWords.push(phrase); // Add matched phrase to the list
-        addResult(phrase, entry); // No confidence levels, just add result
+        addResult(phrase, entry); // No need to store matched words
         break;
       }
 
       const rootMatchRegex = new RegExp(`${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i');
       if (phrase.length > 3 && rootMatchRegex.test(loweredInput)) {
-        matchedEnglishWords.push(phrase); // Add matched phrase to the list
-        addResult(phrase, entry); // No confidence levels, just add result
+        addResult(phrase, entry); // No need to store matched words
         break;
       }
     }
@@ -79,21 +76,13 @@ function translateC(inputText) {
           return match === "っ" ? "" : match;  // Remove unnecessary small "tsu"
         });
 
-        // Just add the result, no color coding or confidence
+        // Add the result directly without the "Matched English Words" list
         results.push(`${matchedPhrase} → ${cleanedKanji}`);
       }
     }
   });
 
-  // Add a legend for the matched English words
-  const legend = `
-    <p><strong>Matched English Words:</strong></p>
-    <ul>
-      ${matchedEnglishWords.map(word => `<li>${word}</li>`).join('')}
-    </ul>
-  `;
-
-  return results.length ? legend + results.join("<br>") : "(no matching English words found)";
+  return results.length ? results.join("<br>") : "(no matching English words found)";
 }
 
 </script></head>
