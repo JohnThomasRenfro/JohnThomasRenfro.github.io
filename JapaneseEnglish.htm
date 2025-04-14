@@ -84,6 +84,17 @@ function translateC(inputText) {
     }
   });
 
+  // Handling compound words like "baseball" explicitly
+  const explicitMatches = [
+    { english: 'baseball', japanese: '野球' },
+  ];
+
+  explicitMatches.forEach(entry => {
+    if (loweredInput.includes(entry.english)) {
+      results.push(`<span style="color:green;">${entry.english} → ${entry.japanese}</span>`);
+    }
+  });
+
   return results.length ? results.join("<br>") : "(no matching English words found)";
 }
 
