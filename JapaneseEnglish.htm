@@ -51,6 +51,9 @@ function translateC(inputText) {
       if (!phrase.endsWith('s')) {
         expandedPhrases.add(`${phrase}s`);
       }
+      if (!phrase.endsWith('er')) {
+        expandedPhrases.add(`${phrase}er`);
+      }      
     }
 
     for (const phrase of expandedPhrases) {
