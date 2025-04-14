@@ -95,7 +95,17 @@ function translateC(inputText) {
     }
   });
 
-  return results.length ? results.join("<br>") : "(no matching English words found)";
+  // Add a legend for color meanings
+  const legend = `
+    <p><strong>Color Legend:</strong></p>
+    <ul>
+      <li><span style="color:green;">Green</span>: High Confidence Match</li>
+      <li><span style="color:orange;">Orange</span>: Medium Confidence Match</li>
+      <li><span style="color:red;">Red</span>: Low Confidence Match</li>
+    </ul>
+  `;
+
+  return legend + (results.length ? results.join("<br>") : "(no matching English words found)");
 }
 
 </script></head>
