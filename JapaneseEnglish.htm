@@ -43,13 +43,62 @@ function translateC(inputText) {
     const expandedPhrases = new Set();
     for (const phrase of basePhrases) {
       expandedPhrases.add(phrase);
+      
+      // Adding more variations to the phrase
       if (!/^(a|the)\s/.test(phrase)) {
         expandedPhrases.add(`a ${phrase}`);
         expandedPhrases.add(`the ${phrase}`);
       }
+      
+      // Plural forms
       if (!phrase.endsWith('s')) expandedPhrases.add(`${phrase}s`);
+      if (!phrase.endsWith('es')) expandedPhrases.add(`${phrase}es`);
+      
+      // Comparative forms
       if (!phrase.endsWith('er')) expandedPhrases.add(`${phrase}er`);
+      if (!phrase.endsWith('est')) expandedPhrases.add(`${phrase}est`);
+
+      // Continuous forms
       if (!phrase.endsWith('ing')) expandedPhrases.add(`${phrase}ing`);
+
+      // Possessive form
+      expandedPhrases.add(`${phrase}’s`);
+      
+      // Noun suffixes
+      expandedPhrases.add(`${phrase}ment`);
+      expandedPhrases.add(`${phrase}ness`);
+      expandedPhrases.add(`${phrase}ity`);
+      expandedPhrases.add(`${phrase}tion`);
+      expandedPhrases.add(`${phrase}sion`);
+      expandedPhrases.add(`${phrase}ence`);
+      expandedPhrases.add(`${phrase}ance`);
+      expandedPhrases.add(`${phrase}ship`);
+      expandedPhrases.add(`${phrase}hood`);
+
+      // Verb forms (past tense, present participle)
+      if (!phrase.endsWith('ed')) expandedPhrases.add(`${phrase}ed`);
+      if (!phrase.endsWith('ing')) expandedPhrases.add(`${phrase}ing`);
+
+      // Adverbs (ly)
+      if (!phrase.endsWith('ly')) expandedPhrases.add(`${phrase}ly`);
+      
+      // Superlative forms (most, least)
+      expandedPhrases.add(`most ${phrase}`);
+      expandedPhrases.add(`least ${phrase}`);
+
+      // Question forms (e.g., is it? does it?)
+      expandedPhrases.add(`${phrase}?`);
+
+      // Future tense (will, shall)
+      expandedPhrases.add(`will ${phrase}`);
+      expandedPhrases.add(`shall ${phrase}`);
+
+      // Conjunctions/Prepositions
+      expandedPhrases.add(`${phrase} and`);
+      expandedPhrases.add(`${phrase} or`);
+      expandedPhrases.add(`${phrase} but`);
+      expandedPhrases.add(`${phrase} in`);
+      expandedPhrases.add(`${phrase} on`);
     }
 
     for (const phrase of expandedPhrases) {
