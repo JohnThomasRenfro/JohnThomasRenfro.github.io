@@ -71,9 +71,15 @@ function translateC(inputText) {
       let kanji = kanjiMatch ? kanjiMatch[1] : '?';
       kanji = kanji.replace(/\)\(\?!X\)/g, '').replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
 
+      // Fix for better match processing: Removing odd conjugations like "現れらりるれろっ"
       if (kanji && kanji !== '?') {
+        const cleanedKanji = kanji.replace(/[\u3041-\u3096\u30A1-\u30F6\u4E00-\u9FAF]/g, (match) => {
+          return match === "っ" ? "" : match;  // Remove unnecessary small "tsu"
+        });
+
+        // Add color coding based on rank for better visualization
         const color = rank === 'high' ? 'green' : rank === 'medium' ? 'orange' : 'red';
-        results.push(`<span style="color:${color};">${matchedPhrase} → ${kanji}</span>`);
+        results.push(`<span style="color:${color};">${matchedPhrase} → ${cleanedKanji}</span>`);
       }
     }
   });
