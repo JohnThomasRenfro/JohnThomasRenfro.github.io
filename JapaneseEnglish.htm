@@ -53,7 +53,10 @@ function translateC(inputText) {
       }
       if (!phrase.endsWith('er')) {
         expandedPhrases.add(`${phrase}er`);
-      }      
+      }
+      if (!phrase.endsWith('ing')) {
+        expandedPhrases.add(`${phrase}ing`);
+      }         
     }
 
     for (const phrase of expandedPhrases) {
