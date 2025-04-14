@@ -4886,6 +4886,7 @@ const replsB=[
 {p1:/(拡)(?!X)(充)(?!X)/g,r1:'$1X(kaku)$2X(jyuu)expand;Par'},
 {p1:/(拠)(?!X)(点)(?!X)/g,r1:'$1X(kyo)$2X(ten)position;Par'},
 {p1:/(拠)(?!X)(出)(?!X)/g,r1:'$1X(kyo)$2X(syutsu)contribution;Par'},
+{p1:/(金)(?!X)(持)(?!X)(ち)(?!X)/g,r1:'$1X(kane)$2X(mo)$3X(chi)rich;Par'},
 {p1:/(拝)(?!X)(見)(?!X)/g,r1:'$1X(hai)$2X(ken)humbly look at,see;Par'},
 {p1:/(招)(?!X)(致)(?!X)/g,r1:'$1X(syou)$2X(chi)bid;Par'},
 {p1:/(招)(?!X)(待)(?!X)/g,r1:'$1X(syou)$2X(tai)invitation;Par'},
