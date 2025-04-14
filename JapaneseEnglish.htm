@@ -26,7 +26,7 @@ function translateB() {
   document.getElementById("translatedTextDisplay").innerHTML = `
     <div><strong>Translated Text:</strong><br>${workingText}</div>
     <hr>
-    <div><strong>Matched English Words in ReplsB:</strong><br>${engMatches}</div>`;
+    <div><strong>Matched English Words if any:</strong><br>${engMatches}</div>`;
 }
 
 function translateC(inputText) {
@@ -40,7 +40,6 @@ function translateC(inputText) {
     const englishText = englishPartMatch ? englishPartMatch[1] : entry.r1;
     const basePhrases = englishText.split(/[,;]/).map(s => s.trim().toLowerCase()).filter(Boolean);
 
-    // Auto-extend each base phrase with optional 'a', 'the', plural
     const expandedPhrases = new Set();
     for (const phrase of basePhrases) {
       expandedPhrases.add(phrase);
@@ -54,16 +53,28 @@ function translateC(inputText) {
     }
 
     for (const phrase of expandedPhrases) {
-      const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-      if (regex.test(loweredInput)) {
-        const kanjiMatch = entry.p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
-        let kanji = kanjiMatch ? kanjiMatch[1] : '?';
-        kanji = kanji.replace(/\)\(\?!X\)/g, '').replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
-
-        if (kanji && kanji !== '?') {
-          results.push(`${phrase} → ${kanji}`);
-        }
+      // First, try exact word boundary match
+      const regexExact = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+      if (regexExact.test(loweredInput)) {
+        addResult(phrase, entry);
         break;
+      }
+
+      // Then, allow partial root matching
+      const rootMatchRegex = new RegExp(`${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i');
+      if (phrase.length > 3 && rootMatchRegex.test(loweredInput)) {
+        addResult(phrase, entry);
+        break;
+      }
+    }
+
+    function addResult(matchedPhrase, entry) {
+      const kanjiMatch = entry.p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
+      let kanji = kanjiMatch ? kanjiMatch[1] : '?';
+      kanji = kanji.replace(/\)\(\?!X\)/g, '').replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
+
+      if (kanji && kanji !== '?') {
+        results.push(`${matchedPhrase} → ${kanji}`);
       }
     }
   });
