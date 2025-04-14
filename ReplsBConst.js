@@ -1258,7 +1258,7 @@ const replsB=[
 {p1:/(大)(?!X)(通)(?!X)(り)(?!X)/g,r1:'$1X(oo)$2X(do)$3X(ori)main street;Par'},
 {p1:/(大)(?!X)(西)(?!X)(洋)(?!X)/g,r1:'$1X(tai)$2X(sei)$3X(you)Atlantic;Par'},
 {p1:/(大)(?!X)(蔵)(?!X)(省)(?!X)/g,r1:'$1X(oo)$2X(kura)$3X(syou)Ministry of Finance;Par'},
-{p1:/(大)(?!X)(統)(?!X)(領)(?!X)/g,r1:'$1X(dai)$2X(tou)$3X(ryou)president,a president,the president,presidents;Par'},
+{p1:/(大)(?!X)(統)(?!X)(領)(?!X)/g,r1:'$1X(dai)$2X(tou)$3X(ryou)president;Par'},
 {p1:/(大)(?!X)(晦)(?!X)(日)(?!X)/g,r1:'$1X(oo)$2X(mi)$3X(soka)new year s eve;Par'},
 {p1:/(大)(?!X)(急)(?!X)(ぎ)(?!X)/g,r1:'$1X(oo)$2X(is)$3X(ogi)in a great hurry;Par'},
 {p1:/(大)(?!X)(学)(?!X)(院)(?!X)/g,r1:'$1X(dai)$2X(gaku)$3X(in)graduate school;Par'},
