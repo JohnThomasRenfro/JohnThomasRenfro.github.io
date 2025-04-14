@@ -43,62 +43,75 @@ function translateC(inputText) {
     const expandedPhrases = new Set();
     for (const phrase of basePhrases) {
       expandedPhrases.add(phrase);
-      
-      // Adding more variations to the phrase
+
+      // Articles
       if (!/^(a|the)\s/.test(phrase)) {
-        expandedPhrases.add(`a ${phrase}`);
-        expandedPhrases.add(`the ${phrase}`);
+        expandedPhrases.add(`a ${phrase} (indefinite article)`);
+        expandedPhrases.add(`the ${phrase} (definite article)`);
       }
-      
-      // Plural forms
-      if (!phrase.endsWith('s')) expandedPhrases.add(`${phrase}s`);
-      if (!phrase.endsWith('es')) expandedPhrases.add(`${phrase}es`);
-      
-      // Comparative forms
-      if (!phrase.endsWith('er')) expandedPhrases.add(`${phrase}er`);
-      if (!phrase.endsWith('est')) expandedPhrases.add(`${phrase}est`);
 
-      // Continuous forms
-      if (!phrase.endsWith('ing')) expandedPhrases.add(`${phrase}ing`);
-
-      // Possessive form
-      expandedPhrases.add(`${phrase}’s`);
-      
-      // Noun suffixes
-      expandedPhrases.add(`${phrase}ment`);
-      expandedPhrases.add(`${phrase}ness`);
-      expandedPhrases.add(`${phrase}ity`);
-      expandedPhrases.add(`${phrase}tion`);
-      expandedPhrases.add(`${phrase}sion`);
-      expandedPhrases.add(`${phrase}ence`);
-      expandedPhrases.add(`${phrase}ance`);
-      expandedPhrases.add(`${phrase}ship`);
-      expandedPhrases.add(`${phrase}hood`);
+      // Plural forms and Possessive
+      if (!phrase.endsWith('s')) expandedPhrases.add(`${phrase}s (plural form)`);
+      if (!phrase.endsWith('es')) expandedPhrases.add(`${phrase}es (plural form)`);
+      expandedPhrases.add(`${phrase}’s (possessive form)`);
 
       // Verb forms (past tense, present participle)
-      if (!phrase.endsWith('ed')) expandedPhrases.add(`${phrase}ed`);
-      if (!phrase.endsWith('ing')) expandedPhrases.add(`${phrase}ing`);
+      if (!phrase.endsWith('ed')) expandedPhrases.add(`${phrase}ed (past tense verb ending)`);
+      expandedPhrases.add(`${phrase}+ed (past tense verb ending)`); // Annotating past tense
+      if (!phrase.endsWith('ing')) expandedPhrases.add(`${phrase}ing (present participle verb ending)`);
+
+      // Comparative & Superlative forms
+      if (!phrase.endsWith('er')) expandedPhrases.add(`${phrase}er (comparative form)`);
+      if (!phrase.endsWith('est')) expandedPhrases.add(`${phrase}est (superlative form)`);
+      expandedPhrases.add(`most ${phrase} (comparative form)`);
+      expandedPhrases.add(`least ${phrase} (comparative form)`);
 
       // Adverbs (ly)
-      if (!phrase.endsWith('ly')) expandedPhrases.add(`${phrase}ly`);
-      
-      // Superlative forms (most, least)
-      expandedPhrases.add(`most ${phrase}`);
-      expandedPhrases.add(`least ${phrase}`);
+      if (!phrase.endsWith('ly')) expandedPhrases.add(`${phrase}ly (adverb form)`);
+
+      // Noun suffixes
+      expandedPhrases.add(`${phrase}ment (noun suffix)`);
+      expandedPhrases.add(`${phrase}ness (noun suffix)`);
+      expandedPhrases.add(`${phrase}ity (noun suffix)`);
+      expandedPhrases.add(`${phrase}tion (noun suffix)`);
+      expandedPhrases.add(`${phrase}sion (noun suffix)`);
+      expandedPhrases.add(`${phrase}ence (noun suffix)`);
+      expandedPhrases.add(`${phrase}ance (noun suffix)`);
+      expandedPhrases.add(`${phrase}ship (noun suffix)`);
+      expandedPhrases.add(`${phrase}hood (noun suffix)`);
+
+      // Prefixes
+      expandedPhrases.add(`un${phrase} (prefix 'un-' meaning not)`);
+      expandedPhrases.add(`re${phrase} (prefix 're-' meaning again or back)`);
+      expandedPhrases.add(`in${phrase} (prefix 'in-' meaning not or into)`);
+      expandedPhrases.add(`dis${phrase} (prefix 'dis-' meaning opposite or not)`);
+      expandedPhrases.add(`pre${phrase} (prefix 'pre-' meaning before)`);
+      expandedPhrases.add(`anti${phrase} (prefix 'anti-' meaning against)`);
+      expandedPhrases.add(`auto${phrase} (prefix 'auto-' meaning self or automatic)`);
+      expandedPhrases.add(`co${phrase} (prefix 'co-' meaning together or with)`);
+      expandedPhrases.add(`counter${phrase} (prefix 'counter-' meaning against or opposite)`);
 
       // Question forms (e.g., is it? does it?)
-      expandedPhrases.add(`${phrase}?`);
+      expandedPhrases.add(`${phrase}? (question form)`);
 
       // Future tense (will, shall)
-      expandedPhrases.add(`will ${phrase}`);
-      expandedPhrases.add(`shall ${phrase}`);
+      expandedPhrases.add(`will ${phrase} (future tense)`);  // Future tense with "will"
+      expandedPhrases.add(`shall ${phrase} (future tense)`); // Future tense with "shall"
 
       // Conjunctions/Prepositions
-      expandedPhrases.add(`${phrase} and`);
-      expandedPhrases.add(`${phrase} or`);
-      expandedPhrases.add(`${phrase} but`);
-      expandedPhrases.add(`${phrase} in`);
-      expandedPhrases.add(`${phrase} on`);
+      expandedPhrases.add(`${phrase} and (conjunction)`);
+      expandedPhrases.add(`${phrase} or (conjunction)`);
+      expandedPhrases.add(`${phrase} but (conjunction)`);
+      expandedPhrases.add(`${phrase} in (preposition)`);
+      expandedPhrases.add(`${phrase} on (preposition)`);
+      expandedPhrases.add(`${phrase} at (preposition)`);
+      expandedPhrases.add(`${phrase} by (preposition)`);
+      expandedPhrases.add(`${phrase} for (preposition)`);
+      expandedPhrases.add(`${phrase} with (preposition)`);
+      expandedPhrases.add(`${phrase} about (preposition)`);
+      expandedPhrases.add(`${phrase} between (preposition)`);
+      expandedPhrases.add(`${phrase} among (preposition)`);
+      expandedPhrases.add(`${phrase} through (preposition)`);
     }
 
     for (const phrase of expandedPhrases) {
