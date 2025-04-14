@@ -26,7 +26,6 @@ function translateB() {
   document.getElementById("translatedTextDisplay").innerHTML = `
     <div><strong>Translated Text:</strong><br>${workingText}</div>
     <hr>
-    <div><strong>Matched English Words if any:</strong><br>${engMatches}</div>`;
 }
 
 function translateC(inputText) {
@@ -111,7 +110,7 @@ function translateC(inputText) {
 
   // List the matched English words at the top
   const matchedWordsList = matchedEnglishWords.length ? `
-    <p><strong>Matched English Words:</strong></p>
+    <p><strong>..matched English Words if any:</strong></p>
     <ul>
       ${matchedEnglishWords.map(word => `<li>${word}</li>`).join('')}
     </ul>
