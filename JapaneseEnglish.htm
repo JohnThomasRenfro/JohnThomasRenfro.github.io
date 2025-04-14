@@ -9,12 +9,66 @@
 <script src='FormatWord.js'></script>
 <script>
 
-function translateB() {
-replsB.forEach(replace => {
-a = a.replace(replace.p1, replace.r1);
-});
+let a = "";
 
-document.getElementById("translatedTextDisplay").innerHTML = a;
+function translateB() {
+  let workingText = a;
+
+  // Apply only Japanese replacements
+  replsB.forEach(replace => {
+    workingText = workingText.replace(replace.p1, replace.r1);
+  });
+
+  // Get English-to-Japanese matches
+  const engMatches = translateC(a);
+
+  // Display combined results
+  document.getElementById("translatedTextDisplay").innerHTML = `
+    <div><strong>Translated Text:</strong><br>${workingText}</div>
+    <hr>
+    <div><strong>Matched English Words in ReplsB:</strong><br>${engMatches}</div>`;
+}
+
+function translateC(inputText) {
+  const results = [];
+  const loweredInput = inputText.toLowerCase();
+
+  replsB.forEach(entry => {
+    if (/Punctuation/i.test(entry.r1)) return;
+
+    const englishPartMatch = entry.r1.match(/(?:\$\dX\([^)]+\))+ (.+)/);
+    const englishText = englishPartMatch ? englishPartMatch[1] : entry.r1;
+    const basePhrases = englishText.split(/[,;]/).map(s => s.trim().toLowerCase()).filter(Boolean);
+
+    // Auto-extend each base phrase with optional 'a', 'the', plural
+    const expandedPhrases = new Set();
+    for (const phrase of basePhrases) {
+      expandedPhrases.add(phrase);
+      if (!/^(a|the)\s/.test(phrase)) {
+        expandedPhrases.add(`a ${phrase}`);
+        expandedPhrases.add(`the ${phrase}`);
+      }
+      if (!phrase.endsWith('ed')) {
+        expandedPhrases.add(`${phrase}ed`);
+      }
+    }
+
+    for (const phrase of expandedPhrases) {
+      const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+      if (regex.test(loweredInput)) {
+        const kanjiMatch = entry.p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
+        let kanji = kanjiMatch ? kanjiMatch[1] : '?';
+        kanji = kanji.replace(/\)\(\?!X\)/g, '').replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
+
+        if (kanji && kanji !== '?') {
+          results.push(`${phrase} → ${kanji}`);
+        }
+        break;
+      }
+    }
+  });
+
+  return results.length ? results.join("<br>") : "(no matching English words found)";
 }
 
 </script></head>
