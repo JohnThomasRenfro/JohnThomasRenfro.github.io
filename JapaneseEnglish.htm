@@ -48,82 +48,52 @@ function translateC(inputText) {
         expandedPhrases.add(`a ${phrase}`);
         expandedPhrases.add(`the ${phrase}`);
       }
-      if (!phrase.endsWith('s')) {
-        expandedPhrases.add(`${phrase}s`);
-      }
-      if (!phrase.endsWith('er')) {
-        expandedPhrases.add(`${phrase}er`);
-      }
-      if (!phrase.endsWith('ing')) {
-        expandedPhrases.add(`${phrase}ing`);
-      }         
+      if (!phrase.endsWith('s')) expandedPhrases.add(`${phrase}s`);
+      if (!phrase.endsWith('er')) expandedPhrases.add(`${phrase}er`);
+      if (!phrase.endsWith('ing')) expandedPhrases.add(`${phrase}ing`);
     }
 
     for (const phrase of expandedPhrases) {
       const regexExact = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
       if (regexExact.test(loweredInput)) {
         matchedEnglishWords.push(phrase); // Add matched phrase to the list
-        addResult(phrase, entry, 'high');
+        addResult(phrase, entry); // No confidence levels, just add result
         break;
       }
 
       const rootMatchRegex = new RegExp(`${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i');
       if (phrase.length > 3 && rootMatchRegex.test(loweredInput)) {
         matchedEnglishWords.push(phrase); // Add matched phrase to the list
-        addResult(phrase, entry, 'medium');
+        addResult(phrase, entry); // No confidence levels, just add result
         break;
       }
     }
 
-    function addResult(matchedPhrase, entry, rank) {
+    function addResult(matchedPhrase, entry) {
       const kanjiMatch = entry.p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
       let kanji = kanjiMatch ? kanjiMatch[1] : '?';
       kanji = kanji.replace(/\)\(\?!X\)/g, '').replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
 
-      // Fix for better match processing: Removing odd conjugations like "現れらりるれろっ"
       if (kanji && kanji !== '?') {
-        const cleanedKanji = kanji.replace(/[\u3041-\u3096\u30A1-\u30F6\u4E00-\u9FAF]/g, (match) => {
+        const cleanedKanji = kanji.replace(/[\u3041-\u3096\u30A1-\u30F6\u4E00-\u9FAF]/g, match => {
           return match === "っ" ? "" : match;  // Remove unnecessary small "tsu"
         });
 
-        // Add color coding based on rank for better visualization
-        const color = rank === 'high' ? 'green' : rank === 'medium' ? 'orange' : 'red';
-        results.push(`<span style="color:${color};">${matchedPhrase} → ${cleanedKanji}</span>`);
+        // Just add the result, no color coding or confidence
+        results.push(`${matchedPhrase} → ${cleanedKanji}`);
       }
     }
   });
 
-  // Handling compound words like "baseball" explicitly
-  const explicitMatches = [
-    { english: 'baseball', japanese: '野球' },
-  ];
-
-  explicitMatches.forEach(entry => {
-    if (loweredInput.includes(entry.english)) {
-      matchedEnglishWords.push(entry.english); // Add to matched English list
-      results.push(`<span style="color:green;">${entry.english} → ${entry.japanese}</span>`);
-    }
-  });
-
-  // Add a legend for color meanings
+  // Add a legend for the matched English words
   const legend = `
-    <p><strong>Color Legend:</strong></p>
-    <ul>
-      <li><span style="color:green;">Green</span>: High Confidence Match</li>
-      <li><span style="color:orange;">Orange</span>: Medium Confidence Match</li>
-      <li><span style="color:red;">Red</span>: Low Confidence Match</li>
-    </ul>
-  `;
-
-  // List the matched English words at the top
-  const matchedWordsList = matchedEnglishWords.length ? `
     <p><strong>Matched English Words:</strong></p>
     <ul>
       ${matchedEnglishWords.map(word => `<li>${word}</li>`).join('')}
     </ul>
-  ` : '';
+  `;
 
-  return matchedWordsList + legend + (results.length ? results.join("<br>") : "(no matching English words found)");
+  return results.length ? legend + results.join("<br>") : "(no matching English words found)";
 }
 
 </script></head>
