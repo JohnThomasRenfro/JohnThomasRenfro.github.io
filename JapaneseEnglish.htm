@@ -43,17 +43,17 @@ function translateC(inputText) {
     const expandedPhrases = new Set();
     for (const phrase of basePhrases) {
       expandedPhrases.add(phrase);
-
-      // Articles
+      
+      // Articles (a, the)
       if (!/^(a|the)\s/.test(phrase)) {
-        expandedPhrases.add(`a ${phrase} (indefinite article)`);
-        expandedPhrases.add(`the ${phrase} (definite article)`);
+        expandedPhrases.add(`a ${phrase}`);
+        expandedPhrases.add(`the ${phrase}`);
       }
 
-      // Plural forms and Possessive
-      if (!phrase.endsWith('s')) expandedPhrases.add(`${phrase}s (plural form)`);
-      if (!phrase.endsWith('es')) expandedPhrases.add(`${phrase}es (plural form)`);
-      expandedPhrases.add(`${phrase}’s (possessive form)`);
+      // Plural forms (s, es)
+      if (!phrase.endsWith('s')) expandedPhrases.add(`${phrase}s`);
+      if (!phrase.endsWith('es')) expandedPhrases.add(`${phrase}es`);
+      expandedPhrases.add(`${phrase}’s (possessive form)`); // Possessive form
 
       // Verb forms (past tense, present participle)
       if (!phrase.endsWith('ed')) expandedPhrases.add(`${phrase}ed (past tense verb ending)`);
@@ -61,42 +61,42 @@ function translateC(inputText) {
       if (!phrase.endsWith('ing')) expandedPhrases.add(`${phrase}ing (present participle verb ending)`);
 
       // Comparative & Superlative forms
-      if (!phrase.endsWith('er')) expandedPhrases.add(`${phrase}er (comparative form)`);
-      if (!phrase.endsWith('est')) expandedPhrases.add(`${phrase}est (superlative form)`);
-      expandedPhrases.add(`most ${phrase} (comparative form)`);
-      expandedPhrases.add(`least ${phrase} (comparative form)`);
+      if (!phrase.endsWith('er')) expandedPhrases.add(`${phrase}er (comparative adjective or adverb)`);
+      if (!phrase.endsWith('est')) expandedPhrases.add(`${phrase}est (superlative adjective or adverb)`);
+      expandedPhrases.add(`most ${phrase} (superlative form)`);
+      expandedPhrases.add(`least ${phrase} (superlative form)`);
 
       // Adverbs (ly)
       if (!phrase.endsWith('ly')) expandedPhrases.add(`${phrase}ly (adverb form)`);
 
       // Noun suffixes
-      expandedPhrases.add(`${phrase}ment (noun suffix)`);
-      expandedPhrases.add(`${phrase}ness (noun suffix)`);
-      expandedPhrases.add(`${phrase}ity (noun suffix)`);
-      expandedPhrases.add(`${phrase}tion (noun suffix)`);
-      expandedPhrases.add(`${phrase}sion (noun suffix)`);
-      expandedPhrases.add(`${phrase}ence (noun suffix)`);
-      expandedPhrases.add(`${phrase}ance (noun suffix)`);
-      expandedPhrases.add(`${phrase}ship (noun suffix)`);
-      expandedPhrases.add(`${phrase}hood (noun suffix)`);
+      expandedPhrases.add(`${phrase}ment (noun form)`);
+      expandedPhrases.add(`${phrase}ness (noun form)`);
+      expandedPhrases.add(`${phrase}ity (noun form)`);
+      expandedPhrases.add(`${phrase}tion (noun form)`);
+      expandedPhrases.add(`${phrase}sion (noun form)`);
+      expandedPhrases.add(`${phrase}ence (noun form)`);
+      expandedPhrases.add(`${phrase}ance (noun form)`);
+      expandedPhrases.add(`${phrase}ship (noun form)`);
+      expandedPhrases.add(`${phrase}hood (noun form)`);
 
       // Prefixes
-      expandedPhrases.add(`un${phrase} (prefix 'un-' meaning not)`);
-      expandedPhrases.add(`re${phrase} (prefix 're-' meaning again or back)`);
-      expandedPhrases.add(`in${phrase} (prefix 'in-' meaning not or into)`);
-      expandedPhrases.add(`dis${phrase} (prefix 'dis-' meaning opposite or not)`);
-      expandedPhrases.add(`pre${phrase} (prefix 'pre-' meaning before)`);
-      expandedPhrases.add(`anti${phrase} (prefix 'anti-' meaning against)`);
-      expandedPhrases.add(`auto${phrase} (prefix 'auto-' meaning self or automatic)`);
-      expandedPhrases.add(`co${phrase} (prefix 'co-' meaning together or with)`);
-      expandedPhrases.add(`counter${phrase} (prefix 'counter-' meaning against or opposite)`);
+      expandedPhrases.add(`un${phrase} (negation prefix)`);
+      expandedPhrases.add(`re${phrase} (repetition or return prefix)`);
+      expandedPhrases.add(`in${phrase} (negation or into prefix)`);
+      expandedPhrases.add(`dis${phrase} (negation or removal prefix)`);
+      expandedPhrases.add(`pre${phrase} (before prefix)`);
+      expandedPhrases.add(`anti${phrase} (against prefix)`);
+      expandedPhrases.add(`auto${phrase} (self prefix)`);
+      expandedPhrases.add(`co${phrase} (joint prefix)`);
+      expandedPhrases.add(`counter${phrase} (opposite or against prefix)`);
 
       // Question forms (e.g., is it? does it?)
       expandedPhrases.add(`${phrase}? (question form)`);
 
       // Future tense (will, shall)
-      expandedPhrases.add(`will ${phrase} (future tense)`);  // Future tense with "will"
-      expandedPhrases.add(`shall ${phrase} (future tense)`); // Future tense with "shall"
+      expandedPhrases.add(`will ${phrase} (future tense form)`);
+      expandedPhrases.add(`shall ${phrase} (future tense form)`);
 
       // Conjunctions/Prepositions
       expandedPhrases.add(`${phrase} and (conjunction)`);
