@@ -31,42 +31,69 @@ function translateB() {
 
 function translateC(inputText) {
   const results = [];
-  const loweredInput = inputText.toLowerCase();
 
+  // Step 1: Clean input by removing articles and common suffixes (but not 'e')
+  let cleanedInput = inputText
+    .toLowerCase()
+    .replace(/\b(a|the)\b/g, '')                       // Remove 'a' and 'the'
+    .replace(/\b(\w+?)(ing|ed|s)\b/g, '$1')            // Remove -ing, -ed, -s suffixes
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const phraseEntries = [];
+
+  // Step 2: Prepare phrases from replsB
   replsB.forEach(entry => {
     if (/Punctuation/i.test(entry.r1)) return;
 
     const englishPartMatch = entry.r1.match(/(?:\$\dX\([^)]+\))+ (.+)/);
     const englishText = englishPartMatch ? englishPartMatch[1] : entry.r1;
-    const basePhrases = englishText.split(/[,;]/).map(s => s.trim().toLowerCase()).filter(Boolean);
 
-    // Auto-extend each base phrase with optional 'a', 'the', plural
-    const expandedPhrases = new Set();
-    for (const phrase of basePhrases) {
-      expandedPhrases.add(phrase);
-      if (!/^(a|the)\s/.test(phrase)) {
-        expandedPhrases.add(`a ${phrase}`);
-        expandedPhrases.add(`the ${phrase}`);
-      }
-      if (!phrase.endsWith('ed')) {
-        expandedPhrases.add(`${phrase}ed`);
-      }
-    }
+    englishText
+      .split(/[,;]/)
+      .map(s => s.trim().toLowerCase())
+      .forEach(phrase => {
+        const basePhrase = phrase
+          .replace(/\b(a|the)\b/g, '')
+          .replace(/\b(\w+?)(ing|ed|s)\b/g, '$1')        // Remove suffixes
+          .replace(/\s+/g, ' ')
+          .trim();
 
-    for (const phrase of expandedPhrases) {
-      const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-      if (regex.test(loweredInput)) {
-        const kanjiMatch = entry.p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
-        let kanji = kanjiMatch ? kanjiMatch[1] : '?';
-        kanji = kanji.replace(/\)\(\?!X\)/g, '').replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
-
-        if (kanji && kanji !== '?') {
-          results.push(`${phrase} → ${kanji}`);
+        if (basePhrase) {
+          phraseEntries.push({ phrase: basePhrase, entry });
         }
-        break;
+      });
+  });
+
+  // Step 3: Sort by length to prioritize longer matches
+  phraseEntries.sort((a, b) => b.phrase.length - a.phrase.length);
+
+  // Step 4: Find matches in cleaned input
+  const matchedIndices = new Array(cleanedInput.length).fill(false);
+
+  for (const { phrase, entry } of phraseEntries) {
+    const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+    const match = cleanedInput.match(regex);
+
+    if (match) {
+      const start = match.index;
+      const end = start + match[0].length;
+
+      if (matchedIndices.slice(start, end).some(Boolean)) continue;
+
+      for (let i = start; i < end; i++) matchedIndices[i] = true;
+
+      const kanjiMatch = entry.p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
+      let kanji = kanjiMatch ? kanjiMatch[1] : '?';
+      kanji = kanji
+        .replace(/\)\(\?!X\)/g, '')
+        .replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
+
+      if (kanji && kanji !== '?') {
+        results.push(`${phrase} → ${kanji}`);
       }
     }
-  });
+  }
 
   return results.length ? results.join("<br>") : "(no matching English words found)";
 }
