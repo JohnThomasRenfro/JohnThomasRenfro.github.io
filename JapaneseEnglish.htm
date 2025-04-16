@@ -32,22 +32,59 @@ function translateB() {
 function translateC(inputText) {
   const results = [];
 
-  // Step 1: Clean input by removing articles and common suffixes (but not 'e')
+  // Step 1: Clean input
   let cleanedInput = inputText
     .toLowerCase()
-    .replace(/\b(a|the)\b/g, '')                       // Remove 'a' and 'the'
-    .replace(/\b(\w+?)(ing|ed|s)\b/g, '$1')            // Remove -ing, -ed, -s suffixes
+    .replace(/\b(a|the)\b/g, '') // remove 'a' and 'the'
     .replace(/\s+/g, ' ')
     .trim();
 
+  const suffixDescriptions = {
+    'tion': 'noun ending',
+    'ed': 'past tense ending',
+    'est': 'superlative ending',	
+    'ing': 'progressive form',
+    's': 'plural',
+    'es': 'plural/third-person',
+    'ly': 'adverbial form',
+    'ness': 'noun form',
+    'ment': 'noun form',
+    'al': 'adjective form',
+    'ous': 'adjective form',
+    'able': 'adjective form',
+    'ive': 'adjective form',
+  };
+
+  function splitSuffix(word) {
+    for (const suffix of Object.keys(suffixDescriptions).sort((a, b) => b.length - a.length)) {
+      if (word.endsWith(suffix) && word.length > suffix.length + 1) {
+        return [word.slice(0, -suffix.length), suffix];
+      }
+    }
+    return [word, null];
+  }
+
+  function extractKanji(p1) {
+    const match = p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
+    if (!match) return '?';
+    return match[1]
+      .replace(/\)\(\?!X\)/g, '')
+      .replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
+  }
+
+  function extractRomaji(r1) {
+    const match = r1.match(/\$[0-9]X([a-zA-Z]+),/);
+    return match ? match[1] : '';
+  }
+
   const phraseEntries = [];
 
-  // Step 2: Prepare phrases from replsB
+  // Step 2: Build searchable dictionary
   replsB.forEach(entry => {
     if (/Punctuation/i.test(entry.r1)) return;
 
-    const englishPartMatch = entry.r1.match(/(?:\$\dX\([^)]+\))+ (.+)/);
-    const englishText = englishPartMatch ? englishPartMatch[1] : entry.r1;
+    const englishMatch = entry.r1.match(/(?:\$\dX\([^)]+\))+ (.+)/);
+    const englishText = englishMatch ? englishMatch[1] : entry.r1;
 
     englishText
       .split(/[,;]/)
@@ -55,7 +92,6 @@ function translateC(inputText) {
       .forEach(phrase => {
         const basePhrase = phrase
           .replace(/\b(a|the)\b/g, '')
-          .replace(/\b(\w+?)(ing|ed|s)\b/g, '$1')        // Remove suffixes
           .replace(/\s+/g, ' ')
           .trim();
 
@@ -65,38 +101,46 @@ function translateC(inputText) {
       });
   });
 
-  // Step 3: Sort by length to prioritize longer matches
+  // Step 3: Sort by length (longer first)
   phraseEntries.sort((a, b) => b.phrase.length - a.phrase.length);
 
-  // Step 4: Find matches in cleaned input
-  const matchedIndices = new Array(cleanedInput.length).fill(false);
+  // Step 4: Match input
+  const words = cleanedInput.split(/\s+/);
+  for (let word of words) {
+    const [base, suffix] = splitSuffix(word);
+    const matches = phraseEntries.filter(e => e.phrase === base);
 
-  for (const { phrase, entry } of phraseEntries) {
-    const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-    const match = cleanedInput.match(regex);
+    if (matches.length) {
+      const mainEntry = matches[0].entry;
+      const primaryKanji = extractKanji(mainEntry.p1);
+      const primaryRomaji = extractRomaji(mainEntry.r1);
 
-    if (match) {
-      const start = match.index;
-      const end = start + match[0].length;
+      const altKanji = matches
+        .map(m => extractKanji(m.entry.p1))
+        .filter(k => k && k !== primaryKanji && k !== '?')
+        .filter((v, i, a) => a.indexOf(v) === i);
 
-      if (matchedIndices.slice(start, end).some(Boolean)) continue;
-
-      for (let i = start; i < end; i++) matchedIndices[i] = true;
-
-      const kanjiMatch = entry.p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
-      let kanji = kanjiMatch ? kanjiMatch[1] : '?';
-      kanji = kanji
-        .replace(/\)\(\?!X\)/g, '')
-        .replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
-
-      if (kanji && kanji !== '?') {
-        results.push(`${phrase} → ${kanji}`);
+      let line = `${base}${primaryKanji ? primaryKanji : ''}`;
+      if (primaryRomaji) {
+        line += `(${primaryRomaji})`;
       }
+      if (suffix && suffixDescriptions[suffix]) {
+        line += `${suffix} (${suffixDescriptions[suffix]})`;
+      } else if (suffix) {
+        line += suffix;
+      }
+
+      if (altKanji.length) {
+        line += `<br> also: ${altKanji.join(', ')}`;
+      }
+
+      results.push(line);
     }
   }
 
   return results.length ? results.join("<br>") : "(no matching English words found)";
 }
+
 
 </script></head>
 
@@ -106,7 +150,7 @@ function translateC(inputText) {
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-米国務副長官などを務めた国防戦略の専門家で、「知日派」としても知られたリチャード・アーミテージ氏が13日、死去した。79歳。2000年秋に超党派で対日戦略文書「アーミテージ・リポート」を発表し、日米関係を米英と同様に緊密化することや日本による集団的自衛権行使の必要性を強調。ブッシュ（子）政権1期目に対日政策の中心人物を務め、退任後も対日政策や知日派に影響力を持っていた。
+トランプ米大統領の関税政策の見直しについて協議するため、赤沢亮正経済再生相が16日午前、米ワシントンに向けて出発した。17日朝（現地時間16日夕）に米側の交渉役と会談する。日本製品を関税の対象から外すよう求めるとともに、米側の意向を探る方針だ。【図表】赤沢？誰？戸惑う米政府の関係者 赤沢氏は出発前、記者団の取材に対し「交渉ごとは担当間の信頼関係に結果が大きく左右される。しっかり信頼関係も築いてきたい。日本の国益にとっても米国の国益にとってもウィンウィンな関係になるようないい交渉ができると思っている」と語った。
 
 <hr>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()" placeholder='Put the Japanese text here.'></textarea>
