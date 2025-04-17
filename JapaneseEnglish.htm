@@ -19,128 +19,8 @@ function translateB() {
     workingText = workingText.replace(replace.p1, replace.r1);
   });
 
-  // Get English-to-Japanese matches
-  const engMatches = translateC(a);
-
-  // Display combined results
-  document.getElementById("translatedTextDisplay").innerHTML = `
-    <div><strong>Translated Text:</strong><br>${workingText}</div>
-    <hr>
-    <div><strong>Matched English Words if any:</strong><br>${engMatches}</div>`;
+  document.getElementById("translatedTextDisplay").innerHTML = workingText;
 }
-
-function translateC(inputText) {
-  const results = [];
-
-  // Step 1: Clean input
-  let cleanedInput = inputText
-    .toLowerCase()
-    .replace(/\b(a|the)\b/g, '') // remove 'a' and 'the'
-    .replace(/\s+/g, ' ')
-    .trim();
-
-  const suffixDescriptions = {
-    'tion': 'noun ending',
-    'ed': 'past tense ending',
-    'est': 'superlative ending',	
-    'ing': 'progressive form',
-    's': 'plural',
-    'es': 'plural/third-person',
-    'ly': 'adverbial form',
-    'ness': 'noun form',
-    'ment': 'noun form',
-    'al': 'adjective form',
-    'ous': 'adjective form',
-    'able': 'adjective form',
-    'ive': 'adjective form',
-  };
-
-  function splitSuffix(word) {
-    for (const suffix of Object.keys(suffixDescriptions).sort((a, b) => b.length - a.length)) {
-      if (word.endsWith(suffix) && word.length > suffix.length + 1) {
-        return [word.slice(0, -suffix.length), suffix];
-      }
-    }
-    return [word, null];
-  }
-
-  function extractKanji(p1) {
-    const match = p1.toString().match(/\/\\?\(?(.+?)\\?\)?[+*]?\/[gimsuy]*/);
-    if (!match) return '?';
-    return match[1]
-      .replace(/\)\(\?!X\)/g, '')
-      .replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, '');
-  }
-
-  function extractRomaji(r1) {
-    const match = r1.match(/\$[0-9]X([a-zA-Z]+),/);
-    return match ? match[1] : '';
-  }
-
-  const phraseEntries = [];
-
-  // Step 2: Build searchable dictionary
-  replsB.forEach(entry => {
-    if (/Punctuation/i.test(entry.r1)) return;
-
-    const englishMatch = entry.r1.match(/(?:\$\dX\([^)]+\))+ (.+)/);
-    const englishText = englishMatch ? englishMatch[1] : entry.r1;
-
-    englishText
-      .split(/[,;]/)
-      .map(s => s.trim().toLowerCase())
-      .forEach(phrase => {
-        const basePhrase = phrase
-          .replace(/\b(a|the)\b/g, '')
-          .replace(/\s+/g, ' ')
-          .trim();
-
-        if (basePhrase) {
-          phraseEntries.push({ phrase: basePhrase, entry });
-        }
-      });
-  });
-
-  // Step 3: Sort by length (longer first)
-  phraseEntries.sort((a, b) => b.phrase.length - a.phrase.length);
-
-  // Step 4: Match input
-  const words = cleanedInput.split(/\s+/);
-  for (let word of words) {
-    const [base, suffix] = splitSuffix(word);
-    const matches = phraseEntries.filter(e => e.phrase === base);
-
-    if (matches.length) {
-      const mainEntry = matches[0].entry;
-      const primaryKanji = extractKanji(mainEntry.p1);
-      const primaryRomaji = extractRomaji(mainEntry.r1);
-
-      const altKanji = matches
-        .map(m => extractKanji(m.entry.p1))
-        .filter(k => k && k !== primaryKanji && k !== '?')
-        .filter((v, i, a) => a.indexOf(v) === i);
-
-      let line = `${base}${primaryKanji ? primaryKanji : ''}`;
-      if (primaryRomaji) {
-        line += `(${primaryRomaji})`;
-      }
-      if (suffix && suffixDescriptions[suffix]) {
-        line += `${suffix} (${suffixDescriptions[suffix]})`;
-      } else if (suffix) {
-        line += suffix;
-      }
-
-      if (altKanji.length) {
-        line += `<br> also: ${altKanji.join(', ')}`;
-      }
-
-      results.push(line);
-    }
-  }
-
-  return results.length ? results.join("<br>") : "(no matching English words found)";
-}
-
 
 </script></head>
 
@@ -150,8 +30,7 @@ function translateC(inputText) {
 Cut and paste this Japanese text into text area below. SOURCE: Yahoo News
 <p>
 
-トランプ米大統領の関税政策の見直しについて協議するため、赤沢亮正経済再生相が16日午前、米ワシントンに向けて出発した。17日朝（現地時間16日夕）に米側の交渉役と会談する。日本製品を関税の対象から外すよう求めるとともに、米側の意向を探る方針だ。【図表】赤沢？誰？戸惑う米政府の関係者 赤沢氏は出発前、記者団の取材に対し「交渉ごとは担当間の信頼関係に結果が大きく左右される。しっかり信頼関係も築いてきたい。日本の国益にとっても米国の国益にとってもウィンウィンな関係になるようないい交渉ができると思っている」と語った。
-
+国民民主党の玉木代表は17日、党の会合の中で、政府与党が現金給付や減税などの経済対策を行うための補正予算案の今国会提出を見送る方向になったことについて、「世論調査を見て、現金給付の評判が悪いからやめようとか、やろうとか、それこそポピュリズムなんじゃないか」と批判した。
 <hr>
 <textarea cols="35" rows="6" onchange="a=this.value;translateB()" placeholder='Put the Japanese text here.'></textarea>
 <br>
