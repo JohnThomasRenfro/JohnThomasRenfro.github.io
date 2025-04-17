@@ -7391,7 +7391,7 @@ const replsB=[
 {p1:/(憎)(?!X)([まみむめもん])(?!X)/g,r1:'$1X(niku)hate,detest;MuVerb$2;Par'},
 {p1:/(憎)(?!X)([いくかさ])(?!X)/g,r1:'$1X(niku)hateful,abominable;IAdjective$2;Par'},
 {p1:/(悼)(?!X)([まみむめもん])(?!X)/g,r1:'$1X(ita)grieve over;MuVerb$2;Par'},
-{p1:/(悪)(?!X)([いくかさ])(?!X)/g,r1:'$1X(waru), bad;IAdjective$2;Par'},
+{p1:/(悪)(?!X)([いくかさ])(?!X)/g,r1:'$1X(waru)bad;IAdjective$2;Par'},
 {p1:/(悩)(?!X)([まみむめもん])(?!X)/g,r1:'$1X(naya)be troubled,suffer;MuVerb$2;Par'},
 {p1:/(恵)(?!X)([まみむめもん])(?!X)/g,r1:'$1X(megu)bless;MuVerb$2;Par'},
 {p1:/(恨)(?!X)([まみむめもん])(?!X)/g,r1:'$1X(ura)hold a grudge,feel resentment;MuVerb$2;Par'},
@@ -8154,7 +8154,7 @@ const replsB=[
 {p1:/(本)(?!X)/g,r1:'$1X(hon)book(moto)home,base(bon,hon)long object counter;Par'},
 {p1:/(末)(?!X)/g,r1:'$1X(matsu)last part;Par'},
 {p1:/(未)(?!X)/g,r1:'$1X(mi)south,sixth lunar month;Par'},
-{p1:/(木)(?!X)/g,r1:'$1X(ki)gi,boku=tree,wood;moku,Thursday;Par'},
+{p1:/(木)(?!X)/g,r1:'$1X(ki,gi,boku)tree,wood(moku)Thursday;Par'},
 {p1:/(期)(?!X)/g,r1:'$1X(ki)time period;Par'},
 {p1:/(朝)(?!X)/g,r1:'$1X(asa)morning;Par'},
 {p1:/(望)(?!X)/g,r1:'$1X(mochi)bou,full moon;Par'},
@@ -8663,7 +8663,5 @@ const replsB=[
 
 {p1:/(;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb|;BeVerb)/g,r1:'<br>$1'},
 {p1:/(;Par)/g,r1:'<br>'},
-
-
 
 ];
