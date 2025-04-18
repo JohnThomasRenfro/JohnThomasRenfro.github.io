@@ -7745,7 +7745,7 @@ const replsB=[
 {p1:/(関)(?!X)/g,r1:'$1X(kan)in relation to;Par'},
 {p1:/(間)(?!X)/g,r1:'$1X(aida)while,kan,time period;Par'},
 {p1:/(門)(?!X)/g,r1:'$1X(mon)gate;Par'},
-{p1:/(長)(?!X)/g,r1:'$1X(chou)chairperson,commander,naga,long;Par'},
+{p1:/(長)(?!X)/g,r1:'$1X(chou)chairperson,commander(naga)long;Par'},
 {p1:/(鐘)(?!X)/g,r1:'$1X(kane)bell;Par'},
 {p1:/(鏡)(?!X)/g,r1:'$1X(kagami)mirror;Par'},
 {p1:/(鎖)(?!X)/g,r1:'$1X(kusari)chain,tether;Par'},
