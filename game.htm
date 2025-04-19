@@ -4,17 +4,28 @@
   <meta charset="UTF-8">
   <title>Advanced Dungeons & Dragons 1st Edition Adventure Module Manager</title>
   <style>
-    body { font-family: sans-serif; }
-    #board {
-      width: 800px;
-      height: 800px;
-      background-size: 100px 100px;
-      background-image: linear-gradient(to right, gray 1px, transparent 1px), 
-                        linear-gradient(to bottom, gray 1px, transparent 1px);
-      position: relative;
-      border: 2px solid black;
-      margin-bottom: 20px;
-    }
+    body
+{ font-family: sans-serif;
+background-image: url('background.png');
+	}
+	
+	button,input,textarea{background-color: transparent;}
+	
+#board {
+  width: 800px;
+  height: 800px;
+  background-size: 100px 100px, 100px 100px, cover;
+  background-repeat: repeat, repeat, no-repeat;
+  background-position: top left, top left, center;
+  background-image:
+    linear-gradient(to right, gray 1px, transparent 1px),
+    linear-gradient(to bottom, gray 1px, transparent 1px),
+    var(--map-image);
+  position: relative;
+  border: 2px solid black;
+  margin-bottom: 20px;
+}
+
     .piece {
       width: 100px;
       height: 100px;
@@ -54,7 +65,7 @@
 <table id="piece-table">
   <thead>
     <tr>
-      <th>Name</th><th>AC</th><th>Max HP</th><th>Current HP</th><th>ATTK</th>
+      <th>Name</th><th>AC</th><th>Max HP</th><th>Current HP</th><th>Attacks & Equipment</th>
       <th>Image</th><th>Clone</th><th>Delete</th>
     </tr>
   </thead>
@@ -118,8 +129,9 @@ function uploadMap(e) {
   const file = e.target.files[0];
   const reader = new FileReader();
   reader.onload = function () {
-    board.style.backgroundImage = `url(${reader.result}), ${board.style.backgroundImage}`;
-    localStorage.setItem("mapImage", reader.result);
+    const mapUrl = `url(${reader.result})`;
+    document.querySelector('#board').style.setProperty('--map-image', mapUrl);
+    localStorage.setItem("mapImage", mapUrl);
   };
   reader.readAsDataURL(file);
 }
