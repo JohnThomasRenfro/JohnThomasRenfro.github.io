@@ -152,6 +152,11 @@ function createPiece(data) {
   div.style.transform = `rotate(${data.rotation}deg)`;
   if (data.img) div.style.backgroundImage = `url(${data.img})`;
 
+const nameLabel = document.createElement("div"); 
+nameLabel.classList.add("name-label"); 
+nameLabel.textContent = data.name; 
+div.appendChild(nameLabel); 
+  
   // Rotate button
   const rotateBtn = document.createElement("div");
   rotateBtn.className = "rotate-btn";
