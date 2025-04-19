@@ -194,7 +194,7 @@ function createPiece(data) {
   const acInput = document.createElement("input");
   acInput.type = "number";
   acInput.value = data.ac;
-  acInput.style.width = '30px';
+  acInput.style.width = '40px';
   acInput.maxLength = 4;  
   acInput.oninput = () => { data.ac = +acInput.value; savePieces(); };
   acTd.appendChild(acInput);
@@ -203,7 +203,7 @@ function createPiece(data) {
   const maxInput = document.createElement("input");
   maxInput.type = "number";
   maxInput.value = data.maxHP;
-  maxInput.style.width = '30px';
+  maxInput.style.width = '40px';
   maxInput.max = 4;  
   maxInput.oninput = () => { data.maxHP = +maxInput.value; savePieces(); };
   maxTd.appendChild(maxInput);
@@ -212,7 +212,7 @@ function createPiece(data) {
   const curInput = document.createElement("input");
   curInput.type = "number";
   curInput.value = data.curHP;
-  curInput.style.width = '30px';
+  curInput.style.width = '40px';
   curInput.max = 4;
   const upBtn = document.createElement("button"); upBtn.textContent = "+";
   upBtn.onclick = () => { curInput.value = ++data.curHP; savePieces(); };
