@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RPG Sandbox</title>
+  <style>
+    body { font-family: sans-serif; }
+    #board {
+      width: 800px;
+      height: 800px;
+      background-size: 100px 100px;
+      background-image: linear-gradient(to right, gray 1px, transparent 1px), 
+                        linear-gradient(to bottom, gray 1px, transparent 1px);
+      position: relative;
+      border: 2px solid black;
+      margin-bottom: 20px;
+    }
+    .piece {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      cursor: grab;
+      border: 2px solid #000;
+      background-size: cover;
+      background-position: center;
+    }
+    .rotate-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 1px solid black;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid black; padding: 4px; text-align: center; }
+    #dice-roller input[type="number"] { width: 50px; }
+    .controls { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<h1>RPG Sandbox</h1>
+<div class="controls">
+  <button onclick="addPiece()">Add Character/Monster</button>
+  <input type="file" accept="image/*" onchange="uploadMap(event)">
+</div>
+<div id="board"></div>
+
+<h2>Pieces</h2>
+<table id="piece-table">
+  <thead>
+    <tr>
+      <th>Name</th><th>AC</th><th>Max HP</th><th>Current HP</th><th>ATTK</th>
+      <th>Image</th><th>Clone</th><th>Delete</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<h2>Dice Roller</h2>
+<div id="dice-roller">
+  <div>
+    <label>1d100 + <input type="number" id="mod-100" value="0"> 
+    <button onclick="roll('100')">Roll</button> 
+    <span id="res-100"></span></label>
+  </div>
+  <div>
+    <label>1d20 + <input type="number" id="mod-20" value="0"> 
+    <button onclick="roll('20')">Roll</button> 
+    <span id="res-20"></span></label>
+  </div>
+  <div>
+    <label>1d12 + <input type="number" id="mod-12" value="0"> 
+    <button onclick="roll('12')">Roll</button> 
+    <span id="res-12"></span></label>
+  </div>
+  <div>
+    <label>1d10 + <input type="number" id="mod-10" value="0"> 
+    <button onclick="roll('10')">Roll</button> 
+    <span id="res-10"></span></label>
+  </div>
+  <div>
+    <label>1d8 + <input type="number" id="mod-8" value="0"> 
+    <button onclick="roll('8')">Roll</button> 
+    <span id="res-8"></span></label>
+  </div>
+  <div>
+    <label>1d6 + <input type="number" id="mod-6" value="0"> 
+    <button onclick="roll('6')">Roll</button> 
+    <span id="res-6"></span></label>
+  </div>
+  <div>
+    <label>1d4 + <input type="number" id="mod-4" value="0"> 
+    <button onclick="roll('4')">Roll</button> 
+    <span id="res-4"></span></label>
+  </div>
+</div>
+
+<script>
+const board = document.getElementById("board");
+const pieceTable = document.querySelector("#piece-table tbody");
+
+let pieces = JSON.parse(localStorage.getItem("pieces")) || {};
+let mapImg = localStorage.getItem("mapImage");
+if (mapImg) board.style.backgroundImage = `url(${mapImg}), ${board.style.backgroundImage}`;
+
+for (let id in pieces) createPiece(pieces[id]);
+
+function savePieces() {
+  localStorage.setItem("pieces", JSON.stringify(pieces));
+}
+
+function uploadMap(e) {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function () {
+    board.style.backgroundImage = `url(${reader.result}), ${board.style.backgroundImage}`;
+    localStorage.setItem("mapImage", reader.result);
+  };
+  reader.readAsDataURL(file);
+}
+
+function addPiece(cloneData = null) {
+  const id = 'piece-' + Date.now();
+  const data = cloneData || {
+    id,
+    name: "New",
+    ac: 10,
+    maxHP: 10,
+    curHP: 10,
+    top: 0,
+    left: 0,
+    rotation: 0,
+    img: ''
+  };
+  pieces[id] = data;
+  createPiece(data);
+  savePieces();
+}
+
+function createPiece(data) {
+  const div = document.createElement("div");
+  div.className = "piece";
+  div.id = data.id;
+  div.style.top = data.top + "px";
+  div.style.left = data.left + "px";
+  div.style.transform = `rotate(${data.rotation}deg)`;
+  if (data.img) div.style.backgroundImage = `url(${data.img})`;
+
+  // Rotate button
+  const rotateBtn = document.createElement("div");
+  rotateBtn.className = "rotate-btn";
+  rotateBtn.innerText = "↻";
+  rotateBtn.onclick = () => {
+    data.rotation = (data.rotation + 45) % 360;
+    div.style.transform = `rotate(${data.rotation}deg)`;
+    savePieces();
+  };
+  div.appendChild(rotateBtn);
+
+  board.appendChild(div);
+  makeDraggable(div, data);
+
+  // Table row
+  const row = document.createElement("tr");
+
+  const nameTd = document.createElement("td");
+  const nameInput = document.createElement("input");
+  nameInput.value = data.name;
+  nameInput.oninput = () => { data.name = nameInput.value; savePieces(); };
+  nameTd.appendChild(nameInput);
+
+  const acTd = document.createElement("td");
+  const acInput = document.createElement("input");
+  acInput.type = "number"; acInput.value = data.ac;
+  acInput.oninput = () => { data.ac = +acInput.value; savePieces(); };
+  acTd.appendChild(acInput);
+
+  const maxTd = document.createElement("td");
+  const maxInput = document.createElement("input");
+  maxInput.type = "number"; maxInput.value = data.maxHP;
+  maxInput.oninput = () => { data.maxHP = +maxInput.value; savePieces(); };
+  maxTd.appendChild(maxInput);
+
+  const curTd = document.createElement("td");
+  const curInput = document.createElement("input");
+  curInput.type = "number"; curInput.value = data.curHP;
+  const upBtn = document.createElement("button"); upBtn.textContent = "+";
+  upBtn.onclick = () => { curInput.value = ++data.curHP; savePieces(); };
+  const downBtn = document.createElement("button"); downBtn.textContent = "-";
+  downBtn.onclick = () => { curInput.value = --data.curHP; savePieces(); };
+  curInput.oninput = () => { data.curHP = +curInput.value; savePieces(); };
+  curTd.appendChild(curInput); curTd.appendChild(upBtn); curTd.appendChild(downBtn);
+
+  const atkTd = document.createElement("td");
+  const atkBtn = document.createElement("button");
+  atkBtn.textContent = "Roll ATTK";
+  atkBtn.onclick = () => alert(`${data.name} attacks for ${Math.floor(Math.random() * 20) + 1}`);
+  atkTd.appendChild(atkBtn);
+
+  const imgTd = document.createElement("td");
+  const imgInput = document.createElement("input");
+  imgInput.type = "file";
+  imgInput.accept = "image/*";
+  imgInput.onchange = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      data.img = reader.result;
+      div.style.backgroundImage = `url(${reader.result})`;
+      savePieces();
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+  imgTd.appendChild(imgInput);
+
+  const cloneTd = document.createElement("td");
+  const cloneBtn = document.createElement("button");
+  cloneBtn.textContent = "Clone";
+  cloneBtn.onclick = () => addPiece({ ...data, id: 'piece-' + Date.now() });
+  cloneTd.appendChild(cloneBtn);
+
+  const delTd = document.createElement("td");
+  const delBtn = document.createElement("button");
+  delBtn.textContent = "Delete";
+  delBtn.onclick = () => {
+    div.remove(); row.remove();
+    delete pieces[data.id];
+    savePieces();
+  };
+  delTd.appendChild(delBtn);
+
+  row.append(nameTd, acTd, maxTd, curTd, atkTd, imgTd, cloneTd, delTd);
+  pieceTable.appendChild(row);
+}
+
+function makeDraggable(elem, data) {
+  let offsetX, offsetY;
+
+  elem.onmousedown = function (e) {
+    offsetX = e.offsetX;
+    offsetY = e.offsetY;
+
+    document.onmousemove = function (e) {
+      let x = Math.floor((e.pageX - board.offsetLeft - offsetX) / 100) * 100;
+      let y = Math.floor((e.pageY - board.offsetTop - offsetY) / 100) * 100;
+      x = Math.max(0, Math.min(x, 700));
+      y = Math.max(0, Math.min(y, 700));
+      elem.style.left = x + "px";
+      elem.style.top = y + "px";
+      data.left = x;
+      data.top = y;
+      savePieces();
+    };
+
+    document.onmouseup = () => document.onmousemove = null;
+  };
+}
+
+// Dice Roller (persistent)
+function roll(sides) {
+  const mod = +document.getElementById("mod-" + sides).value || 0;
+  const result = Math.floor(Math.random() * parseInt(sides)) + 1 + mod;
+  document.getElementById("res-" + sides).textContent = `Result: ${result}`;
+  localStorage.setItem("dice-" + sides, result);
+}
+
+["100", "20", "12", "10", "8", "6", "4"].forEach(sides => {
+  const stored = localStorage.getItem("dice-" + sides);
+  if (stored) document.getElementById("res-" + sides).textContent = `Result: ${stored}`;
+});
+</script>
+
+</body>
+</html>
