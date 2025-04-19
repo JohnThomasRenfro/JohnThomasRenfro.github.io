@@ -152,11 +152,12 @@ function createPiece(data) {
   div.style.transform = `rotate(${data.rotation}deg)`;
   if (data.img) div.style.backgroundImage = `url(${data.img})`;
 
-const nameLabel = document.createElement("div"); 
-nameLabel.classList.add("name-label"); 
-nameLabel.textContent = data.name; 
-div.appendChild(nameLabel); 
-  
+  // Create the name label for the draggable piece
+  const nameLabel = document.createElement("div");
+  nameLabel.classList.add("name-label");
+  nameLabel.textContent = data.name;
+  div.appendChild(nameLabel);
+
   // Rotate button
   const rotateBtn = document.createElement("div");
   rotateBtn.className = "rotate-btn";
@@ -177,24 +178,36 @@ div.appendChild(nameLabel);
   const nameTd = document.createElement("td");
   const nameInput = document.createElement("input");
   nameInput.value = data.name;
-  nameInput.oninput = () => { data.name = nameInput.value; savePieces(); };
+  nameInput.oninput = () => {
+    data.name = nameInput.value; // Update the name in the data object
+
+    // Find the corresponding draggable piece and update its name label
+    const pieceElement = document.getElementById(data.id); // Get the draggable piece by ID
+    const nameLabel = pieceElement.querySelector(".name-label"); // Find the name label on the piece
+    nameLabel.textContent = data.name; // Update the name label on the piece
+
+    savePieces(); // Save the updated name to localStorage
+  };
   nameTd.appendChild(nameInput);
 
   const acTd = document.createElement("td");
   const acInput = document.createElement("input");
-  acInput.type = "number"; acInput.value = data.ac;
+  acInput.type = "number";
+  acInput.value = data.ac;
   acInput.oninput = () => { data.ac = +acInput.value; savePieces(); };
   acTd.appendChild(acInput);
 
   const maxTd = document.createElement("td");
   const maxInput = document.createElement("input");
-  maxInput.type = "number"; maxInput.value = data.maxHP;
+  maxInput.type = "number";
+  maxInput.value = data.maxHP;
   maxInput.oninput = () => { data.maxHP = +maxInput.value; savePieces(); };
   maxTd.appendChild(maxInput);
 
   const curTd = document.createElement("td");
   const curInput = document.createElement("input");
-  curInput.type = "number"; curInput.value = data.curHP;
+  curInput.type = "number";
+  curInput.value = data.curHP;
   const upBtn = document.createElement("button"); upBtn.textContent = "+";
   upBtn.onclick = () => { curInput.value = ++data.curHP; savePieces(); };
   const downBtn = document.createElement("button"); downBtn.textContent = "-";
@@ -202,13 +215,13 @@ div.appendChild(nameLabel);
   curInput.oninput = () => { data.curHP = +curInput.value; savePieces(); };
   curTd.appendChild(curInput); curTd.appendChild(upBtn); curTd.appendChild(downBtn);
 
-const atkTd = document.createElement("td");
-const atkInput = document.createElement("textarea");
-atkInput.rows = 2;
-atkInput.placeholder = "e.g. Longsword +5 / 1d8+3";
-atkInput.value = data.attackInfo || "";
-atkInput.oninput = () => { data.attackInfo = atkInput.value; savePieces(); };
-atkTd.appendChild(atkInput);
+  const atkTd = document.createElement("td");
+  const atkInput = document.createElement("textarea");
+  atkInput.rows = 2;
+  atkInput.placeholder = "e.g. Longsword +5 / 1d8+3";
+  atkInput.value = data.attackInfo || "";
+  atkInput.oninput = () => { data.attackInfo = atkInput.value; savePieces(); };
+  atkTd.appendChild(atkInput);
 
   const imgTd = document.createElement("td");
   const imgInput = document.createElement("input");
