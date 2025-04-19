@@ -65,7 +65,7 @@ background-image: url('background.png');
 <table id="piece-table">
   <thead>
     <tr>
-      <th>Name</th><th>AC</th><th>Max HP</th><th>Current HP</th><th>Attacks & Equipment</th>
+      <th>Name</th><th>AC</th><th>Max HP</th><th>Current HP</th><th>MV</th><th>Attacks & Equipment</th>
       <th>Image</th><th>Clone</th><th>Delete</th>
     </tr>
   </thead>
@@ -144,6 +144,7 @@ function addPiece(cloneData = null) {
     ac: 10,
     maxHP: 10,
     curHP: 10,
+    MV: 12,
     top: 0,
     left: 0,
     rotation: 0,
@@ -233,6 +234,15 @@ function createPiece(data) {
   curInput.oninput = () => { data.curHP = +curInput.value; savePieces(); };
   curTd.appendChild(curInput); curTd.appendChild(upBtn); curTd.appendChild(downBtn);
 
+  const MVTd = document.createElement("td");
+  const MVInput = document.createElement("input");
+  MVInput.type = "number";
+  MVInput.value = data.MV;
+  MVInput.style.width = '40px';
+  MVInput.maxLength = 4;  
+  MVInput.oninput = () => { data.MV = +MVInput.value; savePieces(); };
+  MVTd.appendChild(MVInput);
+
   const atkTd = document.createElement("td");
   const atkInput = document.createElement("textarea");
   atkInput.rows = 2;
@@ -272,7 +282,7 @@ function createPiece(data) {
   };
   delTd.appendChild(delBtn);
 
-  row.append(nameTd, acTd, maxTd, curTd, atkTd, imgTd, cloneTd, delTd);
+  row.append(nameTd, acTd, maxTd, curTd, MVTd, atkTd, imgTd, cloneTd, delTd);
   pieceTable.appendChild(row);
 }
 
