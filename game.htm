@@ -135,7 +135,8 @@ function addPiece(cloneData = null) {
     top: 0,
     left: 0,
     rotation: 0,
-    img: ''
+    img: '',
+    attackInfo: ''    
   };
   pieces[id] = data;
   createPiece(data);
@@ -196,11 +197,13 @@ function createPiece(data) {
   curInput.oninput = () => { data.curHP = +curInput.value; savePieces(); };
   curTd.appendChild(curInput); curTd.appendChild(upBtn); curTd.appendChild(downBtn);
 
-  const atkTd = document.createElement("td");
-  const atkBtn = document.createElement("button");
-  atkBtn.textContent = "Roll ATTK";
-  atkBtn.onclick = () => alert(`${data.name} attacks for ${Math.floor(Math.random() * 20) + 1}`);
-  atkTd.appendChild(atkBtn);
+const atkTd = document.createElement("td");
+const atkInput = document.createElement("textarea");
+atkInput.rows = 2;
+atkInput.placeholder = "e.g. Longsword +5 / 1d8+3";
+atkInput.value = data.attackInfo || "";
+atkInput.oninput = () => { data.attackInfo = atkInput.value; savePieces(); };
+atkTd.appendChild(atkInput);
 
   const imgTd = document.createElement("td");
   const imgInput = document.createElement("input");
