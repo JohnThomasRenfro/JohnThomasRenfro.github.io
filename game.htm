@@ -275,6 +275,46 @@ function roll(sides) {
   const stored = localStorage.getItem("dice-" + sides);
   if (stored) document.getElementById("res-" + sides).textContent = `Result: ${stored}`;
 });
+// Save the modifier values to localStorage
+function saveDiceModifiers() {
+  const modifiers = {
+    mod100: document.getElementById("mod-100").value,
+    mod20: document.getElementById("mod-20").value,
+    mod12: document.getElementById("mod-12").value,
+    mod10: document.getElementById("mod-10").value,
+    mod8: document.getElementById("mod-8").value,
+    mod6: document.getElementById("mod-6").value,
+    mod4: document.getElementById("mod-4").value,
+  };
+  localStorage.setItem("diceModifiers", JSON.stringify(modifiers));
+}
+
+// Restore the modifier values from localStorage
+function restoreDiceModifiers() {
+  const savedModifiers = JSON.parse(localStorage.getItem("diceModifiers"));
+  if (savedModifiers) {
+    document.getElementById("mod-100").value = savedModifiers.mod100 || 0;
+    document.getElementById("mod-20").value = savedModifiers.mod20 || 0;
+    document.getElementById("mod-12").value = savedModifiers.mod12 || 0;
+    document.getElementById("mod-10").value = savedModifiers.mod10 || 0;
+    document.getElementById("mod-8").value = savedModifiers.mod8 || 0;
+    document.getElementById("mod-6").value = savedModifiers.mod6 || 0;
+    document.getElementById("mod-4").value = savedModifiers.mod4 || 0;
+  }
+}
+
+// Add event listeners for each modifier input field to save to localStorage on change
+document.getElementById("mod-100").addEventListener('input', saveDiceModifiers);
+document.getElementById("mod-20").addEventListener('input', saveDiceModifiers);
+document.getElementById("mod-12").addEventListener('input', saveDiceModifiers);
+document.getElementById("mod-10").addEventListener('input', saveDiceModifiers);
+document.getElementById("mod-8").addEventListener('input', saveDiceModifiers);
+document.getElementById("mod-6").addEventListener('input', saveDiceModifiers);
+document.getElementById("mod-4").addEventListener('input', saveDiceModifiers);
+
+// Restore the modifiers when the page loads
+window.onload = restoreDiceModifiers;
+  
 </script>
 
 </body>
