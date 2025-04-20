@@ -5,51 +5,51 @@
   <title>Advanced Dungeons & Dragons 1st Edition Adventure Module Manager</title>
   <style>
     body
-{ font-family: sans-serif;
-background-image: url('background.png');
+{ font-family:sans-serif;
+background-image:url('background.png');
 	}
 	
-	button,input,textarea{background-color: transparent;}
+	button,input,textarea{border:none;background-color:transparent;}
 	
 #board {
-  width: 800px;
-  height: 800px;
-  background-size: 100px 100px, 100px 100px, cover;
-  background-repeat: repeat, repeat, no-repeat;
-  background-position: top left, top left, center;
+  width:800px;
+  height:800px;
+  background-size:100px 100px, 100px 100px, cover;
+  background-repeat:repeat, repeat, no-repeat;
+  background-position:top left, top left, center;
   background-image:
     linear-gradient(to right, gray 1px, transparent 1px),
     linear-gradient(to bottom, gray 1px, transparent 1px),
     var(--map-image);
-  position: relative;
-  border: 2px solid black;
-  margin-bottom: 20px;
+  position:relative;
+  border:2px solid black;
+  margin-bottom:20px;
 }
 
     .piece {
-      width: 100px;
-      height: 100px;
-      position: absolute;
-      cursor: grab;
-      border: 2px solid #000;
-      background-size: cover;
-      background-position: center;
+      width:100px;
+      height:100px;
+      position:absolute;
+      cursor:grab;
+      border:2px solid #000;
+      background-size:cover;
+      background-position:center;
     }
     .rotate-btn {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 20px;
-      height: 20px;
-      background: #fff;
-      border: 1px solid black;
-      font-size: 12px;
-      cursor: pointer;
+      position:absolute;
+      bottom:0;
+      right:0;
+      width:20px;
+      height:20px;
+      background:#fff;
+      border:1px solid black;
+      font-size:12px;
+      cursor:pointer;
     }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { border: 1px solid black; padding: 4px; text-align: center; }
-    #dice-roller input[type="number"] { width: 50px; }
-    .controls { margin-bottom: 10px; }
+    table { border-collapse:collapse; width:100%; }
+    th, td { border:1px solid black; padding:4px; text-align:center; }
+    #dice-roller input[type="number"] { width:50px; }
+    .controls { margin-bottom:10px; }
   </style>
 </head>
 <body>
@@ -165,16 +165,16 @@ function addPiece(cloneData = null) {
   const id = 'piece-' + Date.now();
   const data = cloneData || {
     id,
-    name: "New",
-    ac: 10,
-    maxHP: 10,
-    curHP: 10,
-    MV: 12,
-    top: 0,
-    left: 0,
-    rotation: 0,
-    img: '',
-    attackInfo: ''    
+    name:"New",
+    ac:10,
+    maxHP:10,
+    curHP:10,
+    MV:12,
+    top:0,
+    left:0,
+    rotation:0,
+    img:'',
+    attackInfo:''    
   };
   pieces[id] = data;
   createPiece(data);
@@ -303,7 +303,7 @@ function createPiece(data) {
   const cloneTd = document.createElement("td");
   const cloneBtn = document.createElement("button");
   cloneBtn.textContent = "Clone";
-  cloneBtn.onclick = () => addPiece({ ...data, id: 'piece-' + Date.now() });
+  cloneBtn.onclick = () => addPiece({ ...data, id:'piece-' + Date.now() });
   cloneTd.appendChild(cloneBtn);
 
   const delTd = document.createElement("td");
@@ -347,24 +347,24 @@ function makeDraggable(elem, data) {
 function roll(sides) {
   const mod = +document.getElementById("mod-" + sides).value || 0;
   const result = Math.floor(Math.random() * parseInt(sides)) + 1 + mod;
-  document.getElementById("res-" + sides).textContent = `Result: ${result}`;
+  document.getElementById("res-" + sides).textContent = `Result:${result}`;
   localStorage.setItem("dice-" + sides, result);
 }
 
 ["100", "20", "12", "10", "8", "6", "4"].forEach(sides => {
   const stored = localStorage.getItem("dice-" + sides);
-  if (stored) document.getElementById("res-" + sides).textContent = `Result: ${stored}`;
+  if (stored) document.getElementById("res-" + sides).textContent = `Result:${stored}`;
 });
 // Save the modifier values to localStorage
 function saveDiceModifiers() {
   const modifiers = {
-    mod100: document.getElementById("mod-100").value,
-    mod20: document.getElementById("mod-20").value,
-    mod12: document.getElementById("mod-12").value,
-    mod10: document.getElementById("mod-10").value,
-    mod8: document.getElementById("mod-8").value,
-    mod6: document.getElementById("mod-6").value,
-    mod4: document.getElementById("mod-4").value,
+    mod100:document.getElementById("mod-100").value,
+    mod20:document.getElementById("mod-20").value,
+    mod12:document.getElementById("mod-12").value,
+    mod10:document.getElementById("mod-10").value,
+    mod8:document.getElementById("mod-8").value,
+    mod6:document.getElementById("mod-6").value,
+    mod4:document.getElementById("mod-4").value,
   };
   localStorage.setItem("diceModifiers", JSON.stringify(modifiers));
 }
