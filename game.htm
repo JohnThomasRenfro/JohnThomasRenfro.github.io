@@ -54,12 +54,24 @@ background-image: url('background.png');
 </head>
 <body>
 
-<h1>Advanced Dungeons & Dragons 1st Edition Adventure Module Manager</h1>
-<div class="controls">
-  <button onclick="addPiece()">Add Character/Monster</button>
-  <input type="file" accept="image/*" onchange="uploadMap(event)">
-</div>
-<div id="board"></div>
+function uploadMap(e) {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function () {
+    const mapUrl = `url(${reader.result})`;
+    document.querySelector('#board').style.setProperty('--map-image', mapUrl);
+    localStorage.setItem("mapImage", mapUrl);
+  };
+  reader.readAsDataURL(file);
+}
+
+window.onload = function () {
+  // Check if a map image exists in localStorage
+  const savedMapImage = localStorage.getItem("mapImage");
+  if (savedMapImage) {
+    document.querySelector('#board').style.setProperty('--map-image', savedMapImage);
+  }
+};
 
 <h2>Pieces</h2>
 <table id="piece-table">
