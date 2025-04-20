@@ -169,6 +169,7 @@ function addPiece(cloneData = null) {
     ac:10,
     maxHP:10,
     curHP:10,
+    HD:1d1+0	  
     MV:12,
     top:0,
     left:0,
@@ -261,10 +262,10 @@ function createPiece(data) {
 
   const HDTd = document.createElement("td");
   const HDInput = document.createElement("input");
-  HDInput.type = "number";
+  HDInput.type = "text";
   HDInput.value = data.HD;
   HDInput.style.width = '40px';
-  HDInput.maxLength = 4;  
+  HDInput.maxLength = 8;  
   HDInput.oninput = () => { data.HD = +HDInput.value; savePieces(); };
   HDTd.appendChild(HDInput);
 	
