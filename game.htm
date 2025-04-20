@@ -67,7 +67,7 @@ background-image: url('background.png');
 <table id="piece-table">
   <thead>
     <tr>
-      <th>Name</th><th>AC</th><th>Max HP</th><th>Current HP</th><th>MV</th><th>Attacks & Equipment</th>
+      <th>Name</th><th>AC</th><th>Max HP</th><th>Current HP</th><th>HD/LVL</th><th>MV</th><th>Attacks & Equipment</th>
       <th>Image</th><th>Clone</th><th>Delete</th>
     </tr>
   </thead>
@@ -259,6 +259,15 @@ function createPiece(data) {
   curInput.oninput = () => { data.curHP = +curInput.value; savePieces(); };
   curTd.appendChild(curInput); curTd.appendChild(upBtn); curTd.appendChild(downBtn);
 
+  const HDTd = document.createElement("td");
+  const HDInput = document.createElement("input");
+  HDInput.type = "number";
+  HDInput.value = data.HD;
+  HDInput.style.width = '40px';
+  HDInput.maxLength = 4;  
+  HDInput.oninput = () => { data.HD = +HDInput.value; savePieces(); };
+  HDTd.appendChild(HDInput);
+	
   const MVTd = document.createElement("td");
   const MVInput = document.createElement("input");
   MVInput.type = "number";
@@ -307,7 +316,7 @@ function createPiece(data) {
   };
   delTd.appendChild(delBtn);
 
-  row.append(nameTd, acTd, maxTd, curTd, MVTd, atkTd, imgTd, cloneTd, delTd);
+  row.append(nameTd, acTd, maxTd, curTd, HDTd, MVTd, atkTd, imgTd, cloneTd, delTd);
   pieceTable.appendChild(row);
 }
 
