@@ -265,7 +265,7 @@ function createPiece(data) {
   HDInput.type = "text";
   HDInput.value = data.HD;
   HDInput.style.width = '40px';
-  HDInput.maxLength = '8px';  
+  HDInput.maxLength = 8;  
   HDInput.oninput = () => { data.HD = HDInput.value; savePieces(); };
   HDTd.appendChild(HDInput);
 	
