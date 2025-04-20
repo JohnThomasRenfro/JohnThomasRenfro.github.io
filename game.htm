@@ -1,11 +1,16 @@
-<!DOCTYPE html>
+onol<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Advanced Dungeons & Dragons 1st Edition Adventure Module Manager</title>
   <style>
+  @font-face
+{font-family: MyKidsHandwritten;
+src: url("MyKidsHandwritten.ttf");
+}
     body
 { font-family:sans-serif;
+font-family: 'MyKidsHandwritten';
 background-image:url('background.png');
 	}
 	
@@ -126,7 +131,6 @@ for (let id in pieces) createPiece(pieces[id]);
 function savePieces() {
   localStorage.setItem("pieces", JSON.stringify(pieces));
 }
-
 
 function uploadMap(e) {
   const file = e.target.files[0];
