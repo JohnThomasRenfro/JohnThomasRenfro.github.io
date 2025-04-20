@@ -54,10 +54,11 @@ background-image: url('background.png');
 </head>
 <body>
 	
- <h1>Advanced Dungeons & Dragons 1st Edition Adventure Module Manager</h1>
+<h1>Advanced Dungeons & Dragons 1st Edition Adventure Module Manager</h1>
 <div class="controls">
   <button onclick="addPiece()">Add Character/Monster</button>
   <input type="file" accept="image/*" onchange="uploadMap(event)">
+  <input type="text" id="urlInput" placeholder="Enter image URL" onchange="uploadUrl()">
 </div>
 <div id="board"></div>
 
@@ -135,6 +136,20 @@ function uploadMap(e) {
     localStorage.setItem("mapImage", mapUrl);
   };
   reader.readAsDataURL(file);
+}
+
+function uploadUrl() {
+  const urlInput = document.querySelector('#urlInput');
+  const url = urlInput.value.trim();
+
+  // Validate if the URL is from johnthomasrenfro.github.io
+  if (url && url.startsWith("http://johnthomasrenfro.github.io")) {
+    const mapUrl = `url(${url})`;
+    document.querySelector('#board').style.setProperty('--map-image', mapUrl);
+    localStorage.setItem("mapImage", mapUrl);
+  } else {
+    alert("Please enter a valid image URL from johnthomasrenfro.github.io");
+  }
 }
 
 window.onload = function () {
