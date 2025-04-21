@@ -71,6 +71,27 @@ background-image:url('background.png');
   object-position: -187px -19px; 
 }
 
+.eightsided {
+  width: 141px;
+  height: 186px; 
+  object-fit: none; 
+  object-position: -348px -6px; 
+}
+
+.twelvesided {
+  width: 162px;
+  height: 190px; 
+  object-fit: none; 
+  object-position: -518px -15px; 
+}
+
+.twentysided {
+  width: 159px;
+  height: 182px; 
+  object-fit: none; 
+  object-position: -706px -23px; 
+}	  
+
   </style>
 </head>
 <body>
@@ -104,11 +125,13 @@ background-image:url('background.png');
     <span id="res-100"></span></label>
   </div>
   <div>
+	  	  	<img class='twentysided' src='dice.jpg'>
     <label>1d20 + <input type="number" id="mod-20" value="0"> 
     <button onclick="roll('20')">Roll</button> 
     <span id="res-20"></span></label>
   </div>
   <div>
+	  	  	<img class='twelvesided' src='dice.jpg'>
     <label>1d12 + <input type="number" id="mod-12" value="0"> 
     <button onclick="roll('12')">Roll</button> 
     <span id="res-12"></span></label>
@@ -119,6 +142,7 @@ background-image:url('background.png');
     <span id="res-10"></span></label>
   </div>
   <div>
+	  	  	<img class='eightsided' src='dice.jpg'>
     <label>1d8 + <input type="number" id="mod-8" value="0"> 
     <button onclick="roll('8')">Roll</button> 
     <span id="res-8"></span></label>
