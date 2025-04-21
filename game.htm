@@ -96,7 +96,7 @@ background-image:url('background.png');
 </table>
 
 <h2>Dice Roller</h2>
-	<img class='foursided' src='dice.jpg'>
+
 <div id="dice-roller">
   <div>
     <label>1d100 + <input type="number" id="mod-100" value="0"> 
@@ -124,11 +124,13 @@ background-image:url('background.png');
     <span id="res-8"></span></label>
   </div>
   <div>
+	  	<img class='sixsided' src='dice.jpg'>
     <label>1d6 + <input type="number" id="mod-6" value="0"> 
     <button onclick="roll('6')">Roll</button> 
     <span id="res-6"></span></label>
   </div>
   <div>
+	  	<img class='foursided' src='dice.jpg'>
     <label>1d4 + <input type="number" id="mod-4" value="0"> 
     <button onclick="roll('4')">Roll</button> 
     <span id="res-4"></span></label>
