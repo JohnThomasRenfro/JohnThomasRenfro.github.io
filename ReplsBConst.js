@@ -2258,9 +2258,10 @@ const replsB=[
 {p1:/(う)(?!X)(が)(?!X)([いくかさ])(?!X)/g,r1:'$1X(uga $2X;gargling);IAdjective$3;Par'},
 {p1:/(あ)(?!X)(た)(?!X)([わいうえおっ])(?!X)/g,r1:'$1X(a)$2X(ta)to be capable of doing);UVerb$3;Par'},
 {p1:/(あ)(?!X)(げ)(?!X)([らりるれろっ])(?!X)/g,r1:'$1X(age $2X;give;RuVerb$3;Par'},
-
+{p1:/(９|9)(?!X)(月)(?!X)/g,r1:'$1X(ku)$2X(gatsu)September;Par'},
 {p1:/(９|9)(?!X)(日)(?!X)/g,r1:'$1X(kokono)$2X(ka)nineth day of the month;Par'},
 {p1:/(８|8)(?!X)(月)(?!X)/g,r1:'$1X(hachi)$2X(gatsu)August;Par'},
+{p1:/(信)(?!X)(認)(?!X)/g,r1:'$1X(shin)$2X(nin)acknowledge;Par'},
 {p1:/(７|7)(?!X)(月)(?!X)/g,r1:'$1X(shichi)$2X(gatsu)July;Par'},
 {p1:/(７|7)(?!X)(日)(?!X)/g,r1:'$1X(nano)$2X(ka)seventh day of the month;Par'},
 {p1:/(６|6)(?!X)(月)(?!X)/g,r1:'$1X(roku)$2X(gatsu)June;Par'},
