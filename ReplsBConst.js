@@ -8108,7 +8108,7 @@ const replsB=[
 {p1:/(汁)(?!X)/g,r1:'$1X(shiru)soup;Par'},
 {p1:/(永)(?!X)/g,r1:'$1X(ei)eternal;Par'},
 {p1:/(氷)(?!X)/g,r1:'$1X(koori)ice;Par'},
-{p1:/(水)(?!X)/g,r1:'$1X(mizu)water,mi,sui,Wednesday;Par'},
+{p1:/(水)(?!X)/g,r1:'$1X(mizu)water(mi,sui)Wednesday;Par'},
 {p1:/(気)(?!X)/g,r1:'$1X(ki)spirit,energy,mood;Par'},
 {p1:/(氏)(?!X)/g,r1:'$1X(shi)Mr,Ms,Mrs;Par'},
 {p1:/(毛)(?!X)/g,r1:'$1X(ke)hair,wool;Par'},
