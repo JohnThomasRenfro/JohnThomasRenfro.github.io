@@ -3040,6 +3040,7 @@ const replsB=[
 {p1:/(評)(?!X)(判)(?!X)/g,r1:'$1X(hyou)$2X(ban)fame;Par'},
 {p1:/(評)(?!X)(価)(?!X)/g,r1:'$1X(hyou)$2X(ka)assessment;Par'},
 {p1:/(詐)(?!X)(欺)(?!X)/g,r1:'$1X(sa)$2X(gi)fraud;Par'},
+{p1:/(逆)(?!X)(走)(?!X)/g,r1:'$1X(gyaku)$2X(sou)going the opposite direction;Par'},
 {p1:/(証)(?!X)(言)(?!X)/g,r1:'$1X(syou)$2X(gen)testimony;Par'},
 {p1:/(証)(?!X)(明)(?!X)/g,r1:'$1X(syou)$2X(mei)proof;Par'},
 {p1:/(証)(?!X)(拠)(?!X)/g,r1:'$1X(syou)$2X(ko)proof;Par'},
@@ -8076,6 +8077,7 @@ const replsB=[
 {p1:/(港)(?!X)/g,r1:'$1X(minato)port,harbor;Par'},
 {p1:/(温)(?!X)/g,r1:'$1X(on)temperature;Par'},
 {p1:/(減)(?!X)/g,r1:'$1X(gen)reduced;Par'},
+{p1:/(須)(?!X)/g,r1:'$1X(su)ought to;Par'},
 {p1:/(渕)(?!X)/g,r1:'$1X(Buchi)deep water;Par'},
 {p1:/(清)(?!X)/g,r1:'$1X(kiyo)sei,shi,pure;Par'},
 {p1:/(淳)(?!X)/g,r1:'$1X(Jyun)name;Par'},
@@ -8663,7 +8665,6 @@ const replsB=[
 {p1:/(;Par)(な)(?!X)/g,r1:'$1X$2X(na)NaAdjective;Par'},
 {p1:/(Adverbな)(?!X)/g,r1:'$1X(na)Adverb;Par'},
 {p1:/(;Par)(等|Verbら)(?!X)/g,r1:'$1X$2X(ra)plural;Par'},
-{p1:/(;Par)(の)(?!X)/g,r1:'$1X$2X(no)of the above;Postposition;Par'},
 
 {p1:/(ま)(?!X)(し)(?!X)(た)(?!X)/g,r1:'$1X(ma)$2X(shi)$3X(ta)did;FormalVerb;Ending;Par'},
 {p1:/(し)(?!X)(た)(?!X)(い)(?!X)/g,r1:'$1X(shi)$2X(ta)$3X(i)want to do;SuruVerb;Par'},
@@ -8677,6 +8678,7 @@ const replsB=[
 {p1:/(;Par)(ね)(?!X)/g,r1:'$1X(ne)isn t it\?;InformalVerb;Ending;Par'},
 {p1:/(;IchidanVerbる)/g,r1:'るX(ru)to do,will do;IchidanVerb;InformalVerb;Ending;Par'},
 
+{p1:/(;Par)(の)(?!X)/g,r1:'$1X$2X(no)of the above;Postposition;Par'},
 {p1:/(;Par)(と)(?!X)/g,r1:'$1X$2X(to)by way of the above;Postposition;Par'},
 {p1:/(Verb|;Ending)(?!X)(と)(?!X)/g,r1:'$1X$2X(to)with the above,the person said;Par'},
 
