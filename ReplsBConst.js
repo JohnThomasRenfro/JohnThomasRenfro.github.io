@@ -4362,6 +4362,7 @@ const replsB=[
 {p1:/(権)(?!X)(力)(?!X)/g,r1:'$1X(ken)$2X(ryoku)political power;Par'},
 {p1:/(権)(?!X)(利)(?!X)/g,r1:'$1X(ken)$2X(ri)right,privilege;Par'},
 {p1:/(模)(?!X)(索)(?!X)/g,r1:'$1X(mo)$2X(saku)fumbling around for;Par'},
+{p1:/(不)(?!X)(備)(?!X)/g,r1:'$1X(fu)$2X(bi)deficiencies;Par'},
 {p1:/(模)(?!X)(範)(?!X)/g,r1:'$1X(moh)$2X(an)model,role model;Par'},
 {p1:/(模)(?!X)(様)(?!X)/g,r1:'$1X(mo)$2X(you)pattern,design;Par'},
 {p1:/(標)(?!X)(的)(?!X)/g,r1:'$1X(hyou)$2X(teki)target;Par'},
