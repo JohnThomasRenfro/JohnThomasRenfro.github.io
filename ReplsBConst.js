@@ -4263,6 +4263,8 @@ const replsB=[
 {p1:/(毛)(?!X)(布)(?!X)/g,r1:'$1X(mou)$2X(fu)blanket;Par'},
 {p1:/(比)(?!X)(較)(?!X)/g,r1:'$1X(hi)$2X(kaku)comparison;Par'},
 {p1:/(比)(?!X)(率)(?!X)/g,r1:'$1X(hi)$2X(ritsu)percentage;Par'},
+{p1:/(総)(?!X)(評)(?!X)/g,r1:'$1X(sou)$2X(hyou)overall;Par'},
+{p1:/(分)(?!X)(間)(?!X)/g,r1:'$1X(pun)$2X(kan)minutes;Par'}, 
 {p1:/(比)(?!X)(例)(?!X)/g,r1:'$1X(hi)$2X(rei)proportion,ratio;Par'},
 {p1:/(比)(?!X)(べ)(?!X)/g,r1:'$1X(kura)$2X(be)compare;IchidanVerb;Par'},
 {p1:/(毎)(?!X)(週)(?!X)/g,r1:'$1X(mai)$2X(syuu)every week;Par'},
@@ -8691,7 +8693,7 @@ const replsB=[
 
 {p1:/([ぁ-んァ-ヶ一-龯]+)/g,r1:'<font color=#d9dadb>$1</font>'},
 
-{p1:/(;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb|;BeVerb)/g,r1:'<br>$1'},
+{p1:/(;IAdjective|;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb|;BeVerb)/g,r1:'<br>$1'},
 {p1:/(;Par)/g,r1:'<br>'},
 
 ];
