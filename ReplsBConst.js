@@ -8696,7 +8696,7 @@ const replsB=[
 
 {p1:/([ぁ-んァ-ヶ一-龯]+)/g,r1:'<font color=#d9dadb>$1</font>'},
 
-{p1:/(;IAdjective|;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb|;BeVerb)/g,r1:'<br>$1'},
+{p1:/(;IAdjective|;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb|;BeVerb|;BuVerb)/g,r1:'<br>$1'},
 {p1:/(;Par)/g,r1:'<br>'},
 
 ];
