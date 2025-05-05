@@ -8056,7 +8056,7 @@ const replsB=[
 {p1:/(猛)(?!X)/g,r1:'$1X(mou)extreme;Par'},
 {p1:/(犯)(?!X)/g,r1:'$1X(han)crime;Par'},
 {p1:/(犬)(?!X)/g,r1:'$1X(inu)+ken,dog;Par'},
-{p1:/(物)(?!X)/g,r1:'$1X(butsu)material,or mono,person,koto,thing;Par'},
+{p1:/(物)(?!X)/g,r1:'$1X(butsu)material(mono)person(koto)thing;Par'},
 {p1:/(牛)(?!X)/g,r1:'$1X(ushi)cattle,cow;Par'},
 {p1:/(版)(?!X)/g,r1:'$1X(ban)han,version;Par'},
 {p1:/(片)(?!X)/g,r1:'$1X(kata)leaf,sheet,right side;Par'},
