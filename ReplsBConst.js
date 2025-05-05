@@ -454,6 +454,7 @@ const replsB=[
 {p1:/(あ)(?!X)(れ)(?!X)(こ)(?!X)(れ)(?!X)/g,r1:'$1X(a)$2X(re)$3X(ko)$4X(re)this and that,one thing,another;Par'},
 {p1:/(あ)(?!X)(ら)(?!X)(ゆ)(?!X)(る)(?!X)/g,r1:'$1X(a)$2X(ra)$3X(yu)$4X(ru)all;Par'},
 {p1:/(あ)(?!X)(っ)(?!X)(さ)(?!X)(り)(?!X)/g,r1:'$1X$2X(as)$3X(sa)$4X(ri)as a matter of fact;Par'},
+{p1:/(す)(?!X)(り)(?!X)(抜)(?!X)(け)(?!X)/g,r1:'$1X(su)$2X(ri)$3X(nu)$4X(ke)slip through;weave through traffic;elude;IchidanVerb;Par'},
 {p1:/(あ)(?!X)(ち)(?!X)(こ)(?!X)(ち)(?!X)/g,r1:'$1X$2X(ac)$3X(h)$4X(iko)chi,all over;Par'},
 {p1:/(あ)(?!X)(さ)(?!X)(っ)(?!X)(て)(?!X)/g,r1:'$1X(a)$2X(sa)$3X(t)$4X(te)the day after tomorrow;Par'},
 {p1:/(あ)(?!X)(い)(?!X)(づ)(?!X)(ち)(?!X)/g,r1:'$1X$2X(ai)$3X(z)$4X(uchi)responsive sounds,chi,ming in;Par'},
