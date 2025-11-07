@@ -2518,6 +2518,7 @@ const replsB=[
 {p1:/(開)(?!X)(館)(?!X)/g,r1:'$1X(kan)$2X(kan)opening day,opening office hours;Par'},
 {p1:/(開)(?!X)(設)(?!X)/g,r1:'$1X(kai)$2X(setsu)setting up;Par'},
 {p1:/(開)(?!X)(票)(?!X)/g,r1:'$1X(kai)$2X(hyou)tallying votes;Par'},
+{p1:/(労)(?!X)(災)(?!X)/g,r1:'$1X(rou)$2X(sai)work injury or death;Par'},
 {p1:/(開)(?!X)(示)(?!X)/g,r1:'$1X(kai)$2X(ji)disclosure;Par'},
 {p1:/(開)(?!X)(示)(?!X)/g,r1:'$1X(aki)$2X(ji)disclosure;Par'},
 {p1:/(開)(?!X)(発)(?!X)/g,r1:'$1X(kai)$2X(hatsu)development;Par'},
