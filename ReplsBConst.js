@@ -270,6 +270,7 @@ const replsB=[
 {p1:/(ゆ)(?!X)(っ)(?!X)(た)(?!X)(り)(?!X)/g,r1:'$1X$2X(co)$3X(m)$4X(fortable);Par'},
 {p1:/(ゆ)(?!X)(っ)(?!X)(く)(?!X)(り)(?!X)/g,r1:'$1X$2X(sl)$3X(o)$4X(wly);Par'},
 {p1:/(や)(?!X)(り)(?!X)(直)(?!X)(し)(?!X)/g,r1:'$1X$2X(ya)$3X(r)$4X(inao)shi,doing over,redoing;Par'},
+{p1:/(飲)(?!X)(食)(?!X)(料)(?!X)(品)(?!X)/g,r1:'$1X(in)$2X(syoku)$3X(ryou)$4X(hin)grocery products;Par'},
 {p1:/(や)(?!X)(り)(?!X)(と)(?!X)(り)(?!X)/g,r1:'$1X(ya)$2X(ri)$3X(to)$4X(ri)give and take;Par'},
 {p1:/(や)(?!X)(っ)(?!X)(ぱ)(?!X)(り)(?!X)/g,r1:'$1X(ya)$2X(p)$3X(pa)$4X(ri)just as I thought,after all;Par'},
 {p1:/(や)(?!X)(た)(?!X)(ら)(?!X)(に)(?!X)/g,r1:'$1X$2X(fr)$3X(e)$4X(quently)persistently;Par'},
@@ -1366,6 +1367,7 @@ const replsB=[
 {p1:/(再)(?!X)(来)(?!X)(週)(?!X)/g,r1:'$1X(sarai)$2X(sy)$3X(uu)week after next;Par'},
 {p1:/(再)(?!X)(来)(?!X)(月)(?!X)/g,r1:'$1X(sarai)$2X(ge)$3X(tsu)month after next;Par'},
 {p1:/(再)(?!X)(来)(?!X)(年)(?!X)/g,r1:'$1X(sarai)$2X(ne)$3X(n)year after next;Par'},
+{p1:/(し)(?!X)(た)(?!X)(い)(?!X)/g,r1:'$1X(shi)$2X(ta)$3X(i)want to do;Par'},
 {p1:/(内)(?!X)(野)(?!X)(手)(?!X)/g,r1:'$1X(nai)$2X(ya)$3X(syu)infielder;Par'},
 {p1:/(内)(?!X)(乱)(?!X)(罪)(?!X)/g,r1:'$1X(nai)$2X(ran)$3X(zai)insurrection;Par'},
 {p1:/(典)(?!X)(型)(?!X)(的)(?!X)/g,r1:'$1X(tenkei)$2X(te)$3X(ki)typical,representative;Par'},
@@ -2906,6 +2908,8 @@ const replsB=[
 {p1:/(走)(?!X)(者)(?!X)/g,r1:'$1X(sou)$2X(sya)base runner;Par'},
 {p1:/(赤)(?!X)(道)(?!X)/g,r1:'$1X(seki)$2X(dou)equator;Par'},
 {p1:/(赤)(?!X)(字)(?!X)/g,r1:'$1X(aka)$2X(ji)deficit;Par'},
+{p1:/(早)(?!X)(苗)(?!X)/g,r1:'$1X(sa)$2X(nae)rice seeding;Par'},
+{p1:/(前)(?!X)(に)(?!X)/g,r1:'$1X(mae)$2X(ni)before;Par'},
 {p1:/(購)(?!X)(入)(?!X)/g,r1:'$1X(kou)$2X(nyuu)purchase;Par'},
 {p1:/(質)(?!X)(問)(?!X)/g,r1:'$1X(shitsu)$2X(mon)question;Par'},
 {p1:/(賠)(?!X)(償)(?!X)/g,r1:'$1X(bai)$2X(syou)compensation;Par'},
@@ -3859,6 +3863,7 @@ const replsB=[
 {p1:/(画)(?!X)(面)(?!X)/g,r1:'$1X(ga)$2X(men)screen;Par'},
 {p1:/(画)(?!X)(像)(?!X)/g,r1:'$1X(ga)$2X(zou)image;Par'},
 {p1:/(町)(?!X)(角)(?!X)/g,r1:'$1X(machika)$2X(do)street corner;Par'},
+{p1:/(飲)(?!X)(食)(?!X)/g,r1:'$1X(in)$2X(syoku)food and beverage;Par'},
 {p1:/(町)(?!X)(民)(?!X)/g,r1:'$1X(cyou)$2X(min)townspeople;Par'},
 {p1:/(町)(?!X)(中)(?!X)/g,r1:'$1X(machi)$2X(naka)downtown area,central area of a town;Par'},
 {p1:/(男)(?!X)(系)(?!X)/g,r1:'$1X(dan)$2X(kei)male lineage;Par'},
@@ -5198,6 +5203,7 @@ const replsB=[
 {p1:/(強)(?!X)(風)(?!X)/g,r1:'$1X(kyou)$2X(fuu)high winds;Par'},
 {p1:/(強)(?!X)(豪)(?!X)/g,r1:'$1X(kyou)$2X(gou)overwhelming strength;Par'},
 {p1:/(強)(?!X)(調)(?!X)/g,r1:'$1X(kyou)$2X(cyou)emphasis;Par'},
+{p1:/(提)(?!X)(起)(?!X)/g,r1:'$1X(tei)$2X(ki)raise a question;Par'},
 {p1:/(強)(?!X)(要)(?!X)/g,r1:'$1X(kyou)$2X(you)extortion;Par'},
 {p1:/(強)(?!X)(盗)(?!X)/g,r1:'$1X(gou)$2X(tou)robbery;Par'},
 {p1:/(強)(?!X)(烈)(?!X)/g,r1:'$1X(kyou)$2X(retsu)intense;Par'},
@@ -8705,7 +8711,7 @@ const replsB=[
 
 {p1:/([ぁ-んァ-ヶ一-龯]+)/g,r1:'<font color=#d9dadb>$1</font>'},
 
-{p1:/(;IAdjective|;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb|;BeVerb|;BuVerb)/g,r1:'<br>$1'},
+{p1:/(;IAdjective|;SuVerb|;RuVerb|;UVerb|;KuVerb|;MuVerb|;MuVerb|;IchidanVerb|;TsuVerb|;BeVerb|;BuVerb)/g,r1:'-->$1'},
 {p1:/(;Par)/g,r1:'<br>'},
 
 ];
